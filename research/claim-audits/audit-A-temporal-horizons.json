@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "audit_id": "audit-A-temporal-horizons",
+  "reviewed_on": "2026-09-16",
+  "status_vocabulary": [
+    "verified",
+    "provisional",
+    "conflicted",
+    "rejected"
+  ],
+  "claims": [
+    {
+      "id": "claim-pascal-static-layerwise-horizons",
+      "claim_type": "method",
+      "statement": "PASCAL's Adaptive Layerwise mode assigns a static timestep count to each layer and explicitly transforms a preceding layer's L_(n-1)-step spike tensor into an L_n-step output tensor through accumulation, relaxation, and re-emission.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Algorithm and reference implementation only. This is not input-adaptive early exit and does not establish execution on physical hardware.",
+      "conflicts_with": [],
+      "scope": "PASCAL Adaptive Layerwise inference semantics",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "TMLR paper, Algorithm 1, PDF p. 5",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "https://github.com/BrainSeek-Lab/PASCAL"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-pascal-teff-derived-mean",
+      "claim_type": "metric",
+      "statement": "PASCAL defines T_eff as the layer count-normalized sum of r_E^l T^l, where r_E^l is an analytical energy-overhead ratio. T_eff is therefore a derived layerwise summary, not measured wall-clock latency, cycle count, or a simple mean of the listed timestep values.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Analytical proxy computed from layer timesteps and an energy-overhead model. No scheduler, synchronization, communication, alignment, or measured elapsed-time term is included.",
+      "conflicts_with": [
+        "claim-pascal-teff-layer-cardinality-conflict"
+      ],
+      "scope": "Meaning of the published PASCAL T_eff metric",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
+            "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-pascal-teff-layer-cardinality-conflict",
+      "claim_type": "metric",
+      "statement": "The published ResNet-18 CIFAR-10 value T_eff = 3.14 is reproducible only when the 17-value layerwise timestep list is silently truncated to the 10 energy coefficients in the released script by Python zip(), after which the result is divided by 10. The paper and code do not document how the 17 listed choices map to the 10 coefficients.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "conflicted",
+      "measurement_boundary": "Reproducibility audit of one reported metric value. It does not invalidate the reported task accuracy, but it prevents an unqualified interpretation of 3.14 as a fully specified network-wide mean.",
+      "conflicts_with": [
+        "claim-pascal-teff-derived-mean"
+      ],
+      "scope": "PASCAL ResNet-18 on CIFAR-10, published Adaptive Layerwise configuration",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
+            "Independent recomputation gives 3.1361557645729463 from the first 10 paired values, 1.8447975085723214 if that sum is divided by 17, and 2.411764705882353 for the simple mean of all 17 timestep values"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-pascal-uniform-t-hardware-model",
+      "claim_type": "deployment",
+      "statement": "PASCAL evaluates a uniform T = 4 VGG-16 configuration using modified LoAS and SparTen RTL synthesized with Synopsys Design Compiler in a 40 nm library at 560 MHz, followed by cycle-accurate simulation. It reports 445.47 mJ and 0.40 s for the default IF design and 446.02 mJ and 0.45 s for PASC-IF.",
+      "evidence_class": "E4",
+      "reports_deployment_evidence": true,
+      "verification_status": "verified",
+      "measurement_boundary": "Synthesized RTL and cycle-accurate simulation for VGG-16 on CIFAR-10 at one uniform T = 4 design point. No fabricated chip is reported. The result tests PASC-IF overhead, not heterogeneous layerwise horizons.",
+      "conflicts_with": [
+        "claim-pascal-mixed-horizon-hardware-absent"
+      ],
+      "scope": "PASCAL uniform-timestep hardware-model evidence",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-pascal-mixed-horizon-hardware-absent",
+      "claim_type": "evidence_boundary",
+      "statement": "PASCAL does not synthesize, cycle-simulate, or physically measure the Adaptive Layerwise configuration that produces the T_eff = 3.14 headline. Its hardware appendix evaluates only uniform T = 4.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Negative result from a complete 24-page paper inspection and cross-check against the public repository. It is scoped to PASCAL's own paper and released code.",
+      "conflicts_with": [
+        "claim-pascal-uniform-t-hardware-model"
+      ],
+      "scope": "PASCAL Adaptive Layerwise deployment evidence",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
+            "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-qac-static-layerwise-horizons",
+      "claim_type": "method",
+      "statement": "QAC learns layerwise activation quantization settings, maps them to static layerwise timestep counts, and resolves adjacent-layer temporal-shape mismatches by averaging the complete source-layer time axis and replicating the average to the target layer's timestep count.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Algorithmic tensor alignment in the evaluated software model. It is not evidence that a target processor implements distinct layer clocks or overlapping mixed-horizon execution.",
+      "conflicts_with": [],
+      "scope": "QAC mixed-timestep conversion and temporal alignment",
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, Sections 4.2-4.3, Eqs. 11-13, PDF pp. 5-8",
+            "https://openreview.net/notes/edits/attachment?id=p4ZjfNpLYo&name=pdf",
+            "Independent public revision rXoJz4T7cw confirms the same method, https://openreview.net/notes/edits/attachment?id=rXoJz4T7cw&name=pdf"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-qac-average-timestep-not-latency",
+      "claim_type": "metric",
+      "statement": "QAC's reported 2.76 timesteps for ResNet-18 on CIFAR-10 is an average across layerwise timestep choices associated with 95.29 percent SNN accuracy. It is not a measured inference latency, a sum of sequential layer work, or a hardware cycle count.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Software accuracy and an average layerwise allocation statistic. The paper separately notes O(NT) delay for uniform sequential execution and warns of pipeline stalls for mixed timesteps.",
+      "conflicts_with": [
+        "claim-qac-pipeline-stall-warning"
+      ],
+      "scope": "Interpretation of QAC's headline timestep number",
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, contribution summary and Table 1, PDF pp. 2 and 5",
+            "OpenReview public revision attachment p4ZjfNpLYo, Figure 2 and Section 5.1, PDF pp. 7 and 9"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-qac-pipeline-stall-warning",
+      "claim_type": "execution_model",
+      "statement": "QAC states that a pipelined multicore neuromorphic mapping can stall because a downstream layer must wait until the upstream layer completes its assigned T_l timesteps before temporal alignment can be applied.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Qualitative execution analysis only. No target mapping, compiler run, RTL, cycle-accurate simulation, or physical-hardware measurement is reported.",
+      "conflicts_with": [
+        "claim-qac-average-timestep-not-latency"
+      ],
+      "scope": "QAC's stated hardware consequence of layerwise temporal alignment",
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.7, Figure 4, PDF pp. 21-23"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-qac-documented-hardware-path-is-not-e3",
+      "claim_type": "evidence_boundary",
+      "statement": "QAC gives a conceptual loop modification for ANN-style accelerators and a qualitative pipeline discussion for multicore neuromorphic systems, but it does not document an executable toolchain or target-specific mapping path. These passages should not be promoted to E3 deployment evidence under the survey's documented-path definition.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Evidence classification boundary. A prose-level feasibility argument is not a documented but unexercised toolchain path.",
+      "conflicts_with": [
+        "claim-qac-section-7-8-energy-comparison"
+      ],
+      "scope": "QAC hardware-evidence classification",
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.7 and Algorithm 2, PDF pp. 21-23",
+            "Complete inspections of public revisions p4ZjfNpLYo and rXoJz4T7cw"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-qac-section-7-8-energy-comparison",
+      "claim_type": "source_correction",
+      "statement": "QAC Section 7.8 contains an analytical energy comparison based on Horowitz and Potipireddi.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "rejected",
+      "measurement_boundary": "Rejected against two independent public revision files. Section 7.8 is titled Time Step vs. Bit Width, and neither revision contains Horowitz, Potipireddi, or an energy table. The energy appendix is present in the later MT-SNN manuscript and was likely misattributed backward.",
+      "conflicts_with": [
+        "claim-qac-documented-hardware-path-is-not-e3"
+      ],
+      "scope": "Existing survey claim about QAC Appendix Section 7.8",
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.8, PDF p. 24",
+            "OpenReview public revision attachment rXoJz4T7cw, complete-text search",
+            "https://openreview.net/notes/edits/attachment?id=p4ZjfNpLYo&name=pdf",
+            "https://openreview.net/notes/edits/attachment?id=rXoJz4T7cw&name=pdf"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-mtsnn-static-layerwise-horizons",
+      "claim_type": "method",
+      "statement": "MT-SNN defines mixed-timestep SNNs as networks in which different layers use different static timestep counts and maps ANN activation quantization levels to layerwise timestep counts. The supplied ICLR manuscript aligns adjacent layers by averaging over the complete source-layer time axis and repeating the result to the target horizon.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Algorithm and GPU implementation semantics. The method is a static per-layer allocation, not per-input early termination and not a physical deployment result.",
+      "conflicts_with": [
+        "claim-mtsnn-versioned-alignment-change"
+      ],
+      "scope": "MT-SNN method identity and temporal-control variable",
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Sections 4.2-4.3 and Eq. 20, PDF pp. 5-7",
+            "Supplied MT-SNN manuscript, Algorithm 1, Phase B, PDF p. 16",
+            "Local PDF SHA-256 6d7f507f6f35e8bf99afbab2ac53a11687b80f407061f9122466229817670845"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-mtsnn-imagenet-result",
+      "claim_type": "result",
+      "statement": "MT-SNN reports 73.63 percent ImageNet-1K top-1 accuracy for ResNet-34 at 4.88 average timesteps, where the paper explicitly defines the average as the unweighted arithmetic mean of the layerwise T_l values. It separately reports 344.44 seconds for the complete ImageNet-1K validation run on four NVIDIA RTX 4090 GPUs, including 15.39 seconds for temporal alignment.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Software task accuracy, a layerwise arithmetic mean, and GPU wall-clock measurement over the validation set. The value 4.88 is not itself measured time, latency, or cycle count, and no named neuromorphic processor ran this configuration.",
+      "conflicts_with": [],
+      "scope": "MT-SNN ImageNet-1K result and metric interpretation",
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Section 5.1 and Table 1, PDF p. 7",
+            "Supplied MT-SNN manuscript, Section 5.4 and Table 4, PDF p. 9",
+            "The values and mean definition were independently extracted with PyMuPDF 1.28.2 and pypdf, then visually checked on rendered PDF pp. 7 and 9"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-mtsnn-versioned-alignment-change",
+      "claim_type": "source_correction",
+      "statement": "The supplied withdrawn ICLR manuscript uses average-and-repeat temporal alignment, whereas the later accepted Frontiers abstract describes Scaled Synaptic Current Accumulation as a fused synaptic-current-domain mechanism. The two records should not be cited as though they document an identical alignment implementation.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "conflicted",
+      "measurement_boundary": "Version-lineage conflict, not an experimental contradiction. The accepted abstract appears to describe a revised mechanism, but the final formatted accepted full text was not posted at audit time.",
+      "conflicts_with": [
+        "claim-mtsnn-static-layerwise-horizons"
+      ],
+      "scope": "MT-SNN temporal-alignment mechanism across withdrawn and accepted records",
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied withdrawn ICLR manuscript, title page and Eq. 20, PDF pp. 1 and 7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "mt-snn-frontiers-2026",
+          "locators": [
+            "Frontiers in Neuroscience accepted-article abstract, DOI 10.3389/fnins.2026.1783326",
+            "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/abstract"
+          ],
+          "retrieval_status": "partial_text",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "claim-mtsnn-energy-is-analytical",
+      "claim_type": "evidence_boundary",
+      "statement": "MT-SNN's energy comparison is an analytical operation-count estimate. It combines assumed 45 nm per-operation costs with layer firing rates and layerwise timestep counts. It is not energy measured on a target device or obtained from a synthesized MT-SNN accelerator.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Analytical estimate based on Horowitz, Nagendra, Potipireddi and Asati, and Panda et al. No RTL synthesis, technology-specific MT-SNN design, power instrument, or physical processor run is reported.",
+      "conflicts_with": [],
+      "scope": "MT-SNN energy-evidence classification",
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Appendix C, Tables 7-8 and Eqs. 22-23, PDF pp. 16-17",
+            "The energy-model text and tables were independently extracted with PyMuPDF 1.28.2 and pypdf"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-mtsnn-hardware-path-is-qualitative",
+      "claim_type": "evidence_boundary",
+      "statement": "MT-SNN's hardware appendix proposes that ANN-style accelerators could replace a unified temporal loop by per-layer T_l and warns that multicore neuromorphic pipelines may stall while a downstream layer waits for the upstream layer's horizon. It does not execute either path on a simulator, RTL design, toolchain, or chip.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Qualitative feasibility and failure-mode discussion. It is not a documented target-specific toolchain path and therefore is not E3 deployment evidence under the survey's definition.",
+      "conflicts_with": [
+        "claim-physical-static-mixed-horizon-gap"
+      ],
+      "scope": "MT-SNN hardware-evidence boundary",
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Appendix E, Figure 7 and Algorithm 2, PDF p. 18",
+            "The pipeline-stall passage was independently extracted with PyMuPDF 1.28.2 and pypdf, then visually checked on rendered PDF p. 18"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-temporal-flexibility-stagewise-training",
+      "claim_type": "method",
+      "statement": "Temporal Flexibility uses Mixed Time-step Training as a training-time augmentation. It samples a vector of timestep counts and assigns them to network stages during each iteration so that one weight set generalizes across temporal configurations.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Training method and software implementation. Mixed stagewise timesteps during training do not by themselves establish a mixed-horizon hardware execution schedule.",
+      "conflicts_with": [
+        "claim-temporal-flexibility-speck-event-driven-deployment"
+      ],
+      "scope": "Temporal Flexibility Mixed Time-step Training semantics",
+      "source_refs": [
+        {
+          "source_id": "temporal-flexibility",
+          "locators": [
+            "ICLR 2025 paper, abstract and Section 4.3.3, Algorithm 1, PDF pp. 1 and 7",
+            "Repository commit c320f925b3894b7526a2adacc979610a2fb00f0d, train-time-stepped/utils.py, lines 45-94",
+            "Repository commit c320f925b3894b7526a2adacc979610a2fb00f0d, train-event-driven/utils.py, lines 189-238",
+            "https://github.com/brain-intelligence-lab/temporal_flexibility_in_SNN"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-temporal-flexibility-speck-event-driven-deployment",
+      "claim_type": "deployment",
+      "statement": "Temporal Flexibility physically deploys MTT-trained and single-timestep-trained networks to a SynSense Speck2e development kit for N-MNIST. The MTT model reports 99.16 percent PyTorch accuracy, 98.56 percent event-driven simulator accuracy, and 98.57 percent Speck accuracy. It also reports 3.92 percent simulator-to-chip spike difference, 2.81 percent chip-repeat difference, and 28.77 percent time-stepped-to-chip difference.",
+      "evidence_class": "E2",
+      "reports_deployment_evidence": true,
+      "verification_status": "verified",
+      "measurement_boundary": "Physical Speck2e execution with task accuracy and output-spike fidelity. No measured energy or latency is reported. The chip execution is fully event-driven and timestep-free, not execution of the training-time vector of discrete stage horizons.",
+      "conflicts_with": [
+        "claim-temporal-flexibility-stagewise-training",
+        "claim-physical-static-mixed-horizon-gap"
+      ],
+      "scope": "Temporal Flexibility physical deployment evidence",
+      "source_refs": [
+        {
+          "source_id": "temporal-flexibility",
+          "locators": [
+            "ICLR 2025 paper, Sections 4.4 and 5.1, Table 5, PDF pp. 7-9"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-early-exit-is-input-adaptive-global-horizon",
+      "claim_type": "taxonomy",
+      "statement": "SEENN and Dynamic Confidence vary a terminal inference horizon per input sample by stopping whole-network inference at runtime. This control variable differs from QAC, PASCAL, and MT-SNN, which assign static timestep counts to layers within one inference.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Taxonomic distinction. SEENN measures GPU throughput on an NVIDIA Tesla V100 and estimates operation energy. Dynamic Confidence reports GPU simulation and spike-count proxies and explicitly states that real neuromorphic power savings are unknown.",
+      "conflicts_with": [],
+      "scope": "Difference between per-input early exit and static per-layer horizon allocation",
+      "source_refs": [
+        {
+          "source_id": "seenn",
+          "locators": [
+            "SEENN paper, method and Section 4.3, PDF pp. 2-4 and 8"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "dynamic-confidence",
+          "locators": [
+            "Dynamic Confidence paper, Sections 5.2 and 6.2, PDF pp. 5-7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "pascal",
+          "locators": [
+            "PASCAL TMLR paper, Algorithm 1, PDF p. 5"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "qac",
+          "locators": [
+            "QAC public revision p4ZjfNpLYo, Sections 4.2-4.3, PDF pp. 5-8"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Sections 4.2-4.3, PDF pp. 5-7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-asynchronous-execution-does-not-imply-independent-layer-horizons",
+      "claim_type": "execution_model",
+      "statement": "Asynchronous neuron-core computation or event delivery does not by itself imply independent discrete time coordinates for different layers. Loihi and Loihi 2 maintain a global algorithmic timestep through barrier synchronization even though neurocores compute and communicate asynchronously.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Architecture semantics, not an impossibility theorem. Other event-driven chips, including Speck2e, may be timestep-free, which is a different execution model rather than proof of discrete mixed layer horizons.",
+      "conflicts_with": [
+        "claim-physical-static-mixed-horizon-gap"
+      ],
+      "scope": "Distinction between asynchronous physical execution and heterogeneous discrete layer horizons",
+      "source_refs": [
+        {
+          "source_id": "neuroscale2025-natcomm",
+          "locators": [
+            "NeuroScale, Nature Communications 2025, Introduction, paragraphs 6-8, DOI 10.1038/s41467-025-65268-z",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12645053/"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "loihi2-llm-hostio",
+          "locators": [
+            "Loihi 2 LLM paper, Mapping the model to Loihi 2, PDF p. 4",
+            "Loihi 2 LLM paper, Appendix A.1 and A.1.1, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2503.18002"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "claim-physical-static-mixed-horizon-gap",
+      "claim_type": "literature_gap",
+      "statement": "Among PASCAL, QAC, MT-SNN, and Temporal Flexibility, no audited source demonstrates physical execution of a static heterogeneous per-layer discrete-timestep schedule. PASCAL's hardware model uses uniform T = 4, QAC and MT-SNN contain qualitative hardware discussions only, and Temporal Flexibility's Speck2e run is timestep-free event-driven inference.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "verification_status": "verified",
+      "measurement_boundary": "Bounded absence claim over four named source records, including the complete supplied MT-SNN manuscript. It is not a universal claim that no simulator or chip can support mixed horizons. The accepted Frontiers version should be compared again when its final formatted full text is posted because its abstract names a revised alignment mechanism.",
+      "conflicts_with": [
+        "claim-pascal-uniform-t-hardware-model",
+        "claim-temporal-flexibility-speck-event-driven-deployment",
+        "claim-asynchronous-execution-does-not-imply-independent-layer-horizons"
+      ],
+      "scope": "Audited evidence for physical static mixed-horizon execution",
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "qac",
+          "locators": [
+            "QAC public revision p4ZjfNpLYo, Section 7.7, PDF pp. 21-23"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Supplied MT-SNN manuscript, Appendix E, PDF p. 18"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "temporal-flexibility",
+          "locators": [
+            "Temporal Flexibility ICLR 2025 paper, Sections 3.3, 4.4, and 5.1, PDF pp. 4 and 7-9"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    }
+  ]
+}

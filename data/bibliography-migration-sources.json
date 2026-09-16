@@ -1,0 +1,2394 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "a14-application-survey",
+      "title": "Survey of approximately twenty published neuromorphic application results, classified by compute platform and by evidence class, conducted for this work",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "internal_analysis",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "research/raw/a14-applications-sensors.md",
+        "assets/bibliography/references.bib entry a14-application-survey",
+        "site/sec-07.html reference a14-application-survey"
+      ],
+      "aliases": [
+        "a14-application-survey"
+      ],
+      "notes": "Tracked internal survey analysis. It is not an external publication.",
+      "purpose": "internal_analysis"
+    },
+    {
+      "id": "a17-two-populations",
+      "title": "Audit of citation direction, toolchain release history, and shared artifacts across the QCFS-lineage conversion literature and the hardware-deployment literature, conducted for this work",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "internal_analysis",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "research/raw/a17-two-populations.md",
+        "assets/bibliography/references.bib entry a17-two-populations",
+        "site/sec-07.html reference a17-two-populations"
+      ],
+      "aliases": [
+        "a17-two-populations"
+      ],
+      "notes": "Tracked internal survey analysis. It is not an external publication.",
+      "purpose": "internal_analysis"
+    },
+    {
+      "id": "a18-sourcecode-comparison",
+      "title": "Source-level comparison of the SNN Toolbox and SpikingJelly ann2snn conversion pipelines, by direct inspection of both codebases and their documentation",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "internal_analysis",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "research/raw/a18-snntoolbox-vs-spikingjelly.md",
+        "assets/bibliography/references.bib entry A18-Research",
+        "site/sec-06.html reference A18-Research"
+      ],
+      "aliases": [
+        "A18-Research"
+      ],
+      "notes": "Tracked internal survey analysis. It is not an external publication.",
+      "purpose": "internal_analysis"
+    },
+    {
+      "id": "ace-snn2022",
+      "title": "ACE-SNN: Algorithm-Hardware Co-Design of Energy-Efficient and Low-Latency Deep Spiking Neural Networks for 3D Image Recognition",
+      "authors": null,
+      "year": 2022,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2022.815258",
+      "url": "https://doi.org/10.3389/fnins.2022.815258",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry ace-snn2022",
+        "site/sec-02.html reference ace-snn2022"
+      ],
+      "aliases": [
+        "ace-snn2022"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "akida-hw-constraints",
+      "title": "BrainChip Akida hardware constraints documentation",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://doc.brainchipinc.com/user_guide/hardware/1.0.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry akida-hw-constraints",
+        "site/sec-08.html reference akida-hw-constraints"
+      ],
+      "aliases": [
+        "akida-hw-constraints"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "akida-story-2016",
+      "title": "The Brainchip Story, 2016 to December 2020",
+      "authors": "BrainChip",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://akida.io/story",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry akida-story-2016",
+        "site/sec-03.html reference akida-story-2016"
+      ],
+      "aliases": [
+        "akida-story-2016"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor material (company history page); documents the September 2016 acquisition of Spikenet Technology and Simon Thorpe's subsequent role on BrainChip's Scientific Advisory Board\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Akopyan15-TrueNorth",
+      "title": "TrueNorth: Design and Tool Flow of a 65 mW 1 Million Neuron Programmable Neurosynaptic Chip",
+      "authors": null,
+      "year": 2015,
+      "venue": "IEEE TCAD",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Akopyan15-TrueNorth",
+        "site/sec-06.html reference Akopyan15-TrueNorth"
+      ],
+      "aliases": [
+        "Akopyan15-TrueNorth"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "arfa-2025-spinnaker2",
+      "title": "Efficient Deployment of Spiking Neural Networks on SpiNNaker2 for DVS Gesture Recognition Using Neuromorphic Intermediate Representation",
+      "authors": "Arfa, S. and Vogginger, B. and Liu, C. and Partzsch, J. and Schöne, M. and Mayr, C.",
+      "year": 2025,
+      "venue": "NICE",
+      "doi": "10.1109/nice65350.2025.11065119",
+      "url": "https://doi.org/10.1109/nice65350.2025.11065119",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry arfa-2025-spinnaker2",
+        "site/sec-07.html reference arfa-2025-spinnaker2"
+      ],
+      "aliases": [
+        "arfa-2025-spinnaker2"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null. This is distinct from \"Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform,\" DOI 10.1109/ICONS69015.2025.00021.",
+      "purpose": "external"
+    },
+    {
+      "id": "bellec2018",
+      "title": "Long Short-Term Memory and Learning-to-Learn in Networks of Spiking Neurons",
+      "authors": "Bellec, G. and Salaj, D. and Subramoney, A. and Legenstein, R. and Maass, W.",
+      "year": 2018,
+      "venue": "NeurIPS 31",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry bellec2018",
+        "site/sec-02.html reference bellec2018"
+      ],
+      "aliases": [
+        "bellec2018"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "bhattacharjee-2023-hardware",
+      "title": "Are SNNs Truly Energy-efficient? — A Hardware Perspective",
+      "authors": "Bhattacharjee, A. and Yin, R. and Moitra, A. and Panda, P.",
+      "year": 2023,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2309.03388",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry bhattacharjee-2023-hardware",
+        "site/sec-07.html reference bhattacharjee-2023-hardware",
+        "site/sec-08.html reference bhattacharjee-2023-hardware"
+      ],
+      "aliases": [
+        "bhattacharjee-2023-hardware"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "BindsNET18",
+      "title": "BindsNET: A Machine Learning-Oriented Spiking Neural Networks Library in Python",
+      "authors": null,
+      "year": 2018,
+      "venue": "Frontiers in Neuroinformatics",
+      "doi": "10.3389/fninf.2018.00089",
+      "url": "https://doi.org/10.3389/fninf.2018.00089",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry BindsNET18",
+        "site/sec-06.html reference BindsNET18"
+      ],
+      "aliases": [
+        "BindsNET18"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "BrainChip-AKD1000Brief",
+      "title": "BrainChip, AKD1000 SoC Product Brief V2.3",
+      "authors": null,
+      "year": 2025,
+      "venue": null,
+      "doi": null,
+      "url": "https://brainchip.com/wp-content/uploads/2025/08/Akida-AKD1000-SoC-Product-Brief-V2.3-Aug.25.pdf",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry BrainChip-AKD1000Brief",
+        "site/sec-06.html reference BrainChip-AKD1000Brief"
+      ],
+      "aliases": [
+        "BrainChip-AKD1000Brief"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "BrainChip-AKD1500Brief",
+      "title": "BrainChip, AKD1500 Product Brief V2.4 and commercial-availability press release",
+      "authors": null,
+      "year": 2025,
+      "venue": null,
+      "doi": null,
+      "url": "https://brainchip.com/wp-content/uploads/2025/11/AKD1500-Product-Brief-V2.4-Oct.25.pdf",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry BrainChip-AKD1500Brief",
+        "site/sec-06.html reference BrainChip-AKD1500Brief"
+      ],
+      "aliases": [
+        "BrainChip-AKD1500Brief"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "brainscales-accel",
+      "title": "Accelerated Analog Neuromorphic Computing",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2003.11996",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry brainscales-accel",
+        "site/sec-02.html reference brainscales-accel"
+      ],
+      "aliases": [
+        "brainscales-accel"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "bsnn-2022",
+      "title": "BSNN: Towards faster and better conversion of artificial neural networks to spiking neural networks with bistable neurons",
+      "authors": null,
+      "year": 2022,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2022.991851",
+      "url": "https://doi.org/10.3389/fnins.2022.991851",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry bsnn-2022",
+        "site/sec-03.html reference bsnn-2022"
+      ],
+      "aliases": [
+        "bsnn-2022"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "cerco-spikenet-docs",
+      "title": "What is order coding",
+      "authors": "CNRS CERCO",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://cerco.cnrs.fr/pagesp/arno/spikenet/order.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry cerco-spikenet-docs",
+        "site/sec-03.html reference cerco-spikenet-docs"
+      ],
+      "aliases": [
+        "cerco-spikenet-docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation (research group)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "CNN2SNN-Source",
+      "title": "Author's local copy of BrainChip's cnn2snn 2.19.1 source, cnn2snn/quantizeml/outputs.py (set_output_v1_variables) and activations.py (parse_relu_v1)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry CNN2SNN-Source",
+        "site/sec-06.html reference CNN2SNN-Source"
+      ],
+      "aliases": [
+        "CNN2SNN-Source"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"repository state (primary, hands-on)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "cnn2snn-source-inspection",
+      "title": "Direct inspection of the cnn2snn 2.19.1 toolkit source, cnn2snn/quantizeml/outputs.py, function set_output_v1_variables, and activations.py, function parse_relu_v1",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry cnn2snn-source-inspection",
+        "site/sec-03.html reference cnn2snn-source-inspection"
+      ],
+      "aliases": [
+        "cnn2snn-source-inspection"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state (primary source, direct inspection of an installed copy of the toolkit; not an independently published artifact with its own URL)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "convlca-2025-lca",
+      "title": "Convolutional Sparse Coding via the Locally Competitive Algorithm on Loihi 2",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry convlca-2025-lca",
+        "site/sec-07.html reference convlca-2025-lca"
+      ],
+      "aliases": [
+        "convlca-2025-lca"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "ding-2021-optimalconv",
+      "title": "Optimal ANN-SNN Conversion for Fast and Accurate Inference in Deep Spiking Neural Networks",
+      "authors": "Ding, J. and Yu, Z. and Tian, Y. and Huang, T.",
+      "year": 2021,
+      "venue": "IJCAI",
+      "doi": "10.24963/ijcai.2021/321",
+      "url": "https://doi.org/10.24963/ijcai.2021/321",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry ding-2021-optimalconv",
+        "site/sec-03.html reference ding-2021-optimalconv"
+      ],
+      "aliases": [
+        "ding-2021-optimalconv"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (conference)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "EBRAINS-Access",
+      "title": "Getting access to the NMC systems BrainScaleS and SpiNNaker",
+      "authors": "EBRAINS",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://wiki.ebrains.eu/bin/view/Collabs/neuromorphic/Getting%20access/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry EBRAINS-Access",
+        "site/sec-06.html reference EBRAINS-Access"
+      ],
+      "aliases": [
+        "EBRAINS-Access"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "EBRAINS-BSS",
+      "title": "EBRAINS, \"BrainScaleS\" platform page",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://ebrains.eu/data-tools-services/tools/brainscales",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry EBRAINS-BSS",
+        "site/sec-06.html reference EBRAINS-BSS"
+      ],
+      "aliases": [
+        "EBRAINS-BSS"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "eeg-motor-imagery-repo",
+      "title": "combra-lab/snn-eeg. github.com/combra-lab/snn-eeg",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry eeg-motor-imagery-repo",
+        "site/sec-07.html reference eeg-motor-imagery-repo"
+      ],
+      "aliases": [
+        "eeg-motor-imagery-repo"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state, self-reported claim not independently re-verified\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "eetimes-graimatter",
+      "title": "GrAI Matter Raises $14M for Sparsity-Driven AI SoC",
+      "authors": "EE Times",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry eetimes-graimatter",
+        "site/sec-07.html reference eetimes-graimatter"
+      ],
+      "aliases": [
+        "eetimes-graimatter"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Community commentary (trade press, direct company interview quote)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "ettfs-2024",
+      "title": "Efficiently Training Time-to-First-Spike Spiking Neural Networks from Scratch",
+      "authors": null,
+      "year": 2024,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2410.23619",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry ettfs-2024",
+        "site/sec-03.html reference ettfs-2024"
+      ],
+      "aliases": [
+        "ettfs-2024"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "galanis-2020-spinnaker",
+      "title": "Efficient Deployment of Spiking Neural Networks on SpiNNaker Neuromorphic Platform",
+      "authors": "Galanis, I. and Anagnostopoulos, I. and Nguyen, C. K. and Bares, G.",
+      "year": 2020,
+      "venue": "IEEE Trans. Circuits and Systems II",
+      "doi": "10.1109/tcsii.2020.3047425",
+      "url": "https://doi.org/10.1109/tcsii.2020.3047425",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry galanis-2020-spinnaker",
+        "site/sec-07.html reference galanis-2020-spinnaker"
+      ],
+      "aliases": [
+        "galanis-2020-spinnaker"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "gelneuro",
+      "title": "\"GelNeuro\" (2026). pubdb.com/paper/2607.05241",
+      "authors": null,
+      "year": 2026,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry gelneuro-2026",
+        "site/sec-07.html reference gelneuro-2026"
+      ],
+      "aliases": [
+        "gelneuro-2026"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null. Withdrawn, rejected, non-evidentiary metadata only. This record must not support substantive claims.",
+      "purpose": "external"
+    },
+    {
+      "id": "guo2021",
+      "title": "Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems",
+      "authors": "Guo, W. and Fouda, M.E. and Eltawil, A.M. and Salama, K.",
+      "year": 2021,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2021.638474",
+      "url": "https://doi.org/10.3389/fnins.2021.638474",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry guo2021",
+        "site/sec-02.html reference guo2021"
+      ],
+      "aliases": [
+        "guo2021"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "HBP-Guidebook",
+      "title": "HBP Neuromorphic Computing Platform Guidebook",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://electronicvisions.github.io/hbp-sp9-guidebook/using_the_platform.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry HBP-Guidebook",
+        "site/sec-06.html reference HBP-Guidebook"
+      ],
+      "aliases": [
+        "HBP-Guidebook"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "hbp-guidebook",
+      "title": "HBP Neuromorphic Computing Platform Guidebook (BrainScaleS and SpiNNaker access via EBRAINS)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://flagship.kip.uni-heidelberg.de/jss/FileExchange/HBPNeuromorphicComputingPlatformGuidebook.pdf",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry hbp-guidebook",
+        "site/sec-08.html reference hbp-guidebook"
+      ],
+      "aliases": [
+        "hbp-guidebook"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor/official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "hodgkin1952",
+      "title": "A Quantitative Description of Membrane Current and Its Application to Conduction and Excitation in Nerve",
+      "authors": "Hodgkin, A.L. and Huxley, A.F.",
+      "year": 1952,
+      "venue": "Journal of Physiology 117(4)",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry hodgkin1952",
+        "site/sec-02.html reference hodgkin1952"
+      ],
+      "aliases": [
+        "hodgkin1952"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "horowitz-2014",
+      "title": "1.1 Computing's Energy Problem (and what we can do about it)",
+      "authors": "Horowitz, M.",
+      "year": 2014,
+      "venue": "ISSCC",
+      "doi": "10.1109/ISSCC.2014.6757323",
+      "url": "https://doi.org/10.1109/ISSCC.2014.6757323",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry horowitz-2014",
+        "site/sec-07.html reference horowitz-2014"
+      ],
+      "aliases": [
+        "horowitz-2014"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (conference)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "ijcai2025negspike",
+      "title": "A Fast and Accurate ANN-SNN Conversion Algorithm with Negative Spikes",
+      "authors": "Wang, X. and Zhu, D. and Li, J.",
+      "year": 2025,
+      "venue": "IJCAI",
+      "doi": null,
+      "url": "https://www.ijcai.org/proceedings/2025/0719.pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry ijcai2025negspike",
+        "site/sec-02.html reference ijcai2025negspike"
+      ],
+      "aliases": [
+        "ijcai2025negspike"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Innatera-EETimes",
+      "title": "Innatera Productizes SNN Accelerator As 'Neuromorphic Microcontroller'",
+      "authors": null,
+      "year": 2024,
+      "venue": "EE Times",
+      "doi": null,
+      "url": "https://www.eetimes.com/innatera-productizes-snn-accelerator-as-neuromorphic-microcontroller/",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Innatera-EETimes",
+        "site/sec-06.html reference Innatera-EETimes"
+      ],
+      "aliases": [
+        "Innatera-EETimes"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"community commentary (trade press)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Innatera-Talamo",
+      "title": "Innatera, Talamo SDK page",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.innatera.com/software-and-tools/",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Innatera-Talamo",
+        "site/sec-06.html reference Innatera-Talamo"
+      ],
+      "aliases": [
+        "Innatera-Talamo"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "izhikevich2003",
+      "title": "Simple Model of Spiking Neurons",
+      "authors": "Izhikevich, E.M.",
+      "year": 2003,
+      "venue": "IEEE Transactions on Neural Networks 14(6)",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry izhikevich2003",
+        "site/sec-02.html reference izhikevich2003"
+      ],
+      "aliases": [
+        "izhikevich2003"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "jelly-lava-source",
+      "title": "SpikingJelly lava_exchange.py module source",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.12/_modules/spikingjelly/clock_driven/lava_exchange.html",
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SJ-LavaExchangeSource",
+        "assets/bibliography/references.bib entry jelly-lava-source",
+        "site/sec-06.html reference SJ-LavaExchangeSource",
+        "site/sec-08.html reference jelly-lava-source"
+      ],
+      "aliases": [
+        "SJ-LavaExchangeSource",
+        "jelly-lava-source"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "jelly-nir-source",
+      "title": "SpikingJelly nir_exchange/to_nir.py source (NotImplementedError on soft reset)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry jelly-nir-source",
+        "site/sec-08.html reference jelly-nir-source"
+      ],
+      "aliases": [
+        "jelly-nir-source"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "jiang-2025-adaptive-fission",
+      "title": "Adaptive Fission",
+      "authors": null,
+      "year": 2025,
+      "venue": "NeurIPS proceedings. (conference). Code repository",
+      "doi": null,
+      "url": "https://github.com/JiangYizhou16/Adaptive-Fission",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry jiang-2025-adaptive-fission",
+        "site/sec-01.html reference jiang-2025-adaptive-fission",
+        "site/sec-07.html reference jiang-2025-adaptive-fission",
+        "site/sec-08.html reference jiang-2025-adaptive-fission"
+      ],
+      "aliases": [
+        "jiang-2025-adaptive-fission"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "kelber-2020-spinnaker2sim",
+      "title": "Mapping Deep Neural Networks on SpiNNaker2",
+      "authors": "Kelber, F. and Wu, B. and Vogginger, B. and Partzsch, J. and Liu, C. and Stolba, M. and Mayr, C.",
+      "year": 2020,
+      "venue": "NICE '20 Workshop, ACM",
+      "doi": "10.1145/3381755.3381778",
+      "url": "https://doi.org/10.1145/3381755.3381778",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry kelber-2020-spinnaker2sim",
+        "site/sec-07.html reference kelber-2020-spinnaker2sim"
+      ],
+      "aliases": [
+        "kelber-2020-spinnaker2sim"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (workshop)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "kim-2020-roc-scnn",
+      "title": "Rank order coding based spiking convolutional neural network architecture with energy-efficient membrane voltage updates",
+      "authors": null,
+      "year": 2020,
+      "venue": "Neurocomputing",
+      "doi": "10.1016/j.neucom.2020.06.107",
+      "url": "https://doi.org/10.1016/j.neucom.2020.06.107",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry kim-2020-roc-scnn",
+        "site/sec-03.html reference kim-2020-roc-scnn"
+      ],
+      "aliases": [
+        "kim-2020-roc-scnn"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "kim-2022-rate-vs-direct",
+      "title": "Rate Coding or Direct Coding: Which One is Better for Accurate, Robust, and Energy-efficient Spiking Neural Networks?",
+      "authors": "Kim, Y. and Park, H. and Moitra, A. and Bhattacharjee, A. and Venkatesha, Y. and Panda, P.",
+      "year": 2022,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2202.03133",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry kim-2022-rate-vs-direct",
+        "site/sec-08.html reference kim-2022-rate-vs-direct"
+      ],
+      "aliases": [
+        "kim-2022-rate-vs-direct"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "kria-prophesee-vitisai",
+      "title": "LogicTronixInc/Kria-Prophesee-Event-VitisAI",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry kria-prophesee-vitisai",
+        "site/sec-07.html reference kria-prophesee-vitisai"
+      ],
+      "aliases": [
+        "kria-prophesee-vitisai"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "latency-framework2026",
+      "title": "A Latency Coding Framework for Deep Spiking Neural Networks with Ultra-Low Latency",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2603.23206",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry latency-framework2026",
+        "site/sec-02.html reference latency-framework2026"
+      ],
+      "aliases": [
+        "latency-framework2026"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "lava-archived-2026",
+      "title": "Lava-nc GitHub organization, archive banner on lava, lava-dl, lava-dnf repositories, 2026. github.com/lava-nc/lava",
+      "authors": null,
+      "year": 2026,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry lava-archived-2026",
+        "site/sec-07.html reference lava-archived-2026"
+      ],
+      "aliases": [
+        "lava-archived-2026"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "lava-dl-docs",
+      "title": "Deep Learning",
+      "authors": "Lava documentation",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://lava-nc.org/dl.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry lava-dl-docs",
+        "site/sec-08.html reference lava-dl-docs"
+      ],
+      "aliases": [
+        "lava-dl-docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "lava-dl-readme",
+      "title": "lava-nc/lava-dl GitHub README, archival notice (13 May 2026)",
+      "authors": null,
+      "year": 2026,
+      "venue": null,
+      "doi": null,
+      "url": "https://github.com/lava-nc/lava-dl/blob/main/README.md",
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry lava-dl-readme",
+        "site/sec-08.html reference lava-dl-readme"
+      ],
+      "aliases": [
+        "lava-dl-readme"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "liu-2019-facedemo",
+      "title": "Live Demonstration: Face Recognition on an Ultra-Low Power Event-Driven Convolutional Neural Network ASIC",
+      "authors": "Liu, Q. and Richter, O. and Nielsen, C. and Sheik, S. and Indiveri, G. and Qiao, N.",
+      "year": 2019,
+      "venue": "CVPRW",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry liu-2019-facedemo",
+        "site/sec-03.html reference liu-2019-facedemo"
+      ],
+      "aliases": [
+        "liu-2019-facedemo"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (conference)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Lynxi-HP300",
+      "title": "Lynxi, HP300 product page / PDF datasheet",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.lynxi.com/ka2003/21.html",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Lynxi-HP300",
+        "site/sec-06.html reference Lynxi-HP300"
+      ],
+      "aliases": [
+        "Lynxi-HP300"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Lynxi-KA200",
+      "title": "Lynxi, KA200 product page",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://lynxi.com/lq2001/18.html",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Lynxi-KA200",
+        "site/sec-06.html reference Lynxi-KA200"
+      ],
+      "aliases": [
+        "Lynxi-KA200"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "maass1997",
+      "title": "Networks of Spiking Neurons: The Third Generation of Neural Network Models",
+      "authors": "Maass, W.",
+      "year": 1997,
+      "venue": "Neural Networks 10(9)",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry maass1997",
+        "site/sec-02.html reference maass1997"
+      ],
+      "aliases": [
+        "maass1997"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "moyer-2020-semieng",
+      "title": "Spiking Neural Networks: Research Projects or Commercial Products?",
+      "authors": "Moyer, B.",
+      "year": 2020,
+      "venue": "Semiconductor Engineering, May 18",
+      "doi": null,
+      "url": "https://semiengineering.com/spiking-neural-networks-research-projects-or-commercial-products/",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry moyer-2020-semieng",
+        "site/sec-03.html reference moyer-2020-semieng"
+      ],
+      "aliases": [
+        "moyer-2020-semieng"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Community commentary / trade press\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Guo, M. and Li, Q. and Yao, X. and Cheng, J. and Chen, L.",
+      "year": 2026,
+      "venue": "ICLR withdrawn submission",
+      "doi": null,
+      "url": "https://openreview.net/forum?id=4dwAZRr9L5",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry guo-2026-mtsnn-withdrawn",
+        "site/sec-03.html reference guo-2026-mtsnn-withdrawn"
+      ],
+      "aliases": [
+        "guo-2026-mtsnn-withdrawn"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint (withdrawn)\". The external source was not independently inspected during migration; unknown metadata remains null. This is the withdrawn OpenReview submission, distinct from the accepted Frontiers version, DOI 10.3389/fnins.2026.1783326.",
+      "purpose": "external"
+    },
+    {
+      "id": "narduzzi-2025-eflop",
+      "title": "EFLOP: a sparsity-aware metric for evaluating computational cost in spiking and non-spiking neural networks",
+      "authors": null,
+      "year": 2025,
+      "venue": "*Neuromorphic Computing and Engineering* 5, 034011",
+      "doi": "10.1088/2634-4386/addee8",
+      "url": "https://doi.org/10.1088/2634-4386/addee8",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry narduzzi-2025-eflop",
+        "site/sec-08.html reference narduzzi-2025-eflop"
+      ],
+      "aliases": [
+        "narduzzi-2025-eflop"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "NengoDL-Rasmussen19",
+      "title": "NengoDL: Combining deep learning and neuromorphic modelling methods",
+      "authors": "E. Rasmussen",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/1805.11144",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry NengoDL-Rasmussen19",
+        "site/sec-06.html reference NengoDL-Rasmussen19"
+      ],
+      "aliases": [
+        "NengoDL-Rasmussen19"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "nengoloihi-cifar10-example",
+      "title": "NengoLoihi CIFAR-10 convnet example (off-chip input layer)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.nengo.ai/nengo-loihi/v1.0.0/examples/cifar10-convnet.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry nengoloihi-cifar10-example",
+        "site/sec-08.html reference nengoloihi-cifar10-example"
+      ],
+      "aliases": [
+        "nengoloihi-cifar10-example"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "NengoLoihi-Docs",
+      "title": "NengoLoihi documentation, overview and hardware/installation guides",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.nengo.ai/nengo-loihi/overview.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry NengoLoihi-Docs",
+        "site/sec-06.html reference NengoLoihi-Docs"
+      ],
+      "aliases": [
+        "NengoLoihi-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "neuronflow-2020",
+      "title": "NeuronFlow: A Hybrid Neuromorphic-Dataflow Processor Architecture",
+      "authors": null,
+      "year": 2020,
+      "venue": "AICAS",
+      "doi": "10.1109/aicas48895.2020.9073999",
+      "url": "https://doi.org/10.1109/aicas48895.2020.9073999",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry neuronflow-2020",
+        "site/sec-07.html reference neuronflow-2020"
+      ],
+      "aliases": [
+        "neuronflow-2020"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "nir-porting-guide",
+      "title": "NIR project, porting-to-hardware guide",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://neuroir.org/docs/porting-nir/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry NIR-Porting",
+        "assets/bibliography/references.bib entry nir-porting-guide",
+        "site/sec-06.html reference NIR-Porting",
+        "site/sec-08.html reference nir-porting-guide"
+      ],
+      "aliases": [
+        "NIR-Porting",
+        "nir-porting-guide"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "NIR-Primitives",
+      "title": "NIR project, primitives documentation",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://neuroir.org/docs/primitives/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry NIR-Primitives",
+        "site/sec-06.html reference NIR-Primitives"
+      ],
+      "aliases": [
+        "NIR-Primitives"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Norse-Docs",
+      "title": "Norse docs, norse.torch.functional.lif and norse.torch.module.lif",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://norse.github.io/norse/auto_api/norse.torch.functional.lif.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Norse-Docs",
+        "site/sec-06.html reference Norse-Docs"
+      ],
+      "aliases": [
+        "Norse-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "pals-2021-eeg-spinnaker",
+      "title": "Demonstrating the Viability of Mapping Deep Learning Based EEG Decoders to Spiking Networks on Low-powered Neuromorphic Chips",
+      "authors": "Pals, M. and Perez Belizon, R. J. and Berberich, N. and Ehrlich, S. K. and Nassour, J. and Cheng, G.",
+      "year": 2021,
+      "venue": "IEEE EMBC",
+      "doi": "10.1109/embc46164.2021.9629621",
+      "url": "https://doi.org/10.1109/embc46164.2021.9629621",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry pals-2021-eeg-spinnaker",
+        "site/sec-07.html reference pals-2021-eeg-spinnaker"
+      ],
+      "aliases": [
+        "pals-2021-eeg-spinnaker"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "pehle-2022-bmtk",
+      "title": "BMTK-Loihi mapping paper (native hard reset on Loihi). *Frontiers in Neuroinformatics* (2022)",
+      "authors": null,
+      "year": 2022,
+      "venue": null,
+      "doi": "10.3389/fninf.2022.883360",
+      "url": "https://doi.org/10.3389/fninf.2022.883360",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry pehle-2022-bmtk",
+        "site/sec-08.html reference pehle-2022-bmtk"
+      ],
+      "aliases": [
+        "pehle-2022-bmtk"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "prophesee-2025-pedestrian",
+      "title": "Pedestrian Detection with High-Resolution Event Cameras",
+      "authors": "Prophesee",
+      "year": 2025,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry prophesee-2025-pedestrian",
+        "site/sec-07.html reference prophesee-2025-pedestrian"
+      ],
+      "aliases": [
+        "prophesee-2025-pedestrian"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "prophesee-docs-detection",
+      "title": "Detection and Tracking Tutorial",
+      "authors": "Prophesee",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry prophesee-docs-detection",
+        "site/sec-07.html reference prophesee-docs-detection"
+      ],
+      "aliases": [
+        "prophesee-docs-detection"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "prophesee-genx320-docs",
+      "title": "Prophesee, GenX320 product catalogue and RidgeRun GenX320 developer guide. prophesee.ai; ridgerun.com",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry prophesee-genx320-docs",
+        "site/sec-07.html reference prophesee-genx320-docs"
+      ],
+      "aliases": [
+        "prophesee-genx320-docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "PyNN-Docs",
+      "title": "Introduction",
+      "authors": "PyNN documentation",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://pynn.readthedocs.io/en/latest/introduction.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry PyNN-Docs",
+        "site/sec-06.html reference PyNN-Docs"
+      ],
+      "aliases": [
+        "PyNN-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "PynnBSS2-Docs",
+      "title": "PyNN for BrainScaleS-2 documentation",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://electronicvisions.github.io/documentation-brainscales2/latest/pynn-brainscales/index.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry PynnBSS2-Docs",
+        "site/sec-06.html reference PynnBSS2-Docs"
+      ],
+      "aliases": [
+        "PynnBSS2-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "radar-automotive-2026",
+      "title": "Towards real-time neuromorphic radar processing on Loihi 2",
+      "authors": null,
+      "year": 2026,
+      "venue": "Neuromorphic Computing and Engineering",
+      "doi": null,
+      "url": "https://google.iopscience.iop.org/article/10.1088/2634-4386/ae8694",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry radar-automotive-2026",
+        "site/sec-07.html reference radar-automotive-2026"
+      ],
+      "aliases": [
+        "radar-automotive-2026"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "radar-resonator-2025",
+      "title": "Energy-efficient radar detection with spiking neural resonators on Loihi 2",
+      "authors": null,
+      "year": null,
+      "venue": "Neuromorphic Computing and Engineering",
+      "doi": null,
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ae629d",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry radar-resonator-2025",
+        "site/sec-07.html reference radar-resonator-2025"
+      ],
+      "aliases": [
+        "radar-resonator-2025"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "satcsp-2020",
+      "title": "Solving Constraint Satisfaction Problems Using the Loihi Processor",
+      "authors": null,
+      "year": 2020,
+      "venue": "DATE workshop paper",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry satcsp-2020",
+        "site/sec-03.html reference satcsp-2020",
+        "site/sec-07.html reference satcsp-2020"
+      ],
+      "aliases": [
+        "satcsp-2020"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (workshop)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "serrano-2015-convnets",
+      "title": "ConvNets experiments on SpiNNaker",
+      "authors": "Serrano-Gotarredona, T. and Linares-Barranco, B. and Galluppi, F. and Plana, L. A. and Furber, S.",
+      "year": 2015,
+      "venue": "ISCAS",
+      "doi": "10.1109/iscas.2015.7169169",
+      "url": "https://doi.org/10.1109/iscas.2015.7169169",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry serrano-2015-convnets",
+        "site/sec-07.html reference serrano-2015-convnets"
+      ],
+      "aliases": [
+        "serrano-2015-convnets"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "shen-2024-cvpr",
+      "title": "Are Conventional SNNs Really Efficient? A Perspective from Network Quantization",
+      "authors": "Shen, G. and Zhao, D. and Li, T. and Li, J. and Zeng, Y.",
+      "year": 2024,
+      "venue": "CVPR",
+      "doi": null,
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Are_Conventional_SNNs_Really_Efficient_A_Perspective_from_Network_Quantization_CVPR_2024_paper.pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry shen-2024-cvpr",
+        "site/sec-08.html reference shen-2024-cvpr"
+      ],
+      "aliases": [
+        "shen-2024-cvpr"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Shidqi22-SENECAThesis",
+      "title": "Benchmarking and Algorithm Optimization for SENeCA: A RISC-V-based Neuromorphic Processor",
+      "authors": "N. Shidqi",
+      "year": 2022,
+      "venue": "TU Delft MSc thesis",
+      "doi": null,
+      "url": "http://resolver.tudelft.nl/uuid:3b6a47f2-bde5-4652-8e6a-8fb6155a4740",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Shidqi22-SENECAThesis",
+        "site/sec-06.html reference Shidqi22-SENECAThesis"
+      ],
+      "aliases": [
+        "Shidqi22-SENECAThesis"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"repository state (thesis)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "sia-fpga",
+      "title": "SIA hardware-software co-optimized FPGA SNN accelerator (subtractive reset as default)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2410.16298",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry sia-fpga",
+        "site/sec-08.html reference sia-fpga"
+      ],
+      "aliases": [
+        "sia-fpga"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "sinabs-discretize-api",
+      "title": "Sinabs documentation, discretize/DynapcnnLayer API (no BatchNorm-fold utility; default MembraneSubtract() reset)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/main/speck/api/dynapcnn/dynapcnn.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry sinabs-discretize-api",
+        "site/sec-08.html reference sinabs-discretize-api"
+      ],
+      "aliases": [
+        "sinabs-discretize-api"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "sinabs-docs-overview",
+      "title": "SynSense/Sinabs documentation, \"Overview\" (Speck) and related API/discretization pages. sinabs.readthedocs.io",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry sinabs-docs-overview",
+        "site/sec-07.html reference sinabs-docs-overview"
+      ],
+      "aliases": [
+        "sinabs-docs-overview"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Sinabs-FromTorch",
+      "title": "Sinabs API reference, sinabs.from_torch.from_model",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/main/api/from_torch.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Sinabs-FromTorch",
+        "site/sec-06.html reference Sinabs-FromTorch"
+      ],
+      "aliases": [
+        "Sinabs-FromTorch"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "sinabs-nmnist-tutorial",
+      "title": "Sinabs NMNIST quick-start tutorial (bias-as-leak, BN-free architecture convention)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/v3.1.3/tutorials/nmnist.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry sinabs-nmnist-tutorial",
+        "site/sec-08.html reference sinabs-nmnist-tutorial"
+      ],
+      "aliases": [
+        "sinabs-nmnist-tutorial"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Sinabs-TrainingTips",
+      "title": "Troubleshooting and Tips",
+      "authors": "Sinabs",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/v3.0.3/speck/faqs/tips_for_training.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Sinabs-TrainingTips",
+        "site/sec-06.html reference Sinabs-TrainingTips"
+      ],
+      "aliases": [
+        "Sinabs-TrainingTips"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "singh-2021-gesture-snn",
+      "title": "Gesture-SNN: Co-optimizing accuracy, latency and energy of SNNs for neuromorphic vision sensors",
+      "authors": "Singh, S. and Sarma, A. and Lu, N. and Sengupta, A. and Narayanan, V. and Das, C. R.",
+      "year": 2021,
+      "venue": "ISLPED",
+      "doi": "10.1109/islped52811.2021.9502506",
+      "url": "https://doi.org/10.1109/islped52811.2021.9502506",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry singh-2021-gesture-snn",
+        "site/sec-07.html reference singh-2021-gesture-snn"
+      ],
+      "aliases": [
+        "singh-2021-gesture-snn"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SJ-ANN2SNNDocs",
+      "title": "SpikingJelly docs, \"ANN2SNN\" tutorial",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://spikingjelly.readthedocs.io/zh-cn/latest/tutorials/en/ann2snn.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SJ-ANN2SNNDocs",
+        "site/sec-06.html reference SJ-ANN2SNNDocs"
+      ],
+      "aliases": [
+        "SJ-ANN2SNNDocs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SJ-NeuronDocs",
+      "title": "SpikingJelly docs, \"Neuron\" tutorial",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://spikingjelly.readthedocs.io/zh-cn/latest/tutorials/en/neuron.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SJ-NeuronDocs",
+        "site/sec-06.html reference SJ-NeuronDocs"
+      ],
+      "aliases": [
+        "SJ-NeuronDocs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SJ-NIRExchangeSource",
+      "title": "SpikingJelly nir_exchange/to_nir.py module source (_hard_reset helper)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SJ-NIRExchangeSource",
+        "site/sec-06.html reference SJ-NIRExchangeSource"
+      ],
+      "aliases": [
+        "SJ-NIRExchangeSource"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "snntoolbox-docs",
+      "title": "SNN Toolbox documentation, introduction and simulation API (operator coverage, output coding schemes)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://snntoolbox.readthedocs.io/en/latest/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry snntoolbox-docs",
+        "site/sec-08.html reference snntoolbox-docs"
+      ],
+      "aliases": [
+        "snntoolbox-docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "snntoolbox-issues",
+      "title": "SNN Toolbox GitHub issue tracker, issues #142 and #143 (2024)",
+      "authors": null,
+      "year": 2024,
+      "venue": null,
+      "doi": null,
+      "url": "https://github.com/NeuromorphicProcessorProject/snn_toolbox/issues",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry snntoolbox-issues",
+        "site/sec-08.html reference snntoolbox-issues"
+      ],
+      "aliases": [
+        "snntoolbox-issues"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state / community commentary\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "snnTorch-Docs",
+      "title": "snnTorch docs, snn.Leaky API reference and Tutorial 2",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry snnTorch-Docs",
+        "site/sec-06.html reference snnTorch-Docs"
+      ],
+      "aliases": [
+        "snnTorch-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "snntorch-pr-426",
+      "title": "snnTorch GitHub pull request #426, reset-mechanism refactor (subtract vs. zero confusion)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://github.com/jeshraghian/snntorch/pull/426",
+      "source_type": "official_repository",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry snntorch-pr-426",
+        "site/sec-08.html reference snntorch-pr-426"
+      ],
+      "aliases": [
+        "snntorch-pr-426"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "speck-datasheet",
+      "title": "Speck Dev Kit Manual / Datasheet, 2023-2025 revisions",
+      "authors": "SynSense",
+      "year": 2025,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry speck-datasheet",
+        "site/sec-02.html reference speck-datasheet"
+      ],
+      "aliases": [
+        "speck-datasheet"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spiker-2022",
+      "title": "Spiker: an FPGA-optimized Hardware accelerator for Spiking Neural Networks",
+      "authors": "Carpegna, A. and Savino, A. and Di Carlo, S.",
+      "year": 2022,
+      "venue": "ISVLSI",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2201.06993",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spiker-2022",
+        "site/sec-07.html reference spiker-2022"
+      ],
+      "aliases": [
+        "spiker-2022"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed (conference)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spiker-plus-fpga",
+      "title": "Spiker+ FPGA SNN accelerator generator (native subtractive reset)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2401.01141",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spiker-plus-fpga",
+        "site/sec-08.html reference spiker-plus-fpga"
+      ],
+      "aliases": [
+        "spiker-plus-fpga"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spikingjelly-issue543",
+      "title": "Limitations when deploying SNNs to loihi",
+      "authors": "fangwei123456/spikingjelly GitHub Issue #543",
+      "year": 2024,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spikingjelly-issue543",
+        "site/sec-03.html reference spikingjelly-issue543"
+      ],
+      "aliases": [
+        "spikingjelly-issue543"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Repository state / community commentary\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spikingjelly-loihi2-2026",
+      "title": "Real-Time Frame- and Event-based Object Detection with Spiking Neural Networks on Edge Neuromorphic Hardware: Design, Deployment and Benchmark",
+      "authors": null,
+      "year": 2026,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spikingjelly-loihi2-2026",
+        "site/sec-07.html reference spikingjelly-loihi2-2026"
+      ],
+      "aliases": [
+        "spikingjelly-loihi2-2026"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint; code repository is repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spinnaker-1ms",
+      "title": "SpiNNaker documentation / Furber et al",
+      "authors": null,
+      "year": 2012,
+      "venue": "IEEE Transactions on Computers; SpiNNaker datasheet v2.02",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spinnaker-1ms",
+        "site/sec-02.html reference spinnaker-1ms"
+      ],
+      "aliases": [
+        "spinnaker-1ms"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation / peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "spinnaker-neuron-lab-manual",
+      "title": "Creating New Neuron Models",
+      "authors": "SpiNNaker Manchester",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://spinnakermanchester.github.io/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry spinnaker-neuron-lab-manual",
+        "site/sec-08.html reference spinnaker-neuron-lab-manual"
+      ],
+      "aliases": [
+        "spinnaker-neuron-lab-manual"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SpiNNcloud24-PR",
+      "title": "SpiNNcloud Systems Announces First Commercially Available Neuromorphic Supercomputer",
+      "authors": "SpiNNcloud Systems",
+      "year": 2024,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.newswire.com/news/spinncloud-systems-announces-first-commercially-available-neuromorphic-22325275",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SpiNNcloud24-PR",
+        "site/sec-06.html reference SpiNNcloud24-PR"
+      ],
+      "aliases": [
+        "SpiNNcloud24-PR"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Spyx-Docs",
+      "title": "Spyx documentation / GitHub README",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://spyx.readthedocs.io/en/latest/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Spyx-Docs",
+        "site/sec-06.html reference Spyx-Docs"
+      ],
+      "aliases": [
+        "Spyx-Docs"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation / repository state\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "swsc2024",
+      "title": "Stepwise Weighted Spike Coding for Deep Spiking Neural Networks",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2408.17245",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry swsc2024",
+        "site/sec-02.html reference swsc2024"
+      ],
+      "aliases": [
+        "swsc2024"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "synsense-speck-gesture-datasheet",
+      "title": "Speck Gesture Recognition",
+      "authors": "SynSense",
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry synsense-speck-gesture-datasheet",
+        "site/sec-07.html reference synsense-speck-gesture-datasheet"
+      ],
+      "aliases": [
+        "synsense-speck-gesture-datasheet"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SynSense-SpeckDatasheet",
+      "title": "SynSense, Speck Dev Kit Datasheet",
+      "authors": null,
+      "year": 2023,
+      "venue": null,
+      "doi": null,
+      "url": "https://www.synsense.ai/wp-content/uploads/2023/06/Speck-devkit-datasheet.pdf",
+      "source_type": "marketing_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SynSense-SpeckDatasheet",
+        "site/sec-06.html reference SynSense-SpeckDatasheet"
+      ],
+      "aliases": [
+        "SynSense-SpeckDatasheet"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"vendor material\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "SynSense-SpeckOverview",
+      "title": "SynSense/Sinabs, \"Overview\" (Speck)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/main/speck/overview.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry SynSense-SpeckOverview",
+        "site/sec-06.html reference SynSense-SpeckOverview"
+      ],
+      "aliases": [
+        "SynSense-SpeckOverview"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "thorpe-spikebased",
+      "title": "Spike-based strategies for rapid processing",
+      "authors": "Thorpe, S. and Delorme, A. and Van Rullen, R.",
+      "year": 2001,
+      "venue": "Neural Networks 14(6-7), 715-725 . Author's preprint copy",
+      "doi": null,
+      "url": "https://sccn.ucsd.edu/~arno/mypapers/ThorpeSpiking_Neurons.pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry thorpe-spikebased",
+        "site/sec-03.html reference thorpe-spikebased"
+      ],
+      "aliases": [
+        "thorpe-spikebased"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Thorpe98-RankOrder",
+      "title": "Rank Order Coding",
+      "authors": "S. Thorpe and J. Gautrais",
+      "year": 1998,
+      "venue": "Computational Neuroscience: Trends in Research 1998",
+      "doi": null,
+      "url": null,
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Thorpe98-RankOrder",
+        "site/sec-06.html reference Thorpe98-RankOrder"
+      ],
+      "aliases": [
+        "Thorpe98-RankOrder"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed (book chapter)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "Turner22-mlGeNN",
+      "title": "mlGeNN: accelerating SNN inference using GPU-enabled neural networks",
+      "authors": "J. P. Turner and J. C. Knight and A. Subramanian and T. Nowotny",
+      "year": 2022,
+      "venue": "Neuromorphic Computing and Engineering",
+      "doi": "10.1088/2634-4386/ac5ac5",
+      "url": "https://doi.org/10.1088/2634-4386/ac5ac5",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry Turner22-mlGeNN",
+        "site/sec-06.html reference Turner22-mlGeNN"
+      ],
+      "aliases": [
+        "Turner22-mlGeNN"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "yao-spikedriven",
+      "title": "Spike-driven Transformer / Meta-SpikeFormer V2",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry yao-spikedriven",
+        "site/sec-03.html reference yao-spikedriven"
+      ],
+      "aliases": [
+        "yao-spikedriven"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint (unconfirmed identifier)\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "yoso2020",
+      "title": "You Only Spike Once: Improving Energy-Efficient Deep SNN with Temporal Coding",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2006.09982",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry yoso2020",
+        "site/sec-02.html reference yoso2020"
+      ],
+      "aliases": [
+        "yoso2020"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "zhou-2024-spikformerv2",
+      "title": "Spikformer V2: Join the High Accuracy Club on ImageNet with an SNN Ticket",
+      "authors": null,
+      "year": 2024,
+      "venue": null,
+      "doi": null,
+      "url": "https://arxiv.org/abs/2401.02020",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry zhou-2024-spikformerv2",
+        "site/sec-03.html reference zhou-2024-spikformerv2"
+      ],
+      "aliases": [
+        "zhou-2024-spikformerv2"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Preprint\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    },
+    {
+      "id": "zou2023negspike",
+      "title": "Toward a Lossless Conversion for Spiking Neural Networks with Negative-Spike Dynamics",
+      "authors": null,
+      "year": 2023,
+      "venue": "Advanced Intelligent Systems",
+      "doi": "10.1002/aisy.202300383",
+      "url": "https://doi.org/10.1002/aisy.202300383",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "assets/bibliography/references.bib entry zou2023negspike",
+        "site/sec-02.html reference zou2023negspike"
+      ],
+      "aliases": [
+        "zou2023negspike"
+      ],
+      "notes": "Frozen from legacy reference metadata labeled \"Peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null.",
+      "purpose": "external"
+    }
+  ]
+}

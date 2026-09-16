@@ -1,0 +1,1058 @@
+{
+  "batch": "A",
+  "sources_reviewed": 55,
+  "source_candidates": [
+    {
+      "id": "pedersen-2024-nir",
+      "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
+      "authors": "J. E. Pedersen et al.",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-024-52259-9",
+      "canonical_url": "https://doi.org/10.1038/s41467-024-52259-9",
+      "source_type": "peer_reviewed_research_article",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Results, Experiments",
+        "Results, Discussion of mismatches",
+        "Methods, NIR primitives"
+      ],
+      "inspected_urls": [
+        "https://www.nature.com/articles/s41467-024-52259-9.pdf",
+        "https://doi.org/10.1038/s41467-024-52259-9",
+        "https://doi.org/10.48550/arxiv.2311.14641"
+      ],
+      "notes": "Method paper, not a conventional survey."
+    },
+    {
+      "id": "kudithipudi-2025-neuromorphic-scale",
+      "title": "Neuromorphic computing at scale",
+      "authors": "D. Kudithipudi et al.",
+      "year": 2025,
+      "venue": "Nature",
+      "doi": "10.1038/s41586-024-08253-8",
+      "canonical_url": "https://doi.org/10.1038/s41586-024-08253-8",
+      "source_type": "peer_reviewed_review_perspective",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Local PDF, pp. 801-812",
+        "Secs. ‘Scaling neuromorphic systems’ and ‘Software ecosystem’",
+        "Figs. 1-5"
+      ],
+      "inspected_urls": [
+        "https://www.nature.com/articles/s41586-024-08253-8",
+        "https://www.nature.com/articles/s41586-024-08253-8.pdf",
+        "https://doi.org/10.1038/s41586-024-08253-8"
+      ],
+      "inspected_files": [
+        "00-Vault/01-Literature/05-Neuromorphic-Background/03-General-Surveys/s41586-024-08253-8.pdf"
+      ],
+      "notes": "Full text verified by inspection of the complete local PDF at 00-Vault/01-Literature/05-Neuromorphic-Background/03-General-Surveys/s41586-024-08253-8.pdf (pp. 801-812), with publisher HTML, PDF, and DOI URLs also checked."
+    },
+    {
+      "id": "deng-2025-edgesnn",
+      "title": "Edge Intelligence with Spiking Neural Networks",
+      "authors": "S. Deng et al.",
+      "year": 2025,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2507.14069",
+      "canonical_url": "https://arxiv.org/abs/2507.14069",
+      "source_type": "preprint_survey",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sec. III",
+        "Sec. IV",
+        "Sec. V",
+        "Sec. VI"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/html/2507.14069",
+        "https://arxiv.org/abs/2507.14069"
+      ],
+      "notes": "Self-described EdgeSNN survey."
+    },
+    {
+      "id": "yik-2025-neurobench",
+      "title": "The NeuroBench framework for benchmarking neuromorphic computing algorithms and systems",
+      "authors": "J. Yik et al.",
+      "year": 2025,
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-025-56739-4",
+      "canonical_url": "https://doi.org/10.1038/s41467-025-56739-4",
+      "source_type": "peer_reviewed_benchmark_framework",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Fig. 1",
+        "Algorithm Track Benchmark Framework",
+        "System Track Benchmark Framework"
+      ],
+      "inspected_urls": [
+        "https://www.nature.com/articles/s41467-025-56739-4.pdf",
+        "https://doi.org/10.1038/s41467-025-56739-4",
+        "https://doi.org/10.48550/arxiv.2304.04640"
+      ],
+      "notes": "Benchmark framework, not a conventional survey."
+    },
+    {
+      "id": "davies-2021-loihi",
+      "title": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook",
+      "authors": "M. Davies et al.",
+      "year": 2021,
+      "venue": "Proceedings of the IEEE",
+      "doi": "10.1109/JPROC.2021.3067593",
+      "canonical_url": "https://doi.org/10.1109/JPROC.2021.3067593",
+      "source_type": "peer_reviewed_survey",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. II-VI",
+        "Fig. 1",
+        "application result tables"
+      ],
+      "inspected_urls": [
+        "https://ieeexplore.ieee.org/document/9395703",
+        "https://doi.org/10.1109/JPROC.2021.3067593"
+      ],
+      "notes": "Single-chip-family survey."
+    },
+    {
+      "id": "huynh-2022-implementing-snns",
+      "title": "Implementing Spiking Neural Networks on Neuromorphic Architectures: A Review",
+      "authors": "P. K. Huynh, M. L. Varshika, A. Paul, M. Isik, A. Balaji, and A. Das",
+      "year": 2022,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2202.08897",
+      "canonical_url": "https://doi.org/10.48550/arxiv.2202.08897",
+      "source_type": "preprint_survey",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. 2-3",
+        "Tables 1 and 3-5",
+        "Figs. 3-5"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/pdf/2202.08897",
+        "https://doi.org/10.48550/arxiv.2202.08897"
+      ],
+      "notes": "System-software and mapping-framework review."
+    },
+    {
+      "id": "roy-2019-spike-machine-intelligence",
+      "title": "Towards spike-based machine intelligence with neuromorphic computing",
+      "authors": "K. Roy, A. Jaiswal, and P. Panda",
+      "year": 2019,
+      "venue": "Nature",
+      "doi": "10.1038/s41586-019-1677-2",
+      "canonical_url": "https://doi.org/10.1038/s41586-019-1677-2",
+      "source_type": "peer_reviewed_review",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Nature pp. 608-612, SNN models and learning",
+        "Nature pp. 612-615, hardware outlook and algorithm-hardware codesign",
+        "Figs. 3-6"
+      ],
+      "inspected_urls": [
+        "https://www.nature.com/articles/s41586-019-1677-2",
+        "https://doi.org/10.1038/s41586-019-1677-2"
+      ],
+      "notes": "Complete publisher PDF verified at /Users/hamza/Downloads/papers-review/s41586-019-1677-2.pdf."
+    },
+    {
+      "id": "schuman-2017-hardware-survey",
+      "title": "A Survey of Neuromorphic Computing and Neural Networks in Hardware",
+      "authors": "C. D. Schuman et al.",
+      "year": 2017,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.1705.06963",
+      "canonical_url": "https://doi.org/10.48550/arxiv.1705.06963",
+      "source_type": "preprint_survey",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. III-VII",
+        "Sec. VI-B"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/pdf/1705.06963",
+        "https://doi.org/10.48550/arxiv.1705.06963"
+      ],
+      "notes": "Historical 35-year survey."
+    },
+    {
+      "id": "schuman-2022-opportunities",
+      "title": "Opportunities for neuromorphic computing algorithms and applications",
+      "authors": "C. D. Schuman, S. R. Kulkarni, M. Parsa, J. P. Mitchell, P. Date, and B. Kay",
+      "year": 2022,
+      "venue": "Nature Computational Science",
+      "doi": "10.1038/s43588-021-00184-y",
+      "canonical_url": "https://doi.org/10.1038/s43588-021-00184-y",
+      "source_type": "peer_reviewed_review_perspective",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Nature Computational Science pp. 12-14, Neuromorphic algorithms and applications",
+        "Nature Computational Science pp. 14-16, Closing the gap between expectations and reality",
+        "Box 1 and Figs. 2-3"
+      ],
+      "inspected_urls": [
+        "https://www.osti.gov/biblio/1881146",
+        "https://www.researchgate.net/publication/358255092_Opportunities_for_neuromorphic_computing_algorithms_and_applications",
+        "https://doi.org/10.1038/s43588-021-00184-y"
+      ],
+      "notes": "Complete publisher PDF verified at /Users/hamza/Downloads/papers-review/s43588-021-00184-y.pdf."
+    },
+    {
+      "id": "eshraghian-2023-training-snns",
+      "title": "Training Spiking Neural Networks Using Lessons From Deep Learning",
+      "authors": "J. K. Eshraghian et al.",
+      "year": 2023,
+      "venue": "Proceedings of the IEEE",
+      "doi": "10.1109/JPROC.2023.3308088",
+      "canonical_url": "https://doi.org/10.1109/JPROC.2023.3308088",
+      "source_type": "peer_reviewed_tutorial_review",
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. II-IV",
+        "Figs. 9-10",
+        "Neuromorphic Systems in the Wild"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.1109/JPROC.2023.3308088",
+        "https://ieeexplore.ieee.org/document/10223685"
+      ],
+      "notes": "Training tutorial with survey characteristics."
+    }
+  ],
+  "surveys": [
+    {
+      "id": "S01-pedersen-2024-nir",
+      "source_id": "pedersen-2024-nir",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.nature.com/articles/s41467-024-52259-9.pdf",
+        "https://doi.org/10.1038/s41467-024-52259-9",
+        "https://doi.org/10.48550/arxiv.2311.14641"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "Bounded LIF and current-based LIF primitives.",
+          "locator": "Results, NIR primitives"
+        },
+        "B": {
+          "score": "none",
+          "basis": "No neural-code taxonomy.",
+          "locator": "Results and Methods scope"
+        },
+        "C": {
+          "score": "none",
+          "basis": "No direct-training review.",
+          "locator": "Results and Methods scope"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No ANN-to-SNN conversion survey.",
+          "locator": "Introduction and Results scope"
+        },
+        "E": {
+          "score": "full",
+          "basis": "Seven software back ends are enumerated.",
+          "locator": "Results, Fig. 2e-f"
+        },
+        "F": {
+          "score": "partial",
+          "basis": "IR is positioned as compiler input.",
+          "locator": "Introduction, ONNX/MLIR discussion"
+        },
+        "G": {
+          "score": "full",
+          "basis": "Defines and serializes an interchange representation.",
+          "locator": "Results, Figs. 1-2"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Four chips and seven simulators are evaluated.",
+          "locator": "Results, Experiments"
+        },
+        "I": {
+          "score": "full",
+          "basis": "Discretization mismatch is explained and measured.",
+          "locator": "Results, Discussion of mismatches"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Discrepancies are measured without evidence classes.",
+          "locator": "Results, Experiments"
+        },
+        "K": {
+          "score": "none",
+          "basis": "Graphs are demonstrations, not an application survey.",
+          "locator": "Results, Fig. 3"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "Three graphs reach named hardware but are limited benchmarks.",
+          "locator": "Results, Figs. 3-6"
+        }
+      },
+      "strongest_contribution": "Boundary-level semantic interoperability analysis.",
+      "deployment_depth": "Demonstrates selected graphs across simulators and hardware back ends.",
+      "omissions": [
+        "No full-network deployment taxonomy.",
+        "No evidence-classification scheme."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S02-kudithipudi-2025-neuromorphic-scale",
+      "source_id": "kudithipudi-2025-neuromorphic-scale",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.nature.com/articles/s41586-024-08253-8",
+        "https://www.nature.com/articles/s41586-024-08253-8.pdf",
+        "https://doi.org/10.1038/s41586-024-08253-8"
+      ],
+      "coverage": {
+        "A": {
+          "score": "mentioned",
+          "basis": "Hardware and algorithm design are stated without a neuron-model taxonomy.",
+          "locator": "p. 801, abstract; Sec. ‘Scaling neuromorphic systems’, p. 802"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "Encoding is discussed only as background, without a coding taxonomy.",
+          "locator": "p. 801, abstract; Sec. ‘Spiking neural networks’, p. 803"
+        },
+        "C": {
+          "score": "mentioned",
+          "basis": "Learning algorithms are discussed, but not organized as a training taxonomy.",
+          "locator": "p. 801, abstract; Sec. ‘Learning’, p. 809"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No ANN-to-SNN conversion taxonomy or route is identified in the full text.",
+          "locator": "Secs. ‘Scaling neuromorphic systems’ and ‘ML innovations’, pp. 802-810"
+        },
+        "E": {
+          "score": "partial",
+          "basis": "Software-ecosystem gaps and tool categories are discussed without framework comparison.",
+          "locator": "Fig. 4 caption, p. 806; Sec. ‘Software ecosystem’, pp. 806-808"
+        },
+        "F": {
+          "score": "partial",
+          "basis": "Cross-platform software and toolchain gaps are diagnostic, not a comparative mapper taxonomy.",
+          "locator": "Fig. 4 caption, p. 806; Sec. ‘Software ecosystem’, pp. 806-808"
+        },
+        "G": {
+          "score": "mentioned",
+          "basis": "Interoperability is raised, but no interchange format is specified.",
+          "locator": "Fig. 4 caption, p. 806; Sec. ‘Software ecosystem’, pp. 806-808"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Scalable architectures are central to stated scope.",
+          "locator": "p. 801, abstract; Figs. 1-3, pp. 802-805"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Software gaps identify the problem class without an operator-level semantic taxonomy.",
+          "locator": "Fig. 4 caption, p. 806; Sec. ‘Software ecosystem’, pp. 806-808"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Readiness and comparability are discussed, but no evidence-classification scheme is formalized.",
+          "locator": "Fig. 5 caption, p. 808; Sec. ‘Community readiness’, pp. 808-810"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "Potential applications are discussed, without a normalized measured-results registry.",
+          "locator": "p. 801, abstract; Sec. ‘Applications’, pp. 804-805"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No single reproducible trained-network-to-named-hardware route is traced.",
+          "locator": "Secs. ‘Software ecosystem’ and ‘Community readiness’, pp. 806-810"
+        }
+      },
+      "strongest_contribution": "High-level diagnosis of software-ecosystem gaps.",
+      "deployment_depth": "Diagnostic only in retrieved material.",
+      "omissions": [
+        "No accessible semantic-boundary taxonomy.",
+        "No accessible worked route."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S03-deng-2025-edgesnn",
+      "source_id": "deng-2025-edgesnn",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/html/2507.14069",
+        "https://arxiv.org/abs/2507.14069"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Neuron models are a stated foundation.",
+          "locator": "Sec. III"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Encoding occurs within foundations, not as primary taxonomy.",
+          "locator": "Sec. III"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Learning and resource-aware updating are surveyed.",
+          "locator": "Secs. III and IV-B"
+        },
+        "D": {
+          "score": "full",
+          "basis": "Lightweight construction includes conversion-oriented methods.",
+          "locator": "Sec. IV-A"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "Supporting software is acknowledged without comparison.",
+          "locator": "Sec. III"
+        },
+        "F": {
+          "score": "mentioned",
+          "basis": "Hardware heterogeneity lacks a toolchain taxonomy.",
+          "locator": "Secs. III and VI"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format is a survey axis.",
+          "locator": "Secs. III-VI"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Supporting hardware platforms are a stated foundation.",
+          "locator": "Sec. III"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Constraints are discussed without layer-boundary taxonomy.",
+          "locator": "Secs. IV and VI"
+        },
+        "J": {
+          "score": "full",
+          "basis": "Dual-track benchmarking separates proxy and hardware-aware evidence.",
+          "locator": "Sec. V"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Edge applications and practical results are surveyed.",
+          "locator": "Secs. IV-A and V"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "Ingredients are covered without one full named route.",
+          "locator": "Secs. IV-V"
+        }
+      },
+      "strongest_contribution": "Dual-track evaluation for EdgeSNN deployment.",
+      "deployment_depth": "Broad deployment review without a fixed route.",
+      "omissions": [
+        "No operator-level boundary taxonomy.",
+        "No complete named route."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S04-yik-2025-neurobench",
+      "source_id": "yik-2025-neurobench",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.nature.com/articles/s41467-025-56739-4.pdf",
+        "https://doi.org/10.1038/s41467-025-56739-4",
+        "https://doi.org/10.48550/arxiv.2304.04640"
+      ],
+      "coverage": {
+        "A": {
+          "score": "none",
+          "basis": "Neuron models are outside benchmark taxonomy.",
+          "locator": "Introduction; Fig. 1"
+        },
+        "B": {
+          "score": "none",
+          "basis": "Encoding taxonomy is outside scope.",
+          "locator": "Introduction; Fig. 1"
+        },
+        "C": {
+          "score": "none",
+          "basis": "Training methods are not reviewed.",
+          "locator": "Introduction"
+        },
+        "D": {
+          "score": "none",
+          "basis": "Conversion is not a framework axis.",
+          "locator": "Introduction; Fig. 1"
+        },
+        "E": {
+          "score": "partial",
+          "basis": "Open benchmark harness supports framework participation.",
+          "locator": "Algorithm Track Benchmark Harness"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No mapping-toolchain review.",
+          "locator": "System Track Benchmark Framework"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Introduction; Fig. 1"
+        },
+        "H": {
+          "score": "partial",
+          "basis": "Systems track targets named hardware.",
+          "locator": "System Track Benchmark Framework"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No semantic-boundary taxonomy.",
+          "locator": "System Track Benchmark Framework"
+        },
+        "J": {
+          "score": "full",
+          "basis": "Two tracks separate proxies from hardware measurement.",
+          "locator": "Fig. 1; Algorithm and System Track Frameworks"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Baseline task outcomes and metrics are reported.",
+          "locator": "Algorithm Track Baseline Results"
+        },
+        "L": {
+          "score": "mentioned",
+          "basis": "Systems protocol requires deployment without a fixed route.",
+          "locator": "System Track Benchmark Framework"
+        }
+      },
+      "strongest_contribution": "Explicit separation of proxy and physical-system evaluation.",
+      "deployment_depth": "Defines protocols rather than deployment cases.",
+      "omissions": [
+        "No semantic mismatch taxonomy.",
+        "No full route."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S05-davies-2021-loihi",
+      "source_id": "davies-2021-loihi",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://ieeexplore.ieee.org/document/9395703",
+        "https://doi.org/10.1109/JPROC.2021.3067593"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "LIF, compartments, plasticity, and adaptation are described.",
+          "locator": "Sec. II-A"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Spike messages and event encoding are explained architecturally.",
+          "locator": "Secs. II-A-B"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "Backpropagation and local learning are discussed.",
+          "locator": "Secs. II-A and III"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Converted rate-coded SNNs are analyzed.",
+          "locator": "Sec. III"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "NxSDK is described for Loihi.",
+          "locator": "Sec. II-C"
+        },
+        "F": {
+          "score": "partial",
+          "basis": "NxSDK includes compiler, runtime, APIs, and debugging.",
+          "locator": "Sec. II-C"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No format comparison.",
+          "locator": "Sec. II-C"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Chip and multichip systems are described in depth.",
+          "locator": "Secs. II-A-B; Fig. 1"
+        },
+        "I": {
+          "score": "mentioned",
+          "basis": "Host, FPGA, and asynchronous boundaries are described.",
+          "locator": "Secs. II-A-C"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Physical results are reported without general evidence classes.",
+          "locator": "Secs. III-VI"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Measured applications span several workload classes.",
+          "locator": "Sec. VI; tables"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "Measured Loihi routes remain single-chip-family cases.",
+          "locator": "Secs. III-VI"
+        }
+      },
+      "strongest_contribution": "Measured Loihi results across application classes.",
+      "deployment_depth": "High, but limited to Loihi.",
+      "omissions": [
+        "No cross-chip portability analysis."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S06-huynh-2022-implementing-snns",
+      "source_id": "huynh-2022-implementing-snns",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/pdf/2202.08897",
+        "https://doi.org/10.48550/arxiv.2202.08897"
+      ],
+      "coverage": {
+        "A": {
+          "score": "mentioned",
+          "basis": "IF/LIF appears as introductory background, not a neuron-model taxonomy.",
+          "locator": "Sec. 1; Fig. 1"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "ISI coding is discussed to illustrate timing distortion, not as an encoding taxonomy.",
+          "locator": "Sec. 2.1"
+        },
+        "C": {
+          "score": "mentioned",
+          "basis": "Learning methods are mentioned contextually rather than reviewed as a taxonomy.",
+          "locator": "Sec. 2"
+        },
+        "D": {
+          "score": "none",
+          "basis": "Conversion is not a review category.",
+          "locator": "Secs. 2-3"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "Simulators are named as inputs, but are not compared as frameworks.",
+          "locator": "Sec. 2.1"
+        },
+        "F": {
+          "score": "full",
+          "basis": "Compilers, mappers, and runtime managers structure the review.",
+          "locator": "Secs. 2-3; Tables 3-5"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Secs. 2-3"
+        },
+        "H": {
+          "score": "partial",
+          "basis": "Hardware capacities constrain mapping.",
+          "locator": "Table 1; Sec. 2.1"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Timing distortion and resource constraints are explained.",
+          "locator": "Sec. 2.1; Figs. 3-5"
+        },
+        "J": {
+          "score": "mentioned",
+          "basis": "Metrics guide optimization without evidence classes.",
+          "locator": "Sec. 2 introduction"
+        },
+        "K": {
+          "score": "mentioned",
+          "basis": "Application examples explain mapping, but are not organized as an application-results survey.",
+          "locator": "Secs. 2-3"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "High-level models map to physical implementation without a comparative route.",
+          "locator": "Sec. 2.2, PACMAN"
+        }
+      },
+      "strongest_contribution": "System-software and mapping framework synthesis.",
+      "deployment_depth": "Framework-specific mappings, not unified routes.",
+      "omissions": [
+        "No interchange format.",
+        "No evidence taxonomy."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S07-roy-2019-spike-machine-intelligence",
+      "source_id": "roy-2019-spike-machine-intelligence",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.nature.com/articles/s41586-019-1677-2",
+        "https://doi.org/10.1038/s41586-019-1677-2"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "LIF dynamics, Hodgkin-Huxley, refractory behavior, and STDP are explained, but neuron and synapse models are not surveyed systematically.",
+          "locator": "Nature pp. 608-610; Fig. 3"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Temporal processing, rate coding, rank-order coding, event sensors, and address-event communication are explained; decoding choices and a broader code taxonomy are not developed.",
+          "locator": "Nature pp. 608-610 and 613; Figs. 3d and 5b"
+        },
+        "C": {
+          "score": "full",
+          "basis": "The learning section distinguishes conversion, supervised spike-based backpropagation, local STDP, hybrid local-global learning, and reinforcement-learning directions, including their principal limitations.",
+          "locator": "Nature pp. 610-612; Fig. 4"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "A dedicated subsection explains weight rescaling and normalization, ANN-SNN functional mismatches, firing-rate calibration, accuracy loss, and the latency cost of long inference windows.",
+          "locator": "Nature p. 610, Conversion-based approaches"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "TensorFlow is named for ANN training, while PyTorch and Caffe appear in the historical timeline; SNN framework capabilities are not compared.",
+          "locator": "Nature pp. 609-610; Fig. 2"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No compiler or hardware-mapping toolchain is described.",
+          "locator": "Full-text review, Nature pp. 607-615"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No model interchange representation is described; address-event representation is treated as spike communication, not model interchange.",
+          "locator": "Full-text review, especially Nature p. 613 and Fig. 5b"
+        },
+        "H": {
+          "score": "full",
+          "basis": "The hardware half compares GPU execution, Neurogrid, TrueNorth, Loihi, address-event routing, networks-on-chip, in-memory computing, and several nonvolatile device families.",
+          "locator": "Nature pp. 612-615; Figs. 5-6"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "The article identifies failures across the ANN-to-SNN and algorithm-to-device boundaries, but does not provide a software-edge or cross-platform semantic taxonomy.",
+          "locator": "Nature p. 610 and pp. 614-615, Conversion-based approaches and Algorithm-hardware codesign"
+        },
+        "J": {
+          "score": "none",
+          "basis": "The article calls for better datasets and metrics but does not distinguish physical measurement, simulation, and analytical or operation-count estimates when assessing claims.",
+          "locator": "Nature p. 609; full-text review"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "Vision, robotics, recognition, sequential processing, and control examples are connected to reported accuracy or efficiency results, but there is no structured catalog of measured deployments.",
+          "locator": "Nature pp. 609 and 611-613"
+        },
+        "L": {
+          "score": "none",
+          "basis": "Algorithms and hardware are connected conceptually, but no case study traces a trained network through conversion, software, mapping, physical execution, and measurement.",
+          "locator": "Full-text review, Nature pp. 607-615"
+        }
+      },
+      "strongest_contribution": "Connects SNN learning requirements to hardware mechanisms, limitations, and cross-layer co-design.",
+      "deployment_depth": "Substantial hardware treatment with named chips and application evidence, but no reproducible software-to-silicon route.",
+      "omissions": [
+        "No compiler, interchange, claim-level evidence taxonomy, or end-to-end deployment trace."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S08-schuman-2017-hardware-survey",
+      "source_id": "schuman-2017-hardware-survey",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/pdf/1705.06963",
+        "https://doi.org/10.48550/arxiv.1705.06963"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Neuro-inspired and neuron/synapse models are a principal section.",
+          "locator": "Sec. III"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Representation appears without dedicated code taxonomy.",
+          "locator": "Secs. III-IV"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Algorithms and learning are a principal section.",
+          "locator": "Sec. IV, Algorithms and learning; no ANN-to-SNN conversion subsection"
+        },
+        "D": {
+          "score": "none",
+          "basis": "ANN/SNN relations are contextual, without ANN-to-SNN conversion treatment.",
+          "locator": "Sec. IV, Algorithms; no conversion subsection identified"
+        },
+        "E": {
+          "score": "partial",
+          "basis": "Supporting software systems are included.",
+          "locator": "Sec. VI-B"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No compiler/mapping taxonomy.",
+          "locator": "Sec. VI-B scope"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format category.",
+          "locator": "Secs. I-VII"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Hardware implementations and devices are a principal section.",
+          "locator": "Sec. V"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No boundary semantic taxonomy.",
+          "locator": "Secs. V-VI"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence-classification framework.",
+          "locator": "Secs. I-VII"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Applications are a principal section.",
+          "locator": "Sec. VII"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No route taxonomy.",
+          "locator": "Secs. V-VII"
+        }
+      },
+      "strongest_contribution": "Historic integration across models, algorithms, hardware, and applications.",
+      "deployment_depth": "Broad platform coverage without a deployment trace.",
+      "omissions": [
+        "Predates contemporary deployment tooling."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S09-schuman-2022-opportunities",
+      "source_id": "schuman-2022-opportunities",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.osti.gov/biblio/1881146",
+        "https://www.researchgate.net/publication/358255092_Opportunities_for_neuromorphic_computing_algorithms_and_applications",
+        "https://doi.org/10.1038/s43588-021-00184-y"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "Box 1 explains integrate-and-fire through Hodgkin-Huxley models, leakage, thresholds, delays, synaptic weights, and plasticity without a systematic model comparison.",
+          "locator": "Nature Computational Science p. 12, Box 1"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Spike time, magnitude, and shape are introduced as information carriers; rate, latency, and population encoding are later identified, but decoding semantics are not treated.",
+          "locator": "Nature Computational Science pp. 10 and 14"
+        },
+        "C": {
+          "score": "full",
+          "basis": "The article organizes and explains five major learning approaches, including surrogate-gradient methods, reservoir computing, evolutionary optimization, STDP, and direct temporal learning.",
+          "locator": "Nature Computational Science pp. 12-14; Fig. 2"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "The pretrained-DNN mapping subsection covers normalization, pooling substitution, constrained ANN training, few-spike neurons, accuracy loss, latency reduction, and hardware precision or variation.",
+          "locator": "Nature Computational Science pp. 12-13, Mapping a pre-trained deep neural network"
+        },
+        "E": {
+          "score": "partial",
+          "basis": "NEST, Brian, and Nengo are compared by intended use, backend reach, accessibility, and scaling limitations.",
+          "locator": "Nature Computational Science p. 15, Widening usability and access to hardware and simulators"
+        },
+        "F": {
+          "score": "mentioned",
+          "basis": "The article discusses missing programming abstractions, host-side deployment dependence, and mapping burden, but does not describe a compiler or hardware mapper.",
+          "locator": "Nature Computational Science pp. 15-16, Enabling more diverse computing environments and Defining programming abstractions"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No model interchange representation is described.",
+          "locator": "Full-text review, Nature Computational Science pp. 10-19"
+        },
+        "H": {
+          "score": "partial",
+          "basis": "SpiNNaker, BrainScaleS, ODIN, Tianjic, TrueNorth, Loihi, DYNAPs, Neurogrid, and IFAT are situated by purpose and implementation, but hardware is supporting context.",
+          "locator": "Nature Computational Science p. 11"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "The paper identifies loss at ANN-to-SNN and SNN-to-hardware boundaries, device effects, simulator specialization, host overhead, and heterogeneous-integration problems without a platform-semantic taxonomy.",
+          "locator": "Nature Computational Science pp. 13 and 15"
+        },
+        "J": {
+          "score": "none",
+          "basis": "A dedicated subsection argues that benchmarks and metrics are inadequate, but it does not classify claims as silicon measurement, simulation, or analytical estimate.",
+          "locator": "Nature Computational Science p. 15, Defining benchmarks and metrics"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "The review relates machine-learning, control, graph, random-walk, optimization, and constraint workloads to reported accuracy, energy, or time-to-solution results without normalizing measurements.",
+          "locator": "Nature Computational Science pp. 13-14"
+        },
+        "L": {
+          "score": "mentioned",
+          "basis": "Several tasks are tied to Loihi, TrueNorth, or SpiNNaker, but the article supplies citations rather than reproducible model-to-toolchain-to-chip traces.",
+          "locator": "Nature Computational Science pp. 13-14"
+        }
+      },
+      "strongest_contribution": "Connects a broad algorithm taxonomy to practical deployment barriers and full-stack co-design opportunities.",
+      "deployment_depth": "Names task-to-chip demonstrations and host-boundary costs, but does not specify reproducible model transformations or toolchain routes.",
+      "omissions": [
+        "No compiler or interchange survey, evidence taxonomy, or reproducible end-to-end route."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    },
+    {
+      "id": "S10-eshraghian-2023-training-snns",
+      "source_id": "eshraghian-2023-training-snns",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://doi.org/10.1109/JPROC.2023.3308088",
+        "https://ieeexplore.ieee.org/document/10223685"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "Spiking neuron model is derived.",
+          "locator": "Sec. II"
+        },
+        "B": {
+          "score": "full",
+          "basis": "Encoding strategies and learning effects are explicit.",
+          "locator": "Sec. III"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Gradient, surrogate, spike-time, and BPTT methods are developed.",
+          "locator": "Sec. IV; Figs. 9-10"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Shadow-ANN conversion is explained.",
+          "locator": "Sec. IV, Backpropagation Using Spike Times"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "Tooling motivates the tutorial without comparison.",
+          "locator": "Introduction; Sec. IV"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No toolchain review.",
+          "locator": "Article overview; Secs. II-IV"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Article overview; Secs. II-IV"
+        },
+        "H": {
+          "score": "mentioned",
+          "basis": "Hardware motivates SNNs without platform taxonomy.",
+          "locator": "Neuromorphic Systems in the Wild"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No boundary semantic taxonomy.",
+          "locator": "Article overview; Secs. II-IV"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence classes.",
+          "locator": "Article overview; Secs. II-IV"
+        },
+        "K": {
+          "score": "mentioned",
+          "basis": "Application domains are enumerated, not measured evidence survey.",
+          "locator": "Neuromorphic Systems in the Wild"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No end-to-end route.",
+          "locator": "Article overview; Neuromorphic Systems in the Wild"
+        }
+      },
+      "strongest_contribution": "Unified explanation of direct SNN training methods.",
+      "deployment_depth": "Application context only.",
+      "omissions": [
+        "No deployment-toolchain taxonomy.",
+        "No evidence classification."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-a"
+      }
+    }
+  ],
+  "discovery_results_returned": 55,
+  "sources_reviewed_definition": "Sum of numResults across Exa discovery searches, not a count of documents used as evidence.",
+  "inspected_url_count": 24
+}

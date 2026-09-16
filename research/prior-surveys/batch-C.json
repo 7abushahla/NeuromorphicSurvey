@@ -1,0 +1,925 @@
+{
+  "schema_version": 1,
+  "batch": "C",
+  "sources_reviewed": 70,
+  "source_candidates": [
+    {
+      "id": "ferreira-2025-edge-ai-circuits",
+      "title": "A comparative review of deep and spiking neural networks for edge AI neuromorphic circuits",
+      "authors": "Pietro M. Ferreira, Siqi Wang, Yueyuan Gao, and Aziz Benlarbi-Delai",
+      "year": 2025,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2025.1676570",
+      "canonical_url": "https://doi.org/10.3389/fnins.2025.1676570",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1, 3, 4, and Table 1"
+      ],
+      "inspected_urls": [
+        "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1676570/full",
+        "https://doi.org/10.3389/fnins.2025.1676570"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "manna-2023-frameworks",
+      "title": "Frameworks for SNNs: a Review of Data Science-oriented Software and an Expansion of SpykeTorch",
+      "authors": "Davide Liberato Manna, Alex Vicente, Paul Kirkland, Trevor Bihl, and Gaetano Di Caterina",
+      "year": 2023,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2302.07624",
+      "canonical_url": "https://doi.org/10.48550/arXiv.2302.07624",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 1-5, and Table 1"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/html/2302.07624",
+        "https://arxiv.org/abs/2302.07624"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "gallego-2022-event-based-vision",
+      "title": "Event-based Vision: A Survey",
+      "authors": "Guillermo Gallego et al.",
+      "year": 2022,
+      "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "doi": "10.1109/TPAMI.2020.3008413",
+      "canonical_url": "https://doi.org/10.1109/TPAMI.2020.3008413",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Accepted manuscript, Sections 1-8"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/pdf/1904.08405",
+        "https://www.semanticscholar.org/reader/dd971c07879e1ce12b06991319528c06280eeb9b",
+        "https://www.research-collection.ethz.ch/handle/20.500.11850/397839",
+        "https://doi.org/10.1109/TPAMI.2020.3008413"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "gebregiorgis-2025-spike-based-overview",
+      "title": "Spike-based neuromorphic computing: An overview from bio-inspiration to hardware architectures and learning mechanisms",
+      "authors": "Anteneh Gebregiorgis et al.",
+      "year": 2026,
+      "venue": "Microprocessors and Microsystems",
+      "doi": "10.1016/j.micpro.2025.105240",
+      "canonical_url": "https://doi.org/10.1016/j.micpro.2025.105240",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 2-10 and Figures 1-22"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.1016/j.micpro.2025.105240",
+        "https://www.sciencedirect.com/science/article/pii/S0141933125001744"
+      ],
+      "notes": "Volume 124 is dated 2026. The version of record states that the article was available online on 20 December 2025."
+    },
+    {
+      "id": "bouvier-2019-hardware-implementations",
+      "title": "Spiking neural networks hardware implementations and challenges: A survey",
+      "authors": "Maxence Bouvier et al.",
+      "year": 2019,
+      "venue": "ACM Journal on Emerging Technologies in Computing Systems",
+      "doi": "10.1145/3304103",
+      "canonical_url": "https://doi.org/10.1145/3304103",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 2-8 and Tables 1-2"
+      ],
+      "inspected_urls": [
+        "https://dl.acm.org/doi/10.1145/3304103",
+        "https://doi.org/10.1145/3304103"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "shrestha-2022-models-hardware",
+      "title": "A Survey on Neuromorphic Computing: Models and Hardware",
+      "authors": "Amar Shrestha et al.",
+      "year": 2022,
+      "venue": "IEEE Circuits and Systems Magazine",
+      "doi": "10.1109/MCAS.2022.3166331",
+      "canonical_url": "https://doi.org/10.1109/MCAS.2022.3166331",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections II-VI and Tables I-III"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.1109/MCAS.2022.3166331"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "chen-2026-neuromorphic-chips",
+      "title": "A New Era in Computing: A Review of Neuromorphic Computing Chip Architecture and Applications",
+      "authors": "G. Chen, M. Xu, Y. Chen, F. Yuan, L. Qin, and J. Ren",
+      "year": 2026,
+      "venue": "Chips",
+      "doi": "10.3390/chips5010003",
+      "canonical_url": "https://doi.org/10.3390/chips5010003",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 2-6 and Tables 2-8"
+      ],
+      "inspected_urls": [
+        "https://www.mdpi.com/2673-8024/5/1/3",
+        "https://doi.org/10.3390/chips5010003"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "zolfagharinejad-2024-brain-inspired-systems",
+      "title": "Brain-inspired computing systems: a systematic literature review",
+      "authors": "Mohamadreza Zolfagharinejad et al.",
+      "year": 2024,
+      "venue": "The European Physical Journal B",
+      "doi": "10.1140/epjb/s10051-024-00703-6",
+      "canonical_url": "https://doi.org/10.1140/epjb/s10051-024-00703-6",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 1-4, and Appendix 1"
+      ],
+      "inspected_urls": [
+        "https://link.springer.com/article/10.1140/epjb/s10051-024-00703-6",
+        "https://doi.org/10.1140/epjb/s10051-024-00703-6"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "hu-2024-large-scale-snns",
+      "title": "Toward Large-scale Spiking Neural Networks: A Comprehensive Survey and Future Directions",
+      "authors": "Yangfan Hu, Qian Zheng, Guoqi Li, Huajin Tang, and Gang Pan",
+      "year": 2024,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2409.02111",
+      "canonical_url": "https://doi.org/10.48550/arXiv.2409.02111",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 2-4, and Tables I-III"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/html/2409.02111",
+        "https://arxiv.org/abs/2409.02111",
+        "https://doi.org/10.48550/arxiv.2409.02111"
+      ],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    }
+  ],
+  "surveys": [
+    {
+      "id": "S20-ferreira-2025-edge-ai-circuits",
+      "source_id": "ferreira-2025-edge-ai-circuits",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1676570/full",
+        "https://doi.org/10.3389/fnins.2025.1676570"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 1 and 3"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "H": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3 and Table 1"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Table 1 and Section 4"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Table 1"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        }
+      },
+      "strongest_contribution": "Circuit-level comparison with normalized energy and area metrics.",
+      "deployment_depth": "Circuit comparison only; no executable network-to-chip route.",
+      "omissions": [
+        "See the associated audit note for material omissions and verification limits."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S21-manna-2023-frameworks",
+      "source_id": "manna-2023-frameworks",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/html/2302.07624",
+        "https://arxiv.org/abs/2302.07624"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Abstract and Section 3"
+        },
+        "B": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 3.1-3.4.6"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 3.1-3.2"
+        },
+        "E": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Abstract, Section 3, and Table 1"
+        },
+        "F": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 3.1-3.2"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "H": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 3.1-3.2"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "K": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "L": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 3"
+        }
+      },
+      "strongest_contribution": "Nine-framework feature inventory for data-science SNN development.",
+      "deployment_depth": "Compatibility reporting only; no deployed-route validation.",
+      "omissions": [
+        "See the associated audit note for material omissions and verification limits."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S22-gallego-2022-event-based-vision",
+      "source_id": "gallego-2022-event-based-vision",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/pdf/1904.08405",
+        "https://www.semanticscholar.org/reader/dd971c07879e1ce12b06991319528c06280eeb9b",
+        "https://www.research-collection.ethz.ch/handle/20.500.11850/397839",
+        "https://doi.org/10.1109/TPAMI.2020.3008413"
+      ],
+      "coverage": {
+        "A": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 2.1-2.4"
+        },
+        "B": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 2.1-2.4"
+        },
+        "C": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Abstract and Section 4"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 6"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Section 5"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-8"
+        },
+        "H": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 2.1-2.5 and 5"
+        },
+        "I": {
+          "score": "none",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 2.3"
+        },
+        "J": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 2.5"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 1 and 4"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-5"
+        }
+      },
+      "strongest_contribution": "Sensor-to-algorithm account of asynchronous event vision.",
+      "deployment_depth": "Sensing and embedded processing, not trained-SNN compilation.",
+      "omissions": [
+        "See the associated audit note for material omissions and verification limits."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S23-gebregiorgis-2025-spike-based-overview",
+      "source_id": "gebregiorgis-2025-spike-based-overview",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://doi.org/10.1016/j.micpro.2025.105240",
+        "https://www.sciencedirect.com/science/article/pii/S0141933125001744"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Sustained treatment of biological and computational neuron and synapse models and their realism-efficiency trade-offs.",
+          "locator": "Sections 2-3, pp. 2-6"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Explains binary spike representation and names rate, temporal, and population codes, with little decoding analysis.",
+          "locator": "Section 4.9, pp. 8-9; Section 9.1, p. 24"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Compares plasticity, evolutionary search, spike-time gradients, surrogate gradients, backpropagation through time, and online learning.",
+          "locator": "Section 5, pp. 9-11"
+        },
+        "D": {
+          "score": "mentioned",
+          "basis": "Identifies rate-based ANN-to-SNN conversion and its efficiency limitation without developing conversion methods.",
+          "locator": "Section 5.2.2, p. 10"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No comparative treatment of SNN software frameworks or their model and operator support was identified.",
+          "locator": "Sections 1-10, pp. 1-25"
+        },
+        "F": {
+          "score": "full",
+          "basis": "Explains partitioning, placement, crossbar realization, limited-precision mapping, and named mapping frameworks.",
+          "locator": "Section 8, pp. 20-23"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No concrete neuromorphic interchange representation or portable semantic format is analyzed.",
+          "locator": "Sections 1-10, pp. 1-25"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Sustained coverage of circuits, devices, and analog, digital, mixed-signal, and many-core SNN architectures.",
+          "locator": "Sections 6-7, pp. 11-20"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Identifies precision mismatch, state-memory pressure, synchronization overhead, noise, variability, and interoperability without a complete semantic taxonomy.",
+          "locator": "Sections 8.4-8.6, p. 23; Section 10, pp. 24-25"
+        },
+        "J": {
+          "score": "mentioned",
+          "basis": "Identifies missing standardized benchmarks and distinguishes algorithmic complexity from hardware efficiency, but supplies no evidence classes.",
+          "locator": "Section 8.6, p. 23; Section 9.2, p. 24"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "Surveys workload families and reports a quantified event-vision mapping result, while most application coverage remains descriptive.",
+          "locator": "Section 8.5, p. 23; Section 9.2, p. 24"
+        },
+        "L": {
+          "score": "mentioned",
+          "basis": "Discusses mapping and deployment stages but does not trace one network through a named software stack to measured physical-chip execution.",
+          "locator": "Sections 8-9, pp. 20-24"
+        }
+      },
+      "strongest_contribution": "Hardware-aware mapping tutorial spanning partitioning, placement, crossbars, precision, memory, and synchronization.",
+      "deployment_depth": "Explains deployment constraints and mapping stages but provides no complete named framework-to-silicon route.",
+      "omissions": [
+        "No software-framework comparison, interchange format, claim-level evidence taxonomy, or complete network-to-chip route."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S24-bouvier-2019-hardware-implementations",
+      "source_id": "bouvier-2019-hardware-implementations",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://dl.acm.org/doi/10.1145/3304103",
+        "https://doi.org/10.1145/3304103"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Explains IF, LIF, bio-plausible neuron and synapse models, and implementation costs.",
+          "locator": "Sections 2-3, pp. 2-10"
+        },
+        "B": {
+          "score": "full",
+          "basis": "Compares rate, TTFS, and inter-spike-interval coding and connects coding to timing error and hardware activity.",
+          "locator": "Section 2.2, pp. 4-5; Sections 4.3 and 7.1, pp. 14-15 and 25"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Compares STDP, reward modulation, supervised learning, spike-domain backpropagation, and training location.",
+          "locator": "Section 5, pp. 18-21"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Reviews conversion frameworks, topology modification, rate-coding cost, temporal conversion, and an accuracy-loss example.",
+          "locator": "Section 5.1, p. 18; Section 7.1, p. 25"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No software-framework ecosystem or simulator comparison was identified.",
+          "locator": "Sections 1-8, pp. 1-27"
+        },
+        "F": {
+          "score": "partial",
+          "basis": "Compares depth-wise and spatial mapping, load balance, communication distance, and graph-based optimization without toolchain coverage.",
+          "locator": "Section 2.3.2, pp. 5-7"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange representation or portable graph format is analyzed.",
+          "locator": "Sections 1-8, pp. 1-27"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Covers analog and digital neurocores, crossbars, large-scale systems, and embedded accelerators.",
+          "locator": "Sections 3, 4, and 6, pp. 8-24"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Explains mapping imbalance, timing error, input-conversion bias, topology dependence, precision loss, and device non-idealities.",
+          "locator": "Sections 2.3.2 and 4, pp. 5-18"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Explicitly distinguishes simulated, FPGA, and fabricated technologies and flags incomparable model types and missing data.",
+          "locator": "Section 6.2 and Table 2, pp. 22-24"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "Provides accuracy, energy, area, and coding data for low-power image-classification accelerators, mainly on MNIST.",
+          "locator": "Section 6.2 and Table 2, pp. 22-24"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "Table 2 connects training and input conversion to topology, implementation, and energy, without a reproducible software-to-chip workflow.",
+          "locator": "Table 2, p. 24"
+        }
+      },
+      "strongest_contribution": "Joint algorithm-hardware analysis with unusually explicit accelerator evidence labels and benchmark caveats.",
+      "deployment_depth": "Compact hardware route summaries for several accelerators, without modern framework or compiler paths.",
+      "omissions": [
+        "No software-framework survey, interchange format, modern compiler comparison, or general evidence taxonomy."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S25-shrestha-2022-models-hardware",
+      "source_id": "shrestha-2022-models-hardware",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://doi.org/10.1109/MCAS.2022.3166331"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Derives conductance-based and spike-based models and connects their dynamics to implementation.",
+          "locator": "Sections II-A and II-B, pp. 8-10"
+        },
+        "B": {
+          "score": "full",
+          "basis": "Compares rate, TTFS, phase, and task-specific codes with latency, spike-count, quantization, and hardware trade-offs.",
+          "locator": "Section II-C, pp. 10-11"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Covers STDP, supervised Hebbian learning, spike-domain backpropagation, local credit assignment, and online-learning limits.",
+          "locator": "Section II-E, pp. 13-14; Section V-A, pp. 25-26"
+        },
+        "D": {
+          "score": "mentioned",
+          "basis": "Notes Nengo-based DNN-to-SNN conversion for Loihi and Tianjic indirect training without reviewing conversion algorithms.",
+          "locator": "Section IV-B.3, p. 21; Section IV-E.5, p. 24"
+        },
+        "E": {
+          "score": "full",
+          "basis": "Distinguishes mapping, programming, and simulation tools and compares platform-specific APIs and frameworks.",
+          "locator": "Section III-E, p. 17; Sections IV-A to IV-E, pp. 20-24"
+        },
+        "F": {
+          "score": "full",
+          "basis": "Explains mapping objectives, Eedn, Loihi compiler stages, PACMAN, and Tianjic's automatic compiler.",
+          "locator": "Section III-E, p. 17; Sections IV-A.3, IV-B.3, IV-D.3, and IV-E.5, pp. 20-24"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No portable interchange representation or NIR-like semantic format is analyzed.",
+          "locator": "Sections I-VI, pp. 6-27"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Detailed TrueNorth, Loihi, BrainScaleS, SpiNNaker, and Tianjic case studies and comparative capability tables.",
+          "locator": "Sections III-IV, pp. 15-24; Tables II-III"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Identifies model-support mismatches, time-multiplexing delay, fixed-point limits, routing constraints, and software abstractions.",
+          "locator": "Sections II-C, III, and IV, pp. 10-24"
+        },
+        "J": {
+          "score": "none",
+          "basis": "Platform tables do not classify results by physical measurement, simulation, or analytical estimate.",
+          "locator": "Tables II-III, pp. 18 and 25"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "Reports measured TrueNorth throughput and power and describes Loihi and Tianjic applications, without systematic application tables.",
+          "locator": "Sections IV-A.3, IV-B.3, and IV-E.6, pp. 20-24"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "TrueNorth Eedn and Tianjic discussions connect training or mapping support to named hardware and applications without complete reproducibility details.",
+          "locator": "Sections IV-A.3 and IV-E.5-6, pp. 20-24"
+        }
+      },
+      "strongest_contribution": "Algorithm-hardware co-design survey with substantive, platform-specific software and compiler coverage.",
+      "deployment_depth": "Connects model semantics, software abstractions, compilers, and named platform applications, but not as one reproducible route.",
+      "omissions": [
+        "No interchange format, claim-level evidence taxonomy, cross-platform route comparison, or detailed conversion taxonomy."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S26-chen-2026-neuromorphic-chips",
+      "source_id": "chen-2026-neuromorphic-chips",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.mdpi.com/2673-8024/5/1/3",
+        "https://doi.org/10.3390/chips5010003"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Covers HH, IF, LIF, memristive Izhikevich, and major SNN topologies with hardware context.",
+          "locator": "Sections 2.1-2.2, pp. 3-7"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "Identifies spikes as spatiotemporal codes and temporal coding as a circuit trade-off without a coding taxonomy.",
+          "locator": "Sections 2.2-2.3, pp. 6-7; Section 3.1.3, p. 13"
+        },
+        "C": {
+          "score": "mentioned",
+          "basis": "Names STDP, temporal backpropagation, surrogate-gradient engines, and on-chip learning support without comparing training methods.",
+          "locator": "Sections 2-3, pp. 5-16"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No substantive ANN-to-SNN conversion method or conversion-error analysis was identified.",
+          "locator": "Sections 1-6, pp. 1-41"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "Names NEST and Brian 2 while diagnosing the lack of integrated deployment solutions, without comparing framework capabilities.",
+          "locator": "Section 5, p. 40"
+        },
+        "F": {
+          "score": "mentioned",
+          "basis": "Mentions programmable mapping and the need for integrated deployment toolchains without explaining a compiler or mapper.",
+          "locator": "Sections 3.2 and 5-6, pp. 19 and 40-41"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format or portable semantic representation is treated.",
+          "locator": "Sections 1-6, pp. 1-41"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Sustained comparison of analog-digital hybrid, digital-only, second-generation, and memristor platforms.",
+          "locator": "Section 3, pp. 8-31"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Compares flexibility, plasticity, timing, scalability, architecture diversity, and integration limits without cross-stack semantic analysis.",
+          "locator": "Sections 3.1.5, 3.2.7, and 5, pp. 13-14, 23-24, and 40-41"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Uses a five-dimensional comparison and marks some no-data and inferred entries, but does not classify evidence consistently across claims.",
+          "locator": "Tables 2-7; Table 7, p. 31"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Broad workload coverage with selected reported power and efficiency results across AI, robotics, neuroscience, and control.",
+          "locator": "Section 4, pp. 31-39"
+        },
+        "L": {
+          "score": "partial",
+          "basis": "Describes a physically mapped memristor reinforcement-learning network and named chip deployments, but omits complete training and measurement chains.",
+          "locator": "Sections 3.3.5 and 4, pp. 29-38"
+        }
+      },
+      "strongest_contribution": "Five-dimensional chip taxonomy and broad workload-oriented application synthesis.",
+      "deployment_depth": "Names several physical deployments and one mapped memristor workload, without complete compiler and measurement provenance.",
+      "omissions": [
+        "No conversion treatment, framework or compiler comparison, interchange format, or consistently applied evidence classification."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S27-zolfagharinejad-2024-brain-inspired-systems",
+      "source_id": "zolfagharinejad-2024-brain-inspired-systems",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://link.springer.com/article/10.1140/epjb/s10051-024-00703-6",
+        "https://doi.org/10.1140/epjb/s10051-024-00703-6"
+      ],
+      "coverage": {
+        "A": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "B": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Article scope and Sections 1-4"
+        },
+        "C": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Article scope and Sections 1-4"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Article scope and Sections 1-4"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "H": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Abstract and Sections 2-3"
+        },
+        "I": {
+          "score": "none",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 1-4"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 1-4"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Abstract and Section 3"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        }
+      },
+      "strongest_contribution": "Systematic hardware-landscape review with normalized OPS/W reports.",
+      "deployment_depth": "Hardware-landscape synthesis, not software-route execution.",
+      "omissions": [
+        "See the associated audit note for material omissions and verification limits."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    },
+    {
+      "id": "S28-hu-2024-large-scale-snns",
+      "source_id": "hu-2024-large-scale-snns",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/html/2409.02111",
+        "https://arxiv.org/abs/2409.02111",
+        "https://doi.org/10.48550/arxiv.2409.02111"
+      ],
+      "coverage": {
+        "A": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 2.1.1"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Sections 2-3"
+        },
+        "C": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 2.1"
+        },
+        "D": {
+          "score": "full",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Section 2.1.1"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "H": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Section 2.1.1"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Tables I-III"
+        },
+        "K": {
+          "score": "partial",
+          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "locator": "Tables I-III"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No substantive treatment was identified within the retrieved scope.",
+          "locator": "Sections 1-4"
+        }
+      },
+      "strongest_contribution": "Algorithmic taxonomy of conversion, direct training, DCNNs, and spiking Transformers.",
+      "deployment_depth": "Algorithm and benchmark reporting only, not hardware deployment.",
+      "omissions": [
+        "See the associated audit note for material omissions and verification limits."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-c"
+      }
+    }
+  ],
+  "discovery_results_returned": 70,
+  "sources_reviewed_definition": "Sum of numResults across Exa discovery searches, not a count of documents used as evidence.",
+  "inspected_url_count": 20
+}

@@ -1,43 +1,58 @@
 <h2 id="introduction">1 Introduction</h2>
 
-<p>Neuromorphic hardware promises inference at a fraction of the energy cost of conventional
-accelerators, by replacing dense synchronous arithmetic with sparse, event-driven spikes
-<a class="cite" data-ref="davies-2021-loihi" href="#ref-davies-2021-loihi">[davies-2021-loihi]</a>, <a class="cite" data-ref="kudithipudi-2025" href="#ref-kudithipudi-2025">[kudithipudi-2025]</a>. Spiking neural networks (SNNs) are the computational
-model built to exploit that substrate. Two paths lead to a trained SNN. Direct training
-back-propagates through the spiking nonlinearity with a surrogate gradient, which is expensive
-and unstable at the depths and timestep counts current vision benchmarks require
-<a class="cite" data-ref="eshraghian-2023" href="#ref-eshraghian-2023">[eshraghian-2023]</a>. ANN-to-SNN conversion instead trains a conventional ReLU network with
-ordinary backpropagation and then re-expresses each ReLU as an integrate-and-fire (IF) neuron,
-substituting a spike count accumulated over <em>T</em> timesteps for a single real-valued activation.
-Conversion exists because it sidesteps direct training's optimization difficulty, and a line of
-work from 2021 onward, anchored by QCFS, has driven the timestep count <em>T</em> needed to match ANN
-accuracy down from the hundreds into the single digits <a class="cite" data-ref="bu-2022-qcfs" href="#ref-bu-2022-qcfs">[bu-2022-qcfs]</a>.</p>
+<h3 id="survey-question">1.1 The deployment question</h3>
 
-<p>That correspondence between a ReLU activation and a count of <em>T</em> spikes is proved on paper and
-verified in software simulation. Whether it is proved on hardware is a separate question, and it
-is the question this survey answers. A trained network that reaches a chip must survive a
-sequence of handoffs, each governed by a different toolchain, a different reset rule, a different
-spike payload, and a different time model, and each handoff can silently break the correspondence
-the algorithm paper established. This survey traces those handoffs. It asks, for the low-<em>T</em>
-conversion literature specifically, whether the correspondence its authors prove reaches physical
-silicon, and if so, by what documented path, or whether the accuracy gains accumulate only in
-simulation while a separate, older deployment literature continues to run a different, frozen
-toolchain on a different, rate-coded model.</p>
+<p>A spiking neural network is not deployable merely because it matches a reference accuracy in
+simulation. Deployment requires a chain of agreements. The trained model defines a neuron,
+reset rule, code, input convention, readout, and time model. A framework must represent those
+semantics. An interchange format, compiler, mapper, runtime, and target must then preserve them
+or make each transformation explicit. Finally, a reported latency, energy, or accuracy must name
+the boundary at which it was observed. A result can be valid at one point in that chain and still
+fail to establish the next.</p>
 
-<h3 id="existing-surveys">1.1 Existing Surveys</h3>
+<p>This survey studies that chain. Its central question is simple. What must remain explicit for a
+trained SNN to become a faithful executable system on a named target, and what evidence establishes
+that this happened? The question applies to both routes into an SNN. Direct training optimizes a
+spiking model. ANN-to-SNN conversion begins with an artificial neural network (ANN) and maps its
+activations into spiking dynamics. The routes differ in optimization and representation, but both
+produce an SNN whose execution semantics must survive the same model-to-device handoffs
+<d-cite key="nunes-2022,eshraghian-2023-training-snns,rathi-2023"></d-cite>.</p>
 
-<p>Prior surveys and adjacent benchmark or interchange studies approach neuromorphic computing through several related lines. Foundational and
-algorithm-centered reviews organize neuron models, coding, training, and ANN-to-SNN conversion
-<a class="cite" data-ref="roy-2019" href="#ref-roy-2019">[roy-2019]</a>, <a class="cite" data-ref="eshraghian-2023" href="#ref-eshraghian-2023">[eshraghian-2023]</a>, <a class="cite" data-ref="rathi-2023" href="#ref-rathi-2023">[rathi-2023]</a>. Hardware-centered surveys describe chips, circuits, and deployment results
-<a class="cite" data-ref="schuman-2017" href="#ref-schuman-2017">[schuman-2017]</a>, <a class="cite" data-ref="davies-2021-loihi" href="#ref-davies-2021-loihi">[davies-2021-loihi]</a>, <a class="cite" data-ref="farsa-2026" href="#ref-farsa-2026">[farsa-2026]</a>. Software and interoperability reviews catalog frameworks, compilers, or
-interchange mechanisms <a class="cite" data-ref="manna-2023" href="#ref-manna-2023">[manna-2023]</a>, <a class="cite" data-ref="huynh-2022" href="#ref-huynh-2022">[huynh-2022]</a>, <a class="cite" data-ref="pedersen-2024-nir" href="#ref-pedersen-2024-nir">[pedersen-2024-nir]</a>. Benchmark and edge-system studies examine what a
-deployment claim should measure <a class="cite" data-ref="yik-2025-neurobench" href="#ref-yik-2025-neurobench">[yik-2025-neurobench]</a>, <a class="cite" data-ref="deng-2025-edgesnn" href="#ref-deng-2025-edgesnn">[deng-2025-edgesnn]</a>.</p>
+<p>The survey is deployment-centered, but it begins as a field-entry reference. A reader cannot
+evaluate a hardware claim without first distinguishing value, state, event, code, time, reset, and
+readout. Nor can a reader compare a conversion method with direct training until the finite-time
+and learning assumptions of each route are clear. Sections 2 through 9 establish that vocabulary
+and the two routes. Sections 10 through 15 test whether the resulting SNN can be represented,
+executed, and measured. Sections 16 through 18 synthesize the evidence and turn it into research
+choices.</p>
 
-<p>We screened 37 works published or circulated between 2017 and 2026. Table 1 compares the 16
-most relevant to the question of how a converted network reaches a named chip. Its columns name
-the deployment topics directly rather than encode them as letters. Full, partial, and mentioned
-describe the depth of coverage, not the validity of a result. A dagger marks scores based on an
-abstract, reference list, or secondary description rather than a confirmed full text.</p>
+<h3 id="scope-and-reader">1.2 Scope and reader</h3>
+
+<p>The intended reader is entering neuromorphic computing, preparing a thesis, selecting a
+deployment path, or interpreting an SNN result that spans algorithms and hardware. The survey
+does not attempt to replace specialist treatments of neuroscience, synaptic plasticity,
+surrogate-gradient theory, event-sensor physics, analog circuit design, or benchmark protocol.
+It gives the deployment-relevant concepts needed to connect these topics. For broad treatments of
+SNN learning, see Nunes et al. and Khan et al., which organize training methods and applications
+in greater depth <d-cite key="nunes-2022,khan-2025"></d-cite>. For event-based sensing and its
+representations, see Gallego et al., which treats the sensing literature beyond the computational
+boundary used here <d-cite key="gallego-2022-event-based-vision"></d-cite>.</p>
+
+<p>Three boundaries control the scope. First, the article distinguishes an algorithmic horizon
+from a hardware tick and from wall-clock latency. A small maximum horizon <em>T</em> is not a
+latency measurement. Second, it distinguishes a neural code from an input convention. Direct
+current injection, for example, is not automatically rate coding. Third, it separates a documented
+toolchain capability from a route exercised by a published model. These distinctions keep an
+algorithmic result, a software claim, and a hardware measurement from being treated as the same
+kind of evidence.</p>
+
+<h3 id="existing-surveys">1.3 Existing surveys and the remaining gap</h3>
+
+<p>We reviewed 37 surveys, tutorials, benchmarks, and adjacent system studies. Every coverage
+record was verified against the available full text. Table 1 retains the complete matrix. Its eight
+display columns compact related topics from the canonical 12-axis coverage record. A cell records
+the depth of a work's coverage, not the reliability of every result it cites. The matrix is a map
+of scope. It is not a league table.</p>
 
 <div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
@@ -55,293 +70,167 @@ abstract, reference list, or secondary description rather than a confirmed full 
 <th class="ctr" data-chip="Routes">Traced chip routes</th>
 </tr></thead>
 <tbody>
-<tr><td>Schuman et al. <d-cite key="schuman-2017"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2017</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Roy et al. <d-cite key="roy-2019"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2019</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Gallego et al. <d-cite key="gallego-2022"></d-cite><br><span class="survey-tag tag-hardware">Sensing</span></td><td class="ctr yr">2019/22</td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Bouvier et al. <d-cite key="bouvier-2019"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2019</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Davies et al. <d-cite key="davies-2021-loihi"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part" title="Covers one platform family in depth. On an axis measuring breadth of platform coverage that is partial, not full. This work is scored as single-chip on the evidence and route axes, and the same reading applies here."><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Tayarani-Najaran et al. <d-cite key="tayarani-2021"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2021</td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Huynh et al. <d-cite key="huynh-2022"></d-cite><br><span class="survey-tag tag-software">Toolchains</span></td><td class="ctr yr">2022</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Schuman et al. <d-cite key="schuman-2022"></d-cite><br><span class="survey-tag tag-methods">Training</span></td><td class="ctr yr">2022</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Yamazaki et al. <d-cite key="yamazaki-2022"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Schuman et al. <d-cite key="schuman-2017-hardware-survey"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2017</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Bouvier et al. <d-cite key="bouvier-2019-hardware-implementations"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2019</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Roy et al. <d-cite key="roy-2019-spike-machine-intelligence"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2019</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Davies et al. <d-cite key="davies-2021-loihi"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Tayarani-Najaran et al. <d-cite key="prior-s31-tayaraninajaran-2021"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Basu et al. <d-cite key="basu-2022"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2022</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Gallego et al. <d-cite key="gallego-2022-event-based-vision"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Huynh et al. <d-cite key="huynh-2022-implementing-snns"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td></tr>
 <tr><td>Ivanov et al. <d-cite key="ivanov-2022"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Basu et al. <d-cite key="basu-2022"></d-cite><br><span class="survey-tag tag-hardware">Circuits</span></td><td class="ctr yr">2022</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Nunes et al. <d-cite key="nunes-2022"></d-cite><br><span class="survey-tag tag-methods">Training</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Nunes et al. <d-cite key="nunes-2022"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Schuman et al. <d-cite key="schuman-2022-opportunities"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2022</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Shrestha et al. <d-cite key="shrestha-2022-models-hardware"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Yamazaki et al. <d-cite key="yamazaki-2022"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
 <tr><td>Zheng et al. <d-cite key="zheng-2022"></d-cite><br><span class="survey-tag tag-methods">Training</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Shrestha et al. <d-cite key="shrestha-2022"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Eshraghian et al. <d-cite key="eshraghian-2023"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Rathi et al. <d-cite key="rathi-2023"></d-cite><br><span class="survey-tag tag-software">Toolchains</span></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Manna et al. <d-cite key="manna-2023"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2023</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Pedersen et al. <d-cite key="pedersen-2024-nir"></d-cite><br><span class="survey-tag tag-software">Interchange</span></td><td class="ctr yr">2024</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Xie et al. <d-cite key="xie-2024"></d-cite><br><span class="survey-tag tag-methods">Training</span></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Zolfagharinejad et al. <d-cite key="epjb-2024"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2024</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Hu et al. <d-cite key="spiking-transformers-2024"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2024</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Al et al. <d-cite key="alabdulwahid-2024"></d-cite><br><span class="survey-tag tag-methods">Training</span></td><td class="ctr yr">2024</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Kudithipudi et al. <d-cite key="kudithipudi-2025"></d-cite><br><span class="survey-tag tag-overview">Ecosystem</span></td><td class="ctr yr">2025</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Deng et al. <d-cite key="deng-2025-edgesnn"></d-cite><br><span class="survey-tag tag-overview">Edge systems</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Yik et al. <d-cite key="yik-2025-neurobench"></d-cite><br><span class="survey-tag tag-evaluation">Benchmark</span></td><td class="ctr yr">2025</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Khan et al. <d-cite key="khan-2025"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2025</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Rashed &amp; Dias <d-cite key="anon-edge-survey"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Ferreira et al. <d-cite key="ferreira-2025"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Gebregiorgis et al. <d-cite key="gebregiorgis-2025"></d-cite><br><span class="survey-tag tag-software">Toolchains</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-full"><span>Full†</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned†</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial†</span></td></tr>
-<tr><td>Ayasi et al. <d-cite key="mdpi-tutorial-2025"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Cimarelli et al. <d-cite key="cimarelli-2025"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2025</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Chen et al. <d-cite key="chips-2026"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>He &amp; Gao <d-cite key="npl-2026"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Luu et al. <d-cite key="luu-2026"></d-cite><br><span class="survey-tag tag-overview">Overview</span></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned†</span></td><td class="cov-ment"><span>Mentioned†</span></td><td class="cov-ment"><span>Mentioned†</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned†</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Caviglia et al. <d-cite key="caviglia-2026"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Du et al. <d-cite key="edge-bench-2026"></d-cite><br><span class="survey-tag tag-evaluation">Benchmark</span></td><td class="ctr yr">2026</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Farsa et al. <d-cite key="farsa-2026"></d-cite><br><span class="survey-tag tag-software">Toolchains</span></td><td class="ctr yr">2026</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Eshraghian et al. <d-cite key="eshraghian-2023-training-snns"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Manna et al. <d-cite key="manna-2023-frameworks"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2023</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Rathi et al. <d-cite key="rathi-2023"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Hu et al. <d-cite key="hu-2024-large-scale-snns"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Pedersen et al. <d-cite key="pedersen-2024-nir"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2024</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Wahid et al. <d-cite key="prior-s30-alabdulwahid-2024"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2024</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Xie et al. <d-cite key="xie-2024"></d-cite><br><span class="survey-tag tag-overview">Overview</span></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Zolfagharinejad et al. <d-cite key="zolfagharinejad-2024-brain-inspired-systems"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2024</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Rashed et al. <d-cite key="anon-edge-survey"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Deng et al. <d-cite key="deng-2025-edgesnn"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Ferreira et al. <d-cite key="ferreira-2025-edge-ai-circuits"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Khan et al. <d-cite key="khan-2025"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Kudithipudi et al. <d-cite key="kudithipudi-2025-neuromorphic-scale"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2025</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Ayasi et al. <d-cite key="prior-s29-ayasi-2025"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Cimarelli et al. <d-cite key="prior-s32-cimarelli-2025"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2025</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Yik et al. <d-cite key="yik-2025-neurobench"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2025</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Chen et al. <d-cite key="chen-2026-neuromorphic-chips"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Gebregiorgis et al. <d-cite key="gebregiorgis-2025-spike-based-overview"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>He et al. <d-cite key="prior-s33-hegao-2026"></d-cite><br><span class="survey-tag tag-methods">Conversion</span></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Luu et al. <d-cite key="prior-s34-luu-2026"></d-cite><br><span class="survey-tag tag-hardware">Hardware</span></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Caviglia et al. <d-cite key="prior-s35-caviglia-2026"></d-cite><br><span class="survey-tag tag-software">Frameworks</span></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Du et al. <d-cite key="prior-s36-du-2026"></d-cite><br><span class="survey-tag tag-evaluation">Deployment</span></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Farsa et al. <d-cite key="prior-s37-farsa-2026"></d-cite><br><span class="survey-tag tag-evaluation">Evaluation</span></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
 <tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td></tr>
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span class="t1-legend-note">† scored from an abstract or a secondary description rather than confirmed full text. Hover a cell carrying a correction for its reason.</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
 </div>
 
+<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
+background needed to understand SNN construction. They compare neuron models, learning rules,
+surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
+conversion method rather than a complete deployment route
+<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
+explains why different training routes produce different constraints. It does not usually trace
+whether those constraints remain representable after export and mapping.</p>
 
-<p>Algorithm-centered reviews explain how networks are trained and converted. Roy et al.,
-Eshraghian et al., Rathi et al., and Yamazaki et al. compare training or conversion methods
-<a class="cite" data-ref="roy-2019" href="#ref-roy-2019">[roy-2019]</a>, <a class="cite" data-ref="eshraghian-2023" href="#ref-eshraghian-2023">[eshraghian-2023]</a>, <a class="cite" data-ref="rathi-2023" href="#ref-rathi-2023">[rathi-2023]</a>, <a class="cite" data-ref="yamazaki-2022" href="#ref-yamazaki-2022">[yamazaki-2022]</a>. Their emphasis establishes the algorithmic context, but it does not
-systematically test whether a particular reset rule, operator set, or timestep convention
-survives the software path to physical hardware.</p>
+<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
+what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
+population, and graded-payload representations impose different state, payload, precision, and
+stopping requirements. The present survey uses these code families as execution contracts in
+Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
+Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
+<d-cite key="auge"></d-cite>.</p>
 
-<p>Hardware-centered reviews provide a different kind of evidence. Schuman et al. and Farsa et al.
-organize platforms and acceleration architectures <a class="cite" data-ref="schuman-2017" href="#ref-schuman-2017">[schuman-2017]</a>, <a class="cite" data-ref="farsa-2026" href="#ref-farsa-2026">[farsa-2026]</a>. Davies et al. report
-measured Loihi results for specific networks and tasks <a class="cite" data-ref="davies-2021-loihi" href="#ref-davies-2021-loihi">[davies-2021-loihi]</a>. Those results are genuine
-precedent for a traceable deployment route. Their platform scope is Loihi, however, so the
-comparison does not establish how the same trained model would behave after retargeting to
-another chip family. A hardware inventory alone cannot answer that portability question.</p>
+<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
+programming models, compilers, and mapping environments. NIR provides an important precedent. It
+makes neural primitives portable enough to compare implementations and exposes semantic
+disagreement across back ends
+<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
+The remaining question is edge-specific. A graph format does not by itself state whether reset,
+delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
+Sections 10 and 11 make those alternatives explicit.</p>
 
-<p>Software and interoperability studies come closest to exposing the handoffs. Manna et al.
-compare SNN frameworks, while Huynh, Balaji, and Das review compiler and mapping tools
-<a class="cite" data-ref="manna-2023" href="#ref-manna-2023">[manna-2023]</a>, <a class="cite" data-ref="huynh-2022" href="#ref-huynh-2022">[huynh-2022]</a>. Huynh et al. cover SentryOS, PACMAN, and SpiNeMap rather than
-jointly evaluating the NxTF, NetX, DynapCNN, and sPyNNaker paths considered here. NIR by
-Pedersen et al. goes further. It states which neuron mechanisms its representation excludes
-and measures divergence across platform implementations <a class="cite" data-ref="pedersen-2024-nir" href="#ref-pedersen-2024-nir">[pedersen-2024-nir]</a>. NIR is therefore a substantive
-precedent for analyzing semantics at a boundary. Its published demonstrations use a small set
-of benchmark graphs, and its primitive specification does not express reset by subtraction.
-The present survey extends this boundary analysis to the reset rule and network structures
-used in ANN-to-SNN conversion. Kudithipudi et al. independently identify the missing
-hardware abstraction and cross-platform compilation scheme <a class="cite" data-ref="kudithipudi-2025" href="#ref-kudithipudi-2025">[kudithipudi-2025]</a>. Their diagnosis
-supports the need for a comparative route analysis, but does not itself supply one.</p>
+<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
+applications. A platform-focused account can provide deep measured evidence for one target. Davies
+et al., for example, document Loihi results across several workloads. Broader hardware surveys
+compare implementation approaches and design constraints
+<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
+Neither strength establishes that a model definition or compiler route transfers unchanged across
+platform families. Sections 12 and 13 therefore compare execution models through common contract
+fields before evaluating any named route.</p>
 
-<p>Evaluation-centered work offers a further precedent. NeuroBench and the EdgeSNN survey
-separate hardware-independent algorithm proxies from measurements made on deployed systems
-<a class="cite" data-ref="yik-2025-neurobench" href="#ref-yik-2025-neurobench">[yik-2025-neurobench]</a>, <a class="cite" data-ref="deng-2025-edgesnn" href="#ref-deng-2025-edgesnn">[deng-2025-edgesnn]</a>. That distinction is valuable. It also leaves documented but
-unexercised software paths, hardware models without silicon, and software-only accuracy
-experiments inside broad categories. NeuroBench defines a benchmark protocol for future
-submissions. The present survey instead grades specific claims already published, allowing
-one paper to contribute different evidence classes for different results.</p>
+<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
+an essential separation between hardware-independent proxy evaluation and hardware-aware or
+physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
+reviews show the breadth of vision, audio, control, and other workloads
+<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
+classify each published claim by physical execution, documented path, model, or simulation, and
+they do not require a named edge-by-edge route from a trained network to a target. This survey
+bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
+and an explicit measurement boundary.</p>
 
-<p>The gap is therefore specific. Prior work covers training, hardware, software, and
-measurement, and NIR, Davies et al., Huynh et al., NeuroBench, and EdgeSNN each address part of
-the deployment question. The missing synthesis is a comparison of named toolchain boundaries,
-with explicit execution semantics and evidence grades, that follows a converted network as
-far as the published record permits. An absent route is recorded as an absent route rather
-than inferred from a list of compatible-looking components.</p>
+<p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
+address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
+the same questions of every route. What is mathematically defined? What can the software
+represent? What does the target execute? What was measured, where, and against which baseline?
+The answer may be a physical route, a transformed route, a blocked route, or an unexercised
+documented path. Each answer remains useful when its evidence boundary is stated.</p>
 
-<h3 id="contributions">1.2 Contributions</h3>
+<h3 id="evidence-guide">1.4 Evidence guide</h3>
 
-<p>This survey makes three contributions, each stated so that it can be checked against the evidence
-above and against the field's own published record.</p>
+<p>A benchmark protocol separates physical evaluation from a proxy so that a future submission can
+report both honestly. A literature survey has a different task. It must classify claims already in
+print, including the route evidence that surrounds an accuracy, energy, or latency result. The
+five classes below refine that distinction. They apply to a claim, not to an entire paper. One
+paper can therefore contain an E5 accuracy result and an E3 documented route, or an E2 fidelity
+result without an energy measurement. The classes are not quality grades.</p>
 
-<p><strong>A cross-toolchain taxonomy of the deployment edges.</strong> No prior survey treats the handoff between
-a trained model and a target chip as a set of typed facts, mechanism, what is preserved, what
-breaks, a primary source, and an evidence grade, across the toolchain families a converted SNN
-would actually need to cross: NxTF, Lava's NetX, the DynapCNN mapper, and sPyNNaker. Huynh, Balaji,
-and Das <a class="cite" data-ref="huynh-2022" href="#ref-huynh-2022">[huynh-2022]</a> cover a different toolchain family under the same axis; no located survey
-covers these four together. This survey's taxonomy fills that specific absence, not a general
-absence of compiler or software-ecosystem discussion.</p>
-
-<div class="keypoint">
-<p><strong>A five-way evidence classification (<span class="ev ev-e1">E1</span> through <span class="ev ev-e5">E5</span>) applied to a literature, not to a benchmark
-protocol.</strong> NeuroBench <a class="cite" data-ref="yik-2025-neurobench" href="#ref-yik-2025-neurobench">[yik-2025-neurobench]</a> and the EdgeSNN survey <a class="cite" data-ref="deng-2025-edgesnn" href="#ref-deng-2025-edgesnn">[deng-2025-edgesnn]</a> establish a
-two-way physical-versus-proxy split as a forward-looking submission standard. This survey applies a
-finer, five-way split, physical silicon with full measurement (<span class="ev ev-e1">E1</span>), physical silicon with accuracy
-only (<span class="ev ev-e2">E2</span>), a documented but unexercised toolchain path (<span class="ev ev-e3">E3</span>), a hardware model without silicon (<span class="ev ev-e4">E4</span>),
-and pure software simulation (<span class="ev ev-e5">E5</span>), retrospectively, to grade claims already in print. The same
-paper can occupy two classes at once for two different claims, which a coarser or forward-only
-protocol cannot represent.</p>
+<div class="ptable-wrap" id="table-evidence-classes">
+<table class="ptable">
+<caption><b>Table 2:</b> Evidence classes for individual deployment claims.</caption>
+<thead><tr><th class="ctr">Class</th><th>Meaning</th><th>What it does not establish</th></tr></thead>
+<tbody>
+<tr><td class="ctr"><span class="ev ev-e1">E1</span></td><td>Physical hardware with measured latency, energy, power, or system performance.</td><td>Equivalence to a different platform, workload, or boundary.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e2">E2</span></td><td>Physical hardware with accuracy or fidelity measurement only.</td><td>Measured latency, power, or energy.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e3">E3</span></td><td>A documented but unexercised deployment route.</td><td>A published run of the model across that route.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e4">E4</span></td><td>A hardware model, RTL synthesis, or cycle-level simulation without fabricated silicon.</td><td>Physical execution.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e5">E5</span></td><td>Software simulation, an analytical proxy, or algorithm-only evidence.</td><td>A hardware capability or deployment measurement.</td></tr>
+</tbody>
+</table>
 </div>
 
-<div class="keypoint">
-<p><strong>A structural claim about a two-population field, with a tested refinement.</strong> Algorithm papers in
-the low-<em>T</em> conversion lineage advance accuracy and never deploy their own method to silicon; 0 of
-13 QCFS-lineage papers checked directly report their own conversion running on a named chip.
-Deployment papers reach silicon and do not use the recent algorithms; every hardware-deployment
-paper checked routes through the classical SNN Toolbox pipeline or direct training, and SNN
-Toolbox's own development record ends within months of the point where the low-<em>T</em> literature
-began accelerating (last release March 2021, last substantive commit August 2022). The refinement,
-tested rather than assumed, is that every confirmed instance of a new conversion method reaching
-physical silicon abandons rate coding for a platform-native code: Quartz <a class="cite" data-ref="lenz-2023-quartz" href="#ref-lenz-2023-quartz">[lenz-2023-quartz]</a> uses
-single-spike time-to-first-spike coding on Loihi 1, and Brehove et al. <a class="cite" data-ref="brehove-2026" href="#ref-brehove-2026">[brehove-2026]</a> uses Loihi
-2's native graded sigma-delta spikes. <strong>The falsifier is explicit and was searched for
-deliberately</strong>: a paper that both proposes a new low-<em>T</em>, rate-coded conversion method and deploys
-it to physical silicon with measurement would weaken this claim. None was found.</p>
-</div>
+<p>The classes prevent several recurring substitutions. Fewer timesteps do not prove lower
+wall-clock latency. Fewer spikes do not prove lower energy. A lower operation count does not prove
+lower measured power. A documented exporter does not prove that a published model reached silicon.
+Sections 4, 11, and 14 define the terms needed to make these differences operational. The evidence
+guide then remains fixed throughout the article.</p>
 
-<p>Two qualifications belong alongside the claim rather than beneath it, because they were found by
-the same search that confirmed the claim and they sharpen rather than soften it. First, QCFS itself
-<a class="cite" data-ref="bu-2022-qcfs" href="#ref-bu-2022-qcfs">[bu-2022-qcfs]</a> cites two physical-hardware papers, Massa et al. 2020 and Singh et al. 2021, in its
-related work, correctly, as acknowledged prior art rather than as throat-clearing motivation. Of
-the thirteen QCFS-lineage descendants audited against their full text, twelve revert to citing
-chip-architecture papers only in the introduction, as generic motivation, never as prior deployment
-work and never in a methods or experiments section. QCFS is the single exception, not the rule.
-Second, a rate-coded QCFS and SRP baseline has, in one instance, been measured on physical
-neuromorphic silicon, a Lynxi HP201 accelerator, but only as a comparison row inside a later,
-unrelated paper, Adaptive Fission (Jiang et al., NeurIPS 2025), whose own algorithmic contribution
-is population coding, itself a departure from plain rate coding. The defensible form of the claim
-is therefore that no QCFS-lineage paper deploys its own method to silicon, and the one occasion a
-rate-coded QCFS or SRP configuration reached silicon required a different paper's rate-coding
-departure to motivate the run.</p>
+<h3 id="survey-contributions">1.5 What this survey contributes</h3>
 
-<h4 id="evidence-classes">Evidence classes</h4>
-<p>Applied to every edge in the stack and to every published result. E3 is a distinct class and not a weaker E2, because a documented backend and a published run are different facts. E4 is not a failure grade, because synthesized RTL is real evidence for a design even when no accessible platform executes it. A single paper may hold two classes for two different claims, and is recorded that way rather than flattened to one.</p>
-      <div class="ptable-wrap" id="table-evidence-classes">
-        <table class="ptable">
-          <caption><b>Table 2:</b> The five evidence classes, applied to every edge in the stack and to every published result.</caption>
-<thead><tr><th class="ctr">Class</th><th>Meaning</th></tr></thead>
-          <tbody>
-            <tr><td class="ctr"><span class="ev ev-e1">E1</span></td><td>Physical silicon, measured. Ran on the chip, with latency and/or energy measured on hardware.</td></tr>
-            <tr><td class="ctr"><span class="ev ev-e2">E2</span></td><td>Physical silicon, accuracy or fidelity only. Ran on the chip, with no hardware latency or energy measurement reported.</td></tr>
-            <tr><td class="ctr"><span class="ev ev-e3">E3</span></td><td>Documented path, unexercised. An official toolchain edge exists and is documented, but no published run of this model class traverses it.</td></tr>
-            <tr><td class="ctr"><span class="ev ev-e4">E4</span></td><td>Hardware model. RTL synthesis, cycle-accurate simulation, or an analytical energy model. No silicon.</td></tr>
-            <tr><td class="ctr"><span class="ev ev-e5">E5</span></td><td>Software simulation. Accuracy versus T on GPU, possibly with operation counts.</td></tr>
-          </tbody>
-        </table>
-      </div>
+<p>The first contribution is an explanatory path from computation and representation to deployment
+evidence. It gives direct training and conversion a common destination rather than treating them
+as separate fields. The destination is the deployable SNN contract. It records the semantic fields
+that must be defined mathematically, represented in software, and faithfully executed on a target.</p>
 
-<h3 id="organization">1.3 Organization</h3>
+<p>The second contribution is a claim-level evidence framework. E1 through E5 distinguish physical
+measurement, physical fidelity, documented route, hardware model, and software evidence without
+collapsing them into a paper-level label. The framework is paired with a typed route vocabulary.
+Every edge records its input, output, preserved and transformed semantics, rejected features,
+route state, source, and evidence limit.</p>
 
-<p>Section 2 establishes the preliminaries: the biological motivation, the IF and LIF neuron models
-and the two competing reset rules, the family of neural codes from rate through sigma-delta, the
-activation-to-spike-count correspondence that gives conversion its formal grounding, and the
-execution contracts, time model, spike payload, and precision, that Section 6 later measures
-platforms against. Section 3 covers the two primary training paths, direct training and classical
-ANN-to-SNN conversion. Section 4 covers the advanced conversion techniques that reduced <em>T</em> from
-the classical literature's hundreds of steps to single digits: low-latency conversion,
-quantization- and distribution-aware conversion, mixed-timestep and per-layer allocation, and
-hardware-aware co-design. Section 5 covers the alternative, non-rate codes, temporal and
-time-to-first-spike, phase and weighted-slot, and differential and sigma-delta payloads, the
-representations the refined structural claim in Section 1.2 identifies as the ones that reach
-silicon. Section 6 is the hardware and software deployment stack itself: platforms, training and
-simulation frameworks, export and compilation, runtime and host I/O, and the documented routes that
-connect them, the taxonomy this survey's first contribution builds. Section 7 collects applications
-and deployment evidence by platform family, Loihi, DYNAP-CNN and Speck, SpiNNaker and BrainScaleS,
-and FPGA and custom ASIC implementations, closing with a cross-case evidence table graded by the
-five-way classification from Section 1.2's second contribution. Section 8 states the open
-challenges the stack argument exposes, operator coverage, reset-semantics mismatch, encoding and
-readout cost, time-model mismatch, the absence of an execution model for per-layer timestep
-horizons, incomparable efficiency claims across measurement boundaries, device availability, and
-the general portability gap. Section 9 concludes.</p>
+<p>The third contribution is a deployment synthesis organized around routes and measurement
+boundaries. Platform capabilities are interpreted through official documentation, SDKs, mapper
+constraints, development kits, release notes, and examples. Applications are then grouped by
+workload rather than by vendor. This organization lets a reader compare what was actually executed
+and measured without assuming that a device family, a simulator, and a deployment route are
+interchangeable.</p>
 
-<h3 id="references">References</h3>
+<p>These tools motivate a question that the evidence synthesis will test rather than answer here.
+Recent low-timestep conversion papers improve finite-window accuracy in simulation. Do their own
+methods reach named physical silicon with measurement, or does deployment proceed through older
+pipelines, directly trained models, or platform-native codes? Section 16 gives the counting policy,
+falsifier, counterexamples, and qualifications. Section 1 deliberately does not present that
+result in advance.</p>
 
-<ul class="refs" id="refs-01">
-<li id="ref-pedersen-2024-nir" data-ref="pedersen-2024-nir">Pedersen, J. E. et al. &quot;Neuromorphic intermediate representation: a unified
-instruction set for interoperable brain-inspired computing.&quot; <em>Nature Communications</em> 15, 8122
-(2024). https://doi.org/10.1038/s41467-024-52259-9. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-kudithipudi-2025" data-ref="kudithipudi-2025">Kudithipudi, D. et al. &quot;Neuromorphic computing at scale.&quot; <em>Nature</em> 637,
-801-812 (2025). https://doi.org/10.1038/s41586-024-08253-8. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-deng-2025-edgesnn" data-ref="deng-2025-edgesnn">Deng, S. et al. &quot;Edge Intelligence with Spiking Neural Networks.&quot;
-arXiv:2507.14069 (2025). <span class="src-type">preprint</span></li>
-<li id="ref-yik-2025-neurobench" data-ref="yik-2025-neurobench">Yik, J. et al. &quot;The NeuroBench framework for benchmarking neuromorphic
-computing algorithms and systems.&quot; <em>Nature Communications</em> 16, 1545 (2025).
-https://doi.org/10.1038/s41467-025-56739-4. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-davies-2021-loihi" data-ref="davies-2021-loihi">Davies, M. et al. &quot;Advancing Neuromorphic Computing With Loihi: A Survey of
-Results and Outlook.&quot; <em>Proceedings of the IEEE</em> 109(5), 911-934 (2021).
-https://doi.org/10.1109/JPROC.2021.3067593. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-huynh-2022" data-ref="huynh-2022">Huynh, P. K., Varshika, M. L., Paul, A., Isik, M., Balaji, A., Das, A. &quot;Implementing
-Spiking Neural Networks on Neuromorphic Architectures: A Review.&quot; arXiv:2202.08897 (2022).
-<span class="src-type">preprint</span></li>
-<li id="ref-schuman-2022" data-ref="schuman-2022">Schuman, C. D. et al. &quot;Opportunities for neuromorphic computing algorithms and
-applications.&quot; <em>Nature Computational Science</em> 2, 10-19 (2022).
-https://doi.org/10.1038/s43588-021-00184-y. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-schuman-2017" data-ref="schuman-2017">Schuman, C. D. et al. &quot;A Survey of Neuromorphic Computing and Neural Networks in
-Hardware.&quot; arXiv:1705.06963 (2017). <span class="src-type">preprint</span></li>
-<li id="ref-roy-2019" data-ref="roy-2019">Roy, K., Jaiswal, A., Panda, P. &quot;Towards spike-based machine intelligence with
-neuromorphic computing.&quot; <em>Nature</em> 575, 607-617 (2019). https://doi.org/10.1038/s41586-019-1677-2.
-<span class="src-type">peer-reviewed</span></li>
-<li id="ref-eshraghian-2023" data-ref="eshraghian-2023">Eshraghian, J. K. et al. &quot;Training Spiking Neural Networks Using Lessons From
-Deep Learning.&quot; <em>Proceedings of the IEEE</em> 111(9) (2023).
-https://doi.org/10.1109/JPROC.2023.3308088. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-rathi-2023" data-ref="rathi-2023">Rathi, N. et al. &quot;Exploring Neuromorphic Computing Based on Spiking Neural Networks:
-Algorithms to Hardware.&quot; <em>ACM Computing Surveys</em> 55(12), Art. 243 (2023).
-https://doi.org/10.1145/3571155. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-yamazaki-2022" data-ref="yamazaki-2022">Yamazaki, K., Vo-Ho, V.-K., Bulsara, D., Le, N. &quot;Spiking Neural Networks and Their
-Applications: A Review.&quot; <em>Brain Sciences</em> 12(7), 863 (2022).
-https://doi.org/10.3390/brainsci12070863. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-ivanov-2022" data-ref="ivanov-2022">Ivanov, D., Chezhegov, A., Kiselev, M., Grunin, A., Larionov, D. &quot;Neuromorphic
-artificial intelligence systems.&quot; <em>Frontiers in Neuroscience</em> 16, 959626 (2022).
-https://doi.org/10.3389/fnins.2022.959626. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-basu-2022" data-ref="basu-2022">Basu, A., Frenkel, C., Deng, L., Zhang, X. &quot;Spiking Neural Network Integrated
-Circuits: A Review of Trends and Future Directions.&quot; <em>IEEE CICC 2022</em>.
-https://doi.org/10.1109/CICC53496.2022.9772783. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-nunes-2022" data-ref="nunes-2022">Nunes, J. D., Carvalho, M., Carneiro, D., Cardoso, J. S. &quot;Spiking Neural Networks: A
-Survey.&quot; <em>IEEE Access</em> 10, 60738-60764 (2022). https://doi.org/10.1109/ACCESS.2022.3179968.
-<span class="src-type">peer-reviewed</span></li>
-<li id="ref-khan-2025" data-ref="khan-2025">Khan, A. H. et al. &quot;Spiking Neural Networks: A Comprehensive Survey of Training
-Methodologies, Hardware Implementations and Applications.&quot; <em>Artificial Intelligence Science and
-Engineering</em> (2025). https://doi.org/10.23919/aise.2025.000013. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-zheng-2022" data-ref="zheng-2022">Zheng, S. et al. &quot;An Introductory Review of Spiking Neural Network and Artificial
-Neural Network.&quot; <em>CS &amp; IT-CSCP 2022</em>, 129-145. https://doi.org/10.5121/csit.2022.121010.
-<span class="src-type">peer-reviewed</span></li>
-<li id="ref-anon-edge-survey" data-ref="anon-edge-survey">Rashed, A., Dias, J. "Towards Neuromorphic Computing on Edge: A Survey on Efficient Techniques for Spiking Neural Networks." EdgeAI4R workshop poster (2025). https://openreview.net/forum?id=WuiVAPrgi3 <span class="src-type">peer-reviewed (workshop)</span></li>
-<li id="ref-xie-2024" data-ref="xie-2024">Xie, H., Yang, G., Gao, W. &quot;Toward Efficient Deep Spiking Neuron Networks: A Survey on
-Compression.&quot; Springer, ISBN 978-981-97-6125-8 (2024). <span class="src-type">peer-reviewed</span> (book chapter)</li>
-<li id="ref-ferreira-2025" data-ref="ferreira-2025">Ferreira, P. M., Wang, S., Gao, Y., Benlarbi-Delai, A. &quot;A comparative review of
-deep and spiking neural networks for edge AI neuromorphic circuits.&quot; <em>Frontiers in Neuroscience</em>
-19, 1676570 (2025). https://doi.org/10.3389/fnins.2025.1676570. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-manna-2023" data-ref="manna-2023">Manna, D. L., Vicente, A., Kirkland, P., Bihl, T., Di Caterina, G. &quot;Frameworks for
-SNNs: a Review of Data Science-oriented Software and an Expansion of SpykeTorch.&quot;
-arXiv:2302.07624 (2023). <span class="src-type">preprint</span></li>
-<li id="ref-gallego-2022" data-ref="gallego-2022">Gallego, G. et al. &quot;Event-based Vision: A Survey.&quot; <em>IEEE TPAMI</em> 44(1), 154-180
-(2022; arXiv 2019). https://doi.org/10.1109/TPAMI.2020.3008413. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-gebregiorgis-2025" data-ref="gebregiorgis-2025">Gebregiorgis, A. et al. &quot;Spike-based neuromorphic computing: An overview from
-bio-inspiration to hardware architectures and learning mechanisms.&quot; <em>Microprocessors and
-Microsystems</em> (2025). https://doi.org/10.1016/j.micpro.2025.105240. <span class="src-type">peer-reviewed</span>. Scores marked
-<code>&#8224;</code> are assessed from abstract and reference list only, not independently confirmed against full
-text.</li>
-<li id="ref-bouvier-2019" data-ref="bouvier-2019">Bouvier, M. et al. &quot;Spiking neural networks hardware implementations and
-challenges: A survey.&quot; <em>ACM JETC</em> 15(2), 1-35 (2019). <span class="src-type">peer-reviewed</span>. Score pulled from citation
-context in later work, not independently fetched in full.</li>
-<li id="ref-shrestha-2022" data-ref="shrestha-2022">Shrestha, A. et al. &quot;A Survey on Neuromorphic Computing: Models and Hardware.&quot;
-<em>IEEE Circuits and Systems Magazine</em> 22(2), 6-35 (2022). https://doi.org/10.1109/MCAS.2022.3166331.
-<span class="src-type">peer-reviewed</span>. Score pulled from citation context in later work, not independently fetched in
-full.</li>
-<li id="ref-chips-2026" data-ref="chips-2026">Chen, G., Xu, M., Chen, Y., Yuan, F., Qin, L., Ren, J. "A New Era in Computing: A Review of Neuromorphic Computing Chip Architecture and Applications." <em>Chips</em> 5(1):3 (2026). https://doi.org/10.3390/chips5010003 <span class="src-type">peer-reviewed</span></li>
-<li id="ref-epjb-2024" data-ref="epjb-2024">Zolfagharinejad, M., Alegre-Ibarra, U., Chen, T., Kinge, S., van der Wiel, W. G. "Brain-inspired computing systems: a systematic literature review." <em>The European Physical Journal B</em> 97:70 (2024). https://doi.org/10.1140/epjb/s10051-024-00703-6 <span class="src-type">peer-reviewed</span></li>
-<li id="ref-spiking-transformers-2024" data-ref="spiking-transformers-2024">Hu, Y., Zheng, Q., Li, G., Tang, H., Pan, G. "Toward Large-scale Spiking Neural Networks: A Comprehensive Survey and Future Directions." arXiv:2409.02111 (2024). https://arxiv.org/abs/2409.02111 <span class="src-type">preprint</span></li>
-<li id="ref-mdpi-tutorial-2025" data-ref="mdpi-tutorial-2025">Ayasi, B., Carmona, C. J., Saleh, M., Garc&iacute;a-Vico, A. M. "A Practical Tutorial on Spiking Neural Networks: Comprehensive Review, Models, Experiments, Software Tools, and Implementation Guidelines." <em>Eng</em> 6(11):304 (2025). https://doi.org/10.3390/eng6110304 <span class="src-type">peer-reviewed</span></li>
-<li id="ref-alabdulwahid-2024" data-ref="alabdulwahid-2024">Al Abdul Wahid, S., Asad, A., Mohammadi, F. &quot;A Survey on Neuromorphic
-Architectures for Running Artificial Intelligence Algorithms.&quot; <em>Electronics</em> 13(15), 2963 (2024).
-https://doi.org/10.3390/electronics13152963. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-tayarani-2021" data-ref="tayarani-2021">Tayarani-Najaran, M.-H., Schmuker, M. &quot;Event-Based Sensing and Signal Processing
-in the Visual, Auditory, and Olfactory Domain: A Review.&quot; <em>Frontiers in Neural Circuits</em> 15,
-610446 (2021). https://doi.org/10.3389/fncir.2021.610446. <span class="src-type">peer-reviewed</span></li>
-<li id="ref-cimarelli-2025" data-ref="cimarelli-2025">Cimarelli, C. et al. &quot;Hardware, Algorithms, and Applications of the Neuromorphic
-Vision Sensor: a Review.&quot; arXiv:2504.08588 (2025). <span class="src-type">preprint</span></li>
-<li id="ref-npl-2026" data-ref="npl-2026">He, H., Gao, S. "A Four-Stage Structural Evolution Framework for Spiking Neural Networks: A Review and Perspective from Binary ANN to Event-Driven Models." <em>Neural Processing Letters</em> 58(1):14 (2026). https://doi.org/10.1007/s11063-025-11832-z <span class="src-type">peer-reviewed</span></li>
-<li id="ref-luu-2026" data-ref="luu-2026">Luu, N. T., Luu, D. T., Nam, P. N., Thang, T. C. &quot;A Survey on Spiking Neural Network
-Foundation and Recent Progress.&quot; IEEE (2026), document 11488853. <span class="src-type">peer-reviewed</span>. Recorded from a
-vault note; underlying PDF not independently retrieved, all scores marked <code>&#8224;</code>.</li>
-<li id="ref-caviglia-2026" data-ref="caviglia-2026">Caviglia, A. et al. &quot;NeuroTrain: Surveying Local Learning Rules for SNNs with an
-Open Benchmarking Framework.&quot; arXiv:2605.15058 (2026). <span class="src-type">preprint</span>. Full text not independently retrieved;
-underlying PDF not independently retrieved.</li>
-<li id="ref-edge-bench-2026" data-ref="edge-bench-2026">Du, X., Yu, D., Lv, C., Zhang, Y., Chen, Z., Tong, W., Zheng, H., Zhang, W., Zhao, X., Jiang, L., Ji, S., Fang, H., Zheng, X., Pan, G., Deng, S. "Benchmarking spiking neural networks across sensing modalities on edge devices." arXiv:2609.00026 (2026). https://arxiv.org/abs/2609.00026 <span class="src-type">preprint</span></li>
-<li id="ref-farsa-2026" data-ref="farsa-2026">Farsa, E. Z. et al. &quot;GPU and RISC-V acceleration for neuromorphic computing based on
-SNNs: taxonomy, comparison, and open challenges.&quot; <em>Neuromorphic Computing and Engineering</em>,
-accepted manuscript (2026). https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb.
-<span class="src-type">peer-reviewed</span>. Full text not independently retrieved.</li>
-<li id="ref-bu-2022-qcfs" data-ref="bu-2022-qcfs">Bu, T., Fang, W., Ding, J., Dai, P., Yu, Z., Huang, T. &quot;Optimal ANN-SNN Conversion
-for High-accuracy and Ultra-low-latency Spiking Neural Networks.&quot; ICLR 2022, arXiv:2303.04347.
-<span class="src-type">peer-reviewed</span> (conference)</li>
-<li id="ref-lenz-2023-quartz" data-ref="lenz-2023-quartz">Lenz, G., Orchard, G., Sheik, S. &quot;Ultra-low-power Image Classification on
-Neuromorphic Hardware.&quot; arXiv:2309.16795 (2023-2024). <span class="src-type">preprint</span></li>
-<li id="ref-brehove-2026" data-ref="brehove-2026">Brehove, T., Tumpa, S. N., Kyubwa, E., Menon, A., Narayanan, V. &quot;Sigma-Delta
-Neural Network Conversion on Loihi 2.&quot; ICONS 2026, arXiv:2505.06417. <span class="src-type">peer-reviewed</span> (conference)</li>
-<li id="ref-jiang-2025-adaptive-fission" data-ref="jiang-2025-adaptive-fission">Jiang, Y. et al. &quot;Adaptive Fission.&quot; NeurIPS 2025 proceedings.
-<span class="src-type">peer-reviewed</span> (conference). Code repository
-https://github.com/JiangYizhou16/Adaptive-Fission is repository state, not independently
-re-verified.</li>
-</ul>
+<h3 id="survey-roadmap">1.6 Reading roadmap</h3>
+
+<p>Sections 2 through 4 define computation, state, neuron and synapse dynamics, temporal semantics,
+codes, and decoding. Sections 5 and 6 introduce the learning fork and bound direct-training detail.
+Sections 7 through 9 derive classical ANN-to-SNN conversion, locate its finite-time errors, and
+organize remedies by intervention. Section 10 defines the deployable SNN contract. Sections 11
+through 13 follow that contract through software, hardware execution models, and complete routes.
+Sections 14 and 15 define measurement before organizing deployment evidence by workload. Sections
+16 through 18 state what the evidence shows, derive open problems from failed contract edges, and
+provide a researcher entry guide.</p>
+
+<p>The next three sections establish the vocabulary that every later deployment claim requires.
+They distinguish value, state, event, time, and code before a platform or conversion method is
+asked to preserve them.</p>

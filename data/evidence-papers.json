@@ -820,12 +820,12 @@
       "url": "https://arxiv.org/abs/2505.01730",
       "population": "algorithm",
       "family": "mixed-timestep",
-      "method_summary": "PASC-IF neuron proved mathematically equivalent to a QCFS-activated ANN at any uniform T; Adaptive Layerwise (AL) assigns a per-layer quantization step L, producing an effective timestep T_eff (the worked example for two evidence classes in one paper).",
+      "method_summary": "PASC-IF is paired with a static per-layer Adaptive Layerwise horizon. Its reported T_eff is an energy-overhead-weighted layer statistic rather than measured latency.",
       "neuron": "PASC-IF (spike accumulation, soft reset, excitatory + inhibitory spikes)",
       "reset": "soft reset (not subtractive/hard)",
       "encoding": "spike-count based (not classic rate coding)",
       "input_encoding": "inherits QCFS activation/encoding convention",
-      "timesteps": "T_eff ~= 2.13-12.94 (layerwise-adaptive); uniform-T baseline 64-1024",
+      "timesteps": "T_eff 2.13-12.94 as an analytical layer statistic. The released ResNet-18/CIFAR-10 T_eff=3.14 script silently truncates 17 listed layer horizons to 10 coefficients through zip().",
       "datasets": [
         "CIFAR-10",
         "CIFAR-100",
@@ -833,9 +833,9 @@
       ],
       "toolchain": "custom PyTorch (BrainSeek-Lab/PASCAL)",
       "target_hardware": "none for the T_eff headline; custom in-house LoAS/SparTen-based accelerator (RTL synthesis) for the uniform-T=4 neuron-overhead check",
-      "what_was_measured": "uniform T=4 PASC-IF neuron overhead vs standard IF neuron (energy, latency), synthesized at 40nm/560MHz with a cycle-accurate simulator; T_eff=3.14 mixed-timestep headline computed via an analytical operation-count model",
+      "what_was_measured": "E4 RTL synthesis and cycle simulation cover only uniform T=4 PASC-IF overhead. Mixed-horizon accuracy and T_eff remain software and analytical results.",
       "evidence": "E4",
-      "evidence_notes": "Appendix A.10 uses Synopsys Design Compiler (40nm CMOS, 560 MHz) plus a cycle-accurate simulator (LoAS/SparTen-based) to check PASC-IF neuron overhead at a single, uniform T=4 design point (VGG-16, CIFAR-10 only); a hardware model, not fabricated silicon.",
+      "evidence_notes": "Appendix A.10 is E4 for VGG-16/CIFAR-10 at uniform T=4. It does not validate Adaptive Layerwise mixed-horizon execution. The published T_eff=3.14 result has an unresolved 17-layer-to-10-coefficient cardinality conflict in the released script.",
       "secondary_evidence": "E5",
       "secondary_evidence_notes": "The headline T_eff=3.14 (ResNet-18/CIFAR-10) mixed-timestep result rests entirely on an analytical operation-count model (Table 4/5); the RTL synthesis in A.10 validates only the uniform-T PASC-IF neuron overhead, never the Adaptive Layerwise mixed-timestep execution model itself.",
       "cites_hardware_where": "appendix only (A.10 Hardware Quantification); acknowledgments separately credit unreported benchmarking on 'neuromorphic architectural simulators' (also not physical silicon)",
@@ -922,11 +922,11 @@
       "datasets": [
         "not found (exact benchmark set not detailed in audit excerpt)"
       ],
-      "toolchain": "Loihi 2 SDNN toolchain",
-      "target_hardware": "Intel Loihi 2 (physical multi-chip boards, Oheo Gulch)",
-      "what_was_measured": "latency and energy-delay product measured on physical chip, compared against NVIDIA Jetson Xavier",
+      "toolchain": "nxkernel 0.3.0 with modified Loihi 2 microcode",
+      "target_hardware": "in-house 16-chip Intel Loihi 2 VPX development board",
+      "what_was_measured": "chip-probe latency, throughput, power, energy per frame, and EDP under ordinary-I/O and on-chip-replay conditions",
       "evidence": "E1",
-      "evidence_notes": "Latency and EDP measured on the actual chip in the field; demonstrates E1 is achievable for a non-rate-coded ANN-to-SNN conversion paradigm.",
+      "evidence_notes": "E1. Host-side input-delta generation and output accumulation or decoding remain outside the neurocores. The Jetson comparison uses whole-SoC power and is not boundary-identical.",
       "cites_hardware_where": "methods and experiments (this is itself a hardware paper)",
       "abandons_rate_coding": true,
       "sources": [
@@ -942,7 +942,7 @@
       "url": "https://openreview.net/forum?id=D4sQzdMvcG",
       "population": "algorithm",
       "family": "mixed-timestep",
-      "method_summary": "Proves IF timesteps equivalent to matched-precision quantized ANN activation levels; trains mixed-precision per-layer bit-width ANNs, converts to mixed-timestep SNNs with a temporal-alignment step.",
+      "method_summary": "QAC maps learned per-layer activation quantization settings to static layerwise timestep counts and aligns adjacent layers by temporal averaging and repetition.",
       "neuron": "IF, soft reset",
       "reset": "subtraction",
       "encoding": "rate",
@@ -954,31 +954,29 @@
       ],
       "toolchain": "custom PyTorch (LSQ-style quantizer)",
       "target_hardware": "none",
-      "what_was_measured": "accuracy vs mean timestep in software simulation",
+      "what_was_measured": "software accuracy against the arithmetic mean of layerwise timestep counts",
       "evidence": "E5",
-      "evidence_notes": "All accuracy/T_eff results are software simulation; the paper's own Section 4.2 argues uniform-T SNN cost scales as O(NT), a sum/product over layers, yet reports the mixed-timestep result as a mean without reconciling the two framings.",
-      "cites_hardware_where": "appendix (7.7 Hardware Efficiency Analysis) describes execution models qualitatively, including an explicit acknowledgment that mixed-timestep SNNs cause pipeline stalling on barrier-synchronized multi-core hardware (TrueNorth/Loihi-style); no RTL synthesis, simulator, or chip run performed",
-      "secondary_evidence": "E3",
-      "secondary_evidence_notes": "Section 7.7 documents the execution model and its own predicted failure mode (pipeline stalling) but performs no run; Section 7.8 energy is an analytical back-of-envelope model (Horowitz 2014 per-op constants), not synthesized or simulated hardware.",
+      "evidence_notes": "E5 only. The average timestep is neither elapsed time nor cycle count. Section 7.7 is qualitative and warns of pipeline stalls. No compiler, mapper, simulator, RTL, or physical processor executes the proposal.",
+      "cites_hardware_where": "Appendix Section 7.7 discusses two execution models qualitatively. Section 7.8 is Time Step vs. Bit Width and contains no energy analysis.",
       "sources": [
         "qac"
       ]
     },
     {
-      "id": "mt-snn",
-      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
-      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
       "year": 2026,
-      "venue": "Frontiers in Neuroscience (originally submitted to ICLR 2026, withdrawn)",
-      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/full",
+      "venue": "Withdrawn ICLR 2026 submission",
+      "url": "https://openreview.net/pdf?id=4dwAZRr9L5",
       "population": "algorithm",
       "family": "mixed-timestep",
-      "method_summary": "Successor to QAC; per-layer optimally selected timestep jointly optimized with quantization levels and firing thresholds, using Scaled Synaptic Current Accumulation (SSCA) for temporal alignment, reaching 73.63% top-1 ImageNet at 4.88 average timesteps.",
+      "method_summary": "The withdrawn ICLR manuscript learns static layerwise horizons and uses average-and-repeat temporal alignment.",
       "neuron": "IF-based mixed-timestep (per QAC lineage)",
       "reset": "subtraction (per QAC lineage)",
       "encoding": "rate",
       "input_encoding": "not found",
-      "timesteps": "average 4.88 (ResNet-34/ImageNet-1K)",
+      "timesteps": "4.88 is the simple arithmetic mean of layerwise horizons for ResNet-34/ImageNet-1K, not measured hardware latency",
       "datasets": [
         "CIFAR-10",
         "ImageNet-1K",
@@ -987,24 +985,52 @@
       ],
       "toolchain": "custom PyTorch",
       "target_hardware": "none",
-      "what_was_measured": "accuracy vs average timestep in software simulation",
+      "what_was_measured": "software accuracy; a separate four-RTX-4090 full-validation wall-clock experiment; analytical operation-count energy",
       "evidence": "E5",
-      "evidence_notes": "Neither the withdrawn ICLR abstract nor the Frontiers abstract mentions any accelerator, RTL synthesis, cycle-accurate simulator, or physical chip; SSCA abstract language ('without instantiating a standalone temporal-alignment kernel') reads as a simulation-level fix, not a hardware-validated one.",
-      "cites_hardware_where": "not found",
+      "evidence_notes": "E5. The supplied withdrawn manuscript reports 73.63 percent ImageNet-1K top-1 at a 4.88 layer mean. Its Appendix C energy values use operation counts and assumed 45 nm costs. Appendix E is qualitative. No compiler, RTL, simulator, or physical chip executes the mixed-horizon schedule.",
+      "cites_hardware_where": "Appendix E gives qualitative accelerator and multicore pipeline reasoning only",
       "sources": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
+      ]
+    },
+    {
+      "id": "mt-snn-frontiers-2026",
+      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
+      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "year": 2026,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2026.1783326",
+      "population": "algorithm",
+      "family": "mixed-timestep",
+      "method_summary": "The accepted abstract names Scaled Synaptic Current Accumulation. Full method and result details were not available in the reviewed access path.",
+      "neuron": "not established from the accepted abstract",
+      "reset": "not established from the accepted abstract",
+      "encoding": "not established from the accepted abstract",
+      "input_encoding": "not established from the accepted abstract",
+      "timesteps": "mixed timestep, detailed schedule not verified from the accepted abstract",
+      "datasets": [
+        "not established from the accepted abstract"
+      ],
+      "toolchain": "not established from the accepted abstract",
+      "target_hardware": "none established from the accepted abstract",
+      "what_was_measured": "not verified from the accepted abstract",
+      "evidence": "E5",
+      "evidence_notes": "Only the accepted-article abstract was reviewed. It supports the title, publication identity, and the named SSCA mechanism, but not the withdrawn manuscript numerical claims.",
+      "cites_hardware_where": "not established from the accepted abstract",
+      "sources": [
+        "mt-snn-frontiers-2026"
       ]
     },
     {
       "id": "temporal-flexibility",
       "title": "Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness",
-      "authors": "Du, X., Wu, Y., Deng, L., Gu, S.",
+      "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
       "year": 2025,
       "venue": "ICLR (Poster)",
       "url": "https://arxiv.org/html/2503.17394v1",
       "population": "algorithm",
       "family": "direct-training",
-      "method_summary": "Mixed Time-step Training (MTT) partitions an SNN into stages, each randomly assigned a different timestep during training with learned communication modules, producing a model compatible with many T values and with fully event-driven asynchronous hardware; deployed on Speck2e.",
+      "method_summary": "Mixed Time-step Training samples stagewise timestep vectors during training to produce temporally robust weights. The physical Speck2e inference path is fully event-driven and timestep-free rather than a static mixed-horizon execution schedule.",
       "neuron": "LIF/general SNN stages with learned communication modules",
       "reset": "not found",
       "encoding": "unstated; native asynchronous DVS events at deployment, not rate coding",
@@ -1015,9 +1041,9 @@
       ],
       "toolchain": "custom PyTorch training, Speck2e SDK for deployment",
       "target_hardware": "Speck2e Devkit (SynSense)",
-      "what_was_measured": "spike-difference (SD) metric between software simulator and on-chip output (3.92% SD on NMNIST)",
+      "what_was_measured": "physical Speck2e accuracy and output-spike fidelity relative to simulation",
       "evidence": "E2",
-      "evidence_notes": "Physical Speck2e silicon, but the only on-chip measurement is a spike-difference fidelity check (SD=3.92% on NMNIST) confirming the chip reproduces the software simulator. No latency or energy measured by this paper; its power and latency statements cite prior Speck hardware papers. Direct-training temporal-generalization technique (Mixed Time-step Training), explicitly distinguished from ANN-SNN conversion in its own related work. Low-timestep results are GPU-only. Examined as a candidate counterexample to the two-population claim and found not to be one, on both population and evidence-class grounds. See research/raw/a19-falsifier-check.md.",
+      "evidence_notes": "E2. Table 5 reports 98.57 percent Speck accuracy, 3.92 percent simulator-to-chip spike difference, and 2.81 percent repeated-chip difference. No latency or energy is reported. The training timestep vector is not scheduled on chip.",
       "cites_hardware_where": "methods and experiments (this is itself a hardware deployment paper)",
       "sources": [
         "temporal-flexibility"
@@ -1208,11 +1234,11 @@
     },
     {
       "id": "spike-driven-transformer",
-      "title": "Spike-driven Transformer / Meta-SpikeFormer V2",
+      "title": "Spike-driven Transformer V2: Meta Spiking Neural Network Architecture Inspiring the Design of Next-generation Neuromorphic Chips",
       "authors": "Yao, M. et al.",
-      "year": 2023,
-      "venue": "not found",
-      "url": "not found",
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "url": "https://openreview.net/forum?id=1SIBN5Xyw7",
       "population": "algorithm",
       "family": "direct-training",
       "method_summary": "Spike-driven MS-residual transformer for ImageNet/COCO/ADE20K.",
@@ -1233,7 +1259,7 @@
       "evidence_notes": "NOT FOUND: no physical hardware run reported; theoretical energy only.",
       "cites_hardware_where": "not found",
       "sources": [
-        "spike-driven-transformer"
+        "spike-driven-transformer-v2"
       ]
     },
     {
@@ -1659,9 +1685,9 @@
       ],
       "toolchain": "custom (NxSDK 1.0.0)",
       "target_hardware": "Intel Loihi 1 (Nahuku 32 board, ncl-ext-ghrd-01)",
-      "what_was_measured": "static/dynamic/total power (mW), latency (ms), energy per inference (uJ), Energy-Delay Product (uJ*s) measured on physical chip, head-to-head against a rate-coded baseline on the same chip",
+      "what_was_measured": "physical Loihi 1 latency, static and dynamic power, energy, and EDP. The table has a CIFAR-10 energy-unit inconsistency, and the preferred corrected CIFAR-10 EDP uses an estimated placement correction.",
       "evidence": "E1",
-      "evidence_notes": "Direct, named, physical hardware measurement, the same standard used to classify Massa 2020/NxTF as E1; MNIST 0.9 uJ*s EDP vs 4.38 uJ*s for the rate-coded baseline; CIFAR-10 10.3 mJ*s vs ~34.9 mJ*s for the rate-coded baseline, both on Loihi.",
+      "evidence_notes": "E1 on physical Nahuku 32 using NxSDK 1.0.0. MNIST values are direct measurements. For CIFAR-10, power multiplied by latency and the table EDP imply about 563 mJ rather than the 564 microjoule label; the preferred 10.3 mJ-s EDP is placement-corrected rather than directly measured.",
       "cites_hardware_where": "methods and experiments (this is itself a hardware paper); the falsifier for the strong 'algorithm papers never deploy' claim, confirming the refined hypothesis that rate-coding abandonment correlates with reaching silicon",
       "abandons_rate_coding": true,
       "sources": [
@@ -1676,7 +1702,7 @@
       "venue": "NeurIPS",
       "url": "not found",
       "population": "both",
-      "family": "mixed-timestep",
+      "family": "population-coding",
       "method_summary": "Population-coding scheme (a third coding category distinct from rate and temporal coding) applied post-training on top of existing conversion methods including QCFS and SRP; deployed and measured on a physical Lynxi HP201 accelerator.",
       "neuron": "population-coded (built atop existing IF-based conversion methods)",
       "reset": "not found",
@@ -1688,9 +1714,9 @@
       ],
       "toolchain": "custom, Table 1 baselines include unmodified QCFS and SRP",
       "target_hardware": "Lynxi HP201 (commercial successor to Tianjic)",
-      "what_was_measured": "on-chip memory, inference latency, and energy measured on physical hardware (Table 1), including rate-coded QCFS/SRP baseline rows run on the same chip",
+      "what_was_measured": "on-chip memory, seconds per evaluation epoch, and system watt-hours per epoch at batch size 32",
       "evidence": "E1",
-      "evidence_notes": "Adaptive Fission's own novel contribution (population coding) is what is deployed and measured; critically, its Table 1 also reports rate-coded QCFS and SRP baselines (unmodified, No Fission) measured on the same physical Lynxi HP201 silicon, the first time a rate-coded QCFS-lineage conversion output has been measured on physical neuromorphic hardware, though not in QCFS's or SRP's own papers.",
+      "evidence_notes": "E1 on physical HP201. Board sensors include peripherals, memory, and I/O. The paper does not report per-sample latency or energy, and closed interfaces prevent core-only measurement. Table 1 also contains unmodified no-Fission QCFS and SRP baseline rows.",
       "cites_hardware_where": "methods and experiments (this is itself a hardware deployment paper)",
       "abandons_rate_coding": true,
       "sources": [
@@ -2188,6 +2214,90 @@
       "sources": [
         "patino-saucedo-2020"
       ]
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+      "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+      "year": 2024,
+      "venue": "Asilomar Conference on Signals, Systems, and Computers",
+      "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+      "population": "both",
+      "family": "low-latency-conversion",
+      "method_summary": "Extends Few-Spikes conversion to complex-valued layers for an unfolded multidimensional harmonic-retrieval network.",
+      "neuron": "complex-valued Few-Spikes neuron",
+      "reset": "temporal Few-Spikes dynamics, not ordinary rate-coded IF reset",
+      "encoding": "serialized temporal Few-Spikes code",
+      "input_encoding": "problem-specific harmonic-retrieval input",
+      "timesteps": "few serialized temporal positions rather than a firing-rate window",
+      "datasets": [
+        "synthetic multidimensional harmonic-retrieval workloads"
+      ],
+      "toolchain": "custom mapping to SpiNNaker2",
+      "target_hardware": "physical single-chip SpiNNaker2 board",
+      "what_was_measured": "board power and task performance against NVIDIA Jetson Xavier",
+      "evidence": "E1",
+      "evidence_notes": "The proposed conversion itself reaches physical silicon, but its representation is a temporal Few-Spikes code rather than rate coding.",
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ]
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+      "authors": "S. Arfa, B. Vogginger, C. Mayr",
+      "year": 2025,
+      "venue": "International Conference on Neuromorphic Systems",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+      "population": "deployment",
+      "family": "direct-training",
+      "method_summary": "Hardware-aware fine-tuning and quantization of directly trained spiking Q-networks.",
+      "neuron": "subtractive-reset spiking neuron",
+      "reset": "subtraction",
+      "encoding": "rate coding",
+      "input_encoding": "reinforcement-learning state input",
+      "timesteps": "10 or 20 ticks",
+      "datasets": [
+        "CartPole",
+        "Acrobot"
+      ],
+      "toolchain": "custom SpiNNaker2 deployment",
+      "target_hardware": "physical SpiNNaker2 board",
+      "what_was_measured": "latency, dynamic power, and energy",
+      "evidence": "E1",
+      "evidence_notes": "A genuine low-timestep rate-coded physical deployment, but direct training rather than ANN-to-SNN conversion.",
+      "sources": [
+        "arfa2025-spiking-q-spinnaker2"
+      ]
+    },
+    {
+      "id": "datta2025-snn-meets-ann",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
+      "population": "algorithm",
+      "family": "low-latency-conversion",
+      "method_summary": "Low-timestep error-free conversion with delayed firing and reset plus batch-normalization bias adjustment.",
+      "neuron": "modified IF",
+      "reset": "postponed firing and reset after input-current accumulation",
+      "encoding": "binary spikes over a short window",
+      "input_encoding": "direct current input in reported image experiments",
+      "timesteps": "4 on ImageNet headline result",
+      "datasets": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "toolchain": "PyTorch and Lava-DL",
+      "target_hardware": "Loihi route asserted but no generation or physical board identified",
+      "what_was_measured": "framework-level accuracy only",
+      "evidence": "E5",
+      "evidence_notes": "Table 12 is E5 for accuracy. The separately asserted Lava-DL-to-Loihi route is E3 because no physical backend or device measurement is disclosed.",
+      "sources": [
+        "datta2025-snn-meets-ann"
+      ]
     }
   ],
   "sources": [
@@ -2437,7 +2547,7 @@
     {
       "id": "pascal",
       "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
-      "authors": "Ramesh, P., Srinivasan, G.",
+      "authors": "Pranav Ramesh, Gopalakrishnan Srinivasan",
       "year": 2025,
       "venue": "TMLR",
       "url": "https://arxiv.org/abs/2505.01730",
@@ -2480,21 +2590,33 @@
       "type": "preprint"
     },
     {
-      "id": "mt-snn",
-      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
-      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
       "year": 2026,
-      "venue": "Frontiers in Neuroscience (originally submitted to ICLR 2026, withdrawn)",
-      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/full",
-      "type": "peer-reviewed"
+      "venue": "Withdrawn ICLR 2026 submission",
+      "url": "https://openreview.net/pdf?id=4dwAZRr9L5",
+      "type": "preprint",
+      "notes": "Withdrawn ICLR manuscript reviewed in full. It is distinct from the accepted Frontiers article and supports only claims explicitly tied to this version."
+    },
+    {
+      "id": "mt-snn-frontiers-2026",
+      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
+      "authors": "M. Guo, X. Yao, Q. Li, Y. Li, J. Cheng, L. Chen",
+      "year": 2026,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2026.1783326",
+      "type": "peer-reviewed",
+      "doi": "10.3389/fnins.2026.1783326",
+      "notes": "Accepted publication. Only the abstract was available in the reviewed access path, so detailed claims remain provisional."
     },
     {
       "id": "temporal-flexibility",
       "title": "Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness",
-      "authors": "Du, X., Wu, Y., Deng, L., Gu, S.",
+      "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
       "year": 2025,
       "venue": "ICLR (Poster)",
-      "url": "https://arxiv.org/html/2503.17394v1",
+      "url": "https://arxiv.org/abs/2503.17394",
       "type": "peer-reviewed"
     },
     {
@@ -2553,12 +2675,21 @@
     },
     {
       "id": "spike-driven-transformer",
-      "title": "Spike-driven Transformer / Meta-SpikeFormer V2",
-      "authors": "Yao, M. et al.",
+      "title": "Spike-driven Transformer",
+      "authors": "Yao, M., Hu, J., Zhou, Z., Yuan, L., Tian, Y., Xu, B., Li, G.",
       "year": 2023,
-      "venue": "not found",
-      "url": "not found",
-      "type": "preprint"
+      "venue": "Advances in Neural Information Processing Systems 36",
+      "url": "https://doi.org/10.52202/075280-2798",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "spike-driven-transformer-v2",
+      "title": "Spike-driven Transformer V2: Meta Spiking Neural Network Architecture Inspiring the Design of Next-generation Neuromorphic Chips",
+      "authors": "Yao, M., Hu, J., Hu, T., Xu, Y., Zhou, Z., Tian, Y., Xu, B., Li, G.",
+      "year": 2024,
+      "venue": "International Conference on Learning Representations",
+      "url": "https://openreview.net/forum?id=1SIBN5Xyw7",
+      "type": "peer-reviewed"
     },
     {
       "id": "xpikeformer",
@@ -2647,7 +2778,7 @@
       "authors": "Imam, N., Cleland, T.A.",
       "year": 2020,
       "venue": "Nature Machine Intelligence",
-      "url": "not found",
+      "url": "https://doi.org/10.1038/s42256-020-0159-4",
       "type": "peer-reviewed"
     },
     {
@@ -2697,11 +2828,11 @@
     },
     {
       "id": "adaptive-fission",
-      "title": "Adaptive Fission",
-      "authors": "Jiang, Y. et al.",
+      "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+      "authors": "Jiang, Y., Chen, F., Li, Y., Liu, Y., Gao, H., Zhang, T., Fang, Y.",
       "year": 2025,
-      "venue": "NeurIPS",
-      "url": "not found",
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "url": "https://doi.org/10.52202/085713-5157",
       "type": "peer-reviewed"
     },
     {
@@ -2855,6 +2986,33 @@
       "year": 2020,
       "venue": "Neural Networks 121:319-328",
       "url": "https://doi.org/10.1016/j.neunet.2019.09.008",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+      "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+      "year": 2024,
+      "venue": "Asilomar Conference on Signals, Systems, and Computers",
+      "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+      "authors": "S. Arfa, B. Vogginger, C. Mayr",
+      "year": 2025,
+      "venue": "International Conference on Neuromorphic Systems",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "datta2025-snn-meets-ann",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
       "type": "peer-reviewed"
     }
   ]

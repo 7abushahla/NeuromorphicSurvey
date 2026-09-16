@@ -261,6 +261,7 @@
     "venue": "Technology brief",
     "category": "Hardware",
     "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/neuromorphic-computing-loihi-2-brief.pdf",
+    "source_type": "official_manufacturer_documentation",
     "summary": "Programmable neuron microcode and graded spikes. Capability does not establish an exact QCFS implementation in a specific software backend."
   },
   {
@@ -475,12 +476,13 @@
   {
     "id": "fission",
     "number": 44,
-    "title": "Adaptive Fission for ANN-to-SNN conversion",
-    "authors": "Jiang et al.",
+    "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+    "authors": "Jiang, Y., Chen, F., Li, Y., Liu, Y., Gao, H., Zhang, T., Fang, Y.",
     "year": 2025,
-    "venue": "NeurIPS",
+    "venue": "Advances in Neural Information Processing Systems 38",
     "category": "Conversion",
-    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/e2e0a9004132490db1be58bffa419268-Paper-Conference.pdf",
+    "type": "peer-reviewed",
+    "url": "https://doi.org/10.52202/085713-5157",
     "summary": "QCFS-family spatial fission with physical Lynxi HP201 evaluation. Hybrid platform measurements do not isolate native sparse synaptic execution."
   },
   {
@@ -585,11 +587,12 @@
   {
     "id": "pascal",
     "number": 54,
-    "title": "PASCAL",
-    "authors": "Ramesh and Srinivasan",
+    "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
+    "authors": "Pranav Ramesh, Gopalakrishnan Srinivasan",
     "year": 2025,
     "venue": "TMLR",
     "category": "Conversion",
+    "type": "peer-reviewed",
     "url": "https://arxiv.org/html/2505.01730v2",
     "summary": "Layer-wise temporal allocation with QCFS-related conversion. Accelerator timing study uses uniform T=4 and RTL/cycle estimates, not fabricated-silicon measurements."
   },
@@ -618,13 +621,14 @@
   {
     "id": "mtt",
     "number": 57,
-    "title": "Multi-Timestep Training for Spiking Neural Networks",
-    "authors": "Du et al.",
+    "title": "Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness",
+    "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
     "year": 2025,
     "venue": "ICLR",
     "category": "Direct training",
-    "url": "https://openreview.net/forum?id=9HsfTgflT7",
-    "summary": "Stage-wise horizons and temporal transformation. Speck evaluation must be interpreted under asynchronous event execution, not assumed clocked stage schedules."
+    "type": "peer-reviewed",
+    "url": "https://arxiv.org/abs/2503.17394",
+    "summary": "Mixed Time-step Training is the method inside Temporal Flexibility. Its Speck2e evaluation is timestep-free event-driven execution, not a clocked stage-horizon schedule."
   },
   {
     "id": "ssnn",
@@ -658,5 +662,41 @@
     "category": "Deployment",
     "url": "https://arxiv.org/html/2309.16795",
     "summary": "Physical Loihi 1 temporal-coded CNN conversion. Architecture mapping and off-chip stages affect the measurement boundary."
+  },
+  {
+    "id": "andrei2024-deep-unrolling-spinnaker2",
+    "number": 61,
+    "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+    "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+    "year": 2024,
+    "venue": "2024 58th Asilomar Conference on Signals, Systems, and Computers",
+    "category": "Deployment",
+    "type": "peer-reviewed",
+    "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+    "summary": "Complex-valued Few-Spikes conversion mapped to a physical single-chip SpiNNaker2 board with measured board power."
+  },
+  {
+    "id": "arfa2025-spiking-q-spinnaker2",
+    "number": 62,
+    "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+    "authors": "S. Arfa, B. Vogginger, C. Mayr",
+    "year": 2025,
+    "venue": "2025 International Conference on Neuromorphic Systems",
+    "category": "Deployment",
+    "type": "peer-reviewed",
+    "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+    "summary": "Rate-coded, directly trained reinforcement-learning SNN with measured power, energy, and duration on physical SpiNNaker2."
+  },
+  {
+    "id": "datta2025-snn-meets-ann",
+    "number": 63,
+    "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+    "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+    "year": 2025,
+    "venue": "Transactions on Machine Learning Research",
+    "category": "Conversion",
+    "type": "peer-reviewed",
+    "url": "https://openreview.net/forum?id=WOwQKguWT0",
+    "summary": "The paper documents a Lava-DL route but does not identify a physical Loihi board, profiler, or on-chip measurement."
   }
 ]

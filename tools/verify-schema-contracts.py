@@ -1,0 +1,574 @@
+#!/usr/bin/env python3
+"""Verify durable canonical-schema contracts through the production validators."""
+from __future__ import annotations
+
+import copy
+import json
+import runpy
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def load_json(path: Path) -> object:
+    return json.loads(path.read_text())
+
+
+def expect_error(errors: list[str], fragment: str, label: str) -> None:
+    if not any(fragment in error for error in errors):
+        raise AssertionError(
+            f"expected {label} to report {fragment!r}; validator errors: {errors}"
+        )
+
+
+def expect_valid(errors: list[str], label: str) -> None:
+    if errors:
+        raise AssertionError(f"expected {label} to validate: {errors}")
+
+
+def record_by_id(records: list[object], record_id: str, label: str) -> dict[str, object]:
+    matches = [
+        record
+        for record in records
+        if isinstance(record, dict) and record.get("id") == record_id
+    ]
+    if len(matches) != 1:
+        raise AssertionError(f"expected exactly one {label} with id {record_id!r}")
+    return matches[0]
+
+
+def main() -> int:
+    schema = load_json(ROOT / "data/schema-version.json")
+    registry = load_json(ROOT / "data/source-registry.json")
+    claims = load_json(ROOT / "data/claims.json")
+    platforms = load_json(ROOT / "data/platform-capabilities.json")
+    evidence_stack = load_json(ROOT / "data/evidence-stack.json")
+    coverage = load_json(ROOT / "data/prior-survey-coverage.json")
+
+    source_validate = runpy.run_path(ROOT / "tools/validate-sources.py")["validate"]
+    evidence_module = runpy.run_path(ROOT / "tools/validate-evidence.py")
+    claim_validate = evidence_module["validate"]
+    platform_validate_raw = evidence_module["validate_platform_capabilities"]
+    platform_validate = lambda schema_, registry_, platforms_: platform_validate_raw(
+        schema_, registry_, platforms_, evidence_stack
+    )
+    coverage_validate = runpy.run_path(ROOT / "tools/validate-survey-coverage.py")["validate"]
+    normalize_source = runpy.run_path(
+        ROOT / "tools/merge-prior-survey-batches.py"
+    )["normalize_source"]
+
+    checks = 0
+
+    def check_valid(errors: list[str], label: str) -> None:
+        nonlocal checks
+        expect_valid(errors, label)
+        checks += 1
+
+    def check_error(errors: list[str], fragment: str, label: str) -> None:
+        nonlocal checks
+        expect_error(errors, fragment, label)
+        checks += 1
+
+    check_valid(source_validate(schema, registry), "canonical source registry")
+    check_valid(claim_validate(schema, registry, claims), "canonical claim registry")
+    check_valid(platform_validate(schema, registry, platforms), "canonical platform registry")
+    check_valid(coverage_validate(schema, registry, coverage), "canonical coverage registry")
+
+    bad_registry = copy.deepcopy(registry)
+    record_by_id(
+        bad_registry["sources"], "pedersen-2024-nir", "source",
+    )["source_type"] = []
+    check_error(
+        source_validate(schema, bad_registry),
+        "invalid source_type",
+        "malformed source type",
+    )
+
+    null_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        null_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = None
+    check_valid(
+        source_validate(schema, null_doi_registry),
+        "source with no established DOI",
+    )
+
+    empty_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        empty_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = ""
+    check_error(
+        source_validate(schema, empty_doi_registry),
+        "doi must be null or a nonempty string",
+        "source with an empty DOI",
+    )
+
+    malformed_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        malformed_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = []
+    check_error(
+        source_validate(schema, malformed_doi_registry),
+        "doi must be null or a nonempty string",
+        "source with a non-string DOI",
+    )
+
+    synthetic_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        synthetic_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = "  UnAsSiGnEd:pedersen-2024-nir  "
+    check_error(
+        source_validate(schema, synthetic_doi_registry),
+        "doi must not use the synthetic 'unassigned:' prefix",
+        "source with a synthetic unassigned DOI",
+    )
+
+    normalized_legacy_doi = normalize_source(
+        {
+            "id": "doi-normalization-fixture",
+            "title": "DOI normalization fixture",
+            "authors": "Fixture Author",
+            "year": 2026,
+            "venue": "Fixture Venue",
+            "url": "https://example.org/doi-normalization-fixture",
+            "source_type": "preprint",
+            "retrieval_status": "metadata_only",
+        },
+        {},
+        {"doi": "unassigned:doi-normalization-fixture"},
+    )
+    if normalized_legacy_doi["doi"] is not None:
+        raise AssertionError("legacy synthetic DOI must normalize to null")
+    checks += 1
+
+    missing_flag_claims = copy.deepcopy(claims)
+    del record_by_id(
+        missing_flag_claims["claims"], "claim-reset-nir-fixed-value-v1-0-8", "claim",
+    )["reports_deployment_evidence"]
+    check_error(
+        claim_validate(schema, registry, missing_flag_claims),
+        "missing required field",
+        "claim missing reports_deployment_evidence",
+    )
+
+    non_boolean_flag_claims = copy.deepcopy(claims)
+    record_by_id(
+        non_boolean_flag_claims["claims"], "claim-reset-nir-fixed-value-v1-0-8", "claim",
+    )["reports_deployment_evidence"] = "false"
+    check_error(
+        claim_validate(schema, registry, non_boolean_flag_claims),
+        "reports_deployment_evidence must be a boolean",
+        "claim with non-Boolean reports_deployment_evidence",
+    )
+
+    deployment_claims = copy.deepcopy(claims)
+    deployment_claim = record_by_id(
+        deployment_claims["claims"], "claim-reset-nir-fixed-value-v1-0-8", "claim",
+    )
+    deployment_claim["reports_deployment_evidence"] = True
+    deployment_claim["measurement_boundary"] = "fixture measurement boundary"
+    check_error(
+        claim_validate(schema, registry, deployment_claims),
+        "requires an E1-E5 evidence_class",
+        "deployment claim without an evidence class",
+    )
+
+    boundaryless_claims = copy.deepcopy(claims)
+    boundaryless_claim = record_by_id(
+        boundaryless_claims["claims"], "claim-reset-nir-fixed-value-v1-0-8", "claim",
+    )
+    boundaryless_claim["reports_deployment_evidence"] = True
+    boundaryless_claim["evidence_class"] = "E1"
+    check_error(
+        claim_validate(schema, registry, boundaryless_claims),
+        "requires a measurement_boundary",
+        "deployment claim without a measurement boundary",
+    )
+
+    non_deployment_claims = copy.deepcopy(claims)
+    record_by_id(
+        non_deployment_claims["claims"], "claim-reset-nir-fixed-value-v1-0-8", "claim",
+    )["evidence_class"] = "E2"
+    check_error(
+        claim_validate(schema, registry, non_deployment_claims),
+        "non-deployment claims require a null evidence_class",
+        "non-deployment claim with a non-null evidence class",
+    )
+
+    invalid_claim_type = copy.deepcopy(claims)
+    invalid_claim_type["claims"][0]["claim_type"] = "invented-claim-type"
+    check_error(
+        claim_validate(schema, registry, invalid_claim_type),
+        "invalid claim_type",
+        "claim type excluded by the schema vocabulary",
+    )
+
+    empty_claim_locator = copy.deepcopy(claims)
+    empty_claim_locator["claims"][0]["locators"] = [""]
+    check_error(
+        claim_validate(schema, registry, empty_claim_locator),
+        "locators must contain nonempty strings",
+        "claim with an empty source locator",
+    )
+
+    unresolved_claim_conflict = copy.deepcopy(claims)
+    unresolved_claim_conflict["claims"][0]["conflicts_with"] = ["missing-conflict-note"]
+    check_error(
+        claim_validate(schema, registry, unresolved_claim_conflict),
+        "unresolved conflicts_with value",
+        "claim with neither a claim nor conflict-note target",
+    )
+
+    nir_source = record_by_id(registry["sources"], "pedersen-2024-nir", "source")
+    official_registry = copy.deepcopy(registry)
+    record_by_id(
+        official_registry["sources"], "pedersen-2024-nir", "source",
+    )["source_type"] = "official_sdk_documentation"
+    verified_platforms = copy.deepcopy(platforms)
+    for record in verified_platforms["records"]:
+        record["verification_status"] = "provisional"
+    verified_fixture = verified_platforms["records"][0]
+    verified_fixture["official_technical_source_id"] = "pedersen-2024-nir"
+    verified_fixture["official_exercised_example_source_id"] = None
+    verified_fixture["official_exercised_example_locator"] = None
+    verified_fixture["verification_status"] = "verified"
+    check_valid(
+        platform_validate(schema, official_registry, verified_platforms),
+        "verified official platform capability",
+    )
+
+    unresolved_source_platforms = copy.deepcopy(verified_platforms)
+    unresolved_source_platforms["records"][0]["official_technical_source_id"] = "missing-source"
+    check_error(
+        platform_validate(schema, official_registry, unresolved_source_platforms),
+        "unresolved official_technical_source_id",
+        "verified capability with an unresolved official source",
+    )
+
+    invalid_date_platforms = copy.deepcopy(verified_platforms)
+    invalid_date_platforms["records"][0]["reviewed_on"] = "2026-02-30"
+    check_error(
+        platform_validate(schema, official_registry, invalid_date_platforms),
+        "reviewed_on must be an ISO YYYY-MM-DD date",
+        "verified capability with an invalid review date",
+    )
+
+    versionless_platforms = copy.deepcopy(verified_platforms)
+    versionless_platforms["records"][0]["document_version"] = None
+    versionless_platforms["records"][0]["toolchain_version"] = None
+    check_error(
+        platform_validate(schema, official_registry, versionless_platforms),
+        "requires a document_version or toolchain_version",
+        "verified capability without a document or toolchain version",
+    )
+
+    invalid_status_platforms = copy.deepcopy(verified_platforms)
+    invalid_status_platforms["records"][0]["capability_status"] = []
+    check_error(
+        platform_validate(schema, official_registry, invalid_status_platforms),
+        "invalid capability_status",
+        "platform capability with an invalid capability status",
+    )
+
+    missing_contract_detail = copy.deepcopy(verified_platforms)
+    del missing_contract_detail["records"][0]["contract_requirement"]
+    check_error(
+        platform_validate(schema, official_registry, missing_contract_detail),
+        "missing required field(s): contract_requirement",
+        "platform capability without an explicit contract requirement",
+    )
+
+    invalid_contract_field = copy.deepcopy(verified_platforms)
+    invalid_contract_field["records"][0]["contract_field"] = "vague_platform_support"
+    check_error(
+        platform_validate(schema, official_registry, invalid_contract_field),
+        "invalid contract_field",
+        "platform capability with an unknown contract field",
+    )
+
+    unresolved_example = copy.deepcopy(verified_platforms)
+    unresolved_example["records"][0]["official_exercised_example_source_id"] = "missing-source"
+    check_error(
+        platform_validate(schema, official_registry, unresolved_example),
+        "unresolved official_exercised_example_source_id",
+        "platform capability with an unresolved official example",
+    )
+
+    mismatched_example = copy.deepcopy(verified_platforms)
+    mismatched_example["records"][0]["official_exercised_example_source_id"] = None
+    mismatched_example["records"][0]["official_exercised_example_locator"] = "Worked example"
+    check_error(
+        platform_validate(schema, official_registry, mismatched_example),
+        "example source and locator must either both be null or both be set",
+        "platform capability with an example locator but no example source",
+    )
+
+    incomplete_matrix = copy.deepcopy(platforms)
+    incomplete_matrix["records"].pop()
+    check_error(
+        platform_validate(schema, registry, incomplete_matrix),
+        "expected exactly 99 records",
+        "platform matrix missing one contract record",
+    )
+
+    duplicate_platform_field = copy.deepcopy(platforms)
+    duplicate_platform_field["records"][1]["contract_field"] = (
+        duplicate_platform_field["records"][0]["contract_field"]
+    )
+    duplicate_platform_field["records"][1]["id"] = (
+        f"cap-{duplicate_platform_field['records'][1]['platform_id']}-duplicate"
+    )
+    check_error(
+        platform_validate(schema, registry, duplicate_platform_field),
+        "duplicate platform/contract-field pair",
+        "platform matrix with a duplicate platform-field pair",
+    )
+
+    inconsistent_record_id = copy.deepcopy(platforms)
+    inconsistent_record_id["records"][0]["id"] = "cap-wrong-record-id"
+    check_error(
+        platform_validate(schema, registry, inconsistent_record_id),
+        "id must equal",
+        "platform record with a noncanonical identifier",
+    )
+
+    unresolved_route = copy.deepcopy(platforms)
+    unresolved_route["records"][0]["route_ids"] = ["missing-route-edge"]
+    check_error(
+        platform_validate(schema, registry, unresolved_route),
+        "unresolved route_id",
+        "platform record with an unresolved route edge",
+    )
+
+    disconnected_route = copy.deepcopy(platforms)
+    disconnected_route["records"][0]["route_ids"] = [
+        "snn-toolbox-to-nxtf",
+        "samna-to-speck",
+    ]
+    check_error(
+        platform_validate(schema, registry, disconnected_route),
+        "route edge chain is disconnected",
+        "platform record with disconnected route edges",
+    )
+
+    provisional_source_for_verified_record = copy.deepcopy(platforms)
+    provisional_source_for_verified_record["records"][0]["verification_status"] = "verified"
+    check_error(
+        platform_validate(schema, registry, provisional_source_for_verified_record),
+        "verified capability requires a verified full-text source",
+        "verified capability backed only by a provisional metadata source",
+    )
+
+    provisional_nonofficial_source = copy.deepcopy(platforms)
+    provisional_nonofficial_source["records"][0]["official_technical_source_id"] = (
+        "pedersen-2024-nir"
+    )
+    check_error(
+        platform_validate(schema, registry, provisional_nonofficial_source),
+        "capability requires an official technical source",
+        "provisional capability backed by a nonofficial source type",
+    )
+
+    release_note_example = copy.deepcopy(platforms)
+    release_note_example["records"][0]["official_exercised_example_source_id"] = (
+        "brainchip-metatf-2-19-2-release"
+    )
+    release_note_example["records"][0]["official_exercised_example_locator"] = (
+        "Release image list"
+    )
+    check_error(
+        platform_validate(schema, registry, release_note_example),
+        "exercised example requires an example-capable official source",
+        "release note used as an exercised example",
+    )
+
+    verified_without_document_date = copy.deepcopy(verified_platforms)
+    verified_without_document_date["records"][0]["document_date"] = None
+    check_error(
+        platform_validate(schema, official_registry, verified_without_document_date),
+        "verified capability requires a document_date",
+        "verified capability without a document date",
+    )
+
+    schema_status_contract = copy.deepcopy(schema)
+    schema_status_contract["platform_capability_statuses"] = ["unsupported"]
+    check_error(
+        platform_validate(schema_status_contract, registry, platforms),
+        "invalid capability_status",
+        "platform status excluded by the schema vocabulary",
+    )
+
+    invalid_route_state = copy.deepcopy(platforms)
+    invalid_route_state["records"][0]["route_state"] = "magic"
+    check_error(
+        platform_validate(schema, registry, invalid_route_state),
+        "invalid route_state",
+        "platform route state excluded by the schema vocabulary",
+    )
+
+    inconsistent_platform_metadata = copy.deepcopy(platforms)
+    inconsistent_platform_metadata["records"][1]["document_version"] = "different-version"
+    check_error(
+        platform_validate(schema, registry, inconsistent_platform_metadata),
+        "inconsistent platform-wide metadata",
+        "records for one platform with inconsistent version metadata",
+    )
+
+    hidden_blocked_route = copy.deepcopy(platforms)
+    for record in hidden_blocked_route["records"]:
+        if record["platform_id"] == "loihi-2":
+            record["route_state"] = "physical"
+    check_error(
+        platform_validate(schema, registry, hidden_blocked_route),
+        "blocked route edge requires route_state 'blocked'",
+        "platform metadata that hides a blocked route edge",
+    )
+
+    for source_type in (
+        "peer_reviewed",
+        "marketing_material",
+        "general_web",
+        "secondary_material",
+    ):
+        non_official_registry = copy.deepcopy(official_registry)
+        record_by_id(
+            non_official_registry["sources"], "pedersen-2024-nir", "source",
+        )["source_type"] = source_type
+        check_error(
+            platform_validate(schema, non_official_registry, verified_platforms),
+            "requires an official technical source",
+            f"verified capability backed by {source_type}",
+        )
+
+    for status in ("verified", "provisional", "partial"):
+        candidate = copy.deepcopy(coverage)
+        record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )["full_text_status"] = status
+        check_valid(
+            coverage_validate(schema, registry, candidate),
+            f"survey full-text status {status!r}",
+        )
+    for status in ("conflicted", "rejected", True, "unknown"):
+        candidate = copy.deepcopy(coverage)
+        record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )["full_text_status"] = status
+        check_error(
+            coverage_validate(schema, registry, candidate),
+            "invalid full_text_status",
+            f"survey full-text status {status!r}",
+        )
+
+    def populated_coverage(score: str, basis: str, locator: str) -> dict[str, object]:
+        return {
+            axis: {"score": score, "basis": basis, "locator": locator}
+            for axis in "ABCDEFGHIJKL"
+        }
+
+    for status in ("partial", "not_retrieved"):
+        candidate = copy.deepcopy(coverage)
+        survey = record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )
+        survey["full_text_status"] = status
+        survey["coverage"] = populated_coverage(
+            "unassessed",
+            "Not assessed because full text was not retrieved completely.",
+            "Retrieval limit documented in the audit note.",
+        )
+        check_valid(
+            coverage_validate(schema, registry, candidate),
+            f"unassessed coverage with {status} retrieval",
+        )
+
+    verified_unassessed = copy.deepcopy(coverage)
+    verified_survey = record_by_id(
+        verified_unassessed["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    verified_survey["full_text_status"] = "verified"
+    verified_survey["coverage"] = populated_coverage(
+        "unassessed", "Not assessed due to a retrieval limit.", "Retrieval limit.",
+    )
+    check_error(
+        coverage_validate(schema, registry, verified_unassessed),
+        "unassessed is allowed only",
+        "verified full text with unassessed coverage",
+    )
+
+    unknown_score = copy.deepcopy(coverage)
+    unknown_survey = record_by_id(
+        unknown_score["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    unknown_survey["full_text_status"] = "verified"
+    unknown_survey["coverage"] = populated_coverage(
+        "unknown", "Fixture basis.", "Fixture locator.",
+    )
+    check_error(
+        coverage_validate(schema, registry, unknown_score),
+        "invalid score",
+        "unknown coverage score",
+    )
+
+    vague_unassessed = copy.deepcopy(coverage)
+    vague_survey = record_by_id(
+        vague_unassessed["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    vague_survey["full_text_status"] = "partial"
+    vague_survey["coverage"] = populated_coverage(
+        "unassessed", "No conclusion recorded.", "Audit note.",
+    )
+    check_error(
+        coverage_validate(schema, registry, vague_unassessed),
+        "must state the retrieval or access limit",
+        "unassessed coverage without an access boundary",
+    )
+
+    missing_survey = copy.deepcopy(coverage)
+    missing_survey["surveys"] = [
+        survey for survey in missing_survey["surveys"]
+        if survey.get("id") != "S37-farsa-2026-gpu-riscv"
+    ]
+    check_error(
+        coverage_validate(schema, registry, missing_survey),
+        "missing survey identifier(s): S37",
+        "coverage registry missing one required survey",
+    )
+
+    duplicate_survey_identifier = copy.deepcopy(coverage)
+    record_by_id(
+        duplicate_survey_identifier["surveys"],
+        "S37-farsa-2026-gpu-riscv",
+        "survey",
+    )["id"] = "S01-farsa-2026-gpu-riscv"
+    check_error(
+        coverage_validate(schema, registry, duplicate_survey_identifier),
+        "duplicate survey identifier(s): S01",
+        "coverage registry with a duplicate survey number",
+    )
+
+    empty_coverage = copy.deepcopy(coverage)
+    record_by_id(
+        empty_coverage["surveys"], "S01-pedersen-2024-nir", "survey",
+    )["coverage"] = {}
+    check_error(
+        coverage_validate(schema, registry, empty_coverage),
+        "coverage is missing axes: A, B, C, D, E, F, G, H, I, J, K, L",
+        "survey with empty coverage",
+    )
+
+    expected_checks = 59
+    if checks != expected_checks:
+        raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
+    print(f"verify-schema-contracts: {checks} contract checks passed")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except AssertionError as error:
+        print(f"verify-schema-contracts: FAILED: {error}", file=sys.stderr)
+        raise SystemExit(1)

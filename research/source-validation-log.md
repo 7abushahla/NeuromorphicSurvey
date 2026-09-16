@@ -1,0 +1,345 @@
+# Source validation log
+
+Audit date: 2026-09-16
+
+## Inventory
+
+- `bibliography-migration-sources.json`: 108 structured source records
+- `claim-audit reviewed sources`: 35 structured source records
+- `evidence-papers.json`: 79 structured source records
+- `evidence-stack.json`: 154 structured source records
+- `prior-survey batches A-D`: 37 structured source records
+- `sources.json`: 63 structured source records
+- Canonical records: 352
+- Input records merged as aliases: 124
+- Bibliography aliases attached: 89
+
+## Resolved duplicate groups
+
+- `a18-sourcecode-comparison` retains aliases `A18-Research`, `bibliography-migration-sources.json:a18-sourcecode-comparison`, `evidence-stack.json:a18-sourcecode-comparison`, `research/claim-audits:a18-sourcecode-comparison`.
+- `adaptive-fission` retains aliases `evidence-papers.json:adaptive-fission`, `evidence-stack.json:adaptive-fission`, `fission`, `research/claim-audits:adaptive-fission`, `sources.json:fission`.
+- `akida-benchmarks2025` retains aliases `evidence-stack.json:akida-benchmarks2025`, `research/claim-audits:akida-benchmarks2025`.
+- `andrei2024-deep-unrolling-spinnaker2` retains aliases `evidence-papers.json:andrei2024-deep-unrolling-spinnaker2`, `evidence-stack.json:andrei2024-deep-unrolling-spinnaker2`, `research/claim-audits:andrei2024-deep-unrolling-spinnaker2`, `sources.json:andrei2024-deep-unrolling-spinnaker2`.
+- `apex` retains aliases `apex2026`, `evidence-papers.json:apex`, `evidence-stack.json:apex2026`.
+- `arfa-2025-spinnaker2` retains aliases `Arfa25-SpiNN2NIR`, `arfa`, `bibliography-migration-sources.json:arfa-2025-spinnaker2`, `sources.json:arfa`.
+- `arfa2025-spiking-q-spinnaker2` retains aliases `evidence-papers.json:arfa2025-spiking-q-spinnaker2`, `evidence-stack.json:arfa2025-spiking-q-spinnaker2`, `research/claim-audits:arfa2025-spiking-q-spinnaker2`, `sources.json:arfa2025-spiking-q-spinnaker2`.
+- `auge` retains aliases `auge2021`, `auge2021-encodingsurvey`, `evidence-stack.json:auge2021-encodingsurvey`, `sources.json:auge`.
+- `bidl` retains aliases `evidence-stack.json:lynxi-bidl-github`, `lynxi-bidl-github`, `sources.json:bidl`.
+- `brainchip-cnn2snn-docs` retains aliases `evidence-stack.json:brainchip-cnn2snn-docs`, `research/claim-audits:brainchip-cnn2snn-docs`.
+- `brainchip-quantizeml-docs` retains aliases `evidence-stack.json:brainchip-quantizeml-docs`, `research/claim-audits:brainchip-quantizeml-docs`.
+- `brehove` retains aliases `Brehove26-SigmaDelta`, `brehove-2026`, `brehove-text`, `brehove2025`, `evidence-papers.json:brehove-2026`, `evidence-stack.json:brehove`, `research/claim-audits:brehove`, `sources.json:brehove`, `sources.json:brehove-text`.
+- `bss` retains aliases `brainscales-pehle2022`, `evidence-stack.json:pehle2022-bss2`, `pehle-2022-brainscales-multicomp`, `pehle2022-bss2`, `sources.json:bss`.
+- `burst-spikes` retains aliases `evidence-papers.json:burst-spikes`, `evidence-stack.json:li2022-burstspikes`, `li-2022-burstspikes`, `li2022-burstspikes`.
+- `cao-2015` retains aliases `cao2015`, `cao2015-scnn`, `evidence-papers.json:cao-2015`, `evidence-stack.json:cao2015-scnn`.
+- `cerebron` retains aliases `ChenGaoFu22-Cerebron`, `chen2022-cerebron`, `evidence-papers.json:cerebron`, `evidence-stack.json:chen2022-cerebron`.
+- `datta2025-snn-meets-ann` retains aliases `evidence-papers.json:datta2025-snn-meets-ann`, `evidence-stack.json:datta2025-snn-meets-ann`, `research/claim-audits:datta2025-snn-meets-ann`, `sources.json:datta2025-snn-meets-ann`.
+- `davies-2021-loihi` retains aliases `Davies21`, `davies-review`, `davies2021-survey`, `evidence-stack.json:davies2021-survey`, `research/prior-surveys/batch-A.json:davies-2021-loihi`, `sources.json:davies-review`.
+- `diehl` retains aliases `diehl-2015`, `diehl2015-weightthreshold`, `evidence-papers.json:diehl-2015`, `evidence-stack.json:diehl2015-weightthreshold`, `sources.json:diehl`.
+- `dynamic-confidence` retains aliases `evidence-papers.json:dynamic-confidence`, `research/claim-audits:dynamic-confidence`.
+- `dynap-se-tactile` retains aliases `evidence-papers.json:dynap-se-tactile`, `evidence-stack.json:ortone2026-tactile-dynapse`, `ortone2026-tactile-dynapse`.
+- `eshraghian-2023-training-snns` retains aliases `Eshraghian23-snnTorch`, `esh`, `research/prior-surveys/batch-A.json:eshraghian-2023-training-snns`, `sources.json:esh`.
+- `eventprop-delays` retains aliases `evidence-papers.json:eventprop-delays`, `evidence-stack.json:meszaros2025-eventprop-loihi2`, `meszaros-2025-loihi2-delays`, `meszaros2025-eventprop-loihi2`.
+- `force-control` retains aliases `evidence-papers.json:force-control`, `evidence-stack.json:forcecontrol2024-pegin-hole`, `forcecontrol2024-pegin-hole`.
+- `gelneuro` retains aliases `bibliography-migration-sources.json:gelneuro`, `evidence-papers.json:gelneuro`, `evidence-stack.json:gelneuro2026`, `gelneuro-2026`, `gelneuro2026`.
+- `hiaer-spike-cri` retains aliases `cri-2025-hiaerspike`, `evidence-papers.json:hiaer-spike-cri`, `evidence-stack.json:hiaer-spike-cri-docs`, `hiaer-spike-cri-docs`.
+- `imam-cleland-olfaction` retains aliases `evidence-papers.json:imam-cleland-olfaction`, `evidence-stack.json:imam2020-olfaction`, `imam2020-olfaction`.
+- `khan-2025` retains aliases `khan`, `research/prior-surveys/batch-B.json:khan-2025`, `sources.json:khan`.
+- `lava-dl-netx-docs` retains aliases `evidence-stack.json:lava-dl-netx-docs`, `research/claim-audits:lava-dl-netx-docs`.
+- `lava-dl-slayer-docs` retains aliases `evidence-stack.json:lava-dl-slayer-docs`, `lavadl-slayer-docs`, `research/claim-audits:lava-dl-slayer-docs`, `sources.json:slayer`.
+- `lava-github-archived` retains aliases `evidence-stack.json:lava-github-archived`, `research/claim-audits:lava-github-archived`.
+- `loihi1` retains aliases `Davies18`, `davies-2018-loihi`, `davies2018-loihi`, `evidence-stack.json:davies2018-loihi`, `sources.json:loihi1`.
+- `loihi2` retains aliases `evidence-stack.json:intel-loihi2-brief`, `intel-2021-loihi2-brief`, `intel-loihi2-brief`, `sources.json:loihi2`.
+- `loihi2-llm-hostio` retains aliases `evidence-stack.json:loihi2-llm-hostio`, `research/claim-audits:loihi2-llm-hostio`.
+- `lunghi2025-akida-space` retains aliases `Lunghi25-SpaceSNN`, `evidence-stack.json:lunghi2025-akida-space`, `lunghi-2025-space-snn`, `research/claim-audits:lunghi2025-akida-space`.
+- `massa-2020` retains aliases `evidence-papers.json:massa-2020`, `evidence-stack.json:massa2020-loihi-gesture`, `massa2020-loihi-gesture`.
+- `morphic` retains aliases `Frenkel19-MorphIC`, `evidence-papers.json:morphic`, `evidence-stack.json:frenkel2019-morphic`, `frenkel2019`, `frenkel2019-morphic`.
+- `mt-snn-frontiers-2026` retains aliases `evidence-papers.json:mt-snn-frontiers-2026`, `research/claim-audits:mt-snn-frontiers-2026`.
+- `mt-snn-withdrawn-iclr` retains aliases `bibliography-migration-sources.json:mt-snn-withdrawn-iclr`, `evidence-papers.json:mt-snn-withdrawn-iclr`, `guo-2026-mtsnn-withdrawn`, `research/claim-audits:mt-snn-withdrawn-iclr`.
+- `neuroflex` retains aliases `evidence-papers.json:neuroflex`, `evidence-stack.json:neuroflex2025`, `neuroflex2025`.
+- `neuroir-docs` retains aliases `evidence-stack.json:neuroir-docs`, `research/claim-audits:neuroir-docs`.
+- `neuroscale2025-natcomm` retains aliases `evidence-stack.json:neuroscale2025-natcomm`, `research/claim-audits:neuroscale2025-natcomm`.
+- `nir-neuron-primitives-source` retains aliases `evidence-stack.json:nir-neuron-primitives-source`, `research/claim-audits:nir-neuron-primitives-source`.
+- `northpole` retains aliases `evidence-papers.json:northpole`, `evidence-stack.json:northpole-science2023`, `northpole-science2023`.
+- `nxtf` retains aliases `Rueckauer21-NxTF`, `evidence-papers.json:nxtf`, `evidence-stack.json:nxtf`, `evidence-stack.json:rueckauer2022-nxtf`, `nxtf2021`, `research/claim-audits:nxtf`, `rueckauer-2021-nxtf`, `rueckauer2022-nxtf`, `sources.json:nxtf`.
+- `nxtf-repository` retains aliases `evidence-stack.json:nxtf-repository`, `research/claim-audits:nxtf-repository`.
+- `nxtf-text` retains aliases `evidence-stack.json:nxtf-text`, `sources.json:nxtf-text`.
+- `pascal` retains aliases `evidence-papers.json:pascal`, `evidence-stack.json:ramesh2025-pascal`, `ramesh-2025-pascal`, `ramesh2025-pascal`, `research/claim-audits:pascal`, `sources.json:pascal`.
+- `patino-saucedo-2020` retains aliases `PatinoSaucedo20-SpiNNConv`, `evidence-papers.json:patino-saucedo-2020`, `evidence-stack.json:patino-saucedo2020-spinnaker`, `patino-saucedo2020-spinnaker`.
+- `pedersen-2024-nir` retains aliases `evidence-stack.json:nir-paper`, `evidence-stack.json:pedersen-2024-nir`, `nir-paper`, `research/claim-audits:pedersen-2024-nir`, `research/prior-surveys/batch-A.json:pedersen-2024-nir`.
+- `prior-s29-ayasi-2025` retains aliases `ayasi`, `research/prior-surveys/batch-D.json:prior-s29-ayasi-2025`, `sources.json:ayasi`.
+- `prior-s34-luu-2026` retains aliases `luu`, `research/prior-surveys/batch-D.json:prior-s34-luu-2026`, `sources.json:luu`.
+- `qac` retains aliases `evidence-papers.json:qac`, `evidence-stack.json:guo2025-qac`, `guo2025-qac`, `research/claim-audits:qac`.
+- `qcfs` retains aliases `evidence-papers.json:qcfs`, `evidence-stack.json:qcfs`, `sources.json:qcfs`.
+- `quartz` retains aliases `evidence-papers.json:quartz`, `evidence-stack.json:quartz`, `research/claim-audits:quartz`, `sources.json:quartz`.
+- `reckon` retains aliases `evidence-papers.json:reckon`, `evidence-stack.json:frenkel2022-reckon`, `frenkel2022-reckon`.
+- `richter` retains aliases `Richter23-SpeckASIC`, `evidence-papers.json:speck1`, `evidence-stack.json:richter2023-speck`, `richter2023-speck`, `richter2023speck`, `sources.json:richter`, `speck1`.
+- `rmp` retains aliases `evidence-papers.json:rmp-snn`, `rmp-snn`, `sources.json:rmp`.
+- `rueckauer` retains aliases `Rueckauer17-SNNTB`, `evidence-papers.json:rueckauer-2017`, `evidence-stack.json:rueckauer2017-conversion`, `rueckauer-2017`, `rueckauer-2017-frontiers`, `rueckauer2017-conversion`, `sources.json:rueckauer`.
+- `schuman-2022-opportunities` retains aliases `research/prior-surveys/batch-A.json:schuman-2022-opportunities`, `schuman`, `sources.json:schuman`.
+- `sddpg` retains aliases `evidence-papers.json:sddpg`, `evidence-stack.json:sddpg-mapless-nav-loihi`, `sddpg-2020`, `sddpg-mapless-nav-loihi`.
+- `sdnn` retains aliases `Shrestha23-VideoAudio`, `evidence-stack.json:shrestha2023-loihi2video`, `shrestha-2023-loihi2`, `shrestha-2023-loihi2video`, `shrestha2023`, `shrestha2023-loihi2video`, `sources.json:sdnn`.
+- `seenn` retains aliases `evidence-papers.json:seenn`, `research/claim-audits:seenn`.
+- `sengupta` retains aliases `evidence-papers.json:sengupta-2019`, `evidence-stack.json:sengupta2019-spikenorm`, `sengupta-2019`, `sengupta2019-spikenorm`, `sources.json:sengupta`.
+- `sew-resnet` retains aliases `evidence-papers.json:sew-resnet`, `evidence-stack.json:fang2021-sewresnet`, `fang2021-sewresnet`.
+- `sinabs` retains aliases `evidence-stack.json:sinabs`, `sources.json:sinabs`.
+- `sinabs-docs` retains aliases `evidence-stack.json:sinabs-docs`, `research/claim-audits:sinabs-docs`.
+- `sinabs-nir` retains aliases `evidence-stack.json:sinabs-nir`, `research/claim-audits:sinabs-nir`, `sources.json:sinabs-nir`.
+- `sinabs-nir-to-speck-tutorial` retains aliases `evidence-stack.json:sinabs-nir-to-speck-tutorial`, `research/claim-audits:sinabs-nir-to-speck-tutorial`.
+- `speck-dynamic-snn` retains aliases `Yao24-SpeckNatComm`, `evidence-papers.json:speck-dynamic-snn`, `evidence-stack.json:yao2024-speck-natcomm`, `speck-natcomm`, `yao-2024-speck-naturecomm`, `yao2024-speck-natcomm`.
+- `spikerplus` retains aliases `Carpegna24-SpikerPlus`, `carpegna2024-spikerplus`, `evidence-papers.json:spikerplus`, `evidence-stack.json:carpegna2024-spikerplus`, `spiker-fpga`.
+- `spikingjelly-source-tonir` retains aliases `evidence-stack.json:spikingjelly-source-tonir`, `research/claim-audits:spikingjelly-source-tonir`.
+- `spinnaker-chip` retains aliases `evidence-stack.json:painkras2013-spinnaker`, `painkras2013-spinnaker`, `sources.json:spinnaker-chip`.
+- `spinnaker-goalkeeper` retains aliases `cheng2020-goalkeeper-spinnaker`, `evidence-papers.json:spinnaker-goalkeeper`, `evidence-stack.json:cheng2020-goalkeeper-spinnaker`.
+- `spj` retains aliases `SJ23-SciAdv`, `evidence-stack.json:spikingjelly-paper`, `fang-2023-spikingjelly-sciadv`, `research/claim-audits:spj`, `sources.json:spj`, `spikingjelly-paper`.
+- `spj-lava` retains aliases `SJ-LavaExchangeDocs`, `evidence-stack.json:spj-lava`, `research/claim-audits:spj-lava`, `sources.json:spj-lava`.
+- `srp` retains aliases `evidence-papers.json:srp`, `evidence-stack.json:srp`, `hao-2023-srp`.
+- `syncnn` retains aliases `Panchapakesan22-SyncNN`, `evidence-papers.json:syncnn`, `evidence-stack.json:panchapakesan2021-syncnn`, `panchapakesan2021-syncnn`.
+- `tang-slam-loihi` retains aliases `evidence-papers.json:tang-slam-loihi`, `evidence-stack.json:tang2019-slam-loihi`, `tang2019-slam-loihi`.
+- `temporal-flexibility` retains aliases `evidence-papers.json:temporal-flexibility`, `evidence-stack.json:temporal-flexibility`, `mtt`, `research/claim-audits:temporal-flexibility`, `sources.json:mtt`.
+- `tianjic` retains aliases `evidence-papers.json:tianjic`, `evidence-stack.json:pei2019-tianjic`, `pei2019-tianjic`.
+- `toolbox` retains aliases `evidence-stack.json:snn-toolbox-docs`, `snn-toolbox-docs`, `sources.json:toolbox`.
+- `truenorth` retains aliases `eedn`, `esser-2016-eedn`, `esser2016-eedn`, `evidence-papers.json:eedn`, `evidence-stack.json:esser2016-eedn`, `sources.json:truenorth`.
+- `truenorth-dvs-gesture` retains aliases `amir2017-truenorth-gesture`, `evidence-papers.json:truenorth-dvs-gesture`, `evidence-stack.json:amir2017-truenorth-gesture`.
+- `xylo-kws` retains aliases `Bos24-XyloKWS`, `bosmuir2024-xylo-kws`, `evidence-papers.json:xylo-kws`, `evidence-stack.json:bosmuir2024-xylo-kws`.
+- `yik-2025-neurobench` retains aliases `neurobench`, `research/prior-surveys/batch-A.json:yik-2025-neurobench`, `sources.json:neurobench`.
+- `ziegler2024-akida-robotics` retains aliases `Ziegler24-FastObjects`, `evidence-stack.json:ziegler2024-akida-robotics`, `research/claim-audits:ziegler2024-akida-robotics`.
+
+## Resolved metadata conflicts
+
+- `a18-sourcecode-comparison`. Title variants resolved through an explicit primary-source metadata override.
+- `apex`. Author variants resolved through an explicit primary-source metadata override.
+- `arfa-2025-spinnaker2`. Title variants resolved through an explicit primary-source metadata override.
+- `bidl`. Author variants resolved through an explicit primary-source metadata override.
+- `bidl`. Title variants resolved through an explicit primary-source metadata override.
+- `brehove`. The publisher DOI is canonical; the matching arXiv DOI identifies the preprint version of the same work.
+- `brehove`. Title variants resolved through an explicit primary-source metadata override.
+- `burst-spikes`. The publisher DOI is canonical; the matching arXiv DOI identifies the preprint version of the same work.
+- `davies-2021-loihi`. Title variants resolved through an explicit primary-source metadata override.
+- `gelneuro`. Title variants resolved through an explicit primary-source metadata override.
+- `hiaer-spike-cri`. Resolved to the current official documentation snapshot represented by the audited record.
+- `imam-cleland-olfaction`. The publisher DOI is canonical; the matching arXiv DOI identifies the preprint version of the same work.
+- `lava-dl-slayer-docs`. Title variants resolved through an explicit primary-source metadata override.
+- `neuroflex`. Author variants resolved through an explicit primary-source metadata override.
+- `neuroflex`. Title variants resolved through an explicit primary-source metadata override.
+- `nxtf`. Resolved to the ACM JETC publication year. The 2021 value describes the preprint.
+- `prior-s29-ayasi-2025`. Title variants resolved through an explicit primary-source metadata override.
+- `qcfs`. Title variants resolved through an explicit primary-source metadata override.
+- `quartz`. Resolved to the revised 2024 version; the 2023 value is the initial preprint submission.
+- `quartz`. Title variants resolved through an explicit primary-source metadata override.
+- `richter`. Title variants resolved through an explicit primary-source metadata override.
+- `sddpg`. Author variants resolved through an explicit primary-source metadata override.
+- `sew-resnet`. Title variants resolved through an explicit primary-source metadata override.
+- `spinnaker-chip`. Title variants resolved through an explicit primary-source metadata override.
+- `spinnaker-goalkeeper`. Title variants resolved through an explicit primary-source metadata override.
+- `spj-lava`. Title variants resolved through an explicit primary-source metadata override.
+- `toolbox`. Author variants resolved through an explicit primary-source metadata override.
+- `toolbox`. Title variants resolved through an explicit primary-source metadata override.
+
+## Unresolved conflicts
+
+- None.
+
+## Retrieval limits
+
+- 279 records remain metadata-only and require claim-level inspection before they can support substantive prose.
+- Metadata-only IDs: `Akopyan15-TrueNorth`, `BindsNET18`, `BrainChip-AKD1000Brief`, `BrainChip-AKD1500Brief`, `CNN2SNN-Source`, `EBRAINS-Access`, `EBRAINS-BSS`, `HBP-Guidebook`, `Innatera-EETimes`, `Innatera-Talamo`, `Lynxi-HP300`, `Lynxi-KA200`, `NIR-Primitives`, `NengoDL-Rasmussen19`, `NengoLoihi-Docs`, `Norse-Docs`, `PyNN-Docs`, `PynnBSS2-Docs`, `SJ-ANN2SNNDocs`, `SJ-NIRExchangeSource`, `SJ-NeuronDocs`, `Shidqi22-SENECAThesis`, `Sinabs-FromTorch`, `Sinabs-TrainingTips`, `SpiNNcloud24-PR`, `Spyx-Docs`, `SynSense-SpeckDatasheet`, `SynSense-SpeckOverview`, `Thorpe98-RankOrder`, `Turner22-mlGeNN`, `abr-pressrelease-nengoloihi`, `ace-snn2022`, `adafire`, `aerovis2026-slam`, `akida-hw-constraints`, `akida-story-2016`, `akopyan2015-truenorth`, `apex`, `arfa-2025-spinnaker2`, `auge`, `backprop-loihi-pmc`, `bellec2018`, `bezugam2023-emg-loihi`, `bhattacharjee-2023-hardware`, `bidl`, `bidl-pmc-paper`, `blouw2019-kws-loihi`, `boeshertz2024-rnn-mapping`, `bonazzi2025-fpga-drone-dpu`, `bootstrap`, `brainchip-akida-techbrief`, `brainchip-akida-user-guide`, `brainchip-metatf-2-19-2-release`, `brainscales-accel`, `bsnn-2022`, `bss`, `burst-spikes`, `cao-2015`, `ceolini-emgdvs-fusion`, `cerco-spikenet-docs`, `cerebron`, `clp-snn`, `cnn2snn-source-inspection`, `combra-snn-eeg-repo`, `convlca-2025-lca`, `cos`, `cramer2022-surrogate`, `cs-qcfs`, `deneve2022-ttfs-unifying`, `dennler2023-olfaction-replication`, `dewolf2020-nengo-hw`, `dewolf2023-nengoloihi-arm`, `diehl`, `diff`, `ding-2021-optimalconv`, `dynap-se-tactile`, `dynapse-icub-pcontroller`, `eeg-motor-imagery-repo`, `eeg-seizure-loihi2`, `eetimes-graimatter`, `ettfs-2024`, `eventboost2024`, `eventprop-delays`, `eventprop-spinnaker2-backprop`, `eventvision2023-survey`, `exodus`, `fast-snn`, `firefly`, `force-control`, `furber2012-spinnaker`, `galanis-2020-spinnaker`, `gelneuro`, `gonzalez2024-spinnaker2`, `guo2021`, `hbp-guidebook`, `hiaer-spike-cri`, `hodgkin1952`, `horowitz-2014`, `hxtorch`, `hybridsnn-nengoloihi-nsf`, `ibm2023-neuromorphic-opticalflow`, `ijcai2025negspike`, `imam-cleland-olfaction`, `inivation2026-davis346`, `innatera-pulsar-vendor`, `intel-inrc-confluence`, `izhikevich2003`, `jelly-lava-source`, `jelly-nir-source`, `jiang-2025-adaptive-fission`, `kelber-2020`, `kelber-2020-spinnaker2sim`, `kim-2020-roc-scnn`, `kim-2022-rate-vs-direct`, `kim2018-weightedspikes`, `kreiser2020-icub-headpose`, `kria-prophesee-vitisai`, `latency-framework2026`, `lava-archived-2026`, `lava-dl-docs`, `lava-dl-github-archived`, `lava-dl-readme`, `lava-exec`, `lava-nc-homepage`, `lava-v0-10-release`, `li2023-firefly`, `liu-2019-facedemo`, `liu2026-neuralencoding`, `loas`, `loihi1`, `loihi2`, `maass1997`, `massa-2020`, `morphic`, `moyer-2020-semieng`, `narduzzi-2025-eflop`, `nengo-dl`, `nengo-loihi`, `nengoloihi-cifar10-example`, `netx`, `neuroflex`, `neuronflow-2020`, `neuropod-hexapod-spinnaker`, `nir`, `nir-example`, `nir-porting-guide`, `norse-docs`, `norse-nir-thirdparty`, `northpole`, `nxtf-text`, `odin`, `one-spike`, `open-neuromorphic-akida`, `opi`, `opt-conv`, `orchard2021-loihi2signal`, `pals-2021-eeg-spinnaker`, `parpart2023-lca-loihi2`, `patino-saucedo-2020`, `pehle-2022-bmtk`, `plif`, `prophesee-2025-pedestrian`, `prophesee-docs-detection`, `prophesee-genx320-docs`, `prophesee2026-sensors`, `pseudo`, `qcfs`, `qffs`, `radar-automotive-2026`, `radar-resonator-2025`, `reckon`, `rhodes2018-spynnaker`, `richter`, `richter2024-dynapse2`, `riverpub-mnist-dynapcnn`, `rmp`, `rockpool-quickxylo-docs`, `rockpool-xylo-docs`, `rockpool-xyloa3-docs`, `rowley2019-spinntools`, `rueckauer`, `rueckauer2016-theory`, `satcsp-2020`, `satcsp-loihi-date2020`, `sawada2016-truenorth-ecosystem`, `schemmel2010-wafer`, `schmitt2017-hitl`, `scholze2026-spinnaker2chip`, `sddpg`, `sdnn`, `seneca`, `sengupta`, `serrano-2015-convnets`, `sew-resnet`, `shen-2024-cvpr`, `sia-fpga`, `sinabs`, `sinabs-discretize-api`, `sinabs-docs-overview`, `sinabs-nmnist-tutorial`, `singh-2021-gesture-snn`, `slayer`, `slayer-nxtf-gesture`, `slip-relu`, `snm`, `snn-calibration`, `snn-toolbox-github`, `snnTorch-Docs`, `snntoolbox-docs`, `snntoolbox-issues`, `snntorch`, `snntorch-docs`, `snntorch-pr-426`, `snntorch-pr388`, `speck-datasheet`, `speck-dynamic-snn`, `speck-manual`, `spike-driven-transformer`, `spike-driven-transformer-v2`, `spikeconverter`, `spiker-2022`, `spiker-plus-fpga`, `spikerplus`, `spikformer`, `spiking-yolo`, `spikingformer`, `spikingjelly-issue543`, `spikingjelly-loihi2-2026`, `spilger2020-hxtorch`, `spilger2022-hxtorchsnn`, `spinnaker-1ms`, `spinnaker-chip`, `spinnaker-goalkeeper`, `spinnaker-neuron-lab-manual`, `spinnaker2-chip`, `spinnaker2-nir-import-docs`, `spinnaker2-tools`, `spj-lynxi`, `spynnaker`, `spynnaker-v8-docs`, `srp`, `ssnn`, `stradmann2021-mobile`, `stromatias`, `stromatias-2015`, `stromatias2015-dbn-spinnaker`, `swsc2024`, `syncnn`, `synsense-speck-datasheet`, `synsense-speck-gesture-datasheet`, `t2fsnn`, `tang-slam-loihi`, `tang2017-lca-sparsecoding`, `tcl`, `tdbn`, `temporal`, `tet`, `thorpe-spikebased`, `thorpe1996-rankorder`, `tianjic`, `toolbox`, `trinityslam2024`, `truenorth`, `truenorth-dvs-gesture`, `truenorth-neuron-model-doc`, `tsc`, `ubrain`, `v2v2025-neurips`, `vanalbada2018-spinnaker-nest`, `vitale2022-emg-loihi`, `weis2020-annmode`, `xpikeformer`, `xylo-kws`, `yan2021-spinnaker2pe`, `yao-speck`, `yao-spikedriven`, `yoso2020`, `zhou-2024-spikformerv2`, `zou2023negspike`.
+- 0 records are explicitly not retrieved: none.
+
+## Unresolved metadata
+
+- `Akopyan15-TrueNorth`: `authors`, `doi`, `url`.
+- `BindsNET18`: `authors`.
+- `BrainChip-AKD1000Brief`: `authors`, `venue`, `doi`.
+- `BrainChip-AKD1500Brief`: `authors`, `venue`, `doi`.
+- `CNN2SNN-Source`: `authors`, `year`, `venue`, `doi`, `url`.
+- `EBRAINS-Access`: `year`, `venue`, `doi`.
+- `EBRAINS-BSS`: `authors`, `year`, `venue`, `doi`.
+- `HBP-Guidebook`: `authors`, `year`, `venue`, `doi`.
+- `Innatera-EETimes`: `authors`, `doi`.
+- `Innatera-Talamo`: `authors`, `year`, `venue`, `doi`.
+- `Lynxi-HP300`: `authors`, `year`, `venue`, `doi`.
+- `Lynxi-KA200`: `authors`, `year`, `venue`, `doi`.
+- `NIR-Primitives`: `authors`, `year`, `venue`, `doi`.
+- `NengoDL-Rasmussen19`: `year`, `venue`, `doi`.
+- `NengoLoihi-Docs`: `authors`, `year`, `venue`, `doi`.
+- `Norse-Docs`: `authors`, `year`, `venue`, `doi`.
+- `PyNN-Docs`: `year`, `venue`, `doi`.
+- `PynnBSS2-Docs`: `authors`, `year`, `venue`, `doi`.
+- `SJ-ANN2SNNDocs`: `authors`, `year`, `venue`, `doi`.
+- `SJ-NIRExchangeSource`: `authors`, `year`, `venue`, `doi`, `url`.
+- `SJ-NeuronDocs`: `authors`, `year`, `venue`, `doi`.
+- `Shidqi22-SENECAThesis`: `doi`.
+- `Sinabs-FromTorch`: `authors`, `year`, `venue`, `doi`.
+- `Sinabs-TrainingTips`: `year`, `venue`, `doi`.
+- `SpiNNcloud24-PR`: `venue`, `doi`.
+- `Spyx-Docs`: `authors`, `year`, `venue`, `doi`.
+- `SynSense-SpeckDatasheet`: `authors`, `venue`, `doi`.
+- `SynSense-SpeckOverview`: `authors`, `year`, `venue`, `doi`.
+- `Thorpe98-RankOrder`: `doi`, `url`.
+- `a14-application-survey`: `authors`, `year`, `venue`, `doi`, `url`.
+- `a17-two-populations`: `authors`, `year`, `venue`, `doi`, `url`.
+- `a18-sourcecode-comparison`: `doi`.
+- `abr-pressrelease-nengoloihi`: `doi`.
+- `ace-snn2022`: `authors`.
+- `akida-hw-constraints`: `authors`, `year`, `venue`, `doi`.
+- `akida-story-2016`: `year`, `venue`, `doi`.
+- `akopyan2015-truenorth`: `doi`.
+- `anon-edge-survey`: `doi`.
+- `backprop-loihi-pmc`: `doi`.
+- `bellec2018`: `doi`, `url`.
+- `bhattacharjee-2023-hardware`: `venue`, `doi`.
+- `bidl`: `doi`.
+- `bidl-pmc-paper`: `doi`.
+- `bonazzi2025-fpga-drone-dpu`: `doi`.
+- `bootstrap`: `doi`.
+- `brainchip-akida-techbrief`: `doi`.
+- `brainchip-akida-user-guide`: `doi`.
+- `brainchip-cnn2snn-docs`: `doi`.
+- `brainchip-metatf-2-19-2-release`: `doi`.
+- `brainchip-quantizeml-docs`: `doi`.
+- `brainscales-accel`: `authors`, `year`, `venue`, `doi`.
+- `bsnn-2022`: `authors`.
+- `ceolini-emgdvs-fusion`: `doi`.
+- `cerco-spikenet-docs`: `year`, `venue`, `doi`.
+- `cnn2snn-source-inspection`: `authors`, `year`, `venue`, `doi`, `url`.
+- `combra-snn-eeg-repo`: `doi`.
+- `convlca-2025-lca`: `authors`, `year`, `venue`, `doi`, `url`.
+- `cramer2022-surrogate`: `doi`.
+- `datta2025-snn-meets-ann`: `doi`.
+- `dewolf2020-nengo-hw`: `doi`.
+- `diff`: `doi`.
+- `dynapse-icub-pcontroller`: `doi`.
+- `eeg-motor-imagery-repo`: `authors`, `year`, `venue`, `doi`, `url`.
+- `eeg-seizure-loihi2`: `doi`.
+- `eetimes-graimatter`: `year`, `venue`, `doi`, `url`.
+- `ettfs-2024`: `authors`, `venue`, `doi`.
+- `gonzalez2024-spinnaker2`: `doi`.
+- `hbp-guidebook`: `authors`, `year`, `venue`, `doi`.
+- `hiaer-spike-cri`: `doi`.
+- `hodgkin1952`: `doi`, `url`.
+- `hxtorch`: `doi`.
+- `hybridsnn-nengoloihi-nsf`: `doi`.
+- `ibm2023-neuromorphic-opticalflow`: `doi`.
+- `ijcai2025negspike`: `doi`.
+- `inivation2026-davis346`: `doi`.
+- `innatera-pulsar-vendor`: `doi`.
+- `intel-inrc-confluence`: `doi`.
+- `izhikevich2003`: `doi`, `url`.
+- `jelly-lava-source`: `authors`, `year`, `venue`, `doi`.
+- `jelly-nir-source`: `authors`, `year`, `venue`, `doi`, `url`.
+- `jiang-2025-adaptive-fission`: `authors`, `doi`.
+- `kim-2020-roc-scnn`: `authors`.
+- `kim-2022-rate-vs-direct`: `venue`, `doi`.
+- `kria-prophesee-vitisai`: `authors`, `year`, `venue`, `doi`, `url`.
+- `latency-framework2026`: `authors`, `year`, `venue`, `doi`.
+- `lava-archived-2026`: `authors`, `venue`, `doi`, `url`.
+- `lava-dl-docs`: `year`, `venue`, `doi`.
+- `lava-dl-github-archived`: `doi`.
+- `lava-dl-netx-docs`: `doi`.
+- `lava-dl-readme`: `authors`, `venue`, `doi`.
+- `lava-dl-slayer-docs`: `doi`.
+- `lava-exec`: `doi`.
+- `lava-github-archived`: `doi`.
+- `lava-nc-homepage`: `doi`.
+- `lava-v0-10-release`: `doi`.
+- `liu-2019-facedemo`: `doi`, `url`.
+- `loihi2`: `doi`.
+- `maass1997`: `doi`, `url`.
+- `moyer-2020-semieng`: `doi`.
+- `mt-snn-withdrawn-iclr`: `doi`.
+- `narduzzi-2025-eflop`: `authors`.
+- `nengo-dl`: `doi`.
+- `nengo-loihi`: `doi`.
+- `nengoloihi-cifar10-example`: `authors`, `year`, `venue`, `doi`.
+- `netx`: `doi`.
+- `neuroir-docs`: `doi`.
+- `neuronflow-2020`: `authors`.
+- `neuropod-hexapod-spinnaker`: `doi`.
+- `nir`: `doi`.
+- `nir-example`: `doi`.
+- `nir-neuron-primitives-source`: `doi`.
+- `nir-porting-guide`: `authors`, `year`, `venue`, `doi`.
+- `norse-docs`: `doi`.
+- `norse-nir-thirdparty`: `doi`.
+- `nxtf-repository`: `doi`.
+- `open-neuromorphic-akida`: `doi`.
+- `pehle-2022-bmtk`: `authors`, `venue`.
+- `prophesee-2025-pedestrian`: `venue`, `doi`, `url`.
+- `prophesee-docs-detection`: `year`, `venue`, `doi`, `url`.
+- `prophesee-genx320-docs`: `authors`, `year`, `venue`, `doi`, `url`.
+- `prophesee2026-sensors`: `doi`.
+- `qac`: `doi`.
+- `qffs`: `doi`.
+- `radar-automotive-2026`: `authors`, `doi`.
+- `radar-resonator-2025`: `authors`, `year`, `doi`.
+- `riverpub-mnist-dynapcnn`: `doi`.
+- `rockpool-quickxylo-docs`: `doi`.
+- `rockpool-xylo-docs`: `doi`.
+- `rockpool-xyloa3-docs`: `doi`.
+- `rueckauer2016-theory`: `doi`.
+- `satcsp-2020`: `authors`, `doi`, `url`.
+- `sawada2016-truenorth-ecosystem`: `doi`.
+- `schmitt2017-hitl`: `doi`.
+- `shen-2024-cvpr`: `doi`.
+- `sia-fpga`: `authors`, `year`, `venue`, `doi`.
+- `sinabs`: `doi`.
+- `sinabs-discretize-api`: `authors`, `year`, `venue`, `doi`.
+- `sinabs-docs`: `doi`.
+- `sinabs-docs-overview`: `authors`, `year`, `venue`, `doi`, `url`.
+- `sinabs-nir`: `doi`.
+- `sinabs-nir-to-speck-tutorial`: `doi`.
+- `sinabs-nmnist-tutorial`: `authors`, `year`, `venue`, `doi`.
+- `slayer-nxtf-gesture`: `doi`.
+- `slip-relu`: `doi`.
+- `snm`: `doi`.
+- `snn-toolbox-github`: `doi`.
+- `snnTorch-Docs`: `authors`, `year`, `venue`, `doi`.
+- `snntoolbox-docs`: `authors`, `year`, `venue`, `doi`.
+- `snntoolbox-issues`: `authors`, `venue`, `doi`.
+- `snntorch`: `doi`.
+- `snntorch-docs`: `doi`.
+- `snntorch-pr-426`: `authors`, `year`, `venue`, `doi`.
+- `snntorch-pr388`: `doi`.
+- `speck-datasheet`: `venue`, `doi`, `url`.
+- `speck-manual`: `doi`.
+- `spike-driven-transformer-v2`: `doi`.
+- `spikeconverter`: `doi`.
+- `spiker-2022`: `doi`.
+- `spiker-plus-fpga`: `authors`, `year`, `venue`, `doi`.
+- `spikingjelly-issue543`: `venue`, `doi`, `url`.
+- `spikingjelly-loihi2-2026`: `authors`, `venue`, `doi`, `url`.
+- `spikingjelly-source-tonir`: `doi`.
+- `spinnaker-1ms`: `authors`, `doi`, `url`.
+- `spinnaker-neuron-lab-manual`: `year`, `venue`, `doi`.
+- `spinnaker2-nir-import-docs`: `doi`.
+- `spinnaker2-tools`: `doi`.
+- `spj`: `doi`.
+- `spj-lava`: `doi`.
+- `spj-lynxi`: `doi`.
+- `spynnaker`: `doi`.
+- `spynnaker-v8-docs`: `doi`.
+- `stradmann2021-mobile`: `doi`.
+- `stromatias`: `doi`.
+- `stromatias2015-dbn-spinnaker`: `doi`.
+- `swsc2024`: `authors`, `year`, `venue`, `doi`.
+- `synsense-speck-datasheet`: `doi`.
+- `synsense-speck-gesture-datasheet`: `year`, `venue`, `doi`, `url`.
+- `thorpe-spikebased`: `doi`.
+- `thorpe1996-rankorder`: `doi`.
+- `tianjic`: `doi`.
+- `toolbox`: `doi`.
+- `truenorth-neuron-model-doc`: `doi`.
+- `ubrain`: `doi`.
+- `v2v2025-neurips`: `doi`.
+- `yao-speck`: `doi`.
+- `yao-spikedriven`: `authors`, `year`, `venue`, `doi`, `url`.
+- `yoso2020`: `authors`, `year`, `venue`, `doi`.
+- `zhou-2024-spikformerv2`: `authors`, `venue`, `doi`.
+- `zou2023negspike`: `authors`.
+
+## Bibliography migration coverage
+
+- The frozen bibliography migration is a lowest-priority structured input. Unknown metadata remains null and cannot override stronger reviewed evidence.
+- All 110 frozen legacy aliases resolve exactly once through canonical IDs or aliases.
+- 1 pre-existing uncited reference-map targets outside the frozen migration set do not identify a canonical source record.
+- Unmatched mappings: `furber-2004-nofm->furber2004`.
