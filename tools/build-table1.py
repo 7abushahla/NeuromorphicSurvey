@@ -1,209 +1,307 @@
 #!/usr/bin/env python3
-"""Generate Table 1, the scope comparison of prior surveys.
+"""Generate Section 1's prior-survey coverage matrix from canonical inputs.
 
-Reads the 37-survey scoring from research/raw/a15-prior-surveys.md and writes the
-coverage heat-map into site/sec-01.html. Re-runnable, so a score can be corrected in
-one place and the table regenerated.
-
-The twelve research axes are merged into eight table columns. Merging takes the
-stronger of the pair, because a survey that covers neuron models fully and encodings
-partially has still covered that territory.
+The source coverage matrix remains twelve-dimensional. This reader-facing table
+merges it into eight display columns, retaining the stronger score within each
+approved pair. Row identity, coverage, verification status, author labels, and
+years are all read from structured canonical data. No legacy survey ledger or
+hand-maintained list of survey identifiers participates in generation.
 """
-import re, html
+from __future__ import annotations
+
+import html
+import json
+import re
+from collections import Counter
 from pathlib import Path
+from typing import Any
+
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# a15 row order, 1 to 37, mapped to the reference ids already in sec-01.html.
-IDS = """pedersen-2024-nir kudithipudi-2025 deng-2025-edgesnn yik-2025-neurobench davies-2021-loihi
-huynh-2022 roy-2019 schuman-2017 schuman-2022 eshraghian-2023 rathi-2023 yamazaki-2022 ivanov-2022
-basu-2022 nunes-2022 khan-2025 zheng-2022 anon-edge-survey xie-2024 ferreira-2025 manna-2023
-gallego-2022 gebregiorgis-2025 bouvier-2019 shrestha-2022 chips-2026 epjb-2024
-spiking-transformers-2024 mdpi-tutorial-2025 alabdulwahid-2024 tayarani-2021 cimarelli-2025
-npl-2026 luu-2026 caviglia-2026 edge-bench-2026 farsa-2026""".split()
-
-COLS = [
-    ('Codes &amp; neurons',        'Codes',      ['A', 'B']),
-    ('Training &amp; conversion',  'Conversion', ['C', 'D']),
-    ('Software frameworks',        'Software',   ['E']),
-    ('Compilers &amp; interchange','Compilers',  ['F', 'G']),
-    ('Hardware platforms',         'Hardware',   ['H']),
-    ('Boundary semantics',         'Boundaries', ['I']),
-    ('Evidence types',             'Evidence',   ['J']),
-    ('Traced chip routes',         'Routes',     ['L']),
-]
-AXES = 'ABCDEFGHIJKL'
-
-# Corrections to a15's scoring, applied openly rather than silently. Each carries the
-# reason, which is surfaced as a tooltip on the corrected cell.
-OVERRIDES = {
-    ('davies-2021-loihi', 'H'): ('P', 'Covers one platform family in depth. On an axis '
-                                      'measuring breadth of platform coverage that is partial, '
-                                      'not full. This work is scored as single-chip on the '
-                                      'evidence and route axes, and the same reading applies here.'),
-}
-
-RANK = {'F': 3, 'P': 2, 'M': 1}
-
-# A short categorical tag per survey, the same treatment the hardware landscape gets in
-# the quantization survey. Hand-set where the survey has a clear identity, otherwise
-# derived from its strongest axes.
-TAGS = {
-    'pedersen-2024-nir':   ('Interchange',  'tag-software'),
-    'kudithipudi-2025':    ('Ecosystem',    'tag-overview'),
-    'deng-2025-edgesnn':   ('Edge systems', 'tag-overview'),
-    'yik-2025-neurobench': ('Benchmark',    'tag-evaluation'),
-    'davies-2021-loihi':   ('Hardware',     'tag-hardware'),
-    'huynh-2022':          ('Toolchains',   'tag-software'),
-    'manna-2023':          ('Frameworks',   'tag-software'),
-    'gallego-2022':        ('Sensing',      'tag-hardware'),
-    'edge-bench-2026':     ('Benchmark',    'tag-evaluation'),
-    'basu-2022':           ('Circuits',     'tag-hardware'),
+DISPLAY_COLUMNS = (
+    ("Codes &amp; neurons", "Codes", ("A", "B")),
+    ("Training &amp; conversion", "Conversion", ("C", "D")),
+    ("Software frameworks", "Software", ("E",)),
+    ("Compilers &amp; interchange", "Compilers", ("F", "G")),
+    ("Hardware platforms", "Hardware", ("H",)),
+    ("Boundary semantics", "Boundaries", ("I",)),
+    ("Evidence types", "Evidence", ("J",)),
+    ("Traced chip routes", "Routes", ("L",)),
+)
+SCORE_RANK = {"full": 3, "partial": 2, "mentioned": 1, "none": 0}
+CELL_STYLE = {
+    3: ("cov-full", "Full"),
+    2: ("cov-part", "Partial"),
+    1: ("cov-ment", "Mentioned"),
+    0: ("cov-none", ""),
 }
 
 
-def tag_for(rid, ax):
-    """Fall back to the survey's strongest axis when no tag is hand-set."""
-    if rid in TAGS:
-        return TAGS[rid]
-    g = lambda k: RANK.get(re.match(r'\s*([FPM])', ax[k].replace('*', '').replace('†', '')).group(1), 0) \
-        if re.match(r'\s*([FPM])', ax[k].replace('*', '').replace('†', '')) else 0
-    if g('G') >= 2: return ('Interchange', 'tag-software')
-    if g('J') >= 2: return ('Evaluation',  'tag-evaluation')
-    if g('F') >= 2: return ('Toolchains',  'tag-software')
-    if g('E') >= 2: return ('Frameworks',  'tag-software')
-    if g('D') >= 2: return ('Conversion',  'tag-methods')
-    if g('C') >= 2: return ('Training',    'tag-methods')
-    if g('H') >= 2: return ('Hardware',    'tag-hardware')
-    return ('Overview', 'tag-overview')
+def load_json(path: Path) -> dict[str, Any]:
+    try:
+        document = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        raise ValueError(f"cannot read JSON from {path}: {error}") from error
+    if not isinstance(document, dict):
+        raise ValueError(f"expected a JSON object in {path}")
+    return document
 
 
-# Author lists resolved from the primary source where a15 left the entry unattributed.
-NAMES = {
-    'anon-edge-survey':          ('Rashed &amp; Dias', '2025'),
-    'chips-2026':                ('Chen et al.', None),
-    'epjb-2024':                 ('Zolfagharinejad et al.', None),
-    'spiking-transformers-2024': ('Hu et al.', None),
-    'mdpi-tutorial-2025':        ('Ayasi et al.', None),
-    'npl-2026':                  ('He &amp; Gao', None),
-    'edge-bench-2026':           ('Du et al.', None),
-}
+def require_string(value: object, label: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{label} must be a nonempty string")
+    return value.strip()
 
 
-def short_name(raw):
-    """Author-only label, matching the Paper column in the quantization survey."""
-    n = raw.split('—')[0].split('·')[0].strip().rstrip(',')
-    n = re.sub(r'\s*\([^)]*\)\s*$', '', n).strip()
-    if n.startswith('"'):                      # untitled or unattributed work
-        return n.split('"')[1].strip()
-    if 'et al' in n:
-        first = re.split(r'[/,&]', n)[0].strip()
-        return first.split()[0] + ' et al.'
-    parts = re.split(r'[/,&]|\band\b', n)
-    if len(parts) > 1:
-        return parts[0].strip().split()[0] + ' et al.'
-    return n
-CLS = {3: ('cov-full', 'Full'), 2: ('cov-part', 'Partial'),
-       1: ('cov-ment', 'Mentioned'), 0: ('cov-none', '')}
+def coverage_scores(survey: dict[str, Any], label: str) -> dict[str, str]:
+    coverage = survey.get("coverage")
+    if not isinstance(coverage, dict):
+        raise ValueError(f"{label}.coverage must be an object")
+    scores: dict[str, str] = {}
+    for axis, record in coverage.items():
+        if not isinstance(record, dict):
+            raise ValueError(f"{label}.coverage.{axis} must be an object")
+        score = record.get("score")
+        if score not in SCORE_RANK:
+            raise ValueError(f"{label}.coverage.{axis}.score is invalid: {score!r}")
+        scores[str(axis)] = score
+    expected_axes = set("ABCDEFGHIJKL")
+    if set(scores) != expected_axes:
+        raise ValueError(
+            f"{label}.coverage must contain axes A-L exactly; found {sorted(scores)}"
+        )
+    return scores
 
 
-def score(cell):
-    c = cell.replace('*', '').strip()
-    dag = '†' in c
-    m = re.match(r'\s*([FPM])', c.replace('†', ''))
-    return (RANK.get(m.group(1), 0) if m else 0), dag
+def canonical_surveys(coverage_document: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    surveys = coverage_document.get("surveys")
+    if not isinstance(surveys, list) or len(surveys) != 37:
+        raise ValueError("prior-survey coverage must contain exactly 37 surveys")
+    result: dict[str, dict[str, Any]] = {}
+    for index, survey in enumerate(surveys):
+        label = f"prior-survey-coverage.surveys[{index}]"
+        if not isinstance(survey, dict):
+            raise ValueError(f"{label} must be an object")
+        source_id = require_string(survey.get("source_id"), f"{label}.source_id")
+        if source_id in result:
+            raise ValueError(f"prior-survey coverage repeats source_id {source_id!r}")
+        if survey.get("full_text_status") != "verified":
+            raise ValueError(f"{label} is not a verified full-text survey")
+        coverage_scores(survey, label)
+        result[source_id] = survey
+    return result
 
 
-def end_of_div(s, start):
-    """Index just past the </div> that closes the div opening at `start`.
+def verify_family_summary(
+    summary_document: dict[str, Any], surveys: dict[str, dict[str, Any]]
+) -> None:
+    """Reject a stale generated family view before using it as the table cross-check."""
+    if summary_document.get("view") != "prior-survey-family-summary":
+        raise ValueError("prior-survey family summary has the wrong view identifier")
+    families = summary_document.get("families")
+    if not isinstance(families, list) or not families:
+        raise ValueError("prior-survey family summary must contain nonempty families")
 
-    Counting is necessary because the table wrapper contains a nested legend div.
-    Taking the first </div> after the legend closes the legend, not the wrapper, and
-    leaves a stray </div> behind on every regeneration.
-    """
-    depth, i = 0, start
-    for m in re.finditer(r'<div\b|</div>', s[start:]):
-        depth += 1 if m.group(0) != '</div>' else -1
+    expected_ids = set(surveys)
+    for family_index, family in enumerate(families):
+        label = f"prior-survey-family-summary.families[{family_index}]"
+        if not isinstance(family, dict):
+            raise ValueError(f"{label} must be an object")
+        axes = family.get("coverage_axes")
+        records = family.get("surveys")
+        if not isinstance(axes, list) or not axes:
+            raise ValueError(f"{label}.coverage_axes must be a nonempty array")
+        if not isinstance(records, list) or len(records) != len(surveys):
+            raise ValueError(f"{label}.surveys must contain all 37 canonical surveys")
+        if family.get("survey_count") != len(surveys):
+            raise ValueError(f"{label}.survey_count is stale")
+
+        actual_ids: list[str] = []
+        actual_scores: Counter[str] = Counter()
+        for record_index, record in enumerate(records):
+            record_label = f"{label}.surveys[{record_index}]"
+            if not isinstance(record, dict):
+                raise ValueError(f"{record_label} must be an object")
+            source_id = require_string(record.get("source_id"), f"{record_label}.source_id")
+            actual_ids.append(source_id)
+            canonical = surveys.get(source_id)
+            if canonical is None:
+                raise ValueError(f"{record_label} is absent from canonical coverage")
+            observed = record.get("coverage")
+            if not isinstance(observed, dict):
+                raise ValueError(f"{record_label}.coverage must be an object")
+            canonical_scores = coverage_scores(canonical, f"canonical {source_id}")
+            if set(observed) != set(axes):
+                raise ValueError(f"{record_label}.coverage axes do not match its family")
+            for axis in axes:
+                score_record = observed.get(axis)
+                if not isinstance(score_record, dict) or score_record.get("score") != canonical_scores[axis]:
+                    raise ValueError(f"{record_label}.coverage.{axis} is stale")
+                actual_scores[canonical_scores[axis]] += 1
+        if set(actual_ids) != expected_ids or len(actual_ids) != len(set(actual_ids)):
+            raise ValueError(f"{label}.surveys is not a one-to-one projection of canonical coverage")
+        expected_counts = {
+            **{score: actual_scores[score] for score in SCORE_RANK},
+            "unassessed": 0,
+        }
+        if family.get("score_counts") != expected_counts:
+            raise ValueError(f"{label}.score_counts is stale")
+
+
+def source_index(source_document: dict[str, Any], survey_ids: set[str]) -> dict[str, dict[str, Any]]:
+    records = source_document.get("sources")
+    if not isinstance(records, list):
+        raise ValueError("source registry must contain a sources array")
+    sources: dict[str, dict[str, Any]] = {}
+    for record in records:
+        if not isinstance(record, dict) or not isinstance(record.get("id"), str):
+            continue
+        sources[record["id"]] = record
+    missing = sorted(survey_ids - set(sources))
+    if missing:
+        raise ValueError(f"source registry is missing surveyed works: {missing}")
+    for source_id in survey_ids:
+        source = sources[source_id]
+        require_string(source.get("authors"), f"source {source_id}.authors")
+        if not isinstance(source.get("year"), int):
+            raise ValueError(f"source {source_id}.year must be an integer")
+    return sources
+
+
+def citation_key_index(alias_document: dict[str, Any], survey_ids: set[str]) -> dict[str, str]:
+    """Use the generated bibliography aliases without maintaining survey citation keys."""
+    aliases_by_source: dict[str, list[str]] = {source_id: [] for source_id in survey_ids}
+    for alias, source_id in alias_document.items():
+        if source_id in aliases_by_source and isinstance(alias, str) and alias:
+            aliases_by_source[source_id].append(alias)
+    return {
+        source_id: min(aliases) if aliases else source_id
+        for source_id, aliases in aliases_by_source.items()
+    }
+
+
+def short_author_label(authors: str) -> str:
+    """Return a compact first-author label without maintaining name exceptions."""
+    has_multiple_authors = "et al" in authors.lower() or bool(re.search(r";|,|\band\b", authors))
+    first = re.sub(r"\bet al\.?\s*$", "", authors, flags=re.IGNORECASE).strip()
+    first = re.split(r";|,|\band\b", first, maxsplit=1)[0].strip()
+    words = [word for word in re.split(r"\s+", first) if word and word != "et"]
+    if not words:
+        raise ValueError(f"cannot derive an author label from {authors!r}")
+    surname = words[-1].rstrip(".")
+    return f"{surname} et al." if has_multiple_authors else surname
+
+
+def display_score(scores: dict[str, str], axes: tuple[str, ...]) -> int:
+    return max(SCORE_RANK[scores[axis]] for axis in axes)
+
+
+def tag_for(scores: dict[str, str]) -> tuple[str, str]:
+    """Classify a row from its coverage, rather than its identifier or title."""
+    rank = {axis: SCORE_RANK[score] for axis, score in scores.items()}
+    if rank["L"] >= 2:
+        return "Deployment", "tag-evaluation"
+    if rank["J"] >= 2:
+        return "Evaluation", "tag-evaluation"
+    if rank["H"] >= 2:
+        return "Hardware", "tag-hardware"
+    if max(rank["F"], rank["G"]) >= 2:
+        return "Toolchains", "tag-software"
+    if rank["E"] >= 2:
+        return "Frameworks", "tag-software"
+    if rank["D"] >= 2:
+        return "Conversion", "tag-methods"
+    if rank["C"] >= 2:
+        return "Training", "tag-methods"
+    return "Overview", "tag-overview"
+
+
+def end_of_div(text: str, start: int) -> int:
+    """Return the index past the div that closes the wrapper beginning at start."""
+    depth = 0
+    for match in re.finditer(r"<div\b|</div>", text[start:]):
+        depth += 1 if match.group(0) != "</div>" else -1
         if depth == 0:
-            return start + m.end()
-    raise ValueError('unbalanced div')
+            return start + match.end()
+    raise ValueError("unbalanced Table 1 wrapper")
 
 
-def main():
-    src = (ROOT / 'research/raw/a15-prior-surveys.md').read_text().splitlines()
-    rows = [l for l in src if re.match(r'^\|\s*\d+\s*\|', l)]
-    assert len(rows) == len(IDS) == 37, (len(rows), len(IDS))
-
-    applied = []
-    out = []
-    for line, rid in zip(rows, IDS):
-        p = [c.strip() for c in line.strip().strip('|').split('|')]
-        name, yr, cells = p[1], p[2], p[3:15]
-        by_axis = dict(zip(AXES, cells))
-
-        tds = []
-        for _, _, axes in COLS:
-            best, dag = 0, False
-            for ax in axes:
-                key = (rid, ax)
-                if key in OVERRIDES:
-                    letter, why = OVERRIDES[key]
-                    v, d = RANK.get(letter, 0), False
-                    applied.append(f'{rid} {ax} -> {letter}')
-                else:
-                    why = None
-                    v, d = score(by_axis[ax])
-                if v > best:
-                    best, note = v, why
-                elif best == 0:
-                    note = why
-                dag = dag or d
-            cls, label = CLS[best]
-            title = f' title="{html.escape(note)}"' if best and note else ''
-            span = f'<span>{label}{"†" if dag else ""}</span>' if best else ''
-            tds.append(f'<td class="{cls}"{title}>{span}</td>')
-
-        nm, yr_fix = NAMES.get(rid, (None, None))
-        if yr_fix:
-            yr = yr_fix
-        disp = nm if nm else html.escape(short_name(name))
-        y = re.match(r'(\d{4})', yr)
-        label, tcls = tag_for(rid, by_axis)
-        out.append((int(y.group(1)) if y else 9999,
-                    f'<tr><td>{disp} '
-                    f'<d-cite key="{rid}"></d-cite>'
-                    f'<br><span class="survey-tag {tcls}">{label}</span></td>'
-                    f'<td class="ctr yr">{html.escape(yr)}</td>{"".join(tds)}</tr>'))
-
-    out.sort(key=lambda t: t[0])
-    ours = ('<tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td>'
-            + '<td class="cov-full"><span>Full</span></td>' * len(COLS) + '</tr>')
-    heads = '\n'.join(f'<th class="ctr" data-chip="{chip}">{title}</th>' for title, chip, _ in COLS)
-
-    table = f'''<div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
+def render_table(
+    surveys: dict[str, dict[str, Any]],
+    sources: dict[str, dict[str, Any]],
+    citation_keys: dict[str, str],
+) -> str:
+    rows: list[tuple[int, str, str]] = []
+    for source_id, survey in surveys.items():
+        source = sources[source_id]
+        scores = coverage_scores(survey, f"canonical {source_id}")
+        cells = []
+        for _, _, axes in DISPLAY_COLUMNS:
+            css_class, label = CELL_STYLE[display_score(scores, axes)]
+            content = f"<span>{label}</span>" if label else ""
+            cells.append(f'<td class="{css_class}">{content}</td>')
+        tag, tag_class = tag_for(scores)
+        author = html.escape(short_author_label(require_string(source["authors"], source_id)))
+        year = source["year"]
+        rows.append(
+            (
+                year,
+                source_id,
+                f'<tr><td>{author} <d-cite key="{html.escape(citation_keys[source_id])}"></d-cite>'
+                f'<br><span class="survey-tag {tag_class}">{tag}</span></td>'
+                f'<td class="ctr yr">{year}</td>{"".join(cells)}</tr>',
+            )
+        )
+    rows.sort(key=lambda row: (row[0], row[1]))
+    header = "\n".join(
+        f'<th class="ctr" data-chip="{chip}">{title}</th>'
+        for title, chip, _ in DISPLAY_COLUMNS
+    )
+    ours = (
+        '<tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td>'
+        + '<td class="cov-full"><span>Full</span></td>' * len(DISPLAY_COLUMNS)
+        + "</tr>"
+    )
+    return f'''<div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
 <caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year.</caption>
 <thead><tr>
 <th>Survey</th>
 <th class="ctr yr" data-sort="num">Year</th>
-{heads}
+{header}
 </tr></thead>
 <tbody>
-{chr(10).join(r for _, r in out)}
+{chr(10).join(row for _, _, row in rows)}
 {ours}
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span class="t1-legend-note">† scored from an abstract or a secondary description rather than confirmed full text. Hover a cell carrying a correction for its reason.</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
 </div>'''
 
-    p = ROOT / 'site/sec-01.html'
-    s = p.read_text()
-    a = s.index('<div class="ptable-wrap')
-    b = end_of_div(s, a)
-    p.write_text(s[:a] + table + s[b:])
-    print(f'{len(out)} surveys, {out[0][0]}-{out[-1][0]}, plus Ours')
-    print(f'overrides applied: {applied or "none"}')
+
+def build_table(root: Path | None = None) -> str:
+    root = ROOT if root is None else root
+    coverage_document = load_json(root / "data/prior-survey-coverage.json")
+    summary_document = load_json(root / "data/generated/prior-survey-family-summary.json")
+    source_document = load_json(root / "data/source-registry.json")
+    alias_document = load_json(root / "data/refmap.json")
+    surveys = canonical_surveys(coverage_document)
+    verify_family_summary(summary_document, surveys)
+    sources = source_index(source_document, set(surveys))
+    citation_keys = citation_key_index(alias_document, set(surveys))
+    return render_table(surveys, sources, citation_keys)
 
 
-if __name__ == '__main__':
+def main() -> None:
+    table = build_table()
+    section_path = ROOT / "site/sec-01.html"
+    section = section_path.read_text()
+    start = section.index('<div class="ptable-wrap')
+    end = end_of_div(section, start)
+    section_path.write_text(section[:start] + table + section[end:])
+    print("37 verified surveys, 8 display columns, plus Ours")
+
+
+if __name__ == "__main__":
     main()
