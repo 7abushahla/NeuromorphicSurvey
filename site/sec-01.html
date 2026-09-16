@@ -76,49 +76,34 @@ deployment, and application reviews. Each line establishes an important part of 
 alone follows a trained SNN from its computational definition through software and hardware
 boundaries to a clearly stated measurement claim.</p>
 
-<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
-background needed to understand SNN construction. They compare neuron models, learning rules,
-surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
-conversion method rather than a complete deployment route
-<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
-explains why different training routes produce different constraints. It does not usually trace
-whether those constraints remain representable after export and mapping.</p>
+<p>Model- and learning-centered surveys establish the background needed to understand SNN
+construction. They compare neuron models, learning rules, surrogate gradients, conversion, and
+applications. Their main unit of analysis is a learning or conversion method rather than a complete
+deployment route <d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>.
+Related surveys explain how values become spike representations and what a decoder recovers. They
+therefore clarify the trade-offs among rate, first-spike-time, population, and graded-payload codes
+<d-cite key="auge,gallego-2022-event-based-vision"></d-cite>. This body of work explains why
+different training routes and codes impose different constraints. It does not usually trace whether
+those constraints remain representable after export and mapping.</p>
 
-<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
-what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
-population, and graded-payload representations impose different state, payload, precision, and
-stopping requirements. The present survey uses these code families as execution contracts in
-Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
-Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
-<d-cite key="auge"></d-cite>.</p>
-
-<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
-programming models, compilers, and mapping environments. NIR provides an important precedent. It
-makes neural primitives portable enough to compare implementations and exposes semantic
-disagreement across back ends
-<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
-The remaining question is edge-specific. A graph format does not by itself state whether reset,
-delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
-Sections 10 and 11 make those alternatives explicit.</p>
-
-<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
-applications. A platform-focused account can provide deep measured evidence for one target. Davies
-et al., for example, document Loihi results across several workloads. Broader hardware surveys
-compare implementation approaches and design constraints
+<p>Conversely, hardware-centered surveys emphasize chips, circuits, execution styles, and selected
+applications. Davies et al., for example, document Loihi results across several workloads, while
+broader hardware surveys compare implementation approaches and design constraints
 <d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
-Neither strength establishes that a model definition or compiler route transfers unchanged across
-platform families. Sections 12 and 13 therefore compare execution models through common contract
-fields before evaluating any named route.</p>
+These accounts establish what particular platforms can do. They do not, however, establish that a
+model definition or compiler route transfers unchanged across platform families.</p>
 
-<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
-an essential separation between hardware-independent proxy evaluation and hardware-aware or
-physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
-reviews show the breadth of vision, audio, control, and other workloads
-<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
-classify each published claim by physical execution, documented path, model, or simulation, and
-they do not require a named edge-by-edge route from a trained network to a target. This survey
-bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
-and an explicit measurement boundary.</p>
+<p>Broader software, interoperability, benchmarking, and application surveys provide an
+ecosystem-level view. Framework and toolchain reviews identify simulators, programming models,
+compilers, and mapping environments. NIR, for example, provides a common intermediate
+representation that exposes semantic disagreement across back ends
+<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
+NeuroBench and the EdgeSNN survey likewise distinguish hardware-independent proxy evaluation from
+hardware-aware or physical-system evaluation
+<d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application reviews establish the
+breadth of vision, audio, control, and other workloads <d-cite key="yamazaki-2022"></d-cite>. Yet a
+graph format, a documented toolchain, or a platform result does not by itself state whether reset,
+delay, payload, readout, or host work is preserved, transformed, rejected, or measured.</p>
 
 <p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
 address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
