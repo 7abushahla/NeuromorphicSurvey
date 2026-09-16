@@ -188,16 +188,6 @@ EXTRA_CSS = """
       .hw.tn      { color: #4A4F5C; background: #ECEEF1; border-color: #6B7280; }
       .hw.fpga    { color: #7A5C00; background: #FBF3DF; border-color: #A97818; }
 
-      /* Categorical badge under a survey name in the scope comparison. */
-      .survey-tag { display: inline-block; margin-top: 0.12rem; padding: 1px 6px;
-        border: 1px solid; border-radius: 3px; font-size: 0.66rem;
-        font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
-      .tag-methods    { color: #344E9D; background: #E8ECF8; border-color: #3F5FBF; }
-      .tag-hardware   { color: #38404E; background: #E8EAEE; border-color: #697482; }
-      .tag-software   { color: #1F6F5C; background: #E1F2EE; border-color: #2A8A7A; }
-      .tag-evaluation { color: #7A5C00; background: #FBF3DF; border-color: #A97818; }
-      .tag-overview   { color: #64408C; background: #EEE7F7; border-color: #6D4C9F; }
-
       /* Toolbar above a filterable table. */
       .tbl-toolbar { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0 0 0.55rem; }
       .tbl-toolbar input { font-size: 0.74rem; padding: 0.28rem 0.55rem; border: 1px solid #c8cfd8;

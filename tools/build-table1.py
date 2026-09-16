@@ -185,26 +185,6 @@ def display_score(scores: dict[str, str], axes: tuple[str, ...]) -> int:
     return max(SCORE_RANK[scores[axis]] for axis in axes)
 
 
-def tag_for(scores: dict[str, str]) -> tuple[str, str]:
-    """Classify a row from its coverage, rather than its identifier or title."""
-    rank = {axis: SCORE_RANK[score] for axis, score in scores.items()}
-    if rank["L"] >= 2:
-        return "Deployment", "tag-evaluation"
-    if rank["J"] >= 2:
-        return "Evaluation", "tag-evaluation"
-    if rank["H"] >= 2:
-        return "Hardware", "tag-hardware"
-    if max(rank["F"], rank["G"]) >= 2:
-        return "Toolchains", "tag-software"
-    if rank["E"] >= 2:
-        return "Frameworks", "tag-software"
-    if rank["D"] >= 2:
-        return "Conversion", "tag-methods"
-    if rank["C"] >= 2:
-        return "Training", "tag-methods"
-    return "Overview", "tag-overview"
-
-
 def end_of_div(text: str, start: int) -> int:
     """Return the index past the div that closes the wrapper beginning at start."""
     depth = 0
@@ -228,7 +208,6 @@ def render_table(
             css_class, label = CELL_STYLE[display_score(scores, axes)]
             content = f"<span>{label}</span>" if label else ""
             cells.append(f'<td class="{css_class}">{content}</td>')
-        tag, tag_class = tag_for(scores)
         author = html.escape(short_author_label(require_string(source["authors"], source_id)))
         year = source["year"]
         rows.append(
@@ -236,8 +215,7 @@ def render_table(
                 year,
                 source_id,
                 f'<tr><td>{author} <d-cite key="{html.escape(source_id)}"></d-cite>'
-                f'<br><span class="survey-tag {tag_class}">{tag}</span></td>'
-                f'<td class="ctr yr">{year}</td>{"".join(cells)}</tr>',
+                f'</td><td class="ctr yr">{year}</td>{"".join(cells)}</tr>',
             )
         )
     rows.sort(key=lambda row: (row[0], row[1]))
