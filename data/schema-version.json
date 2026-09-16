@@ -2,7 +2,47 @@
   "schema_version": 1,
   "evidence_classes": ["E1", "E2", "E3", "E4", "E5"],
   "route_states": ["exact", "approximate", "blocked", "obsolete", "unexercised", "physical"],
+  "platform_capability_statuses": ["native", "transformed", "emulated", "host-assisted", "unsupported", "undocumented"],
+  "platform_capability_platforms": [
+    "akida-1",
+    "akida-2",
+    "brainscales-2",
+    "loihi-1",
+    "loihi-2",
+    "speck-2f",
+    "spinnaker-1",
+    "spinnaker-2",
+    "xylo-audio-2"
+  ],
+  "deployable_contract_fields": [
+    "graph_operators",
+    "neuron_dynamics",
+    "synaptic_dynamics_delays",
+    "threshold_reset",
+    "neural_code_payload",
+    "encoder_decoder",
+    "numeric_precision",
+    "time_termination",
+    "connectivity_routing",
+    "plasticity_state",
+    "host_operations"
+  ],
   "verification_states": ["verified", "provisional", "conflicted", "rejected"],
+  "claim_types": [
+    "deployment",
+    "evidence_boundary",
+    "execution_model",
+    "literature-synthesis",
+    "literature_gap",
+    "method",
+    "metric",
+    "result",
+    "scope",
+    "source_correction",
+    "taxonomy",
+    "toolchain",
+    "toolchain-semantics"
+  ],
   "survey_full_text_statuses": ["verified", "provisional", "partial", "not_retrieved"],
   "coverage_scores": ["full", "partial", "mentioned", "none", "unassessed"]
 }
