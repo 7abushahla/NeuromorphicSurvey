@@ -337,85 +337,63 @@ def write_text(path: Path, text: str) -> None:
     path.write_text(text)
 
 
-def _balanced_value(text: str, start: int, opener: str, closer: str) -> tuple[str, int]:
-    if opener == closer:
-        escaped = False
-        for index in range(start + 1, len(text)):
-            character = text[index]
-            if escaped:
-                escaped = False
-            elif character == "\\":
-                escaped = True
-            elif character == closer:
-                return text[start + 1:index], index + 1
-        raise ValueError("unterminated quoted BibTeX value")
-    depth = 0
-    escaped = False
-    for index in range(start, len(text)):
-        character = text[index]
-        if escaped:
-            escaped = False
-            continue
-        if character == "\\":
-            escaped = True
-            continue
-        if character == opener:
-            depth += 1
-        elif character == closer:
-            depth -= 1
-            if depth == 0:
-                return text[start + 1:index], index + 1
-    raise ValueError("unterminated BibTeX value")
+def load_legacy_alias_migration(
+    root: Path,
+) -> tuple[dict[str, set[str]], list[str], dict[str, object]]:
+    path = root / "data/legacy-citation-aliases.json"
+    document = read_json(path)
+    if not isinstance(document, dict) or document.get("schema_version") != 1:
+        raise ValueError(f"{path.name} must be a schema-version 1 object")
+    provenance = document.get("provenance")
+    if not isinstance(provenance, dict):
+        raise ValueError(f"{path.name} must preserve migration provenance")
+    captured_from = provenance.get("captured_from")
+    if not isinstance(captured_from, list) or not all(
+        isinstance(item, str) and item for item in captured_from
+    ):
+        raise ValueError(f"{path.name} provenance must identify its frozen inputs")
 
+    rows = document.get("aliases")
+    if not isinstance(rows, list):
+        raise ValueError(f"{path.name} must contain an aliases list")
+    aliases_by_source: dict[str, set[str]] = defaultdict(set)
+    alias_owners: dict[str, str] = {}
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"{path.name} aliases[{index}] must be an object")
+        alias = row.get("alias")
+        source_id = row.get("source_id")
+        if not isinstance(alias, str) or not alias:
+            raise ValueError(f"{path.name} aliases[{index}] has an invalid alias")
+        if not isinstance(source_id, str) or not source_id:
+            raise ValueError(f"{path.name} aliases[{index}] has an invalid source_id")
+        if alias in alias_owners:
+            raise ValueError(
+                f"{path.name} alias {alias!r} is assigned more than once"
+            )
+        alias_owners[alias] = source_id
+        aliases_by_source[source_id].add(alias)
 
-def parse_bibliography(path: Path) -> dict[str, dict[str, object]]:
-    """Parse the simple field subset needed for refmap identity resolution.
-
-    Bibliography entries are identity metadata only. They never become registry rows.
-    The parser intentionally supports braced and quoted values without depending on a
-    third-party BibTeX package that is absent from the repository environment.
-    """
-    text = path.read_text()
-    entries: dict[str, dict[str, object]] = {}
-    cursor = 0
-    header = re.compile(r"@[A-Za-z]+\s*\{\s*([^,\s]+)\s*,")
-    while match := header.search(text, cursor):
-        key = match.group(1)
-        body_start = match.end()
-        body, cursor = _balanced_value("{" + text[body_start:], 0, "{", "}")
-        # _balanced_value sees the synthetic opening brace, so cursor is relative to
-        # the sliced string and must be translated back to the full bibliography.
-        cursor = body_start + cursor - 1
-        fields: dict[str, object] = {"id": key}
-        index = 0
-        while index < len(body):
-            while index < len(body) and (body[index].isspace() or body[index] == ","):
-                index += 1
-            name_match = re.match(r"([A-Za-z][A-Za-z0-9_-]*)\s*=\s*", body[index:])
-            if not name_match:
-                next_comma = body.find(",", index)
-                index = len(body) if next_comma < 0 else next_comma + 1
-                continue
-            name = name_match.group(1).lower()
-            index += name_match.end()
-            if index < len(body) and body[index] == "{":
-                value, index = _balanced_value(body, index, "{", "}")
-            elif index < len(body) and body[index] == '"':
-                value, index = _balanced_value(body, index, '"', '"')
-            else:
-                end = body.find(",", index)
-                if end < 0:
-                    end = len(body)
-                value, index = body[index:end], end
-            value = value.strip().replace("{", "").replace("}", "")
-            fields[name] = value
-        year = fields.get("year")
-        if isinstance(year, str) and year.isdigit():
-            fields["year"] = int(year)
-        if "author" in fields:
-            fields["authors"] = fields["author"]
-        entries[key] = fields
-    return entries
+    unresolved_rows = document.get("unresolved")
+    if not isinstance(unresolved_rows, list):
+        raise ValueError(f"{path.name} must contain an unresolved list")
+    unresolved = []
+    for index, row in enumerate(unresolved_rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"{path.name} unresolved[{index}] must be an object")
+        alias = row.get("alias")
+        target = row.get("legacy_target")
+        reason = row.get("reason")
+        if not all(isinstance(item, str) and item for item in (alias, target, reason)):
+            raise ValueError(
+                f"{path.name} unresolved[{index}] must identify alias, target, and reason"
+            )
+        if alias in alias_owners:
+            raise ValueError(
+                f"{path.name} alias {alias!r} is both resolved and unresolved"
+            )
+        unresolved.append(f"{alias}->{target}")
+    return dict(aliases_by_source), sorted(unresolved), provenance
 
 
 def normalize_title(value: object) -> str | None:
@@ -592,7 +570,7 @@ class UnionFind:
         self.parent[max(first_root, second_root)] = min(first_root, second_root)
 
 
-def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, str], dict[str, int]]:
+def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, int]]:
     records: list[dict[str, object]] = []
     counts: dict[str, int] = {}
     prior_count = 0
@@ -758,13 +736,7 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
         records.append(overlay)
         audit_count += 1
     counts["claim-audit reviewed sources"] = audit_count
-    refmap = read_json(root / "data/refmap.json")
-    if not isinstance(refmap, dict) or not all(
-        isinstance(key, str) and isinstance(value, str)
-        for key, value in refmap.items()
-    ):
-        raise ValueError("refmap.json must contain a string-to-string object")
-    return records, refmap, counts
+    return records, counts
 
 
 def member_ids(records: list[dict[str, object]]) -> set[str]:
@@ -780,7 +752,7 @@ def author_tokens(record: dict[str, object]) -> set[str]:
 
 
 def cluster_records(
-    records: list[dict[str, object]], refmap: dict[str, str],
+    records: list[dict[str, object]],
 ) -> tuple[list[list[dict[str, object]]], list[dict[str, object]]]:
     union_find = UnionFind(len(records))
     unresolved: list[dict[str, object]] = []
@@ -877,11 +849,6 @@ def cluster_records(
                 f"{first_id}->{second_id}",
                 [ids_to_indices[first_id][0], ids_to_indices[second_id][0]],
             )
-    for alias, target in sorted(refmap.items()):
-        if alias not in ids_to_indices or target not in ids_to_indices:
-            continue
-        merge_group("refmap", f"{alias}->{target}", [ids_to_indices[alias][0], ids_to_indices[target][0]])
-
     clusters: dict[int, list[dict[str, object]]] = defaultdict(list)
     for index, record in enumerate(records):
         clusters[union_find.find(index)].append(record)
@@ -925,108 +892,6 @@ def cluster_records(
         key=lambda group: min((int(record["_rank"]), str(record["id"])) for record in group),
     )
     return ordered, sorted(unresolved, key=lambda item: (str(item["kind"]), str(item["key"])))
-
-
-def bibliography_aliases_for_clusters(
-    clusters: list[list[dict[str, object]]],
-    refmap: dict[str, str],
-    bibliography: dict[str, dict[str, object]],
-) -> tuple[dict[int, set[str]], list[str], list[dict[str, object]]]:
-    """Match refmap targets to structured clusters without importing BibTeX-only works."""
-    aliases_by_cluster: dict[int, set[str]] = defaultdict(set)
-    unmatched: list[str] = []
-    conflicts: list[dict[str, object]] = []
-
-    def unique_match(
-        alias: str, target: str, kind: str, candidates: set[int]
-    ) -> int | None:
-        if len(candidates) == 1:
-            return next(iter(candidates))
-        if len(candidates) > 1:
-            conflicts.append({
-                "kind": "bibliography_identity",
-                "key": f"{alias}->{target}",
-                "record_ids": sorted({
-                    record_id
-                    for index in candidates
-                    for record_id in member_ids(clusters[index])
-                }),
-                "reason": f"bibliography {kind} identity matched multiple clusters",
-            })
-        return None
-
-    ids_to_clusters: dict[str, set[int]] = defaultdict(set)
-    doi_to_clusters: dict[str, set[int]] = defaultdict(set)
-    url_to_clusters: dict[str, set[int]] = defaultdict(set)
-    for cluster_index, cluster in enumerate(clusters):
-        for record in cluster:
-            ids_to_clusters[str(record["id"])].add(cluster_index)
-            doi = extract_doi(record)
-            if doi:
-                doi_to_clusters[doi].add(cluster_index)
-            url = normalize_url(record.get("url") or record.get("canonical_url"))
-            if url:
-                url_to_clusters[url].add(cluster_index)
-
-    for alias, target in sorted(refmap.items()):
-        match_index: int | None = None
-        direct = ids_to_clusters.get(target, set())
-        if len(direct) == 1:
-            match_index = next(iter(direct))
-        elif len(direct) > 1:
-            unique_match(alias, target, "structured-ID", direct)
-        metadata = bibliography.get(target)
-        if match_index is None and metadata:
-            doi = extract_doi(metadata)
-            if doi:
-                match_index = unique_match(
-                    alias, target, "DOI", doi_to_clusters.get(doi, set())
-                )
-            if match_index is None:
-                url = normalize_url(metadata.get("url"))
-                if url:
-                    match_index = unique_match(
-                        alias, target, "URL", url_to_clusters.get(url, set())
-                    )
-            if match_index is None:
-                title = normalize_title(metadata.get("title"))
-                year = metadata.get("year")
-                bib_authors = author_tokens(metadata)
-                if title and isinstance(year, int) and bib_authors:
-                    bibliography_doi = extract_doi(metadata)
-
-                    def guarded_match(record: dict[str, object]) -> bool:
-                        record_year = record.get("year")
-                        record_doi = extract_doi(record)
-                        same_year = record_year == year
-                        preprint_publication_year = (
-                            isinstance(record_year, int)
-                            and abs(record_year - year) == 1
-                            and bibliography_doi is not None
-                            and record_doi is not None
-                            and publication_version_dois(
-                                {bibliography_doi, record_doi}
-                            )[0] is not None
-                        )
-                        return (
-                            normalize_title(record.get("title")) == title
-                            and (same_year or preprint_publication_year)
-                            and bool(author_tokens(record) & bib_authors)
-                        )
-
-                    guarded_candidates = {
-                        index
-                        for index, cluster in enumerate(clusters)
-                        if any(guarded_match(record) for record in cluster)
-                    }
-                    match_index = unique_match(
-                        alias, target, "guarded title/author/year", guarded_candidates
-                    )
-        if match_index is None:
-            unmatched.append(f"{alias}->{target}")
-            continue
-        aliases_by_cluster[match_index].add(alias)
-    return aliases_by_cluster, sorted(unmatched), conflicts
 
 
 def choose_canonical_id(records: list[dict[str, object]]) -> str:
@@ -1103,9 +968,8 @@ def resolution_for_year(records: list[dict[str, object]]) -> tuple[int | None, s
 
 def resolve_cluster(
     records: list[dict[str, object]],
-    refmap: dict[str, str],
     ambiguous_ids: set[str],
-    bibliography_aliases: set[str] | None = None,
+    migrated_aliases: set[str] | None = None,
 ) -> tuple[dict[str, object], list[dict[str, object]], list[str]]:
     canonical_id = choose_canonical_id(records)
     ids = member_ids(records)
@@ -1296,7 +1160,7 @@ def resolve_cluster(
             if isinstance(locator, str) and locator
         })
 
-    bibliography_aliases = bibliography_aliases or set()
+    migrated_aliases = migrated_aliases or set()
     qualified_aliases = {
         f"{record['_origin']}:{record['id']}" for record in records
     }
@@ -1312,7 +1176,7 @@ def resolve_cluster(
             plain_aliases
             | qualified_aliases
             | explicit_aliases
-            | bibliography_aliases
+            | migrated_aliases
         )
         - {canonical_id}
     )
@@ -1358,7 +1222,7 @@ def render_log(diagnostics: dict[str, object]) -> str:
     lines.extend([
         f"- Canonical records: {diagnostics['canonical_count']}",
         f"- Input records merged as aliases: {diagnostics['merged_input_count']}",
-        f"- Bibliography aliases attached: {diagnostics['bibliography_alias_count']}",
+        f"- Bibliography aliases attached: {diagnostics['legacy_alias_count']}",
         "",
         "## Resolved duplicate groups",
         "",
@@ -1419,7 +1283,7 @@ def render_log(diagnostics: dict[str, object]) -> str:
             )
     else:
         lines.append("- None.")
-    unmatched = diagnostics["unmatched_refmap_targets"]
+    unmatched = diagnostics["unresolved_legacy_aliases"]
     lines.extend(["", "## Bibliography migration coverage", ""])
     lines.append(
         "- The frozen bibliography migration is a lowest-priority structured input. "
@@ -1442,15 +1306,11 @@ def render_log(diagnostics: dict[str, object]) -> str:
 
 
 def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, object]]:
-    records, refmap, input_counts = load_input_records(root)
-    clusters, identity_conflicts = cluster_records(records, refmap)
-    bibliography = parse_bibliography(root / "assets/bibliography/references.bib")
-    (
-        bibliography_aliases,
-        unmatched_refmap_targets,
-        bibliography_conflicts,
-    ) = bibliography_aliases_for_clusters(clusters, refmap, bibliography)
-    identity_conflicts.extend(bibliography_conflicts)
+    records, input_counts = load_input_records(root)
+    migrated_aliases, unresolved_legacy_aliases, _alias_provenance = (
+        load_legacy_alias_migration(root)
+    )
+    clusters, identity_conflicts = cluster_records(records)
     id_cluster_counts: Counter[str] = Counter()
     for cluster in clusters:
         id_cluster_counts.update(member_ids(cluster))
@@ -1461,12 +1321,12 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
     field_conflicts: list[dict[str, object]] = []
     resolved_conflicts: list[dict[str, str]] = []
     duplicate_records: list[dict[str, object]] = []
-    for cluster_index, cluster in enumerate(clusters):
+    for cluster in clusters:
+        canonical_id = choose_canonical_id(cluster)
         record, conflicts, resolution_notes = resolve_cluster(
             cluster,
-            refmap,
             ambiguous_ids,
-            bibliography_aliases.get(cluster_index, set()),
+            migrated_aliases.get(canonical_id, set()),
         )
         canonical.append(record)
         if len(cluster) > 1:
@@ -1486,6 +1346,15 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
             "field": "canonical_id",
             "values": [record_id],
             "reason": "multiple semantic clusters selected the same canonical ID",
+        })
+
+    unknown_alias_targets = sorted(set(migrated_aliases) - set(canonical_id_counts))
+    for source_id in unknown_alias_targets:
+        field_conflicts.append({
+            "id": source_id,
+            "field": "alias_target",
+            "values": sorted(migrated_aliases[source_id]),
+            "reason": "legacy alias migration names an unknown canonical source ID",
         })
 
     address_owners: dict[str, set[str]] = defaultdict(set)
@@ -1510,12 +1379,12 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
         for alias in (record.get("aliases") or [])
         if isinstance(alias, str) and alias
     }
-    bibliography_alias_count = sum(len(aliases) for aliases in bibliography_aliases.values())
+    legacy_alias_count = sum(len(aliases) for aliases in migrated_aliases.values())
     diagnostics: dict[str, object] = {
         "input_counts": input_counts,
         "canonical_count": len(canonical),
         "merged_input_count": len(records) - len(canonical),
-        "bibliography_alias_count": bibliography_alias_count,
+        "legacy_alias_count": legacy_alias_count,
         "migration_alias_count": len(migration_aliases),
         "true_duplicate_count": len(duplicate_records),
         "merged_groups": [
@@ -1553,7 +1422,7 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
                 for field in ("authors", "year", "venue", "doi", "url")
             )
         ],
-        "unmatched_refmap_targets": unmatched_refmap_targets,
+        "unresolved_legacy_aliases": unresolved_legacy_aliases,
         "canonical_ids": sorted(canonical_ids),
         "ambiguous_plain_ids": sorted(ambiguous_ids),
     }

@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "description": "Frozen legacy citation aliases previously resolved from the pre-canonical bibliography and reference map. This file is an upstream migration input. Generated bibliography assets must not be read by the source-registry builder.",
+    "captured_from": [
+      "assets/bibliography/references.bib",
+      "data/refmap.json"
+    ],
+    "captured_at_commit": "3d8b86cfb6e7564a6cd0ad4ca242607f427f6776"
+  },
+  "aliases": [
+    {
+      "alias": "Arfa25-SpiNN2NIR",
+      "source_id": "arfa-2025-spinnaker2"
+    },
+    {
+      "alias": "auge2021",
+      "source_id": "auge"
+    },
+    {
+      "alias": "boeshertz-2024-alif",
+      "source_id": "boeshertz2024-rnn-mapping"
+    },
+    {
+      "alias": "boeshertz-2024-rnn",
+      "source_id": "boeshertz2024-rnn-mapping"
+    },
+    {
+      "alias": "Brehove26-SigmaDelta",
+      "source_id": "brehove"
+    },
+    {
+      "alias": "brehove2025",
+      "source_id": "brehove"
+    },
+    {
+      "alias": "brainscales-pehle2022",
+      "source_id": "bss"
+    },
+    {
+      "alias": "pehle-2022-brainscales-multicomp",
+      "source_id": "bss"
+    },
+    {
+      "alias": "li-2022-burstspikes",
+      "source_id": "burst-spikes"
+    },
+    {
+      "alias": "cao2015",
+      "source_id": "cao-2015"
+    },
+    {
+      "alias": "cerco-spikenet",
+      "source_id": "cerco-spikenet-docs"
+    },
+    {
+      "alias": "ChenGaoFu22-Cerebron",
+      "source_id": "cerebron"
+    },
+    {
+      "alias": "clp-snn-2025",
+      "source_id": "clp-snn"
+    },
+    {
+      "alias": "convlca-2025-2026",
+      "source_id": "convlca-2025-lca"
+    },
+    {
+      "alias": "Cramer22-SurrogateGrad",
+      "source_id": "cramer2022-surrogate"
+    },
+    {
+      "alias": "Davies21",
+      "source_id": "davies-2021-loihi"
+    },
+    {
+      "alias": "deneve2022",
+      "source_id": "deneve2022-ttfs-unifying"
+    },
+    {
+      "alias": "ding2021",
+      "source_id": "ding-2021-optimalconv"
+    },
+    {
+      "alias": "Eshraghian23-snnTorch",
+      "source_id": "eshraghian-2023-training-snns"
+    },
+    {
+      "alias": "ettfs2024",
+      "source_id": "ettfs-2024"
+    },
+    {
+      "alias": "meszaros-2025-loihi2-delays",
+      "source_id": "eventprop-delays"
+    },
+    {
+      "alias": "guo-2021-neuralcoding",
+      "source_id": "guo2021"
+    },
+    {
+      "alias": "cri-2025-hiaerspike",
+      "source_id": "hiaer-spike-cri"
+    },
+    {
+      "alias": "horowitz-2014-isscc",
+      "source_id": "horowitz-2014"
+    },
+    {
+      "alias": "IntelINRC-Access",
+      "source_id": "intel-inrc-confluence"
+    },
+    {
+      "alias": "Kelber20-SpiNN2Map",
+      "source_id": "kelber-2020-spinnaker2sim"
+    },
+    {
+      "alias": "kim-2018-weightedspikes",
+      "source_id": "kim2018-weightedspikes"
+    },
+    {
+      "alias": "latencycoding-2026",
+      "source_id": "latency-framework2026"
+    },
+    {
+      "alias": "lavadl-slayer-docs",
+      "source_id": "lava-dl-slayer-docs"
+    },
+    {
+      "alias": "liu-2019-facerecognition",
+      "source_id": "liu-2019-facedemo"
+    },
+    {
+      "alias": "massa-2020",
+      "source_id": "massa-2020"
+    },
+    {
+      "alias": "Davies18",
+      "source_id": "loihi1"
+    },
+    {
+      "alias": "davies-2018-loihi",
+      "source_id": "loihi1"
+    },
+    {
+      "alias": "intel-2021-loihi2-brief",
+      "source_id": "loihi2"
+    },
+    {
+      "alias": "Lunghi25-SpaceSNN",
+      "source_id": "lunghi2025-akida-space"
+    },
+    {
+      "alias": "lunghi-2025-space-snn",
+      "source_id": "lunghi2025-akida-space"
+    },
+    {
+      "alias": "Frenkel19-MorphIC",
+      "source_id": "morphic"
+    },
+    {
+      "alias": "frenkel2019",
+      "source_id": "morphic"
+    },
+    {
+      "alias": "Moyer20-SemiEng",
+      "source_id": "moyer-2020-semieng"
+    },
+    {
+      "alias": "Rueckauer21-NxTF",
+      "source_id": "nxtf"
+    },
+    {
+      "alias": "nxtf2021",
+      "source_id": "nxtf"
+    },
+    {
+      "alias": "rueckauer-2021-nxtf",
+      "source_id": "nxtf"
+    },
+    {
+      "alias": "lca-loihi2-2023",
+      "source_id": "parpart2023-lca-loihi2"
+    },
+    {
+      "alias": "parpart-2023-lca-loihi2",
+      "source_id": "parpart2023-lca-loihi2"
+    },
+    {
+      "alias": "pedersen-2024-nir",
+      "source_id": "pedersen-2024-nir"
+    },
+    {
+      "alias": "ramesh-2025-pascal",
+      "source_id": "pascal"
+    },
+    {
+      "alias": "PatinoSaucedo20-SpiNNConv",
+      "source_id": "patino-saucedo-2020"
+    },
+    {
+      "alias": "Richter23-SpeckASIC",
+      "source_id": "richter"
+    },
+    {
+      "alias": "richter2023speck",
+      "source_id": "richter"
+    },
+    {
+      "alias": "riverpub-mcu-chapter",
+      "source_id": "riverpub-mnist-dynapcnn"
+    },
+    {
+      "alias": "Rockpool-XyloOverview",
+      "source_id": "rockpool-xylo-docs"
+    },
+    {
+      "alias": "rockpool-xylo-overview",
+      "source_id": "rockpool-xylo-docs"
+    },
+    {
+      "alias": "Rueckauer17-SNNTB",
+      "source_id": "rueckauer"
+    },
+    {
+      "alias": "rueckauer-2017",
+      "source_id": "rueckauer"
+    },
+    {
+      "alias": "rueckauer-2017-frontiers",
+      "source_id": "rueckauer"
+    },
+    {
+      "alias": "Schmitt17-HITL",
+      "source_id": "schmitt2017-hitl"
+    },
+    {
+      "alias": "sddpg-2020",
+      "source_id": "sddpg"
+    },
+    {
+      "alias": "Shrestha23-VideoAudio",
+      "source_id": "sdnn"
+    },
+    {
+      "alias": "shrestha-2023-loihi2",
+      "source_id": "sdnn"
+    },
+    {
+      "alias": "shrestha-2023-loihi2video",
+      "source_id": "sdnn"
+    },
+    {
+      "alias": "shrestha2023",
+      "source_id": "sdnn"
+    },
+    {
+      "alias": "shen-2024-bitbudget",
+      "source_id": "shen-2024-cvpr"
+    },
+    {
+      "alias": "jiang-2023-sliprelu",
+      "source_id": "slip-relu"
+    },
+    {
+      "alias": "wang-2022-snm",
+      "source_id": "snm"
+    },
+    {
+      "alias": "snnTorch-PR388",
+      "source_id": "snntorch-pr388"
+    },
+    {
+      "alias": "Yao24-SpeckNatComm",
+      "source_id": "speck-dynamic-snn"
+    },
+    {
+      "alias": "speck-natcomm",
+      "source_id": "speck-dynamic-snn"
+    },
+    {
+      "alias": "yao-2024-speck-naturecomm",
+      "source_id": "speck-dynamic-snn"
+    },
+    {
+      "alias": "Carpegna24-SpikerPlus",
+      "source_id": "spikerplus"
+    },
+    {
+      "alias": "spiker-fpga",
+      "source_id": "spikerplus"
+    },
+    {
+      "alias": "objdet-2026-loihi2-preprint",
+      "source_id": "spikingjelly-loihi2-2026"
+    },
+    {
+      "alias": "spinnaker-neuron-lab",
+      "source_id": "spinnaker-neuron-lab-manual"
+    },
+    {
+      "alias": "SJ23-SciAdv",
+      "source_id": "spj"
+    },
+    {
+      "alias": "fang-2023-spikingjelly-sciadv",
+      "source_id": "spj"
+    },
+    {
+      "alias": "SJ-LavaExchangeDocs",
+      "source_id": "spj-lava"
+    },
+    {
+      "alias": "hao-2023-srp",
+      "source_id": "srp"
+    },
+    {
+      "alias": "Stradmann21-Mobile",
+      "source_id": "stradmann2021-mobile"
+    },
+    {
+      "alias": "stromatias-2015-dbn",
+      "source_id": "stromatias2015-dbn-spinnaker"
+    },
+    {
+      "alias": "stromatias-2015-spinnaker",
+      "source_id": "stromatias2015-dbn-spinnaker"
+    },
+    {
+      "alias": "swsc-2024",
+      "source_id": "swsc2024"
+    },
+    {
+      "alias": "Panchapakesan22-SyncNN",
+      "source_id": "syncnn"
+    },
+    {
+      "alias": "ThorpeGautrais96-SpikeAsync",
+      "source_id": "thorpe1996-rankorder"
+    },
+    {
+      "alias": "thorpe-1996",
+      "source_id": "thorpe1996-rankorder"
+    },
+    {
+      "alias": "esser-2016-eedn",
+      "source_id": "truenorth"
+    },
+    {
+      "alias": "truenorth-neuron",
+      "source_id": "truenorth-neuron-model-doc"
+    },
+    {
+      "alias": "Weis20-ANNMode",
+      "source_id": "weis2020-annmode"
+    },
+    {
+      "alias": "Bos24-XyloKWS",
+      "source_id": "xylo-kws"
+    },
+    {
+      "alias": "yoso-2020",
+      "source_id": "yoso2020"
+    },
+    {
+      "alias": "Ziegler24-FastObjects",
+      "source_id": "ziegler2024-akida-robotics"
+    }
+  ],
+  "unresolved": [
+    {
+      "alias": "furber-2004-nofm",
+      "legacy_target": "furber2004",
+      "reason": "The legacy target has no canonical structured source identity and remains deliberately unbound."
+    }
+  ]
+}

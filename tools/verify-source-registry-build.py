@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import json
 import runpy
+import shutil
 import sys
+import tempfile
 from copy import deepcopy
 from pathlib import Path
 
@@ -19,6 +21,7 @@ def main() -> int:
     cluster_records = module["cluster_records"]
     resolve_cluster = module["resolve_cluster"]
     load_input_records = module["load_input_records"]
+    load_legacy_alias_migration = module["load_legacy_alias_migration"]
     build_outputs = module["build_outputs"]
 
     checks = 0
@@ -74,14 +77,14 @@ def main() -> int:
             "_index": 0,
         },
     ]
-    version_clusters, version_conflicts = cluster_records(version_fixture, {})
+    version_clusters, version_conflicts = cluster_records(version_fixture)
     if len(version_clusters) != 1 or version_conflicts:
         raise AssertionError(
             "an arXiv preprint and supported version-of-record identity must merge: "
             f"clusters={len(version_clusters)}, conflicts={version_conflicts}"
         )
     version_record, version_field_conflicts, _ = resolve_cluster(
-        version_clusters[0], {}, set()
+        version_clusters[0], set()
     )
     if version_field_conflicts or version_record["doi"] != "10.1000/published.42":
         raise AssertionError(
@@ -90,7 +93,7 @@ def main() -> int:
     checks += 1
 
     def canonicalize_fixture(rows: list[dict[str, object]]) -> list[dict[str, object]]:
-        clusters, conflicts = cluster_records(rows, {})
+        clusters, conflicts = cluster_records(rows)
         if conflicts:
             raise AssertionError(f"fixture produced identity conflicts: {conflicts}")
         id_counts: dict[str, int] = {}
@@ -100,7 +103,7 @@ def main() -> int:
         ambiguous_ids = {item for item, count in id_counts.items() if count > 1}
         resolved = []
         for cluster in clusters:
-            record, field_conflicts, _ = resolve_cluster(cluster, {}, ambiguous_ids)
+            record, field_conflicts, _ = resolve_cluster(cluster, ambiguous_ids)
             if field_conflicts:
                 raise AssertionError(
                     f"fixture produced field conflicts: {field_conflicts}"
@@ -116,6 +119,24 @@ def main() -> int:
         record["_index"] = index
     if canonicalize_fixture(ordered_fixture) != canonicalize_fixture(reversed_fixture):
         raise AssertionError("canonicalization depends on structured-input row order")
+    checks += 1
+
+    with tempfile.TemporaryDirectory() as temp_directory:
+        isolated_root = Path(temp_directory) / "NeuromorphicSurvey"
+        shutil.copytree(ROOT, isolated_root)
+        (isolated_root / "assets/bibliography/references.bib").unlink()
+        (isolated_root / "data/refmap.json").unlink()
+        isolated_registry, isolated_log, _ = build_outputs(isolated_root)
+    isolated_registry_bytes = (
+        json.dumps(isolated_registry, indent=2, ensure_ascii=False) + "\n"
+    )
+    if (
+        isolated_registry_bytes != (ROOT / "data/source-registry.json").read_text()
+        or isolated_log != (ROOT / "research/source-validation-log.md").read_text()
+    ):
+        raise AssertionError(
+            "registry outputs depend on downstream bibliography or refmap assets"
+        )
     checks += 1
 
     registry, log_text, diagnostics = build_outputs(ROOT)
@@ -182,7 +203,7 @@ def main() -> int:
         raise AssertionError(f"legacy source IDs were lost: {missing_legacy_ids}")
     checks += 1
 
-    input_records, _, input_counts = load_input_records(ROOT)
+    input_records, input_counts = load_input_records(ROOT)
     if input_counts.get("bibliography-migration-sources.json") != 108:
         raise AssertionError(
             "builder did not consume 108 frozen bibliography migration records"
@@ -211,6 +232,26 @@ def main() -> int:
         )
     checks += 1
 
+    migrated_aliases, unresolved_aliases, alias_provenance = (
+        load_legacy_alias_migration(ROOT)
+    )
+    if sum(len(aliases) for aliases in migrated_aliases.values()) != 89:
+        raise AssertionError("expected 89 frozen pre-cycle alias assignments")
+    if unresolved_aliases != ["furber-2004-nofm->furber2004"]:
+        raise AssertionError(
+            f"unexpected unresolved legacy aliases: {unresolved_aliases}"
+        )
+    if (
+        alias_provenance.get("captured_at_commit")
+        != "3d8b86cfb6e7564a6cd0ad4ca242607f427f6776"
+        or alias_provenance.get("captured_from")
+        != ["assets/bibliography/references.bib", "data/refmap.json"]
+    ):
+        raise AssertionError("legacy alias migration provenance is incomplete")
+    if diagnostics.get("legacy_alias_count") != 89:
+        raise AssertionError("builder did not report all frozen legacy aliases")
+    checks += 1
+
     expected_bibliography_aliases = {
         "loihi1": "Davies18",
         "xylo-kws": "Bos24-XyloKWS",
@@ -225,15 +266,15 @@ def main() -> int:
     }
     if missing_bibliography_aliases:
         raise AssertionError(
-            "bibliography metadata did not resolve refmap aliases: "
+            "upstream alias migration did not preserve legacy aliases: "
             f"{missing_bibliography_aliases}"
         )
     checks += 1
 
     if "Arfa25-SpiNN2NIR->arfa-2025-spinnaker2" in diagnostics.get(
-        "unmatched_refmap_targets", []
+        "unresolved_legacy_aliases", []
     ):
-        raise AssertionError("the migrated Arfa bibliography mapping remains unresolved")
+        raise AssertionError("the migrated Arfa legacy alias remains unresolved")
     checks += 1
 
     migration = json.loads(
@@ -411,10 +452,10 @@ def main() -> int:
             "_index": 0,
         },
     ]
-    conflict_clusters, identity_conflicts = cluster_records(conflict_fixture, {})
+    conflict_clusters, identity_conflicts = cluster_records(conflict_fixture)
     if len(conflict_clusters) != 1 or identity_conflicts:
         raise AssertionError("conflict fixture must merge through its exact URL")
-    _, metadata_conflicts, _ = resolve_cluster(conflict_clusters[0], {}, set())
+    _, metadata_conflicts, _ = resolve_cluster(conflict_clusters[0], set())
     conflicting_fields = {item.get("field") for item in metadata_conflicts}
     if not {"title", "authors"} <= conflicting_fields:
         raise AssertionError(
@@ -448,11 +489,11 @@ def main() -> int:
         },
     ]
     purpose_clusters, purpose_identity_conflicts = cluster_records(
-        purpose_conflict_fixture, {}
+        purpose_conflict_fixture
     )
     if len(purpose_clusters) != 1 or purpose_identity_conflicts:
         raise AssertionError("purpose conflict fixture must share one exact identity")
-    _, purpose_conflicts, _ = resolve_cluster(purpose_clusters[0], {}, set())
+    _, purpose_conflicts, _ = resolve_cluster(purpose_clusters[0], set())
     if "purpose" not in {item.get("field") for item in purpose_conflicts}:
         raise AssertionError("external/internal purpose conflict was silently resolved")
     checks += 1
@@ -479,7 +520,7 @@ def main() -> int:
             "_index": 1,
         },
     ]
-    _, alias_conflicts = cluster_records(alias_collision_fixture, {})
+    _, alias_conflicts = cluster_records(alias_collision_fixture)
     if "alias_collision" not in {item.get("kind") for item in alias_conflicts}:
         raise AssertionError("explicit alias collision was not rejected")
     checks += 1
