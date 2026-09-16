@@ -147,3 +147,84 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 })();
+
+/* ---------- citation affordances ----------
+   Two gaps in distill's citation component, both only visible inside tables.
+
+   1. Position. The hover card is absolutely positioned and takes its `top` from the
+      citation's offsetTop. In prose both resolve against d-article and agree. Inside
+      a table the browser makes the <td> the offsetParent while the card, having no
+      positioned ancestor, still resolves against the document, so the two disagree
+      and the card lands thousands of pixels from the pointer. d-article carries
+      `contain: layout`, so it is the containing block for the card in both cases;
+      measuring the citation against d-article gives the number distill's own
+      arithmetic produces in prose. Prose citations are left alone, so they keep
+      rendering exactly as the template renders them.
+
+   2. Clicking. The citation shows `cursor: pointer` but has no click behaviour, here
+      or upstream. A citation number should take you to the entry it names. */
+(function () {
+  function entryFor(cite) {
+    var key = (cite.getAttribute('key') || cite.getAttribute('bibtex-key') || '')
+                .split(',')[0].trim();
+    if (!key) return null;
+    var list = document.querySelector('d-citation-list ol.references');
+    return list ? list.querySelector('[id="' + key.replace(/"/g, '\\"') + '"]') : null;
+  }
+
+  function wire(cite) {
+    if (cite.dataset.wired) return;
+    cite.dataset.wired = '1';
+
+    var box = cite.shadowRoot && cite.shadowRoot.querySelector('d-hover-box');
+    var article = cite.closest('d-article');
+    if (box && article && cite.closest('table')) {
+      cite.addEventListener('mouseover', function () {
+        // After distill has set its own top, not before.
+        requestAnimationFrame(function () {
+          var c = cite.getBoundingClientRect(), a = article.getBoundingClientRect();
+          box.style.top = Math.round(c.bottom - a.top + article.scrollTop + 10) + 'px';
+        });
+      });
+    }
+
+    cite.setAttribute('tabindex', '0');
+    cite.setAttribute('role', 'link');
+    var go = function (e) {
+      var li = entryFor(cite);
+      if (!li) return;
+      if (e) e.preventDefault();
+      li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      li.classList.add('ref-flash');
+      setTimeout(function () { li.classList.remove('ref-flash'); }, 1600);
+    };
+    cite.addEventListener('click', go);
+    cite.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') go(e);
+    });
+  }
+
+  /* A table's width strategy is chosen at build time from its column count, which is
+     only a proxy for how wide it actually renders. Any wrapper whose content still
+     overflows is switched to scrolling, so nothing is silently clipped by d-article. */
+  function fixOverflow() {
+    document.querySelectorAll('.ptable-wrap').forEach(function (w) {
+      var over = w.scrollWidth > w.clientWidth + 2;
+      w.classList.toggle('t-scroll', over);
+      w.classList.toggle('t1-wide', w.classList.contains('t1-wide') && !over);
+    });
+  }
+
+  function run() {
+    document.querySelectorAll('d-cite').forEach(wire);
+    fixOverflow();
+  }
+
+  if (document.readyState === 'complete') run();
+  else window.addEventListener('load', run);
+  // The bibliography is fetched asynchronously; catch anything upgraded after load.
+  setTimeout(run, 2000);
+  var t; window.addEventListener('resize', function () {
+    clearTimeout(t); t = setTimeout(fixOverflow, 150);
+  }, { passive: true });
+})();

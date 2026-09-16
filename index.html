@@ -91,7 +91,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
     <!-- Styles -->
     <link rel="shortcut icon" href="assets/img/tmlr-favicon.ico"/>
     <link rel="stylesheet" href="assets/css/main.css?v=20260910w">
-    <link rel="stylesheet" href="assets/figure.css">
+    <link rel="stylesheet" href="assets/figure.css?v=20260916c">
 
     <!-- jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -697,6 +697,24 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
         .ptable-wrap.t1-wide { overflow-x: auto; }
         .ptable-wrap.t1-wide table.ptable { min-width: 760px; }
       }
+
+      /* Display math is laid out at its natural width, which for a multi-term update
+         rule exceeds the text column. Let the equation scroll inside its own box
+         rather than spill past the margin. Inline math never scrolls. */
+      d-article mjx-container[display="true"] {
+        overflow-x: auto; overflow-y: hidden; max-width: 100%;
+        padding: 0.2rem 0; margin: 0.9rem 0; }
+      d-article mjx-container { max-width: 100%; }
+      d-article mjx-container:not([display="true"]) { overflow: visible; }
+
+      /* A citation's hover card is positioned from JavaScript when the citation sits
+         inside a table; see assets/tables.js for why. The card is moved to viewport
+         coordinates there, so nothing here needs to open up the wrapper's overflow
+         and wide tables keep scrolling normally. */
+      d-cite { cursor: pointer; }
+      d-citation-list ol.references > li.ref-flash {
+        background: #fdf3e0; border-radius: 3px;
+        box-shadow: 0 0 0 6px #fdf3e0; transition: background 0.25s, box-shadow 0.25s; }
 
       .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
                   text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
@@ -1947,7 +1965,7 @@ physical or synthesized hardware, tagged by which population it belongs to.</p>
 
     </div>
 
-    <d-bibliography src="assets/bibliography/references.bib"></d-bibliography>
+    <d-bibliography src="assets/bibliography/references.bib?v=20260916c"></d-bibliography>
 
     <d-article id="bibtex-container" class="related highlight">
       For attribution in academic contexts, please cite this work as
@@ -1969,8 +1987,8 @@ physical or synthesized hardware, tagged by which population it belongs to.</p>
 
     <!-- Interactive supplements (progressive enhancement; the static page is complete without them) -->
 
-  <script src="assets/tables.js"></script>
-  <script type="module" src="assets/figure.js"></script>
+  <script src="assets/tables.js?v=20260916c"></script>
+  <script type="module" src="assets/figure.js?v=20260916c"></script>
 
   </body>
 

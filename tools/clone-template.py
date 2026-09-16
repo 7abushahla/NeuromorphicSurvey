@@ -16,6 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TPL = ROOT.parent.parent / 'QuantizationSurvey' / 'index.html'
 
+# Cache-buster for this survey's own assets, bumped when they change.
+VER = '20260916c'
+
 Q_TITLE = ('Neural Network Quantization for Microcontrollers: A Comprehensive Survey '
            'of Methods, Platforms, and Applications')
 Q_SUB = ('This survey provides a hardware-oriented perspective on neural network '
@@ -217,6 +220,15 @@ EXTRA_CSS = """
       d-article mjx-container { max-width: 100%; }
       d-article mjx-container:not([display="true"]) { overflow: visible; }
 
+      /* A citation's hover card is positioned from JavaScript when the citation sits
+         inside a table; see assets/tables.js for why. The card is moved to viewport
+         coordinates there, so nothing here needs to open up the wrapper's overflow
+         and wide tables keep scrolling normally. */
+      d-cite { cursor: pointer; }
+      d-citation-list ol.references > li.ref-flash {
+        background: #fdf3e0; border-radius: 3px;
+        box-shadow: 0 0 0 6px #fdf3e0; transition: background 0.25s, box-shadow 0.25s; }
+
       .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
                   text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
       d-article d-contents { grid-row: auto / span 26; }
@@ -252,7 +264,7 @@ def main():
     # visual system is the template's and is left exactly as it is.
     head = head.replace('<link rel="stylesheet" href="assets/css/main.css?v=20260910w">',
                         '<link rel="stylesheet" href="assets/css/main.css?v=20260910w">\n'
-                        '    <link rel="stylesheet" href="assets/figure.css">')
+                        f'    <link rel="stylesheet" href="assets/figure.css?v={VER}">')
     head = head.replace('    </style>', EXTRA_CSS + '    </style>', 1)
 
     # The abstract block opens the article, exactly as upstream.
@@ -261,11 +273,11 @@ def main():
 
     # --- tail ---
     tail = re.sub(r'<d-bibliography src="[^"]*">',
-                  '<d-bibliography src="assets/bibliography/references.bib">', tail)
+                  f'<d-bibliography src="assets/bibliography/references.bib?v={VER}">', tail)
     tail = re.sub(r'\n?\s*<script src="assets/js/(data|supplements|figs)\.js[^"]*"></script>', '', tail)
     tail = tail.replace('  </body>',
-                        '  <script src="assets/tables.js"></script>\n'
-                        '  <script type="module" src="assets/figure.js"></script>\n\n  </body>')
+                        f'  <script src="assets/tables.js?v={VER}"></script>\n'
+                        f'  <script type="module" src="assets/figure.js?v={VER}"></script>\n\n  </body>')
 
     (ROOT / 'site/shell-head.html').write_text(head)
     (ROOT / 'site/shell-tail.html').write_text(tail)
