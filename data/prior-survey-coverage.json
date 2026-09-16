@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "surveys": [
+    {
+      "id": "S01-pedersen-2024-nir",
+      "source_id": "pedersen-2024-nir",
+      "full_text_status": "provisional",
+      "retrieval_sources": ["https://doi.org/10.1038/s41467-024-52259-9"],
+      "coverage": {},
+      "strongest_contribution": "Boundary-level semantic interoperability analysis.",
+      "deployment_depth": "Demonstrates selected graphs across simulators and hardware backends.",
+      "omissions": ["Reset by subtraction is not represented."],
+      "verification": {
+        "status": "provisional",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "main"
+      }
+    }
+  ]
+}

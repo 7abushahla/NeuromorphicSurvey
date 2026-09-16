@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "pedersen-2024-nir",
+      "canonical_key": "pedersen-2024-nir",
+      "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
+      "authors": "J. E. Pedersen et al.",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-024-52259-9",
+      "url": "https://doi.org/10.1038/s41467-024-52259-9",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": ["Methods, NIR primitives and graph execution"],
+      "aliases": [],
+      "notes": ""
+    }
+  ]
+}
