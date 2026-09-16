@@ -16,7 +16,7 @@
     }
 
     let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
-    let firstAuthorLName = authors.length ? authors[0][0] : "Anonymous";
+    let firstAuthorLName = authors.length ? authors[0][0] : "Abushahla";
     let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
 
     // getting stuff directly from Jekyll
@@ -25,7 +25,7 @@
     let description = "Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states: algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting.";
 
     {
-      let authorsBibtex = authors.length ? authors.map(e => `${e[0]}, ${e[1]}`).join(" and ") : "Anonymous";
+      let authorsBibtex = authors.length ? authors.map(e => `${e[0]}, ${e[1]}`).join(" and ") : "Abushahla, Hamza";
       let bibtexTitleShorthand = (firstAuthorLName +
               "2026" +
               title.split(" ").slice(0, 3).join("")
@@ -45,7 +45,7 @@
     }
 
     {
-      let academicLFI = authors.length ? authors.map(e => e[0]) : ["Anonymous"];
+      let academicLFI = authors.length ? authors.map(e => e[0]) : ["Abushahla"];
       {
         if (academicLFI.length > 2) academicLFI = academicLFI[0] + ", et al.";
         else if (academicLFI.length == 2) academicLFI = academicLFI[0] + " & " + academicLFI[1];
@@ -700,12 +700,12 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       "published": "",
       "authors": [
         {
-          "author": "Anonymous",
+          "author": "Hamza Abushahla",
           "authorURL": "",
           "affiliations": [
             {
-              "name": "Anonymous",
-              "url": ""
+              "name": "American University of Sharjah",
+              "url": "https://www.aus.edu"
             }
           ]
         }

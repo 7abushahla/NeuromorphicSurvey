@@ -124,6 +124,23 @@ TOC = [
 # carries the paper tables, the coverage heat map, the figure chrome, the contents
 # nav, the cross-reference links and the back-to-top control, so none of that is
 # restated here. Only what is specific to tracing deployment evidence is.
+AUTHOR = 'Hamza Abushahla'
+AFFIL = 'American University of Sharjah'
+AFFIL_URL = 'https://www.aus.edu'
+# The template derives a BibTeX key and an author string from DOM elements of class
+# "author", which this page does not have, so both fall back to a literal. The front
+# matter alone would leave the visible byline and the exported citation disagreeing.
+AUTHORS = [
+    ('"author": "Anonymous"', f'"author": "{AUTHOR}"'),
+    ('"name": "Anonymous"', f'"name": "{AFFIL}"'),
+    ('"url": ""\n            }', f'"url": "{AFFIL_URL}"\n            }}'),
+    ('authors[0][0] : "Anonymous"', f'authors[0][0] : "{AUTHOR.split()[-1]}"'),
+    ('.join(" and ") : "Anonymous"',
+     f'.join(" and ") : "{AUTHOR.split()[-1]}, {" ".join(AUTHOR.split()[:-1])}"'),
+    ('authors.map(e => e[0]) : ["Anonymous"]',
+     f'authors.map(e => e[0]) : ["{AUTHOR.split()[-1]}"]'),
+]
+
 FIG_RULE = re.compile(r'^ *#figure-\d+[^{\n]*\{[^}\n]*\}\n', re.M)
 
 EXTRA_CSS = """
@@ -273,6 +290,10 @@ def main():
     # than left for someone to debug later. Our own per-figure rules arrive separately
     # through assets/figures.css.
     head = FIG_RULE.sub('', head)
+
+    for old, new in AUTHORS:
+        assert old in head, f'author substitution missed: {old!r}'
+        head = head.replace(old, new)
 
     head = head.replace('    </style>', EXTRA_CSS + '    </style>', 1)
 
