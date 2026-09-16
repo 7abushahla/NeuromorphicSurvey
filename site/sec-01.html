@@ -87,31 +87,45 @@ claim.</p>
 <p>Model- and learning-centered surveys establish the background needed to understand SNN
 construction. They compare neuron models, learning rules, surrogate gradients, conversion, and
 applications. Their main unit of analysis is a learning or conversion method rather than a complete
-deployment route <d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>.
-Related surveys explain how values become spike representations and what a decoder recovers. They
-therefore clarify the trade-offs among rate, first-spike-time, population, and graded-payload codes
-<d-cite key="auge,gallego-2022-event-based-vision"></d-cite>. This body of work explains why
-different training routes and codes impose different constraints. It does not usually trace whether
-those constraints remain representable after export and mapping.</p>
+deployment route
+<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,eshraghian-2023-training-snns,rathi-2023,yamazaki-2022,khan-2025,zheng-2022,hu-2024-large-scale-snns,prior-s29-ayasi-2025,prior-s33-hegao-2026,prior-s34-luu-2026,prior-s35-caviglia-2026,xie-2024"></d-cite>.
+This body of work explains why different training routes impose different constraints. It does not
+usually trace whether those constraints remain representable after export and mapping.</p>
+
+<p>Coding- and sensing-centered surveys explain how physical or numerical signals become event and
+spike representations, and what a downstream decoder can recover. They clarify the trade-offs among
+rate, first-spike-time, population, and other temporal codes, as well as the representations used
+for visual, auditory, and olfactory event streams
+<d-cite key="gallego-2022-event-based-vision,prior-s31-tayaraninajaran-2021,prior-s32-cimarelli-2025"></d-cite>.
+Their focus is the sensing or representation boundary. They provide less coverage of how the
+resulting semantics survive framework export, hardware mapping, and deployment measurement. For a
+broader taxonomy of neural codes and their signal-representation trade-offs, we refer the
+reader to Auge et al. <d-cite key="auge"></d-cite>.</p>
+
+<p>Software and interoperability studies survey simulators, programming models, implementation
+frameworks, compilers, and mapping environments. NIR provides the clearest attempt to define a
+common intermediate representation and exposes semantic disagreement across back ends. Related
+reviews compare software support and implementation paths across SNN frameworks and accelerator
+targets
+<d-cite key="manna-2023-frameworks,pedersen-2024-nir,huynh-2022-implementing-snns,prior-s37-farsa-2026"></d-cite>.
+A framework or graph format, however, does not by itself establish that a published model traversed
+the documented route or retained its reset, delay, payload, and readout semantics.</p>
 
 <p>Conversely, hardware-centered surveys emphasize chips, circuits, execution styles, and selected
 applications. Davies et al., for example, document Loihi results across several workloads, while
 broader hardware surveys compare implementation approaches and design constraints
-<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
+<d-cite key="schuman-2017-hardware-survey,bouvier-2019-hardware-implementations,davies-2021-loihi,basu-2022,ivanov-2022,shrestha-2022-models-hardware,prior-s30-alabdulwahid-2024,zolfagharinejad-2024-brain-inspired-systems,chen-2026-neuromorphic-chips,ferreira-2025-edge-ai-circuits"></d-cite>.
 These accounts establish what particular platforms can do. They do not, however, establish that a
 model definition or compiler route transfers unchanged across platform families.</p>
 
-<p>Broader software, interoperability, benchmarking, and application surveys provide an
-ecosystem-level view. Framework and toolchain reviews identify simulators, programming models,
-compilers, and mapping environments. NIR, for example, provides a common intermediate
-representation that exposes semantic disagreement across back ends
-<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
-NeuroBench and the EdgeSNN survey likewise distinguish hardware-independent proxy evaluation from
-hardware-aware or physical-system evaluation
-<d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application reviews establish the
-breadth of vision, audio, control, and other workloads <d-cite key="yamazaki-2022"></d-cite>. Yet a
-graph format, a documented toolchain, or a platform result does not by itself state whether reset,
-delay, payload, readout, or host work is preserved, transformed, rejected, or measured.</p>
+<p>Benchmarking, deployment, and application reviews provide the broadest system-level view.
+NeuroBench and the EdgeSNN survey distinguish hardware-independent proxy evaluation from
+hardware-aware or physical-system evaluation. Other reviews organize edge techniques, deployment
+constraints, sensing modalities, scaling challenges, and application domains
+<d-cite key="deng-2025-edgesnn,yik-2025-neurobench,anon-edge-survey,prior-s36-du-2026,gebregiorgis-2025-spike-based-overview,kudithipudi-2025-neuromorphic-scale,schuman-2022-opportunities"></d-cite>.
+These studies establish why system context and measurement matter. They do not retrospectively
+classify each published claim by physical execution, documented path, hardware model, or software
+simulation, nor do they require an edge-by-edge route from a trained model to a named target.</p>
 
 <p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
 address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
