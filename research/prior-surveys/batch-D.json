@@ -908,8 +908,8 @@
           "locator": "Scope"
         },
         "H": {
-          "score": "full",
-          "basis": "Accelerator families are compared.",
+          "score": "partial",
+          "basis": "GPU and RISC-V accelerators are surveyed extensively, but neuromorphic hardware platforms are not surveyed comprehensively.",
           "locator": "Sections II to V"
         },
         "I": {
