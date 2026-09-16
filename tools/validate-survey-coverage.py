@@ -85,8 +85,9 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
     if not isinstance(surveys, list):
         return errors + ["prior-survey-coverage surveys must be an array"]
     verification_states = schema.get("verification_states")
-    if not isinstance(verification_states, list):
-        return errors + ["schema verification_states must be an array"]
+    full_text_statuses = schema.get("survey_full_text_statuses")
+    if not isinstance(verification_states, list) or not isinstance(full_text_statuses, list):
+        return errors + ["schema verification_states and survey_full_text_statuses must be arrays"]
     source_ids = {source.get("id") for source in registry["sources"] if isinstance(source, dict)}
     ids: set[str] = set()
     for index, survey in enumerate(surveys):
@@ -108,7 +109,7 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
             ids.add(survey_id)
         if not isinstance(survey["source_id"], str) or survey["source_id"] not in source_ids:
             errors.append(f"{label}: unresolved source_id {survey['source_id']!r}")
-        if survey["full_text_status"] not in verification_states:
+        if not isinstance(survey["full_text_status"], str) or survey["full_text_status"] not in full_text_statuses:
             errors.append(f"{label}: invalid full_text_status {survey['full_text_status']!r}")
         retrieval_sources = survey["retrieval_sources"]
         if not isinstance(retrieval_sources, list) or not retrieval_sources:
