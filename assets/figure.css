@@ -1,0 +1,194 @@
+/* The neuromorphic deployment stack.
+   Structure follows Figure 17 of the quantization survey: a toolbar that narrows the
+   whole stack, layer bands of labelled chip rows, an SVG overlay that draws the route,
+   seam pins between layers, two rails, and a live panel.
+   One addition this domain needs. A route here can BREAK, so the overlay draws a chain
+   up to its snap point and then a red dashed stub. */
+
+.nstk-fig { text-align: left; margin: 0; }
+
+/* Toolbar */
+.nstk-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem; margin: 0 0 0.75rem; font-size: 0.72rem; color: #556; }
+.nstk-tb-label { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.64rem; color: #667; margin: 0; }
+.nstk-search {
+  flex: 1 1 260px; min-width: 200px; font: inherit; font-size: 0.76rem; padding: 0.3rem 0.65rem;
+  border: 1px solid #b9c2cc; border-radius: 999px; background: #fff; color: #1f2430; outline: none;
+}
+.nstk-search:focus { border-color: #1f2430; box-shadow: 0 0 0 2px rgba(31,36,48,0.12); }
+.nstk-quick-wrap { display: flex; flex-wrap: nowrap; gap: 0.3rem; flex-basis: 100%; overflow-x: auto; scrollbar-width: thin; padding-bottom: 0.15rem; }
+.nstk-quick { flex: 0 0 auto; }
+.nstk-quick, .nstk-clear {
+  font: inherit; font-size: 0.68rem; border: 1px solid #c8cfd8; background: #fff; border-radius: 999px;
+  padding: 0.16rem 0.65rem; cursor: pointer; color: #223; transition: 0.12s; line-height: 1.4;
+}
+.nstk-quick:hover, .nstk-clear:hover { border-color: #1f2430; }
+.nstk-quick.nstk-active { background: #1f2430; border-color: #1f2430; color: #fff; }
+.nstk-clear { color: #778; }
+
+/* Grid and layers */
+.nstk-grid { display: grid; grid-template-columns: 34px minmax(0,1fr) 34px; gap: 12px; position: relative; }
+.nstk-layers { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.nstk-layer {
+  --spine: #3A414F; --tint: #E8EAEE;
+  position: relative; display: grid; grid-template-columns: 176px minmax(0,1fr); align-items: stretch;
+  background: var(--tint); border-radius: 9px; box-shadow: 0 2px 6px rgba(20,24,40,0.10); transition: box-shadow 0.15s;
+}
+.nstk-layer[data-layer="app"]     { --spine: #6D4C9F; --tint: #EFEAF7; }
+.nstk-layer[data-layer="learn"]   { --spine: #3F5FBF; --tint: #E8ECF8; }
+.nstk-layer[data-layer="code"]    { --spine: #A97818; --tint: #FBF3DF; }
+.nstk-layer[data-layer="compute"] { --spine: #98622C; --tint: #F7EDE2; }
+.nstk-layer[data-layer="sw"]      { --spine: #2A8A7A; --tint: #E1F2EF; }
+.nstk-layer[data-layer="hw"]      { --spine: #3A414F; --tint: #E8EAEE; }
+.nstk-layer:hover, .nstk-layer.nstk-bridge { box-shadow: 0 0 0 2.5px var(--spine), 0 2px 6px rgba(20,24,40,0.10); }
+
+.nstk-label {
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.35rem;
+  padding: 0.6rem 0.85rem; background: var(--spine); color: #fff; border-radius: 9px 0 0 9px;
+  text-decoration: none; border: none; transition: filter 0.12s, opacity 0.2s; cursor: pointer;
+}
+.nstk-label:hover { filter: brightness(1.12); color: #fff; }
+.nstk-name { font-weight: 700; font-size: 0.9rem; line-height: 1.15; color: #fff; letter-spacing: 0.01em; }
+.nstk-sub { font-size: 0.6rem; line-height: 1.3; color: rgba(255,255,255,0.78); font-weight: 400; }
+.nstk-step {
+  display: inline-flex; align-items: center; justify-content: center; width: 1.35rem; height: 1.35rem;
+  border-radius: 50%; background: rgba(0,0,0,0.32); border: 1.5px solid rgba(255,255,255,0.8);
+  color: #fff; font-size: 0.72rem; font-weight: 700;
+}
+
+/* Chip rows */
+.nstk-chips { display: flex; flex-direction: column; gap: 0.62rem; min-width: 0; padding: 0.6rem 0.9rem 0.65rem; }
+.nstk-row { display: flex; align-items: baseline; gap: 0.5rem; min-width: 0; }
+.nstk-row-plain .nstk-rowchips { padding-left: 0; }
+.nstk-rowlabel {
+  flex: 0 0 132px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--spine); line-height: 1.3; padding-top: 0.22rem; transition: opacity 0.2s;
+}
+.nstk-rowchips { display: flex; flex-wrap: wrap; gap: 0.26rem 0.3rem; min-width: 0; }
+.nstk-chip {
+  position: relative; z-index: 2; display: inline-block; padding: 0.13rem 0.48rem; margin: 0;
+  background: #fff; border: 1px solid color-mix(in srgb, var(--spine) 38%, #fff); border-radius: 5px;
+  font-size: 0.69rem; line-height: 1.45; color: #223; cursor: pointer;
+  transition: opacity 0.2s, border-color 0.12s, color 0.12s, background 0.12s, box-shadow 0.12s;
+}
+.nstk-chip:hover, .nstk-chip:focus-visible { border-color: var(--spine); color: var(--spine); box-shadow: 0 1px 4px rgba(0,0,0,0.10); outline: none; }
+
+/* Chip states while a route is traced. The route must dominate. A branch reads as
+   available rather than chosen. An implied chip is fixed by the route, not a choice. */
+.nstk-tracing .nstk-chip { opacity: 1; background-color: var(--tint); border-color: color-mix(in srgb, var(--spine) 18%, var(--tint)); color: color-mix(in srgb, #39414f 34%, var(--tint)); }
+.nstk-tracing .nstk-chip.nstk-line {
+  background-color: var(--pc); border-color: var(--pc); color: #fff; font-weight: 600;
+  box-shadow: 0 1px 3px rgba(20,24,40,0.22);
+}
+.nstk-tracing .nstk-chip.nstk-branch {
+  background-color: color-mix(in srgb, #fff 74%, var(--tint)); color: #39414f; font-weight: 400;
+  border-width: 1px; border-style: dashed; border-color: color-mix(in srgb, var(--pc) 62%, #9aa3af);
+}
+.nstk-tracing .nstk-chip.nstk-branch::after { content: " \2197"; font-size: 0.55rem; opacity: 0.6; }
+.nstk-tracing .nstk-chip.nstk-branch:hover {
+  background-color: #fff; border-style: solid; border-color: var(--pc); color: var(--pc); font-weight: 600;
+}
+.nstk-tracing .nstk-chip.nstk-implied {
+  background-color: color-mix(in srgb, #fff 34%, var(--tint)); border-color: rgba(20,24,40,0.14);
+  color: #6b7280; font-weight: 400; font-style: italic; cursor: default;
+}
+/* The addition this domain needs: a chip where the chain snaps. */
+.nstk-tracing .nstk-chip.nstk-break {
+  background-color: #fbeceb; border: 1.5px solid #C0392B; color: #A93226; font-weight: 700;
+  box-shadow: 0 1px 4px rgba(192,57,43,0.24);
+}
+.nstk-tracing .nstk-chip.nstk-break::after { content: " \00d7"; font-weight: 700; }
+.nstk-tracing .nstk-rowlabel { opacity: 0.5; }
+.nstk-tracing .nstk-rowlabel.nstk-on { opacity: 1; }
+.nstk-dim .nstk-label, .nstk-dim .nstk-chip, .nstk-dim .nstk-rowlabel { opacity: 0.3; }
+
+/* Seam pins */
+.nstk-seam { position: absolute; right: 14px; bottom: 0; transform: translateY(calc(50% + 5px)); display: flex; gap: 6px; z-index: 3; }
+.nstk-pin {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 20px; padding: 0 7px;
+  border-radius: 999px; background: #fff; border: 1.5px solid #C0392B; color: #A93226; font-size: 0.66rem; font-weight: 700;
+  text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,0.16); transition: 0.15s; cursor: pointer;
+}
+.nstk-pin:hover, .nstk-pin:focus-visible, .nstk-pin.nstk-pin-on { background: #C0392B; color: #fff; }
+.nstk-pin.nstk-pulse { animation: nstkpulse 1.2s ease-in-out infinite; }
+@keyframes nstkpulse { 0%,100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.6); } 50% { box-shadow: 0 0 0 8px rgba(192,57,43,0); } }
+
+/* Rails */
+.nstk-rail { display: flex; flex-direction: column; gap: 6px; }
+.nstk-rail-cell {
+  flex: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #556; background: #f1f3f6;
+  border: 1px solid #d5dbe2; border-radius: 6px; cursor: help; text-decoration: none; transition: 0.12s; padding: 0.4rem 0; white-space: nowrap;
+}
+.nstk-rail-cell:hover { border-color: #1f2430; color: #1f2430; background: #e9ecf1; }
+.nstk-rail-r .nstk-rail-cell { color: #A93226; background: #fbeceb; border-color: #efc4bf; cursor: pointer; text-transform: none; letter-spacing: 0.02em; }
+.nstk-rail-r .nstk-rail-cell:hover { border-color: #C0392B; color: #fff; background: #C0392B; }
+
+/* Overlay */
+.nstk-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible; }
+.nstk-path-halo { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+.nstk-path { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.nstk-path-broken { fill: none; stroke: #C0392B; stroke-width: 2.4; stroke-dasharray: 5 5; stroke-linecap: round; }
+.nstk-breakmark { fill: none; stroke: #C0392B; stroke-width: 2.4; stroke-linecap: round; }
+
+/* Panel */
+.nstk-panel { margin: 0.75rem 0 0; font-size: 0.75rem; line-height: 1.5; color: #223; }
+.nstk-panel:empty { display: none; }
+.nstk-ph { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.7rem; padding: 0.45rem 0.8rem; background: #1f2430; color: #fff; border-radius: 6px 6px 0 0; }
+.nstk-ph b { font-size: 0.82rem; }
+.nstk-dot { display: inline-block; width: 0.62rem; height: 0.62rem; border-radius: 50%; flex: 0 0 auto; background: var(--pc); }
+.nstk-pbody { border: 1px solid #d5dbe2; border-top: none; border-radius: 0 0 6px 6px; padding: 0.55rem 0.8rem 0.6rem; background: #fff; }
+.nstk-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem; margin: 0.28rem 0 0.35rem; }
+.nstk-step-chip { font-size: 0.64rem; padding: 0.04rem 0.36rem; border: 1px solid color-mix(in srgb, var(--pc) 35%, #fff); border-radius: 4px; background: #fff; color: #223; }
+.nstk-step-chip.nstk-step-break { border-color: #C0392B; background: #fbeceb; color: #A93226; font-weight: 700; }
+.nstk-arr { color: var(--pc); font-size: 0.68rem; }
+.nstk-arr-break { color: #C0392B; font-weight: 700; }
+.nstk-evid { display: inline-block; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--pc); padding: 0.05rem 0.4rem; border-radius: 3px; }
+.nstk-evid-blocked { background: #C0392B; }
+.nstk-note { margin: 0.35rem 0 0; color: #445; }
+.nstk-note b { color: #1f2430; }
+.nstk-sources { margin: 0.55rem 0 0; border-top: 1px dashed #d5dbe2; padding-top: 0.38rem; }
+.nstk-sources summary { cursor: pointer; color: #145E75; font-weight: 700; }
+.nstk-sources ul { margin: 0.45rem 0 0; padding-left: 1.2rem; }
+.nstk-sources li { margin: 0.18rem 0; }
+.nstk-sources a { color: #145E75; text-decoration: underline; text-underline-offset: 2px; }
+.nstk-sources li span { color: #7b8494; font-size: 0.66rem; }
+.nstk-break-note { margin: 0.45rem 0 0; padding: 0.4rem 0.7rem; background: #fbeceb; border-left: 3px solid #C0392B; border-radius: 0 6px 6px 0; color: #7d2820; }
+.nstk-routes { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.nstk-route {
+  padding: 0.4rem 0.6rem; border: 1px solid #dfe4ea; border-left: 3px solid var(--pc); border-radius: 0 6px 6px 0;
+  background: #fff; cursor: pointer; transition: background 0.12s; opacity: 0.88;
+}
+.nstk-route:hover, .nstk-route:focus-visible { background: #f6f8fa; outline: none; opacity: 1; }
+.nstk-route-main { opacity: 1; background: #f9fbfc; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pc) 30%, #fff); }
+.nstk-rhead { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.nstk-rhead b { font-size: 0.78rem; }
+.nstk-rstory { display: block; color: #445; margin-top: 0.15rem; }
+.nstk-guide { margin: 0 0 0.55rem; padding: 0.45rem 0.75rem; border-left: 3px solid #1f2430; background: #f3f4f7; border-radius: 0 6px 6px 0; }
+.nstk-legendnote { margin: 0.5rem 0 0; padding-top: 0.4rem; border-top: 1px dashed #d5dbe2; font-size: 0.66rem; color: #667; }
+.nstk-key { display: inline-block; width: 0.85rem; height: 0.72rem; border-radius: 3px; vertical-align: -0.1rem; --pc: #1f2430; }
+.nstk-key.nstk-line { background: #1f2430; }
+.nstk-key.nstk-branch { background: rgba(255,255,255,0.75); border: 1px dashed #7b8494; }
+.nstk-key.nstk-implied { background: transparent; border: 1px solid rgba(20,24,40,0.12); }
+.nstk-key.nstk-break { background: #fbeceb; border: 1.5px solid #C0392B; }
+
+.nstk-hint { text-align: left; font-size: 0.68rem; color: #667; margin: 0.5rem 0 0; font-style: italic; }
+.nstk-cap { font-size: 0.72rem; line-height: 1.55; color: #445; margin: 0.75rem 0 0; }
+.nstk-cap b { color: #1f2430; }
+
+/* Tooltip */
+.nstk-tip {
+  position: fixed; z-index: 50; max-width: 300px; padding: 0.45rem 0.65rem; border-radius: 6px;
+  background: #1f2430; color: #fff; font-size: 0.68rem; line-height: 1.45; pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25); opacity: 0; transition: opacity 0.12s;
+}
+.nstk-tip.nstk-tip-on { opacity: 1; }
+.nstk-tip b { color: #fff; }
+
+@media (max-width: 760px) {
+  .nstk-grid { grid-template-columns: 26px minmax(0,1fr) 26px; gap: 8px; }
+  .nstk-layer { grid-template-columns: 1fr; }
+  .nstk-label { flex-direction: row; align-items: baseline; gap: 0.5rem; border-radius: 9px 9px 0 0; padding: 0.4rem 0.8rem; }
+  .nstk-row { flex-direction: column; gap: 0.15rem; }
+  .nstk-rowlabel { flex-basis: auto; }
+  .nstk-rail-cell { font-size: 0.56rem; }
+}

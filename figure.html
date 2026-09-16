@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Neuromorphic Deployment Stack</title>
+<link rel="stylesheet" href="assets/figure.css">
+<style>
+  body { margin: 0; background: #fff; color: #1f2430; font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+  .lede { color: #556; font-size: 0.86rem; margin: 0 0 1.6rem; max-width: 62ch; }
+  .fignum { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #889; margin: 0 0 0.35rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="fignum">Figure 1, draft</p>
+  <h1>The neuromorphic deployment stack</h1>
+  <p class="lede">A practitioner's map from an application to the silicon that runs it. Eleven documented routes are traceable. Three of them do not complete, and the figure draws where they snap.</p>
+
+  <figure class="nstk-fig" id="nstk-fig">
+    <div class="nstk-toolbar" role="search">
+      <label class="nstk-tb-label" for="nstk-q">What are you deploying?</label>
+      <input class="nstk-search" id="nstk-q" type="search" placeholder="an application, or a code, neuron, framework, compiler or chip to narrow by" autocomplete="off" spellcheck="false">
+      <span class="nstk-quick-wrap" id="nstk-quick"></span>
+      <button type="button" class="nstk-clear" id="nstk-clear" hidden>Clear</button>
+    </div>
+
+    <div class="nstk-grid" id="nstk-grid">
+      <div class="nstk-rail nstk-rail-l" id="nstk-rail-l" aria-label="Constraints acting on every layer"></div>
+      <div class="nstk-layers" id="nstk-layers"></div>
+      <div class="nstk-rail nstk-rail-r" id="nstk-rail-r" aria-label="Challenges cutting across every layer"></div>
+      <svg class="nstk-overlay" id="nstk-overlay" aria-hidden="true"></svg>
+    </div>
+
+    <div class="nstk-panel" id="nstk-panel" aria-live="polite"></div>
+    <p class="nstk-hint">Start from your application, then read down. Clicking any entry narrows the question and keeps it. Hover a layer, a rail, or a numbered pin for its role. Escape clears.</p>
+
+    <figcaption class="nstk-cap"><b>Figure 1.</b> A map of spiking inference from application to silicon. Start from what you need to deploy and read down. The figure lists the documented routes that carry it and draws the strongest one, from the learning path you choose to the part it runs on. Selecting anything narrows the question rather than restarting it, so a code, a neuron model, a framework, a compiler or a chip keeps only the routes that support it. A chip is either a step on the drawn route, a branch still open, or a setting the route fixes rather than a choice. Three routes terminate in a break, drawn as a red stub, where a documented toolchain edge refuses the computation that reached it. Numbered pins mark the seams between layers, the left rail carries the constraints acting on every layer, and the right rail the challenges that cut across all of them.</figcaption>
+  </figure>
+</div>
+<script type="module" src="assets/figure.js"></script>
+</body>
+</html>

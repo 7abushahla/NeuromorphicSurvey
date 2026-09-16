@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Quarantined first attempt, kept locally for reference only.
+_scaffold-old/

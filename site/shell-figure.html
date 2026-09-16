@@ -1,0 +1,21 @@
+
+<figure class="pfig stack-fig l-page nstk-fig" id="nstk-fig">
+  <div class="nstk-toolbar" role="search">
+    <label class="nstk-tb-label" for="nstk-q">What are you deploying?</label>
+    <input class="nstk-search" id="nstk-q" type="search" placeholder="a task, sensor, code, neuron, framework, compiler or chip to narrow by" autocomplete="off" spellcheck="false">
+    <span class="nstk-quick-wrap" id="nstk-quick"></span>
+    <button type="button" class="nstk-clear" id="nstk-clear" hidden>Clear</button>
+  </div>
+
+  <div class="nstk-grid" id="nstk-grid">
+    <div class="nstk-rail nstk-rail-l" id="nstk-rail-l" aria-label="Constraints acting on every layer"></div>
+    <div class="nstk-layers" id="nstk-layers"></div>
+    <div class="nstk-rail nstk-rail-r" id="nstk-rail-r" aria-label="Challenges cutting across every layer"></div>
+    <svg class="nstk-overlay" id="nstk-overlay" aria-hidden="true"></svg>
+  </div>
+
+  <div class="nstk-panel" id="nstk-panel" aria-live="polite"></div>
+  <p class="nstk-hint">Start from your application, then read down. Clicking any entry narrows the question and keeps it. Hover a layer, a rail, or a numbered pin for its role. Escape clears.</p>
+
+  <figcaption id="figure-1"><b>Figure 1:</b> A map of spiking inference from application to silicon. Start from what you need to deploy and read down. The figure lists the documented routes that carry it and draws the strongest one, from the sensor that feeds the task to the part it runs on. Selecting anything narrows the question rather than restarting it, so a task, a sensor, a code, a neuron model, a framework, a compiler or a chip keeps only the routes that support it. A chip is either a step on the drawn route, a branch still open, or a setting the route fixes rather than a choice. Three routes terminate in a break, drawn as a red stub, where a documented toolchain edge refuses the computation that reached it. Numbered pins mark the seams of <a class="xref" href="#challenges">Section 8</a> where they arise between layers, the left rail carries the constraints acting on every layer, and the right rail the challenges that cut across all of them.</figcaption>
+</figure>

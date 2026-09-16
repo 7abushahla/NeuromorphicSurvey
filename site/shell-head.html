@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<!-- _layouts/distill.html -->
+<html>
+
+<script>
+  let thunk = () => {
+    let trimIt = (e) => e.trim();
+    let getText = (e) => e.innerText;
+    let splitNameAndFamilyName = (e) => {
+      let splitted = e.split(" ");
+
+      let fnames = splitted.slice(0, -1).join(" ");
+      let lname = splitted.at(-1);
+
+      return [lname, fnames];
+    }
+
+    let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
+    let firstAuthorLName = authors.length ? authors[0][0] : "Anonymous";
+    let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
+
+    // getting stuff directly from Jekyll
+    let publishedWhen = "2026";
+    let title = "From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon";
+    let description = "Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states: algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting.";
+
+    {
+      let authorsBibtex = authors.length ? authors.map(e => `${e[0]}, ${e[1]}`).join(" and ") : "Anonymous";
+      let bibtexTitleShorthand = (firstAuthorLName +
+              "2026" +
+              title.split(" ").slice(0, 3).join("")
+      ).replace(" ", "").replace(/[\p{P}$+<=>^`|~]/gu, '').toLowerCase().trim();
+      let bibtexTemplate = `
+@inproceedings{${bibtexTitleShorthand},
+  author = {${authorsBibtex}},
+  title = {${title}},
+  abstract = {${description}},
+  booktitle = {TMLR Beyond PDF},
+  year = {2026},
+  note = {${window.location.href}},
+  url  = {${window.location.href}}
+}
+  `.trim();
+      document.getElementById("bibtex-box").innerText = bibtexTemplate;
+    }
+
+    {
+      let academicLFI = authors.length ? authors.map(e => e[0]) : ["Anonymous"];
+      {
+        if (academicLFI.length > 2) academicLFI = academicLFI[0] + ", et al.";
+        else if (academicLFI.length == 2) academicLFI = academicLFI[0] + " & " + academicLFI[1];
+        else academicLFI = academicLFI[0];
+      }
+      let academicTemplate = `
+${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
+`.trim();
+      document.getElementById("bibtex-academic-attribution").innerText = academicTemplate;
+    }
+  };
+
+  document.addEventListener('readystatechange', function(event) {
+    if (document.readyState === "complete") {
+      thunk();
+    }
+  });
+</script>
+
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon | TMLR Beyond PDF</title>
+    <meta name="author" content="  " />
+    <meta name="description" content="Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states: algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting." />
+    <meta name="keywords" content="spiking-neural-networks, neuromorphic-computing, ANN-to-SNN-conversion, Loihi, SpiNNaker, Speck, Akida, event-based-vision, deployment, TMLR" />
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    <link rel="shortcut icon" href="assets/img/tmlr-favicon.ico"/>
+    <link rel="stylesheet" href="assets/css/main.css?v=20260910w">
+    <link rel="stylesheet" href="assets/figure.css">
+
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams',
+        inlineMath: [['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+    <!-- Distill js -->
+    <script src="assets/js/distillpub/template.v2.js?v=20260910w"></script>
+    <script src="assets/js/distillpub/transforms.v2.js?v=20260910w"></script>
+    <script src="assets/js/distillpub/overrides.js?v=20260910w"></script>
+
+    <!-- Paper-specific styles -->
+    <style type="text/css">
+      /* ---- Paper tables (booktabs-like, faithful to the manuscript) ---- */
+      .ptable-wrap { overflow-x: auto; margin: 1.2rem 0; }
+      table.ptable {
+        border-collapse: collapse; width: 100%;
+        font-size: 0.72rem; line-height: 1.45;
+        border-top: 2px solid #333; border-bottom: 2px solid #333;
+      }
+      table.ptable caption {
+        caption-side: top; text-align: left; color: rgba(0,0,0,0.65);
+        font-size: 0.78rem; line-height: 1.5; padding: 0 0 0.6rem;
+      }
+      table.ptable caption b { color: rgba(0,0,0,0.85); }
+      table.ptable th {
+        font-weight: 700; text-align: left; vertical-align: bottom;
+        padding: 0.42rem 0.5rem; border-bottom: 1.2px solid #333; white-space: nowrap;
+      }
+      table.ptable td { padding: 0.38rem 0.5rem; vertical-align: top; }
+      table.ptable tbody tr.rule td { border-top: 0.8px solid #999; }
+      table.ptable td.ctr, table.ptable th.ctr { text-align: center; }
+      table.ptable td.fam { font-weight: 400; vertical-align: middle; text-align: center; }
+      table.ptable tr.ours td { font-weight: 700; }
+      table.ptable th.sortable { cursor: pointer; }
+      table.ptable th.sortable:hover { color: #2698BA; }
+      table.ptable th .sort-ind { opacity: 0.4; font-size: 0.6rem; }
+      table.ptable th.sortable { cursor: default; }
+      /* ticks (paper legend colors) */
+      .tk  { color: #000; font-weight: 700; }
+      .tkp { color: #cccccc; font-weight: 700; }
+      .tka { color: #1F77B4; font-weight: 700; }
+      .tkr { color: #FF7F0E; font-weight: 700; }
+      .tkh { color: #9467BD; font-weight: 700; }
+      /* ---- Figures ---- */
+      figure.pfig { text-align: center; margin: 20px 0; }
+      figure.pfig img { max-width: 100%; height: auto; }
+      figure.pfig figcaption {
+        text-align: left; color: rgba(0,0,0,0.65); font-size: 0.78rem;
+        line-height: 1.5; margin-top: 0.65rem;
+      }
+      figure.pfig figcaption b { color: rgba(0,0,0,0.85); }
+      figure.pfig .subfig { display: inline-block; vertical-align: top; }
+      figure.pfig .subcap {
+        color: rgba(0,0,0,0.65); font-size: 0.74rem; line-height: 1.45;
+        text-align: left; margin: 0.35rem auto 0.9rem; max-width: 92%;
+      }
+      /* ---- Table 1: coverage heat-map (Option D) ---- */
+      #table-1 td.cov-full, #table-1 td.cov-part, #table-1 .hw, #table-1 .sw {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      #table-1 td.cov-full { background: #2698BA; }
+      #table-1 td.cov-full span { color: #fff; font-weight: 700; font-size: 0.94em; }
+      #table-1 td.cov-part { background: #D8EBF2; }
+      #table-1 td.cov-part span { color: #145E75; font-weight: 500; font-size: 0.94em; }
+      #table-1 td.cov-full, #table-1 td.cov-part, #table-1 td.cov-none { text-align: center; }
+      #table-1 td.hwcell { text-align: center; white-space: nowrap; }
+      #table-1 .hw {
+        display: inline-block; font-size: 0.8em; font-weight: 600; letter-spacing: 0.02em;
+        padding: 1px 5px; margin: 0 1px; border-radius: 3px; border: 1px solid;
+      }
+      #table-1 .hw.arm  { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      #table-1 .hw.risc { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
+      #table-1 .hw.npu  { color: #64408C; background: #EEE7F7; border-color: #9467BD; }
+      .t1-legend {
+        display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 0.6rem;
+        padding-top: 0.55rem; border-top: 1px dashed #d5dbe2;
+        font-size: 0.72rem; color: #6c757d;
+      }
+      .t1-legend span { display: inline-flex; align-items: center; gap: 6px; }
+      .t1-legend .sw {
+        display: inline-block; width: 16px; height: 11px; border-radius: 2px;
+        border: 1px solid #c8cfd8;
+      }
+      .t1-legend .sw-full { background: #2698BA; border-color: #2698BA; }
+      .t1-legend .sw-part { background: #D8EBF2; border-color: #b9d7e2; }
+      .t1-legend .sw-none { background: transparent; }
+      .t1-legend .t1-legend-note { color: #8a94a0; font-style: italic; }
+      /* ---- clause lists inside table cells (Table 7, parked) ---- */
+      table.ptable ul.cell-list { margin: 0; padding-left: 1.05em; }
+      table.ptable ul.cell-list li { margin: 0 0 0.28rem; padding-left: 0.1em; }
+      table.ptable ul.cell-list li:last-child { margin-bottom: 0; }
+      table.ptable ul.cell-list li::marker { color: #2698BA; }
+      /* ---- Index terms ---- */
+      .index-terms { font-size: 0.85rem; color: rgba(0,0,0,0.72); }
+      /* ---- Interactive supplements (not part of the manuscript) ---- */
+      .supplement {
+        border: 1px solid #d5dbe2; border-left: 4px solid #2698BA;
+        border-radius: 6px; padding: 0.9rem 1.1rem; margin: 1.4rem 0;
+        background: #fafbfc;
+      }
+      .supplement .supp-label {
+        font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em;
+        text-transform: uppercase; color: #2698BA; margin-bottom: 0.5rem;
+      }
+      .supplement .chip {
+        display: inline-block; padding: 0.25rem 0.7rem; margin: 0 0.3rem 0.3rem 0;
+        border: 1px solid #c8cfd8; border-radius: 100px; font-size: 0.72rem;
+        cursor: pointer; user-select: none; background: #fff;
+      }
+      .supplement .chip.active { background: #2698BA; border-color: #2698BA; color: #fff; }
+      .supplement select { font-size: 0.75rem; padding: 0.15rem 0.3rem; }
+      .supplement details { margin: 0.3rem 0; }
+      .supplement details summary { cursor: pointer; font-weight: 600; font-size: 0.8rem; }
+      .supplement .tax-branch { margin: 0.25rem 0 0.5rem 1.1rem; }
+      .supplement .tax-leaf-label { font-size: 0.74rem; font-weight: 600; color: #444; margin-top: 0.35rem; }
+      .supplement .mchip {
+        display: inline-block; padding: 0.14rem 0.5rem; margin: 0.14rem 0.18rem 0.14rem 0;
+        background: #fff; border: 1px solid #d5dbe2; border-radius: 5px; font-size: 0.72rem;
+      }
+      .viz-tip {
+        position: fixed; z-index: 500; pointer-events: none; opacity: 0;
+        background: #222; color: #fff; padding: 7px 10px; border-radius: 6px;
+        font-size: 11.5px; line-height: 1.45; max-width: 250px; transition: opacity .12s;
+      }
+      /* ---- Cross-reference links: keep manuscript ink ---- */
+      a.xref { color: inherit; border-bottom: 1px dotted #97b6c6; }
+      a.xref:hover { color: #2698BA; border-bottom-style: solid; }
+      /* ---- Back to top ---- */
+      #toTop {
+        position: fixed; right: 20px; bottom: 20px; width: 40px; height: 40px;
+        border-radius: 50%; border: 1px solid #d5dbe2; background: #fff; color: #2698BA;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.12); cursor: pointer; display: none; z-index: 90;
+      }
+      #toTop.show { display: block; }
+      /* ---- Interactive figures ---- */
+      html { scroll-behavior: smooth; }
+      /* Contents: one entry per line */
+      .toc-nav div { line-height: 1.75; }
+      .toc-nav .toc-sub { padding-left: 1.35em; }
+      .toc-nav a { border-bottom: none; }
+      /* Table 1: fits the page width with no horizontal scrolling */
+      .ptable-wrap.t1-wide { overflow-x: visible; }
+      .ptable-wrap.t1-wide table.ptable { min-width: 0; width: 100%; table-layout: auto; }
+      .ptable-wrap.t1-wide th { white-space: normal; text-align: center; vertical-align: bottom; font-size: 0.68rem; padding: 0.35rem 0.3rem; }
+      .ptable-wrap.t1-wide th:first-child { text-align: left; }
+      .ptable-wrap.t1-wide td { padding: 0.34rem 0.3rem; }
+      .ptable-wrap.t1-wide td:first-child { white-space: nowrap; }
+      table.ptable th[title] { cursor: pointer; }
+      /* Parked with Table 2: four long headers in a text-column-width table needed
+         wrapping, since th is nowrap by default.
+      #table-2 th { white-space: normal; vertical-align: bottom; }
+      #table-2 th, #table-2 td { padding-left: 0.35rem; padding-right: 0.35rem; } */
+      /* Numbered, clickable references */
+      d-cite { cursor: pointer; }
+      .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+      .fig-hint button {
+        font-size: 0.7rem; border: 1px solid #c8cfd8; background: #fff; border-radius: 6px;
+        padding: 0.16rem 0.6rem; cursor: pointer; color: #2698BA;
+      }
+      .fig-hint button:hover { background: #eef6f9; }
+      a.f1-box g { cursor: pointer; }
+      a.f1-box:hover rect { filter: brightness(0.95); }
+      .f2c { transition: opacity 0.12s, filter 0.12s; }
+      .f2-dim { opacity: 0.32; }
+      .f2-hi { filter: brightness(1.06); }
+      .f4-quad, .f4-mid { transition: filter 0.25s; }
+      .f4-active { filter: drop-shadow(0 0 14px rgba(255, 166, 0, 0.95)); }
+      .f6-cell rect { cursor: pointer; transition: fill 0.15s; }
+      .f6-node { transition: fill 0.2s; }
+      .f7-bar { transition: filter 0.1s; }
+      .f7-bar:hover { filter: brightness(0.9); }
+      .f8-step, .f8-skip { transition: filter 0.25s, opacity 0.25s; }
+      .f8-on { filter: drop-shadow(0 0 7px rgba(38, 152, 186, 0.55)); }
+      .f8-faded { opacity: 0.45; }
+      .f8-skipnow { animation: f8skip 1.05s ease 2; }
+      @keyframes f8skip { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.12; } }
+      .f9-node { cursor: help; transition: filter 0.15s; }
+      .f9-node:hover { filter: brightness(0.94); }
+      /* Figure 10 interactive taxonomy */
+      figure.tax-fig { text-align: left; border: 1px solid #d5dbe2; border-radius: 8px; padding: 0.9rem 1.2rem; }
+      .tax-fig .tax-group { font-weight: 700; font-size: 0.95rem; margin: 0.35rem 0; }
+      .tax-fig .tax-branch { margin: 0.3rem 0 0.7rem 1.2rem; }
+      .tax-fig .tax-leaf-label { font-size: 0.76rem; font-weight: 600; color: #444; margin-top: 0.45rem; }
+      .tax-fig .mchip {
+        display: inline-block; padding: 0.15rem 0.5rem; margin: 0.15rem 0.18rem 0.15rem 0;
+        background: #fff; border: 1px solid #d5dbe2; border-radius: 5px; font-size: 0.74rem;
+        cursor: pointer; transition: 0.12s;
+      }
+      .tax-fig .mchip:hover { border-color: #2698BA; color: #2698BA; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+      .tax-fig .fig-hint { text-align: left; margin: 0 0 0.4rem; }
+      .tax-fig figcaption { border-top: 1px dashed #d5dbe2; padding-top: 0.6rem; margin-top: 0.8rem; }
+      /* Figure 17: the deployment stack */
+      figure.stack-fig { text-align: left; }
+      .stk-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem; margin: 0 0 0.75rem; font-size: 0.72rem; color: #556; }
+      .stk-tb-label { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.64rem; color: #667; margin: 0; }
+      .stk-search {
+        flex: 1 1 260px; min-width: 200px; font: inherit; font-size: 0.76rem; padding: 0.3rem 0.65rem; border: 1px solid #b9c2cc;
+        border-radius: 999px; background: #fff; color: #1f2430; outline: none;
+      }
+      .stk-search:focus { border-color: #1f2430; box-shadow: 0 0 0 2px rgba(31, 36, 48, 0.12); }
+      .stk-quick-wrap {
+        display: flex; flex-wrap: nowrap; gap: 0.3rem; flex-basis: 100%; overflow-x: auto;
+        scrollbar-width: thin; padding-bottom: 0.15rem;
+      }
+      .stk-quick { flex: 0 0 auto; }
+      .stk-quick, .stk-clear {
+        font: inherit; font-size: 0.68rem; border: 1px solid #c8cfd8; background: #fff; border-radius: 999px;
+        padding: 0.16rem 0.65rem; cursor: pointer; color: #223; transition: 0.12s; line-height: 1.4;
+      }
+      .stk-quick:hover, .stk-clear:hover { border-color: #1f2430; }
+      .stk-quick.stk-active { background: #1f2430; border-color: #1f2430; color: #fff; }
+      .stk-clear { color: #778; }
+      .stk-grid { display: grid; grid-template-columns: 34px minmax(0, 1fr) 34px; gap: 12px; position: relative; }
+      .stk-layers { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .stk-layer {
+        --spine: #3A414F; --tint: #E8EAEE;
+        position: relative; display: grid; grid-template-columns: 168px minmax(0, 1fr); align-items: stretch;
+        background: var(--tint); border-radius: 9px; box-shadow: 0 2px 6px rgba(20, 24, 40, 0.10); transition: box-shadow 0.15s;
+      }
+      .stk-layer[data-layer="app"]   { --spine: #6D4C9F; --tint: #EFEAF7; }
+      .stk-layer[data-layer="quant"] { --spine: #3F5FBF; --tint: #E8ECF8; }
+      .stk-layer[data-layer="repr"]  { --spine: #C4922A; --tint: #FBF3DF; }
+      .stk-layer[data-layer="sw"]    { --spine: #2A8A7A; --tint: #E1F2EF; }
+      .stk-layer[data-layer="hw"]    { --spine: #3A414F; --tint: #E8EAEE; }
+      .stk-layer:hover, .stk-layer.stk-bridge { box-shadow: 0 0 0 2.5px var(--spine), 0 2px 6px rgba(20, 24, 40, 0.10); }
+      .stk-label {
+        display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.35rem; padding: 0.6rem 0.85rem;
+        background: var(--spine); color: #fff; border-radius: 9px 0 0 9px; text-decoration: none; border: none; transition: filter 0.12s, opacity 0.2s;
+      }
+      .stk-label:hover { text-decoration: none; filter: brightness(1.12); color: #fff; }
+      .stk-name { font-weight: 700; font-size: 0.92rem; line-height: 1.15; color: #fff; letter-spacing: 0.01em; }
+      .stk-step {
+        display: inline-flex; align-items: center; justify-content: center; width: 1.35rem; height: 1.35rem; border-radius: 50%;
+        background: rgba(0, 0, 0, 0.32); border: 1.5px solid rgba(255, 255, 255, 0.8); color: #fff; font-size: 0.72rem; font-weight: 700;
+      }
+      .stk-row-plain .stk-rowchips { padding-left: 0; }
+      .stk-chips { display: flex; flex-direction: column; gap: 0.62rem; min-width: 0; padding: 0.6rem 0.9rem 0.65rem; }
+      .stk-row { display: flex; align-items: baseline; gap: 0.5rem; min-width: 0; }
+      .stk-rowlabel {
+        flex: 0 0 150px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+        color: var(--spine); line-height: 1.3; padding-top: 0.22rem; transition: opacity 0.2s;
+      }
+      .stk-rowlabel[data-q] { cursor: pointer; border-bottom: 1px dotted transparent; }
+      .stk-rowlabel[data-q]:hover { border-bottom-color: var(--spine); }
+      .stk-rowchips { display: flex; flex-wrap: wrap; gap: 0.26rem 0.3rem; min-width: 0; }
+      .stack-fig .mchip {
+        position: relative; z-index: 2; display: inline-block; padding: 0.13rem 0.48rem; margin: 0;
+        background: #fff; border: 1px solid color-mix(in srgb, var(--spine) 38%, #fff); border-radius: 5px;
+        font-size: 0.69rem; line-height: 1.45; color: #223; cursor: pointer;
+        transition: opacity 0.2s, border-color 0.12s, color 0.12s, background 0.12s, box-shadow 0.12s;
+      }
+      .stack-fig .mchip:hover, .stack-fig .mchip:focus-visible { border-color: var(--spine); color: var(--spine); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10); outline: none; }
+      /* Three states while a route is shown, plus dim for what is out of reach. The route
+         has to dominate, so a branch reads as available rather than as chosen: quieter
+         ink, a dashed edge tinted by the route it belongs to, and full strength on hover. */
+      .stk-tracing .mchip { opacity: 1; background-color: var(--tint); border-color: color-mix(in srgb, var(--spine) 18%, var(--tint)); color: color-mix(in srgb, #39414f 34%, var(--tint)); }
+      .stk-tracing .mchip.stk-line {
+        opacity: 1; background-color: var(--pc); background-image: none;
+        border-color: var(--pc); border-style: solid; color: #fff; font-weight: 600;
+        box-shadow: 0 1px 3px rgba(20, 24, 40, 0.22);
+      }
+      .stk-tracing .mchip.stk-branch {
+        opacity: 1; background-color: color-mix(in srgb, #fff 74%, var(--tint)); background-image: none;
+        color: #39414f; font-weight: 400;
+        border-width: 1px; border-style: dashed; border-color: color-mix(in srgb, var(--pc) 62%, #9aa3af);
+      }
+      .stk-tracing .mchip.stk-branch::after { content: " \2197"; font-size: 0.55rem; opacity: 0.6; }
+      .stk-tracing .mchip.stk-branch:hover, .stk-tracing .mchip.stk-branch:focus-visible {
+        background-color: #fff; border-width: 1px; border-style: solid; border-color: var(--pc);
+        color: var(--pc); font-weight: 600; box-shadow: 0 1px 5px rgba(20, 24, 40, 0.14);
+      }
+      .stk-tracing .mchip.stk-branch:hover::after, .stk-tracing .mchip.stk-branch:focus-visible::after { opacity: 0.8; }
+      .stk-tracing .mchip.stk-implied {
+        opacity: 1; background-color: color-mix(in srgb, #fff 34%, var(--tint)); background-image: none;
+        border-width: 1px; border-style: solid; border-color: rgba(20, 24, 40, 0.14);
+        color: #6b7280; font-weight: 400; font-style: italic; cursor: default;
+      }
+      .stk-tracing .stk-rowlabel { opacity: 0.5; }
+      .stk-tracing .stk-rowlabel.stk-on { opacity: 1; }
+      .stk-dim .stk-label, .stk-dim .mchip, .stk-dim .stk-rowlabel { opacity: 0.3; }
+      .stk-seam { position: absolute; right: 14px; bottom: 0; transform: translateY(calc(50% + 5px)); display: flex; gap: 6px; z-index: 3; }
+      .stk-pin {
+        display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 20px; padding: 0 7px;
+        border-radius: 999px; background: #fff; border: 1.5px solid #C0392B; color: #A93226; font-size: 0.66rem; font-weight: 700;
+        text-decoration: none; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16); transition: 0.15s; cursor: pointer;
+      }
+      .stk-pin:hover, .stk-pin:focus-visible, .stk-pin.stk-pin-on { background: #C0392B; color: #fff; text-decoration: none; }
+      .stk-pin.stk-pulse { animation: stkpulse 1.2s ease-in-out infinite; }
+      @keyframes stkpulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.6); } 50% { box-shadow: 0 0 0 8px rgba(192, 57, 43, 0); } }
+      .stk-rail { display: flex; flex-direction: column; gap: 6px; }
+      .stk-rail-cell {
+        flex: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg);
+        font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #556; background: #f1f3f6;
+        border: 1px solid #d5dbe2; border-radius: 6px; cursor: help; text-decoration: none; transition: 0.12s; padding: 0.4rem 0; white-space: nowrap;
+      }
+      .stk-rail-cell:hover { border-color: #1f2430; color: #1f2430; background: #e9ecf1; text-decoration: none; }
+      .stk-rail-r .stk-rail-cell { color: #A93226; background: #fbeceb; border-color: #efc4bf; cursor: pointer; text-transform: none; letter-spacing: 0.02em; }
+      .stk-rail-r .stk-rail-cell:hover { border-color: #C0392B; color: #fff; background: #C0392B; }
+      .stk-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible; }
+      .stk-path-halo { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+      .stk-path { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .stk-path-broken { fill: none; stroke: #C0392B; stroke-width: 2.2; stroke-dasharray: 5 5; stroke-linecap: round; }
+      .stk-bracket { fill: none; stroke: #C0392B; stroke-width: 2; stroke-linecap: round; }
+      .stk-panel { margin: 0.75rem 0 0; font-size: 0.75rem; line-height: 1.5; color: #223; }
+      .stk-panel:empty { display: none; }
+      .stk-ph { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.7rem; padding: 0.45rem 0.8rem; background: #1f2430; color: #fff; border-radius: 6px 6px 0 0; }
+      .stk-ph b { font-size: 0.82rem; }
+      .stk-ph a { color: #cfe3ff; border-bottom: 1px dotted #cfe3ff; text-decoration: none; }
+      .stk-ph a:hover { color: #fff; border-bottom-style: solid; }
+      .stk-pbody { border: 1px solid #d5dbe2; border-top: none; border-radius: 0 0 6px 6px; padding: 0.55rem 0.8rem 0.6rem; background: #fff; }
+      .stk-story { margin: 0 0 0.5rem; padding: 0.4rem 0.7rem; border-left: 3px solid #1f2430; background: #f3f4f7; border-radius: 0 6px 6px 0; }
+      .stk-ph span { color: #fff; }
+      .stk-crumbs { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem; }
+      .stk-crumb {
+        display: inline-block; font-size: 0.66rem; padding: 0.08rem 0.45rem; border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.4); cursor: pointer;
+      }
+      .stk-crumb:hover { background: rgba(255, 255, 255, 0.34); }
+      .stk-count { font-size: 0.7rem; opacity: 0.85; }
+      .stk-dot { display: inline-block; width: 0.62rem; height: 0.62rem; border-radius: 50%; flex: 0 0 auto; background: var(--pc); }
+      .stk-guide { margin: 0 0 0.55rem; padding: 0.45rem 0.75rem; border-left: 3px solid #1f2430; background: #f3f4f7; border-radius: 0 6px 6px 0; }
+      .stk-routes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+      .stk-route {
+        padding: 0.4rem 0.6rem; border: 1px solid #dfe4ea; border-left: 3px solid var(--pc); border-radius: 0 6px 6px 0;
+        background: #fff; cursor: pointer; transition: background 0.12s, box-shadow 0.12s; opacity: 0.88;
+      }
+      .stk-route:hover, .stk-route:focus-visible { background: #f6f8fa; outline: none; opacity: 1; }
+      .stk-route-main { opacity: 1; background: #f9fbfc; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pc) 30%, #fff); }
+      .stk-rhead { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+      .stk-rhead b { font-size: 0.78rem; }
+      .stk-fam { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #667; }
+      .stk-badge { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--pc); padding: 0.05rem 0.4rem; border-radius: 3px; }
+      .stk-badge-sel { color: var(--pc); background: #fff; box-shadow: inset 0 0 0 1px var(--pc); }
+      /* Sits where a badge sits, since a caveat qualifies the recommendation rather
+         than replacing it. Never rendered next to the recommended badge, so it cannot
+         be read as running on from it. */
+      .stk-caveat { font-size: 0.6rem; font-style: italic; color: #6f4000; background: #fdf3e0; border: 1px solid #e8cf9d; padding: 0.02rem 0.4rem; border-radius: 3px; }
+      .stk-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem; margin: 0.28rem 0 0.2rem; }
+      .stk-step-chip { font-size: 0.64rem; padding: 0.04rem 0.36rem; border: 1px solid color-mix(in srgb, var(--pc) 35%, #fff); border-radius: 4px; background: #fff; color: #223; }
+      .stk-or { font-style: normal; font-size: 0.92em; color: #667; padding: 0 0.08rem; }
+      .stk-arr { color: var(--pc); font-size: 0.68rem; }
+      .stk-rstory { display: block; color: #445; }
+      .stk-reject { margin: 0.45rem 0 0; padding: 0.4rem 0.7rem; background: #fbeceb; border-left: 3px solid #C0392B; border-radius: 0 6px 6px 0; color: #7d2820; }
+      .stk-reject.stk-fixed { background: #eef0f3; border-left-color: #8a93a0; color: #3c444f; }
+      .stk-reject.stk-fixed .stk-crumb { background: rgba(60, 68, 79, 0.1); border-color: rgba(60, 68, 79, 0.3); color: #3c444f; }
+      .stk-reject .stk-crumb { background: rgba(192, 57, 43, 0.12); border-color: rgba(192, 57, 43, 0.4); color: #7d2820; }
+      .stk-more { margin: 0.4rem 0 0; font-size: 0.7rem; color: #667; font-style: italic; }
+      .stk-alsohw { display: block; font-size: 0.66rem; color: #667; margin: 0.1rem 0 0.15rem; }
+      .stk-legendnote { margin: 0.5rem 0 0; padding-top: 0.4rem; border-top: 1px dashed #d5dbe2; font-size: 0.66rem; color: #667; }
+      .stk-key { display: inline-block; width: 0.85rem; height: 0.72rem; border-radius: 3px; vertical-align: -0.1rem; --pc: #1f2430; }
+      .stk-key.stk-line { background: #1f2430; }
+      .stk-key.stk-branch { background: rgba(255, 255, 255, 0.75); border: 1px dashed #7b8494; }
+      .stk-key.stk-implied { background: transparent; border: 1px solid rgba(20, 24, 40, 0.12); }
+      .stk-note { margin: 0.35rem 0 0; color: #445; }
+      .stk-note b, .stk-evid b { color: #1f2430; }
+      .stk-evid { margin: 0.55rem 0 0; padding-top: 0.45rem; border-top: 1px dashed #d5dbe2; color: #445; font-size: 0.71rem; line-height: 1.6; }
+      .stk-ev { cursor: pointer; border-radius: 3px; padding: 0 0.15rem; }
+      .stk-ev:hover, .stk-ev:focus-visible { background: #eef1f6; outline: none; }
+      .stk-ref { font-weight: 700; color: #2698BA; font-variant-numeric: tabular-nums; }
+      .stk-panel .xref { border-bottom: 1px dotted #97b6c6; color: inherit; }
+      .stack-fig .fig-hint { text-align: left; }
+      @media (max-width: 720px) {
+        .stk-grid { grid-template-columns: 26px minmax(0, 1fr) 26px; gap: 8px; }
+        .stk-layer { grid-template-columns: 1fr; }
+        .stk-label { flex-direction: row; align-items: baseline; gap: 0.5rem; border-radius: 9px 9px 0 0; padding: 0.4rem 0.8rem; }
+        .stk-row { flex-direction: column; gap: 0.15rem; }
+        .stk-rowlabel { flex-basis: auto; }
+        .stk-rail-cell { font-size: 0.56rem; }
+      }
+      /* main.css carries d-article a { color: ... !important }, which reaches every
+         anchor in this figure: the Read link, the challenge pins, and the right rail.
+         Restate them at the same weight so the colour coding survives. */
+      .stack-fig .stk-label { color: #fff !important; }
+      .stack-fig .stk-pin { color: #A93226 !important; border-bottom: none !important; }
+      .stack-fig .stk-pin:hover, .stack-fig .stk-pin:focus-visible, .stack-fig .stk-pin.stk-pin-on { color: #fff !important; }
+      .stack-fig .stk-rail-r .stk-rail-cell { color: #A93226 !important; border-bottom: 1px solid #efc4bf !important; }
+      .stack-fig .stk-rail-r .stk-rail-cell:hover { color: #fff !important; border-color: #C0392B !important; }
+      .stack-fig .stk-ph a.stk-read { color: #cfe3ff !important; border-bottom: 1px dotted rgba(207, 227, 255, 0.55) !important; }
+      .stack-fig .stk-ph a.stk-read:hover { color: #fff !important; border-bottom-color: #fff !important; }
+      /* end Figure 17 */
+      .flash-p { background: #fff3c4 !important; }
+      .flash-fade { transition: background 1.6s ease; background: transparent; }
+      /* table toolbars */
+      .tbl-toolbar { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0 0 0.55rem; }
+      .tbl-toolbar input {
+        font-size: 0.74rem; padding: 0.28rem 0.55rem; border: 1px solid #c8cfd8;
+        border-radius: 7px; min-width: 190px;
+      }
+      .tbl-toolbar .chip {
+        display: inline-block; padding: 0.2rem 0.65rem; border: 1px solid #c8cfd8; border-radius: 100px;
+        font-size: 0.7rem; cursor: pointer; user-select: none; background: #fff;
+      }
+      .tbl-toolbar .chip.active { background: #2698BA; border-color: #2698BA; color: #fff; }
+      .tbl-toolbar .treset { font-size: 0.7rem; color: #2698BA; cursor: pointer; }
+      .tbl-toolbar .tcount { font-size: 0.68rem; color: #8a94a0; margin-left: auto; }
+      /* ---- Figure 8: isolate the forward or the backward pass ---- */
+      .f4-fwd, .f4-bwd { transition: filter 0.25s, opacity 0.2s; }
+      #figure-8 svg.f4-iso-fwd .f4-bwd,
+      #figure-8 svg.f4-iso-bwd .f4-fwd { opacity: 0.12; }
+      /* ---- Figures 2-4: isolate the field, step or mapping under the cursor ---- */
+      #figure-2 .f2-fld, #figure-3 .f3-stp, #figure-4 .f4s-zero, #figure-4 .f4s-lvl { cursor: help; }
+      #figure-2 .f2-fld { transition: opacity 0.15s; }
+      #figure-2 svg:hover .f2-fld { opacity: 0.30; }
+      #figure-2 svg .f2-fld:hover { opacity: 1; }
+      #figure-3 .f3-band { transition: opacity 0.15s; }
+      #figure-3 .f3-stp:hover .f3-band { opacity: 0.10; }
+      #figure-9 .fl-hit { cursor: ew-resize; }
+      #figure-9 .fl-probe { opacity: 0; transition: opacity 0.12s; }
+      #figure-9 .fl-live .fl-probe { opacity: 1; }
+      #figure-9 .fl-live .fl-static { opacity: 0.22; }
+      #figure-9 .fl-static { transition: opacity 0.12s; }
+      #figure-12 .f12-in { cursor: pointer; }
+      #figure-12 .f12-tile, #figure-12 .f12-cell rect { transition: opacity 0.14s, stroke-width 0.14s; }
+      #figure-12.f12-live .f12-cell rect { opacity: 0.28; }
+      #figure-12 .f12-cell.f12-on rect { opacity: 1; stroke-width: 4; }
+      #figure-12.f12-live .f12-in .f12-tile { opacity: 0.4; }
+      #figure-12 .f12-in.f12-sel .f12-tile { opacity: 1; stroke: #2698BA; stroke-width: 4; }
+      #figure-12 .f12-in:focus-visible .f12-tile { stroke: #2698BA; stroke-width: 4; }
+      #figure-7 .fq-box { cursor: help; }
+      #figure-7 .fq-box rect { transition: stroke-width 0.12s; }
+      #figure-7 .fq-box:hover rect { stroke-width: 4.6; }
+      #figure-5 .fg-cubes { cursor: help; }
+      #figure-5 .fg-face { transition: stroke-width 0.12s; }
+      #figure-5 .fg-cubes:hover .fg-face { stroke-width: 2.8; }
+      #figure-5 .fg-region { transition: fill-opacity 0.12s; }
+      #figure-5 .fg-cubes:hover .fg-region { fill-opacity: 0.38; stroke-dasharray: none; }
+      #figure-4 .f4s-tick { transition: stroke-width 0.12s; }
+      #figure-4 .f4s-lvl:hover .f4s-tick { stroke-width: 9; }
+      /* ---- Reference card for citations inside tables ----
+         The table wrapper scrolls horizontally and so clips distill's own
+         hover box; this card is fixed to the viewport instead. */
+      .cite-card {
+        position: fixed; z-index: 600; pointer-events: none; opacity: 0;
+        background: rgba(250,250,250,0.97); color: rgba(0,0,0,0.8);
+        border: 1px solid rgba(0,0,0,0.12); border-radius: 4px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+        padding: 2px 13px; font-size: 0.78rem; line-height: 1.5;
+        max-width: 430px; transition: opacity .12s;
+      }
+      .cite-card .cc-entry { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+      .cite-card .cc-entry:last-child { border-bottom: none; }
+      .cite-card .cc-num { color: #2698BA; font-weight: 700; margin-right: 5px; }
+      /* ---- Study rows in Tables 3-5 lead to their reference ---- */
+      /* Table 3 lists several boards per study; the device column needs just enough
+         room that a name such as "STM32H747XI (M7)," stays on one line. */
+      #table-3 th:nth-child(4), #table-3 td:nth-child(4) { min-width: 160px; }
+      .ptable-wrap.t-studies tbody tr { transition: background 0.12s; }
+      .ptable-wrap.t-studies tbody tr:hover { background: #f3fafc; }
+      .ptable-wrap.t-studies tbody td:first-child { cursor: pointer; }
+      /* ---- Table 2 platforms carry a deployment-count hint ---- */
+      table.ptable td.t2-plat { cursor: help; }
+      /* ---- Keyboard focus: every interactive control shows where it is ---- */
+      .tbl-toolbar .chip, .tbl-toolbar .treset {
+        font: inherit; font-size: 0.7rem; line-height: 1.4; color: inherit;
+      }
+      .tbl-toolbar .treset { border: none; background: none; padding: 0; }
+      table.ptable th .th-sort {
+        font: inherit; color: inherit; background: none; border: 0; padding: 0;
+        cursor: pointer; text-align: inherit;
+      }
+      table.ptable th .th-sort:hover { color: #2698BA; }
+      :focus-visible { outline: 2px solid #2698BA; outline-offset: 2px; border-radius: 3px; }
+      .f6-cell:focus-visible rect, .f9-node:focus-visible rect, .f9-node:focus-visible path,
+      #figure-6 g[id]:focus-visible, #f6-reset:focus-visible {
+        outline: 2px solid #2698BA; outline-offset: 2px;
+      }
+      #scatter:focus-visible { outline: 2px solid #2698BA; outline-offset: 3px; }
+      .ptable-wrap d-cite:focus-visible { outline: 2px solid #2698BA; outline-offset: 1px; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+      /* ---- Narrow screens: keep the title from owning the first viewport ---- */
+      @media (max-width: 600px) {
+        body d-title h1 { font-size: 27px; line-height: 1.2em; }
+        body d-title p { font-size: 0.92rem; line-height: 1.5; }
+        body d-title { padding-bottom: 1rem; }
+      }
+      .toc-nav .toc-sub2 { padding-left: 2.6em; }
+      /* ---- Sidebar TOC: don't stretch the rows it spans ----
+         main.css gives d-contents "grid-row: auto / span 4". Our contents list is
+         far taller than four rows of article content, so CSS Grid stretched those
+         four rows (Abstract, abstract text, index terms, Introduction) to fit it,
+         opening large vertical gaps. Spanning more rows lets the natural content
+         height absorb it. Sidebar layout only; <=1024px main.css makes the TOC a
+         full-width block. */
+      @media (min-width: 1025px) {
+        d-article d-contents { grid-row: auto / span 20; }
+      }
+      /* ---- Print: the manuscript, exactly ---- */
+      @media print {
+        header, d-contents, .supplement, #bibtex-container, #toTop, .no-print,
+        .fig-hint, .tbl-toolbar, #f6-reset, #f4-dot, .viz-tip, .cite-card, .stk-toolbar, .stk-story, .stk-overlay { display: none !important; }
+        .f4-active, .f8-on { filter: none !important; }
+        .f4-fwd, .f4-bwd { opacity: 1 !important; }
+        .ptable-wrap.t-studies tbody tr:hover { background: transparent; }
+        figure.tax-fig { border: none; padding: 0; }
+        body { font-size: 11pt; }
+        figure.pfig, .ptable-wrap { break-inside: avoid; }
+        table.ptable { font-size: 7.2pt; }
+        a.xref { border-bottom: none; color: inherit; }
+        d-article { border-top: none; }
+      }
+      /* Below the sidebar breakpoint Table 1 can no longer shrink to fit, and
+         d-article clips what spills out, so let the wrapper scroll instead. */
+      @media (max-width: 1024px) {
+        .ptable-wrap.t1-wide { overflow-x: auto; }
+      }
+      @media (max-width: 768px) {
+        table.ptable { font-size: 0.66rem; }
+      }
+
+      /* ---- Additions for this survey ---- */
+      /* Evidence classes. The argument rests on keeping these apart, so they are
+         colour-coded consistently wherever a claim is classified. */
+      .ev { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em;
+            padding: 0.06rem 0.4rem; border-radius: 3px; color: #fff; vertical-align: 0.06rem; }
+      .ev-e1 { background: #1F7A4D; }
+      .ev-e2 { background: #2A8A7A; }
+      .ev-e3 { background: #8A6D1F; }
+      .ev-e4 { background: #98622C; }
+      .ev-e5 { background: #7B8494; }
+      .ev-blocked { background: #C0392B; }
+
+      d-article .caveat { padding: 0.55rem 0.85rem; border-left: 3px solid #C0392B;
+        background: #fbeceb; border-radius: 0 6px 6px 0; color: #7d2820; font-size: 0.92rem; }
+      d-article .keypoint { padding: 0.55rem 0.85rem; border-left: 3px solid #1f2430;
+        background: #f3f4f7; border-radius: 0 6px 6px 0; font-size: 0.95rem; }
+      .src-type { font-size: 0.62rem; color: #778; font-style: italic; }
+
+      /* The coverage heat map is scoped to #table-1 upstream. This survey scores more
+         than one table that way, so the same rules are restated for .cov-table. */
+      .cov-table td.cov-full, .cov-table td.cov-part, .cov-table .hw, .cov-table .sw {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cov-table td.cov-full { background: #2698BA; }
+      .cov-table td.cov-full span { color: #fff; font-weight: 700; font-size: 0.94em; }
+      .cov-table td.cov-part { background: #D8EBF2; }
+      .cov-table td.cov-part span { color: #145E75; font-weight: 500; font-size: 0.94em; }
+      .cov-table td.cov-ment { background: #F2F6F8; }
+      .cov-table td.cov-ment span { color: #7b8794; font-weight: 400; font-size: 0.9em; font-style: italic; }
+      .cov-table td.cov-full, .cov-table td.cov-part,
+      .cov-table td.cov-ment, .cov-table td.cov-none { text-align: center; }
+      .cov-table td.hwcell { text-align: center; white-space: nowrap; }
+      .t1-legend .sw-ment { background: #F2F6F8; border-color: #e2e8ec; }
+
+      /* Hardware families, one colour each, so a row reads at a glance. */
+      .cov-table .hw, .hw { display: inline-block; font-size: 0.8em; font-weight: 600;
+        letter-spacing: 0.02em; padding: 1px 5px; margin: 0 1px; border-radius: 3px; border: 1px solid; }
+      .hw.loihi   { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .hw.spinn   { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
+      .hw.synsense{ color: #64408C; background: #EEE7F7; border-color: #9467BD; }
+      .hw.bss     { color: #1F6F5C; background: #E1F2EE; border-color: #2A8A7A; }
+      .hw.akida   { color: #8A2F2F; background: #FBE9E7; border-color: #C0392B; }
+      .hw.tn      { color: #4A4F5C; background: #ECEEF1; border-color: #6B7280; }
+      .hw.fpga    { color: #7A5C00; background: #FBF3DF; border-color: #A97818; }
+
+      /* Categorical badge under a survey name in the scope comparison. */
+      .survey-tag { display: inline-block; margin-top: 0.12rem; padding: 1px 6px;
+        border: 1px solid; border-radius: 3px; font-size: 0.66rem;
+        font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+      .tag-methods    { color: #344E9D; background: #E8ECF8; border-color: #3F5FBF; }
+      .tag-hardware   { color: #38404E; background: #E8EAEE; border-color: #697482; }
+      .tag-software   { color: #1F6F5C; background: #E1F2EE; border-color: #2A8A7A; }
+      .tag-evaluation { color: #7A5C00; background: #FBF3DF; border-color: #A97818; }
+      .tag-overview   { color: #64408C; background: #EEE7F7; border-color: #6D4C9F; }
+
+      /* Toolbar above a filterable table. */
+      .tbl-toolbar { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0 0 0.55rem; }
+      .tbl-toolbar input { font-size: 0.74rem; padding: 0.28rem 0.55rem; border: 1px solid #c8cfd8;
+        border-radius: 7px; min-width: 190px; }
+      .tbl-toolbar .chip { display: inline-block; padding: 0.2rem 0.65rem; border: 1px solid #c8cfd8;
+        border-radius: 100px; font-size: 0.7rem; cursor: pointer; user-select: none; background: #fff;
+        font-family: inherit; line-height: 1.4; color: inherit; }
+      .tbl-toolbar .chip.active { background: #2698BA; border-color: #2698BA; color: #fff; }
+      .tbl-toolbar .treset { font-size: 0.7rem; color: #2698BA; cursor: pointer;
+        border: none; background: none; padding: 0; font-family: inherit; line-height: 1.4; }
+      .tbl-toolbar .tcount { font-size: 0.68rem; color: #8a94a0; margin-left: auto; }
+      table.ptable th .th-sort { font: inherit; color: inherit; background: none; border: 0;
+        padding: 0; cursor: pointer; text-align: inherit; }
+      table.ptable th .th-sort:hover { color: #2698BA; }
+      table.ptable th.sorted .sort-ind { opacity: 1; color: #2698BA; }
+      table.ptable tbody tr:hover { background: #f3fafc; }
+
+      /* A four-digit year must never wrap, and the widest value here is a range. */
+      table.ptable td.yr, table.ptable th.yr, table.ptable td.ctr {
+        overflow-wrap: normal; word-break: keep-all; hyphens: none; }
+      table.ptable th.yr, table.ptable td.yr { white-space: nowrap;
+        min-width: 4.6em; width: 4.6em; font-variant-numeric: tabular-nums; text-align: center; }
+
+      /* Genuinely wide data tables scroll inside their own container, never the page. */
+      .ptable-wrap.t-scroll { overflow-x: auto; }
+      .ptable-wrap.t-scroll table.ptable { min-width: 900px; }
+      .ptable-wrap.t1-wide table.ptable { min-width: 0; }
+      @media (max-width: 760px) {
+        .ptable-wrap.t1-wide { overflow-x: auto; }
+        .ptable-wrap.t1-wide table.ptable { min-width: 760px; }
+      }
+
+      .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
+                  text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
+      d-article d-contents { grid-row: auto / span 26; }
+    </style>
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon",
+      "description": "Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states: algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting.",
+      "submitted": "",
+      "published": "",
+      "authors": [
+        {
+          "author": "Anonymous",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Anonymous",
+              "url": ""
+            }
+          ]
+        }
+
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body class="fixed-top-nav">
+
+    <!-- Header --><header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand title font-weight-lighter" href="https://tmlr-beyond-pdf.org">TMLR Beyond PDF</a>
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://tmlr-beyond-pdf.org/about">About</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="https://tmlr-beyond-pdf.org/accepted/index.html">Accepted Papers</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="https://tmlr-beyond-pdf.org/under_review/index.html">Under Review</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="https://tmlr-beyond-pdf.org/submission-instructions">Submission Instructions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <!-- Content -->
+    <div class="post distill">
+
+      <d-title>
+        <h1>From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon</h1>
+        <p>This survey traces the handoffs a converted spiking network must survive to reach a physical neuromorphic chip, recording at each one what is preserved, what is broken, and how strong the evidence is at the destination.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <d-contents>
+          <nav class="l-text figcaption toc-nav">
+          <h3>Contents</h3>
+            <div><a href="#abstract">Abstract</a></div>
+            <div><a href="#introduction">1&ensp;Introduction</a></div>
+            <div class="toc-sub"><a href="#existing-surveys">1.1&ensp;Existing Surveys</a></div>
+            <div class="toc-sub"><a href="#contributions">1.2&ensp;Contributions</a></div>
+            <div class="toc-sub"><a href="#organization">1.3&ensp;Organization</a></div>
+            <div><a href="#preliminaries">2&ensp;Preliminaries</a></div>
+            <div class="toc-sub"><a href="#biological-neurons">2.1&ensp;From Biological Neurons to Spiking Models</a></div>
+            <div class="toc-sub"><a href="#neuron-models">2.2&ensp;Spiking Neuron Models</a></div>
+            <div class="toc-sub"><a href="#neural-codes">2.3&ensp;Neural Codes</a></div>
+            <div class="toc-sub"><a href="#formalization">2.4&ensp;Formalization</a></div>
+            <div class="toc-sub"><a href="#execution-contracts">2.5&ensp;Execution Contracts for Deployment</a></div>
+            <div><a href="#training-paths">3&ensp;Primary Training Paths</a></div>
+            <div class="toc-sub"><a href="#direct-training">3.1&ensp;Direct Training</a></div>
+            <div class="toc-sub"><a href="#classical-conversion">3.2&ensp;Classical ANN-to-SNN Conversion</a></div>
+            <div><a href="#advanced-conversion">4&ensp;Advanced Conversion Techniques</a></div>
+            <div class="toc-sub"><a href="#low-latency-conversion">4.1&ensp;Low-Latency Conversion</a></div>
+            <div class="toc-sub"><a href="#quantization-distribution-aware">4.2&ensp;Quantization- and Distribution-Aware Conversion</a></div>
+            <div class="toc-sub"><a href="#mixed-timestep">4.3&ensp;Mixed-Timestep and Per-Layer Allocation</a></div>
+            <div class="toc-sub"><a href="#hardware-aware-conversion">4.4&ensp;Hardware-Aware and Co-Designed Conversion</a></div>
+            <div class="toc-sub"><a href="#hybrid-calibration-finetuning">4.5&ensp;Hybrid and Calibration-Based Fine-Tuning</a></div>
+            <div><a href="#alternative-codes">5&ensp;Alternative Codes and Non-Rate Representations</a></div>
+            <div class="toc-sub"><a href="#temporal-ttfs">5.1&ensp;Temporal and Time-to-First-Spike</a></div>
+            <div class="toc-sub"><a href="#phase-weighted-slot">5.2&ensp;Phase and Weighted-Slot</a></div>
+            <div class="toc-sub"><a href="#sigma-delta-payloads">5.3&ensp;Differential, Sigma-Delta, and Graded Payloads</a></div>
+            <div class="toc-sub"><a href="#rank-order-coding">5.4&ensp;Rank Order Coding</a></div>
+            <div><a href="#deployment-stack">6&ensp;Hardware and Software Deployment Stack</a></div>
+            <div class="toc-sub"><a href="#hardware-platforms">6.1&ensp;Neuromorphic Hardware Platforms</a></div>
+            <div class="toc-sub2"><a href="#per-platform-notes">6.1.1&ensp;Per-Platform Notes</a></div>
+            <div class="toc-sub2"><a href="#akida-examined-critically">6.1.2&ensp;Akida, Examined Critically</a></div>
+            <div class="toc-sub"><a href="#frameworks">6.2&ensp;Training and Simulation Frameworks</a></div>
+            <div class="toc-sub"><a href="#export-compile">6.3&ensp;Export, Interchange, and Compilation</a></div>
+            <div class="toc-sub"><a href="#runtime">6.4&ensp;Runtime and Host I/O</a></div>
+            <div class="toc-sub"><a href="#routes">6.5&ensp;Documented Routes</a></div>
+            <div><a href="#applications">7&ensp;Applications and Deployment Evidence</a></div>
+            <div class="toc-sub"><a href="#loihi-deployments">7.1&ensp;Loihi-Family Deployments</a></div>
+            <div class="toc-sub"><a href="#speck-deployments">7.2&ensp;DYNAP-CNN and Speck Event-Vision Deployments</a></div>
+            <div class="toc-sub"><a href="#spinnaker-brainscales">7.3&ensp;SpiNNaker and BrainScaleS Deployments</a></div>
+            <div class="toc-sub"><a href="#fpga-asic">7.4&ensp;FPGA and Custom ASIC Implementations</a></div>
+            <div class="toc-sub"><a href="#event-sensing">7.5&ensp;Event-Based Sensing</a></div>
+            <div class="toc-sub"><a href="#cross-case">7.6&ensp;Cross-Case Evidence Table</a></div>
+            <div class="toc-sub"><a href="#measurement">7.7&ensp;Measurement and Comparability</a></div>
+            <div><a href="#figure-1">Figure 1&ensp;The Deployment Stack</a></div>
+            <div><a href="#challenges">8&ensp;Challenges and Future Directions</a></div>
+            <div class="toc-sub"><a href="#ch-operators">8.1&ensp;Operator Coverage in SNN Toolchains</a></div>
+            <div class="toc-sub"><a href="#ch-reset">8.2&ensp;Reset-Semantics Mismatch</a></div>
+            <div class="toc-sub"><a href="#ch-encoding">8.3&ensp;Input Encoding and Output Readout</a></div>
+            <div class="toc-sub"><a href="#ch-timemodel">8.4&ensp;Time-Model Mismatch</a></div>
+            <div class="toc-sub"><a href="#ch-perlayer">8.5&ensp;Per-Layer Timestep Horizons</a></div>
+            <div class="toc-sub"><a href="#ch-measurement">8.6&ensp;Measurement Boundaries</a></div>
+            <div class="toc-sub"><a href="#ch-decay">8.7&ensp;Device Availability and Toolchain Decay</a></div>
+            <div class="toc-sub"><a href="#ch-portability">8.8&ensp;Interoperability and the Portability Gap</a></div>
+            <div class="toc-sub"><a href="#ch-populations">8.9&ensp;The Two-Population Division of Labor</a></div>
+            <div><a href="#conclusion">9&ensp;Conclusion</a></div>
+          </nav>
+        </d-contents>
+
+        <h2 id="abstract">Abstract</h2>
+
+<p>Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states: algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting.</p>
+
+<p class="index-terms"><strong>Index Terms</strong>&#8212;Spiking Neural Networks, Neuromorphic Hardware, ANN-to-SNN Conversion, Neural Coding, Event-Based Vision, Deployment Toolchains, Edge Inference, Energy-Efficient Computing</p>
