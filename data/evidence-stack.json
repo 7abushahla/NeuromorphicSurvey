@@ -1722,13 +1722,15 @@
       "type": "learning-path",
       "name": "Low-latency conversion",
       "layer": "Learning paths",
-      "summary": "The QCFS-lineage of conversion papers that reduce T from hundreds/thousands of timesteps to single digits via improved activation clipping, potential initialization, or membrane-residual correction, evaluated at CIFAR/ImageNet scale. Audited against physical-hardware deployment: zero of sixteen papers report any run on physical neuromorphic silicon.",
+      "summary": "Recent low-timestep ANN-to-SNN conversion methods based on spike counts or firing rates. In the audited corpus, none of the proposing papers measures its own new rate-coded method on named physical neuromorphic silicon.",
       "attributes": {
         "parent_learning_path": "ann-to-snn-conversion",
-        "reaches_physical_silicon": "0 of 16 QCFS-lineage/low-latency conversion papers audited (QCFS, OPI, SRP, COS, SlipReLU, Burst Spikes, SNM, Fast-SNN, Dynamic Confidence, QFFS, SEENN, CS-QCFS, Adaptive Calibration, PASCAL, NeuroFlex, SpikeConverter) report E1 or E2 physical-silicon results; 15 of 16 are pure E5 software simulation (including SynOps-based theoretical-energy tables), 1 (NeuroFlex) is E4 hardware-model/RTL synthesis. A narrower, independently re-audited 13-paper citation-direction sample confirms 0 of 13 name a chip in the context of an experiment they themselves ran; only QCFS itself cites (but does not reproduce) two prior physical-hardware deployment papers in related work, correctly and non-abstract-only."
+        "reaches_physical_silicon": "No proposing paper in the audited recent low-timestep rate-coded corpus reports E1 or E2 physical-silicon evidence for its own new method. Later systems work does measure unmodified QCFS and SRP baselines on HP201, so the methods have reached silicon even though their proposing papers did not. Datta et al. document a Lava-DL route but no named physical backend."
       },
       "sources": [
+        "adaptive-fission",
         "bu2022-qcfs",
+        "datta2025-snn-meets-ann",
         "li2022-burstspikes",
         "ramesh2025-pascal"
       ]
@@ -1738,10 +1740,10 @@
       "type": "learning-path",
       "name": "Quantization-aware conversion",
       "layer": "Learning paths",
-      "summary": "Conversion methods that fold per-layer bit-width/quantization choices directly into the timestep or threshold search, e.g. QAC's proof that the timesteps T of a soft-reset IF-neuron SNN are mathematically equivalent to the quantization level 2^n of a matched-precision quantized ANN activation, converting a mixed-precision-quantized ANN into a mixed-timestep SNN. Shares the same audited hardware-deployment position as low-latency conversion, and its own hardware-mapping discussion is explicitly qualitative rather than an executed run.",
+      "summary": "Conversion methods that bind quantization choices to timesteps or thresholds. QAC and MT-SNN implement static layerwise horizons with explicit temporal alignment. Their reported mean timestep values are software summaries, not hardware latency.",
       "attributes": {
         "parent_learning_path": "ann-to-snn-conversion",
-        "reaches_physical_silicon": "0 of 16 (and 0 of 13 in the narrower citation-direction sample), the same audited population as low-latency-conversion since bit-width/timestep-equivalence methods (QAC, AdaFire, CS-QCFS, PASCAL) are drawn from and audited alongside the QCFS-lineage low-latency set. QAC itself performs no RTL synthesis, cycle-accurate simulation, or accelerator implementation of any kind; its own hardware-mapping section is a purely descriptive/qualitative discussion that explicitly predicts pipeline stalling if its heterogeneous per-layer timestep execution model were mapped onto real barrier-synchronized multi-core hardware -- TrueNorth, Loihi, Loihi 2, and Tianjic all advance through a single global barrier (per NeuroScale, Nature Communications 2025), so a hardware primitive for 'layer l runs for T_l ticks' does not exist on any of them."
+        "reaches_physical_silicon": "Within PASCAL, QAC, MT-SNN, and Temporal Flexibility, no physical result executes a static heterogeneous per-layer discrete-horizon schedule. QAC and MT-SNN provide qualitative execution discussions only. PASCAL models uniform T=4 in RTL and cycle simulation. Temporal Flexibility reaches Speck2e through timestep-free event-driven execution, so the training horizon vector is not the chip schedule. This bounded corpus result does not establish impossibility on current or future hardware."
       },
       "sources": [
         "guo2025-qac",
@@ -1755,14 +1757,16 @@
       "type": "learning-path",
       "name": "Hardware co-designed conversion",
       "layer": "Learning paths",
-      "summary": "The only ANN-to-SNN conversion family in the survey with confirmed instances of a paper that both proposes a genuinely new conversion method and measures it on physical neuromorphic silicon, in both cases by abandoning rate coding for a platform-native code: Quartz (time-to-first-spike, on physical Loihi 1) and Brehove et al. (graded sigma-delta spikes, on physical Loihi 2).",
+      "summary": "Conversion and post-training encoding methods that reach physical neuromorphic silicon by aligning the representation or neuron contract with platform execution. Located cases include Quartz TTFS on Loihi 1, Brehove sigma-delta graded payloads on Loihi 2, Adaptive Fission population coding on HP201, and complex Few-Spikes temporal coding on SpiNNaker2.",
       "attributes": {
         "parent_learning_path": "ann-to-snn-conversion",
-        "reaches_physical_silicon": "Yes, E1, in both confirmed instances found in an extensive, deliberately adversarial search. Quartz (Lenz, Orchard, Sheik): a TTFS conversion method measured head-to-head against a rate-coded baseline on the same physical Nahuku 32 Loihi 1 board (static/dynamic/total power, latency, energy per inference; MNIST 0.9 uJ-s EDP vs 4.38 uJ-s for rate-coded, CIFAR-10 10.3 mJ-s vs roughly 34.9 mJ-s). Brehove et al. (ICONS 2026): a sigma-delta/graded-spike SDNN conversion measured on a physical Loihi 2 VPX board, field-deployed, energy-delay product measured (YOLO-KP object detector, 112 FPS, 5.0 ms latency, 20 mJ/frame). Both abandon rate coding for a platform-native code; no paper keeping plain rate coding while both proposing a new method and reaching silicon was found."
+        "reaches_physical_silicon": "E1 cases located in the deliberate falsifier search all change the representation away from ordinary multi-timestep firing-rate estimation. This is a bounded structural observation, not a fixed two-case taxonomy and not an impossibility claim."
       },
       "sources": [
-        "lenz2023-quartz",
-        "brehove2026-sigmadelta"
+        "adaptive-fission",
+        "andrei2024-deep-unrolling-spinnaker2",
+        "brehove2026-sigmadelta",
+        "lenz2023-quartz"
       ]
     },
     {
@@ -1870,6 +1874,102 @@
         "pehle2022-bss2",
         "loihi2-llm-hostio"
       ]
+    },
+    {
+      "id": "pascal-uniform-t4-model",
+      "type": "hardware-model",
+      "name": "PASCAL uniform-T=4 accelerator model",
+      "layer": "Execution models",
+      "summary": "Modified LoAS and SparTen RTL synthesized at 40 nm and 560 MHz, then cycle-simulated for VGG-16 on CIFAR-10 at uniform T=4. The model does not execute PASCAL Adaptive Layerwise mixed horizons.",
+      "attributes": {
+        "evidence_class": "E4",
+        "measurement_boundary": "RTL synthesis and cycle-accurate simulation only",
+        "schedule": "uniform T=4"
+      },
+      "sources": [
+        "ramesh2025-pascal"
+      ]
+    },
+    {
+      "id": "temporal-flexibility-mtt",
+      "type": "learning-path",
+      "name": "Mixed Time-step Training",
+      "layer": "Learning paths",
+      "summary": "Stagewise mixed-horizon training produces weights robust across timestep settings. The physical Speck2e route runs fully event-driven and does not execute the training horizon vector as a static chip schedule.",
+      "attributes": {
+        "family": "direct-training",
+        "physical_evidence": "E2 on Speck2e",
+        "runtime_semantics": "timestep-free event-driven"
+      },
+      "sources": [
+        "temporal-flexibility"
+      ]
+    },
+    {
+      "id": "adaptive-fission",
+      "type": "learning-path",
+      "name": "Adaptive Fission",
+      "layer": "Learning paths",
+      "summary": "A post-training population expansion that replaces additional temporal integration with groups of binary sub-neurons carrying unequal fixed weights.",
+      "attributes": {
+        "family": "conversion-adjacent post-training encoding",
+        "physical_evidence": "E1 on Lynxi HP201"
+      },
+      "sources": [
+        "adaptive-fission"
+      ]
+    },
+    {
+      "id": "lynxi-hp201",
+      "type": "hardware",
+      "name": "Lynxi HP201",
+      "layer": "Hardware",
+      "summary": "A physical Lynxi accelerator used for Adaptive Fission and no-Fission QCFS and SRP baseline measurements. It is kept distinct from the KA200 platform.",
+      "attributes": {
+        "measurement_boundary": "batch-32 seconds and watt-hours per evaluation epoch from board sensors; includes peripherals, memory, and I/O"
+      },
+      "sources": [
+        "adaptive-fission"
+      ]
+    },
+    {
+      "id": "andrei-complex-fs-conversion",
+      "type": "learning-path",
+      "name": "Complex-valued Few-Spikes conversion",
+      "layer": "Learning paths",
+      "summary": "An extension of Few-Spikes conversion for complex-valued layers in an unfolded multidimensional harmonic-retrieval network.",
+      "attributes": {
+        "family": "temporal-code conversion",
+        "physical_evidence": "E1 on single-chip SpiNNaker2"
+      },
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ]
+    },
+    {
+      "id": "few-spikes-temporal",
+      "type": "code",
+      "name": "Few-Spikes temporal code",
+      "layer": "Representation",
+      "summary": "A serialized temporal binary code in which learned temporal coefficients and spike timing approximate an activation. It is not a firing-rate estimate.",
+      "attributes": {},
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ]
+    },
+    {
+      "id": "datta-error-free-conversion",
+      "type": "learning-path",
+      "name": "When SNN Meets ANN conversion",
+      "layer": "Learning paths",
+      "summary": "A low-timestep conversion method with framework-level Lava-DL accuracy evidence and an asserted Loihi route, but no named physical backend or on-device measurement.",
+      "attributes": {
+        "accuracy_evidence": "E5",
+        "route_evidence": "E3"
+      },
+      "sources": [
+        "datta2025-snn-meets-ann"
+      ]
     }
   ],
   "edges": [
@@ -1925,7 +2025,12 @@
       "sources": [
         "rueckauer2022-nxtf",
         "davies2018-loihi"
-      ]
+      ],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "platform_generation": "Intel Loihi 1",
+      "toolchain_version": "NxSDK 0.9.5 through archived NxTF",
+      "notes": "E1 establishes the physical NxTF route, not soft reset for every workload. Soft reset uses two compartments and doubles compartment allocation."
     },
     {
       "id": "spikingjelly-to-lava-exchange",
@@ -1940,10 +2045,14 @@
       ],
       "evidence": "E3",
       "sources": [
+        "a18-sourcecode-comparison",
         "spikingjelly-docs-lavaexchange",
-        "a18-sourcecode-comparison"
+        "spj-lava"
       ],
-      "notes": "One of the most consequential breaking edges in the survey: SpikingJelly's own ann2snn module defaults to soft reset (matching SNN Toolbox/Rueckauer), but SpikingJelly's own Lava export path refuses that exact output."
+      "notes": "SpikingJelly 2.0.0rc1 rejects the default rate-coding conversion output because v_reset=None. A separately configured hard-zero model can enter the restricted Lava-DL HDF5 route, but that is a different input contract.",
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "toolchain_version": "SpikingJelly 2.0.0rc1"
     },
     {
       "id": "lava-exchange-to-netx",
@@ -1961,7 +2070,11 @@
       "sources": [
         "lava-dl-netx-docs",
         "spikingjelly-docs-lavaexchange"
-      ]
+      ],
+      "capability_class": "native",
+      "route_state": "unexercised",
+      "toolchain_version": "Lava-DL 0.6.0 and Lava 0.10.0",
+      "notes": "NetX reset_interval periodically clears current and voltage at a sample or network boundary. It does not provide subtractive post-spike reset."
     },
     {
       "id": "netx-to-loihi2",
@@ -1996,7 +2109,11 @@
       "evidence": "E3",
       "sources": [
         "spikingjelly-source-tonir"
-      ]
+      ],
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "toolchain_version": "SpikingJelly 2.0.0rc1",
+      "notes": "The graph tracer exists, but the exporter explicitly rejects the default converted neuron contract when v_reset=None."
     },
     {
       "id": "nir-exchange-to-nir",
@@ -2011,11 +2128,15 @@
       ],
       "evidence": "E3",
       "sources": [
-        "spikingjelly-source-tonir",
+        "neuroir-docs",
+        "nir-neuron-primitives-source",
         "nir-paper",
-        "nir-neuron-primitives-source"
+        "spikingjelly-source-tonir"
       ],
-      "notes": "The limitation is in the NIR specification itself, not in SpikingJelly's exporter: NIR, the broadest interchange format surveyed (nine simulators, five hardware platforms), cannot represent reset-by-subtraction at all, so no exporter targeting NIR -- regardless of implementation quality -- could preserve it."
+      "notes": "NIR 1.0.8 encodes fixed v_reset. The field was introduced in May 2025, so the 2024 NIR paper cannot establish the current field-level reset contract.",
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "toolchain_version": "SpikingJelly 2.0.0rc1 and NIR 1.0.8"
     },
     {
       "id": "snntorch-to-nir",
@@ -2089,18 +2210,25 @@
       "id": "sinabs-to-nir",
       "from": "sinabs",
       "to": "nir",
-      "mechanism": "Sinabs both writes to and reads from NIR (sinabs.from_nir / to_nir), used e.g. to import a NIR graph and re-target it for Speck deployment.",
+      "mechanism": "Sinabs 3.1.3 reads and writes NIR graphs, but the bridge does not preserve reset semantics in either direction.",
       "preserves": [
-        "IF node structure"
+        "IF and LIF graph structure within the supported subset"
       ],
       "breaks": [
-        "unknown -- no source located confirming whether Sinabs's own reset-by-subtraction default survives a NIR round-trip cleanly, given NIR's hard-reset-only formal primitive spec"
+        "from_nir ignores fixed v_reset and uses Sinabs subtractive reset",
+        "to_nir omits the Sinabs reset function and NIR 1.0.8 defaults the reset value to zero"
       ],
       "evidence": "E2",
       "sources": [
+        "nir-neuron-primitives-source",
         "nir-paper",
+        "sinabs-nir",
         "sinabs-nir-to-speck-tutorial"
-      ]
+      ],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "toolchain_version": "Sinabs 3.1.3 and NIR 1.0.8",
+      "notes": "The official NIR-to-Speck notebook is E2 route evidence. Physical execution does not establish reset preservation."
     },
     {
       "id": "rockpool-to-nir",
@@ -2121,17 +2249,27 @@
       "id": "nir-to-lava-dl",
       "from": "nir",
       "to": "lava-dl",
-      "mechanism": "Lava-DL reads (import only) NIR graphs.",
+      "mechanism": "The official NIR 1.0.8 Lava example maps IF, LIF, and CubaLIF nodes to built-in Lava or Lava-DL neurons without reading node.v_reset.",
       "preserves": [
-        "I&F/LIF/CuBa-LIF node structure"
+        "supported IF, LIF, and CubaLIF graph structure",
+        "zero-valued fixed reset only"
       ],
       "breaks": [
-        "write direction not supported"
+        "nonzero fixed v_reset becomes hard zero",
+        "current and voltage require caller-managed clearing between Lava-DL forward passes",
+        "write direction is not supported"
       ],
       "evidence": "E2",
       "sources": [
+        "lava-dl-slayer-docs",
+        "lava-github-archived",
+        "neuroir-docs",
         "nir-paper"
-      ]
+      ],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "toolchain_version": "NIR 1.0.8 example with Lava 0.10.0 and Lava-DL 0.6.0 APIs",
+      "notes": "The NIR paper E2 result concerns the historical 2024 artifact and tested configurations. It does not validate the v_reset field added in 2025."
     },
     {
       "id": "sinabs-to-dynapcnn-mapper",
@@ -2457,7 +2595,7 @@
         "lunghi2025-akida-space",
         "ziegler2024-akida-robotics"
       ],
-      "notes": "Independently confirmed by two unrelated groups that trained and deployed on real AKD1000 hardware (Ziegler et al. 2024 robotics paper; Lunghi et al. 2025 space-applications paper), not merely inferred from documentation."
+      "notes": "Scoped to BrainChip standard converted-CNN execution. It does not establish the semantics of every sequential, recurrent, or undocumented Akida mode."
     },
     {
       "id": "quartz-to-loihi1",
@@ -2472,8 +2610,9 @@
       ],
       "evidence": "E1",
       "sources": [
-        "lenz2023-quartz"
-      ]
+        "quartz"
+      ],
+      "notes": "NxSDK 1.0.0 on physical Nahuku 32 board ncl-ext-ghrd-01. The MNIST measurements are direct. For CIFAR-10, power multiplied by latency and the reported EDP imply about 563 mJ, not the table label of 564 microjoules. The preferred 10.3 mJ-s EDP uses an estimated placement correction."
     },
     {
       "id": "nengo-to-nengo-loihi",
@@ -2994,16 +3133,17 @@
       "id": "sync-tick-to-loihi2",
       "from": "sync-tick",
       "to": "loihi-2",
-      "mechanism": "Loihi 2 inherits the same barrier-synchronization mechanism as Loihi 1, adding pipelined and fall-through execution modes.",
+      "mechanism": "Loihi 2 neurocores compute and communicate asynchronously while a global algorithmic timestep is maintained by barrier synchronization. Pipelined and fall-through schedules change overlap, not the existence of the global logical timestep.",
       "preserves": [
         "logical timestep ordering across all cores/chips"
       ],
       "breaks": [],
       "evidence": "E1",
       "sources": [
+        "loihi2-llm-hostio",
         "shrestha2023-loihi2video"
       ],
-      "notes": "Confirmed structurally identical to Loihi 1's barrier mechanism."
+      "notes": "Asynchronous event communication must not be treated as evidence for independent per-layer discrete horizons."
     },
     {
       "id": "sync-tick-to-spinnaker1",
@@ -3193,7 +3333,7 @@
         "lunghi2025-akida-space",
         "ziegler2024-akida-robotics"
       ],
-      "notes": "Two independent papers describe this as squashing the rate-code approximation of ReLU into one timestep."
+      "notes": "Scoped to BrainChip standard converted-CNN execution. It does not establish the semantics of every sequential, recurrent, or undocumented Akida mode."
     },
     {
       "id": "binary-spikes-to-loihi1",
@@ -3746,9 +3886,9 @@
       "breaks": [],
       "evidence": "E1",
       "sources": [
-        "lenz2023-quartz"
+        "quartz"
       ],
-      "notes": "Static, dynamic, and total power, latency, and energy per inference all measured on-chip."
+      "notes": "Physical Nahuku 32 Loihi 1. Static and dynamic power, latency, energy, and EDP are reported. The preferred corrected CIFAR-10 EDP is estimated rather than a direct measurement of the reported placement."
     },
     {
       "id": "codesigned-to-loihi2",
@@ -3761,9 +3901,9 @@
       "breaks": [],
       "evidence": "E1",
       "sources": [
-        "brehove2026-sigmadelta"
+        "brehove"
       ],
-      "notes": "112 FPS, 5.0 ms latency, 20 mJ/frame, YOLO-KP object detector."
+      "notes": "Physical 16-chip Loihi 2 VPX board using nxkernel 0.3.0. Chip probes measure power and timing. Host delta generation and output accumulation remain outside the neurocores, while the Jetson comparison uses whole-SoC power."
     },
     {
       "id": "classical-conversion-to-snn-toolbox",
@@ -3795,6 +3935,564 @@
         "hybridsnn-nengoloihi-nsf"
       ],
       "notes": "Power (NengoLoihi profiler), core count, and spike-propagation-delay latency measured on-chip."
+    },
+    {
+      "id": "audit-b-spikingjelly-rate-to-nir",
+      "from": "spikingjelly-rate-coding-recipe",
+      "to": "spikingjelly-nir-exporter",
+      "typed_input": {
+        "graph": "PyTorch module graph",
+        "neuron": "IFNode",
+        "reset": "subtractive, v_reset=None"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [
+        "subtractive reset"
+      ],
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "SpikingJelly 2.0.0rc1",
+      "source_ids": [
+        "spikingjelly-source-tonir",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "rate_coding.py lines 590-593 and 647-650",
+        "nir_exchange/to_nir.py lines 180-184"
+      ],
+      "notes": "The exporter fails explicitly. Replacing v_reset=None with zero changes the model contract."
+    },
+    {
+      "id": "audit-b-spikingjelly-rate-to-lava-exchange",
+      "from": "spikingjelly-rate-coding-recipe",
+      "to": "spikingjelly-lava-exchange",
+      "typed_input": {
+        "graph": "Sequential PyTorch module graph",
+        "neuron": "IFNode or LIFNode",
+        "reset": "subtractive, v_reset=None"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [
+        "subtractive reset",
+        "nonzero fixed reset"
+      ],
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Loihi 2 path through Lava-DL when a compatible model is supplied",
+      "toolchain_version": "SpikingJelly 2.0.0rc1",
+      "source_ids": [
+        "spj-lava",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "lava_exchange.py lines 743-780 and 1175-1189"
+      ],
+      "notes": "A hard-zero model is accepted, but it is not the default rate-conversion output."
+    },
+    {
+      "id": "audit-b-spikingjelly-hard-zero-to-netx-hdf5",
+      "from": "spikingjelly-lava-exchange",
+      "to": "lava-dl-netx-hdf5",
+      "typed_input": {
+        "graph": "Restricted Sequential graph",
+        "neuron": "IFNode or LIFNode",
+        "reset": "hard zero"
+      },
+      "typed_output": {
+        "graph": "Lava-DL HDF5 block graph",
+        "neuron": "CUBA or LOIHI",
+        "reset": "hard zero through built-in Lava LIF"
+      },
+      "preserved": [
+        "hard-zero post-spike reset"
+      ],
+      "transformed": [
+        "IF and LIF are represented as Lava-DL CUBA blocks",
+        "weights are quantized",
+        "average pooling becomes sum pooling with downstream rescaling"
+      ],
+      "rejected": [
+        "bias in exported Conv2d or Linear",
+        "LIF decay_input=True",
+        "operators outside the enumerated block patterns"
+      ],
+      "capability_class": "transformed",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Documented export and NetX import path only. No physical result for this specific SpikingJelly route was located.",
+      "platform_generation": "Loihi 2 target path",
+      "toolchain_version": "SpikingJelly 2.0.0rc1 and Lava-DL 0.6.0",
+      "source_ids": [
+        "spj-lava",
+        "lava-dl-netx-docs"
+      ],
+      "locators": [
+        "SpikingJelly lava_exchange.py to_blocks and export_HDF5",
+        "Lava-DL NetX HDF5 README and hdf5.py"
+      ],
+      "notes": "E3 applies to the deployment path, not to a measured result."
+    },
+    {
+      "id": "audit-b-nir-to-official-lava-example",
+      "from": "nir-1.0.8",
+      "to": "lava-lif-or-lava-dl-cuba",
+      "typed_input": {
+        "graph": "NIR graph",
+        "neuron": "IF, LIF, or CubaLIF",
+        "reset": "fixed v_reset"
+      },
+      "typed_output": {
+        "graph": "Lava Process graph or Lava-DL module",
+        "neuron": "built-in LIF or CUBA",
+        "reset": "hard zero"
+      },
+      "preserved": [
+        "zero-valued fixed reset only"
+      ],
+      "transformed": [
+        "nonzero fixed v_reset is discarded"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Lava public process models; no physical platform established by the example",
+      "toolchain_version": "NIR 1.0.8 example with Lava 0.10.0 and Lava-DL 0.6.0 APIs",
+      "source_ids": [
+        "neuroir-docs",
+        "lava-github-archived",
+        "lava-dl-slayer-docs"
+      ],
+      "locators": [
+        "NIR docs/source/examples/lava/nir_to_lava.py, Lava LIF branch and Lava-DL IF and CubaLIF branches",
+        "Lava and Lava-DL hard-zero reset implementations"
+      ],
+      "notes": "The example is not evidence that every NIR-to-Lava importer has this behavior."
+    },
+    {
+      "id": "audit-b-nir-lava-dl-sample-boundary",
+      "from": "nir-imported-lava-dl-forward",
+      "to": "next-sample",
+      "typed_input": {
+        "state": "persistent current and voltage after a forward pass"
+      },
+      "typed_output": {
+        "state": "caller-cleared current and voltage"
+      },
+      "preserved": [],
+      "transformed": [
+        "state is cleared between samples by caller action"
+      ],
+      "rejected": [],
+      "capability_class": "host-assisted",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "NIR 1.0.8 official Lava example",
+      "source_ids": [
+        "neuroir-docs"
+      ],
+      "locators": [
+        "NIR docs/source/examples/lava/nir_to_lava.py, module warning lines 3-6"
+      ],
+      "notes": "This is sample-boundary state management, not a post-spike reset rule."
+    },
+    {
+      "id": "audit-b-netx-cuba-to-lava-lif",
+      "from": "lava-dl-netx-hdf5-cuba",
+      "to": "lava-lif-process",
+      "typed_input": {
+        "neuron": "HDF5 CUBA or LOIHI record",
+        "fields": "iDecay, vDecay, vThMant, optional reset_interval"
+      },
+      "typed_output": {
+        "neuron": "Lava LIF or LIFReset",
+        "reset": "hard-zero post-spike reset"
+      },
+      "preserved": [
+        "threshold and decay parameters",
+        "hard-zero post-spike reset"
+      ],
+      "transformed": [
+        "optional reset_interval selects periodic state-clearing process"
+      ],
+      "rejected": [
+        "post-spike subtractive-reset field, which is absent from the schema"
+      ],
+      "capability_class": "native",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Documented NetX reconstruction path. No reset-specific physical measurement is asserted by this edge.",
+      "platform_generation": "Lava runtime, with Loihi 2 deployment available through nonpublic hardware components",
+      "toolchain_version": "Lava-DL 0.6.0 and Lava 0.10.0",
+      "source_ids": [
+        "lava-dl-netx-docs",
+        "lava-github-archived"
+      ],
+      "locators": [
+        "Lava-DL hdf5.py lines 140-163",
+        "Lava LIF and LIFReset process models"
+      ],
+      "notes": "Native refers to the built-in Lava LIF behavior, not to proof about arbitrary custom Loihi microcode."
+    },
+    {
+      "id": "audit-b-nxtf-soft-reset-to-loihi1",
+      "from": "nxtf-logical-soft-reset-neuron",
+      "to": "loihi1-compartment-graph",
+      "typed_input": {
+        "neuron": "rate-coded NxTF layer",
+        "reset": "subtract threshold"
+      },
+      "typed_output": {
+        "neuron": "two coupled Loihi 1 compartments",
+        "reset": "recurrent threshold-sized inhibition reproduces subtraction"
+      },
+      "preserved": [
+        "logical subtractive-reset behavior within fixed-point limits"
+      ],
+      "transformed": [
+        "one logical neuron becomes two hardware compartments"
+      ],
+      "rejected": [],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E1",
+      "measurement_boundary": "Physical Loihi 1 through NxSDK 0.9.5 on Nahuku32. Published measurements include active neurocores and embedded x86 processors. Reset mode must be checked per workload.",
+      "platform_generation": "Intel Loihi 1",
+      "toolchain_version": "NxTF archived code and NxSDK 0.9.5 measurement environment",
+      "source_ids": [
+        "nxtf",
+        "nxtf-text"
+      ],
+      "locators": [
+        "NxTF paper Section 2.3.6 and Section 3.2.1",
+        "dnn_layers.py lines 404-535 and 814-925"
+      ],
+      "notes": "E1 establishes the physical NxTF route. It does not establish soft reset for every table entry."
+    },
+    {
+      "id": "audit-b-sinabs-subtractive-to-speck",
+      "from": "sinabs-membrane-subtract",
+      "to": "speck-dynapcnn-core",
+      "typed_input": {
+        "neuron": "Sinabs IAF or LIF",
+        "reset": "MembraneSubtract"
+      },
+      "typed_output": {
+        "neuron": "Speck IF core",
+        "reset": "return_to_zero=False"
+      },
+      "preserved": [
+        "reset by threshold subtraction"
+      ],
+      "transformed": [
+        "average pooling to sum pooling",
+        "linear to 1 by 1 convolution",
+        "weights and state to chip precision"
+      ],
+      "rejected": [
+        "reset functions other than MembraneSubtract and MembraneReset"
+      ],
+      "capability_class": "native",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Official documented devkit route. No measurement is attached to this generic route edge.",
+      "platform_generation": "SynSense Speck family through DYNAP-CNN",
+      "toolchain_version": "Sinabs 3.1.3",
+      "source_ids": [
+        "sinabs-docs",
+        "sinabs"
+      ],
+      "locators": [
+        "from_torch.py conversion default",
+        "dynapcnn.py return_to_zero mapping",
+        "docs/speck/faqs/tips_for_training.md reset section"
+      ],
+      "notes": "Native applies to reset semantics. The graph and numeric representation still change."
+    },
+    {
+      "id": "audit-b-nir-to-sinabs",
+      "from": "nir-1.0.8",
+      "to": "sinabs-3.1.3",
+      "typed_input": {
+        "neuron": "NIR IF or LIF",
+        "reset": "fixed v_reset"
+      },
+      "typed_output": {
+        "neuron": "Sinabs IAFSqueeze or LIFSqueeze",
+        "reset": "MembraneSubtract default"
+      },
+      "preserved": [],
+      "transformed": [
+        "fixed reset becomes subtractive reset"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "physical",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E2",
+      "measurement_boundary": "The official notebook reports 90 percent accuracy on 50 N-MNIST samples on a physical Speck 2F module. It reports no energy or latency.",
+      "platform_generation": "SynSense Speck 2F module after DynapcnnNetwork mapping",
+      "toolchain_version": "Sinabs 3.1.3 NIR bridge; official notebook last changed 2025-10-31",
+      "source_ids": [
+        "sinabs-nir",
+        "sinabs-nir-to-speck-tutorial",
+        "nir-neuron-primitives-source"
+      ],
+      "locators": [
+        "Sinabs nir.py lines 86-108",
+        "NIR-to-Speck notebook cells 5, 9, and 15",
+        "NIR neuron fixed-reset defaults"
+      ],
+      "notes": "Physical execution proves route viability, not reset preservation."
+    },
+    {
+      "id": "audit-b-sinabs-to-nir",
+      "from": "sinabs-3.1.3",
+      "to": "nir-1.0.8",
+      "typed_input": {
+        "neuron": "Sinabs IAF or LIF",
+        "reset": "MembraneSubtract or MembraneReset"
+      },
+      "typed_output": {
+        "neuron": "NIR IF or LIF",
+        "reset": "fixed zero by omitted-field default"
+      },
+      "preserved": [
+        "fixed-zero reset only when that was already the Sinabs behavior"
+      ],
+      "transformed": [
+        "subtractive reset becomes fixed zero",
+        "nonzero fixed reset becomes fixed zero"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "Sinabs 3.1.3 and NIR 1.0.8",
+      "source_ids": [
+        "sinabs-nir",
+        "nir-neuron-primitives-source"
+      ],
+      "locators": [
+        "Sinabs nir.py lines 156-171",
+        "NIR neuron.py missing-field defaults"
+      ],
+      "notes": "The exporter does not inspect reset_fn."
+    },
+    {
+      "id": "audit-b-lava-netx-soft-reset-to-loihi2",
+      "from": "lava-or-netx-soft-reset-intent",
+      "to": "loihi2-custom-neuron",
+      "typed_input": {
+        "reset": "subtractive reset"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [],
+      "capability_class": "undocumented",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Intel Loihi 2",
+      "toolchain_version": "Public Lava 0.10.0 and Lava-DL 0.6.0 artifacts",
+      "source_ids": [
+        "lava-github-archived",
+        "lava-dl-netx-docs",
+        "pedersen-2024-nir"
+      ],
+      "locators": [
+        "Public Lava built-in LIF and NetX schemas",
+        "Pedersen et al. 2024 hardware-platform discussion of Loihi 2 custom microcode"
+      ],
+      "notes": "Loihi 2 programmability makes impossibility an invalid inference. No reviewed public route documents this specific mapping."
+    },
+    {
+      "id": "pasc-if-to-pascal-uniform-t4-model",
+      "from": "pasc-if",
+      "to": "pascal-uniform-t4-model",
+      "mechanism": "PASC-IF is evaluated in modified LoAS and SparTen accelerator models at one uniform T=4 design point.",
+      "preserves": [
+        "uniform four-step PASC-IF execution"
+      ],
+      "breaks": [
+        "does not exercise Adaptive Layerwise heterogeneous horizons"
+      ],
+      "evidence": "E4",
+      "sources": [
+        "ramesh2025-pascal"
+      ],
+      "notes": "The mixed-horizon T_eff=3.14 headline remains E5 and is not covered by this hardware model."
+    },
+    {
+      "id": "temporal-flexibility-mtt-to-speck",
+      "from": "temporal-flexibility-mtt",
+      "to": "speck",
+      "mechanism": "Weights trained with stagewise mixed timestep settings are mapped to a physical Speck2e development kit and executed fully event-driven without a discrete layer-horizon schedule.",
+      "preserves": [
+        "temporally robust trained weights",
+        "event-domain input and execution"
+      ],
+      "breaks": [
+        "the sampled training horizon vector is not a physical inference schedule"
+      ],
+      "evidence": "E2",
+      "sources": [
+        "temporal-flexibility"
+      ],
+      "notes": "Direct-training E2 result. Table 5 reports 98.57 percent Speck accuracy and fidelity statistics only. No latency or energy is reported, and the training horizon vector is not executed as a chip schedule."
+    },
+    {
+      "id": "adaptive-fission-to-population-coding",
+      "from": "adaptive-fission",
+      "to": "population-coding",
+      "mechanism": "Adaptive Fission expands one logical activation into binary sub-neurons with unequal fixed weights, trading spatial population size against temporal integration.",
+      "preserves": [
+        "post-training compatibility with converted and directly trained SNNs"
+      ],
+      "breaks": [
+        "unchanged single-neuron rate representation"
+      ],
+      "evidence": "E5",
+      "sources": [
+        "adaptive-fission"
+      ],
+      "notes": "Method relation. The separate HP201 edge carries physical evidence."
+    },
+    {
+      "id": "adaptive-fission-to-lynxi-hp201",
+      "from": "adaptive-fission",
+      "to": "lynxi-hp201",
+      "mechanism": "Adaptive Fission configurations execute on a physical Lynxi HP201 accelerator.",
+      "preserves": [
+        "population-coded SNN execution"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "adaptive-fission"
+      ],
+      "notes": "Table 1 reports memory, seconds per evaluation epoch, and watt-hours per epoch at batch size 32. Board sensors include peripheral, memory, and I/O power."
+    },
+    {
+      "id": "low-latency-conversion-baselines-to-lynxi-hp201",
+      "from": "low-latency-conversion",
+      "to": "lynxi-hp201",
+      "mechanism": "Adaptive Fission evaluates unmodified no-Fission QCFS and SRP baselines on physical HP201 silicon.",
+      "preserves": [
+        "existing QCFS and SRP rate-coded baseline behavior"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "adaptive-fission",
+        "qcfs",
+        "srp"
+      ],
+      "notes": "This is later third-party deployment. It is not physical evidence reported by the original QCFS or SRP papers."
+    },
+    {
+      "id": "andrei-complex-fs-to-few-spikes",
+      "from": "andrei-complex-fs-conversion",
+      "to": "few-spikes-temporal",
+      "mechanism": "The complex-valued conversion extends Few-Spikes neuron parameters and dynamics to coupled real and imaginary activations.",
+      "preserves": [
+        "serialized temporal approximation with few binary spikes"
+      ],
+      "breaks": [
+        "ordinary firing-rate interpretation"
+      ],
+      "evidence": "E5",
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "notes": "Method relation. The separate SpiNNaker2 edge carries physical evidence."
+    },
+    {
+      "id": "andrei-complex-fs-to-spinnaker2",
+      "from": "andrei-complex-fs-conversion",
+      "to": "spinnaker-2",
+      "mechanism": "The proposed complex-valued Few-Spikes SNN is mapped to a physical single-chip SpiNNaker2 board.",
+      "preserves": [
+        "temporal Few-Spikes execution"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "notes": "Section IV and Figure 4 report board power against an NVIDIA Jetson Xavier."
+    },
+    {
+      "id": "direct-training-rate-coded-to-spinnaker2",
+      "from": "direct-training-surrogate-gradient",
+      "to": "spinnaker-2",
+      "mechanism": "Hardware-aware surrogate-gradient fine-tuning and 8-bit quantization deploy directly trained spiking Q-networks to physical SpiNNaker2.",
+      "preserves": [
+        "rate-coded subtract-reset SNN over 10 or 20 ticks"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "notes": "This is direct-training reinforcement learning, not ANN-to-SNN conversion."
+    },
+    {
+      "id": "rate-coding-to-spinnaker2",
+      "from": "rate-coding",
+      "to": "spinnaker-2",
+      "mechanism": "A low-timestep rate-coded spiking Q-network executes on physical SpiNNaker2 for 10 or 20 ticks.",
+      "preserves": [
+        "binary-spike count representation over a finite window"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "notes": "Table III reports power, energy, and duration. This case prevents broad claims that low-timestep rate-coded SNNs do not reach silicon."
+    },
+    {
+      "id": "datta-error-free-conversion-to-lava-dl",
+      "from": "datta-error-free-conversion",
+      "to": "lava-dl",
+      "mechanism": "The paper reports Lava-DL accuracy for the proposed conversion without identifying the execution backend as physical neuromorphic silicon.",
+      "preserves": [
+        "framework-level converted-network accuracy"
+      ],
+      "breaks": [
+        "physical backend and measurement boundary are undisclosed"
+      ],
+      "evidence": "E5",
+      "sources": [
+        "datta2025-snn-meets-ann"
+      ],
+      "notes": "The separately documented route assertion is E3. No physical Loihi edge is created because the generation and hardware execution are unverified."
     }
   ],
   "sources": [
@@ -3841,7 +4539,7 @@
       "year": 2021,
       "venue": "Intel technical brief",
       "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/neuromorphic-computing-loihi-2-brief.pdf",
-      "type": "vendor-material"
+      "type": "official-documentation"
     },
     {
       "id": "shrestha2023-loihi2video",
@@ -3994,7 +4692,7 @@
       "year": 2025,
       "venue": "SynSense vendor manual",
       "url": "https://www.synsense.ai/wp-content/uploads/2025/12/Speck-Dev-Kit-Manual-2025.12-V2.pdf",
-      "type": "vendor-material"
+      "source_type": "official_devkit_manual"
     },
     {
       "id": "richter2023-speck",
@@ -5030,6 +5728,80 @@
       "venue": "arXiv:2212.12210",
       "url": "https://arxiv.org/abs/2212.12210",
       "type": "preprint"
+    },
+    {
+      "id": "spynnaker-v8-docs",
+      "title": "sPyNNaker version 8 documentation",
+      "authors": "SpiNNaker Manchester",
+      "year": 2026,
+      "venue": "Official sPyNNaker documentation",
+      "url": "https://spinnakermanchester.github.io/spynnaker/8.0.0/index.html",
+      "source_type": "official_sdk_documentation"
+    },
+    {
+      "id": "brainchip-akida-user-guide",
+      "title": "Akida user guide",
+      "authors": "BrainChip",
+      "year": 2026,
+      "venue": "MetaTF documentation",
+      "url": "https://doc.brainchipinc.com/user_guide/akida.html",
+      "source_type": "official_sdk_documentation"
+    },
+    {
+      "id": "brainchip-metatf-2-19-2-release",
+      "title": "MetaTF 2.19.2 release notes",
+      "authors": "BrainChip",
+      "year": 2026,
+      "venue": "Official BrainChip GitHub releases",
+      "url": "https://github.com/Brainchip-Inc/akida_examples/releases/tag/2.19.2-doc-1",
+      "source_type": "official_release_note"
+    },
+    {
+      "id": "lava-v0-10-release",
+      "title": "Lava v0.10.0 release",
+      "authors": "Intel Lava-nc contributors",
+      "year": 2024,
+      "venue": "Official Lava GitHub releases",
+      "url": "https://github.com/lava-nc/lava/releases/tag/v0.10.0",
+      "source_type": "official_release_note"
+    },
+    {
+      "id": "lava-dl-github-archived",
+      "title": "lava-nc/lava-dl GitHub repository (archived)",
+      "authors": "Intel Corporation / Lava-nc",
+      "year": 2026,
+      "venue": "GitHub",
+      "url": "https://github.com/lava-nc/lava-dl",
+      "source_type": "official_repository"
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+      "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+      "year": 2024,
+      "venue": "2024 58th Asilomar Conference on Signals, Systems, and Computers",
+      "doi": "10.1109/IEEECONF60004.2024.10942794",
+      "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+      "authors": "S. Arfa, B. Vogginger, C. Mayr",
+      "year": 2025,
+      "venue": "2025 International Conference on Neuromorphic Systems",
+      "doi": "10.1109/ICONS69015.2025.00022",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00022",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "datta2025-snn-meets-ann",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
+      "type": "peer-reviewed"
     }
   ]
 }

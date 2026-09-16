@@ -62,7 +62,9 @@ PRIOR_RETRIEVAL_MAP = {
     "provisional": "metadata_only",
 }
 CANONICAL_ID_RESOLUTIONS = {
+    "fission": "adaptive-fission",
     "lava-dl-slayer-docs": "lava-dl-slayer-docs",
+    "mtt": "temporal-flexibility",
 }
 
 # A differing publication year is never resolved by input priority alone. Each known
@@ -111,6 +113,24 @@ METADATA_OVERRIDES: dict[str, dict[str, object]] = {
         ),
         "authors": "Pranav Ramesh, Gopalakrishnan Srinivasan",
         "note": "Expanded title and authors resolved to the paper metadata.",
+    },
+    "temporal-flexibility": {
+        "title": (
+            "Temporal Flexibility in Spiking Neural Networks: Towards "
+            "Generalization Across Time Steps and Deployment Friendliness"
+        ),
+        "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
+        "note": (
+            "Title and complete author names resolved from the ICLR paper. "
+            "The legacy MTT record names the paper's training method."
+        ),
+    },
+    "mt-snn": {
+        "doi": "10.3389/fnins.2026.1783326",
+        "note": (
+            "The accepted Frontiers record and the withdrawn ICLR manuscript "
+            "share a method lineage but name different temporal-alignment mechanisms."
+        ),
     },
     "qcfs": {
         "title": (
@@ -576,6 +596,74 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
             record["_rank"] = rank
             record["_index"] = index
             records.append(record)
+
+    # Claim audits are full-text review artifacts. Promote every source that an audit
+    # actually inspected by adding a rank-zero overlay with the reviewed locators.
+    # Metadata continues to come from the structured source inputs above, so the audit
+    # cannot silently invent a new work or overwrite bibliographic identity.
+    audited_locators: dict[str, set[str]] = defaultdict(set)
+    audited_origins: dict[str, set[str]] = defaultdict(set)
+    for audit_path in sorted((root / "research/claim-audits").glob("audit-*.json")):
+        audit = read_json(audit_path)
+        claims = audit.get("claims")
+        if not isinstance(claims, list):
+            raise ValueError(f"{audit_path.name} does not contain a claims array")
+        for claim_index, claim in enumerate(claims):
+            if not isinstance(claim, dict):
+                raise ValueError(
+                    f"{audit_path.name} claim {claim_index} is not an object"
+                )
+            source_ids = claim.get("source_ids")
+            locators = claim.get("locators")
+            if not isinstance(source_ids, list) or not all(
+                isinstance(source_id, str) and source_id for source_id in source_ids
+            ):
+                raise ValueError(
+                    f"{audit_path.name} claim {claim_index} has invalid source_ids"
+                )
+            if not isinstance(locators, list) or not all(
+                isinstance(locator, str) and locator for locator in locators
+            ):
+                raise ValueError(
+                    f"{audit_path.name} claim {claim_index} has invalid locators"
+                )
+            for source_id in source_ids:
+                audited_locators[source_id].update(locators)
+                audited_origins[source_id].add(audit_path.name)
+
+    metadata_by_id: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for record in records:
+        metadata_by_id[str(record["id"])].append(record)
+    audit_count = 0
+    for source_id in sorted(audited_locators):
+        candidates = metadata_by_id.get(source_id, [])
+        if not candidates:
+            raise ValueError(
+                f"claim-audited source {source_id!r} has no structured metadata input"
+            )
+        base = min(candidates, key=stable_record_key)
+        overlay = {
+            key: value
+            for key, value in base.items()
+            if not key.startswith("_")
+        }
+        overlay.update({
+            "id": source_id,
+            "retrieval_status": "full_text",
+            "verification_status": "verified",
+            "retrieved_on": AUDIT_DATE,
+            "locators": sorted(audited_locators[source_id]),
+            "notes": (
+                "Full text, official documentation, or released source was inspected "
+                "in " + ", ".join(sorted(audited_origins[source_id])) + "."
+            ),
+            "_origin": "research/claim-audits",
+            "_rank": 0,
+            "_index": audit_count,
+        })
+        records.append(overlay)
+        audit_count += 1
+    counts["claim-audit reviewed sources"] = audit_count
     refmap = read_json(root / "data/refmap.json")
     if not isinstance(refmap, dict) or not all(
         isinstance(key, str) and isinstance(value, str)

@@ -149,9 +149,9 @@ def main() -> int:
     checks += 1
 
     input_records, _, input_counts = load_input_records(ROOT)
-    if len(input_records) != 309 or sum(input_counts.values()) != 309:
+    if len(input_records) != 357 or sum(input_counts.values()) != 357:
         raise AssertionError(
-            f"expected 309 structured input rows, got {len(input_records)}"
+            f"expected 357 structured input rows, got {len(input_records)}"
         )
     row_addresses = [
         f"{record['_origin']}:{record['id']}" for record in input_records
@@ -220,6 +220,33 @@ def main() -> int:
         raise AssertionError("GelNeuro withdrawal status was not retained")
     checks += 1
 
+    audited_ids = {
+        "andrei2024-deep-unrolling-spinnaker2",
+        "arfa2025-spiking-q-spinnaker2",
+        "datta2025-snn-meets-ann",
+        "mt-snn",
+        "pascal",
+        "qac",
+        "temporal-flexibility",
+    }
+    stale_audited_sources = {
+        source_id: (
+            sources_by_id[source_id]["retrieval_status"],
+            sources_by_id[source_id]["verification_status"],
+        )
+        for source_id in audited_ids
+        if (
+            sources_by_id[source_id]["retrieval_status"] != "full_text"
+            or sources_by_id[source_id]["verification_status"] != "verified"
+        )
+    }
+    if stale_audited_sources:
+        raise AssertionError(
+            "claim-audited sources were not promoted from their reviewed inputs: "
+            f"{stale_audited_sources}"
+        )
+    checks += 1
+
     conflict_fixture = [
         {
             "id": "conflict-a",
@@ -254,12 +281,12 @@ def main() -> int:
         )
     checks += 1
 
-    if diagnostics.get("true_duplicate_count") != 57:
+    if diagnostics.get("true_duplicate_count") != 84:
         raise AssertionError(
-            "duplicate-cluster accounting must include only the 57 multi-input "
+            "duplicate-cluster accounting must include only the 84 multi-input "
             f"clusters, got {diagnostics.get('true_duplicate_count')!r}"
         )
-    if len(diagnostics.get("merged_groups", [])) != 57:
+    if len(diagnostics.get("merged_groups", [])) != 84:
         raise AssertionError("merged_groups contains singleton provenance aliases")
     checks += 1
 

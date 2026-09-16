@@ -1,0 +1,713 @@
+{
+  "schema_version": 1,
+  "audit_id": "audit-B-reset-semantics",
+  "reviewed_on": "2026-09-16",
+  "capability_class_enum": [
+    "native",
+    "transformed",
+    "emulated",
+    "host-assisted",
+    "unsupported",
+    "undocumented"
+  ],
+  "claims": [
+    {
+      "id": "claim-reset-nir-fixed-value-v1-0-8",
+      "claim_type": "method",
+      "statement": "NIR 1.0.8 IF, LIF, and CubaLIF primitives encode reset to a fixed v_reset value and do not encode reset by subtraction; a missing or null v_reset is materialized as zero.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "nir-neuron-primitives-source",
+        "neuroir-docs"
+      ],
+      "locators": [
+        "NIR 1.0.8 commit 490ce8e03d74c24efeb9a120a6caaf5a67d34aee, nir/ir/neuron.py, CubaLIF lines 49-112, IF lines 133-171, LIF lines 201-253",
+        "NIR 1.0.8, docs/source/primitives.md, lines 12 and 22-29",
+        "NIR commit 6189cacd1b1e89d1e587afd90f0f8930361bae98, Add reset potential for IF, LIF and CubaLIF, 2025-05-30"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [
+        "reset-nir-subtractive-semantics"
+      ],
+      "scope": "NIR release 1.0.8 schema and primitive implementation, not the earlier 2024 paper artifact",
+      "inspection_paths": [
+        "Tagged primitive source and field defaults",
+        "Official primitive table and field-introduction history"
+      ]
+    },
+    {
+      "id": "claim-reset-nir-declarative-boundary",
+      "claim_type": "method",
+      "statement": "Acceptance of a NIR graph does not establish identical reset timing, discretization, or numerical execution across backends because NIR declares idealized primitives and does not constrain backend discretization.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "neuroir-docs",
+        "pedersen-2024-nir"
+      ],
+      "locators": [
+        "NIR docs/source/primitives.md, line 12",
+        "Pedersen et al. 2024, pp. 5-8, Discussion of mismatches and NIR axioms"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "NIR declarative semantics and cross-backend execution",
+      "inspection_paths": [
+        "Official current documentation",
+        "Primary cross-platform paper and measured mismatch discussion"
+      ]
+    },
+    {
+      "id": "claim-reset-spikingjelly-default-split",
+      "claim_type": "method",
+      "statement": "SpikingJelly 2.0.0rc1 generic neurons default to hard reset at zero, while the default layer-wise and channel-wise rate-coding ANN-to-SNN recipes instantiate subtractive-reset IF neurons with v_reset=None.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "spj",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "SpikingJelly 2.0.0rc1, docs/source/tutorials/en/neuron.rst, lines 31-36 and 111-129",
+        "SpikingJelly 2.0.0rc1, activation_based/neuron/base_node.py, constructor default v_reset=0.0",
+        "SpikingJelly 2.0.0rc1, activation_based/ann2snn/recipes/rate_coding.py, lines 590-593 and 647-650"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "SpikingJelly 2.0.0rc1 generic constructors versus rate-coding conversion recipes",
+      "inspection_paths": [
+        "Official neuron documentation and constructor source",
+        "Rate-coding conversion recipe source in both replacement branches"
+      ]
+    },
+    {
+      "id": "claim-reset-spikingjelly-exporters-block-conversion-default",
+      "claim_type": "toolchain",
+      "statement": "SpikingJelly 2.0.0rc1 cannot export its default rate-coding conversion output as-is through either its NIR exporter or its Lava exporter because both reject v_reset=None.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "spikingjelly-source-tonir",
+        "spj-lava",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "SpikingJelly 2.0.0rc1, activation_based/nir_exchange/to_nir.py, _hard_reset, lines 180-184",
+        "SpikingJelly 2.0.0rc1, activation_based/lava_exchange.py, to_lava_neuron_param_dict lines 743-780 and BlockContainer lines 1175-1189",
+        "SpikingJelly 2.0.0rc1, docs/source/tutorials/en/nir_exchange.rst, reset warning"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "Default rate-coding conversion output only; a separately configured hard-zero neuron is a different input contract",
+      "inspection_paths": [
+        "Two independent exporter code paths",
+        "Official NIR exchange documentation and Lava exchange source"
+      ]
+    },
+    {
+      "id": "claim-reset-lava-builtins-hard-zero",
+      "claim_type": "method",
+      "statement": "Lava 0.10.0 built-in LIF process models and Lava-DL 0.6.0 SLAYER CUBA dynamics use hard reset to zero after a spike.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "lava-github-archived",
+        "lava-dl-slayer-docs"
+      ],
+      "locators": [
+        "Lava 0.10.0, src/lava/proc/lif/process.py, LIF equation lines 56-64",
+        "Lava 0.10.0, src/lava/proc/lif/models.py, reset_voltage lines 53-56 and 188-215",
+        "Lava-DL 0.6.0, slayer/neuron/dynamics/leaky_integrator.py, equations lines 50-60 and integer update lines 210-231"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "Public built-in Lava LIF and Lava-DL CUBA implementations; not arbitrary Loihi 2 custom microcode",
+      "inspection_paths": [
+        "Lava process definition plus floating-point and fixed-point process models",
+        "Independent Lava-DL analytical equation plus integer implementation"
+      ]
+    },
+    {
+      "id": "claim-reset-netx-interval-is-boundary-reset",
+      "claim_type": "toolchain",
+      "statement": "NetX reset_interval selects periodic clearing of current and voltage state through Lava LIFReset; it is a sample or network boundary mechanism and not reset by subtraction after a spike.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "lava-dl-netx-docs",
+        "lava-github-archived"
+      ],
+      "locators": [
+        "Lava-DL 0.6.0, src/lava/lib/dl/netx/hdf5.py, reset_interval lines 50-56 and get_neuron_params lines 140-163",
+        "Lava 0.10.0, src/lava/proc/lif/process.py, LIFReset lines 273-309",
+        "Lava 0.10.0, src/lava/proc/lif/models.py, PyLifResetModelFloat lines 345-383"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [
+        "reset-lava-boundary-versus-post-spike"
+      ],
+      "scope": "Lava-DL 0.6.0 NetX HDF5 LOIHI and CUBA neuron loading",
+      "inspection_paths": [
+        "NetX loader selection and parameter schema",
+        "Lava LIFReset process documentation and executable model"
+      ]
+    },
+    {
+      "id": "claim-reset-nir-lava-import-transform",
+      "claim_type": "toolchain",
+      "statement": "The official NIR 1.0.8 Lava example ignores node.v_reset in its Lava and Lava-DL neuron mappings, so a nonzero fixed reset is transformed to the target built-in hard-zero behavior.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "neuroir-docs",
+        "lava-github-archived",
+        "lava-dl-slayer-docs"
+      ],
+      "locators": [
+        "NIR 1.0.8, docs/source/examples/lava/nir_to_lava.py, _nir_node_to_lava LIF branch lines 58-92",
+        "NIR 1.0.8, docs/source/examples/lava/nir_to_lava.py, _nir_node_to_lava_dl IF and CubaLIF branches lines 321-335 and 387-433",
+        "Lava 0.10.0 LIF and Lava-DL 0.6.0 leaky-integrator hard-zero implementations"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [
+        "reset-nir-lava-version-boundary"
+      ],
+      "scope": "Official NIR example importer, not every possible third-party NIR-to-Lava compiler",
+      "inspection_paths": [
+        "Both Lava and Lava-DL branches of the NIR importer",
+        "Target Lava and Lava-DL reset implementations"
+      ]
+    },
+    {
+      "id": "claim-reset-nxtf-soft-reset-emulated",
+      "claim_type": "toolchain",
+      "statement": "NxTF soft reset on Loihi 1 is emulated with a two-compartment neuron and recurrent threshold-sized inhibition; the compiler default is hard reset and soft reset doubles compartment allocation.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "nxtf",
+        "nxtf-text"
+      ],
+      "locators": [
+        "Rueckauer et al. 2022, Section 2.3.6, pp. 9-10",
+        "intel-nrc-ecosystem/models archived head 3dc53bfcfae1efe8772b8cb5e2c512bb28c872f8, dnn/src/dnn_layers.py, neuronSize and recurrent soft-reset mapping lines 404-535",
+        "Same source, layer resetMode documentation and default lines 814-856",
+        "nxsdk_modules_ncl/snntoolbox/nx_backend.py, reset_mode fallback line 145"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "NxTF on Loihi 1 through archived NxSDK-era code, not Loihi 2",
+      "inspection_paths": [
+        "Primary paper algorithm description and resource-cost statement",
+        "Archived compiler implementation and backend default"
+      ]
+    },
+    {
+      "id": "claim-reset-nxtf-physical-measurement-boundary",
+      "claim_type": "deployment",
+      "statement": "The NxTF paper reports physical Loihi 1 accuracy, execution time, and energy results, but its E1 evidence does not establish that every benchmark used soft reset.",
+      "evidence_class": "E1",
+      "reports_deployment_evidence": true,
+      "source_ids": [
+        "nxtf",
+        "nxtf-text"
+      ],
+      "locators": [
+        "Rueckauer et al. 2022, Section 3.2.1, pp. 13-14, measurement method and footnote 4",
+        "Rueckauer et al. 2022, Table 2 and Sections 3.2.2-3.2.3, pp. 14-17",
+        "Archived NxTF backend reset fallback and official tutorial reset_mode configuration"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "NxSDK 0.9.5 on the physical Nahuku32 Loihi 1 board. Time includes spiking and management phases. Energy includes static and dynamic power from active neurocores and embedded x86 processors. Unused cores are excluded. External workstation preprocessing and host power are outside the reported boundary.",
+      "conflicts_with": [],
+      "scope": "Physical NxTF route as reported in 2022; reset mode remains workload-specific",
+      "inspection_paths": [
+        "Primary paper measurement method and physical results",
+        "Archived backend and tutorial configuration used to delimit the reset-mode inference"
+      ]
+    },
+    {
+      "id": "claim-reset-sinabs-speck-native",
+      "claim_type": "toolchain",
+      "statement": "Sinabs 3.1.3 ANN conversion defaults to subtractive reset, and the DYNAP-CNN mapper preserves that reset behavior through Speck's native return_to_zero=False configuration.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "sinabs-docs",
+        "sinabs"
+      ],
+      "locators": [
+        "Sinabs 3.1.3, sinabs/from_torch.py, from_model default and mapper lines 13-19 and 74-82",
+        "Sinabs 3.1.3, sinabs/activation/reset_mechanism.py, MembraneSubtract lines 26-46",
+        "Sinabs 3.1.3, sinabs/backend/dynapcnn/chips/dynapcnn.py, reset mapping lines 147-168",
+        "Sinabs 3.1.3, docs/speck/faqs/tips_for_training.md, lines 131-146"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [],
+      "scope": "Sinabs 3.1.3 to supported Speck DYNAP-CNN devices; other operator and precision transformations remain",
+      "inspection_paths": [
+        "Conversion default and reset implementation source",
+        "Mapper source and official device documentation"
+      ]
+    },
+    {
+      "id": "claim-reset-sinabs-nir-roundtrip-transforms",
+      "claim_type": "toolchain",
+      "statement": "Sinabs 3.1.3 transforms reset semantics in both NIR directions: from_nir ignores fixed v_reset and uses the Sinabs subtractive default, while to_nir omits the Sinabs reset function and current NIR defaults the serialized reset to zero.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "sinabs-nir",
+        "nir-neuron-primitives-source"
+      ],
+      "locators": [
+        "Sinabs 3.1.3, sinabs/nir.py, import branches lines 86-108 and export branches lines 156-171",
+        "Sinabs 3.1.3 default IAF and LIF reset function, MembraneSubtract",
+        "NIR 1.0.8, nir/ir/neuron.py, missing v_reset defaults to zero"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": null,
+      "conflicts_with": [
+        "reset-sinabs-nir-roundtrip"
+      ],
+      "scope": "Sinabs 3.1.3 NIR bridge and NIR 1.0.8 field semantics",
+      "inspection_paths": [
+        "Pinned Sinabs import and export source",
+        "Independent Sinabs constructor defaults and NIR field defaults"
+      ]
+    },
+    {
+      "id": "claim-reset-sinabs-nir-speck-tutorial-e2",
+      "claim_type": "deployment",
+      "statement": "The official Sinabs NIR-to-Speck tutorial exercises the route on a physical Speck 2F module and stores 90 percent accuracy on 50 N-MNIST samples, but it does not report latency or energy and does not demonstrate preservation of NIR fixed-reset semantics.",
+      "evidence_class": "E2",
+      "reports_deployment_evidence": true,
+      "source_ids": [
+        "sinabs-nir-to-speck-tutorial",
+        "sinabs-nir"
+      ],
+      "locators": [
+        "Sinabs notebook commit 8b87dc310dc9f626c6ba7fe3a8271ab253d5e95b, docs/tutorials/nir_to_speck.ipynb, cells 5, 9, 11, and 15",
+        "Stored output in cell 15, Test accuracy on speck: 90.00%",
+        "Sinabs 3.1.3, sinabs/nir.py, reset-field omission in the imported route"
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "Physical Speck 2F module output-event classification accuracy for 50 subsampled N-MNIST examples. Host-side event conversion, injection, and output readout are included in the functional route. No energy or latency measurement is reported.",
+      "conflicts_with": [
+        "reset-sinabs-nir-roundtrip"
+      ],
+      "scope": "Stored official tutorial execution, not a full-dataset benchmark and not a semantic-equivalence test",
+      "inspection_paths": [
+        "Stored physical-device notebook code and output",
+        "Pinned NIR bridge source used to interpret the reset boundary"
+      ]
+    }
+  ],
+  "route_edges": [
+    {
+      "id": "audit-b-spikingjelly-rate-to-nir",
+      "from": "spikingjelly-rate-coding-recipe",
+      "to": "spikingjelly-nir-exporter",
+      "typed_input": {
+        "graph": "PyTorch module graph",
+        "neuron": "IFNode",
+        "reset": "subtractive, v_reset=None"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [
+        "subtractive reset"
+      ],
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "SpikingJelly 2.0.0rc1",
+      "source_ids": [
+        "spikingjelly-source-tonir",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "rate_coding.py lines 590-593 and 647-650",
+        "nir_exchange/to_nir.py lines 180-184"
+      ],
+      "notes": "The exporter fails explicitly. Replacing v_reset=None with zero changes the model contract."
+    },
+    {
+      "id": "audit-b-spikingjelly-rate-to-lava-exchange",
+      "from": "spikingjelly-rate-coding-recipe",
+      "to": "spikingjelly-lava-exchange",
+      "typed_input": {
+        "graph": "Sequential PyTorch module graph",
+        "neuron": "IFNode or LIFNode",
+        "reset": "subtractive, v_reset=None"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [
+        "subtractive reset",
+        "nonzero fixed reset"
+      ],
+      "capability_class": "unsupported",
+      "route_state": "blocked",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Loihi 2 path through Lava-DL when a compatible model is supplied",
+      "toolchain_version": "SpikingJelly 2.0.0rc1",
+      "source_ids": [
+        "spj-lava",
+        "a18-sourcecode-comparison"
+      ],
+      "locators": [
+        "lava_exchange.py lines 743-780 and 1175-1189"
+      ],
+      "notes": "A hard-zero model is accepted, but it is not the default rate-conversion output."
+    },
+    {
+      "id": "audit-b-spikingjelly-hard-zero-to-netx-hdf5",
+      "from": "spikingjelly-lava-exchange",
+      "to": "lava-dl-netx-hdf5",
+      "typed_input": {
+        "graph": "Restricted Sequential graph",
+        "neuron": "IFNode or LIFNode",
+        "reset": "hard zero"
+      },
+      "typed_output": {
+        "graph": "Lava-DL HDF5 block graph",
+        "neuron": "CUBA or LOIHI",
+        "reset": "hard zero through built-in Lava LIF"
+      },
+      "preserved": [
+        "hard-zero post-spike reset"
+      ],
+      "transformed": [
+        "IF and LIF are represented as Lava-DL CUBA blocks",
+        "weights are quantized",
+        "average pooling becomes sum pooling with downstream rescaling"
+      ],
+      "rejected": [
+        "bias in exported Conv2d or Linear",
+        "LIF decay_input=True",
+        "operators outside the enumerated block patterns"
+      ],
+      "capability_class": "transformed",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Documented export and NetX import path only. No physical result for this specific SpikingJelly route was located.",
+      "platform_generation": "Loihi 2 target path",
+      "toolchain_version": "SpikingJelly 2.0.0rc1 and Lava-DL 0.6.0",
+      "source_ids": [
+        "spj-lava",
+        "lava-dl-netx-docs"
+      ],
+      "locators": [
+        "SpikingJelly lava_exchange.py to_blocks and export_HDF5",
+        "Lava-DL NetX HDF5 README and hdf5.py"
+      ],
+      "notes": "E3 applies to the deployment path, not to a measured result."
+    },
+    {
+      "id": "audit-b-nir-to-official-lava-example",
+      "from": "nir-1.0.8",
+      "to": "lava-lif-or-lava-dl-cuba",
+      "typed_input": {
+        "graph": "NIR graph",
+        "neuron": "IF, LIF, or CubaLIF",
+        "reset": "fixed v_reset"
+      },
+      "typed_output": {
+        "graph": "Lava Process graph or Lava-DL module",
+        "neuron": "built-in LIF or CUBA",
+        "reset": "hard zero"
+      },
+      "preserved": [
+        "zero-valued fixed reset only"
+      ],
+      "transformed": [
+        "nonzero fixed v_reset is discarded"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Lava public process models; no physical platform established by the example",
+      "toolchain_version": "NIR 1.0.8 example with Lava 0.10.0 and Lava-DL 0.6.0 APIs",
+      "source_ids": [
+        "neuroir-docs",
+        "lava-github-archived",
+        "lava-dl-slayer-docs"
+      ],
+      "locators": [
+        "NIR docs/source/examples/lava/nir_to_lava.py, Lava LIF branch and Lava-DL IF and CubaLIF branches",
+        "Lava and Lava-DL hard-zero reset implementations"
+      ],
+      "notes": "The example is not evidence that every NIR-to-Lava importer has this behavior."
+    },
+    {
+      "id": "audit-b-nir-lava-dl-sample-boundary",
+      "from": "nir-imported-lava-dl-forward",
+      "to": "next-sample",
+      "typed_input": {
+        "state": "persistent current and voltage after a forward pass"
+      },
+      "typed_output": {
+        "state": "caller-cleared current and voltage"
+      },
+      "preserved": [],
+      "transformed": [
+        "state is cleared between samples by caller action"
+      ],
+      "rejected": [],
+      "capability_class": "host-assisted",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "NIR 1.0.8 official Lava example",
+      "source_ids": [
+        "neuroir-docs"
+      ],
+      "locators": [
+        "NIR docs/source/examples/lava/nir_to_lava.py, module warning lines 3-6"
+      ],
+      "notes": "This is sample-boundary state management, not a post-spike reset rule."
+    },
+    {
+      "id": "audit-b-netx-cuba-to-lava-lif",
+      "from": "lava-dl-netx-hdf5-cuba",
+      "to": "lava-lif-process",
+      "typed_input": {
+        "neuron": "HDF5 CUBA or LOIHI record",
+        "fields": "iDecay, vDecay, vThMant, optional reset_interval"
+      },
+      "typed_output": {
+        "neuron": "Lava LIF or LIFReset",
+        "reset": "hard-zero post-spike reset"
+      },
+      "preserved": [
+        "threshold and decay parameters",
+        "hard-zero post-spike reset"
+      ],
+      "transformed": [
+        "optional reset_interval selects periodic state-clearing process"
+      ],
+      "rejected": [
+        "post-spike subtractive-reset field, which is absent from the schema"
+      ],
+      "capability_class": "native",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Documented NetX reconstruction path. No reset-specific physical measurement is asserted by this edge.",
+      "platform_generation": "Lava runtime, with Loihi 2 deployment available through nonpublic hardware components",
+      "toolchain_version": "Lava-DL 0.6.0 and Lava 0.10.0",
+      "source_ids": [
+        "lava-dl-netx-docs",
+        "lava-github-archived"
+      ],
+      "locators": [
+        "Lava-DL hdf5.py lines 140-163",
+        "Lava LIF and LIFReset process models"
+      ],
+      "notes": "Native refers to the built-in Lava LIF behavior, not to proof about arbitrary custom Loihi microcode."
+    },
+    {
+      "id": "audit-b-nxtf-soft-reset-to-loihi1",
+      "from": "nxtf-logical-soft-reset-neuron",
+      "to": "loihi1-compartment-graph",
+      "typed_input": {
+        "neuron": "rate-coded NxTF layer",
+        "reset": "subtract threshold"
+      },
+      "typed_output": {
+        "neuron": "two coupled Loihi 1 compartments",
+        "reset": "recurrent threshold-sized inhibition reproduces subtraction"
+      },
+      "preserved": [
+        "logical subtractive-reset behavior within fixed-point limits"
+      ],
+      "transformed": [
+        "one logical neuron becomes two hardware compartments"
+      ],
+      "rejected": [],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E1",
+      "measurement_boundary": "Physical Loihi 1 through NxSDK 0.9.5 on Nahuku32. Published measurements include active neurocores and embedded x86 processors. Reset mode must be checked per workload.",
+      "platform_generation": "Intel Loihi 1",
+      "toolchain_version": "NxTF archived code and NxSDK 0.9.5 measurement environment",
+      "source_ids": [
+        "nxtf",
+        "nxtf-text"
+      ],
+      "locators": [
+        "NxTF paper Section 2.3.6 and Section 3.2.1",
+        "dnn_layers.py lines 404-535 and 814-925"
+      ],
+      "notes": "E1 establishes the physical NxTF route. It does not establish soft reset for every table entry."
+    },
+    {
+      "id": "audit-b-sinabs-subtractive-to-speck",
+      "from": "sinabs-membrane-subtract",
+      "to": "speck-dynapcnn-core",
+      "typed_input": {
+        "neuron": "Sinabs IAF or LIF",
+        "reset": "MembraneSubtract"
+      },
+      "typed_output": {
+        "neuron": "Speck IF core",
+        "reset": "return_to_zero=False"
+      },
+      "preserved": [
+        "reset by threshold subtraction"
+      ],
+      "transformed": [
+        "average pooling to sum pooling",
+        "linear to 1 by 1 convolution",
+        "weights and state to chip precision"
+      ],
+      "rejected": [
+        "reset functions other than MembraneSubtract and MembraneReset"
+      ],
+      "capability_class": "native",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E3",
+      "measurement_boundary": "Official documented devkit route. No measurement is attached to this generic route edge.",
+      "platform_generation": "SynSense Speck family through DYNAP-CNN",
+      "toolchain_version": "Sinabs 3.1.3",
+      "source_ids": [
+        "sinabs-docs",
+        "sinabs"
+      ],
+      "locators": [
+        "from_torch.py conversion default",
+        "dynapcnn.py return_to_zero mapping",
+        "docs/speck/faqs/tips_for_training.md reset section"
+      ],
+      "notes": "Native applies to reset semantics. The graph and numeric representation still change."
+    },
+    {
+      "id": "audit-b-nir-to-sinabs",
+      "from": "nir-1.0.8",
+      "to": "sinabs-3.1.3",
+      "typed_input": {
+        "neuron": "NIR IF or LIF",
+        "reset": "fixed v_reset"
+      },
+      "typed_output": {
+        "neuron": "Sinabs IAFSqueeze or LIFSqueeze",
+        "reset": "MembraneSubtract default"
+      },
+      "preserved": [],
+      "transformed": [
+        "fixed reset becomes subtractive reset"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "physical",
+      "reports_deployment_evidence": true,
+      "evidence_class": "E2",
+      "measurement_boundary": "The official notebook reports 90 percent accuracy on 50 N-MNIST samples on a physical Speck 2F module. It reports no energy or latency.",
+      "platform_generation": "SynSense Speck 2F module after DynapcnnNetwork mapping",
+      "toolchain_version": "Sinabs 3.1.3 NIR bridge; official notebook last changed 2025-10-31",
+      "source_ids": [
+        "sinabs-nir",
+        "sinabs-nir-to-speck-tutorial",
+        "nir-neuron-primitives-source"
+      ],
+      "locators": [
+        "Sinabs nir.py lines 86-108",
+        "NIR-to-Speck notebook cells 5, 9, and 15",
+        "NIR neuron fixed-reset defaults"
+      ],
+      "notes": "Physical execution proves route viability, not reset preservation."
+    },
+    {
+      "id": "audit-b-sinabs-to-nir",
+      "from": "sinabs-3.1.3",
+      "to": "nir-1.0.8",
+      "typed_input": {
+        "neuron": "Sinabs IAF or LIF",
+        "reset": "MembraneSubtract or MembraneReset"
+      },
+      "typed_output": {
+        "neuron": "NIR IF or LIF",
+        "reset": "fixed zero by omitted-field default"
+      },
+      "preserved": [
+        "fixed-zero reset only when that was already the Sinabs behavior"
+      ],
+      "transformed": [
+        "subtractive reset becomes fixed zero",
+        "nonzero fixed reset becomes fixed zero"
+      ],
+      "rejected": [],
+      "capability_class": "transformed",
+      "route_state": "approximate",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": "Sinabs 3.1.3 and NIR 1.0.8",
+      "source_ids": [
+        "sinabs-nir",
+        "nir-neuron-primitives-source"
+      ],
+      "locators": [
+        "Sinabs nir.py lines 156-171",
+        "NIR neuron.py missing-field defaults"
+      ],
+      "notes": "The exporter does not inspect reset_fn."
+    },
+    {
+      "id": "audit-b-lava-netx-soft-reset-to-loihi2",
+      "from": "lava-or-netx-soft-reset-intent",
+      "to": "loihi2-custom-neuron",
+      "typed_input": {
+        "reset": "subtractive reset"
+      },
+      "typed_output": null,
+      "preserved": [],
+      "transformed": [],
+      "rejected": [],
+      "capability_class": "undocumented",
+      "route_state": "unexercised",
+      "reports_deployment_evidence": false,
+      "evidence_class": null,
+      "measurement_boundary": null,
+      "platform_generation": "Intel Loihi 2",
+      "toolchain_version": "Public Lava 0.10.0 and Lava-DL 0.6.0 artifacts",
+      "source_ids": [
+        "lava-github-archived",
+        "lava-dl-netx-docs",
+        "pedersen-2024-nir"
+      ],
+      "locators": [
+        "Public Lava built-in LIF and NetX schemas",
+        "Pedersen et al. 2024 hardware-platform discussion of Loihi 2 custom microcode"
+      ],
+      "notes": "Loihi 2 programmability makes impossibility an invalid inference. No reviewed public route documents this specific mapping."
+    }
+  ]
+}
