@@ -39,8 +39,8 @@ AXES = 'ABCDEFGHIJKL'
 OVERRIDES = {
     ('davies-2021-loihi', 'H'): ('P', 'Covers one platform family in depth. On an axis '
                                       'measuring breadth of platform coverage that is partial, '
-                                      'not full. a15 annotated this survey as single-chip on the '
-                                      'evidence and route axes but not here.'),
+                                      'not full. This work is scored as single-chip on the '
+                                      'evidence and route axes, and the same reading applies here.'),
 }
 
 RANK = {'F': 3, 'P': 2, 'M': 1}
@@ -193,7 +193,7 @@ def main():
 {ours}
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span class="t1-legend-note">† scored from an abstract or a vault note rather than confirmed full text. Hover a cell carrying a correction for its reason.</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span class="t1-legend-note">† scored from an abstract or a secondary description rather than confirmed full text. Hover a cell carrying a correction for its reason.</span></div>
 </div>'''
 
     p = ROOT / 'site/sec-01.html'

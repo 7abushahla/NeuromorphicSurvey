@@ -208,6 +208,15 @@ EXTRA_CSS = """
         .ptable-wrap.t1-wide table.ptable { min-width: 760px; }
       }
 
+      /* Display math is laid out at its natural width, which for a multi-term update
+         rule exceeds the text column. Let the equation scroll inside its own box
+         rather than spill past the margin. Inline math never scrolls. */
+      d-article mjx-container[display="true"] {
+        overflow-x: auto; overflow-y: hidden; max-width: 100%;
+        padding: 0.2rem 0; margin: 0.9rem 0; }
+      d-article mjx-container { max-width: 100%; }
+      d-article mjx-container:not([display="true"]) { overflow: visible; }
+
       .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
                   text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
       d-article d-contents { grid-row: auto / span 26; }
