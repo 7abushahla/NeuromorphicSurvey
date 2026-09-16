@@ -599,59 +599,65 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
     audited_verification_states: dict[str, set[str]] = defaultdict(set)
     for audit_path in sorted((root / "research/claim-audits").glob("audit-*.json")):
         audit = read_json(audit_path)
-        claims = audit.get("claims")
-        if not isinstance(claims, list):
-            raise ValueError(f"{audit_path.name} does not contain a claims array")
-        for claim_index, claim in enumerate(claims):
-            if not isinstance(claim, dict):
+        for section_name in ("claims", "route_edges"):
+            section_records = audit.get(section_name, [])
+            if not isinstance(section_records, list):
                 raise ValueError(
-                    f"{audit_path.name} claim {claim_index} is not an object"
+                    f"{audit_path.name} does not contain a {section_name} array"
                 )
-            source_refs = claim.get("source_refs")
-            if not isinstance(source_refs, list) or not source_refs:
-                raise ValueError(
-                    f"{audit_path.name} claim {claim_index} has invalid source_refs"
-                )
-            for ref_index, source_ref in enumerate(source_refs):
-                if not isinstance(source_ref, dict):
+            if section_name == "claims" and not section_records:
+                raise ValueError(f"{audit_path.name} does not contain a claims array")
+            for record_index, record in enumerate(section_records):
+                label = f"{section_name}[{record_index}]"
+                if not isinstance(record, dict):
                     raise ValueError(
-                        f"{audit_path.name} claim {claim_index} source ref "
-                        f"{ref_index} is not an object"
+                        f"{audit_path.name} {label} is not an object"
                     )
-                source_id = source_ref.get("source_id")
-                locators = source_ref.get("locators")
-                retrieval_status = source_ref.get("retrieval_status")
-                verification_status = source_ref.get("verification_status")
-                if not isinstance(source_id, str) or not source_id:
+                source_refs = record.get("source_refs")
+                if not isinstance(source_refs, list) or not source_refs:
                     raise ValueError(
-                        f"{audit_path.name} claim {claim_index} source ref "
-                        f"{ref_index} has invalid source_id"
+                        f"{audit_path.name} {label} has invalid source_refs"
                     )
-                if not isinstance(locators, list) or not locators or not all(
-                    isinstance(locator, str) and locator for locator in locators
-                ):
-                    raise ValueError(
-                        f"{audit_path.name} claim {claim_index} source ref "
-                        f"{source_id!r} has invalid locators"
-                    )
-                if retrieval_status not in {
-                    "full_text", "partial_text", "metadata_only", "not_retrieved"
-                }:
-                    raise ValueError(
-                        f"{audit_path.name} claim {claim_index} source ref "
-                        f"{source_id!r} has invalid retrieval_status"
-                    )
-                if verification_status not in {
-                    "verified", "provisional", "conflicted", "rejected"
-                }:
-                    raise ValueError(
-                        f"{audit_path.name} claim {claim_index} source ref "
-                        f"{source_id!r} has invalid verification_status"
-                    )
-                audited_locators[source_id].update(locators)
-                audited_origins[source_id].add(audit_path.name)
-                audited_retrieval_states[source_id].add(str(retrieval_status))
-                audited_verification_states[source_id].add(str(verification_status))
+                for ref_index, source_ref in enumerate(source_refs):
+                    if not isinstance(source_ref, dict):
+                        raise ValueError(
+                            f"{audit_path.name} {label} source ref "
+                            f"{ref_index} is not an object"
+                        )
+                    source_id = source_ref.get("source_id")
+                    locators = source_ref.get("locators")
+                    retrieval_status = source_ref.get("retrieval_status")
+                    verification_status = source_ref.get("verification_status")
+                    if not isinstance(source_id, str) or not source_id:
+                        raise ValueError(
+                            f"{audit_path.name} {label} source ref "
+                            f"{ref_index} has invalid source_id"
+                        )
+                    if not isinstance(locators, list) or not locators or not all(
+                        isinstance(locator, str) and locator for locator in locators
+                    ):
+                        raise ValueError(
+                            f"{audit_path.name} {label} source ref "
+                            f"{source_id!r} has invalid locators"
+                        )
+                    if retrieval_status not in {
+                        "full_text", "partial_text", "metadata_only", "not_retrieved"
+                    }:
+                        raise ValueError(
+                            f"{audit_path.name} {label} source ref "
+                            f"{source_id!r} has invalid retrieval_status"
+                        )
+                    if verification_status not in {
+                        "verified", "provisional", "conflicted", "rejected"
+                    }:
+                        raise ValueError(
+                            f"{audit_path.name} {label} source ref "
+                            f"{source_id!r} has invalid verification_status"
+                        )
+                    audited_locators[source_id].update(locators)
+                    audited_origins[source_id].add(audit_path.name)
+                    audited_retrieval_states[source_id].add(str(retrieval_status))
+                    audited_verification_states[source_id].add(str(verification_status))
 
     metadata_by_id: dict[str, list[dict[str, object]]] = defaultdict(list)
     for record in records:

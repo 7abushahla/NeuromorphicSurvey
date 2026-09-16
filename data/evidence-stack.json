@@ -4338,7 +4338,7 @@
         {
           "source_id": "lava-github-archived",
           "locators": [
-            "Lava and Lava-DL hard-zero reset implementations"
+            "Lava 0.10.0 built-in LIF hard-zero reset implementation"
           ],
           "retrieval_status": "full_text",
           "verification_status": "verified"
@@ -4346,7 +4346,7 @@
         {
           "source_id": "lava-dl-slayer-docs",
           "locators": [
-            "Lava and Lava-DL hard-zero reset implementations"
+            "Lava-DL 0.6.0 leaky-integrator hard-zero reset implementation"
           ],
           "retrieval_status": "full_text",
           "verification_status": "verified"

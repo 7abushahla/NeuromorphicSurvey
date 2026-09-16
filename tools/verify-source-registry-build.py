@@ -141,6 +141,32 @@ def main() -> int:
     sources = registry.get("sources")
     if not isinstance(sources, list):
         raise AssertionError("generated registry lacks a sources array")
+    registry_locator_pairs = {
+        (str(source["id"]), str(locator))
+        for source in sources
+        for locator in source.get("locators", [])
+    }
+    expected_audit_locator_pairs: set[tuple[str, str]] = set()
+    for audit_path in sorted((ROOT / "research/claim-audits").glob("audit-*.json")):
+        audit = json.loads(audit_path.read_text())
+        for section in ("claims", "route_edges"):
+            for record in audit.get(section, []):
+                for source_ref in record.get("source_refs", []):
+                    expected_audit_locator_pairs.update(
+                        (str(source_ref["source_id"]), str(locator))
+                        for locator in source_ref["locators"]
+                    )
+    missing_audit_locator_pairs = sorted(
+        expected_audit_locator_pairs - registry_locator_pairs
+    )
+    if missing_audit_locator_pairs:
+        raise AssertionError(
+            "canonical registry omitted source-specific audit provenance pairs "
+            f"({len(missing_audit_locator_pairs)} missing): "
+            f"{missing_audit_locator_pairs}"
+        )
+    checks += 1
+
     canonical_ids = {record["id"] for record in sources}
     aliases = {
         alias
