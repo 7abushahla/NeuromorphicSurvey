@@ -183,9 +183,13 @@ def main() -> int:
     checks += 1
 
     input_records, _, input_counts = load_input_records(ROOT)
-    if len(input_records) != 368 or sum(input_counts.values()) != 368:
+    if input_counts.get("bibliography-migration-sources.json") != 108:
         raise AssertionError(
-            f"expected 368 structured input rows, got {len(input_records)}"
+            "builder did not consume 108 frozen bibliography migration records"
+        )
+    if len(input_records) != 476 or sum(input_counts.values()) != 476:
+        raise AssertionError(
+            f"expected 476 structured input rows, got {len(input_records)}"
         )
     row_addresses = [
         f"{record['_origin']}:{record['id']}" for record in input_records
@@ -226,12 +230,84 @@ def main() -> int:
         )
     checks += 1
 
-    if "arfa-2025-spinnaker2" in canonical_ids:
-        raise AssertionError("a bibliography-only work was imported into the registry")
-    if "Arfa25-SpiNN2NIR->arfa-2025-spinnaker2" not in diagnostics.get(
+    if "Arfa25-SpiNN2NIR->arfa-2025-spinnaker2" in diagnostics.get(
         "unmatched_refmap_targets", []
     ):
-        raise AssertionError("a truly unmatched bibliography mapping was not deferred")
+        raise AssertionError("the migrated Arfa bibliography mapping remains unresolved")
+    checks += 1
+
+    migration = json.loads(
+        (ROOT / "data/bibliography-migration-sources.json").read_text()
+    )["sources"]
+    address_to_source: dict[str, dict[str, object]] = {}
+    for source in sources:
+        for address in [str(source["id"]), *map(str, source.get("aliases", []))]:
+            if address in address_to_source:
+                raise AssertionError(f"canonical address collision: {address}")
+            address_to_source[address] = source
+    migration_aliases = {
+        alias for record in migration for alias in record["aliases"]
+    }
+    if len(migration_aliases) != 110:
+        raise AssertionError(
+            f"expected 110 frozen migration aliases, got {len(migration_aliases)}"
+        )
+    missing_migration_aliases = sorted(migration_aliases - address_to_source.keys())
+    if missing_migration_aliases:
+        raise AssertionError(
+            "migration aliases do not resolve through the canonical registry: "
+            f"{missing_migration_aliases}"
+        )
+    if address_to_source["bhattacharjee-2023-hardware"]["doi"] is not None:
+        raise AssertionError(
+            "a null provisional migration DOI was synthesized from its URL"
+        )
+    checks += 1
+
+    invalid_purposes = {
+        str(source["id"]): source.get("purpose")
+        for source in sources
+        if source.get("purpose") not in {"external", "internal_analysis"}
+    }
+    if invalid_purposes:
+        raise AssertionError(
+            f"canonical records lack explicit valid purpose labels: {invalid_purposes}"
+        )
+    internal_expectations = {
+        "a14-application-survey": "research/raw/a14-applications-sensors.md",
+        "a17-two-populations": "research/raw/a17-two-populations.md",
+        "A18-Research": "research/raw/a18-snntoolbox-vs-spikingjelly.md",
+    }
+    for address, artifact in internal_expectations.items():
+        internal = address_to_source.get(address)
+        if internal is None:
+            raise AssertionError(f"internal analysis alias does not resolve: {address}")
+        if (
+            internal.get("purpose") != "internal_analysis"
+            or internal.get("source_type") != "internal_analysis"
+            or artifact not in internal.get("locators", [])
+        ):
+            raise AssertionError(
+                f"internal analysis provenance was not preserved for {address}: {internal}"
+            )
+    if address_to_source["A18-Research"]["id"] != "a18-sourcecode-comparison":
+        raise AssertionError("A18 legacy alias did not bind to its canonical analysis")
+    checks += 1
+
+    nir_arfa = address_to_source.get("arfa-2025-spinnaker2")
+    q_arfa = address_to_source.get("arfa2025-spiking-q-spinnaker2")
+    if nir_arfa is None or q_arfa is None:
+        raise AssertionError("both reviewed Arfa records must resolve")
+    if (
+        str(nir_arfa.get("doi", "")).lower()
+        != "10.1109/nice65350.2025.11065119"
+        or str(q_arfa.get("doi", "")).lower()
+        != "10.1109/icons69015.2025.00021"
+        or nir_arfa["id"] == q_arfa["id"]
+    ):
+        raise AssertionError("the two Arfa records were conflated or misidentified")
+    if address_to_source.get("arfa") is not nir_arfa:
+        raise AssertionError("the Arfa preprint identity was not merged with the NIR paper")
     checks += 1
 
     neuroflex = sources_by_id["neuroflex"]
@@ -303,6 +379,16 @@ def main() -> int:
         raise AssertionError("Arfa exact title/DOI regression failed")
     checks += 1
 
+    if (
+        withdrawn["retrieval_status"] != "full_text"
+        or withdrawn["verification_status"] != "verified"
+    ):
+        raise AssertionError("provisional migration metadata downgraded reviewed MT-SNN")
+    gelneuro = sources_by_id["gelneuro"]
+    if gelneuro["verification_status"] != "rejected":
+        raise AssertionError("provisional migration metadata revived rejected GelNeuro")
+    checks += 1
+
     conflict_fixture = [
         {
             "id": "conflict-a",
@@ -337,13 +423,65 @@ def main() -> int:
         )
     checks += 1
 
-    if diagnostics.get("true_duplicate_count") != 86:
-        raise AssertionError(
-            "duplicate-cluster accounting must include only the 86 multi-input "
-            f"clusters, got {diagnostics.get('true_duplicate_count')!r}"
-        )
-    if len(diagnostics.get("merged_groups", [])) != 86:
-        raise AssertionError("merged_groups contains singleton provenance aliases")
+    purpose_conflict_fixture = [
+        {
+            "id": "external-work",
+            "title": "One Explicit Identity",
+            "year": 2025,
+            "url": "https://example.org/purpose-conflict",
+            "purpose": "external",
+            "_origin": "fixture-a.json",
+            "_rank": 1,
+            "_index": 0,
+        },
+        {
+            "id": "internal-work",
+            "title": "One Explicit Identity",
+            "year": 2025,
+            "url": "https://example.org/purpose-conflict",
+            "purpose": "internal_analysis",
+            "source_type": "internal_analysis",
+            "locators": ["research/raw/internal.md"],
+            "_origin": "fixture-b.json",
+            "_rank": 4,
+            "_index": 0,
+        },
+    ]
+    purpose_clusters, purpose_identity_conflicts = cluster_records(
+        purpose_conflict_fixture, {}
+    )
+    if len(purpose_clusters) != 1 or purpose_identity_conflicts:
+        raise AssertionError("purpose conflict fixture must share one exact identity")
+    _, purpose_conflicts, _ = resolve_cluster(purpose_clusters[0], {}, set())
+    if "purpose" not in {item.get("field") for item in purpose_conflicts}:
+        raise AssertionError("external/internal purpose conflict was silently resolved")
+    checks += 1
+
+    alias_collision_fixture = [
+        {
+            "id": "alias-owner-a",
+            "title": "First Alias Owner",
+            "year": 2025,
+            "url": "https://example.org/alias-owner-a",
+            "aliases": ["shared-reviewed-alias"],
+            "_origin": "fixture-a.json",
+            "_rank": 4,
+            "_index": 0,
+        },
+        {
+            "id": "alias-owner-b",
+            "title": "Second Alias Owner",
+            "year": 2025,
+            "url": "https://example.org/alias-owner-b",
+            "aliases": ["shared-reviewed-alias"],
+            "_origin": "fixture-b.json",
+            "_rank": 4,
+            "_index": 1,
+        },
+    ]
+    _, alias_conflicts = cluster_records(alias_collision_fixture, {})
+    if "alias_collision" not in {item.get("kind") for item in alias_conflicts}:
+        raise AssertionError("explicit alias collision was not rejected")
     checks += 1
 
     metadata_ids = diagnostics.get("metadata_only_ids", [])
@@ -354,6 +492,26 @@ def main() -> int:
     )
     if expected_metadata_line not in log_text:
         raise AssertionError("source-validation log does not enumerate metadata-only IDs")
+    missing_metadata = diagnostics.get("missing_metadata", [])
+    if not missing_metadata or "## Unresolved metadata" not in log_text:
+        raise AssertionError("source-validation log omits preserved null metadata fields")
+    expected_missing_lines = {
+        f"- `{item['id']}`: "
+        + ", ".join(f"`{field}`" for field in item["fields"])
+        + "."
+        for item in missing_metadata
+    }
+    if not expected_missing_lines <= set(log_text.splitlines()):
+        raise AssertionError("source-validation log does not enumerate every metadata gap")
+    if (
+        "- All 110 frozen legacy aliases resolve exactly once through canonical IDs "
+        "or aliases." not in log_text
+        or "- Unmatched mappings: `furber-2004-nofm->furber2004`." not in log_text
+    ):
+        raise AssertionError(
+            "source-validation log does not separate frozen alias coverage from the "
+            "pre-existing uncited refmap target"
+        )
     checks += 1
 
     address_counts: dict[str, int] = {}

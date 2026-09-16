@@ -18,6 +18,7 @@ INPUTS = (
     ("sources.json", None, 1),
     ("evidence-papers.json", "sources", 2),
     ("evidence-stack.json", "sources", 3),
+    ("bibliography-migration-sources.json", "sources", 4),
 )
 TRACKING_QUERY_PREFIXES = ("utm_",)
 TRACKING_QUERY_KEYS = {"fbclid", "gclid"}
@@ -36,6 +37,7 @@ VALID_SOURCE_TYPES = {
     "marketing_material",
     "secondary_material",
     "general_web",
+    "internal_analysis",
 }
 PRIOR_SOURCE_TYPE_MAP = {
     "accepted_manuscript": "peer_reviewed",
@@ -62,10 +64,18 @@ PRIOR_RETRIEVAL_MAP = {
     "provisional": "metadata_only",
 }
 CANONICAL_ID_RESOLUTIONS = {
+    "arfa": "arfa-2025-spinnaker2",
     "fission": "adaptive-fission",
     "lava-dl-slayer-docs": "lava-dl-slayer-docs",
     "mtt": "temporal-flexibility",
 }
+
+# These pairs are reviewed publication-version identities that cannot be inferred
+# from exact normalized metadata alone. They remain deliberately narrow so that a
+# shared author or topic can never collapse two different works.
+REVIEWED_IDENTITY_MERGES = (
+    ("arfa", "arfa-2025-spinnaker2"),
+)
 
 # A differing publication year is never resolved by input priority alone. Each known
 # case states the bibliographic or versioned-document basis for the selected year.
@@ -86,6 +96,36 @@ YEAR_RESOLUTIONS: dict[str, tuple[int, str]] = {
 
 # Filled only from primary-source metadata. Keys may be any member ID in a cluster.
 METADATA_OVERRIDES: dict[str, dict[str, object]] = {
+    "a18-sourcecode-comparison": {
+        "title": (
+            "Source-level comparison of snn_toolbox and spikingjelly "
+            "ann2snn/lava_exchange/nir_exchange code "
+            "(fetched raw.githubusercontent.com, 2026-09-15)"
+        ),
+        "note": (
+            "The reviewed source-inspection title is retained over the later "
+            "bibliography summary."
+        ),
+    },
+    "arfa-2025-spinnaker2": {
+        "title": (
+            "Efficient Deployment of Spiking Neural Networks on SpiNNaker2 for "
+            "DVS Gesture Recognition Using Neuromorphic Intermediate Representation"
+        ),
+        "authors": (
+            "Arfa, S. and Vogginger, B. and Liu, C. and Partzsch, J. and "
+            "Schöne, M. and Mayr, C."
+        ),
+        "year": 2025,
+        "venue": "NICE",
+        "doi": "10.1109/nice65350.2025.11065119",
+        "url": "https://doi.org/10.1109/nice65350.2025.11065119",
+        "note": (
+            "The legacy Arfa preprint record and the reviewed NICE publication "
+            "describe the same NIR deployment work. The NICE publication metadata "
+            "is canonical."
+        ),
+    },
     "davies-2021-loihi": {
         "title": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook",
         "authors": "M. Davies, A. Wild, G. Orchard, Y. Sandamirskaya et al.",
@@ -443,6 +483,16 @@ def extract_doi(record: dict[str, object]) -> str | None:
     return None
 
 
+def output_doi(record: dict[str, object]) -> str | None:
+    """Return citable DOI metadata without filling frozen migration nulls."""
+    if (
+        record.get("_origin") == "bibliography-migration-sources.json"
+        and record.get("doi") is None
+    ):
+        return None
+    return extract_doi(record)
+
+
 def is_arxiv_doi(value: str) -> bool:
     return value.lower().startswith("10.48550/arxiv.")
 
@@ -781,7 +831,7 @@ def cluster_records(
             second_dois = component_dois(candidate)
             if first_dois and second_dois and first_dois != second_dois:
                 version_doi, _ = publication_version_dois(first_dois | second_dois)
-                if kind == "title" and version_doi:
+                if version_doi:
                     union_find.union(anchor, candidate)
                     continue
                 unresolved.append({
@@ -814,6 +864,19 @@ def cluster_records(
     ids_to_indices: dict[str, list[int]] = defaultdict(list)
     for index, record in enumerate(records):
         ids_to_indices[str(record["id"])].append(index)
+    for source_id, indices in sorted(ids_to_indices.items()):
+        if len(indices) > 1 and any(
+            records[index].get("_origin") == "bibliography-migration-sources.json"
+            for index in indices
+        ):
+            merge_group("migration_id", source_id, indices)
+    for first_id, second_id in REVIEWED_IDENTITY_MERGES:
+        if first_id in ids_to_indices and second_id in ids_to_indices:
+            merge_group(
+                "reviewed_identity",
+                f"{first_id}->{second_id}",
+                [ids_to_indices[first_id][0], ids_to_indices[second_id][0]],
+            )
     for alias, target in sorted(refmap.items()):
         if alias not in ids_to_indices or target not in ids_to_indices:
             continue
@@ -822,6 +885,41 @@ def cluster_records(
     clusters: dict[int, list[dict[str, object]]] = defaultdict(list)
     for index, record in enumerate(records):
         clusters[union_find.find(index)].append(record)
+
+    # Explicit legacy aliases are addresses, not fuzzy identity evidence. They may
+    # repeat only within one already-resolved semantic cluster. An alias that also
+    # names a different record ID is equally ambiguous and therefore fails closed.
+    id_roots: dict[str, set[int]] = defaultdict(set)
+    explicit_alias_roots: dict[str, set[int]] = defaultdict(set)
+    for index, record in enumerate(records):
+        root = union_find.find(index)
+        id_roots[str(record["id"])].add(root)
+        aliases = record.get("aliases") or []
+        if not isinstance(aliases, list):
+            unresolved.append({
+                "kind": "alias_collision",
+                "key": str(record["id"]),
+                "record_ids": [str(record["id"])],
+                "reason": "explicit aliases must be a list",
+            })
+            continue
+        for alias in aliases:
+            if isinstance(alias, str) and alias:
+                explicit_alias_roots[alias].add(root)
+    for address, alias_roots in sorted(explicit_alias_roots.items()):
+        roots = alias_roots | id_roots.get(address, set())
+        if len(roots) > 1:
+            unresolved.append({
+                "kind": "alias_collision",
+                "key": address,
+                "record_ids": sorted({
+                    str(record["id"])
+                    for index, record in enumerate(records)
+                    if union_find.find(index) in roots
+                }),
+                "reason": "canonical ID or explicit alias addresses multiple works",
+            })
+
     ordered = sorted(
         clusters.values(),
         key=lambda group: min((int(record["_rank"]), str(record["id"])) for record in group),
@@ -1049,7 +1147,7 @@ def resolve_cluster(
         for index, first in enumerate(author_sets)
         for second in author_sets[index + 1:]
     )
-    authors = str(override.get("authors") or pick_text(records, "authors") or "")
+    authors = override.get("authors") or pick_text(records, "authors")
     if material_author_difference:
         if isinstance(override.get("authors"), str):
             resolution_notes.append(
@@ -1062,25 +1160,25 @@ def resolve_cluster(
                 "values": author_values,
                 "reason": "material author variants lack an explicit metadata resolution",
             })
-    venue = str(override.get("venue") or pick_text(records, "venue") or "")
+    venue = override.get("venue") or pick_text(records, "venue")
     year, year_note = resolution_for_year(records)
     years = sorted({
         int(record["year"])
         for record in records
         if isinstance(record.get("year"), int) and not isinstance(record.get("year"), bool)
     })
-    if year is None:
+    if year is None and years:
         conflicts.append({
             "id": canonical_id,
             "field": "year",
             "values": years,
             "reason": "missing or conflicting year lacks a primary-source resolution",
         })
-        year = max(years) if years else 0
-    elif len(years) > 1 or not years:
+        year = max(years)
+    elif year is not None and len(years) > 1:
         resolution_notes.append(year_note or "Year resolved from reviewed canonical metadata.")
 
-    dois = sorted({doi for record in records for doi in [extract_doi(record)] if doi})
+    dois = sorted({doi for record in records for doi in [output_doi(record)] if doi})
     override_doi = override.get("doi")
     if isinstance(override_doi, str) and override_doi.strip():
         doi = override_doi.strip()
@@ -1129,39 +1227,57 @@ def resolve_cluster(
         or recorded_canonical_doi_url
         or (reviewed_urls[0] if reviewed_urls else None)
     )
-    if url is None and doi:
-        url = f"https://doi.org/{doi}"
     if url is None and valid_urls:
         url = valid_urls[0]
-    if url is None:
+
+    purpose_values = sorted({
+        str(record["purpose"])
+        for record in records
+        if record.get("purpose") in {"external", "internal_analysis"}
+    })
+    purpose = purpose_values[0] if len(purpose_values) == 1 else "external"
+    if len(purpose_values) > 1:
         conflicts.append({
             "id": canonical_id,
-            "field": "url",
-            "values": sorted({str(record.get("url")) for record in records}),
-            "reason": "no absolute HTTP(S) source URL was established",
+            "field": "purpose",
+            "values": purpose_values,
+            "reason": "external and internal-analysis identities cannot be merged",
         })
-        url = "https://example.invalid/unresolved-source"
 
     reviewed_types = [
         source_type(record) for record in records if int(record["_rank"]) == 0
     ]
-    resolved_type = reviewed_types[0] if reviewed_types else source_type(
-        min(records, key=stable_record_key)
+    resolved_type = (
+        "internal_analysis"
+        if purpose == "internal_analysis"
+        else reviewed_types[0]
+        if reviewed_types
+        else source_type(min(records, key=stable_record_key))
     )
     reviewed = sorted(
         (record for record in records if int(record["_rank"]) == 0),
         key=stable_record_key,
     )
-    if reviewed:
-        retrieval_status = str(reviewed[0].get("retrieval_status") or "metadata_only")
+    status_records = reviewed or sorted(
+        (
+            record for record in records
+            if record.get("retrieval_status")
+            or record.get("verification_status")
+            or record.get("locators")
+        ),
+        key=stable_record_key,
+    )
+    if status_records:
+        status_record = status_records[0]
+        retrieval_status = str(status_record.get("retrieval_status") or "metadata_only")
         verification_status = str(
             override.get("verification_status")
-            or reviewed[0].get("verification_status")
+            or status_record.get("verification_status")
             or "provisional"
         )
-        retrieved_on = str(reviewed[0].get("retrieved_on") or AUDIT_DATE)
-        locators = list(reviewed[0].get("locators") or [])
-        existing_notes = str(reviewed[0].get("notes") or "").strip()
+        retrieved_on = str(status_record.get("retrieved_on") or AUDIT_DATE)
+        locators = list(status_record.get("locators") or [])
+        existing_notes = str(status_record.get("notes") or "").strip()
     else:
         retrieval_status = "metadata_only"
         verification_status = str(override.get("verification_status") or "provisional")
@@ -1172,13 +1288,33 @@ def resolve_cluster(
         ]
         existing_notes = ""
 
+    if purpose == "internal_analysis":
+        locators = sorted({
+            str(locator)
+            for record in records
+            for locator in (record.get("locators") or [])
+            if isinstance(locator, str) and locator
+        })
+
     bibliography_aliases = bibliography_aliases or set()
     qualified_aliases = {
         f"{record['_origin']}:{record['id']}" for record in records
     }
+    explicit_aliases = {
+        alias
+        for record in records
+        for alias in (record.get("aliases") or [])
+        if isinstance(alias, str) and alias
+    }
     plain_aliases = {record_id for record_id in ids if record_id not in ambiguous_ids}
     aliases = sorted(
-        (plain_aliases | qualified_aliases | bibliography_aliases) - {canonical_id}
+        (
+            plain_aliases
+            | qualified_aliases
+            | explicit_aliases
+            | bibliography_aliases
+        )
+        - {canonical_id}
     )
     origin_note = (
         "Canonicalized from structured inputs: "
@@ -1204,6 +1340,7 @@ def resolve_cluster(
         "locators": [str(locator) for locator in locators],
         "aliases": aliases,
         "notes": notes,
+        "purpose": purpose,
     }, conflicts, resolution_notes
 
 
@@ -1271,19 +1408,33 @@ def render_log(diagnostics: dict[str, object]) -> str:
         + (", ".join(f"`{item}`" for item in not_retrieved) if not_retrieved else "none")
         + "."
     )
+    missing_metadata = diagnostics["missing_metadata"]
+    lines.extend(["", "## Unresolved metadata", ""])
+    if missing_metadata:
+        for item in missing_metadata:
+            lines.append(
+                f"- `{item['id']}`: "
+                + ", ".join(f"`{field}`" for field in item["fields"])
+                + "."
+            )
+    else:
+        lines.append("- None.")
     unmatched = diagnostics["unmatched_refmap_targets"]
-    lines.extend(["", "## Deferred bibliography migration", ""])
+    lines.extend(["", "## Bibliography migration coverage", ""])
     lines.append(
-        "- Task 3 uses `refmap.json` as bibliography identity metadata. Bibliography-only "
-        "entries remain deferred to Task 6 because the current generated BibTeX contains "
-        "records without authors or defensible publication years."
+        "- The frozen bibliography migration is a lowest-priority structured input. "
+        "Unknown metadata remains null and cannot override stronger reviewed evidence."
     )
     lines.append(
-        f"- {len(unmatched)} reference-map targets do not yet identify a structured "
-        "source record and remain deferred."
+        f"- All {diagnostics['migration_alias_count']} frozen legacy aliases resolve "
+        "exactly once through canonical IDs or aliases."
     )
     lines.append(
-        "- Deferred mappings: "
+        f"- {len(unmatched)} pre-existing uncited reference-map targets outside the "
+        "frozen migration set do not identify a canonical source record."
+    )
+    lines.append(
+        "- Unmatched mappings: "
         + (", ".join(f"`{item}`" for item in unmatched) if unmatched else "none")
         + "."
     )
@@ -1337,13 +1488,35 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
             "reason": "multiple semantic clusters selected the same canonical ID",
         })
 
+    address_owners: dict[str, set[str]] = defaultdict(set)
+    for record in canonical:
+        source_id = str(record["id"])
+        for address in [source_id, *map(str, record.get("aliases", []))]:
+            address_owners[address].add(source_id)
+    for address, owners in sorted(address_owners.items()):
+        if len(owners) > 1:
+            field_conflicts.append({
+                "id": address,
+                "field": "alias",
+                "values": sorted(owners),
+                "reason": "canonical ID or alias addresses multiple works",
+            })
+
     canonical_ids = {str(record["id"]) for record in canonical}
+    migration_aliases = {
+        alias
+        for record in records
+        if record.get("_origin") == "bibliography-migration-sources.json"
+        for alias in (record.get("aliases") or [])
+        if isinstance(alias, str) and alias
+    }
     bibliography_alias_count = sum(len(aliases) for aliases in bibliography_aliases.values())
     diagnostics: dict[str, object] = {
         "input_counts": input_counts,
         "canonical_count": len(canonical),
         "merged_input_count": len(records) - len(canonical),
         "bibliography_alias_count": bibliography_alias_count,
+        "migration_alias_count": len(migration_aliases),
         "true_duplicate_count": len(duplicate_records),
         "merged_groups": [
             {"id": record["id"], "aliases": record["aliases"]}
@@ -1364,6 +1537,21 @@ def build_outputs(root: Path = ROOT) -> tuple[dict[str, object], str, dict[str, 
         ],
         "not_retrieved_ids": [
             record["id"] for record in canonical if record["retrieval_status"] == "not_retrieved"
+        ],
+        "missing_metadata": [
+            {
+                "id": record["id"],
+                "fields": [
+                    field
+                    for field in ("authors", "year", "venue", "doi", "url")
+                    if record.get(field) is None
+                ],
+            }
+            for record in canonical
+            if any(
+                record.get(field) is None
+                for field in ("authors", "year", "venue", "doi", "url")
+            )
         ],
         "unmatched_refmap_targets": unmatched_refmap_targets,
         "canonical_ids": sorted(canonical_ids),
