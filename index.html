@@ -832,14 +832,26 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
 
 <h2 id="introduction">1&ensp;Introduction</h2>
 
-<h3 id="survey-question">1.1&ensp;Why spiking computation matters</h3>
+<div id="survey-question"></div>
 
-<p>Machine learning increasingly operates where data are produced. Cameras, microphones, tactile
-arrays, and industrial sensors generate streams that must often be interpreted under limits on
-latency, communication, power, and local memory. Conventional deep networks have transformed
-perception, but their common abstraction is a sequence of dense tensor operations evaluated at
-chosen sampling intervals. That abstraction is effective and well supported. It does not make
-time, sparse change, or conditional computation first-class computational objects.</p>
+<p>Deep neural networks have achieved strong performance in vision, speech, control, and other
+data-intensive tasks. This performance, however, commonly relies on large parameter sets and many
+multiply-and-accumulate operations. The resulting demand for computation, memory movement, and
+power complicates deployment where responses must be produced close to a sensor or actuator
+<d-cite key="roy-2019-spike-machine-intelligence,schuman-2022-opportunities"></d-cite>.</p>
+
+<p>At the same time, sensing and inference are moving toward the network edge. Cameras,
+microphones, tactile arrays, and industrial sensors produce streams that may require local,
+low-latency interpretation. Sending every observation to a remote processor can add communication
+cost, delay, and system dependence. This has increased interest in computing systems that can
+operate within practical limits on memory, throughput, power, and response time while retaining
+reliable task performance <d-cite key="deng-2025-edgesnn,schuman-2022-opportunities"></d-cite>.</p>
+
+<p>Deploying learned models under these constraints remains difficult. The challenge is not only
+to reduce arithmetic. A deployed system must also represent sensor input, retain state, move data,
+schedule computation, and produce a decision within the relevant time window. These requirements
+are especially important for event-based sensing, where a signal records changes rather than a
+sequence of uniformly sampled frames <d-cite key="gallego-2022-event-based-vision,prior-s31-tayaraninajaran-2021"></d-cite>.</p>
 
 <p>Spiking neural networks (SNNs) offer a different abstraction. A neuron retains state, receives
 events, and emits discrete spikes when its dynamics meet a condition. Information can therefore be
@@ -865,33 +877,28 @@ dynamics. The routes differ in optimization, representation, and common failure 
 however, when the resulting SNN must be represented in software and executed on a target
 <d-cite key="nunes-2022,eshraghian-2023-training-snns,rathi-2023"></d-cite>.</p>
 
-<h3 id="scope-and-reader">1.2&ensp;Survey role, scope, and reader</h3>
+<div id="scope-and-reader"></div>
 
-<p>This survey is a field-entry reference with a deployment-centered purpose. It develops the
-concepts needed to follow either route from computation and representation to a defensible
-model-to-chip claim. The intended reader is entering neuromorphic computing, preparing a thesis,
-selecting a deployment path, or interpreting an SNN result that spans algorithms and hardware. The
-survey does not begin by assuming a particular chip, code, or training route. It first establishes
-what a model represents, how its dynamics and time are defined, and what a decoder recovers. It
-then asks whether those semantics can be preserved, transformed, or measured on a named target.</p>
+<p>This survey adopts a deployment-centered perspective on neuromorphic computing. It develops the
+concepts needed to follow either SNN route from computation and representation to a defensible
+model-to-chip claim. It is written for readers entering the field, preparing a thesis, selecting a
+deployment path, or interpreting a result that spans algorithms and hardware. The survey first
+establishes what a model represents, how its dynamics and time are defined, and what a decoder
+recovers. It then examines whether those semantics can be preserved, transformed, or measured on a
+named target.</p>
 
-<p>The article does not attempt to replace specialist treatments of neuroscience, synaptic
-plasticity, surrogate-gradient theory, event-sensor physics, analog circuit design, or benchmark
-protocol. It gives the deployment-relevant concepts needed to connect these topics. For broad
-treatments of SNN learning, see Nunes et al. and Khan et al., which organize training methods and
-applications in greater depth <d-cite key="nunes-2022,khan-2025"></d-cite>. For event-based sensing
-and its representations, see Gallego et al., which treats the sensing literature beyond the
-computational boundary used here <d-cite key="gallego-2022-event-based-vision"></d-cite>.</p>
+<p>The scope is deliberately broad across the deployment path and selective within specialist
+topics. It covers learning only to the depth needed to compare direct training and conversion at
+their common deployment boundary. It likewise covers sensing, analog circuits, and benchmark
+protocol only where they change the deployable model or the meaning of a measurement. For broader
+treatments of SNN learning, see Nunes et al. and Khan et al.
+<d-cite key="nunes-2022,khan-2025"></d-cite> For event-based sensing and its representations, see
+Gallego et al. <d-cite key="gallego-2022-event-based-vision"></d-cite>. Throughout, the survey keeps
+an algorithmic horizon, a hardware tick, and wall-clock latency distinct. It also distinguishes a
+neural code from an input convention, and a documented toolchain capability from a published route
+that has actually been exercised.</p>
 
-<p>Three boundaries control the scope. First, the article distinguishes an algorithmic horizon
-from a hardware tick and from wall-clock latency. A small maximum horizon <em>T</em> is not a
-latency measurement. Second, it distinguishes a neural code from an input convention. Direct
-current injection, for example, is not automatically rate coding. Third, it separates a documented
-toolchain capability from a route exercised by a published model. These distinctions keep an
-algorithmic result, a software claim, and a hardware measurement from being treated as the same
-kind of evidence.</p>
-
-<h3 id="existing-surveys">1.3&ensp;Existing surveys</h3>
+<h3 id="existing-surveys">1.1&ensp;Existing Surveys</h3>
 
 <p>Recent surveys have addressed spiking neural networks, neuromorphic computing, and event-driven
 systems from different angles, yet these topics are often treated separately. The existing
@@ -1016,7 +1023,7 @@ represent? What does the target execute? What was measured, where, and against w
 The answer may be a physical route, a transformed route, a blocked route, or an unexercised
 documented path. Each answer remains useful when its evidence boundary is stated.</p>
 
-<h3 id="evidence-guide">1.4&ensp;Evidence guide</h3>
+<h3 id="evidence-guide">1.2&ensp;Evidence Guide</h3>
 
 <p>A benchmark protocol separates physical evaluation from a proxy so that a future submission can
 report both honestly. A literature survey has a different task. It must classify claims already in
@@ -1045,7 +1052,7 @@ lower measured power. A documented exporter does not prove that a published mode
 Sections 4, 11, and 14 define the terms needed to make these differences operational. The evidence
 guide then remains fixed throughout the article.</p>
 
-<h3 id="survey-contributions">1.5&ensp;What this survey contributes</h3>
+<h3 id="survey-contributions">1.3&ensp;What This Survey Contributes</h3>
 
 <p>The first contribution is an explanatory path from computation and representation to deployment
 evidence. It gives direct training and conversion a common destination rather than treating them
@@ -1072,7 +1079,7 @@ pipelines, directly trained models, or platform-native codes? Section 16 gives t
 falsifier, counterexamples, and qualifications. Section 1 deliberately does not present that
 result in advance.</p>
 
-<h3 id="survey-roadmap">1.6&ensp;Reading roadmap</h3>
+<h3 id="survey-roadmap">1.4&ensp;Organization of the Survey</h3>
 
 <p>Sections 2 through 4 define computation, state, neuron and synapse dynamics, temporal semantics,
 codes, and decoding. Sections 5 and 6 introduce the learning fork and bound direct-training detail.
