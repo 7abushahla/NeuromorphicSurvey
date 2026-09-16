@@ -1,42 +1,55 @@
 <h2 id="introduction">1 Introduction</h2>
 
-<h3 id="survey-question">1.1 The deployment question</h3>
+<h3 id="survey-question">1.1 Why spiking computation matters</h3>
 
-<p>A spiking neural network is not deployable merely because it matches a reference accuracy in
-simulation. Deployment requires a chain of agreements. The trained model defines a neuron,
-reset rule, code, input convention, readout, and time model. A framework must represent those
-semantics. An interchange format, compiler, mapper, runtime, and target must then preserve them
-or make each transformation explicit. Finally, a reported latency, energy, or accuracy must name
-the boundary at which it was observed. A result can be valid at one point in that chain and still
-fail to establish the next.</p>
+<p>Machine learning increasingly operates where data are produced. Cameras, microphones, tactile
+arrays, and industrial sensors generate streams that must often be interpreted under limits on
+latency, communication, power, and local memory. Conventional deep networks have transformed
+perception, but their common abstraction is a sequence of dense tensor operations evaluated at
+chosen sampling intervals. That abstraction is effective and well supported. It does not make
+time, sparse change, or conditional computation first-class computational objects.</p>
 
-<p>This survey studies that chain. Its central question is simple. What must remain explicit for a
-trained SNN to become a faithful executable system on a named target, and what evidence establishes
-that this happened? The question applies to both routes into an SNN. Direct training optimizes a
-spiking model. ANN-to-SNN conversion begins with an artificial neural network (ANN) and maps its
-activations into spiking dynamics. The routes differ in optimization and representation, but both
-produce an SNN whose execution semantics must survive the same model-to-device handoffs
+<p>Spiking neural networks (SNNs) offer a different abstraction. A neuron retains state, receives
+events, and emits discrete spikes when its dynamics meet a condition. Information can therefore be
+represented in spike count, timing, order, population activity, or graded payloads. This makes SNNs
+natural candidates for temporal signals and event-based sensing, while also motivating hardware
+that can exploit conditional activity and sparse communication
+<d-cite key="gallego-2022-event-based-vision,schuman-2022-opportunities,davies-2021-loihi"></d-cite>.
+Those properties are opportunities, not universal performance guarantees. Their practical value
+depends on the code, model, workload, platform, and measurement boundary.</p>
+
+<p>Neuromorphic computing is consequently a field rather than a single device class or learning
+method. It spans dynamical models, neural codes, learning rules, software frameworks, compilers,
+and digital, analog, and mixed-signal execution systems. Choices made at one layer change what can
+be expressed at another. A temporal code can require state, precision, routing, or stopping
+behavior that a target does not provide. A model that is correct in one simulator can require an
+explicit transformation before a mapper or runtime can execute it
+<d-cite key="bouvier-2019-hardware-implementations,shrestha-2022-models-hardware,pedersen-2024-nir"></d-cite>.</p>
+
+<p>Researchers reach SNNs through two principal routes. Direct training optimizes a spiking model,
+usually with local rules, surrogate gradients, or related approximations. ANN-to-SNN conversion
+starts from a trained artificial neural network (ANN) and maps its activations into spiking
+dynamics. The routes differ in optimization, representation, and common failure modes. They meet,
+however, when the resulting SNN must be represented in software and executed on a target
 <d-cite key="nunes-2022,eshraghian-2023-training-snns,rathi-2023"></d-cite>.</p>
 
-<p>The survey is deployment-centered, but it begins as a field-entry reference. A reader cannot
-evaluate a hardware claim without first distinguishing value, state, event, code, time, reset, and
-readout. Nor can a reader compare a conversion method with direct training until the finite-time
-and learning assumptions of each route are clear. Sections 2 through 9 establish that vocabulary
-and the two routes. Sections 10 through 15 test whether the resulting SNN can be represented,
-executed, and measured. Sections 16 through 18 synthesize the evidence and turn it into research
-choices.</p>
+<h3 id="scope-and-reader">1.2 Survey role, scope, and reader</h3>
 
-<h3 id="scope-and-reader">1.2 Scope and reader</h3>
+<p>This survey is a field-entry reference with a deployment-centered purpose. It develops the
+concepts needed to follow either route from computation and representation to a defensible
+model-to-chip claim. The intended reader is entering neuromorphic computing, preparing a thesis,
+selecting a deployment path, or interpreting an SNN result that spans algorithms and hardware. The
+survey does not begin by assuming a particular chip, code, or training route. It first establishes
+what a model represents, how its dynamics and time are defined, and what a decoder recovers. It
+then asks whether those semantics can be preserved, transformed, or measured on a named target.</p>
 
-<p>The intended reader is entering neuromorphic computing, preparing a thesis, selecting a
-deployment path, or interpreting an SNN result that spans algorithms and hardware. The survey
-does not attempt to replace specialist treatments of neuroscience, synaptic plasticity,
-surrogate-gradient theory, event-sensor physics, analog circuit design, or benchmark protocol.
-It gives the deployment-relevant concepts needed to connect these topics. For broad treatments of
-SNN learning, see Nunes et al. and Khan et al., which organize training methods and applications
-in greater depth <d-cite key="nunes-2022,khan-2025"></d-cite>. For event-based sensing and its
-representations, see Gallego et al., which treats the sensing literature beyond the computational
-boundary used here <d-cite key="gallego-2022-event-based-vision"></d-cite>.</p>
+<p>The article does not attempt to replace specialist treatments of neuroscience, synaptic
+plasticity, surrogate-gradient theory, event-sensor physics, analog circuit design, or benchmark
+protocol. It gives the deployment-relevant concepts needed to connect these topics. For broad
+treatments of SNN learning, see Nunes et al. and Khan et al., which organize training methods and
+applications in greater depth <d-cite key="nunes-2022,khan-2025"></d-cite>. For event-based sensing
+and its representations, see Gallego et al., which treats the sensing literature beyond the
+computational boundary used here <d-cite key="gallego-2022-event-based-vision"></d-cite>.</p>
 
 <p>Three boundaries control the scope. First, the article distinguishes an algorithmic horizon
 from a hardware tick and from wall-clock latency. A small maximum horizon <em>T</em> is not a
