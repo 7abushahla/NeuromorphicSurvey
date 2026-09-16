@@ -297,9 +297,16 @@ def main() -> None:
     table = build_table()
     section_path = ROOT / "site/sec-01.html"
     section = section_path.read_text()
-    start = section.index('<div class="ptable-wrap')
-    end = end_of_div(section, start)
-    section_path.write_text(section[:start] + table + section[end:])
+    marker = "<!-- TABLE1 -->"
+    if marker in section:
+        if section.count(marker) != 1:
+            raise ValueError("Section 1 must contain TABLE1 placement marker exactly once")
+        replacement = section.replace(marker, table)
+    else:
+        start = section.index('<div class="ptable-wrap')
+        end = end_of_div(section, start)
+        replacement = section[:start] + table + section[end:]
+    section_path.write_text(replacement)
     print("37 verified surveys, 8 display columns, plus Ours")
 
 
