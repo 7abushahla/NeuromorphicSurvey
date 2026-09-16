@@ -16,14 +16,27 @@ def load_json(path: Path) -> object:
     return json.loads(path.read_text())
 
 
-def expect_error(errors: list[str], fragment: str) -> None:
+def expect_error(errors: list[str], fragment: str, label: str) -> None:
     if not any(fragment in error for error in errors):
-        raise AssertionError(f"expected {fragment!r} in validator errors: {errors}")
+        raise AssertionError(
+            f"expected {label} to report {fragment!r}; validator errors: {errors}"
+        )
 
 
 def expect_valid(errors: list[str], label: str) -> None:
     if errors:
         raise AssertionError(f"expected {label} to validate: {errors}")
+
+
+def record_by_id(records: list[object], record_id: str, label: str) -> dict[str, object]:
+    matches = [
+        record
+        for record in records
+        if isinstance(record, dict) and record.get("id") == record_id
+    ]
+    if len(matches) != 1:
+        raise AssertionError(f"expected exactly one {label} with id {record_id!r}")
+    return matches[0]
 
 
 def main() -> int:
@@ -39,30 +52,95 @@ def main() -> int:
     platform_validate = evidence_module["validate_platform_capabilities"]
     coverage_validate = runpy.run_path(ROOT / "tools/validate-survey-coverage.py")["validate"]
 
-    expect_valid(source_validate(schema, registry), "canonical source registry")
-    expect_valid(claim_validate(schema, registry, claims), "canonical claim registry")
-    expect_valid(platform_validate(schema, registry, platforms), "canonical platform registry")
-    expect_valid(coverage_validate(schema, registry, coverage), "canonical coverage registry")
+    checks = 0
+
+    def check_valid(errors: list[str], label: str) -> None:
+        nonlocal checks
+        expect_valid(errors, label)
+        checks += 1
+
+    def check_error(errors: list[str], fragment: str, label: str) -> None:
+        nonlocal checks
+        expect_error(errors, fragment, label)
+        checks += 1
+
+    check_valid(source_validate(schema, registry), "canonical source registry")
+    check_valid(claim_validate(schema, registry, claims), "canonical claim registry")
+    check_valid(platform_validate(schema, registry, platforms), "canonical platform registry")
+    check_valid(coverage_validate(schema, registry, coverage), "canonical coverage registry")
 
     bad_registry = copy.deepcopy(registry)
-    bad_registry["sources"][0]["source_type"] = []
-    expect_error(source_validate(schema, bad_registry), "invalid source_type")
+    record_by_id(
+        bad_registry["sources"], "pedersen-2024-nir", "source",
+    )["source_type"] = []
+    check_error(
+        source_validate(schema, bad_registry),
+        "invalid source_type",
+        "malformed source type",
+    )
+
+    missing_flag_claims = copy.deepcopy(claims)
+    del record_by_id(
+        missing_flag_claims["claims"], "claim-nir-reset-semantics", "claim",
+    )["reports_deployment_evidence"]
+    check_error(
+        claim_validate(schema, registry, missing_flag_claims),
+        "missing required field",
+        "claim missing reports_deployment_evidence",
+    )
+
+    non_boolean_flag_claims = copy.deepcopy(claims)
+    record_by_id(
+        non_boolean_flag_claims["claims"], "claim-nir-reset-semantics", "claim",
+    )["reports_deployment_evidence"] = "false"
+    check_error(
+        claim_validate(schema, registry, non_boolean_flag_claims),
+        "reports_deployment_evidence must be a boolean",
+        "claim with non-Boolean reports_deployment_evidence",
+    )
 
     deployment_claims = copy.deepcopy(claims)
-    deployment_claims["claims"][0]["reports_deployment_evidence"] = True
-    expect_error(
+    deployment_claim = record_by_id(
+        deployment_claims["claims"], "claim-nir-reset-semantics", "claim",
+    )
+    deployment_claim["reports_deployment_evidence"] = True
+    deployment_claim["measurement_boundary"] = "fixture measurement boundary"
+    check_error(
         claim_validate(schema, registry, deployment_claims),
         "requires an E1-E5 evidence_class",
-    )
-    non_deployment_claims = copy.deepcopy(claims)
-    non_deployment_claims["claims"][0]["evidence_class"] = "E2"
-    expect_error(
-        claim_validate(schema, registry, non_deployment_claims),
-        "non-deployment claims require a null evidence_class",
+        "deployment claim without an evidence class",
     )
 
-    official_registry = copy.deepcopy(registry)
-    official_registry["sources"][0]["source_type"] = "official_sdk_documentation"
+    boundaryless_claims = copy.deepcopy(claims)
+    boundaryless_claim = record_by_id(
+        boundaryless_claims["claims"], "claim-nir-reset-semantics", "claim",
+    )
+    boundaryless_claim["reports_deployment_evidence"] = True
+    boundaryless_claim["evidence_class"] = "E1"
+    check_error(
+        claim_validate(schema, registry, boundaryless_claims),
+        "requires a measurement_boundary",
+        "deployment claim without a measurement boundary",
+    )
+
+    non_deployment_claims = copy.deepcopy(claims)
+    record_by_id(
+        non_deployment_claims["claims"], "claim-nir-reset-semantics", "claim",
+    )["evidence_class"] = "E2"
+    check_error(
+        claim_validate(schema, registry, non_deployment_claims),
+        "non-deployment claims require a null evidence_class",
+        "non-deployment claim with a non-null evidence class",
+    )
+
+    nir_source = record_by_id(registry["sources"], "pedersen-2024-nir", "source")
+    official_registry = {
+        "schema_version": registry["schema_version"],
+        "sources": [copy.deepcopy(nir_source)],
+    }
+    record_by_id(
+        official_registry["sources"], "pedersen-2024-nir", "source",
+    )["source_type"] = "official_sdk_documentation"
     verified_platforms = copy.deepcopy(platforms)
     verified_platforms["records"] = [{
         "id": "capability-fixture",
@@ -78,39 +156,83 @@ def main() -> int:
         "verification_status": "verified",
         "reviewed_on": "2026-09-16",
     }]
-    expect_valid(
+    check_valid(
         platform_validate(schema, official_registry, verified_platforms),
         "verified official platform capability",
     )
-    non_official_registry = copy.deepcopy(official_registry)
-    non_official_registry["sources"][0]["source_type"] = "general_web"
-    expect_error(
-        platform_validate(schema, non_official_registry, verified_platforms),
-        "requires an official technical source",
+
+    unresolved_source_platforms = copy.deepcopy(verified_platforms)
+    unresolved_source_platforms["records"][0]["official_technical_source_id"] = "missing-source"
+    check_error(
+        platform_validate(schema, official_registry, unresolved_source_platforms),
+        "unresolved official_technical_source_id",
+        "verified capability with an unresolved official source",
     )
+
+    invalid_date_platforms = copy.deepcopy(verified_platforms)
+    invalid_date_platforms["records"][0]["reviewed_on"] = "2026-02-30"
+    check_error(
+        platform_validate(schema, official_registry, invalid_date_platforms),
+        "reviewed_on must be an ISO YYYY-MM-DD date",
+        "verified capability with an invalid review date",
+    )
+
     versionless_platforms = copy.deepcopy(verified_platforms)
     versionless_platforms["records"][0]["document_version"] = None
-    expect_error(
+    check_error(
         platform_validate(schema, official_registry, versionless_platforms),
         "requires a document_version or toolchain_version",
+        "verified capability without a document or toolchain version",
     )
+
     invalid_status_platforms = copy.deepcopy(verified_platforms)
     invalid_status_platforms["records"][0]["capability_status"] = []
-    expect_error(
+    check_error(
         platform_validate(schema, official_registry, invalid_status_platforms),
         "invalid capability_status",
+        "platform capability with an invalid capability status",
     )
+
+    for source_type in (
+        "peer_reviewed",
+        "marketing_material",
+        "general_web",
+        "secondary_material",
+    ):
+        non_official_registry = copy.deepcopy(official_registry)
+        record_by_id(
+            non_official_registry["sources"], "pedersen-2024-nir", "source",
+        )["source_type"] = source_type
+        check_error(
+            platform_validate(schema, non_official_registry, verified_platforms),
+            "requires an official technical source",
+            f"verified capability backed by {source_type}",
+        )
 
     for status in ("verified", "provisional", "partial", "not_retrieved"):
         candidate = copy.deepcopy(coverage)
-        candidate["surveys"][0]["full_text_status"] = status
-        expect_valid(coverage_validate(schema, registry, candidate), status)
+        record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )["full_text_status"] = status
+        check_valid(
+            coverage_validate(schema, registry, candidate),
+            f"survey full-text status {status!r}",
+        )
     for status in ("conflicted", "rejected", True, "unknown"):
         candidate = copy.deepcopy(coverage)
-        candidate["surveys"][0]["full_text_status"] = status
-        expect_error(coverage_validate(schema, registry, candidate), "invalid full_text_status")
+        record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )["full_text_status"] = status
+        check_error(
+            coverage_validate(schema, registry, candidate),
+            "invalid full_text_status",
+            f"survey full-text status {status!r}",
+        )
 
-    print("verify-schema-contracts: 19 contract checks passed")
+    expected_checks = 27
+    if checks != expected_checks:
+        raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
+    print(f"verify-schema-contracts: {checks} contract checks passed")
     return 0
 
 
