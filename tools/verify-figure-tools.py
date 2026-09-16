@@ -52,6 +52,24 @@ def figure_record(number=7, *, identifier="sample-static", status="implemented")
     }
 
 
+def figure_like_axis_fragment(number=7, *, unit_label=""):
+    label = f'<text x="50" y="99">{unit_label}</text>' if unit_label else ""
+    return f'''<figure class="pfig l-body" id="figure-{number}">
+  <svg viewBox="0 0 100 100" role="img" aria-label="A numerical trace">
+    <line x1="10" y1="80" x2="90" y2="80"/>
+    <line x1="10" y1="76" x2="10" y2="84"/>
+    <line x1="50" y1="76" x2="50" y2="84"/>
+    <line x1="90" y1="76" x2="90" y2="84"/>
+    <text x="10" y="94">0</text>
+    <text x="50" y="94">5</text>
+    <text x="90" y="94">10</text>
+    {label}
+  </svg>
+  <figcaption><b>Figure {number}:</b> A numerical trace with visible ticks.</figcaption>
+</figure>
+'''
+
+
 class FigureToolTests(unittest.TestCase):
     maxDiff = None
 
@@ -176,6 +194,94 @@ class FigureToolTests(unittest.TestCase):
                 result = self.run_tool("check-figures.py")
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_css_scope_requires_exact_non_escaping_figure_root(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        cases = {
+            "prefix collision": "#figure-70 .inside { color: red; }\n",
+            "adjacent sibling escape": "#figure-7 + .outside { color: red; }\n",
+            "negated ancestor": "body:not(#figure-7) .outside { color: red; }\n",
+        }
+        for name, css in cases.items():
+            with self.subTest(case=name):
+                self.write_figure(record, css=css)
+                result = self.run_tool("check-figures.py")
+                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("not scoped to #figure-7", result.stdout + result.stderr)
+
+    def test_bare_relative_urls_are_rejected_in_css_and_svg(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        cases = {
+            "css relative URL": (
+                valid_fragment(7),
+                "#figure-7 { background-image: url(texture.svg); }\n",
+            ),
+            "SVG presentation URL": (
+                valid_fragment(7).replace('<svg viewBox=', '<svg fill="url(texture.svg#paint)" viewBox='),
+                "#figure-7 { color: black; }\n",
+            ),
+            "SVG style URL": (
+                valid_fragment(7).replace('<svg viewBox=', '<svg style="filter:url(texture.svg#paint)" viewBox='),
+                "#figure-7 { color: black; }\n",
+            ),
+            "SVG external gradient href": (
+                valid_fragment(7).replace(
+                    "</defs>",
+                    '<linearGradient id="f7gradient" href="palette.svg#paint"></linearGradient></defs>',
+                ),
+                "#figure-7 { color: black; }\n",
+            ),
+        }
+        for name, (fragment, css) in cases.items():
+            with self.subTest(case=name):
+                self.write_figure(record, fragment=fragment, css=css)
+                result = self.run_tool("check-figures.py")
+                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("external asset", result.stdout + result.stderr)
+
+    def test_internal_section_link_is_allowed(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        fragment = valid_fragment(7).replace(
+            "</svg>",
+            '<a href="#section-03-neuron-and-synapse-dynamics"><text x="5" y="70">Section 3</text></a></svg>',
+        )
+        self.write_figure(record, fragment=fragment)
+
+        result = self.run_tool("check-figures.py")
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_visible_numeric_ticks_require_and_accept_visible_units(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        self.write_figure(record, fragment=figure_like_axis_fragment(7, unit_label="time (ms)"))
+        result = self.run_tool("check-figures.py")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+        self.write_figure(record, fragment=figure_like_axis_fragment(7))
+        result = self.run_tool("check-figures.py")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("visible numeric ticks", result.stdout + result.stderr)
+        self.assertIn("non-empty unit", result.stdout + result.stderr)
+
+    def test_categorical_axis_does_not_require_numerical_units(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        fragment = valid_fragment(7).replace(
+            'class="numerical-axis" data-axis="numerical" data-unit="ms"',
+            'class="axis"',
+        ).replace(
+            '<text x="5" y="98">time (ms)</text>',
+            '<text x="5" y="98">low</text><text x="50" y="98">high</text>',
+        )
+        self.write_figure(record, fragment=fragment)
+
+        result = self.run_tool("check-figures.py")
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_invalid_implemented_fragments_fail_with_specific_diagnostic(self):
         record = figure_record(7)
         base = valid_fragment(7)
@@ -225,6 +331,34 @@ class FigureToolTests(unittest.TestCase):
         result = self.run_tool("install-figures.py", "--check")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("implemented fragment does not exist", result.stdout + result.stderr)
+
+    def test_install_and_check_fail_atomically_when_implemented_figure_cannot_be_placed(self):
+        placeable = figure_record(2, identifier="placeable-static")
+        blocked = figure_record(7, identifier="blocked-static")
+        self.write_manifest([placeable, blocked])
+        self.write_figure(placeable)
+        self.write_figure(blocked)
+        (self.root / "site/sec-target.html").write_text(
+            '<section><figure id="figure-2">old 2</figure><p>No figure 7 target.</p></section>\n'
+        )
+        (self.root / "assets/figures.css").write_text("sentinel css\n")
+        watched = ("site/sec-target.html", "assets/figures.css")
+
+        for args in ((), ("--check",)):
+            with self.subTest(args=args):
+                before = self.snapshot(*watched)
+                result = self.run_tool("install-figures.py", *args)
+                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertEqual(self.snapshot(*watched), before)
+                self.assertIn("cannot place", result.stdout + result.stderr)
+                self.assertIn("section-target", result.stdout + result.stderr)
+                if not args:
+                    self.assertNotIn(": replaced", result.stdout)
+
+        (self.root / "site/sec-target.html").unlink()
+        result = self.run_tool("install-figures.py", "--check")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("destination fragment unavailable", result.stdout + result.stderr)
 
 
 if __name__ == "__main__":

@@ -51,6 +51,46 @@ def load_records(errors):
     return records
 
 
+def selector_is_scoped(selector, scope):
+    """Return whether a selector is rooted in, and cannot escape, ``scope``."""
+    if not selector.startswith(scope):
+        return False
+    boundary = selector[len(scope):len(scope) + 1]
+    if boundary and boundary not in " \t\r\n>.:#[":
+        return False
+    depth = 0
+    quote = None
+    escaped = False
+    for character in selector[len(scope):]:
+        if escaped:
+            escaped = False
+            continue
+        if character == "\\":
+            escaped = True
+            continue
+        if quote:
+            if character == quote:
+                quote = None
+            continue
+        if character in "'\"":
+            quote = character
+        elif character in "([":
+            depth += 1
+        elif character in ")]" and depth:
+            depth -= 1
+        elif depth == 0 and character in "+~":
+            return False
+    return True
+
+
+def has_external_url(text):
+    """Treat every CSS/SVG URL except a local ``#id`` reference as external."""
+    for _quote, target in re.findall(r"url\(\s*(['\"]?)(.*?)\1\s*\)", text, re.I | re.S):
+        if not re.fullmatch(r"#[A-Za-z_][\w:.-]*", target.strip()):
+            return True
+    return False
+
+
 def check_css(record, css_text, errors):
     number = record["display_number"]
     label = f"{record['id']} (Figure {number})"
@@ -58,7 +98,7 @@ def check_css(record, css_text, errors):
     clean = re.sub(r"/\*.*?\*/", "", css_text, flags=re.S)
     if clean.count("{") != clean.count("}"):
         errors.append(f"{label}: css has unbalanced braces")
-    if re.search(r"@import\b|url\(\s*['\"]?(?:https?:|/|\.)", clean, re.I):
+    if re.search(r"@import\b", clean, re.I) or has_external_url(clean):
         errors.append(f"{label}: css references an external asset")
     for prelude in re.findall(r"([^{}]+)\{", clean):
         prelude = prelude.strip()
@@ -68,7 +108,7 @@ def check_css(record, css_text, errors):
             selector = selector.strip()
             if not selector or selector in {"from", "to"} or re.fullmatch(r"\d+(?:\.\d+)?%", selector):
                 continue
-            if scope not in selector:
+            if not selector_is_scoped(selector, scope):
                 errors.append(f"{label}: css selector {selector!r} is not scoped to {scope}")
 
 
@@ -96,29 +136,118 @@ def check_accessibility(svg, own_ids, label, errors):
     )
 
 
+def numeric_value(text):
+    normalized = text.strip().replace("−", "-")
+    if re.fullmatch(r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)", normalized):
+        return float(normalized)
+    return None
+
+
+def coordinate(element, name):
+    value = element.get(name)
+    if value and re.fullmatch(r"-?(?:\d+(?:\.\d*)?|\.\d+)", value):
+        return float(value)
+    return None
+
+
+def has_visible_unit_label(svg):
+    for element in svg.iter():
+        if local_name(element.tag) != "text":
+            continue
+        text = " ".join("".join(element.itertext()).split())
+        if re.search(
+            r"\(\s*(?:%|[munp]?[sVAWJ]|[kMGT]?Hz)\s*\)"
+            r"|%|\b(?:timesteps?|steps?|cycles?|events?|spikes?|bits?|bytes?|"
+            r"dimensionless|unitless|normalized)\b",
+            text,
+            re.I,
+        ):
+            return True
+    return False
+
+
+def has_visible_numeric_axis(svg):
+    points = []
+    lines = []
+    for element in svg.iter():
+        name = local_name(element.tag)
+        if name == "text":
+            value = numeric_value("".join(element.itertext()))
+            x = coordinate(element, "x")
+            y = coordinate(element, "y")
+            if value is not None and x is not None and y is not None:
+                points.append((x, y, value))
+        elif name == "line":
+            x1 = coordinate(element, "x1")
+            x2 = coordinate(element, "x2")
+            y1 = coordinate(element, "y1")
+            y2 = coordinate(element, "y2")
+            if None not in (x1, x2, y1, y2):
+                lines.append((x1, y1, x2, y2))
+    try:
+        _, _, width, height = [float(value) for value in svg.get("viewBox", "").split()]
+    except ValueError:
+        width = height = 100.0
+    x_tolerance = max(20.0, width * 0.05)
+    y_tolerance = max(20.0, height * 0.05)
+
+    horizontal_groups = defaultdict(list)
+    vertical_groups = defaultdict(list)
+    for point in points:
+        horizontal_groups[round(point[1], 1)].append(point)
+        vertical_groups[round(point[0], 1)].append(point)
+
+    for group in horizontal_groups.values():
+        xs = [point[0] for point in group]
+        values = {point[2] for point in group}
+        if len(values) < 2 or max(xs) - min(xs) <= 0:
+            continue
+        label_y = group[0][1]
+        for x1, y1, x2, y2 in lines:
+            if abs(y1 - y2) > 0.1 or not 0 < label_y - y1 <= y_tolerance:
+                continue
+            if min(x1, x2) <= min(xs) + x_tolerance and max(x1, x2) >= max(xs) - x_tolerance:
+                return True
+
+    for group in vertical_groups.values():
+        ys = [point[1] for point in group]
+        values = {point[2] for point in group}
+        if len(values) < 2 or max(ys) - min(ys) <= 0:
+            continue
+        label_x = group[0][0]
+        for x1, y1, x2, y2 in lines:
+            if abs(x1 - x2) > 0.1 or not 0 < x1 - label_x <= x_tolerance:
+                continue
+            if min(y1, y2) <= min(ys) + y_tolerance and max(y1, y2) >= max(ys) - y_tolerance:
+                return True
+    return False
+
+
 def check_axis_units(svg, label, errors):
+    visible_unit = has_visible_unit_label(svg)
+    metadata_units = []
+    explicit_axes = []
     for element in svg.iter():
         classes = set((element.get("class") or "").split())
         axis_kind = (element.get("data-axis") or "").strip().lower()
-        explicit = axis_kind in {"numeric", "numerical"} or bool(
-            classes & {"numeric-axis", "numerical-axis"}
+        if axis_kind in {"numeric", "numerical"} or classes & {
+            "numeric-axis",
+            "numerical-axis",
+        }:
+            explicit_axes.append(element)
+        for attribute in ("data-unit", "data-axis-unit"):
+            unit = element.get(attribute)
+            if unit is not None:
+                if not unit.strip():
+                    errors.append(f"{label}: numerical axis metadata must declare a non-empty unit")
+                else:
+                    metadata_units.append(unit.strip())
+
+    numerical_axis = bool(explicit_axes) or has_visible_numeric_axis(svg)
+    if numerical_axis and not visible_unit and not metadata_units:
+        errors.append(
+            f"{label}: numerical axis with visible numeric ticks must show a non-empty unit label"
         )
-        numeric_labels = [
-            "".join(child.itertext()).strip()
-            for child in element.iter()
-            if local_name(child.tag) == "text"
-            and re.fullmatch(r"[+−-]?(?:\d+(?:\.\d*)?|\.\d+)", "".join(child.itertext()).strip())
-        ]
-        inferred = "axis" in classes and len(set(numeric_labels)) >= 2
-        if not explicit and not inferred:
-            continue
-        unit = element.get("data-unit")
-        if unit is None:
-            unit = element.get("data-axis-unit")
-        text = " ".join(part.strip() for part in element.itertext() if part.strip())
-        textual_unit = bool(re.search(r"\([^()\d\s][^()]*\)|\b(?:dimensionless|unitless)\b", text, re.I))
-        if (unit is None or not unit.strip()) and (explicit or not textual_unit):
-            errors.append(f"{label}: numerical axis must declare a non-empty unit")
 
 
 def check_geometry(svg, label, errors):
@@ -200,7 +329,7 @@ def check_fragment(record, source, errors, global_ids):
         if re.search(rf"<{tag_name}\b", source, re.I):
             errors.append(f"{label}: fragment references an external asset or script")
             break
-    if re.search(r"url\(\s*['\"]?(?:https?:|/|\.)", source, re.I):
+    if has_external_url(source) or re.search(r"@import\b", source, re.I):
         errors.append(f"{label}: fragment references an external asset or script")
     if re.search(r"<use\b[^>]*(?:href|xlink:href)\s*=\s*['\"](?!#)", source, re.I):
         errors.append(f"{label}: fragment references an external asset or script")
@@ -240,9 +369,23 @@ def check_fragment(record, source, errors, global_ids):
     for reference in sorted(references):
         if reference not in own_ids:
             errors.append(f"{label}: url(#{reference}) has no definition in this figure")
-    for reference in re.findall(r"(?:href|xlink:href)\s*=\s*['\"]#([^'\"]+)['\"]", svg_source):
-        if reference not in own_ids:
-            errors.append(f"{label}: local href #{reference} has no definition in this figure")
+    for element in svg.iter():
+        if local_name(element.tag) == "a":
+            continue
+        href = next(
+            (
+                value
+                for attribute, value in element.attrib.items()
+                if local_name(attribute) == "href"
+            ),
+            None,
+        )
+        if href is None:
+            continue
+        if not href.startswith("#"):
+            errors.append(f"{label}: fragment references an external asset via href {href!r}")
+        elif href[1:] not in own_ids:
+            errors.append(f"{label}: local href {href} has no definition in this figure")
 
     check_accessibility(svg, own_ids, label, errors)
     check_axis_units(svg, label, errors)

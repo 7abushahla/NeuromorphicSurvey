@@ -108,6 +108,8 @@ def main():
 
     documents = {}
     changed = set()
+    placement_errors = []
+    placements = []
     for record in implemented:
         semantic_id = record["id"]
         number = record["display_number"]
@@ -119,26 +121,32 @@ def main():
             )
         path = ROOT / relative
         if not path.is_file():
-            print(
+            message = (
                 f"implemented {semantic_id} (Figure {number}) -> {destination} ({relative}): "
                 "destination fragment unavailable"
             )
+            print(message)
+            placement_errors.append(message)
             continue
         document = documents.setdefault(path, path.read_text())
         replacement = replace_figure(document, f"figure-{number}", (ROOT / record["fragment"]).read_text())
         if replacement is None:
-            print(
+            message = (
                 f"implemented {semantic_id} (Figure {number}) -> {destination} ({relative}): "
                 f"target figure-{number} unavailable"
             )
+            print(message)
+            placement_errors.append(message)
             continue
         documents[path] = replacement
         if replacement != document:
             changed.add(path)
-        action = "would replace" if args.check else "replaced"
-        print(
-            f"implemented {semantic_id} (Figure {number}) -> {destination} ({relative}): {action}"
+        placement = (
+            f"implemented {semantic_id} (Figure {number}) -> {destination} ({relative})"
         )
+        placements.append(placement)
+        if args.check:
+            print(f"{placement}: would replace")
 
     for record in planned:
         missing = [key for key in ("fragment", "css") if not (ROOT / record[key]).is_file()]
@@ -146,15 +154,26 @@ def main():
         print(f"planned {record['id']} (Figure {record['display_number']}): {detail}")
 
     css = generated_css(implemented)
-    css_action = "would generate" if args.check else "generated"
-    print(f"css: {css_action} {len(implemented)} implemented static figure(s) -> {CSS_OUTPUT}")
-
+    if placement_errors:
+        print(
+            f"installation blocked with {len(placement_errors)} placement problem(s):",
+            file=sys.stderr,
+        )
+        for error in placement_errors:
+            print(f"  - cannot place {error}", file=sys.stderr)
+        raise SystemExit(1)
     if args.check:
+        print(
+            f"css: would generate {len(implemented)} implemented static figure(s) -> {CSS_OUTPUT}"
+        )
         return
     for path in sorted(changed):
         path.write_text(documents[path])
     if not CSS_OUTPUT.exists() or CSS_OUTPUT.read_text() != css:
         CSS_OUTPUT.write_text(css)
+    for placement in placements:
+        print(f"{placement}: replaced")
+    print(f"css: generated {len(implemented)} implemented static figure(s) -> {CSS_OUTPUT}")
 
 
 if __name__ == "__main__":
