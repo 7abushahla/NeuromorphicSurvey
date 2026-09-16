@@ -128,16 +128,17 @@
       "canonical_url": "https://doi.org/10.1109/access.2026.3685666",
       "url": "https://doi.org/10.1109/access.2026.3685666",
       "source_type": "peer_reviewed",
-      "retrieval_status": "partial",
+      "retrieval_status": "verified",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "Publisher abstract",
-        "Prior vault identifier for IEEE document 11488853"
+        "Sections IV-VI",
+        "Sections XI and XIII",
+        "Tables 1, 2, 7, 9, and 10"
       ],
       "inspected_urls": [
         "https://doi.org/10.1109/access.2026.3685666"
       ],
-      "notes": "Identity verified. No full text retrieved, so unsupported negative judgments remain unassessed."
+      "notes": "Complete 61-page version of record inspected from the author-supplied local PDF."
     },
     {
       "source_id": "prior-s35-caviglia-2026",
@@ -172,19 +173,19 @@
       "canonical_url": "https://arxiv.org/abs/2609.00026",
       "url": "https://arxiv.org/abs/2609.00026",
       "source_type": "preprint",
-      "retrieval_status": "not_retrieved",
+      "retrieval_status": "verified",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "arXiv abstract",
-        "Submission history dated 2026-08-27",
-        "Retrieval failures for the HTML and PDF endpoints"
+        "Results, pages 3-8",
+        "Methods, pages 10-14",
+        "Figures 4 and 5"
       ],
       "inspected_urls": [
         "https://arxiv.org/abs/2609.00026",
         "https://arxiv.org/html/2609.00026",
         "https://arxiv.org/pdf/2609.00026"
       ],
-      "notes": "Submitted 2026-08-27. HTML and PDF retrieval failed, so no abstract claim is promoted above mentioned."
+      "notes": "Complete 24-page main article inspected from the author-supplied local PDF. The supplementary text and Figs. S1-S10 were not included."
     },
     {
       "source_id": "prior-s37-farsa-2026",
@@ -621,79 +622,79 @@
     {
       "id": "S34-luu-2026-foundation",
       "source_id": "prior-s34-luu-2026",
-      "full_text_status": "partial",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://doi.org/10.1109/access.2026.3685666"
       ],
       "coverage": {
         "A": {
-          "score": "mentioned",
-          "basis": "Abstract states neuron models are summarized.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Develops a taxonomy from biophysical models through IF-family, phenomenological, dendritic, astrocyte-modulated, and synaptic models.",
+          "locator": "Section IV, pages 78499-78505, and Table 1"
         },
         "B": {
-          "score": "mentioned",
-          "basis": "Abstract identifies temporal coding.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Compares direct, rate, temporal, TTFS, phase, bit-plane, burst, and event-sensor encodings with equations and limitations.",
+          "locator": "Section VI, pages 78509-78511"
         },
         "C": {
-          "score": "mentioned",
-          "basis": "Abstract identifies training approaches.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Covers temporal backpropagation, surrogate gradients, online alternatives, STDP variants, supervised local learning, reward modulation, and hybrid training.",
+          "locator": "Section V, pages 78505-78509, and Table 2"
         },
         "D": {
-          "score": "mentioned",
-          "basis": "Abstract identifies conversion approaches.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Explains threshold balancing, batch-normalization absorption, pooling and residual compatibility, conversion latency, low-timestep techniques, and transformer conversion.",
+          "locator": "Section V-C, pages 78508-78509"
         },
         "E": {
-          "score": "mentioned",
-          "basis": "Abstract identifies implementation frameworks.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Compares 20 open-source SNN frameworks by training paradigm, interface, purpose, maintenance, and documentation.",
+          "locator": "Section XIII and Tables 9-10, pages 78545-78546"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "DOI/publisher abstract only; full article unavailable."
+          "score": "partial",
+          "basis": "Discusses depth-wise and spatial mapping, workload balancing, placement, and hardware constraints without comparing concrete compiler toolchains.",
+          "locator": "Section XI-A, pages 78534-78535"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "DOI/publisher abstract only; full article unavailable."
+          "score": "none",
+          "basis": "No interchange-format treatment was found; NIR is cited only as support for graph-structured SNN foundations.",
+          "locator": "Page 78522 and reference [270]"
         },
         "H": {
-          "score": "mentioned",
-          "basis": "Deployment motivation is stated.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Surveys digital, analog, mixed-signal, memristive, photonic, and quantum-inspired substrates and compares representative platforms.",
+          "locator": "Section XI and Table 7, pages 78534-78539"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "DOI/publisher abstract only; full article unavailable."
+          "score": "partial",
+          "basis": "Discusses discretization, parameter approximations, quantization, mapping, payload, reset, memory, and learning-state costs without a cross-boundary semantic taxonomy.",
+          "locator": "Sections XI-A through XI-F, pages 78534-78538"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "DOI/publisher abstract only; full article unavailable."
+          "score": "none",
+          "basis": "No classification separates physical measurement, modeled hardware, operation-count proxies, and software simulation.",
+          "locator": "Section XI-G and Table 7, pages 78538-78539"
         },
         "K": {
-          "score": "mentioned",
-          "basis": "Abstract identifies applications.",
-          "locator": "Publisher abstract"
+          "score": "full",
+          "basis": "Covers computer vision, graphs, language, reinforcement learning, sensing, hybrid systems, hardware, and emerging models with reported results.",
+          "locator": "Sections VII-XII, pages 78511-78547"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "DOI/publisher abstract only; full article unavailable."
+          "score": "none",
+          "basis": "No worked route follows one trained network through export, compilation, mapping, physical execution, and measurement on a named chip.",
+          "locator": "Sections XI and XIII"
         }
       },
-      "strongest_contribution": "Presents a broad foundation-and-progress overview according to the publisher abstract.",
-      "deployment_depth": "Deployment depth remains unassessed because full text was only partially retrieved.",
+      "strongest_contribution": "Provides unusually broad field-entry coverage from neuron dynamics through applications, hardware, and software frameworks.",
+      "deployment_depth": "Explains hardware-aware design and mapping conceptually, but does not trace an exercised model-to-chip route.",
       "omissions": [
-        "Full-text retrieval is required before negative coverage judgments are defensible."
+        "No literature-wide evidence taxonomy or end-to-end physical deployment case is provided."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-d"
       }
@@ -783,7 +784,7 @@
     {
       "id": "S36-du-2026-edge-modalities",
       "source_id": "prior-s36-du-2026",
-      "full_text_status": "not_retrieved",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://arxiv.org/abs/2609.00026",
         "https://arxiv.org/html/2609.00026",
@@ -791,73 +792,73 @@
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Implements and compares 13 neuron models while controlling topology and training, including differences in leakage, threshold, reset, and adaptation.",
+          "locator": "Results, pages 4-5, and Methods, page 11"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Compares direct, rate, TTFS, phase, burst, and temporal-switch encodings across modalities and identifies direct input as non-spike-compatible.",
+          "locator": "Results, page 4, and Methods, pages 10-11"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Uses surrogate-gradient backpropagation and supports 13 surrogate formulations without surveying the broader direct-training landscape.",
+          "locator": "Methods, page 11"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No ANN-to-SNN conversion method or conversion-error analysis is presented.",
+          "locator": "Results and Methods, pages 3-14"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Specifies Soul-NeuSim and compares it with selected SNN software and simulators without systematically reviewing the wider framework landscape.",
+          "locator": "Results, pages 7-8, and Figure 5, page 23"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Provides synapse extraction, operator fusion, capacity-constrained partitioning, logical-core clustering, mesh placement, and simulator execution.",
+          "locator": "Methods, pages 13-14, and Figure 5, page 23"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No hardware-neutral SNN interchange format or NIR-like semantic contract is described.",
+          "locator": "Methods, page 12"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Evaluates seven named physical edge devices and models Loihi, Darwin3, TrueNorth, and SpiNNaker2.",
+          "locator": "Results, pages 6-7, Methods, pages 12-14, and Figure 4, page 22"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Exposes representation and execution boundaries involving spike compatibility, backend support, temporal state, recurrent latency, memory, and hardware dependence.",
+          "locator": "Results, pages 3-8, and Methods, pages 10-14"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Separates physical device profiling from cycle-level neuromorphic simulation and defines system metrics, but does not classify evidence across the literature.",
+          "locator": "Results, pages 6-7, Methods, pages 11-14, and Figure 4, page 22"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Reports repeated, matched experiments across vision, acoustic, motion, wireless, and neuromorphic event sensing.",
+          "locator": "Results, pages 3-8, Table 1, page 20, and Methods, page 10"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Routes trained models through NCNN to seven physical edge devices and through a complete NeuSim mapper, while named neuromorphic chips remain simulated.",
+          "locator": "Methods, pages 12-14"
         }
       },
-      "strongest_contribution": "Proposes a cross-modal edge-device benchmark according to the arXiv abstract.",
-      "deployment_depth": "Deployment depth is unassessed because the body and supplement were not retrieved.",
+      "strongest_contribution": "Tests when SNNs benefit edge sensing across modalities, model choices, physical devices, and modeled neuromorphic platforms.",
+      "deployment_depth": "Measures seven conventional edge devices and describes a complete NeuSim mapping route, while named neuromorphic chips remain simulated.",
       "omissions": [
-        "No axis-level absence claim is made from abstract-only access."
+        "The supplied PDF omits the supplement containing detailed device settings and additional metric procedures."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-d"
       }

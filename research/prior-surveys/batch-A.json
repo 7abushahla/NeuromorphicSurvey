@@ -150,17 +150,18 @@
       "doi": "10.1038/s41586-019-1677-2",
       "canonical_url": "https://doi.org/10.1038/s41586-019-1677-2",
       "source_type": "peer_reviewed_review",
-      "retrieval_status": "partial",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "Publisher abstract",
-        "Figs. 3-5 captions"
+        "Nature pp. 608-612, SNN models and learning",
+        "Nature pp. 612-615, hardware outlook and algorithm-hardware codesign",
+        "Figs. 3-6"
       ],
       "inspected_urls": [
         "https://www.nature.com/articles/s41586-019-1677-2",
         "https://doi.org/10.1038/s41586-019-1677-2"
       ],
-      "notes": "Publisher body text was inaccessible through Exa."
+      "notes": "Complete publisher PDF verified at /Users/hamza/Downloads/papers-review/s41586-019-1677-2.pdf."
     },
     {
       "id": "schuman-2017-hardware-survey",
@@ -192,19 +193,19 @@
       "doi": "10.1038/s43588-021-00184-y",
       "canonical_url": "https://doi.org/10.1038/s43588-021-00184-y",
       "source_type": "peer_reviewed_review_perspective",
-      "retrieval_status": "partial",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "OSTI abstract",
-        "Neuromorphic Algorithms and Applications",
-        "Fig. 3 discussion"
+        "Nature Computational Science pp. 12-14, Neuromorphic algorithms and applications",
+        "Nature Computational Science pp. 14-16, Closing the gap between expectations and reality",
+        "Box 1 and Figs. 2-3"
       ],
       "inspected_urls": [
         "https://www.osti.gov/biblio/1881146",
         "https://www.researchgate.net/publication/358255092_Opportunities_for_neuromorphic_computing_algorithms_and_applications",
         "https://doi.org/10.1038/s43588-021-00184-y"
       ],
-      "notes": "Only institutional record was accessible through Exa."
+      "notes": "Complete publisher PDF verified at /Users/hamza/Downloads/papers-review/s43588-021-00184-y.pdf."
     },
     {
       "id": "eshraghian-2023-training-snns",
@@ -727,7 +728,7 @@
     {
       "id": "S07-roy-2019-spike-machine-intelligence",
       "source_id": "roy-2019-spike-machine-intelligence",
-      "full_text_status": "partial",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://www.nature.com/articles/s41586-019-1677-2",
         "https://doi.org/10.1038/s41586-019-1677-2"
@@ -735,72 +736,72 @@
       "coverage": {
         "A": {
           "score": "partial",
-          "basis": "SNN computational-model figure is accessible.",
-          "locator": "Publisher Fig. 3 caption"
+          "basis": "LIF dynamics, Hodgkin-Huxley, refractory behavior, and STDP are explained, but neuron and synapse models are not surveyed systematically.",
+          "locator": "Nature pp. 608-610; Fig. 3"
         },
         "B": {
-          "score": "mentioned",
-          "basis": "Abstract identifies spike-based encoding.",
-          "locator": "Publisher abstract"
+          "score": "partial",
+          "basis": "Temporal processing, rate coding, rank-order coding, event sensors, and address-event communication are explained; decoding choices and a broader code taxonomy are not developed.",
+          "locator": "Nature pp. 608-610 and 613; Figs. 3d and 5b"
         },
         "C": {
-          "score": "partial",
-          "basis": "Global and local learning figure is accessible.",
-          "locator": "Publisher Fig. 4 caption"
+          "score": "full",
+          "basis": "The learning section distinguishes conversion, supervised spike-based backpropagation, local STDP, hybrid local-global learning, and reinforcement-learning directions, including their principal limitations.",
+          "locator": "Nature pp. 610-612; Fig. 4"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "The body text is inaccessible; bibliography-only conversion references cannot establish coverage.",
-          "locator": "Publisher references page and retrieval limitation documented in S07 note, Identity and retrieval"
+          "score": "partial",
+          "basis": "A dedicated subsection explains weight rescaling and normalization, ANN-SNN functional mismatches, firing-rate calibration, accuracy loss, and the latency cost of long inference windows.",
+          "locator": "Nature p. 610, Conversion-based approaches"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "mentioned",
+          "basis": "TensorFlow is named for ANN training, while PyTorch and Caffe appear in the historical timeline; SNN framework capabilities are not compared.",
+          "locator": "Nature pp. 609-610; Fig. 2"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "none",
+          "basis": "No compiler or hardware-mapping toolchain is described.",
+          "locator": "Full-text review, Nature pp. 607-615"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "none",
+          "basis": "No model interchange representation is described; address-event representation is treated as spike communication, not model interchange.",
+          "locator": "Full-text review, especially Nature p. 613 and Fig. 5b"
         },
         "H": {
-          "score": "partial",
-          "basis": "Hardware implementations and chips are accessible scope.",
-          "locator": "Publisher abstract; Fig. 5 caption"
+          "score": "full",
+          "basis": "The hardware half compares GPU execution, Neurogrid, TrueNorth, Loihi, address-event routing, networks-on-chip, in-memory computing, and several nonvolatile device families.",
+          "locator": "Nature pp. 612-615; Figs. 5-6"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "partial",
+          "basis": "The article identifies failures across the ANN-to-SNN and algorithm-to-device boundaries, but does not provide a software-edge or cross-platform semantic taxonomy.",
+          "locator": "Nature p. 610 and pp. 614-615, Conversion-based approaches and Algorithm-hardware codesign"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "none",
+          "basis": "The article calls for better datasets and metrics but does not distinguish physical measurement, simulation, and analytical or operation-count estimates when assessing claims.",
+          "locator": "Nature p. 609; full-text review"
         },
         "K": {
-          "score": "mentioned",
-          "basis": "Machine-intelligence applications are framed without result catalog.",
-          "locator": "Publisher abstract"
+          "score": "partial",
+          "basis": "Vision, robotics, recognition, sequential processing, and control examples are connected to reported accuracy or efficiency results, but there is no structured catalog of measured deployments.",
+          "locator": "Nature pp. 609 and 611-613"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because the substantive article body was inaccessible.",
-          "locator": "S07 note, Identity and retrieval"
+          "score": "none",
+          "basis": "Algorithms and hardware are connected conceptually, but no case study traces a trained network through conversion, software, mapping, physical execution, and measurement.",
+          "locator": "Full-text review, Nature pp. 607-615"
         }
       },
-      "strongest_contribution": "Algorithm-hardware co-design framing.",
-      "deployment_depth": "Not verifiable from accessed body text.",
+      "strongest_contribution": "Connects SNN learning requirements to hardware mechanisms, limitations, and cross-layer co-design.",
+      "deployment_depth": "Substantial hardware treatment with named chips and application evidence, but no reproducible software-to-silicon route.",
       "omissions": [
-        "Full publisher body inaccessible."
+        "No compiler, interchange, claim-level evidence taxonomy, or end-to-end deployment trace."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-a"
       }
@@ -889,7 +890,7 @@
     {
       "id": "S09-schuman-2022-opportunities",
       "source_id": "schuman-2022-opportunities",
-      "full_text_status": "partial",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://www.osti.gov/biblio/1881146",
         "https://www.researchgate.net/publication/358255092_Opportunities_for_neuromorphic_computing_algorithms_and_applications",
@@ -898,72 +899,72 @@
       "coverage": {
         "A": {
           "score": "partial",
-          "basis": "Spiking inputs, neurons, and synapses are described.",
-          "locator": "OSTI introductory text"
+          "basis": "Box 1 explains integrate-and-fire through Hodgkin-Huxley models, leakage, thresholds, delays, synaptic weights, and plasticity without a systematic model comparison.",
+          "locator": "Nature Computational Science p. 12, Box 1"
         },
         "B": {
           "score": "partial",
-          "basis": "Spike time, magnitude, and shape are information carriers.",
-          "locator": "OSTI introductory text"
+          "basis": "Spike time, magnitude, and shape are introduced as information carriers; rate, latency, and population encoding are later identified, but decoding semantics are not treated.",
+          "locator": "Nature Computational Science pp. 10 and 14"
         },
         "C": {
-          "score": "partial",
-          "basis": "Algorithms and learning are stated review domain.",
-          "locator": "OSTI abstract; Neuromorphic Algorithms and Applications"
+          "score": "full",
+          "basis": "The article organizes and explains five major learning approaches, including surrogate-gradient methods, reservoir computing, evolutionary optimization, STDP, and direct temporal learning.",
+          "locator": "Nature Computational Science pp. 12-14; Fig. 2"
         },
         "D": {
-          "score": "mentioned",
-          "basis": "ANN/SNN relation is contextual only.",
-          "locator": "OSTI introductory text"
+          "score": "partial",
+          "basis": "The pretrained-DNN mapping subsection covers normalization, pooling substitution, constrained ANN training, few-spike neurons, accuracy loss, latency reduction, and hardware precision or variation.",
+          "locator": "Nature Computational Science pp. 12-13, Mapping a pre-trained deep neural network"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "NEST, Brian, and Nengo are compared by intended use, backend reach, accessibility, and scaling limitations.",
+          "locator": "Nature Computational Science p. 15, Widening usability and access to hardware and simulators"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "The article discusses missing programming abstractions, host-side deployment dependence, and mapping burden, but does not describe a compiler or hardware mapper.",
+          "locator": "Nature Computational Science pp. 15-16, Enabling more diverse computing environments and Defining programming abstractions"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No model interchange representation is described.",
+          "locator": "Full-text review, Nature Computational Science pp. 10-19"
         },
         "H": {
           "score": "partial",
-          "basis": "Neuromorphic processors and settings are discussed prospectively.",
-          "locator": "OSTI Neuromorphic Algorithms and Applications"
+          "basis": "SpiNNaker, BrainScaleS, ODIN, Tianjic, TrueNorth, Loihi, DYNAPs, Neurogrid, and IFAT are situated by purpose and implementation, but hardware is supporting context.",
+          "locator": "Nature Computational Science p. 11"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "The paper identifies loss at ANN-to-SNN and SNN-to-hardware boundaries, device effects, simulator specialization, host overhead, and heterogeneous-integration problems without a platform-semantic taxonomy.",
+          "locator": "Nature Computational Science pp. 13 and 15"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "A dedicated subsection argues that benchmarks and metrics are inadequate, but it does not classify claims as silicon measurement, simulation, or analytical estimate.",
+          "locator": "Nature Computational Science p. 15, Defining benchmarks and metrics"
         },
         "K": {
           "score": "partial",
-          "basis": "Applications are enumerated without a result taxonomy.",
-          "locator": "OSTI Neuromorphic Algorithms and Applications"
+          "basis": "The review relates machine-learning, control, graph, random-walk, optimization, and constraint workloads to reported accuracy, energy, or time-to-solution results without normalizing measurements.",
+          "locator": "Nature Computational Science pp. 13-14"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Several tasks are tied to Loihi, TrueNorth, or SpiNNaker, but the article supplies citations rather than reproducible model-to-toolchain-to-chip traces.",
+          "locator": "Nature Computational Science pp. 13-14"
         }
       },
-      "strongest_contribution": "Application-informed full-stack co-design perspective.",
-      "deployment_depth": "Conceptual and prospective.",
+      "strongest_contribution": "Connects a broad algorithm taxonomy to practical deployment barriers and full-stack co-design opportunities.",
+      "deployment_depth": "Names task-to-chip demonstrations and host-boundary costs, but does not specify reproducible model transformations or toolchain routes.",
       "omissions": [
-        "Complete manuscript was not retrieved."
+        "No compiler or interchange survey, evidence taxonomy, or reproducible end-to-end route."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-a"
       }

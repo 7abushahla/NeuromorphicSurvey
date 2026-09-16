@@ -76,9 +76,9 @@ D_SYNTHESIS = {
         ["The review deliberately narrows its treatment of codes, platforms, and applications."],
     ),
     "S34-luu-2026-foundation": (
-        "Presents a broad foundation-and-progress overview according to the publisher abstract.",
-        "Deployment depth remains unassessed because full text was only partially retrieved.",
-        ["Full-text retrieval is required before negative coverage judgments are defensible."],
+        "Provides unusually broad field-entry coverage from neuron dynamics through applications, hardware, and software frameworks.",
+        "Explains hardware-aware design and mapping conceptually, but does not trace an exercised model-to-chip route.",
+        ["No literature-wide evidence taxonomy or end-to-end physical deployment case is provided."],
     ),
     "S35-caviglia-2026-neurotrain": (
         "Pairs a local-learning taxonomy with an open snnTorch benchmarking framework.",
@@ -86,9 +86,9 @@ D_SYNTHESIS = {
         ["Compiler, interchange, and cross-platform execution semantics remain outside scope."],
     ),
     "S36-du-2026-edge-modalities": (
-        "Proposes a cross-modal edge-device benchmark according to the arXiv abstract.",
-        "Deployment depth is unassessed because the body and supplement were not retrieved.",
-        ["No axis-level absence claim is made from abstract-only access."],
+        "Tests when SNNs benefit edge sensing across modalities, model choices, physical devices, and modeled neuromorphic platforms.",
+        "Measures seven conventional edge devices and describes a complete NeuSim mapping route, while named neuromorphic chips remain simulated.",
+        ["The supplied PDF omits the supplement containing detailed device settings and additional metric procedures."],
     ),
     "S37-farsa-2026-gpu-riscv": (
         "Provides a GPU and RISC-V accelerator taxonomy and identifies incompatible reporting practices.",
@@ -295,10 +295,6 @@ def main() -> int:
     if sorted(survey_numbers) != list(range(1, 38)):
         raise ValueError(f"expected S01-S37 exactly, found {sorted(survey_numbers)}")
 
-    existing = {record["id"]: record for record in registry["sources"]}
-    existing.update(candidate_sources)
-    registry["sources"] = [existing[key] for key in sorted(existing)]
-
     coverage_document = {
         "schema_version": 1,
         "surveys": sorted(all_surveys, key=survey_number),
@@ -309,10 +305,9 @@ def main() -> int:
             f"{len(candidate_sources)} sources"
         )
         return 0
-    write_json(source_registry_path, registry)
     write_json(ROOT / "data/prior-survey-coverage.json", coverage_document)
     print(
-        f"merge-prior-survey-batches: wrote {len(all_surveys)} surveys and "
+        f"merge-prior-survey-batches: wrote {len(all_surveys)} surveys; checked "
         f"{len(candidate_sources)} source candidates"
     )
     return 0

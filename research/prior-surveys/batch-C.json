@@ -69,55 +69,55 @@
       "id": "gebregiorgis-2025-spike-based-overview",
       "title": "Spike-based neuromorphic computing: An overview from bio-inspiration to hardware architectures and learning mechanisms",
       "authors": "Anteneh Gebregiorgis et al.",
-      "year": 2025,
+      "year": 2026,
       "venue": "Microprocessors and Microsystems",
       "doi": "10.1016/j.micpro.2025.105240",
       "canonical_url": "https://doi.org/10.1016/j.micpro.2025.105240",
       "source_type": "peer_reviewed",
-      "retrieval_status": "partial_text",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "Publisher abstract only"
+        "Sections 2-10 and Figures 1-22"
       ],
       "inspected_urls": [
         "https://doi.org/10.1016/j.micpro.2025.105240",
         "https://www.sciencedirect.com/science/article/pii/S0141933125001744"
       ],
-      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+      "notes": "Volume 124 is dated 2026. The version of record states that the article was available online on 20 December 2025."
     },
     {
       "id": "bouvier-2019-hardware-implementations",
       "title": "Spiking neural networks hardware implementations and challenges: A survey",
-      "authors": "Maxime Bouvier et al.",
+      "authors": "Maxence Bouvier et al.",
       "year": 2019,
       "venue": "ACM Journal on Emerging Technologies in Computing Systems",
-      "doi": "10.1145/3287626",
-      "canonical_url": "https://doi.org/10.1145/3287626",
+      "doi": "10.1145/3304103",
+      "canonical_url": "https://doi.org/10.1145/3304103",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "Publisher metadata only"
+        "Sections 2-8 and Tables 1-2"
       ],
       "inspected_urls": [
-        "https://dl.acm.org/doi/10.1145/3287626",
-        "https://doi.org/10.1145/3287626"
+        "https://dl.acm.org/doi/10.1145/3304103",
+        "https://doi.org/10.1145/3304103"
       ],
       "notes": "Batch C source candidate. Not a canonical source-registry edit."
     },
     {
       "id": "shrestha-2022-models-hardware",
       "title": "A Survey on Neuromorphic Computing: Models and Hardware",
-      "authors": "Arjun Shrestha et al.",
+      "authors": "Amar Shrestha et al.",
       "year": 2022,
       "venue": "IEEE Circuits and Systems Magazine",
       "doi": "10.1109/MCAS.2022.3166331",
       "canonical_url": "https://doi.org/10.1109/MCAS.2022.3166331",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "DOI returned HTTP 406"
+        "Sections II-VI and Tables I-III"
       ],
       "inspected_urls": [
         "https://doi.org/10.1109/MCAS.2022.3166331"
@@ -133,10 +133,10 @@
       "doi": "10.3390/chips5010003",
       "canonical_url": "https://doi.org/10.3390/chips5010003",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "MDPI retrieval failed"
+        "Sections 2-6 and Tables 2-8"
       ],
       "inspected_urls": [
         "https://www.mdpi.com/2673-8024/5/1/3",
@@ -435,80 +435,80 @@
     {
       "id": "S23-gebregiorgis-2025-spike-based-overview",
       "source_id": "gebregiorgis-2025-spike-based-overview",
-      "full_text_status": "partial",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://doi.org/10.1016/j.micpro.2025.105240",
         "https://www.sciencedirect.com/science/article/pii/S0141933125001744"
       ],
       "coverage": {
         "A": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "full",
+          "basis": "Sustained treatment of biological and computational neuron and synapse models and their realism-efficiency trade-offs.",
+          "locator": "Sections 2-3, pp. 2-6"
         },
         "B": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "partial",
+          "basis": "Explains binary spike representation and names rate, temporal, and population codes, with little decoding analysis.",
+          "locator": "Section 4.9, pp. 8-9; Section 9.1, p. 24"
         },
         "C": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "full",
+          "basis": "Compares plasticity, evolutionary search, spike-time gradients, surrogate gradients, backpropagation through time, and online learning.",
+          "locator": "Section 5, pp. 9-11"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "mentioned",
+          "basis": "Identifies rate-based ANN-to-SNN conversion and its efficiency limitation without developing conversion methods.",
+          "locator": "Section 5.2.2, p. 10"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "none",
+          "basis": "No comparative treatment of SNN software frameworks or their model and operator support was identified.",
+          "locator": "Sections 1-10, pp. 1-25"
         },
         "F": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "full",
+          "basis": "Explains partitioning, placement, crossbar realization, limited-precision mapping, and named mapping frameworks.",
+          "locator": "Section 8, pp. 20-23"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "none",
+          "basis": "No concrete neuromorphic interchange representation or portable semantic format is analyzed.",
+          "locator": "Sections 1-10, pp. 1-25"
         },
         "H": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "full",
+          "basis": "Sustained coverage of circuits, devices, and analog, digital, mixed-signal, and many-core SNN architectures.",
+          "locator": "Sections 6-7, pp. 11-20"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "partial",
+          "basis": "Identifies precision mismatch, state-memory pressure, synchronization overhead, noise, variability, and interoperability without a complete semantic taxonomy.",
+          "locator": "Sections 8.4-8.6, p. 23; Section 10, pp. 24-25"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "mentioned",
+          "basis": "Identifies missing standardized benchmarks and distinguishes algorithmic complexity from hardware efficiency, but supplies no evidence classes.",
+          "locator": "Section 8.6, p. 23; Section 9.2, p. 24"
         },
         "K": {
-          "score": "mentioned",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "S23 note, Publisher abstract"
+          "score": "partial",
+          "basis": "Surveys workload families and reports a quantified event-vision mapping result, while most application coverage remains descriptive.",
+          "locator": "Section 8.5, p. 23; Section 9.2, p. 24"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "S23 note, Retrieval limit"
+          "score": "mentioned",
+          "basis": "Discusses mapping and deployment stages but does not trace one network through a named software stack to measured physical-chip execution.",
+          "locator": "Sections 8-9, pp. 20-24"
         }
       },
-      "strongest_contribution": "Abstract-level end-to-end topical outline only.",
-      "deployment_depth": "Not verified because publisher full text was not recovered.",
+      "strongest_contribution": "Hardware-aware mapping tutorial spanning partitioning, placement, crossbars, precision, memory, and synchronization.",
+      "deployment_depth": "Explains deployment constraints and mapping stages but provides no complete named framework-to-silicon route.",
       "omissions": [
-        "See the associated audit note for material omissions and verification limits."
+        "No software-framework comparison, interchange format, claim-level evidence taxonomy, or complete network-to-chip route."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-c"
       }
@@ -516,80 +516,80 @@
     {
       "id": "S24-bouvier-2019-hardware-implementations",
       "source_id": "bouvier-2019-hardware-implementations",
-      "full_text_status": "not_retrieved",
+      "full_text_status": "verified",
       "retrieval_sources": [
-        "https://dl.acm.org/doi/10.1145/3287626",
-        "https://doi.org/10.1145/3287626"
+        "https://dl.acm.org/doi/10.1145/3304103",
+        "https://doi.org/10.1145/3304103"
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Explains IF, LIF, bio-plausible neuron and synapse models, and implementation costs.",
+          "locator": "Sections 2-3, pp. 2-10"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Compares rate, TTFS, and inter-spike-interval coding and connects coding to timing error and hardware activity.",
+          "locator": "Section 2.2, pp. 4-5; Sections 4.3 and 7.1, pp. 14-15 and 25"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Compares STDP, reward modulation, supervised learning, spike-domain backpropagation, and training location.",
+          "locator": "Section 5, pp. 18-21"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Reviews conversion frameworks, topology modification, rate-coding cost, temporal conversion, and an accuracy-loss example.",
+          "locator": "Section 5.1, p. 18; Section 7.1, p. 25"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No software-framework ecosystem or simulator comparison was identified.",
+          "locator": "Sections 1-8, pp. 1-27"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Compares depth-wise and spatial mapping, load balance, communication distance, and graph-based optimization without toolchain coverage.",
+          "locator": "Section 2.3.2, pp. 5-7"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No interchange representation or portable graph format is analyzed.",
+          "locator": "Sections 1-8, pp. 1-27"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Covers analog and digital neurocores, crossbars, large-scale systems, and embedded accelerators.",
+          "locator": "Sections 3, 4, and 6, pp. 8-24"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Explains mapping imbalance, timing error, input-conversion bias, topology dependence, precision loss, and device non-idealities.",
+          "locator": "Sections 2.3.2 and 4, pp. 5-18"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Explicitly distinguishes simulated, FPGA, and fabricated technologies and flags incomparable model types and missing data.",
+          "locator": "Section 6.2 and Table 2, pp. 22-24"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Provides accuracy, energy, area, and coding data for low-power image-classification accelerators, mainly on MNIST.",
+          "locator": "Section 6.2 and Table 2, pp. 22-24"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Table 2 connects training and input conversion to topology, implementation, and energy, without a reproducible software-to-chip workflow.",
+          "locator": "Table 2, p. 24"
         }
       },
-      "strongest_contribution": "No primary-text contribution verified.",
-      "deployment_depth": "No deployment depth can be verified from metadata.",
+      "strongest_contribution": "Joint algorithm-hardware analysis with unusually explicit accelerator evidence labels and benchmark caveats.",
+      "deployment_depth": "Compact hardware route summaries for several accelerators, without modern framework or compiler paths.",
       "omissions": [
-        "See the associated audit note for material omissions and verification limits."
+        "No software-framework survey, interchange format, modern compiler comparison, or general evidence taxonomy."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-c"
       }
@@ -597,79 +597,79 @@
     {
       "id": "S25-shrestha-2022-models-hardware",
       "source_id": "shrestha-2022-models-hardware",
-      "full_text_status": "not_retrieved",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://doi.org/10.1109/MCAS.2022.3166331"
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Derives conductance-based and spike-based models and connects their dynamics to implementation.",
+          "locator": "Sections II-A and II-B, pp. 8-10"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Compares rate, TTFS, phase, and task-specific codes with latency, spike-count, quantization, and hardware trade-offs.",
+          "locator": "Section II-C, pp. 10-11"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Covers STDP, supervised Hebbian learning, spike-domain backpropagation, local credit assignment, and online-learning limits.",
+          "locator": "Section II-E, pp. 13-14; Section V-A, pp. 25-26"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Notes Nengo-based DNN-to-SNN conversion for Loihi and Tianjic indirect training without reviewing conversion algorithms.",
+          "locator": "Section IV-B.3, p. 21; Section IV-E.5, p. 24"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Distinguishes mapping, programming, and simulation tools and compares platform-specific APIs and frameworks.",
+          "locator": "Section III-E, p. 17; Sections IV-A to IV-E, pp. 20-24"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Explains mapping objectives, Eedn, Loihi compiler stages, PACMAN, and Tianjic's automatic compiler.",
+          "locator": "Section III-E, p. 17; Sections IV-A.3, IV-B.3, IV-D.3, and IV-E.5, pp. 20-24"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No portable interchange representation or NIR-like semantic format is analyzed.",
+          "locator": "Sections I-VI, pp. 6-27"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Detailed TrueNorth, Loihi, BrainScaleS, SpiNNaker, and Tianjic case studies and comparative capability tables.",
+          "locator": "Sections III-IV, pp. 15-24; Tables II-III"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Identifies model-support mismatches, time-multiplexing delay, fixed-point limits, routing constraints, and software abstractions.",
+          "locator": "Sections II-C, III, and IV, pp. 10-24"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "Platform tables do not classify results by physical measurement, simulation, or analytical estimate.",
+          "locator": "Tables II-III, pp. 18 and 25"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Reports measured TrueNorth throughput and power and describes Loihi and Tianjic applications, without systematic application tables.",
+          "locator": "Sections IV-A.3, IV-B.3, and IV-E.6, pp. 20-24"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "TrueNorth Eedn and Tianjic discussions connect training or mapping support to named hardware and applications without complete reproducibility details.",
+          "locator": "Sections IV-A.3 and IV-E.5-6, pp. 20-24"
         }
       },
-      "strongest_contribution": "No primary-text contribution verified.",
-      "deployment_depth": "No deployment depth can be verified from metadata.",
+      "strongest_contribution": "Algorithm-hardware co-design survey with substantive, platform-specific software and compiler coverage.",
+      "deployment_depth": "Connects model semantics, software abstractions, compilers, and named platform applications, but not as one reproducible route.",
       "omissions": [
-        "See the associated audit note for material omissions and verification limits."
+        "No interchange format, claim-level evidence taxonomy, cross-platform route comparison, or detailed conversion taxonomy."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-c"
       }
@@ -677,80 +677,80 @@
     {
       "id": "S26-chen-2026-neuromorphic-chips",
       "source_id": "chen-2026-neuromorphic-chips",
-      "full_text_status": "not_retrieved",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://www.mdpi.com/2673-8024/5/1/3",
         "https://doi.org/10.3390/chips5010003"
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Covers HH, IF, LIF, memristive Izhikevich, and major SNN topologies with hardware context.",
+          "locator": "Sections 2.1-2.2, pp. 3-7"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Identifies spikes as spatiotemporal codes and temporal coding as a circuit trade-off without a coding taxonomy.",
+          "locator": "Sections 2.2-2.3, pp. 6-7; Section 3.1.3, p. 13"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Names STDP, temporal backpropagation, surrogate-gradient engines, and on-chip learning support without comparing training methods.",
+          "locator": "Sections 2-3, pp. 5-16"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No substantive ANN-to-SNN conversion method or conversion-error analysis was identified.",
+          "locator": "Sections 1-6, pp. 1-41"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Names NEST and Brian 2 while diagnosing the lack of integrated deployment solutions, without comparing framework capabilities.",
+          "locator": "Section 5, p. 40"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Mentions programmable mapping and the need for integrated deployment toolchains without explaining a compiler or mapper.",
+          "locator": "Sections 3.2 and 5-6, pp. 19 and 40-41"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No interchange format or portable semantic representation is treated.",
+          "locator": "Sections 1-6, pp. 1-41"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Sustained comparison of analog-digital hybrid, digital-only, second-generation, and memristor platforms.",
+          "locator": "Section 3, pp. 8-31"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Compares flexibility, plasticity, timing, scalability, architecture diversity, and integration limits without cross-stack semantic analysis.",
+          "locator": "Sections 3.1.5, 3.2.7, and 5, pp. 13-14, 23-24, and 40-41"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Uses a five-dimensional comparison and marks some no-data and inferred entries, but does not classify evidence consistently across claims.",
+          "locator": "Tables 2-7; Table 7, p. 31"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Broad workload coverage with selected reported power and efficiency results across AI, robotics, neuroscience, and control.",
+          "locator": "Section 4, pp. 31-39"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Describes a physically mapped memristor reinforcement-learning network and named chip deployments, but omits complete training and measurement chains.",
+          "locator": "Sections 3.3.5 and 4, pp. 29-38"
         }
       },
-      "strongest_contribution": "No primary-text contribution verified.",
-      "deployment_depth": "No deployment depth can be verified from metadata.",
+      "strongest_contribution": "Five-dimensional chip taxonomy and broad workload-oriented application synthesis.",
+      "deployment_depth": "Names several physical deployments and one mapped memristor workload, without complete compiler and measurement provenance.",
       "omissions": [
-        "See the associated audit note for material omissions and verification limits."
+        "No conversion treatment, framework or compiler comparison, interchange format, or consistently applied evidence classification."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-c"
       }

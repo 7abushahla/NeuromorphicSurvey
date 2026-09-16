@@ -99,10 +99,13 @@
       "doi": "10.1109/ACCESS.2022.3179968",
       "canonical_url": "https://doi.org/10.1109/ACCESS.2022.3179968",
       "source_type": "peer_reviewed",
-      "retrieval_status": "not_retrieved",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "retrieval log only"
+        "Sec. II, Fundamentals of Spiking Neural Networks, PDF pp. 3-4",
+        "Sec. IV, Information Encoding, PDF pp. 9-11",
+        "Sec. V, Learning Strategies, PDF pp. 11-16",
+        "Sec. VI, Results and Discussion, PDF pp. 16-22"
       ],
       "inspected_urls": [
         "https://doi.org/10.1109/ACCESS.2022.3179968",
@@ -110,7 +113,7 @@
         "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9798188",
         "https://www.researchgate.net/publication/360977407_Spiking_Neural_Networks_A_Survey"
       ],
-      "notes": "Publisher and ResearchGate fallbacks timed out. The IEEE stamp endpoint returned HTTP 418. Abstract was not converted into coverage scores."
+      "notes": "Complete 27-page publisher PDF supplied by the author and inspected locally. The local path is retained only in the corresponding audit note."
     },
     {
       "id": "khan-2025",
@@ -121,17 +124,19 @@
       "doi": "10.23919/aise.2025.000013",
       "canonical_url": "https://doi.org/10.23919/aise.2025.000013",
       "source_type": "peer_reviewed",
-      "retrieval_status": "partial_text",
+      "retrieval_status": "full_text",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "publisher abstract and references only",
-        "retrieval log"
+        "Secs. 3.3-3.6, neural coding and neuron dynamics, PDF pp. 8-12",
+        "Sec. 4.2, Training Methodologies, PDF pp. 12-14",
+        "Sec. 5, Hardware Implementations, PDF pp. 14-16",
+        "Secs. 8.3-8.6, evaluation, tooling, and deployment hurdles, PDF pp. 23-26"
       ],
       "inspected_urls": [
         "https://doi.org/10.23919/aise.2025.000013",
         "https://aise-journal.org/article/view/13"
       ],
-      "notes": "Exa retrieved publisher metadata, abstract, and references. Journal fallback timed out; no body text was scored."
+      "notes": "Complete 33-page publisher PDF supplied by the author and inspected locally. The local path is retained only in the corresponding audit note."
     },
     {
       "id": "zheng-2022",
@@ -538,7 +543,7 @@
     {
       "id": "S15-nunes-2022-snn-survey",
       "source_id": "nunes-2022",
-      "full_text_status": "not_retrieved",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://doi.org/10.1109/ACCESS.2022.3179968",
         "https://ieeexplore.ieee.org/document/9798188",
@@ -547,74 +552,75 @@
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "LIF membrane, threshold, reset, refractory, and STDP dynamics are derived, while other neuron models are only named.",
+          "locator": "Sec. II, Fundamentals of Spiking Neural Networks, PDF pp. 3-4, publication pp. 60740-60741"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Count, density, population-rate, TTFS, rank-order, phase, and burst coding are developed with equations, biological evidence, and latency trade-offs.",
+          "locator": "Sec. IV, Information Encoding, PDF pp. 9-11, publication pp. 60746-60748"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "The survey treats STDP-based unsupervised learning, surrogate-gradient supervision, temporal backpropagation, EventProp, DIET-SNN, PLIF, and residual SNNs.",
+          "locator": "Sec. V, Learning Strategies, PDF pp. 11-16, publication pp. 60748-60753"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Rate-based conversion, near-lossless normalization, activation mismatch, operator restrictions, firing-rate cost, and accuracy limitations are explained without a broad method taxonomy.",
+          "locator": "Sec. V.A, Conversion of Conventional ANNs to SNNs, PDF pp. 11-12, publication pp. 60748-60749"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "BindsNET and snnTorch are used and compared by abstraction, GPU support, intended learning modes, and simulation behavior, with Brian as a reference point.",
+          "locator": "Sec. VI, Results and Discussion, PDF pp. 16-21, publication pp. 60753-60758"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No compiler, graph partitioner, mapper, placement tool, or hardware toolchain is reviewed.",
+          "locator": "Full-text inspection, Sections I-VII"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No interchange representation or cross-framework intermediate format is discussed.",
+          "locator": "Full-text inspection, Sections I-VII"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Neuromorphic hardware motivates efficiency claims, SpiNNaker appears in a reviewed example, and one Loihi implementation is summarized, but platforms are not compared.",
+          "locator": "PDF pp. 8 and 21-22, publication pp. 60745 and 60758-60759"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Conversion mismatches in firing-rate assumptions and ANN operator support are identified, and Figure 11 separates a training abstraction from the inference neuron, without a stack-wide taxonomy.",
+          "locator": "Sec. V.A and Fig. 11, PDF pp. 12 and 14, publication pp. 60749 and 60751"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "The paper does not classify claims by physical measurement, hardware simulation, analytical model, or software-only evidence.",
+          "locator": "Table 1 and Sec. VI, PDF pp. 16-22, publication pp. 60753-60759"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Algorithm and experiment tables report benchmark accuracies, and autonomous-driving results are discussed, but measured coverage is concentrated on a small set of vision workloads.",
+          "locator": "Table 1, Tables 2-4, and Sec. VI, PDF pp. 16-22, publication pp. 60753-60759"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was not retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "A SOEL model trained for N-CARS and implemented on Loihi at a reported 350 mW is named, but the software, mapping, configuration, and measurement route are not documented.",
+          "locator": "Sec. VI, autonomous-driving discussion, PDF p. 21, publication p. 60758"
         }
       },
-      "strongest_contribution": "Unverified pending full-text retrieval. Discovery metadata describes a broad SNN survey.",
-      "deployment_depth": "Not assessed because full text was not retrieved.",
+      "strongest_contribution": "Connects biological mechanisms, coding choices, and learning routes, then tests selected direct-training methods in reproducible software experiments.",
+      "deployment_depth": "Identifies conversion and training-to-inference mismatches and cites one Loihi result, but does not cover compilers, mappers, interchange formats, or a reproducible chip route.",
       "omissions": [
-        "Coverage scores are withheld.",
-        "No abstract-level evidence was promoted to a full-text score."
+        "No compiler, mapper, or interchange-format analysis.",
+        "No claim-level evidence-provenance classification.",
+        "No reproducible end-to-end network-to-chip route."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-b"
       }
@@ -622,81 +628,82 @@
     {
       "id": "S16-khan-2025-comprehensive",
       "source_id": "khan-2025",
-      "full_text_status": "partial",
+      "full_text_status": "verified",
       "retrieval_sources": [
         "https://doi.org/10.23919/aise.2025.000013",
         "https://aise-journal.org/article/view/13"
       ],
       "coverage": {
         "A": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Hodgkin-Huxley, LIF, EIF, AdEx, Izhikevich, SRM, stochastic neurons, synaptic dynamics, and adaptive behavior are compared with equations and trade-offs.",
+          "locator": "Secs. 3.4-3.6, PDF pp. 9-12, publication pp. 183-186"
         },
         "B": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Rate, temporal, first-spike, phase, population-vector, sparse, and timing-dependent representations are explained and linked to learning.",
+          "locator": "Secs. 3.3-3.5, PDF pp. 8-10, publication pp. 182-184"
         },
         "C": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "Surrogate-gradient direct training, STDP, hybrid training, temporal credit assignment, regularization, adaptive thresholds, progressive training, and memory constraints are covered.",
+          "locator": "Secs. 4.2.2-4.3, PDF pp. 12-14, publication pp. 186-188"
         },
         "D": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Rate-based conversion, weight normalization, burst and temporal refinements, and latency concerns are summarized without a systematic conversion-method taxonomy.",
+          "locator": "Sec. 4.2.1, ANN-to-SNN Conversion, PDF p. 12, publication p. 186"
         },
         "E": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "SpikingJelly, Norse, and Brian2 are compared with conventional ML ecosystems, including missing debugging, model-zoo, MLOps, and deployment support.",
+          "locator": "Secs. 8.3.4, 8.4, and 8.5.2, PDF pp. 24-25, publication pp. 198-199"
         },
         "F": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Neuron placement, routing, mapping objectives, compilation, memory hierarchy, and hardware-aware optimization are discussed without comparing named compiler or mapper toolchains.",
+          "locator": "Secs. 5.4, 5.7, and 8.6, PDF pp. 15-16 and 26, publication pp. 189-190 and 200"
         },
         "G": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "mentioned",
+          "basis": "Neuromorphic Intermediate Representation is presented as a hardware-agnostic graph and neuron representation for portability, without format-level analysis.",
+          "locator": "Sec. 6.7, Emerging Applications, PDF p. 20, publication p. 194"
         },
         "H": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "full",
+          "basis": "TrueNorth, Loihi, SpiNNaker, BrainScaleS, DYNAP-SE, Darwin, and emerging devices are compared by neuron support, precision, connectivity, learning mode, and reported energy.",
+          "locator": "Sec. 5 and Tables 4-5, PDF pp. 14-16, publication pp. 188-190"
         },
         "I": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Incompatible programming and neuron models, precision and dynamic-range limits, connectivity and routing constraints, and platform-specific learning support are identified without a boundary-by-boundary contract.",
+          "locator": "Secs. 5.4, 8.5.3, and 8.6, PDF pp. 15 and 25-26, publication pp. 189 and 199-200"
         },
         "J": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "Metrics and standardization are discussed, but literature claims are not classified as physical measurement, hardware simulation, model estimate, or software-only evidence.",
+          "locator": "Secs. 5.5 and 8.3, PDF pp. 15-16 and 23-24, publication pp. 189-190 and 197-198"
         },
         "K": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "partial",
+          "basis": "Applications are surveyed across seven workload families with selected performance claims, but measurement conditions and provenance are not normalized.",
+          "locator": "Sec. 6, Applications of Spiking Neural Networks, PDF pp. 16-22, publication pp. 190-196"
         },
         "L": {
-          "score": "unassessed",
-          "basis": "Not assessed because full text was only partially retrieved.",
-          "locator": "Retrieval limit documented in the corresponding audit note."
+          "score": "none",
+          "basis": "No case study traces a trained network through a named framework, conversion or compilation path, mapping configuration, physical chip, and measurement protocol.",
+          "locator": "Sections 5-8, PDF pp. 14-28, publication pp. 188-202"
         }
       },
-      "strongest_contribution": "Unverified pending substantive full-text retrieval. The abstract describes training, hardware, and application coverage.",
-      "deployment_depth": "Not assessed because body text was not retrieved.",
+      "strongest_contribution": "Connects a four-route training taxonomy to hardware constraints, platform capabilities, broad applications, and deployment barriers.",
+      "deployment_depth": "Substantive at the requirements and constraints level, but it does not compare executable compiler pipelines, SDKs, mapper behavior, or an end-to-end physical route.",
       "omissions": [
-        "Coverage scores are withheld.",
-        "Abstract claims are not full-text coverage evidence."
+        "No operator-level deployment contract or concrete toolchain comparison.",
+        "No claim-level evidence-provenance classification.",
+        "No reproducible network-to-chip route."
       ],
       "verification": {
-        "status": "provisional",
+        "status": "verified",
         "reviewed_on": "2026-09-16",
         "reviewer": "exa-batch-b"
       }
