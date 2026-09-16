@@ -229,7 +229,71 @@ def main() -> int:
             f"survey full-text status {status!r}",
         )
 
-    expected_checks = 27
+    def populated_coverage(score: str, basis: str, locator: str) -> dict[str, object]:
+        return {
+            axis: {"score": score, "basis": basis, "locator": locator}
+            for axis in "ABCDEFGHIJKL"
+        }
+
+    for status in ("partial", "not_retrieved"):
+        candidate = copy.deepcopy(coverage)
+        survey = record_by_id(
+            candidate["surveys"], "S01-pedersen-2024-nir", "survey",
+        )
+        survey["full_text_status"] = status
+        survey["coverage"] = populated_coverage(
+            "unassessed",
+            "Not assessed because full text was not retrieved completely.",
+            "Retrieval limit documented in the audit note.",
+        )
+        check_valid(
+            coverage_validate(schema, registry, candidate),
+            f"unassessed coverage with {status} retrieval",
+        )
+
+    verified_unassessed = copy.deepcopy(coverage)
+    verified_survey = record_by_id(
+        verified_unassessed["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    verified_survey["full_text_status"] = "verified"
+    verified_survey["coverage"] = populated_coverage(
+        "unassessed", "Not assessed due to a retrieval limit.", "Retrieval limit.",
+    )
+    check_error(
+        coverage_validate(schema, registry, verified_unassessed),
+        "unassessed is allowed only",
+        "verified full text with unassessed coverage",
+    )
+
+    unknown_score = copy.deepcopy(coverage)
+    unknown_survey = record_by_id(
+        unknown_score["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    unknown_survey["full_text_status"] = "verified"
+    unknown_survey["coverage"] = populated_coverage(
+        "unknown", "Fixture basis.", "Fixture locator.",
+    )
+    check_error(
+        coverage_validate(schema, registry, unknown_score),
+        "invalid score",
+        "unknown coverage score",
+    )
+
+    vague_unassessed = copy.deepcopy(coverage)
+    vague_survey = record_by_id(
+        vague_unassessed["surveys"], "S01-pedersen-2024-nir", "survey",
+    )
+    vague_survey["full_text_status"] = "partial"
+    vague_survey["coverage"] = populated_coverage(
+        "unassessed", "No conclusion recorded.", "Audit note.",
+    )
+    check_error(
+        coverage_validate(schema, registry, vague_unassessed),
+        "must state the retrieval or access limit",
+        "unassessed coverage without an access boundary",
+    )
+
+    expected_checks = 32
     if checks != expected_checks:
         raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
     print(f"verify-schema-contracts: {checks} contract checks passed")

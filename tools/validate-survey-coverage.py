@@ -16,7 +16,15 @@ REQUIRED_FIELDS = {
     "strongest_contribution", "deployment_depth", "omissions", "verification",
 }
 COVERAGE_AXES = set("ABCDEFGHIJKL")
-COVERAGE_SCORES = {"full", "partial", "mentioned", "none"}
+ACCESS_LIMIT_TERMS = {
+    "not assessed",
+    "not retrieved",
+    "not accessible",
+    "inaccessible",
+    "partial retrieval",
+    "retrieval limit",
+    "full text unavailable",
+}
 
 
 def load_json(path: Path) -> object:
@@ -42,7 +50,13 @@ def valid_http_url(value: object) -> bool:
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 
-def validate_coverage(coverage: object, errors: list[str], label: str) -> None:
+def validate_coverage(
+    coverage: object,
+    errors: list[str],
+    label: str,
+    allowed_scores: set[str],
+    full_text_status: object,
+) -> None:
     if not isinstance(coverage, dict):
         errors.append(f"{label}: coverage must be an object")
         return
@@ -64,11 +78,31 @@ def validate_coverage(coverage: object, errors: list[str], label: str) -> None:
         if absent:
             errors.append(f"{axis_label} missing required field(s): {', '.join(absent)}")
             continue
-        if not isinstance(entry["score"], str) or entry["score"] not in COVERAGE_SCORES:
+        score = entry["score"]
+        if not isinstance(score, str) or score not in allowed_scores:
             errors.append(f"{axis_label}: invalid score {entry['score']!r}")
         for field in ("basis", "locator"):
             if not isinstance(entry[field], str) or not entry[field].strip():
                 errors.append(f"{axis_label}: {field} must be a nonempty string")
+        if score == "unassessed":
+            if full_text_status not in {"partial", "not_retrieved"}:
+                errors.append(
+                    f"{axis_label}: unassessed is allowed only for partial or "
+                    "not_retrieved full text"
+                )
+            access_text = " ".join(
+                value.lower() for value in (entry.get("basis"), entry.get("locator"))
+                if isinstance(value, str)
+            )
+            if not any(term in access_text for term in ACCESS_LIMIT_TERMS):
+                errors.append(
+                    f"{axis_label}: unassessed basis or locator must state the "
+                    "retrieval or access limit"
+                )
+        elif full_text_status == "not_retrieved":
+            errors.append(
+                f"{axis_label}: not_retrieved records must use unassessed, not {score!r}"
+            )
 
 
 def validate(schema: object, registry: object, coverage_document: object) -> list[str]:
@@ -86,8 +120,15 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
         return errors + ["prior-survey-coverage surveys must be an array"]
     verification_states = schema.get("verification_states")
     full_text_statuses = schema.get("survey_full_text_statuses")
-    if not isinstance(verification_states, list) or not isinstance(full_text_statuses, list):
-        return errors + ["schema verification_states and survey_full_text_statuses must be arrays"]
+    coverage_scores = schema.get("coverage_scores")
+    if not all(isinstance(value, list) for value in (
+        verification_states, full_text_statuses, coverage_scores,
+    )):
+        return errors + [
+            "schema verification_states, survey_full_text_statuses, and coverage_scores "
+            "must be arrays"
+        ]
+    allowed_scores = set(coverage_scores)
     source_ids = {source.get("id") for source in registry["sources"] if isinstance(source, dict)}
     ids: set[str] = set()
     for index, survey in enumerate(surveys):
@@ -118,7 +159,9 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
             errors.append(f"{label}: retrieval_sources must contain absolute HTTP(S) URLs")
         if not isinstance(survey["omissions"], list) or not all(isinstance(item, str) for item in survey["omissions"]):
             errors.append(f"{label}: omissions must be an array of strings")
-        validate_coverage(survey["coverage"], errors, label)
+        validate_coverage(
+            survey["coverage"], errors, label, allowed_scores, survey["full_text_status"]
+        )
         verification = survey["verification"]
         if not isinstance(verification, dict):
             errors.append(f"{label}: verification must be an object")

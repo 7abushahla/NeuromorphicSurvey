@@ -3,5 +3,6 @@
   "evidence_classes": ["E1", "E2", "E3", "E4", "E5"],
   "route_states": ["exact", "approximate", "blocked", "obsolete", "unexercised", "physical"],
   "verification_states": ["verified", "provisional", "conflicted", "rejected"],
-  "survey_full_text_statuses": ["verified", "provisional", "partial", "not_retrieved"]
+  "survey_full_text_statuses": ["verified", "provisional", "partial", "not_retrieved"],
+  "coverage_scores": ["full", "partial", "mentioned", "none", "unassessed"]
 }
