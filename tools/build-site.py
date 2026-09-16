@@ -16,7 +16,7 @@ SITE = ROOT / 'site'
 
 # The figure sits after Section 7 and before Section 8, as the synthesis that the
 # challenges then take up. Section 6.5 links forward to it.
-ORDER = ['shell-head.html', 'sec-01.html', 'sec-02.html', 'sec-03.html',
+ORDER = ['shell-head.html', 'sec-01.html', 'sec-02.html', 'sec-03.html', 'sec-04.html',
          'sec-06.html', 'sec-07.html', 'shell-figure.html', 'sec-08.html',
          'shell-tail.html']
 
