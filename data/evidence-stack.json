@@ -4647,10 +4647,10 @@
     {
       "id": "kreiser2020-icub-headpose",
       "title": "An On-chip Spiking Neural Network for Estimation of the Head Pose of the iCub Robot",
-      "authors": "R. Kreiser, A. Renner, et al., Y. Sandamirskaya",
+      "authors": "R. Kreiser, A. Renner, V. R. C. Leite, B. Serhan, C. Bartolozzi, A. Glover, Y. Sandamirskaya",
       "year": 2020,
-      "venue": "Frontiers in Neurorobotics",
-      "url": "unknown",
+      "venue": "Frontiers in Neuroscience 14:551",
+      "url": "https://doi.org/10.3389/fnins.2020.00551",
       "type": "peer-reviewed"
     },
     {
@@ -4674,19 +4674,19 @@
     {
       "id": "parpart2023-lca-loihi2",
       "title": "Implementing and Benchmarking the Locally Competitive Algorithm on the Loihi 2 Neuromorphic Processor",
-      "authors": "G. Parpart, S. Risbud, G. T. Kenyon, Y. Watkins",
+      "authors": "G. Parpart, S. R. Risbud, G. T. Kenyon, Y. Watkins",
       "year": 2023,
-      "venue": "unspecified in source research pass",
-      "url": "unknown",
-      "type": "preprint"
+      "venue": "2023 International Conference on Neuromorphic Systems",
+      "url": "https://doi.org/10.1145/3589737.3605973",
+      "type": "peer-reviewed"
     },
     {
       "id": "satcsp-loihi-date2020",
-      "title": "Solving Constraint Satisfaction Problems Using the Loihi neuromorphic processor",
-      "authors": "Unattributed in source excerpt",
+      "title": "Solving Constraint Satisfaction Problems Using the Loihi Spiking Neuromorphic Processor",
+      "authors": "C. Yakopcic, N. Rahman, T. Atahary, T. M. Taha, S. Douglass",
       "year": 2020,
-      "venue": "DATE workshop",
-      "url": "unknown",
+      "venue": "2020 Design, Automation and Test in Europe Conference and Exhibition",
+      "url": "https://doi.org/10.23919/DATE48585.2020.9116227",
       "type": "peer-reviewed"
     },
     {

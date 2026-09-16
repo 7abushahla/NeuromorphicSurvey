@@ -1208,11 +1208,11 @@
     },
     {
       "id": "spike-driven-transformer",
-      "title": "Spike-driven Transformer / Meta-SpikeFormer V2",
+      "title": "Spike-driven Transformer V2: Meta Spiking Neural Network Architecture Inspiring the Design of Next-generation Neuromorphic Chips",
       "authors": "Yao, M. et al.",
-      "year": 2023,
-      "venue": "not found",
-      "url": "not found",
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "url": "https://openreview.net/forum?id=1SIBN5Xyw7",
       "population": "algorithm",
       "family": "direct-training",
       "method_summary": "Spike-driven MS-residual transformer for ImageNet/COCO/ADE20K.",
@@ -1233,7 +1233,7 @@
       "evidence_notes": "NOT FOUND: no physical hardware run reported; theoretical energy only.",
       "cites_hardware_where": "not found",
       "sources": [
-        "spike-driven-transformer"
+        "spike-driven-transformer-v2"
       ]
     },
     {
@@ -2553,12 +2553,21 @@
     },
     {
       "id": "spike-driven-transformer",
-      "title": "Spike-driven Transformer / Meta-SpikeFormer V2",
-      "authors": "Yao, M. et al.",
+      "title": "Spike-driven Transformer",
+      "authors": "Yao, M., Hu, J., Zhou, Z., Yuan, L., Tian, Y., Xu, B., Li, G.",
       "year": 2023,
-      "venue": "not found",
-      "url": "not found",
-      "type": "preprint"
+      "venue": "Advances in Neural Information Processing Systems 36",
+      "url": "https://doi.org/10.52202/075280-2798",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "spike-driven-transformer-v2",
+      "title": "Spike-driven Transformer V2: Meta Spiking Neural Network Architecture Inspiring the Design of Next-generation Neuromorphic Chips",
+      "authors": "Yao, M., Hu, J., Hu, T., Xu, Y., Zhou, Z., Tian, Y., Xu, B., Li, G.",
+      "year": 2024,
+      "venue": "International Conference on Learning Representations",
+      "url": "https://openreview.net/forum?id=1SIBN5Xyw7",
+      "type": "peer-reviewed"
     },
     {
       "id": "xpikeformer",
@@ -2647,7 +2656,7 @@
       "authors": "Imam, N., Cleland, T.A.",
       "year": 2020,
       "venue": "Nature Machine Intelligence",
-      "url": "not found",
+      "url": "https://doi.org/10.1038/s42256-020-0159-4",
       "type": "peer-reviewed"
     },
     {
@@ -2697,11 +2706,11 @@
     },
     {
       "id": "adaptive-fission",
-      "title": "Adaptive Fission",
-      "authors": "Jiang, Y. et al.",
+      "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+      "authors": "Jiang, Y., Chen, F., Li, Y., Liu, Y., Gao, H., Zhang, T., Fang, Y.",
       "year": 2025,
-      "venue": "NeurIPS",
-      "url": "not found",
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "url": "https://doi.org/10.52202/085713-5157",
       "type": "peer-reviewed"
     },
     {
