@@ -61,7 +61,8 @@ def selector_is_scoped(selector, scope):
     depth = 0
     quote = None
     escaped = False
-    for character in selector[len(scope):]:
+    suffix = selector[len(scope):]
+    for index, character in enumerate(suffix):
         if escaped:
             escaped = False
             continue
@@ -78,7 +79,9 @@ def selector_is_scoped(selector, scope):
             depth += 1
         elif character in ")]" and depth:
             depth -= 1
-        elif depth == 0 and character in "+~":
+        elif depth == 0 and (
+            character in "+~" or suffix[index:index + 2] == "||"
+        ):
             return False
     return True
 
@@ -150,23 +153,41 @@ def coordinate(element, name):
     return None
 
 
-def has_visible_unit_label(svg):
-    for element in svg.iter():
-        if local_name(element.tag) != "text":
-            continue
-        text = " ".join("".join(element.itertext()).split())
-        if re.search(
+def text_has_unit(text):
+    return bool(
+        re.search(
             r"\(\s*(?:%|[munp]?[sVAWJ]|[kMGT]?Hz)\s*\)"
             r"|%|\b(?:timesteps?|steps?|cycles?|events?|spikes?|bits?|bytes?|"
             r"dimensionless|unitless|normalized)\b",
             text,
             re.I,
-        ):
+        )
+    )
+
+
+def element_has_unit_context(element):
+    aria_label = " ".join((element.get("aria-label") or "").split())
+    if text_has_unit(aria_label):
+        return True
+    for descendant in element.iter():
+        if local_name(descendant.tag) not in {"text", "title"}:
+            continue
+        text = " ".join("".join(descendant.itertext()).split())
+        if text_has_unit(text):
             return True
     return False
 
 
-def has_visible_numeric_axis(svg):
+def svg_dimensions(svg):
+    try:
+        _x0, _y0, width, height = [float(value) for value in svg.get("viewBox", "").split()]
+    except ValueError:
+        width = height = 100.0
+    return width, height
+
+
+def numeric_axis_candidates(svg):
+    """Return axis-like lines supported by aligned numeric labels and tick marks."""
     points = []
     lines = []
     for element in svg.iter():
@@ -183,13 +204,11 @@ def has_visible_numeric_axis(svg):
             y1 = coordinate(element, "y1")
             y2 = coordinate(element, "y2")
             if None not in (x1, x2, y1, y2):
-                lines.append((x1, y1, x2, y2))
-    try:
-        _, _, width, height = [float(value) for value in svg.get("viewBox", "").split()]
-    except ValueError:
-        width = height = 100.0
+                lines.append((element, x1, y1, x2, y2))
+    width, height = svg_dimensions(svg)
     x_tolerance = max(20.0, width * 0.05)
     y_tolerance = max(20.0, height * 0.05)
+    intersection_tolerance = max(1.0, min(width, height) * 0.002)
 
     horizontal_groups = defaultdict(list)
     vertical_groups = defaultdict(list)
@@ -197,17 +216,44 @@ def has_visible_numeric_axis(svg):
         horizontal_groups[round(point[1], 1)].append(point)
         vertical_groups[round(point[0], 1)].append(point)
 
+    candidates = []
+    seen = set()
     for group in horizontal_groups.values():
         xs = [point[0] for point in group]
         values = {point[2] for point in group}
         if len(values) < 2 or max(xs) - min(xs) <= 0:
             continue
         label_y = group[0][1]
-        for x1, y1, x2, y2 in lines:
+        for element, x1, y1, x2, y2 in lines:
             if abs(y1 - y2) > 0.1 or not 0 < label_y - y1 <= y_tolerance:
                 continue
             if min(x1, x2) <= min(xs) + x_tolerance and max(x1, x2) >= max(xs) - x_tolerance:
-                return True
+                tick_positions = set()
+                for _tick, tx1, ty1, tx2, ty2 in lines:
+                    if abs(tx1 - tx2) > 0.1:
+                        continue
+                    if not (
+                        min(ty1, ty2) <= y1 + intersection_tolerance
+                        and max(ty1, ty2) >= y1 - intersection_tolerance
+                    ):
+                        continue
+                    for point_x in xs:
+                        if abs(tx1 - point_x) <= intersection_tolerance:
+                            tick_positions.add(round(point_x, 3))
+                axis_marker = element.get("marker-start") or element.get("marker-end")
+                if len(tick_positions) < 2 and not axis_marker:
+                    continue
+                key = ("horizontal", id(element))
+                if key not in seen:
+                    seen.add(key)
+                    candidates.append(
+                        {
+                            "orientation": "horizontal",
+                            "element": element,
+                            "position": y1,
+                            "span": (min(x1, x2), max(x1, x2)),
+                        }
+                    )
 
     for group in vertical_groups.values():
         ys = [point[1] for point in group]
@@ -215,18 +261,72 @@ def has_visible_numeric_axis(svg):
         if len(values) < 2 or max(ys) - min(ys) <= 0:
             continue
         label_x = group[0][0]
-        for x1, y1, x2, y2 in lines:
+        for element, x1, y1, x2, y2 in lines:
             if abs(x1 - x2) > 0.1 or not 0 < x1 - label_x <= x_tolerance:
                 continue
             if min(y1, y2) <= min(ys) + y_tolerance and max(y1, y2) >= max(ys) - y_tolerance:
+                tick_positions = set()
+                for _tick, tx1, ty1, tx2, ty2 in lines:
+                    if abs(ty1 - ty2) > 0.1:
+                        continue
+                    if not (
+                        min(tx1, tx2) <= x1 + intersection_tolerance
+                        and max(tx1, tx2) >= x1 - intersection_tolerance
+                    ):
+                        continue
+                    for point_y in ys:
+                        if abs(ty1 - point_y) <= intersection_tolerance:
+                            tick_positions.add(round(point_y, 3))
+                axis_marker = element.get("marker-start") or element.get("marker-end")
+                if len(tick_positions) < 2 and not axis_marker:
+                    continue
+                key = ("vertical", id(element))
+                if key not in seen:
+                    seen.add(key)
+                    candidates.append(
+                        {
+                            "orientation": "vertical",
+                            "element": element,
+                            "position": x1,
+                            "span": (min(y1, y2), max(y1, y2)),
+                        }
+                    )
+    return candidates
+
+
+def candidate_has_local_unit(candidate, svg):
+    if element_has_unit_context(candidate["element"]):
+        return True
+    width, height = svg_dimensions(svg)
+    orientation = candidate["orientation"]
+    position = candidate["position"]
+    start, end = candidate["span"]
+    if orientation == "horizontal":
+        normal_tolerance = max(24.0, height * 0.06)
+        span_tolerance = max(20.0, width * 0.08)
+    else:
+        normal_tolerance = max(24.0, width * 0.06)
+        span_tolerance = max(20.0, height * 0.08)
+    for element in svg.iter():
+        if local_name(element.tag) != "text":
+            continue
+        text = " ".join("".join(element.itertext()).split())
+        if not text_has_unit(text):
+            continue
+        x = coordinate(element, "x")
+        y = coordinate(element, "y")
+        if x is None or y is None:
+            continue
+        if orientation == "horizontal":
+            if abs(y - position) <= normal_tolerance and start - span_tolerance <= x <= end + span_tolerance:
                 return True
+        elif abs(x - position) <= normal_tolerance and start - span_tolerance <= y <= end + span_tolerance:
+            return True
     return False
 
 
-def check_axis_units(svg, label, errors):
-    visible_unit = has_visible_unit_label(svg)
-    metadata_units = []
-    explicit_axes = []
+def explicit_numeric_axes(svg):
+    axes = []
     for element in svg.iter():
         classes = set((element.get("class") or "").split())
         axis_kind = (element.get("data-axis") or "").strip().lower()
@@ -234,20 +334,51 @@ def check_axis_units(svg, label, errors):
             "numeric-axis",
             "numerical-axis",
         }:
-            explicit_axes.append(element)
-        for attribute in ("data-unit", "data-axis-unit"):
-            unit = element.get(attribute)
-            if unit is not None:
-                if not unit.strip():
-                    errors.append(f"{label}: numerical axis metadata must declare a non-empty unit")
-                else:
-                    metadata_units.append(unit.strip())
+            axes.append(element)
+    return axes
 
-    numerical_axis = bool(explicit_axes) or has_visible_numeric_axis(svg)
-    if numerical_axis and not visible_unit and not metadata_units:
-        errors.append(
-            f"{label}: numerical axis with visible numeric ticks must show a non-empty unit label"
-        )
+
+def axis_has_valid_metadata(axis, label, errors):
+    has_unit = False
+    for attribute in ("data-unit", "data-axis-unit"):
+        unit = axis.get(attribute)
+        if unit is None:
+            continue
+        if not unit.strip():
+            errors.append(f"{label}: numerical axis metadata must declare a non-empty unit")
+        else:
+            has_unit = True
+    return has_unit
+
+
+def check_axis_units(svg, label, errors):
+    explicit_axes = explicit_numeric_axes(svg)
+    explicit_ids = {id(axis) for axis in explicit_axes}
+    parents = {child: parent for parent in svg.iter() for child in parent}
+
+    for axis in explicit_axes:
+        metadata_unit = axis_has_valid_metadata(axis, label, errors)
+        if not metadata_unit and not element_has_unit_context(axis):
+            errors.append(
+                f"{label}: numerical axis with visible numeric ticks must show a non-empty unit label"
+            )
+
+    for candidate in numeric_axis_candidates(svg):
+        element = candidate["element"]
+        ancestor = element
+        within_explicit_axis = False
+        while ancestor is not None:
+            if id(ancestor) in explicit_ids:
+                within_explicit_axis = True
+                break
+            ancestor = parents.get(ancestor)
+        if within_explicit_axis:
+            continue
+        metadata_unit = axis_has_valid_metadata(element, label, errors)
+        if not metadata_unit and not candidate_has_local_unit(candidate, svg):
+            errors.append(
+                f"{label}: numerical axis with visible numeric ticks must show a non-empty unit label"
+            )
 
 
 def check_geometry(svg, label, errors):

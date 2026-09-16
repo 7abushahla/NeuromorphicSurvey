@@ -70,6 +70,19 @@ def figure_like_axis_fragment(number=7, *, unit_label=""):
 '''
 
 
+def figure_like_decorative_fragment(number=7):
+    return f'''<figure class="pfig l-body" id="figure-{number}">
+  <svg viewBox="0 0 100 100" role="img" aria-label="A decorative comparison">
+    <line x1="10" y1="50" x2="90" y2="50"/>
+    <text x="10" y="57">0.73</text>
+    <text x="90" y="57">2</text>
+    <text x="50" y="35">activation value and callout badge</text>
+  </svg>
+  <figcaption><b>Figure {number}:</b> Decorative values beside a comparison line.</figcaption>
+</figure>
+'''
+
+
 class FigureToolTests(unittest.TestCase):
     maxDiff = None
 
@@ -200,6 +213,7 @@ class FigureToolTests(unittest.TestCase):
         cases = {
             "prefix collision": "#figure-70 .inside { color: red; }\n",
             "adjacent sibling escape": "#figure-7 + .outside { color: red; }\n",
+            "column combinator escape": "#figure-7 || .outside { color: red; }\n",
             "negated ancestor": "body:not(#figure-7) .outside { color: red; }\n",
         }
         for name, css in cases.items():
@@ -265,6 +279,30 @@ class FigureToolTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("visible numeric ticks", result.stdout + result.stderr)
         self.assertIn("non-empty unit", result.stdout + result.stderr)
+
+    def test_unrelated_unit_like_prose_does_not_label_numeric_axis(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        fragment = figure_like_axis_fragment(7).replace(
+            "</svg>",
+            '<text x="5" y="20">Unrelated spike events</text></svg>',
+        )
+        self.write_figure(record, fragment=fragment)
+
+        result = self.run_tool("check-figures.py")
+
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("visible numeric ticks", result.stdout + result.stderr)
+        self.assertIn("non-empty unit", result.stdout + result.stderr)
+
+    def test_decorative_numeric_badges_near_line_are_not_inferred_as_axis(self):
+        record = figure_record(7)
+        self.write_manifest([record])
+        self.write_figure(record, fragment=figure_like_decorative_fragment(7))
+
+        result = self.run_tool("check-figures.py")
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_categorical_axis_does_not_require_numerical_units(self):
         record = figure_record(7)
