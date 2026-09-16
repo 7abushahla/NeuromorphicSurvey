@@ -19,15 +19,15 @@ Verification limit: no substantive paper text was retrieved. The all-none scores
 
 | Axis | Score | Basis and locator |
 |---|---|---|
-| A | none | No substantive primary text retrieved, MDPI retrieval record. |
-| B | none | No substantive primary text retrieved, MDPI retrieval record. |
-| C | none | No substantive primary text retrieved, MDPI retrieval record. |
-| D | none | No substantive primary text retrieved, MDPI retrieval record. |
-| E | none | No substantive primary text retrieved, MDPI retrieval record. |
-| F | none | No substantive primary text retrieved, MDPI retrieval record. |
-| G | none | No substantive primary text retrieved, MDPI retrieval record. |
-| H | none | No substantive primary text retrieved, MDPI retrieval record. |
-| I | none | No substantive primary text retrieved, MDPI retrieval record. |
-| J | none | No substantive primary text retrieved, MDPI retrieval record. |
-| K | none | No substantive primary text retrieved, MDPI retrieval record. |
-| L | none | No substantive primary text retrieved, MDPI retrieval record. |
+| A | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| B | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| C | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| D | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| E | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| F | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| G | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| H | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| I | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| J | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| K | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| L | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |

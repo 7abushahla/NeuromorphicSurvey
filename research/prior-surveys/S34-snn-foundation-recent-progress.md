@@ -19,13 +19,13 @@ The confirmed abstract describes an introductory survey of biological neuron the
 | C | mentioned | Publisher abstract states that preprocessing and training approaches are outlined. |
 | D | mentioned | Publisher abstract explicitly names conversion approaches. |
 | E | mentioned | Publisher abstract states that major SNN implementation frameworks are discussed. |
-| F | none | No compiler or mapping coverage is evidenced by the retrieved abstract. |
-| G | none | No interchange-format coverage is evidenced by the retrieved abstract. |
+| F | unassessed | Not assessed because full text was only partially retrieved. Locator: DOI/publisher abstract only; full article unavailable. |
+| G | unassessed | Not assessed because full text was only partially retrieved. Locator: DOI/publisher abstract only; full article unavailable. |
 | H | mentioned | Publisher abstract motivates energy-efficient real-world deployment but does not establish a platform taxonomy. |
-| I | none | No deployment-boundary semantics are evidenced by the retrieved abstract. |
-| J | none | No evidence-classification method is evidenced by the retrieved abstract. |
+| I | unassessed | Not assessed because full text was only partially retrieved. Locator: DOI/publisher abstract only; full article unavailable. |
+| J | unassessed | Not assessed because full text was only partially retrieved. Locator: DOI/publisher abstract only; full article unavailable. |
 | K | mentioned | Publisher abstract states that applications in multiple fields are explored. |
-| L | none | No traceable deployment route is evidenced by the retrieved abstract. |
+| L | unassessed | Not assessed because full text was only partially retrieved. Locator: DOI/publisher abstract only; full article unavailable. |
 
 ## Verification limits
 

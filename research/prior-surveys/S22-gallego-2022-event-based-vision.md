@@ -25,11 +25,11 @@ Material omissions include ANN-to-SNN conversion, SNN framework comparison, comp
 | B | full | Sections 2.1-2.4 define event output, polarity, timestamps, contrast thresholds, and event-generation models. |
 | C | mentioned | The abstract and Section 4 mention learning-based techniques without a training-method taxonomy. |
 | D | none | No ANN-to-SNN conversion treatment was located. |
-| E | partial | Section 6 surveys software, datasets, and simulators for event cameras. |
+| E | mentioned | Section 6 names software, datasets, and simulators for event cameras, but does not compare SNN frameworks. |
 | F | none | Section 5 discusses processors and embedded systems, not compiler or mapper toolchains. |
 | G | none | No interchange-format treatment was located. |
 | H | full | Sections 2.1-2.5 and 5 survey event cameras, their hardware properties, and embedded processors. |
-| I | mentioned | Section 2.3 explains sensing-specific representation, noise, and timing challenges, but not deployment-edge semantics. |
+| I | none | Section 2.3 explains sensing-specific representation, noise, and timing challenges, but not deployment-edge semantics. |
 | J | mentioned | Section 2.5 warns that camera characteristics are not measured under a common testbed, without evidence classes. |
-| K | full | Sections 1 and 4 organize applications from low-level vision to recognition, reconstruction, and robotics. |
+| K | partial | Sections 1 and 4 organize applications from low-level vision to recognition, reconstruction, and robotics, but do not provide a normalized measured-results survey. |
 | L | none | No trained SNN to named-chip route is demonstrated. |

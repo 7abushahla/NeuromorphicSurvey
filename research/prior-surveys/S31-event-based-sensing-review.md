@@ -15,7 +15,7 @@ This is a tri-modal event-sensing review. It organizes the literature by vision,
 | Axis | Score | Basis and locator |
 | --- | --- | --- |
 | A | none | The focus is sensing and signal processing, not a neuron-model taxonomy. |
-| B | full | Sections 1 and 1.1 analyze event-driven sampling, send-on-delta, AER, timing, and address representations. |
+| B | partial | Sections 1 and 1.1 analyze event-driven sampling, send-on-delta, AER, timing, and address representations, but do not provide a broad neural-code taxonomy. |
 | C | none | No SNN training-method taxonomy is present. |
 | D | none | ANN-to-SNN conversion is outside scope. |
 | E | none | No SNN software-framework treatment is provided. |

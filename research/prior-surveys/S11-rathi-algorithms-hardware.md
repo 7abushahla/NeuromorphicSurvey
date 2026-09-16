@@ -18,8 +18,8 @@ The review connects deep-SNN algorithms to hardware. Its organization proceeds f
 | B | full | Spike-train representation and temporal encoding are explicit algorithmic topics. Locator: Sec. 2, Algorithms. |
 | C | full | Local, conversion-assisted, and gradient-based learning are surveyed. Locator: Sec. 2, Algorithms. |
 | D | full | ANN-to-SNN conversion appears as a named training route. Locator: Sec. 2, Algorithms, "Spike-based backpropagation: ANN-to-SNN." |
-| E | partial | APIs and libraries are reviewed, without a deployment-fidelity comparison. Locator: Sec. 2.5, Neuromorphic APIs and Libraries. |
-| F | partial | The article relates workload requirements to platforms but does not systematically compare compiler or mapper toolchains. Locator: Introduction and hardware discussion. |
+| E | mentioned | APIs and libraries are reviewed, without a deployment-fidelity comparison. Locator: Sec. 2.5, Neuromorphic APIs and Libraries. |
+| F | mentioned | The article relates workload requirements to platforms but does not systematically compare compiler or mapper toolchains. Locator: Sec. 2.5, Neuromorphic APIs and Libraries; Sec. 3, Hardware. |
 | G | none | No interchange representation or cross-framework IR taxonomy was identified. Locator: full-text inspection of organization and APIs discussion. |
 | H | full | Dedicated hardware discussion names multiple neuromorphic architectures and device technologies. Locator: Introduction and hardware sections. |
 | I | none | No taxonomy of semantic failures at training, conversion, mapping, and execution boundaries was identified. Locator: full-text inspection. |

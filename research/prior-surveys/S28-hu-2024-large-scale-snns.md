@@ -20,7 +20,7 @@ Material omissions include framework and compiler comparison, interchange format
 
 | Axis | Score | Basis and locator |
 |---|---|---|
-| A | partial | Section 2.1.1 explains IF neurons and reset behavior in conversion, without a broad neuron-model taxonomy. |
+| A | mentioned | Section 2.1.1 explains IF neurons and reset behavior in conversion, without a broad neuron-model taxonomy. |
 | B | mentioned | Sections 2-3 refer to binary spikes and temporal information, without a dedicated encoding taxonomy. |
 | C | full | Section 2.1 divides learning methods into ANN-to-SNN conversion and direct surrogate-gradient training. |
 | D | full | Section 2.1.1 explains conversion mechanisms, conversion errors, normalization, calibration, and Table I. |

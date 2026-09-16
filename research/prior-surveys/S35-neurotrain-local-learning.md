@@ -18,7 +18,7 @@ This preprint surveys SNN training algorithms, with local learning as its princi
 | B | mentioned | Sections 2.1 and 2.2 discuss spike timing and temporal state, without a coding taxonomy. |
 | C | full | Abstract, Sections 1 to 4, and the declared taxonomy cover surrogate gradients, local and three-factor rules, plasticity, conversion, and non-standard optimization. |
 | D | partial | Abstract and Sections 1 and 3 include ANN-to-SNN conversion among reviewed training strategies, while direct training is central. |
-| E | full | Abstract and Section 5 define NeuroTrain as an open, snnTorch-based, modular implementation and benchmarking framework. |
+| E | partial | Abstract and Section 5 define NeuroTrain as one open, snnTorch-based, modular implementation and benchmarking framework, without a comparative framework survey. |
 | F | none | No compiler or hardware-mapping toolchain taxonomy is provided. |
 | G | none | No interchange format is covered. |
 | H | mentioned | Sections 1 and 2.5 discuss neuromorphic hardware suitability in general terms. |

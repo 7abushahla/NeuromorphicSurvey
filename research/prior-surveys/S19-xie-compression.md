@@ -16,7 +16,7 @@ This specialized survey is organized around DSNN background, computational units
 |---|---|---|
 | A | mentioned | LIF and other neuron models provide background, not the core taxonomy. Locator: Sec. 2.1, Biological Background. |
 | B | none | No encoding taxonomy was identified. Locator: full-text inspection. |
-| C | partial | Compression methods include training-time pruning, quantization, and distillation mechanisms. Locator: Sec. 3, Methods. |
+| C | mentioned | Training-time pruning, quantization, and distillation are mentioned as compression methods, not as a general training taxonomy. Locator: Sec. 3, Methods, subsections on pruning, quantization, and knowledge distillation. |
 | D | none | ANN-to-SNN conversion is cited in the literature but is not a surveyed compression axis. Locator: Sec. 3 and full-text inspection. |
 | E | none | No framework comparison was identified. Locator: full-text inspection. |
 | F | none | No compiler or mapper comparison was identified. Locator: full-text inspection. |

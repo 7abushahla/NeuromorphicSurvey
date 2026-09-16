@@ -22,12 +22,12 @@ The primary full text was unavailable through the inspected publisher paths. All
 | A | mentioned | Publisher abstract names biologically plausible neuron and synapse models. |
 | B | mentioned | Publisher abstract identifies spike-based computing, without a coding taxonomy. |
 | C | mentioned | Publisher abstract says that learning algorithms are surveyed. |
-| D | none | No conversion claim was located in available metadata. |
-| E | none | No framework comparison is established by available metadata. |
+| D | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |
+| E | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |
 | F | mentioned | Publisher abstract names mapping and compilation strategies, but no substantive section was retrieved. |
-| G | none | No interchange-format claim was located. |
+| G | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |
 | H | mentioned | Publisher abstract names hardware architectures and realizations. |
-| I | none | No semantic-boundary treatment is established. |
-| J | none | No evidence-classification treatment is established. |
+| I | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |
+| J | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |
 | K | mentioned | Publisher abstract names representative application domains. |
-| L | none | No end-to-end route is established. |
+| L | unassessed | Not assessed because full text was only partially retrieved. Locator: retrieval limit documented in this note. |

@@ -16,12 +16,12 @@
 | A | partial | A figure is explicitly titled “SNN computational models.” | Publisher Fig. 3 caption |
 | B | mentioned | The abstract identifies spike-based encoding and event-driven representations. | Publisher abstract |
 | C | partial | A figure is explicitly titled “Global and local-learning principles.” | Publisher Fig. 4 caption |
-| D | mentioned | The retrieved record cites conversion work but does not expose its own treatment. | Publisher references, conversion citations |
-| E | none | No accessible framework comparison is evidenced. | Publisher abstract and figure list |
-| F | none | No accessible toolchain taxonomy is evidenced. | Publisher abstract and figure list |
-| G | none | No interchange format is evidenced. | Publisher abstract and figure list |
+| D | unassessed | Body text is inaccessible; bibliography-only conversion references cannot establish coverage. | Publisher references; retrieval limitation in Identity and retrieval |
+| E | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |
+| F | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |
+| G | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |
 | H | partial | The abstract and figures cover hardware implementations and representative chips. | Publisher abstract; Fig. 5 caption |
-| I | none | No semantic deployment-boundary treatment is evidenced. | Publisher abstract and figure list |
-| J | none | No evidence-classification scheme is evidenced. | Publisher abstract and figure list |
+| I | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |
+| J | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |
 | K | mentioned | The abstract frames machine-intelligence applications but does not expose a measured catalog. | Publisher abstract |
-| L | none | No route from trained network to named chip is evidenced. | Publisher abstract and figure list |
+| L | unassessed | Not assessed because full text was only partially retrieved. | S07 note, Identity and retrieval |

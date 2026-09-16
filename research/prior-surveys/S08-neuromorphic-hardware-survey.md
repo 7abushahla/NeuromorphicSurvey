@@ -16,7 +16,7 @@
 | A | full | Neuro-inspired models and neuron/synapse models are a principal section. | Sec. III |
 | B | partial | Information representation appears in model and algorithm discussions, without a dedicated code taxonomy. | Secs. III-IV |
 | C | full | Algorithms and learning approaches constitute a principal section. | Sec. IV |
-| D | mentioned | ANN/deep-learning and SNN relationships are contextual, not a conversion survey. | Sec. IV |
+| D | none | ANN/deep-learning and SNN relationships are contextual, without ANN-to-SNN conversion treatment. | Sec. IV, Algorithms; no conversion subsection identified |
 | E | partial | Supporting software systems are included under supporting components. | Sec. VI-B |
 | F | none | No compiler/mapping-toolchain taxonomy is presented. | Sec. VI-B scope |
 | G | none | No interchange format is discussed as a survey category. | Secs. I-VII |

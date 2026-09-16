@@ -17,11 +17,11 @@
 | B | partial | Spike time, magnitude, and shape are identified as information carriers. | OSTI record, introductory text |
 | C | partial | Algorithms and learning are a stated review domain. | OSTI abstract; “Neuromorphic Algorithms and Applications” |
 | D | mentioned | ANN/SNN relation is contextual, without retrieved conversion taxonomy. | OSTI introductory text |
-| E | none | No accessible framework comparison is established. | OSTI abstract and accessible text |
-| F | none | No accessible compiler/mapping-toolchain comparison is established. | OSTI abstract and accessible text |
-| G | none | No interchange format is evidenced. | OSTI abstract and accessible text |
+| E | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |
+| F | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |
+| G | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |
 | H | partial | Neuromorphic processors and deployment settings are discussed prospectively. | OSTI “Neuromorphic Algorithms and Applications” |
-| I | none | No semantic interface taxonomy is evidenced. | OSTI accessible text |
-| J | none | No evidence-classification framework is evidenced. | OSTI accessible text |
+| I | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |
+| J | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |
 | K | partial | Edge, accelerators, and HPC applications are enumerated, but no retrieved results taxonomy is shown. | OSTI “Neuromorphic Algorithms and Applications” |
-| L | none | Whole-stack co-design is conceptual rather than a worked hardware route. | OSTI, Fig. 3 discussion |
+| L | unassessed | Not assessed because full text was only partially retrieved. | Retrieval limit documented in this note. |

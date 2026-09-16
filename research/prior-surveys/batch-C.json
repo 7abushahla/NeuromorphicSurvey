@@ -199,62 +199,62 @@
         "A": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3"
         },
         "B": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3"
         },
         "C": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3"
         },
         "D": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3"
         },
         "E": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1 and 3"
         },
         "F": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "G": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "H": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3 and Table 1"
         },
         "I": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "J": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Table 1 and Section 4"
         },
         "K": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Table 1"
         },
         "L": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         }
       },
       "strongest_contribution": "Circuit-level comparison with normalized energy and area metrics.",
@@ -265,7 +265,7 @@
       "verification": {
         "status": "verified",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
@@ -280,62 +280,62 @@
         "A": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Abstract and Section 3"
         },
         "B": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "C": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 3.1-3.4.6"
         },
         "D": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 3.1-3.2"
         },
         "E": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Abstract, Section 3, and Table 1"
         },
         "F": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 3.1-3.2"
         },
         "G": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "H": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 3.1-3.2"
         },
         "I": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "J": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "K": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "L": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 3"
         }
       },
       "strongest_contribution": "Nine-framework feature inventory for data-science SNN development.",
@@ -346,7 +346,7 @@
       "verification": {
         "status": "verified",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
@@ -363,62 +363,62 @@
         "A": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 2.1-2.4"
         },
         "B": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 2.1-2.4"
         },
         "C": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Abstract and Section 4"
         },
         "D": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         },
         "E": {
-          "score": "partial",
+          "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 6"
         },
         "F": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 5"
         },
         "G": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-8"
         },
         "H": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 2.1-2.5 and 5"
         },
         "I": {
-          "score": "mentioned",
+          "score": "none",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.3"
         },
         "J": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.5"
         },
         "K": {
-          "score": "full",
+          "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1 and 4"
         },
         "L": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-5"
         }
       },
       "strongest_contribution": "Sensor-to-algorithm account of asynchronous event vision.",
@@ -429,13 +429,13 @@
       "verification": {
         "status": "verified",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
       "id": "S23-gebregiorgis-2025-spike-based-overview",
       "source_id": "gebregiorgis-2025-spike-based-overview",
-      "full_text_status": "provisional",
+      "full_text_status": "partial",
       "retrieval_sources": [
         "https://doi.org/10.1016/j.micpro.2025.105240",
         "https://www.sciencedirect.com/science/article/pii/S0141933125001744"
@@ -444,62 +444,62 @@
         "A": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "B": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "C": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "D": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         },
         "E": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         },
         "F": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "G": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         },
         "H": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "I": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         },
         "J": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         },
         "K": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "locator": "S23 note, Publisher abstract"
         },
         "L": {
-          "score": "none",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "S23 note, Retrieval limit"
         }
       },
       "strongest_contribution": "Abstract-level end-to-end topical outline only.",
@@ -510,77 +510,77 @@
       "verification": {
         "status": "provisional",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
       "id": "S24-bouvier-2019-hardware-implementations",
       "source_id": "bouvier-2019-hardware-implementations",
-      "full_text_status": "provisional",
+      "full_text_status": "not_retrieved",
       "retrieval_sources": [
         "https://dl.acm.org/doi/10.1145/3287626",
         "https://doi.org/10.1145/3287626"
       ],
       "coverage": {
         "A": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "B": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "C": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "D": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "E": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "F": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "G": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "H": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "I": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "J": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "K": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "L": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         }
       },
       "strongest_contribution": "No primary-text contribution verified.",
@@ -591,76 +591,76 @@
       "verification": {
         "status": "provisional",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
       "id": "S25-shrestha-2022-models-hardware",
       "source_id": "shrestha-2022-models-hardware",
-      "full_text_status": "provisional",
+      "full_text_status": "not_retrieved",
       "retrieval_sources": [
         "https://doi.org/10.1109/MCAS.2022.3166331"
       ],
       "coverage": {
         "A": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "B": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "C": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "D": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "E": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "F": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "G": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "H": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "I": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "J": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "K": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "L": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         }
       },
       "strongest_contribution": "No primary-text contribution verified.",
@@ -671,77 +671,77 @@
       "verification": {
         "status": "provisional",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
       "id": "S26-chen-2026-neuromorphic-chips",
       "source_id": "chen-2026-neuromorphic-chips",
-      "full_text_status": "provisional",
+      "full_text_status": "not_retrieved",
       "retrieval_sources": [
         "https://www.mdpi.com/2673-8024/5/1/3",
         "https://doi.org/10.3390/chips5010003"
       ],
       "coverage": {
         "A": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "B": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "C": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "D": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "E": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "F": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "G": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "H": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "I": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "J": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "K": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         },
         "L": {
-          "score": "none",
-          "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Retrieval record and audit note"
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
         }
       },
       "strongest_contribution": "No primary-text contribution verified.",
@@ -752,7 +752,7 @@
       "verification": {
         "status": "provisional",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
@@ -767,62 +767,62 @@
         "A": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "B": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Article scope and Sections 1-4"
         },
         "C": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Article scope and Sections 1-4"
         },
         "D": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "E": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "F": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Article scope and Sections 1-4"
         },
         "G": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "H": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Abstract and Sections 2-3"
         },
         "I": {
-          "score": "partial",
+          "score": "none",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "J": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "K": {
-          "score": "none",
+          "score": "partial",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Abstract and Section 3"
         },
         "L": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         }
       },
       "strongest_contribution": "Systematic hardware-landscape review with normalized OPS/W reports.",
@@ -833,7 +833,7 @@
       "verification": {
         "status": "verified",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     },
     {
@@ -847,64 +847,64 @@
       ],
       "coverage": {
         "A": {
-          "score": "partial",
+          "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.1.1"
         },
         "B": {
           "score": "mentioned",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 2-3"
         },
         "C": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.1"
         },
         "D": {
           "score": "full",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.1.1"
         },
         "E": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "F": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "G": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "H": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         },
         "I": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Section 2.1.1"
         },
         "J": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Tables I-III"
         },
         "K": {
           "score": "partial",
           "basis": "See the associated audit note for the bounded supporting rationale.",
-          "locator": "Audit note, coverage table"
+          "locator": "Tables I-III"
         },
         "L": {
           "score": "none",
           "basis": "No substantive treatment was identified within the retrieved scope.",
-          "locator": "Audit note, coverage table"
+          "locator": "Sections 1-4"
         }
       },
       "strongest_contribution": "Algorithmic taxonomy of conversion, direct training, DCNNs, and spiking Transformers.",
@@ -915,8 +915,11 @@
       "verification": {
         "status": "verified",
         "reviewed_on": "2026-09-16",
-        "reviewer": "prior-surveys-batch-c"
+        "reviewer": "exa-batch-c"
       }
     }
-  ]
+  ],
+  "discovery_results_returned": 70,
+  "sources_reviewed_definition": "Sum of numResults across Exa discovery searches, not a count of documents used as evidence.",
+  "inspected_url_count": 20
 }

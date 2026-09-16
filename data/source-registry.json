@@ -2,6 +2,347 @@
   "schema_version": 1,
   "sources": [
     {
+      "id": "anon-edge-survey",
+      "canonical_key": "anon-edge-survey",
+      "title": "Towards Neuromorphic Computing on Edge: A Survey on Efficient Techniques for Spiking Neural Networks",
+      "authors": "Abdalla Rashed, Jorge Dias",
+      "year": 2025,
+      "venue": "EdgeAI4R Poster, OpenReview WuiVAPrgi3",
+      "doi": "unassigned:anon-edge-survey",
+      "url": "https://openreview.net/forum?id=WuiVAPrgi3",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "Sec. I, Introduction",
+        "Sec. II, Background"
+      ],
+      "aliases": [],
+      "notes": "OpenReview record and PDF inspected. API fallback was unavailable."
+    },
+    {
+      "id": "basu-2022",
+      "canonical_key": "basu-2022",
+      "title": "Spiking Neural Network Integrated Circuits: A Review of Trends and Future Directions",
+      "authors": "Arindam Basu, Charlotte Frenkel, Lei Deng, Xueyong Zhang",
+      "year": 2022,
+      "venue": "2022 IEEE Custom Integrated Circuits Conference, pp. 1-8",
+      "doi": "10.1109/CICC53496.2022.9772783",
+      "url": "https://doi.org/10.1109/CICC53496.2022.9772783",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sec. II, Trends in SNN Accelerators",
+        "Table I",
+        "Table II"
+      ],
+      "aliases": [],
+      "notes": "arXiv full text and IEEE metadata inspected through Exa."
+    },
+    {
+      "id": "bouvier-2019-hardware-implementations",
+      "canonical_key": "bouvier-2019-hardware-implementations",
+      "title": "Spiking neural networks hardware implementations and challenges: A survey",
+      "authors": "Maxime Bouvier et al.",
+      "year": 2019,
+      "venue": "ACM Journal on Emerging Technologies in Computing Systems",
+      "doi": "10.1145/3287626",
+      "url": "https://doi.org/10.1145/3287626",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Publisher metadata only"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "chen-2026-neuromorphic-chips",
+      "canonical_key": "chen-2026-neuromorphic-chips",
+      "title": "A New Era in Computing: A Review of Neuromorphic Computing Chip Architecture and Applications",
+      "authors": "G. Chen, M. Xu, Y. Chen, F. Yuan, L. Qin, and J. Ren",
+      "year": 2026,
+      "venue": "Chips",
+      "doi": "10.3390/chips5010003",
+      "url": "https://doi.org/10.3390/chips5010003",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "MDPI retrieval failed"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "davies-2021-loihi",
+      "canonical_key": "davies-2021-loihi",
+      "title": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook",
+      "authors": "M. Davies et al.",
+      "year": 2021,
+      "venue": "Proceedings of the IEEE",
+      "doi": "10.1109/JPROC.2021.3067593",
+      "url": "https://doi.org/10.1109/JPROC.2021.3067593",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. II-VI",
+        "Fig. 1",
+        "application result tables"
+      ],
+      "aliases": [],
+      "notes": "Single-chip-family survey."
+    },
+    {
+      "id": "deng-2025-edgesnn",
+      "canonical_key": "deng-2025-edgesnn",
+      "title": "Edge Intelligence with Spiking Neural Networks",
+      "authors": "S. Deng et al.",
+      "year": 2025,
+      "venue": "arXiv",
+      "doi": "unassigned:deng-2025-edgesnn",
+      "url": "https://arxiv.org/abs/2507.14069",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sec. III",
+        "Sec. IV",
+        "Sec. V",
+        "Sec. VI"
+      ],
+      "aliases": [],
+      "notes": "Self-described EdgeSNN survey."
+    },
+    {
+      "id": "eshraghian-2023-training-snns",
+      "canonical_key": "eshraghian-2023-training-snns",
+      "title": "Training Spiking Neural Networks Using Lessons From Deep Learning",
+      "authors": "J. K. Eshraghian et al.",
+      "year": 2023,
+      "venue": "Proceedings of the IEEE",
+      "doi": "10.1109/JPROC.2023.3308088",
+      "url": "https://doi.org/10.1109/JPROC.2023.3308088",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. II-IV",
+        "Figs. 9-10",
+        "Neuromorphic Systems in the Wild"
+      ],
+      "aliases": [],
+      "notes": "Training tutorial with survey characteristics."
+    },
+    {
+      "id": "ferreira-2025-edge-ai-circuits",
+      "canonical_key": "ferreira-2025-edge-ai-circuits",
+      "title": "A comparative review of deep and spiking neural networks for edge AI neuromorphic circuits",
+      "authors": "Pietro M. Ferreira, Siqi Wang, Yueyuan Gao, and Aziz Benlarbi-Delai",
+      "year": 2025,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2025.1676570",
+      "url": "https://doi.org/10.3389/fnins.2025.1676570",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1, 3, 4, and Table 1"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "gallego-2022-event-based-vision",
+      "canonical_key": "gallego-2022-event-based-vision",
+      "title": "Event-based Vision: A Survey",
+      "authors": "Guillermo Gallego et al.",
+      "year": 2022,
+      "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "doi": "10.1109/TPAMI.2020.3008413",
+      "url": "https://doi.org/10.1109/TPAMI.2020.3008413",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Accepted manuscript, Sections 1-8"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "gebregiorgis-2025-spike-based-overview",
+      "canonical_key": "gebregiorgis-2025-spike-based-overview",
+      "title": "Spike-based neuromorphic computing: An overview from bio-inspiration to hardware architectures and learning mechanisms",
+      "authors": "Anteneh Gebregiorgis et al.",
+      "year": 2025,
+      "venue": "Microprocessors and Microsystems",
+      "doi": "10.1016/j.micpro.2025.105240",
+      "url": "https://doi.org/10.1016/j.micpro.2025.105240",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Publisher abstract only"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "hu-2024-large-scale-snns",
+      "canonical_key": "hu-2024-large-scale-snns",
+      "title": "Toward Large-scale Spiking Neural Networks: A Comprehensive Survey and Future Directions",
+      "authors": "Yangfan Hu, Qian Zheng, Guoqi Li, Huajin Tang, and Gang Pan",
+      "year": 2024,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2409.02111",
+      "url": "https://doi.org/10.48550/arXiv.2409.02111",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 2-4, and Tables I-III"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "huynh-2022-implementing-snns",
+      "canonical_key": "huynh-2022-implementing-snns",
+      "title": "Implementing Spiking Neural Networks on Neuromorphic Architectures: A Review",
+      "authors": "P. K. Huynh, M. L. Varshika, A. Paul, M. Isik, A. Balaji, and A. Das",
+      "year": 2022,
+      "venue": "arXiv",
+      "doi": "unassigned:huynh-2022-implementing-snns",
+      "url": "https://doi.org/10.48550/arxiv.2202.08897",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. 2-3",
+        "Tables 1 and 3-5",
+        "Figs. 3-5"
+      ],
+      "aliases": [],
+      "notes": "System-software and mapping-framework review."
+    },
+    {
+      "id": "ivanov-2022",
+      "canonical_key": "ivanov-2022",
+      "title": "Neuromorphic artificial intelligence systems",
+      "authors": "Dmitry Ivanov, Aleksandr Chezhegov, Mikhail Kiselev, Andrey Grunin, Denis Larionov",
+      "year": 2022,
+      "venue": "Frontiers in Neuroscience 16, 959626",
+      "doi": "10.3389/fnins.2022.959626",
+      "url": "https://doi.org/10.3389/fnins.2022.959626",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "project overview",
+        "brain-feature classification"
+      ],
+      "aliases": [],
+      "notes": "Publisher HTML and PDF inspected through Exa."
+    },
+    {
+      "id": "khan-2025",
+      "canonical_key": "khan-2025",
+      "title": "Spiking Neural Networks: A Comprehensive Survey of Training Methodologies, Hardware Implementations and Applications",
+      "authors": "Ameer Hamza Khan, Xinwei Cao, Chunbo Luo, Shiqing Zhang, Wenping Guo, Vasilios N. Katsikis, et al.",
+      "year": 2025,
+      "venue": "Artificial Intelligence Science and Engineering 1(3), 175-207",
+      "doi": "10.23919/aise.2025.000013",
+      "url": "https://doi.org/10.23919/aise.2025.000013",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "publisher abstract and references only",
+        "retrieval log"
+      ],
+      "aliases": [],
+      "notes": "Exa retrieved publisher metadata, abstract, and references. Journal fallback timed out; no body text was scored."
+    },
+    {
+      "id": "kudithipudi-2025-neuromorphic-scale",
+      "canonical_key": "kudithipudi-2025-neuromorphic-scale",
+      "title": "Neuromorphic computing at scale",
+      "authors": "D. Kudithipudi et al.",
+      "year": 2025,
+      "venue": "Nature",
+      "doi": "10.1038/s41586-024-08253-8",
+      "url": "https://doi.org/10.1038/s41586-024-08253-8",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Local PDF, pp. 801-812",
+        "Secs. ‘Scaling neuromorphic systems’ and ‘Software ecosystem’",
+        "Figs. 1-5"
+      ],
+      "aliases": [],
+      "notes": "Full text verified by inspection of the complete local PDF at 00-Vault/01-Literature/05-Neuromorphic-Background/03-General-Surveys/s41586-024-08253-8.pdf (pp. 801-812), with publisher HTML, PDF, and DOI URLs also checked."
+    },
+    {
+      "id": "manna-2023-frameworks",
+      "canonical_key": "manna-2023-frameworks",
+      "title": "Frameworks for SNNs: a Review of Data Science-oriented Software and an Expansion of SpykeTorch",
+      "authors": "Davide Liberato Manna, Alex Vicente, Paul Kirkland, Trevor Bihl, and Gaetano Di Caterina",
+      "year": 2023,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2302.07624",
+      "url": "https://doi.org/10.48550/arXiv.2302.07624",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 1-5, and Table 1"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "nunes-2022",
+      "canonical_key": "nunes-2022",
+      "title": "Spiking Neural Networks: A Survey",
+      "authors": "Joao D. Nunes, Marcelo Carvalho, Diogo Carneiro, Jaime S. Cardoso",
+      "year": 2022,
+      "venue": "IEEE Access",
+      "doi": "10.1109/ACCESS.2022.3179968",
+      "url": "https://doi.org/10.1109/ACCESS.2022.3179968",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "not_retrieved",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "retrieval log only"
+      ],
+      "aliases": [],
+      "notes": "Publisher and ResearchGate fallbacks timed out. The IEEE stamp endpoint returned HTTP 418. Abstract was not converted into coverage scores."
+    },
+    {
       "id": "pedersen-2024-nir",
       "canonical_key": "pedersen-2024-nir",
       "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
@@ -12,11 +353,402 @@
       "url": "https://doi.org/10.1038/s41467-024-52259-9",
       "source_type": "peer_reviewed",
       "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Results, Experiments",
+        "Results, Discussion of mismatches",
+        "Methods, NIR primitives"
+      ],
+      "aliases": [],
+      "notes": "Method paper, not a conventional survey."
+    },
+    {
+      "id": "prior-s29-ayasi-2025",
+      "canonical_key": "prior-s29-ayasi-2025",
+      "title": "A Practical Tutorial on Spiking Neural Networks: Comprehensive Review, Models, Experiments, Software Tools, and Implementation Guidelines",
+      "authors": "Bahgat Ayasi; Cristóbal J. Carmona; Mohammed Saleh; Angel M. García-Vico",
+      "year": 2025,
+      "venue": "Eng",
+      "doi": "10.3390/eng6110304",
+      "url": "https://www.mdpi.com/2673-4117/6/11/304",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 2 to 4",
+        "Table 1",
+        "Section 3 Implementation Frameworks and Tools"
+      ],
+      "aliases": [],
+      "notes": "Full-text tutorial-study. Energy values are GPU operation-count proxies."
+    },
+    {
+      "id": "prior-s30-alabdulwahid-2024",
+      "canonical_key": "prior-s30-alabdulwahid-2024",
+      "title": "A Survey on Neuromorphic Architectures for Running Artificial Intelligence Algorithms",
+      "authors": "Seham Al Abdul Wahid; Arghavan Asad; Farah Mohammadi",
+      "year": 2024,
+      "venue": "Electronics",
+      "doi": "10.3390/electronics13152963",
+      "url": "https://www.mdpi.com/2079-9292/13/15/2963",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Section 2",
+        "Section 3",
+        "Table 1"
+      ],
+      "aliases": [],
+      "notes": "Hardware comparison is descriptive, not normalized deployment evidence."
+    },
+    {
+      "id": "prior-s31-tayaraninajaran-2021",
+      "canonical_key": "prior-s31-tayaraninajaran-2021",
+      "title": "Event-Based Sensing and Signal Processing in the Visual, Auditory, and Olfactory Domain: A Review",
+      "authors": "Mohammad-Hassan Tayarani-Najaran; Michael Schmuker",
+      "year": 2021,
+      "venue": "Frontiers in Neural Circuits",
+      "doi": "10.3389/fncir.2021.610446",
+      "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1 to 5",
+        "Section 1.1"
+      ],
+      "aliases": [],
+      "notes": "Sensor AER is not NIR-level interchange."
+    },
+    {
+      "id": "prior-s32-cimarelli-2025",
+      "canonical_key": "prior-s32-cimarelli-2025",
+      "title": "Hardware, Algorithms, and Applications of the Neuromorphic Vision Sensor: a Review",
+      "authors": "Claudio Cimarelli; Jose Andres Millan-Romera; Holger Voos; José Luis Sánchez-López",
+      "year": 2025,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2504.08588",
+      "url": "https://arxiv.org/html/2504.08588",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections I, II, and IV",
+        "Sensor timeline"
+      ],
+      "aliases": [],
+      "notes": "Verified preprint full text. Sensor hardware is not SNN compute hardware."
+    },
+    {
+      "id": "prior-s33-hegao-2026",
+      "canonical_key": "prior-s33-hegao-2026",
+      "title": "A Four-Stage Structural Evolution Framework for Spiking Neural Networks: A Review and Perspective from Binary ANN to Event-Driven Models",
+      "authors": "Hao He; Shuang Gao",
+      "year": 2026,
+      "venue": "Neural Processing Letters",
+      "doi": "10.1007/s11063-025-11832-z",
+      "url": "https://link.springer.com/article/10.1007/s11063-025-11832-z",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1 and 2",
+        "Table 1",
+        "Section 2.4"
+      ],
+      "aliases": [],
+      "notes": "Recent published review with deliberately narrow LIF direct-training scope."
+    },
+    {
+      "id": "prior-s34-luu-2026",
+      "canonical_key": "prior-s34-luu-2026",
+      "title": "A Survey on Spiking Neural Network Foundation and Recent Progress",
+      "authors": "Nhan Trong Luu; Duong Trung Luu; Pham Ngoc Nam; Truong Cong Thang",
+      "year": 2026,
+      "venue": "IEEE Access",
+      "doi": "10.1109/ACCESS.2026.3685666",
+      "url": "https://doi.org/10.1109/access.2026.3685666",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
       "verification_status": "provisional",
       "retrieved_on": "2026-09-16",
-      "locators": ["Methods, NIR primitives and graph execution"],
+      "locators": [
+        "Publisher abstract"
+      ],
       "aliases": [],
-      "notes": ""
+      "notes": "Identity verified. No full text retrieved, so all positive scores remain mentioned."
+    },
+    {
+      "id": "prior-s35-caviglia-2026",
+      "canonical_key": "prior-s35-caviglia-2026",
+      "title": "NeuroTrain: Surveying Local Learning Rules for Spiking Neural Networks with an Open Benchmarking Framework",
+      "authors": "Alessio Caviglia; Filippo Marostica; Roberta Bardini; Alessandro Savino; Stefano Di Carlo",
+      "year": 2026,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2605.15058",
+      "url": "https://arxiv.org/html/2605.15058",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "Sections 1 to 5"
+      ],
+      "aliases": [],
+      "notes": "HTML full text reviewed. Journal annotation is not independently verified as a version of record."
+    },
+    {
+      "id": "prior-s36-du-2026",
+      "canonical_key": "prior-s36-du-2026",
+      "title": "Benchmarking spiking neural networks across sensing modalities on edge devices",
+      "authors": "Xin Du; Di Yu; Changze Lv; Yuqi Zhang; Zhuo Chen; Wentao Tong; Helin Zheng; Weisong Zhang; Xiaofan Zhao; Linshan Jiang; Shijie Ji; Hui Fang; Xiaoqing Zheng; Gang Pan; Shuiguang Deng",
+      "year": 2026,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2609.00026",
+      "url": "https://arxiv.org/abs/2609.00026",
+      "source_type": "preprint",
+      "retrieval_status": "not_retrieved",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "arXiv abstract",
+        "submission history 2026-08-27"
+      ],
+      "aliases": [],
+      "notes": "Submitted 2026-08-27. HTML and PDF retrieval failed, so no abstract claim is promoted above mentioned."
+    },
+    {
+      "id": "prior-s37-farsa-2026",
+      "canonical_key": "prior-s37-farsa-2026",
+      "title": "GPU and RISC-V Acceleration for Neuromorphic Computing Based on Spiking Neural Networks: Taxonomy, Comparison, and Open Challenges",
+      "authors": "Edris Zaman Farsa; Amirhossein Ilkhani; Marc Reichenbach; Amirreza Yousefzadeh; Arash Ahmadi; Alexander Serb; J. Harkin",
+      "year": 2026,
+      "venue": "Neuromorphic Computing and Engineering",
+      "doi": "10.1088/2634-4386/aea4eb",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "Sections II to VI",
+        "Figures 1 and 2"
+      ],
+      "aliases": [],
+      "notes": "Accepted manuscript online 2026-09-09, not final version of record. Source is a peer-reviewed accepted manuscript, not the final version of record."
+    },
+    {
+      "id": "rathi-2023",
+      "canonical_key": "rathi-2023",
+      "title": "Exploring Neuromorphic Computing Based on Spiking Neural Networks: Algorithms to Hardware",
+      "authors": "Nitin Rathi, Indranil Chakraborty, Adarsh Kumar Kosta, Abhronil Sengupta, Aayush Ankit, Priyadarshini Panda, Kaushik Roy",
+      "year": 2023,
+      "venue": "ACM Computing Surveys 55(12), Article 243, pp. 1-49",
+      "doi": "10.1145/3571155",
+      "url": "https://doi.org/10.1145/3571155",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sec. 2, Algorithms",
+        "Sec. 2.5, Neuromorphic APIs and Libraries",
+        "hardware discussion"
+      ],
+      "aliases": [],
+      "notes": "ACM article and open PDF inspected through Exa."
+    },
+    {
+      "id": "roy-2019-spike-machine-intelligence",
+      "canonical_key": "roy-2019-spike-machine-intelligence",
+      "title": "Towards spike-based machine intelligence with neuromorphic computing",
+      "authors": "K. Roy, A. Jaiswal, and P. Panda",
+      "year": 2019,
+      "venue": "Nature",
+      "doi": "10.1038/s41586-019-1677-2",
+      "url": "https://doi.org/10.1038/s41586-019-1677-2",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Publisher abstract",
+        "Figs. 3-5 captions"
+      ],
+      "aliases": [],
+      "notes": "Publisher body text was inaccessible through Exa."
+    },
+    {
+      "id": "schuman-2017-hardware-survey",
+      "canonical_key": "schuman-2017-hardware-survey",
+      "title": "A Survey of Neuromorphic Computing and Neural Networks in Hardware",
+      "authors": "C. D. Schuman et al.",
+      "year": 2017,
+      "venue": "arXiv",
+      "doi": "unassigned:schuman-2017-hardware-survey",
+      "url": "https://doi.org/10.48550/arxiv.1705.06963",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Secs. III-VII",
+        "Sec. VI-B"
+      ],
+      "aliases": [],
+      "notes": "Historical 35-year survey."
+    },
+    {
+      "id": "schuman-2022-opportunities",
+      "canonical_key": "schuman-2022-opportunities",
+      "title": "Opportunities for neuromorphic computing algorithms and applications",
+      "authors": "C. D. Schuman, S. R. Kulkarni, M. Parsa, J. P. Mitchell, P. Date, and B. Kay",
+      "year": 2022,
+      "venue": "Nature Computational Science",
+      "doi": "10.1038/s43588-021-00184-y",
+      "url": "https://doi.org/10.1038/s43588-021-00184-y",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "OSTI abstract",
+        "Neuromorphic Algorithms and Applications",
+        "Fig. 3 discussion"
+      ],
+      "aliases": [],
+      "notes": "Only institutional record was accessible through Exa."
+    },
+    {
+      "id": "shrestha-2022-models-hardware",
+      "canonical_key": "shrestha-2022-models-hardware",
+      "title": "A Survey on Neuromorphic Computing: Models and Hardware",
+      "authors": "Arjun Shrestha et al.",
+      "year": 2022,
+      "venue": "IEEE Circuits and Systems Magazine",
+      "doi": "10.1109/MCAS.2022.3166331",
+      "url": "https://doi.org/10.1109/MCAS.2022.3166331",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "DOI returned HTTP 406"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
+    },
+    {
+      "id": "xie-2024",
+      "canonical_key": "xie-2024",
+      "title": "Toward Efficient Deep Spiking Neuron Networks: A Survey on Compression",
+      "authors": "Hui Xie, Ge Yang, Wenjuan Gao",
+      "year": 2024,
+      "venue": "Generalizing from Limited Resources in the Open World, pp. 18-31",
+      "doi": "10.1007/978-981-97-6125-8_2",
+      "url": "https://link.springer.com/chapter/10.1007/978-981-97-6125-8_2",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sec. 2, Background",
+        "Sec. 3, Methods",
+        "Fig. 1"
+      ],
+      "aliases": [],
+      "notes": "Substantive full text was inspected from arXiv HTML. Springer supplied chapter metadata and references."
+    },
+    {
+      "id": "yamazaki-2022",
+      "canonical_key": "yamazaki-2022",
+      "title": "Spiking Neural Networks and Their Applications: A Review",
+      "authors": "Kashu Yamazaki, Viet-Khoa Vo-Ho, Darshan Bulsara, Ngan Le",
+      "year": 2022,
+      "venue": "Brain Sciences 12(7), 863",
+      "doi": "10.3390/brainsci12070863",
+      "url": "https://doi.org/10.3390/brainsci12070863",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract contributions",
+        "Sec. 2, Biological Neurons",
+        "frameworks and applications sections"
+      ],
+      "aliases": [],
+      "notes": "Publisher HTML supplied substantive text. PDF fallback timed out."
+    },
+    {
+      "id": "yik-2025-neurobench",
+      "canonical_key": "yik-2025-neurobench",
+      "title": "The NeuroBench framework for benchmarking neuromorphic computing algorithms and systems",
+      "authors": "J. Yik et al.",
+      "year": 2025,
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-025-56739-4",
+      "url": "https://doi.org/10.1038/s41467-025-56739-4",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Fig. 1",
+        "Algorithm Track Benchmark Framework",
+        "System Track Benchmark Framework"
+      ],
+      "aliases": [],
+      "notes": "Benchmark framework, not a conventional survey."
+    },
+    {
+      "id": "zheng-2022",
+      "canonical_key": "zheng-2022",
+      "title": "An Introductory Review of Spiking Neural Network and Artificial Neural Network: From Biological Intelligence to Artificial Intelligence",
+      "authors": "Shengjie Zheng, Lang Qian, Pingsheng Li, Chenggang He, Xiaoqin Qin, Xiaojian Li",
+      "year": 2022,
+      "venue": "arXiv:2204.07519",
+      "doi": "10.48550/arXiv.2204.07519",
+      "url": "https://arxiv.org/abs/2204.07519",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Biological Background",
+        "Sec. III, Neuron Models",
+        "learning-mechanism discussion"
+      ],
+      "aliases": [],
+      "notes": "The arXiv preprint record is canonical for this entry. A published CSIT version was also inspected at DOI 10.5121/csit.2022.121010; it is a separate version and is not conflated with the arXiv DOI. The arXiv rendering contains draft-format artifacts."
+    },
+    {
+      "id": "zolfagharinejad-2024-brain-inspired-systems",
+      "canonical_key": "zolfagharinejad-2024-brain-inspired-systems",
+      "title": "Brain-inspired computing systems: a systematic literature review",
+      "authors": "Mohamadreza Zolfagharinejad et al.",
+      "year": 2024,
+      "venue": "The European Physical Journal B",
+      "doi": "10.1140/epjb/s10051-024-00703-6",
+      "url": "https://doi.org/10.1140/epjb/s10051-024-00703-6",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract, Sections 1-4, and Appendix 1"
+      ],
+      "aliases": [],
+      "notes": "Batch C source candidate. Not a canonical source-registry edit."
     }
   ]
 }

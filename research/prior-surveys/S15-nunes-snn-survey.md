@@ -14,18 +14,18 @@ Exa discovery metadata describes a review of SNN foundations, learning rules, ne
 
 | Axis | Score | Basis and locator |
 |---|---|---|
-| A | none | Withheld pending substantive full-text retrieval. Locator: retrieval log, publisher and fallback URLs. |
-| B | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| C | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| D | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| E | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| F | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| G | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| H | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| I | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| J | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| K | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
-| L | none | Withheld pending substantive full-text retrieval. Locator: retrieval log. |
+| A | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| B | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| C | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| D | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| E | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| F | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| G | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| H | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| I | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| J | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| K | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
+| L | unassessed | Not assessed because full text was not retrieved. Locator: retrieval limit documented in this note. |
 
 ## Verification limits
 

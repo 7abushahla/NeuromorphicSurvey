@@ -8,24 +8,24 @@ Inspected URLs include https://arxiv.org/abs/2609.00026, https://arxiv.org/html/
 
 ## Scope and assessment
 
-This very recent preprint was submitted on 2026-08-27. Its abstract describes a cross-modal, multi-device benchmark that evaluates encodings, neuron models, and topologies under consistent training and deployment protocols. Its reported purpose is highly relevant to evidence discipline, but the body text was not retrieved. All positive scores are therefore limited to `mentioned` and are not full-text coverage findings.
+This very recent preprint was submitted on 2026-08-27. Its abstract describes a cross-modal, multi-device benchmark that evaluates encodings, neuron models, and topologies under consistent training and deployment protocols. Its reported purpose is highly relevant to evidence discipline, but the body text was not retrieved. Positive scores were withheld pending full-text retrieval.
 
 ## Coverage A-L
 
 | Axis | Score | Basis and locator |
 | --- | --- | --- |
-| A | mentioned | arXiv abstract states that neuron models are evaluated. |
-| B | mentioned | arXiv abstract states that spike encoding is evaluated. |
-| C | none | Training-method taxonomy is not evidenced by the retrieved abstract. |
-| D | none | ANN-to-SNN conversion is not evidenced by the retrieved abstract. |
-| E | none | Framework coverage is not evidenced by the retrieved abstract. |
-| F | none | Compiler or mapper coverage is not evidenced by the retrieved abstract. |
-| G | none | Interchange-format coverage is not evidenced by the retrieved abstract. |
-| H | mentioned | arXiv abstract states that multiple edge devices are used. |
-| I | none | Deployment-boundary semantics are not evidenced by the retrieved abstract. |
-| J | mentioned | arXiv abstract states that deployment analysis identifies modality-dependent system costs, but no evidence taxonomy can be verified. |
-| K | mentioned | arXiv abstract describes sensing-modality workloads, but the applications and measurements could not be inspected. |
-| L | none | A traceable trained-network-to-specific-chip route is not evidenced by the retrieved abstract. |
+| A | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| B | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| C | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| D | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| E | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| F | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| G | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| H | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| I | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| J | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| K | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
+| L | unassessed | Not assessed because full text was not retrieved. Locator: arXiv record/abstract inspected; HTML/PDF unavailable. |
 
 ## Verification limits
 

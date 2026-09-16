@@ -23,7 +23,7 @@ The paper combines a broad tutorial with matched ANN and SNN experiments on MNIS
 | G | none | No NIR or interchange-format taxonomy was found in the inspected full text. |
 | H | mentioned | Sections 2.1.2 and 3 name Loihi, TrueNorth, and SpiNNaker as context, without platform analysis. |
 | I | none | Deployment challenges are stated generally in Sections 1 and 2.1.3, but no boundary-semantics taxonomy is supplied. |
-| J | partial | Abstract and Section 4 identify the reported energy as a GPU operation-count proxy, but no cross-literature evidence-classification scheme is offered. |
+| J | mentioned | Abstract and Section 4 identify the reported energy as a GPU operation-count proxy, but no cross-literature evidence-classification scheme is offered. |
 | K | full | Sections 2.1.5 and 4 discuss applications and report MNIST and CIFAR-10 results. |
 | L | none | Section 4 reports GPU-proxy experiments only, with no end-to-end named-chip route. |
 

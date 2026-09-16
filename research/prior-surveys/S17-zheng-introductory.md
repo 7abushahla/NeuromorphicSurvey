@@ -4,7 +4,7 @@
 
 S. Zheng, L. Qian, P. Li, C. He, X. Qin, and X. Li, "An Introductory Review of Spiking Neural Network and Artificial Neural Network: From Biological Intelligence to Artificial Intelligence," 2022. DOI: 10.48550/arXiv.2204.07519. The arXiv HTML full text was inspected through Exa. Retrieval status is `full_text`; verification status is `verified`.
 
-Inspected URLs: <https://arxiv.org/html/2204.07519>; <https://doi.org/10.5121/csit.2022.121010>.
+Inspected URLs: <https://arxiv.org/html/2204.07519>; <https://doi.org/10.5121/csit.2022.121010>. The CSIT DOI identifies a separate published version and is not conflated with the arXiv DOI.
 
 ## Scope and assessment
 
@@ -17,7 +17,7 @@ This introductory review is organized from biological background through neuron 
 | A | full | Biological neuron and SNN neuron models, including Hodgkin-Huxley and LIF, are explained. Locator: Biological Background and Sec. III, Neuron Models. |
 | B | mentioned | Information transmission and temporal-spatial spike properties are discussed, without an encoding taxonomy. Locator: Introduction and Biological Background. |
 | C | full | Mainstream learning mechanisms and their biological interpretation are reviewed. Locator: Abstract and learning-mechanism section. |
-| D | mentioned | ANN and SNN comparison provides context but no conversion-method taxonomy. Locator: Abstract and Introduction. |
+| D | none | ANN and SNN comparison provides context, but no ANN-to-SNN conversion treatment or taxonomy is developed. Locator: Secs. I-III; no conversion subsection identified. |
 | E | none | No software-framework survey was identified. Locator: full-text inspection. |
 | F | none | No compiler or mapper-toolchain treatment was identified. Locator: full-text inspection. |
 | G | none | No interchange-format treatment was identified. Locator: full-text inspection. |

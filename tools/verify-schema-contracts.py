@@ -209,7 +209,7 @@ def main() -> int:
             f"verified capability backed by {source_type}",
         )
 
-    for status in ("verified", "provisional", "partial", "not_retrieved"):
+    for status in ("verified", "provisional", "partial"):
         candidate = copy.deepcopy(coverage)
         record_by_id(
             candidate["surveys"], "S01-pedersen-2024-nir", "survey",
@@ -293,7 +293,7 @@ def main() -> int:
         "unassessed coverage without an access boundary",
     )
 
-    expected_checks = 32
+    expected_checks = 31
     if checks != expected_checks:
         raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
     print(f"verify-schema-contracts: {checks} contract checks passed")

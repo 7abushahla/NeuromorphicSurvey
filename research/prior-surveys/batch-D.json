@@ -3,43 +3,784 @@
   "retrieved_on": "2026-09-16",
   "sources_reviewed": 55,
   "source_candidates": [
-    {"source_id": "prior-s29-ayasi-2025", "url": "https://www.mdpi.com/2673-4117/6/11/304", "source_type": "peer_reviewed", "retrieval_status": "verified"},
-    {"source_id": "prior-s30-alabdulwahid-2024", "url": "https://www.mdpi.com/2079-9292/13/15/2963", "source_type": "peer_reviewed", "retrieval_status": "verified"},
-    {"source_id": "prior-s31-tayaraninajaran-2021", "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full", "source_type": "peer_reviewed", "retrieval_status": "verified"},
-    {"source_id": "prior-s32-cimarelli-2025", "url": "https://arxiv.org/html/2504.08588", "source_type": "preprint", "retrieval_status": "verified"},
-    {"source_id": "prior-s33-hegao-2026", "url": "https://link.springer.com/article/10.1007/s11063-025-11832-z", "source_type": "peer_reviewed", "retrieval_status": "verified"},
-    {"source_id": "prior-s34-luu-2026", "url": "https://doi.org/10.1109/access.2026.3685666", "source_type": "peer_reviewed", "retrieval_status": "partial"},
-    {"source_id": "prior-s35-caviglia-2026", "url": "https://arxiv.org/html/2605.15058", "source_type": "preprint", "retrieval_status": "verified"},
-    {"source_id": "prior-s36-du-2026", "url": "https://arxiv.org/abs/2609.00026", "source_type": "preprint", "retrieval_status": "not_retrieved"},
-    {"source_id": "prior-s37-farsa-2026", "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf", "source_type": "accepted_manuscript", "retrieval_status": "verified"}
+    {
+      "source_id": "prior-s29-ayasi-2025",
+      "url": "https://www.mdpi.com/2673-4117/6/11/304",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s30-alabdulwahid-2024",
+      "url": "https://www.mdpi.com/2079-9292/13/15/2963",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s31-tayaraninajaran-2021",
+      "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s32-cimarelli-2025",
+      "url": "https://arxiv.org/html/2504.08588",
+      "source_type": "preprint",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s33-hegao-2026",
+      "url": "https://link.springer.com/article/10.1007/s11063-025-11832-z",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s34-luu-2026",
+      "url": "https://doi.org/10.1109/access.2026.3685666",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial"
+    },
+    {
+      "source_id": "prior-s35-caviglia-2026",
+      "url": "https://arxiv.org/html/2605.15058",
+      "source_type": "preprint",
+      "retrieval_status": "verified"
+    },
+    {
+      "source_id": "prior-s36-du-2026",
+      "url": "https://arxiv.org/abs/2609.00026",
+      "source_type": "preprint",
+      "retrieval_status": "not_retrieved"
+    },
+    {
+      "source_id": "prior-s37-farsa-2026",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf",
+      "source_type": "accepted_manuscript",
+      "retrieval_status": "verified"
+    }
   ],
   "surveys": [
     {
-      "id": "S29-ayasi-2025-practical-tutorial", "source_id": "prior-s29-ayasi-2025", "title": "A Practical Tutorial on Spiking Neural Networks: Comprehensive Review, Models, Experiments, Software Tools, and Implementation Guidelines", "authors": "Bahgat Ayasi; Cristóbal J. Carmona; Mohammed Saleh; Angel M. García-Vico", "year": 2025, "venue": "Eng", "doi": "10.3390/eng6110304", "canonical_url": "https://www.mdpi.com/2673-4117/6/11/304", "source_type": "peer_reviewed", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Sections 2 to 4", "Table 1", "Section 3 Implementation Frameworks and Tools"], "inspected_urls": ["https://doi.org/10.20944/preprints202509.2072.v1", "https://www.mdpi.com/2673-4117/6/11/304"], "coverage": {"A":{"score":"full","basis":"Broad neuron-model survey.","locator":"Section 2.3"},"B":{"score":"full","basis":"Broad encoding comparison.","locator":"Section 2.2 and Table 1"},"C":{"score":"full","basis":"Multiple learning paradigms are reviewed.","locator":"Section 2.4"},"D":{"score":"partial","basis":"Conversion is included but is not the focus.","locator":"Introduction and Section 2"},"E":{"score":"full","basis":"Frameworks are discussed and used.","locator":"Section 3"},"F":{"score":"mentioned","basis":"NetX is named without comparative analysis.","locator":"Section 3"},"G":{"score":"none","basis":"No interchange-format taxonomy found.","locator":"Inspected full text"},"H":{"score":"mentioned","basis":"Platforms are named as context.","locator":"Sections 2.1.2 and 3"},"I":{"score":"none","basis":"No deployment-boundary semantics taxonomy.","locator":"Sections 1 and 2.1.3"},"J":{"score":"partial","basis":"Own GPU operation-count proxy is disclosed.","locator":"Abstract and Section 4"},"K":{"score":"full","basis":"Applications and benchmark results are reported.","locator":"Sections 2.1.5 and 4"},"L":{"score":"none","basis":"No named-chip route.","locator":"Section 4"}}, "notes": "Full-text tutorial-study. Energy values are GPU operation-count proxies."
+      "id": "S29-ayasi-2025-practical-tutorial",
+      "source_id": "prior-s29-ayasi-2025",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.mdpi.com/2673-4117/6/11/304"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Broad neuron-model survey.",
+          "locator": "Section 2.3"
+        },
+        "B": {
+          "score": "full",
+          "basis": "Broad encoding comparison.",
+          "locator": "Section 2.2 and Table 1"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Multiple learning paradigms are reviewed.",
+          "locator": "Section 2.4"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Conversion is included but is not the focus.",
+          "locator": "Introduction and Section 2"
+        },
+        "E": {
+          "score": "full",
+          "basis": "Frameworks are discussed and used.",
+          "locator": "Section 3"
+        },
+        "F": {
+          "score": "mentioned",
+          "basis": "NetX is named without comparative analysis.",
+          "locator": "Section 3"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange-format taxonomy found.",
+          "locator": "Sections 2.2-3 and terminology/reference inventory"
+        },
+        "H": {
+          "score": "mentioned",
+          "basis": "Platforms are named as context.",
+          "locator": "Sections 2.1.2 and 3"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No deployment-boundary semantics taxonomy.",
+          "locator": "Sections 1 and 2.1.3"
+        },
+        "J": {
+          "score": "mentioned",
+          "basis": "Own GPU operation-count proxy is disclosed, without a cross-literature evidence-classification scheme.",
+          "locator": "Abstract and Section 4"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Applications and benchmark results are reported.",
+          "locator": "Sections 2.1.5 and 4"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No named-chip route.",
+          "locator": "Section 4"
+        }
+      },
+      "strongest_contribution": "Combines a broad tutorial with controlled neuron, code, framework, and proxy-energy experiments.",
+      "deployment_depth": "Software experiments only; no physical neuromorphic deployment is reported.",
+      "omissions": [
+        "Energy is an operation-count proxy rather than instrumented chip energy."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S30-alabdulwahid-2024-neuromorphic-architectures", "source_id": "prior-s30-alabdulwahid-2024", "title": "A Survey on Neuromorphic Architectures for Running Artificial Intelligence Algorithms", "authors": "Seham Al Abdul Wahid; Arghavan Asad; Farah Mohammadi", "year": 2024, "venue": "Electronics", "doi": "10.3390/electronics13152963", "canonical_url": "https://www.mdpi.com/2079-9292/13/15/2963", "source_type": "peer_reviewed", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Section 2", "Section 3", "Table 1"], "inspected_urls": ["https://www.researchgate.net/publication/382613210_A_Survey_on_Neuromorphic_Architectures_for_Running_Artificial_Intelligence_Algorithms", "https://www.mdpi.com/2079-9292/13/15/2963"], "coverage": {"A":{"score":"full","basis":"Four neuron-model families are reviewed.","locator":"Introduction, Section 2.1, Figure 1"},"B":{"score":"none","basis":"No encoding taxonomy found.","locator":"Inspected full text"},"C":{"score":"partial","basis":"Learning mechanisms are categorized.","locator":"Introduction and Section 2"},"D":{"score":"none","basis":"No conversion review.","locator":"Inspected full text"},"E":{"score":"none","basis":"No framework comparison.","locator":"Inspected full text"},"F":{"score":"none","basis":"No mapping-toolchain taxonomy.","locator":"Inspected full text"},"G":{"score":"none","basis":"No interchange format.","locator":"Inspected full text"},"H":{"score":"full","basis":"Representative projects are compared.","locator":"Section 3 and Table 1"},"I":{"score":"none","basis":"No boundary-semantics analysis.","locator":"Inspected full text"},"J":{"score":"none","basis":"No evidence-classification method.","locator":"Inspected full text"},"K":{"score":"mentioned","basis":"Applications are motivational context.","locator":"Introduction and Section 4"},"L":{"score":"none","basis":"No end-to-end route.","locator":"Inspected full text"}}, "notes": "Hardware comparison is descriptive, not normalized deployment evidence."
+      "id": "S30-alabdulwahid-2024-neuromorphic-architectures",
+      "source_id": "prior-s30-alabdulwahid-2024",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.mdpi.com/2079-9292/13/15/2963"
+      ],
+      "coverage": {
+        "A": {
+          "score": "full",
+          "basis": "Four neuron-model families are reviewed.",
+          "locator": "Introduction, Section 2.1, Figure 1"
+        },
+        "B": {
+          "score": "none",
+          "basis": "No encoding taxonomy found.",
+          "locator": "Article scope and Sections 2-4"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "Learning mechanisms are categorized.",
+          "locator": "Introduction and Section 2"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No conversion review.",
+          "locator": "Article scope and Sections 2-4"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No framework comparison.",
+          "locator": "Article scope and Section 3"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No mapping-toolchain taxonomy.",
+          "locator": "Article scope and Section 3"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Article scope and Sections 2-4"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Representative projects are compared.",
+          "locator": "Section 3 and Table 1"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No boundary-semantics analysis.",
+          "locator": "Article scope and Sections 2-4"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence-classification method.",
+          "locator": "Article scope and Sections 2-4"
+        },
+        "K": {
+          "score": "mentioned",
+          "basis": "Applications are motivational context.",
+          "locator": "Introduction and Section 4"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No end-to-end route.",
+          "locator": "Article scope and Sections 3-4"
+        }
+      },
+      "strongest_contribution": "Provides a compact comparison of representative neuromorphic architecture families.",
+      "deployment_depth": "Descriptive hardware comparison without a traced model-to-chip route.",
+      "omissions": [
+        "Software handoffs and measurement boundaries are not systematized."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S31-tayaraninajaran-2021-event-based-sensing", "source_id": "prior-s31-tayaraninajaran-2021", "title": "Event-Based Sensing and Signal Processing in the Visual, Auditory, and Olfactory Domain: A Review", "authors": "Mohammad-Hassan Tayarani-Najaran; Michael Schmuker", "year": 2021, "venue": "Frontiers in Neural Circuits", "doi": "10.3389/fncir.2021.610446", "canonical_url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full", "source_type": "peer_reviewed", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Sections 1 to 5", "Section 1.1"], "inspected_urls": ["https://doi.org/10.3389/fncir.2021.610446", "https://public-pages-files-2025.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/text", "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full"], "coverage": {"A":{"score":"none","basis":"No neuron-model taxonomy.","locator":"Scope and Sections 1 to 5"},"B":{"score":"full","basis":"Event sampling and AER are central.","locator":"Sections 1 and 1.1"},"C":{"score":"none","basis":"No SNN training taxonomy.","locator":"Scope"},"D":{"score":"none","basis":"Conversion is outside scope.","locator":"Scope"},"E":{"score":"none","basis":"No frameworks reviewed.","locator":"Scope"},"F":{"score":"none","basis":"No compilers or mappers reviewed.","locator":"Scope"},"G":{"score":"none","basis":"AER is sensor protocol, not model interchange.","locator":"Section 1.1"},"H":{"score":"full","basis":"Visual, auditory, and olfactory sensing systems are reviewed.","locator":"Sections 3 to 5"},"I":{"score":"none","basis":"No neural deployment semantics.","locator":"Scope"},"J":{"score":"none","basis":"No evidence taxonomy.","locator":"Inspected full text"},"K":{"score":"full","basis":"Applications are synthesized across three modalities.","locator":"Sections 3 to 5"},"L":{"score":"none","basis":"No trained SNN to chip route.","locator":"Inspected full text"}}, "notes": "Sensor AER is not NIR-level interchange."
+      "id": "S31-tayaraninajaran-2021-event-based-sensing",
+      "source_id": "prior-s31-tayaraninajaran-2021",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full"
+      ],
+      "coverage": {
+        "A": {
+          "score": "none",
+          "basis": "No neuron-model taxonomy.",
+          "locator": "Scope and Sections 1 to 5"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Event sampling and AER are central, but no broad neural-code taxonomy is provided.",
+          "locator": "Sections 1 and 1.1"
+        },
+        "C": {
+          "score": "none",
+          "basis": "No SNN training taxonomy.",
+          "locator": "Scope"
+        },
+        "D": {
+          "score": "none",
+          "basis": "Conversion is outside scope.",
+          "locator": "Scope"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No frameworks reviewed.",
+          "locator": "Scope"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No compilers or mappers reviewed.",
+          "locator": "Scope"
+        },
+        "G": {
+          "score": "none",
+          "basis": "AER is sensor protocol, not model interchange.",
+          "locator": "Section 1.1"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Visual, auditory, and olfactory sensing systems are reviewed.",
+          "locator": "Sections 3 to 5"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No neural deployment semantics.",
+          "locator": "Scope"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence taxonomy.",
+          "locator": "Article scope and Sections 3-5"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Applications are synthesized across three modalities.",
+          "locator": "Sections 3 to 5"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No trained SNN to chip route.",
+          "locator": "Article scope and Sections 3-5"
+        }
+      },
+      "strongest_contribution": "Unifies event-based visual, auditory, and olfactory sensing principles.",
+      "deployment_depth": "Covers sensor systems rather than trained SNN deployment toolchains.",
+      "omissions": [
+        "Sensor address-event representation is not a model interchange format."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S32-cimarelli-2025-neuromorphic-vision", "source_id": "prior-s32-cimarelli-2025", "title": "Hardware, Algorithms, and Applications of the Neuromorphic Vision Sensor: a Review", "authors": "Claudio Cimarelli; Jose Andres Millan-Romera; Holger Voos; José Luis Sánchez-López", "year": 2025, "venue": "arXiv", "doi": "10.48550/arXiv.2504.08588", "canonical_url": "https://arxiv.org/html/2504.08588", "source_type": "preprint", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Sections I, II, and IV", "Sensor timeline"], "inspected_urls": ["https://doi.org/10.48550/arxiv.2504.08588", "https://arxiv.org/abs/2504.08588", "https://arxiv.org/html/2504.08588", "https://arxiv.org/pdf/2504.08588"], "coverage": {"A":{"score":"none","basis":"No neuron-model taxonomy.","locator":"Scope"},"B":{"score":"partial","basis":"Event packet and AER representations are explained.","locator":"Sections I and II"},"C":{"score":"none","basis":"No training taxonomy.","locator":"Scope"},"D":{"score":"none","basis":"No conversion coverage.","locator":"Scope"},"E":{"score":"none","basis":"No framework comparison.","locator":"Scope"},"F":{"score":"none","basis":"No mapper taxonomy.","locator":"Scope"},"G":{"score":"none","basis":"AER is not treated as general interchange.","locator":"Section II-A"},"H":{"score":"full","basis":"Sensor generations and hardware are reviewed.","locator":"Section II and sensor timeline"},"I":{"score":"none","basis":"No deployment semantic taxonomy.","locator":"Scope"},"J":{"score":"none","basis":"No evidence-classification framework.","locator":"Scope"},"K":{"score":"full","basis":"Practical case studies are presented.","locator":"Section IV"},"L":{"score":"none","basis":"No compute-chip deployment route.","locator":"Scope"}}, "notes": "Verified preprint full text. Sensor hardware is not SNN compute hardware."
+      "id": "S32-cimarelli-2025-neuromorphic-vision",
+      "source_id": "prior-s32-cimarelli-2025",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/html/2504.08588"
+      ],
+      "coverage": {
+        "A": {
+          "score": "none",
+          "basis": "No neuron-model taxonomy.",
+          "locator": "Scope"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Event packet and AER representations are explained.",
+          "locator": "Sections I and II"
+        },
+        "C": {
+          "score": "none",
+          "basis": "No training taxonomy.",
+          "locator": "Scope"
+        },
+        "D": {
+          "score": "none",
+          "basis": "No conversion coverage.",
+          "locator": "Scope"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No framework comparison.",
+          "locator": "Scope"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No mapper taxonomy.",
+          "locator": "Scope"
+        },
+        "G": {
+          "score": "none",
+          "basis": "AER is not treated as general interchange.",
+          "locator": "Section II-A"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Sensor generations and hardware are reviewed.",
+          "locator": "Section II and sensor timeline"
+        },
+        "I": {
+          "score": "none",
+          "basis": "No deployment semantic taxonomy.",
+          "locator": "Scope"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence-classification framework.",
+          "locator": "Scope"
+        },
+        "K": {
+          "score": "full",
+          "basis": "Practical case studies are presented.",
+          "locator": "Section IV"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No compute-chip deployment route.",
+          "locator": "Scope"
+        }
+      },
+      "strongest_contribution": "Connects neuromorphic vision sensor hardware with algorithms and applications.",
+      "deployment_depth": "Focuses on sensing rather than compute-chip execution routes.",
+      "omissions": [
+        "No general compiler, mapper, or executable-semantics taxonomy is provided."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S33-hegao-2026-four-stage", "source_id": "prior-s33-hegao-2026", "title": "A Four-Stage Structural Evolution Framework for Spiking Neural Networks: A Review and Perspective from Binary ANN to Event-Driven Models", "authors": "Hao He; Shuang Gao", "year": 2026, "venue": "Neural Processing Letters", "doi": "10.1007/s11063-025-11832-z", "canonical_url": "https://link.springer.com/article/10.1007/s11063-025-11832-z", "source_type": "peer_reviewed", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Sections 1 and 2", "Table 1", "Section 2.4"], "inspected_urls": ["https://link.springer.com/article/10.1007/s11063-025-11832-z"], "coverage": {"A":{"score":"mentioned","basis":"Target is directly trained LIF SNNs.","locator":"Sections 1 and 2"},"B":{"score":"none","basis":"Exhaustive encoding classification is excluded.","locator":"Section 2.2"},"C":{"score":"partial","basis":"Direct training and surrogate difficulty are analyzed.","locator":"Sections 1 and 2"},"D":{"score":"partial","basis":"Conversion is a complementary route.","locator":"Section 2 and Table 1"},"E":{"score":"none","basis":"No framework comparison.","locator":"Scope"},"F":{"score":"none","basis":"No mapping taxonomy.","locator":"Scope"},"G":{"score":"none","basis":"No interchange format.","locator":"Scope"},"H":{"score":"none","basis":"No platform taxonomy.","locator":"Scope"},"I":{"score":"none","basis":"Reset is within-neuron, not boundary semantics.","locator":"Section 2.4"},"J":{"score":"none","basis":"No evidence classification.","locator":"Scope"},"K":{"score":"none","basis":"Applications are outside scope.","locator":"Scope"},"L":{"score":"none","basis":"No deployment route.","locator":"Scope"}}, "notes": "Recent published review with deliberately narrow LIF direct-training scope."
+      "id": "S33-hegao-2026-four-stage",
+      "source_id": "prior-s33-hegao-2026",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://link.springer.com/article/10.1007/s11063-025-11832-z"
+      ],
+      "coverage": {
+        "A": {
+          "score": "mentioned",
+          "basis": "Target is directly trained LIF SNNs.",
+          "locator": "Sections 1 and 2"
+        },
+        "B": {
+          "score": "none",
+          "basis": "Exhaustive encoding classification is excluded.",
+          "locator": "Section 2.2"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "Direct training and surrogate difficulty are analyzed.",
+          "locator": "Sections 1 and 2"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Conversion is a complementary route.",
+          "locator": "Section 2 and Table 1"
+        },
+        "E": {
+          "score": "none",
+          "basis": "No framework comparison.",
+          "locator": "Scope"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No mapping taxonomy.",
+          "locator": "Scope"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Scope"
+        },
+        "H": {
+          "score": "none",
+          "basis": "No platform taxonomy.",
+          "locator": "Scope"
+        },
+        "I": {
+          "score": "none",
+          "basis": "Reset is within-neuron, not boundary semantics.",
+          "locator": "Section 2.4"
+        },
+        "J": {
+          "score": "none",
+          "basis": "No evidence classification.",
+          "locator": "Scope"
+        },
+        "K": {
+          "score": "none",
+          "basis": "Applications are outside scope.",
+          "locator": "Scope"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No deployment route.",
+          "locator": "Scope"
+        }
+      },
+      "strongest_contribution": "Organizes SNN development as a four-stage structural evolution from binary ANNs.",
+      "deployment_depth": "Algorithmic perspective with no named physical deployment route.",
+      "omissions": [
+        "The review deliberately narrows its treatment of codes, platforms, and applications."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S34-luu-2026-foundation", "source_id": "prior-s34-luu-2026", "title": "A Survey on Spiking Neural Network Foundation and Recent Progress", "authors": "Nhan Trong Luu; Duong Trung Luu; Pham Ngoc Nam; Truong Cong Thang", "year": 2026, "venue": "IEEE Access", "doi": "10.1109/ACCESS.2026.3685666", "canonical_url": "https://doi.org/10.1109/access.2026.3685666", "source_type": "peer_reviewed", "retrieval_status": "partial", "retrieved_on": "2026-09-16", "locators": ["Publisher abstract"], "inspected_urls": ["https://doi.org/10.1109/access.2026.3685666"], "coverage": {"A":{"score":"mentioned","basis":"Abstract states neuron models are summarized.","locator":"Publisher abstract"},"B":{"score":"mentioned","basis":"Abstract identifies temporal coding.","locator":"Publisher abstract"},"C":{"score":"mentioned","basis":"Abstract identifies training approaches.","locator":"Publisher abstract"},"D":{"score":"mentioned","basis":"Abstract identifies conversion approaches.","locator":"Publisher abstract"},"E":{"score":"mentioned","basis":"Abstract identifies implementation frameworks.","locator":"Publisher abstract"},"F":{"score":"none","basis":"No mapper coverage evidenced.","locator":"Publisher abstract"},"G":{"score":"none","basis":"No interchange evidenced.","locator":"Publisher abstract"},"H":{"score":"mentioned","basis":"Deployment motivation is stated.","locator":"Publisher abstract"},"I":{"score":"none","basis":"No boundary semantics evidenced.","locator":"Publisher abstract"},"J":{"score":"none","basis":"No evidence taxonomy evidenced.","locator":"Publisher abstract"},"K":{"score":"mentioned","basis":"Abstract identifies applications.","locator":"Publisher abstract"},"L":{"score":"none","basis":"No route evidenced.","locator":"Publisher abstract"}}, "notes": "Identity verified. No full text retrieved, so all positive scores remain mentioned."
+      "id": "S34-luu-2026-foundation",
+      "source_id": "prior-s34-luu-2026",
+      "full_text_status": "partial",
+      "retrieval_sources": [
+        "https://doi.org/10.1109/access.2026.3685666"
+      ],
+      "coverage": {
+        "A": {
+          "score": "mentioned",
+          "basis": "Abstract states neuron models are summarized.",
+          "locator": "Publisher abstract"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "Abstract identifies temporal coding.",
+          "locator": "Publisher abstract"
+        },
+        "C": {
+          "score": "mentioned",
+          "basis": "Abstract identifies training approaches.",
+          "locator": "Publisher abstract"
+        },
+        "D": {
+          "score": "mentioned",
+          "basis": "Abstract identifies conversion approaches.",
+          "locator": "Publisher abstract"
+        },
+        "E": {
+          "score": "mentioned",
+          "basis": "Abstract identifies implementation frameworks.",
+          "locator": "Publisher abstract"
+        },
+        "F": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "DOI/publisher abstract only; full article unavailable."
+        },
+        "G": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "DOI/publisher abstract only; full article unavailable."
+        },
+        "H": {
+          "score": "mentioned",
+          "basis": "Deployment motivation is stated.",
+          "locator": "Publisher abstract"
+        },
+        "I": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "DOI/publisher abstract only; full article unavailable."
+        },
+        "J": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "DOI/publisher abstract only; full article unavailable."
+        },
+        "K": {
+          "score": "mentioned",
+          "basis": "Abstract identifies applications.",
+          "locator": "Publisher abstract"
+        },
+        "L": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was only partially retrieved.",
+          "locator": "DOI/publisher abstract only; full article unavailable."
+        }
+      },
+      "strongest_contribution": "Presents a broad foundation-and-progress overview according to the publisher abstract.",
+      "deployment_depth": "Deployment depth remains unassessed because full text was only partially retrieved.",
+      "omissions": [
+        "Full-text retrieval is required before negative coverage judgments are defensible."
+      ],
+      "verification": {
+        "status": "provisional",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S35-caviglia-2026-neurotrain", "source_id": "prior-s35-caviglia-2026", "title": "NeuroTrain: Surveying Local Learning Rules for Spiking Neural Networks with an Open Benchmarking Framework", "authors": "Alessio Caviglia; Filippo Marostica; Roberta Bardini; Alessandro Savino; Stefano Di Carlo", "year": 2026, "venue": "arXiv", "doi": "10.48550/arXiv.2605.15058", "canonical_url": "https://arxiv.org/html/2605.15058", "source_type": "preprint", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Abstract", "Sections 1 to 5"], "inspected_urls": ["https://arxiv.org/abs/2605.15058", "https://arxiv.org/html/2605.15058", "https://arxiv.org/pdf/2605.15058"], "coverage": {"A":{"score":"partial","basis":"LIF dynamics, reset, and refractoriness are explained.","locator":"Section 2.1"},"B":{"score":"mentioned","basis":"Spike timing is discussed without coding taxonomy.","locator":"Sections 2.1 and 2.2"},"C":{"score":"full","basis":"Training taxonomy spans key learning classes.","locator":"Abstract and Sections 1 to 4"},"D":{"score":"partial","basis":"Conversion is one reviewed strategy.","locator":"Abstract and Section 3"},"E":{"score":"full","basis":"NeuroTrain is an open snnTorch benchmarking framework.","locator":"Abstract and Section 5"},"F":{"score":"none","basis":"No compiler taxonomy.","locator":"Scope"},"G":{"score":"none","basis":"No interchange format.","locator":"Scope"},"H":{"score":"mentioned","basis":"Hardware suitability is discussed generally.","locator":"Sections 1 and 2.5"},"I":{"score":"none","basis":"Learning locality is not deployment-boundary semantics.","locator":"Sections 2.3 to 2.5"},"J":{"score":"mentioned","basis":"Controlled benchmarking is emphasized without evidence classes.","locator":"Sections 1 and 5"},"K":{"score":"none","basis":"Not an applications survey.","locator":"Scope"},"L":{"score":"none","basis":"No named-chip route.","locator":"Scope"}}, "notes": "HTML full text reviewed. Journal annotation is not independently verified as a version of record."
+      "id": "S35-caviglia-2026-neurotrain",
+      "source_id": "prior-s35-caviglia-2026",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://arxiv.org/html/2605.15058"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "LIF dynamics, reset, and refractoriness are explained.",
+          "locator": "Section 2.1"
+        },
+        "B": {
+          "score": "mentioned",
+          "basis": "Spike timing is discussed without coding taxonomy.",
+          "locator": "Sections 2.1 and 2.2"
+        },
+        "C": {
+          "score": "full",
+          "basis": "Training taxonomy spans key learning classes.",
+          "locator": "Abstract and Sections 1 to 4"
+        },
+        "D": {
+          "score": "partial",
+          "basis": "Conversion is one reviewed strategy.",
+          "locator": "Abstract and Section 3"
+        },
+        "E": {
+          "score": "partial",
+          "basis": "One open snnTorch benchmarking framework is defined, without a comparative framework survey.",
+          "locator": "Abstract and Section 5"
+        },
+        "F": {
+          "score": "none",
+          "basis": "No compiler taxonomy.",
+          "locator": "Scope"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Scope"
+        },
+        "H": {
+          "score": "mentioned",
+          "basis": "Hardware suitability is discussed generally.",
+          "locator": "Sections 1 and 2.5"
+        },
+        "I": {
+          "score": "none",
+          "basis": "Learning locality is not deployment-boundary semantics.",
+          "locator": "Sections 2.3 to 2.5"
+        },
+        "J": {
+          "score": "mentioned",
+          "basis": "Controlled benchmarking is emphasized without evidence classes.",
+          "locator": "Sections 1 and 5"
+        },
+        "K": {
+          "score": "none",
+          "basis": "Not an applications survey.",
+          "locator": "Scope"
+        },
+        "L": {
+          "score": "none",
+          "basis": "No named-chip route.",
+          "locator": "Scope"
+        }
+      },
+      "strongest_contribution": "Pairs a local-learning taxonomy with an open snnTorch benchmarking framework.",
+      "deployment_depth": "Benchmarking is software-based and does not establish a named physical route.",
+      "omissions": [
+        "Compiler, interchange, and cross-platform execution semantics remain outside scope."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S36-du-2026-edge-modalities", "source_id": "prior-s36-du-2026", "title": "Benchmarking spiking neural networks across sensing modalities on edge devices", "authors": "Xin Du; Di Yu; Changze Lv; Yuqi Zhang; Zhuo Chen; Wentao Tong; Helin Zheng; Weisong Zhang; Xiaofan Zhao; Linshan Jiang; Shijie Ji; Hui Fang; Xiaoqing Zheng; Gang Pan; Shuiguang Deng", "year": 2026, "venue": "arXiv", "doi": "10.48550/arXiv.2609.00026", "canonical_url": "https://arxiv.org/abs/2609.00026", "source_type": "preprint", "retrieval_status": "not_retrieved", "retrieved_on": "2026-09-16", "locators": ["arXiv abstract", "submission history 2026-08-27"], "inspected_urls": ["https://arxiv.org/abs/2609.00026", "https://arxiv.org/html/2609.00026", "https://arxiv.org/pdf/2609.00026"], "coverage": {"A":{"score":"mentioned","basis":"Abstract says neuron models are evaluated.","locator":"arXiv abstract"},"B":{"score":"mentioned","basis":"Abstract says spike encoding is evaluated.","locator":"arXiv abstract"},"C":{"score":"none","basis":"No training taxonomy evidenced.","locator":"arXiv abstract"},"D":{"score":"none","basis":"No conversion coverage evidenced.","locator":"arXiv abstract"},"E":{"score":"none","basis":"No framework coverage evidenced.","locator":"arXiv abstract"},"F":{"score":"none","basis":"No mapping coverage evidenced.","locator":"arXiv abstract"},"G":{"score":"none","basis":"No interchange coverage evidenced.","locator":"arXiv abstract"},"H":{"score":"mentioned","basis":"Abstract states multiple edge devices.","locator":"arXiv abstract"},"I":{"score":"none","basis":"No semantics taxonomy evidenced.","locator":"arXiv abstract"},"J":{"score":"mentioned","basis":"Abstract states deployment analysis and system costs.","locator":"arXiv abstract"},"K":{"score":"mentioned","basis":"Abstract states five sensing modalities.","locator":"arXiv abstract"},"L":{"score":"none","basis":"No route evidenced.","locator":"arXiv abstract"}}, "notes": "Submitted 2026-08-27. HTML and PDF retrieval failed, so no abstract claim is promoted above mentioned."
+      "id": "S36-du-2026-edge-modalities",
+      "source_id": "prior-s36-du-2026",
+      "full_text_status": "not_retrieved",
+      "retrieval_sources": [
+        "https://arxiv.org/abs/2609.00026"
+      ],
+      "coverage": {
+        "A": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "B": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "C": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "D": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "E": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "F": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "G": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "H": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "I": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "J": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "K": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        },
+        "L": {
+          "score": "unassessed",
+          "basis": "Not assessed because full text was not retrieved.",
+          "locator": "Retrieval limit documented in the corresponding audit note."
+        }
+      },
+      "strongest_contribution": "Proposes a cross-modal edge-device benchmark according to the arXiv abstract.",
+      "deployment_depth": "Deployment depth is unassessed because the body and supplement were not retrieved.",
+      "omissions": [
+        "No axis-level absence claim is made from abstract-only access."
+      ],
+      "verification": {
+        "status": "provisional",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     },
     {
-      "id": "S37-farsa-2026-gpu-riscv", "source_id": "prior-s37-farsa-2026", "title": "GPU and RISC-V Acceleration for Neuromorphic Computing Based on Spiking Neural Networks: Taxonomy, Comparison, and Open Challenges", "authors": "Edris Zaman Farsa; Amirhossein Ilkhani; Marc Reichenbach; Amirreza Yousefzadeh; Arash Ahmadi; Alexander Serb; J. Harkin", "year": 2026, "venue": "Neuromorphic Computing and Engineering", "doi": "10.1088/2634-4386/aea4eb", "canonical_url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb", "source_type": "accepted_manuscript", "retrieval_status": "verified", "retrieved_on": "2026-09-16", "locators": ["Abstract", "Sections II to VI", "Figures 1 and 2"], "inspected_urls": ["https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb", "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf"], "coverage": {"A":{"score":"partial","basis":"LIF and Izhikevich are introduced, not broadly surveyed.","locator":"Section II and Figure 1"},"B":{"score":"partial","basis":"Rate, temporal, population, and phase codes are identified.","locator":"Section II and Figure 1"},"C":{"score":"partial","basis":"STDP, surrogate gradients, and conversion are identified.","locator":"Section II and Figure 1"},"D":{"score":"mentioned","basis":"Conversion is named only.","locator":"Section II"},"E":{"score":"full","basis":"GPU ecosystems and simulation frameworks are cataloged.","locator":"Sections II and IV"},"F":{"score":"full","basis":"GPU and RISC-V accelerator and toolchain taxonomy.","locator":"Sections III to V"},"G":{"score":"none","basis":"No interchange format.","locator":"Scope"},"H":{"score":"full","basis":"Accelerator families are compared.","locator":"Sections II to V"},"I":{"score":"partial","basis":"Cross-platform constraints are analyzed without semantic-preservation taxonomy.","locator":"Sections II and VI"},"J":{"score":"partial","basis":"Metric-coverage analysis identifies reporting incompatibility.","locator":"Abstract and Section VI"},"K":{"score":"none","basis":"No cross-application measured-results synthesis.","locator":"Scope"},"L":{"score":"mentioned","basis":"Edge deployment is a taxonomy category, without a standard route.","locator":"Section V"}}, "notes": "Accepted manuscript online 2026-09-09, not final version of record."
+      "id": "S37-farsa-2026-gpu-riscv",
+      "source_id": "prior-s37-farsa-2026",
+      "full_text_status": "verified",
+      "retrieval_sources": [
+        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf"
+      ],
+      "coverage": {
+        "A": {
+          "score": "partial",
+          "basis": "LIF and Izhikevich are introduced, not broadly surveyed.",
+          "locator": "Section II and Figure 1"
+        },
+        "B": {
+          "score": "partial",
+          "basis": "Rate, temporal, population, and phase codes are identified.",
+          "locator": "Section II and Figure 1"
+        },
+        "C": {
+          "score": "partial",
+          "basis": "STDP, surrogate gradients, and conversion are identified.",
+          "locator": "Section II and Figure 1"
+        },
+        "D": {
+          "score": "mentioned",
+          "basis": "Conversion is named only.",
+          "locator": "Section II"
+        },
+        "E": {
+          "score": "full",
+          "basis": "GPU ecosystems and simulation frameworks are cataloged.",
+          "locator": "Sections II and IV"
+        },
+        "F": {
+          "score": "full",
+          "basis": "GPU and RISC-V accelerator and toolchain taxonomy.",
+          "locator": "Sections III to V"
+        },
+        "G": {
+          "score": "none",
+          "basis": "No interchange format.",
+          "locator": "Scope"
+        },
+        "H": {
+          "score": "full",
+          "basis": "Accelerator families are compared.",
+          "locator": "Sections II to V"
+        },
+        "I": {
+          "score": "partial",
+          "basis": "Cross-platform constraints are analyzed without semantic-preservation taxonomy.",
+          "locator": "Sections II and VI"
+        },
+        "J": {
+          "score": "partial",
+          "basis": "Metric-coverage analysis identifies reporting incompatibility.",
+          "locator": "Abstract and Section VI"
+        },
+        "K": {
+          "score": "none",
+          "basis": "No cross-application measured-results synthesis.",
+          "locator": "Scope"
+        },
+        "L": {
+          "score": "mentioned",
+          "basis": "Edge deployment is a taxonomy category, without a standard route.",
+          "locator": "Section V"
+        }
+      },
+      "strongest_contribution": "Provides a GPU and RISC-V accelerator taxonomy and identifies incompatible reporting practices.",
+      "deployment_depth": "Synthesizes accelerator studies but does not trace a standard network across complete routes.",
+      "omissions": [
+        "The accepted manuscript is not yet the final version of record."
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_on": "2026-09-16",
+        "reviewer": "exa-batch-d"
+      }
     }
-  ]
+  ],
+  "discovery_results_returned": 55,
+  "sources_reviewed_definition": "Sum of numResults across Exa discovery searches, not a count of documents used as evidence.",
+  "inspected_url_count": 9
 }
