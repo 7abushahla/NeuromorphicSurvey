@@ -3823,8 +3823,8 @@
       },
       "survey_count": 37,
       "score_counts": {
-        "full": 22,
-        "partial": 5,
+        "full": 13,
+        "partial": 14,
         "mentioned": 6,
         "none": 4,
         "unassessed": 0
@@ -3841,8 +3841,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Four chips and seven simulators are evaluated.",
+              "score": "partial",
+              "basis": "Selected chips are evaluated for interoperability, but neuromorphic hardware platforms are not surveyed comprehensively.",
               "locator": "Results, Experiments"
             }
           },
@@ -3896,8 +3896,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Supporting hardware platforms are a stated foundation.",
+              "score": "partial",
+              "basis": "Hardware platforms support the EdgeSNN discussion, but they are not surveyed comprehensively.",
               "locator": "Sec. III"
             }
           },
@@ -4366,8 +4366,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "See the associated audit note for the bounded supporting rationale.",
+              "score": "partial",
+              "basis": "The paper compares edge-AI circuits, but does not comprehensively survey neuromorphic hardware platforms.",
               "locator": "Section 3 and Table 1"
             }
           },
@@ -4420,8 +4420,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "See the associated audit note for the bounded supporting rationale.",
+              "score": "partial",
+              "basis": "The paper surveys event sensors and event-vision hardware, not neuromorphic compute platforms comprehensively.",
               "locator": "Sections 2.1-2.5 and 5"
             }
           },
@@ -4549,8 +4549,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "See the associated audit note for the bounded supporting rationale.",
+              "score": "partial",
+              "basis": "The review spans broad brain-inspired implementation technologies without comprehensively surveying neuromorphic compute platforms.",
               "locator": "Abstract and Sections 2-3"
             }
           },
@@ -4655,8 +4655,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Visual, auditory, and olfactory sensing systems are reviewed.",
+              "score": "partial",
+              "basis": "Visual, auditory, and olfactory sensing hardware is reviewed, rather than neuromorphic compute platforms comprehensively.",
               "locator": "Sections 3 to 5"
             }
           },
@@ -4683,8 +4683,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Sensor generations and hardware are reviewed.",
+              "score": "partial",
+              "basis": "Sensor generations and vision-sensor hardware are reviewed, while neuromorphic compute platforms receive limited coverage.",
               "locator": "Section II and sensor timeline"
             }
           },
@@ -4733,8 +4733,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Surveys digital, analog, mixed-signal, memristive, photonic, and quantum-inspired substrates and compares representative platforms.",
+              "score": "partial",
+              "basis": "The survey provides substantial hardware background and representative platforms, but does not comprehensively survey neuromorphic hardware.",
               "locator": "Section XI and Table 7, pages 78534-78539"
             }
           },
@@ -4787,8 +4787,8 @@
           ],
           "coverage": {
             "H": {
-              "score": "full",
-              "basis": "Evaluates seven named physical edge devices and models Loihi, Darwin3, TrueNorth, and SpiNNaker2.",
+              "score": "partial",
+              "basis": "The paper benchmarks conventional edge devices and models selected neuromorphic chips, rather than comprehensively surveying hardware platforms.",
               "locator": "Results, pages 6-7, Methods, pages 12-14, and Figure 4, page 22"
             }
           },

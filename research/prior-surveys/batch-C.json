@@ -232,8 +232,8 @@
           "locator": "Sections 1-4"
         },
         "H": {
-          "score": "full",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "score": "partial",
+          "basis": "The paper compares edge-AI circuits, but does not comprehensively survey neuromorphic hardware platforms.",
           "locator": "Section 3 and Table 1"
         },
         "I": {
@@ -396,8 +396,8 @@
           "locator": "Sections 1-8"
         },
         "H": {
-          "score": "full",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "score": "partial",
+          "basis": "The paper surveys event sensors and event-vision hardware, not neuromorphic compute platforms comprehensively.",
           "locator": "Sections 2.1-2.5 and 5"
         },
         "I": {
@@ -800,8 +800,8 @@
           "locator": "Sections 1-4"
         },
         "H": {
-          "score": "full",
-          "basis": "See the associated audit note for the bounded supporting rationale.",
+          "score": "partial",
+          "basis": "The review spans broad brain-inspired implementation technologies without comprehensively surveying neuromorphic compute platforms.",
           "locator": "Abstract and Sections 2-3"
         },
         "I": {

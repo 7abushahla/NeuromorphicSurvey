@@ -420,8 +420,8 @@
           "locator": "Section 1.1"
         },
         "H": {
-          "score": "full",
-          "basis": "Visual, auditory, and olfactory sensing systems are reviewed.",
+          "score": "partial",
+          "basis": "Visual, auditory, and olfactory sensing hardware is reviewed, rather than neuromorphic compute platforms comprehensively.",
           "locator": "Sections 3 to 5"
         },
         "I": {
@@ -503,8 +503,8 @@
           "locator": "Section II-A"
         },
         "H": {
-          "score": "full",
-          "basis": "Sensor generations and hardware are reviewed.",
+          "score": "partial",
+          "basis": "Sensor generations and vision-sensor hardware are reviewed, while neuromorphic compute platforms receive limited coverage.",
           "locator": "Section II and sensor timeline"
         },
         "I": {
@@ -663,8 +663,8 @@
           "locator": "Page 78522 and reference [270]"
         },
         "H": {
-          "score": "full",
-          "basis": "Surveys digital, analog, mixed-signal, memristive, photonic, and quantum-inspired substrates and compares representative platforms.",
+          "score": "partial",
+          "basis": "The survey provides substantial hardware background and representative platforms, but does not comprehensively survey neuromorphic hardware.",
           "locator": "Section XI and Table 7, pages 78534-78539"
         },
         "I": {
@@ -827,8 +827,8 @@
           "locator": "Methods, page 12"
         },
         "H": {
-          "score": "full",
-          "basis": "Evaluates seven named physical edge devices and models Loihi, Darwin3, TrueNorth, and SpiNNaker2.",
+          "score": "partial",
+          "basis": "The paper benchmarks conventional edge devices and models selected neuromorphic chips, rather than comprehensively surveying hardware platforms.",
           "locator": "Results, pages 6-7, Methods, pages 12-14, and Figure 4, page 22"
         },
         "I": {

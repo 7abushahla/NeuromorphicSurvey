@@ -277,8 +277,8 @@
           "locator": "Results, Figs. 1-2"
         },
         "H": {
-          "score": "full",
-          "basis": "Four chips and seven simulators are evaluated.",
+          "score": "partial",
+          "basis": "Selected chips are evaluated for interoperability, but neuromorphic hardware platforms are not surveyed comprehensively.",
           "locator": "Results, Experiments"
         },
         "I": {
@@ -442,8 +442,8 @@
           "locator": "Secs. III-VI"
         },
         "H": {
-          "score": "full",
-          "basis": "Supporting hardware platforms are a stated foundation.",
+          "score": "partial",
+          "basis": "Hardware platforms support the EdgeSNN discussion, but they are not surveyed comprehensively.",
           "locator": "Sec. III"
         },
         "I": {
