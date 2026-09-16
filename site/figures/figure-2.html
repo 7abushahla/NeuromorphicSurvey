@@ -1,18 +1,26 @@
 <figure class="pfig l-body" id="figure-2">
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1130 690" role="img" aria-label="A biological neuron paired with the artificial neuron abstraction, with the three discarded quantities named">
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1270 880" role="img" aria-label="A biological neuron beside two abstractions of it, an ANN unit and an SNN unit, with a property strip stating which of represented value, persistent state, time, and discrete events each abstraction retains and in what form">
 <defs>
 <marker id="f2arr" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+<marker id="f2arrblue" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6B8CBE"/></marker>
+<marker id="f2arrgold" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#C9A34E"/></marker>
 <clipPath id="f2somaclip"><ellipse cx="140" cy="185" rx="46" ry="38"/></clipPath>
 </defs>
 
-<line x1="580" y1="34" x2="580" y2="508" stroke="#d5dbe2" stroke-width="2"/>
+<!-- panel separators -->
+<line x1="425" y1="30" x2="425" y2="562" stroke="#d5dbe2" stroke-width="2"/>
+<line x1="845" y1="30" x2="845" y2="562" stroke="#d5dbe2" stroke-width="2"/>
 
-<text x="292" y="54" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:700" fill="#000">Biological neuron</text>
-<text x="292" y="84" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">integrates in time, fires discrete events</text>
-<text x="853" y="54" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:700" fill="#000">Artificial neuron</text>
-<text x="853" y="84" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">one weighted sum, one static nonlinearity</text>
+<!-- panel titles -->
+<text x="215" y="52" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700" fill="#000">Biological neuron</text>
+<text x="215" y="80" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">biophysical dynamics in physical time <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan></text>
+<text x="635" y="52" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700" fill="#000">ANN unit</text>
+<text x="635" y="80" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">weighted sum, static activation, one evaluation</text>
+<text x="1055" y="52" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700" fill="#000">SNN unit</text>
+<text x="1055" y="80" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">persistent state, threshold, reset, events</text>
 
-<!-- left panel, row A: the cell -->
+<!-- panel 1, row A: the cell (scaled drawing) -->
+<g transform="translate(26,62) scale(0.68)">
 <path d="M104,156 C 88,142 80,126 66,116 M96,182 C 78,180 66,176 50,172 M104,214 C 88,228 82,242 68,252" fill="none" stroke="#6AA168" stroke-width="4" stroke-linecap="round"/>
 <path d="M66,116 C 56,110 50,100 40,96 M66,116 C 61,104 60,96 56,86 M50,172 C 40,170 34,164 24,160 M50,172 C 40,176 34,182 26,188 M68,252 C 58,258 52,266 42,272 M68,252 C 63,261 62,268 58,276" fill="none" stroke="#6AA168" stroke-width="3" stroke-linecap="round"/>
 <path d="M40,96 L28,90 M40,96 L36,83 M56,86 L47,77 M56,86 L60,73 M24,160 L18,152 M24,160 L15,163 M26,188 L18,196 M26,188 L17,185 M42,272 L34,280 M42,272 L30,272 M58,276 L52,287 M58,276 L64,286" fill="none" stroke="#6AA168" stroke-width="2.2" stroke-linecap="round"/>
@@ -25,7 +33,7 @@
 <rect x="94" y="185" width="92" height="38" fill="#8fbfef" clip-path="url(#f2somaclip)"/>
 <ellipse cx="140" cy="185" rx="46" ry="38" fill="none" stroke="#6B8CBE" stroke-width="3"/>
 <circle cx="140" cy="196" r="11" fill="#6B8CBE" opacity="0.45"/>
-<text x="140" y="172" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>)</text>
+<text x="140" y="174" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan>)</text>
 <path d="M186,185 C 226,185 236,166 282,166 C 330,166 338,204 384,204 C 414,204 428,196 446,190" fill="none" stroke="#6B8CBE" stroke-width="4"/>
 <line x1="250" y1="167" x2="278" y2="166" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
 <line x1="398" y1="201" x2="424" y2="197" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
@@ -34,111 +42,10 @@
 <circle cx="488" cy="190" r="9" fill="#D63A2F"/>
 <circle cx="482" cy="215" r="9" fill="#D63A2F"/>
 <path d="M512,146 C 532,170 532,210 512,234" fill="none" stroke="#6AA168" stroke-width="3.4"/>
-<circle cx="200" cy="146" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="200" y="153" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">3</text>
-<text x="58" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Dendrites</text>
-<text x="162" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Soma</text>
-<text x="330" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Axon</text>
-<text x="490" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Synapse</text>
-
-<!-- left panel, row B: potential and spikes -->
-<text x="72" y="336" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Membrane potential <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>)</text>
-<line x1="64" y1="436" x2="64" y2="348" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-<line x1="64" y1="430" x2="512" y2="430" stroke="#000" stroke-width="2.2"/>
-<line x1="64" y1="360" x2="486" y2="360" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
-<text x="498" y="368" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#952;</text>
-<path d="M72,430 H90 V412 H120 V394 H150 V376 H180 V358 H188 V428 H210 V410 H240 V392 H270 V374 H300 V356 H308 V426 H330 V408 H360 V390 H390 V372 H420 V354 H428 V424 H450 V406 H480 V388 H500" fill="none" stroke="#D63A2F" stroke-width="4.6" stroke-linejoin="miter" stroke-linecap="square"/>
-<path d="M184,364 V448 M304,364 V448 M424,364 V448" stroke="#b9c2cc" stroke-width="1.6" stroke-dasharray="6 6"/>
-<line x1="64" y1="486" x2="512" y2="486" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-<text x="526" y="494" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">t</text>
-<path d="M184,486 V452 M304,486 V452 M424,486 V452" stroke="#D63A2F" stroke-width="5"/>
-<text x="72" y="512" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Spike output</text>
-<circle cx="462" cy="469" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="462" y="476" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">2</text>
-<circle cx="552" cy="486" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="552" y="493" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">1</text>
-
-<!-- right panel, row A: the artificial unit -->
-<line x1="640" y1="144" x2="726" y2="176" stroke="#000" stroke-width="2.2"/>
-<line x1="640" y1="190" x2="724" y2="190" stroke="#000" stroke-width="2.2"/>
-<line x1="640" y1="236" x2="726" y2="204" stroke="#000" stroke-width="2.2"/>
-<circle cx="622" cy="140" r="18" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
-<circle cx="622" cy="190" r="18" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
-<circle cx="622" cy="240" r="18" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
-<text x="618" y="147" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">x</tspan><tspan dy="6" style="font-size:14px">1</tspan></text>
-<text x="618" y="197" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">x</tspan><tspan dy="6" style="font-size:14px">2</tspan></text>
-<text x="618" y="247" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">x</tspan><tspan dy="6" style="font-size:14px">3</tspan></text>
-<text x="678" y="146" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:14px">1</tspan></text>
-<text x="678" y="180" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:14px">2</tspan></text>
-<text x="678" y="246" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:14px">3</tspan></text>
-<circle cx="760" cy="190" r="36" fill="#DBE6F6" stroke="#6B8CBE" stroke-width="2.6"/>
-<text x="760" y="204" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:36px" fill="#000">&#931;</text>
-<circle cx="812" cy="152" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="812" y="159" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">3</text>
-<line x1="796" y1="190" x2="830" y2="190" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
-<rect x="836" y="146" width="116" height="88" rx="10" fill="#D8EFD3" stroke="#6AA168" stroke-width="2.6"/>
-<line x1="846" y1="212" x2="942" y2="212" stroke="#555" stroke-width="1.8"/>
-<line x1="880" y1="222" x2="880" y2="158" stroke="#555" stroke-width="1.8"/>
-<path d="M846,212 H880 L936,164" fill="none" stroke="#D63A2F" stroke-width="3.4"/>
-<line x1="952" y1="190" x2="998" y2="190" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
-<text x="1006" y="198" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">y</tspan> = 0.73</text>
-<text x="624" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Inputs</text>
-<text x="760" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Weighted sum</text>
-<text x="894" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Nonlinearity</text>
-<text x="1052" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">Output</text>
-
-<!-- right panel, row B: what the value looks like -->
-<text x="648" y="336" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Activation value <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">y</tspan></text>
-<line x1="640" y1="436" x2="640" y2="348" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-<line x1="640" y1="430" x2="1060" y2="430" stroke="#000" stroke-width="2.2"/>
-<line x1="634" y1="384" x2="646" y2="384" stroke="#000" stroke-width="1.8"/>
-<text x="628" y="391" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">0.73</text>
-<line x1="652" y1="384" x2="1060" y2="384" stroke="#D63A2F" stroke-width="4.6"/>
-<text x="856" y="414" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">one number, constant in time</text>
-<circle cx="1084" cy="384" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="1084" y="391" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">2</text>
-<line x1="640" y1="486" x2="1060" y2="486" stroke="#b9c2cc" stroke-width="2.6" stroke-dasharray="9 9"/>
-<text x="852" y="470" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#8a8a8a">no spike events, no time axis</text>
-<circle cx="1084" cy="486" r="14" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="1084" y="493" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">1</text>
-
-<line x1="30" y1="524" x2="1100" y2="524" stroke="#d5dbe2" stroke-width="2"/>
-
-<!-- band: what the abstraction discards -->
-<text x="565" y="552" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Discarded by the artificial neuron, restored by the spiking neuron</text>
-<g class="f2-hot"><title>Time is the axis the spiking neuron runs along. Reintroducing it is what turns a single evaluation into a simulation over a horizon.</title>
-<rect x="30" y="570" width="340" height="96" rx="10" fill="#FFDDA6" stroke="#C9A34E" stroke-width="2.4"/>
-<rect class="f2-hl" x="30" y="570" width="340" height="96" rx="10" fill="#D63A2F" opacity="0"/>
-<circle cx="66" cy="599" r="15" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="66" y="606" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">1</text>
-<text x="96" y="606" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Time</text>
-<text x="50" y="630" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">One shot evaluation. No horizon <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan></text>
-<text x="50" y="652" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">over which input arrives.</text>
-<rect x="30" y="570" width="340" height="96" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>A spike has no magnitude to tune. Restoring discreteness is what makes the arithmetic accumulation rather than multiplication.</title>
-<rect x="395" y="570" width="340" height="96" rx="10" fill="#FFDDA6" stroke="#C9A34E" stroke-width="2.4"/>
-<rect class="f2-hl" x="395" y="570" width="340" height="96" rx="10" fill="#D63A2F" opacity="0"/>
-<circle cx="431" cy="599" r="15" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="431" y="606" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">2</text>
-<text x="461" y="606" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Discrete events</text>
-<text x="415" y="630" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">A continuous real number, not</text>
-<text x="415" y="652" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">an all or nothing event.</text>
-<rect x="395" y="570" width="340" height="96" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>State is what lets a neuron answer with something other than a function of the present input. The membrane potential is that memory.</title>
-<rect x="760" y="570" width="340" height="96" rx="10" fill="#FFDDA6" stroke="#C9A34E" stroke-width="2.4"/>
-<rect class="f2-hl" x="760" y="570" width="340" height="96" rx="10" fill="#D63A2F" opacity="0"/>
-<circle cx="796" cy="599" r="15" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-<text x="796" y="606" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#D63A2F">3</text>
-<text x="826" y="606" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Membrane state</text>
-<text x="780" y="630" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">No potential is carried between</text>
-<text x="780" y="652" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">steps, so nothing accumulates.</text>
-<rect x="760" y="570" width="340" height="96" fill="#000" opacity="0" pointer-events="all"/></g>
-
-<!-- hover regions over the drawings -->
 <g class="f2-hot"><title>Dendrites collect input from many upstream cells. Each arriving spike nudges the potential held in the soma.</title>
 <rect class="f2-hl" x="6" y="64" width="112" height="230" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="6" y="64" width="112" height="230" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>The soma holds the membrane potential, a state variable that persists between inputs. The artificial neuron has no equivalent of it.</title>
+<g class="f2-hot"><title>The soma holds the membrane potential, a state that persists between inputs and evolves continuously in physical time.</title>
 <rect class="f2-hl" x="94" y="144" width="96" height="84" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="94" y="144" width="96" height="84" fill="#000" opacity="0" pointer-events="all"/></g>
 <g class="f2-hot"><title>Once the threshold is crossed, the action potential travels down the axon at full amplitude. Its size carries no information, only its timing does.</title>
@@ -147,25 +54,203 @@
 <g class="f2-hot"><title>At the synapse the arriving spike acts on the next cell. Communication between neurons is an event, not a continuous number.</title>
 <rect class="f2-hl" x="440" y="144" width="110" height="96" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="440" y="144" width="110" height="96" fill="#000" opacity="0" pointer-events="all"/></g>
+</g>
+<text x="65" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Dendrites</text>
+<text x="136" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Soma</text>
+<text x="250" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Axon</text>
+<text x="359" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Synapse</text>
+
+<!-- panel 2, row A: the ANN unit -->
+<line x1="495" y1="150" x2="578" y2="186" stroke="#000" stroke-width="2.2"/>
+<line x1="495" y1="200" x2="576" y2="200" stroke="#000" stroke-width="2.2"/>
+<line x1="495" y1="250" x2="578" y2="214" stroke="#000" stroke-width="2.2"/>
+<circle cx="478" cy="150" r="17" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
+<circle cx="478" cy="200" r="17" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
+<circle cx="478" cy="250" r="17" fill="#d5dbe2" stroke="#8a8a8a" stroke-width="2.2"/>
+<text x="475" y="157" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:13px">1</tspan></text>
+<text x="475" y="207" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:13px">2</tspan></text>
+<text x="475" y="257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:13px">3</tspan></text>
+<text x="536" y="146" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i1</tspan></text>
+<text x="536" y="192" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i2</tspan></text>
+<text x="536" y="264" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i3</tspan></text>
+<circle cx="612" cy="200" r="34" fill="#DBE6F6" stroke="#6B8CBE" stroke-width="2.6"/>
+<text x="612" y="213" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:34px" fill="#000">&#931;</text>
+<line x1="646" y1="200" x2="674" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
+<rect x="678" y="160" width="84" height="80" rx="10" fill="#D8EFD3" stroke="#6AA168" stroke-width="2.6"/>
+<line x1="688" y1="222" x2="752" y2="222" stroke="#555" stroke-width="1.8"/>
+<line x1="712" y1="232" x2="712" y2="170" stroke="#555" stroke-width="1.8"/>
+<path d="M688,222 H712 L750,178" fill="none" stroke="#6AA168" stroke-width="3.4"/>
+<line x1="762" y1="200" x2="790" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
+<text x="798" y="209" style="font-family:Arial,Helvetica,sans-serif;font-size:24px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-9" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:16px">l</tspan></text>
+<text x="478" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Inputs</text>
+<text x="600" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Weighted sum</text>
+<text x="720" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Nonlinearity</text>
+<text x="808" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Value</text>
+
+<!-- panel 3, row A: the SNN unit -->
+<line x1="888" y1="150" x2="940" y2="150" stroke="#8a8a8a" stroke-width="2"/>
+<line x1="888" y1="200" x2="940" y2="200" stroke="#8a8a8a" stroke-width="2"/>
+<line x1="888" y1="250" x2="940" y2="250" stroke="#8a8a8a" stroke-width="2"/>
+<path d="M898,141 V159 M922,141 V159 M906,191 V209 M930,191 V209 M914,241 V259" stroke="#D63A2F" stroke-width="3.4"/>
+<line x1="944" y1="150" x2="1002" y2="186" stroke="#000" stroke-width="2.2"/>
+<line x1="944" y1="200" x2="1000" y2="200" stroke="#000" stroke-width="2.2"/>
+<line x1="944" y1="250" x2="1002" y2="214" stroke="#000" stroke-width="2.2"/>
+<text x="972" y="146" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i1</tspan></text>
+<text x="972" y="192" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i2</tspan></text>
+<text x="972" y="264" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i3</tspan></text>
+<circle cx="1036" cy="200" r="34" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<text x="1036" y="208" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>]</text>
+<path d="M1050,168 C 1066,132 1006,132 1024,166" fill="none" stroke="#6B8CBE" stroke-width="2.2" marker-end="url(#f2arrblue)"/>
+<text x="1036" y="126" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>&#8722;1]</text>
+<line x1="1070" y1="200" x2="1096" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
+<rect x="1100" y="160" width="84" height="80" rx="10" fill="#FFDDA6" stroke="#C9A34E" stroke-width="2.6"/>
+<line x1="1110" y1="224" x2="1174" y2="224" stroke="#555" stroke-width="1.8"/>
+<line x1="1142" y1="232" x2="1142" y2="170" stroke="#555" stroke-width="1.8"/>
+<path d="M1110,224 H1142 V180 H1174" fill="none" stroke="#D63A2F" stroke-width="3.4"/>
+<text x="1142" y="150" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:22px" fill="#000">&#952;</text>
+<line x1="1184" y1="200" x2="1208" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
+<text x="1214" y="208" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>]</text>
+<path d="M1142,240 V264 H1036 V240" fill="none" stroke="#C9A34E" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f2arrgold)"/>
+<text x="1089" y="280" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset</text>
+<text x="914" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Event inputs</text>
+<text x="1036" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">State</text>
+<text x="1142" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Threshold</text>
+<text x="1232" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Events</text>
+
+<!-- panel 1, row B: continuous potential and action potentials -->
+<text x="34" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Membrane potential <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan>), continuous</text>
+<line x1="44" y1="494" x2="44" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="44" y1="490" x2="402" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<text x="408" y="498" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#964;</text>
+<line x1="44" y1="396" x2="378" y2="396" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
+<text x="386" y="404" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#952;</text>
+<path d="M52,482 C 90,470 120,430 148,397 L152,366 L160,372 L166,476 C 190,472 240,440 278,397 L282,366 L290,372 L296,476 C 320,470 360,452 396,438" fill="none" stroke="#6B8CBE" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M154,400 V500 M284,400 V500" stroke="#b9c2cc" stroke-width="1.6" stroke-dasharray="6 6"/>
+<path d="M154,502 V530 M284,502 V530" stroke="#D63A2F" stroke-width="5"/>
+<text x="34" y="552" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Action potentials, output events in <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan></text>
+
+<!-- panel 2, row B: one static value -->
+<text x="454" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Activation value <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-7" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:13px">l</tspan><tspan dy="7">, static</tspan></text>
+<line x1="470" y1="494" x2="470" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="462" y1="490" x2="566" y2="490" stroke="#000" stroke-width="2.2"/>
+<rect x="500" y="416" width="44" height="74" fill="#6AA168"/>
+<text x="522" y="404" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-8" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:14px">l</tspan></text>
+<text x="590" y="420" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">one real number</text>
+<text x="590" y="448" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">static within one evaluation</text>
+<text x="590" y="476" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">not updated from a prior value</text>
+<text x="454" y="552" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">One evaluation, one value, no time axis drawn</text>
+
+<!-- panel 3, row B: discrete state trajectory and events -->
+<text x="874" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Membrane state <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>], one value per step</text>
+<line x1="884" y1="494" x2="884" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="884" y1="490" x2="1238" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<text x="1246" y="498" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">t</text>
+<path d="M920,487 V493 M948,487 V493 M976,487 V493 M1004,487 V493 M1032,487 V493 M1060,487 V493 M1088,487 V493 M1116,487 V493 M1144,487 V493 M1172,487 V493 M1200,487 V493 M1228,487 V493" stroke="#000" stroke-width="1.6"/>
+<line x1="884" y1="396" x2="1214" y2="396" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
+<text x="1222" y="404" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#952;</text>
+<path d="M892,488 H920 V462 H948 V436 H976 V410 H1004 V392 H1012 V478 H1032 V452 H1060 V426 H1088 V400 H1116 V392 H1124 V470 H1144 V444 H1172 V418 H1200 V400 H1228" fill="none" stroke="#6B8CBE" stroke-width="4.6" stroke-linejoin="miter" stroke-linecap="square"/>
+<path d="M1008,400 V500 M1120,400 V500" stroke="#b9c2cc" stroke-width="1.6" stroke-dasharray="6 6"/>
+<path d="M1008,502 V530 M1120,502 V530" stroke="#D63A2F" stroke-width="5"/>
+<text x="874" y="552" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Events <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] at the steps where <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] reaches <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#952;</tspan></text>
+
+<line x1="30" y1="574" x2="1240" y2="574" stroke="#d5dbe2" stroke-width="2"/>
+
+<!-- property strip: what each abstraction retains -->
+<text x="635" y="604" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">What each abstraction retains, property by property</text>
+
+<g class="f2-hot"><title>The biological cell carries all four properties at once. Its potential evolves continuously, its output is an all or nothing event, and both are indexed by physical time.</title>
+<rect x="20" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
+<rect class="f2-hl" x="20" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect x="36" y="641" width="14" height="14" fill="#6AA168"/>
+<text x="60" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
+<text x="132" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">encoded in spike rate or timing</text>
+<rect x="36" y="683" width="14" height="14" fill="#6B8CBE"/>
+<text x="60" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">State</text>
+<text x="132" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan>), continuous, biophysical</text>
+<rect x="36" y="725" width="14" height="14" fill="#C9A34E"/>
+<text x="60" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Time</text>
+<text x="132" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">physical time <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan></text>
+<rect x="36" y="767" width="14" height="14" fill="#D63A2F"/>
+<text x="60" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Events</text>
+<text x="132" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">action potentials</text>
+<rect x="20" y="620" width="390" height="196" fill="#000" opacity="0" pointer-events="all"/></g>
+
+<g class="f2-hot"><title>The ANN unit retains the weighted aggregation and a represented value. Within one inference evaluation nothing persists and nothing is scheduled, so the value is complete as it stands.</title>
+<rect x="440" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
+<rect class="f2-hl" x="440" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect x="456" y="641" width="14" height="14" fill="#6AA168"/>
+<text x="480" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
+<text x="552" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">real number <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-7" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:12px">l</tspan><tspan dy="7">, one per evaluation</tspan></text>
+<rect x="456" y="683" width="14" height="14" fill="#fff" stroke="#6B8CBE" stroke-width="2"/>
+<text x="480" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">State</text>
+<text x="552" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">none within one evaluation</text>
+<rect x="456" y="725" width="14" height="14" fill="#fff" stroke="#C9A34E" stroke-width="2"/>
+<text x="480" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Time</text>
+<text x="552" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">no step index, one evaluation</text>
+<rect x="456" y="767" width="14" height="14" fill="#fff" stroke="#D63A2F" stroke-width="2"/>
+<text x="480" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Events</text>
+<text x="552" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">none, the output is a value</text>
+<rect x="440" y="620" width="390" height="196" fill="#000" opacity="0" pointer-events="all"/></g>
+
+<g class="f2-hot"><title>The SNN unit retains a simplified state, an algorithmic step index, and a binary event. The state is a one-variable summary of the membrane, not a biophysical model.</title>
+<rect x="860" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
+<rect class="f2-hl" x="860" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect x="876" y="641" width="14" height="14" fill="#6AA168"/>
+<text x="900" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
+<text x="972" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">decoded from <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] over steps</text>
+<rect x="876" y="683" width="14" height="14" fill="#6B8CBE"/>
+<text x="900" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">State</text>
+<text x="972" y="696" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>], simplified, persists per step</text>
+<rect x="876" y="725" width="14" height="14" fill="#C9A34E"/>
+<text x="900" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Time</text>
+<text x="972" y="738" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">algorithmic step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan></text>
+<rect x="876" y="767" width="14" height="14" fill="#D63A2F"/>
+<text x="900" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Events</text>
+<text x="972" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">binary <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] &#8712; {0, 1}</text>
+<rect x="860" y="620" width="390" height="196" fill="#000" opacity="0" pointer-events="all"/></g>
+
+<!-- legend and scope note -->
+<rect x="30" y="842" width="12" height="12" fill="#333"/>
+<text x="50" y="853" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">retained in the stated form</text>
+<rect x="262" y="842" width="12" height="12" fill="#fff" stroke="#333" stroke-width="1.8"/>
+<text x="282" y="853" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">not represented within one evaluation</text>
+<text x="1250" y="853" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-style:italic" fill="#555">Conceptual sketch. No axis carries a measured quantity.</text>
+
+<!-- hover regions over the drawings and traces -->
 <g class="f2-hot"><title>The cell fires only once the potential reaches the threshold. Below it the neuron integrates silently and emits nothing at all.</title>
-<rect class="f2-hl" x="64" y="346" width="424" height="26" fill="#D63A2F" opacity="0"/>
-<rect x="64" y="346" width="424" height="26" fill="#000" opacity="0" pointer-events="all"/></g>
+<rect class="f2-hl" x="44" y="382" width="336" height="28" fill="#D63A2F" opacity="0"/>
+<rect x="44" y="382" width="336" height="28" fill="#000" opacity="0" pointer-events="all"/></g>
 <g class="f2-hot"><title>Every tick is one identical spike. The information sits in when the ticks occur and how many of them there are, never in how large they are.</title>
-<rect class="f2-hl" x="150" y="442" width="300" height="52" rx="8" fill="#D63A2F" opacity="0"/>
-<rect x="150" y="442" width="300" height="52" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>The weighted sum is the one piece of the biological cell the artificial unit keeps. Every input is consumed at once, with no notion of arrival time.</title>
-<rect class="f2-hl" x="722" y="152" width="76" height="76" rx="38" fill="#D63A2F" opacity="0"/>
-<rect x="722" y="152" width="76" height="76" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>The nonlinearity is static, meaning it has no memory. The same sum always produces the same output, whatever came before it.</title>
-<rect class="f2-hl" x="836" y="146" width="116" height="88" rx="10" fill="#D63A2F" opacity="0"/>
-<rect x="836" y="146" width="116" height="88" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>The output is one continuous real number. Nothing about it is discrete and nothing persists into the next evaluation.</title>
-<rect class="f2-hl" x="996" y="168" width="112" height="46" rx="8" fill="#D63A2F" opacity="0"/>
-<rect x="996" y="168" width="112" height="46" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f2-hot"><title>There is no horizon to run the artificial neuron over. A single forward pass produces the answer, so time never enters the model.</title>
-<rect class="f2-hl" x="640" y="456" width="420" height="48" rx="8" fill="#D63A2F" opacity="0"/>
-<rect x="640" y="456" width="420" height="48" fill="#000" opacity="0" pointer-events="all"/></g>
+<rect class="f2-hl" x="120" y="498" width="200" height="36" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="120" y="498" width="200" height="36" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The weighted sum is the aggregation step that both abstractions retain. In the ANN unit every input is consumed at once within a single evaluation.</title>
+<rect class="f2-hl" x="576" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
+<rect x="576" y="164" width="72" height="72" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The nonlinearity is a static map. The same sum always produces the same output within one evaluation, because no state is read from a previous one.</title>
+<rect class="f2-hl" x="678" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
+<rect x="678" y="160" width="84" height="80" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The output is one real number. It is a complete description of the unit's output for this input, and it carries no step index.</title>
+<rect class="f2-hl" x="792" y="180" width="44" height="40" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="792" y="180" width="44" height="40" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>One evaluation yields one value. No time axis is drawn here because the value is static within the evaluation, not because anything is missing from it.</title>
+<rect class="f2-hl" x="462" y="360" width="368" height="134" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="462" y="360" width="368" height="134" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>Inputs arrive as events from upstream units, each weighted by w_ij, rather than as a real-valued vector consumed at once.</title>
+<rect class="f2-hl" x="884" y="136" width="62" height="128" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="884" y="136" width="62" height="128" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The state u[t] is written at one step and read at the next. It is a single-variable abstraction of the membrane potential.</title>
+<rect class="f2-hl" x="1000" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
+<rect x="1000" y="164" width="72" height="72" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The unit emits an event when u[t] reaches the threshold and then applies a reset. Section 3 gives the update rule and the reset variants.</title>
+<rect class="f2-hl" x="1100" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
+<rect x="1100" y="160" width="84" height="80" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The state advances in discrete algorithmic steps t. A step is not a physical duration until a hardware mapping says how long it lasts.</title>
+<rect class="f2-hl" x="884" y="382" width="330" height="28" fill="#D63A2F" opacity="0"/>
+<rect x="884" y="382" width="330" height="28" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>Each event z[t] is binary. Information sits in which steps carry an event and in how many of them do.</title>
+<rect class="f2-hl" x="980" y="498" width="170" height="36" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="980" y="498" width="170" height="36" fill="#000" opacity="0" pointer-events="all"/></g>
 </svg></div>
-  <div class="fig-hint">Hover any part of either neuron for what it contributes, and any numbered box for what its loss costs.</div>
-  <figcaption><b>Figure 2:</b> A biological neuron and its artificial abstraction, side by side. The cell integrates dendritic input in the soma until the membrane potential crosses a threshold, then emits identical spikes whose timing carries the information, whereas the artificial neuron keeps only a weighted sum and a static nonlinearity and returns one continuous real number. The three quantities the abstraction drops, time, discrete events, and membrane state, are exactly the three that the spiking neuron models of the next subsection restore.</figcaption>
+  <div class="fig-hint">Hover any part of a panel for what it represents, and any property box for how that abstraction retains it.</div>
+  <figcaption><b>Figure 2:</b> A biological neuron and two abstractions of it, side by side. The cell integrates dendritic input as a continuous membrane potential over physical time \(\tau\) and emits action potentials. The ANN unit retains the weighted aggregation and a represented value \(a^l\), computed once per inference evaluation. That value is static within the evaluation, and it is a complete description of the unit's output at that input rather than a reduced one. The SNN unit retains a simplified persistent state \(u[t]\), an algorithmic step index \(t\), a threshold \(\theta\) with a reset, and a binary event \(z[t]\). The property strip records, for each abstraction, which of the four properties it retains and in what form. Section 3 (neuron and synapse dynamics) gives the update rule for the SNN unit.</figcaption>
 </figure>
