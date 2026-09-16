@@ -470,3 +470,40 @@ Aliases include the target and every current `refmap.json` source key found in t
 - Every resolved target has exactly one canonical match: True.
 - Unresolved accounting identity: 110 keys = 108 work groups + 2 duplicate-key excess.
 - Work-group classification identity: 108 groups = 105 external + 3 internal analysis.
+
+## Post-migration canonical generation
+
+Recomputed on 2026-09-16 after the reviewed migration records entered the canonical
+source registry. The pre-migration inventory above remains unchanged as the audit trail.
+
+- Section fragments scanned: 6
+- Distinct inline reference keys: 394
+- Distinct cited keys: 375
+- Reference-only keys: 19
+- Canonical source-registry records and generated BibTeX definitions: 352
+- Canonical works reached by the 375 cited keys: 284
+- Canonical works not cited by the current fragments: 68
+- Generated legacy alias mappings: 265, including 255 cited keys
+- Ambiguous exact matches: 0
+- Unresolved cited keys: 0
+- Unresolved reference-only keys that are not cited: 7
+- Duplicate generated BibTeX keys: 0
+- Explicit internal-analysis records: 3, all cited
+
+Exact matching used canonical IDs and aliases first, then normalized DOI, normalized
+URL, and exact normalized title. The 387 resolved inline keys comprise 216 registry-key
+or alias matches, 50 DOI matches, 92 URL matches, and 29 title matches. No fuzzy match
+was used. Fragment reference prose supplied identity evidence only. All generated
+BibTeX fields came from `data/source-registry.json`.
+
+The seven unresolved reference-only keys are `NIR-Support`, `Shukla19-TNCarCount`,
+`furber-2004-nofm`, `furber2004`, `gerstner2002`, `perez2013`, and `speck-2019`.
+They occur only in inline reference lists that the site assembler removes. None occurs
+in a citation marker, so they do not weaken the zero-unresolved citation result.
+
+The analysis-only records are `a14-application-survey`, `a17-two-populations`, and
+`a18-sourcecode-comparison`. Generated BibTeX labels each one as internal analysis and
+states that it is not an external publication. The legacy `SJ-GitHub` key resolves to
+`a18-sourcecode-comparison` by the exact reviewed SpikingJelly repository URL. This
+identity edge is reported explicitly because its legacy label describes repository
+state while the canonical record represents the tracked source-level comparison.
