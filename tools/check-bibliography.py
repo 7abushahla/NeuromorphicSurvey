@@ -14,23 +14,23 @@ ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_REPORT = {
     "defined": 352,
     "cited": 284,
-    "cited_keys": 375,
+    "cited_keys": 376,
     "uncited": 68,
-    "aliased": 265,
-    "cited_aliased": 255,
+    "aliased": 241,
+    "cited_aliased": 231,
     "unresolved": 0,
     "duplicate": 0,
     "analysis_only": 3,
     "analysis_only_cited": 3,
-    "reference_keys": 394,
+    "reference_keys": 360,
     "reference_only": 19,
     "reference_only_unresolved": 7,
     "ambiguous": 0,
     "match_methods": {
-        "registry": 216,
-        "doi": 50,
-        "url": 92,
-        "title": 29,
+        "registry": 241,
+        "doi": 36,
+        "url": 88,
+        "title": 23,
     },
     "unresolved_cited": [],
     "unresolved_reference_only": [
@@ -93,6 +93,51 @@ def main() -> int:
     build_outputs = module.get("build_outputs")
     if not callable(build_outputs):
         fail("build-bib does not expose canonical build_outputs(root)")
+
+    with tempfile.TemporaryDirectory() as temp_directory:
+        fixture_root = Path(temp_directory)
+        (fixture_root / "data").mkdir()
+        (fixture_root / "site").mkdir()
+        (fixture_root / "data/source-registry.json").write_text(
+            json.dumps({
+                "sources": [{
+                    "id": "direct-source",
+                    "canonical_key": "direct-source",
+                    "aliases": ["legacy-source"],
+                    "purpose": "external",
+                    "source_type": "peer_reviewed",
+                    "title": "Direct canonical citation fixture",
+                    "authors": "A. Author",
+                    "venue": "Fixture Journal",
+                    "year": 2026,
+                    "doi": None,
+                    "url": None,
+                }]
+            })
+        )
+        (fixture_root / "site/sec-01.html").write_text(
+            '<p><d-cite key="direct-source,legacy-source"></d-cite></p>\n'
+        )
+        try:
+            _, direct_refmap, direct_report = build_outputs(fixture_root)
+        except ValueError as error:
+            fail(f"direct canonical and alias citations need no local identity list: {error}")
+        if direct_refmap != {"legacy-source": "direct-source"}:
+            fail("direct alias citation did not generate its canonical refmap entry")
+        if direct_report["cited"] != 1 or direct_report["cited_keys"] != 2:
+            fail("direct canonical citations did not resolve to one canonical work")
+
+    table_module = runpy.run_path(ROOT / "tools/build-table1.py")
+    build_table = table_module.get("build_table")
+    if not callable(build_table):
+        fail("build-table1 does not expose build_table(root)")
+    table_citations = set(re.findall(r'<d-cite key="([^"]+)"></d-cite>', build_table(ROOT)))
+    survey_ids = {
+        record["source_id"]
+        for record in json.loads((ROOT / "data/prior-survey-coverage.json").read_text())["surveys"]
+    }
+    if not survey_ids <= table_citations:
+        fail("Table 1 does not cite every survey by its canonical source ID")
 
     bibliography, refmap, report = build_outputs(ROOT)
     if report != EXPECTED_REPORT:

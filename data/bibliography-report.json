@@ -1,5 +1,5 @@
 {
-  "aliased": 265,
+  "aliased": 241,
   "ambiguous": 0,
   "ambiguous_keys": [],
   "analysis_only": 3,
@@ -10,17 +10,17 @@
     "a18-sourcecode-comparison"
   ],
   "cited": 284,
-  "cited_aliased": 255,
-  "cited_keys": 375,
+  "cited_aliased": 231,
+  "cited_keys": 376,
   "defined": 352,
   "duplicate": 0,
   "match_methods": {
-    "doi": 50,
-    "registry": 216,
-    "title": 29,
-    "url": 92
+    "doi": 36,
+    "registry": 241,
+    "title": 23,
+    "url": 88
   },
-  "reference_keys": 394,
+  "reference_keys": 360,
   "reference_only": 19,
   "reference_only_unresolved": 7,
   "uncited": 68,

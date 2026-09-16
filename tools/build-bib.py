@@ -218,7 +218,10 @@ def build_outputs(root: Path = ROOT) -> tuple[str, dict[str, str], dict[str, obj
     document = json.loads((root / "data/source-registry.json").read_text())
     sources = validate_registry(document.get("sources") if isinstance(document, dict) else None)
     references, cited_keys = scan_fragments(root)
-    resolved, methods, ambiguous = resolve_references(references, sources)
+    lookup_references = dict(references)
+    for key in cited_keys:
+        lookup_references.setdefault(key, {"key": key, "title": "", "doi": "", "url": ""})
+    resolved, methods, ambiguous = resolve_references(lookup_references, sources)
     reference_keys = set(references)
     unresolved = reference_keys - resolved.keys() - ambiguous.keys()
     unresolved_cited = sorted(cited_keys - resolved.keys())
@@ -227,8 +230,6 @@ def build_outputs(root: Path = ROOT) -> tuple[str, dict[str, str], dict[str, obj
         raise ValueError(f"unresolved cited keys: {unresolved_cited}")
     if ambiguous_cited:
         raise ValueError(f"ambiguous cited keys: {ambiguous_cited}")
-    if cited_keys - reference_keys:
-        raise ValueError(f"cited keys lack inline identity evidence: {sorted(cited_keys-reference_keys)}")
     source_map = {str(source["id"]): source for source in sources}
     cited_ids = {resolved[key] for key in cited_keys}
     analysis_ids = sorted(key for key, source in source_map.items() if source["purpose"] == "internal_analysis")

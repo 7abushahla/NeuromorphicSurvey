@@ -169,18 +169,6 @@ def source_index(source_document: dict[str, Any], survey_ids: set[str]) -> dict[
     return sources
 
 
-def citation_key_index(alias_document: dict[str, Any], survey_ids: set[str]) -> dict[str, str]:
-    """Use the generated bibliography aliases without maintaining survey citation keys."""
-    aliases_by_source: dict[str, list[str]] = {source_id: [] for source_id in survey_ids}
-    for alias, source_id in alias_document.items():
-        if source_id in aliases_by_source and isinstance(alias, str) and alias:
-            aliases_by_source[source_id].append(alias)
-    return {
-        source_id: min(aliases) if aliases else source_id
-        for source_id, aliases in aliases_by_source.items()
-    }
-
-
 def short_author_label(authors: str) -> str:
     """Return a compact first-author label without maintaining name exceptions."""
     has_multiple_authors = "et al" in authors.lower() or bool(re.search(r";|,|\band\b", authors))
@@ -230,7 +218,6 @@ def end_of_div(text: str, start: int) -> int:
 def render_table(
     surveys: dict[str, dict[str, Any]],
     sources: dict[str, dict[str, Any]],
-    citation_keys: dict[str, str],
 ) -> str:
     rows: list[tuple[int, str, str]] = []
     for source_id, survey in surveys.items():
@@ -248,7 +235,7 @@ def render_table(
             (
                 year,
                 source_id,
-                f'<tr><td>{author} <d-cite key="{html.escape(citation_keys[source_id])}"></d-cite>'
+                f'<tr><td>{author} <d-cite key="{html.escape(source_id)}"></d-cite>'
                 f'<br><span class="survey-tag {tag_class}">{tag}</span></td>'
                 f'<td class="ctr yr">{year}</td>{"".join(cells)}</tr>',
             )
@@ -285,12 +272,10 @@ def build_table(root: Path | None = None) -> str:
     coverage_document = load_json(root / "data/prior-survey-coverage.json")
     summary_document = load_json(root / "data/generated/prior-survey-family-summary.json")
     source_document = load_json(root / "data/source-registry.json")
-    alias_document = load_json(root / "data/refmap.json")
     surveys = canonical_surveys(coverage_document)
     verify_family_summary(summary_document, surveys)
     sources = source_index(source_document, set(surveys))
-    citation_keys = citation_key_index(alias_document, set(surveys))
-    return render_table(surveys, sources, citation_keys)
+    return render_table(surveys, sources)
 
 
 def main() -> None:
