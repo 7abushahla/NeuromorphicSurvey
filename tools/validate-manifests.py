@@ -87,6 +87,8 @@ def validate_site(site, errors):
     if len(sections) != 18:
         errors.append(f"site manifest must contain exactly 18 sections, found {len(sections)}")
     numbers = [record.get("display_number") for record in sections]
+    if any(type(number) is not int for number in numbers):
+        errors.append("site section display_number values must be integers")
     if numbers != list(range(1, 19)):
         errors.append("site section display numbers must be ordered 1 through 18")
     if not fragments or fragments[0].get("id") != "shell-head":
@@ -138,7 +140,7 @@ def validate_figures(figures_data, section_ids, strict, errors):
         if isinstance(identifier, str):
             ids.append(identifier)
         number = record.get("display_number")
-        if not isinstance(number, int) or number < 1:
+        if type(number) is not int or number < 1:
             errors.append(f"{label} has invalid display_number {number!r}")
         else:
             numbers.append(number)
