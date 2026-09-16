@@ -101,6 +101,10 @@ def validate(schema: object, registry: object) -> list[str]:
         doi = source["doi"]
         if doi is not None and (not isinstance(doi, str) or not doi.strip()):
             errors.append(f"{label}: doi must be null or a nonempty string")
+        elif isinstance(doi, str) and doi.strip().lower().startswith("unassigned:"):
+            errors.append(
+                f"{label}: doi must not use the synthetic 'unassigned:' prefix"
+            )
         if not isinstance(source["year"], int) or isinstance(source["year"], bool):
             errors.append(f"{label}: year must be an integer")
         if not valid_http_url(source["url"]):

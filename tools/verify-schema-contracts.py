@@ -111,6 +111,16 @@ def main() -> int:
         "source with a non-string DOI",
     )
 
+    synthetic_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        synthetic_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = "  UnAsSiGnEd:pedersen-2024-nir  "
+    check_error(
+        source_validate(schema, synthetic_doi_registry),
+        "doi must not use the synthetic 'unassigned:' prefix",
+        "source with a synthetic unassigned DOI",
+    )
+
     normalized_legacy_doi = normalize_source(
         {
             "id": "doi-normalization-fixture",
@@ -343,7 +353,40 @@ def main() -> int:
         "unassessed coverage without an access boundary",
     )
 
-    expected_checks = 35
+    missing_survey = copy.deepcopy(coverage)
+    missing_survey["surveys"] = [
+        survey for survey in missing_survey["surveys"]
+        if survey.get("id") != "S37-farsa-2026-gpu-riscv"
+    ]
+    check_error(
+        coverage_validate(schema, registry, missing_survey),
+        "missing survey identifier(s): S37",
+        "coverage registry missing one required survey",
+    )
+
+    duplicate_survey_identifier = copy.deepcopy(coverage)
+    record_by_id(
+        duplicate_survey_identifier["surveys"],
+        "S37-farsa-2026-gpu-riscv",
+        "survey",
+    )["id"] = "S01-farsa-2026-gpu-riscv"
+    check_error(
+        coverage_validate(schema, registry, duplicate_survey_identifier),
+        "duplicate survey identifier(s): S01",
+        "coverage registry with a duplicate survey number",
+    )
+
+    empty_coverage = copy.deepcopy(coverage)
+    record_by_id(
+        empty_coverage["surveys"], "S01-pedersen-2024-nir", "survey",
+    )["coverage"] = {}
+    check_error(
+        coverage_validate(schema, registry, empty_coverage),
+        "coverage is missing axes: A, B, C, D, E, F, G, H, I, J, K, L",
+        "survey with empty coverage",
+    )
+
+    expected_checks = 39
     if checks != expected_checks:
         raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
     print(f"verify-schema-contracts: {checks} contract checks passed")

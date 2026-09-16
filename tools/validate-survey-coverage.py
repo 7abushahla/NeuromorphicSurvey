@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -16,6 +17,8 @@ REQUIRED_FIELDS = {
     "strongest_contribution", "deployment_depth", "omissions", "verification",
 }
 COVERAGE_AXES = set("ABCDEFGHIJKL")
+REQUIRED_SURVEY_IDENTIFIERS = {f"S{number:02d}" for number in range(1, 38)}
+SURVEY_IDENTIFIER_PATTERN = re.compile(r"^(S\d{2})(?:-|$)")
 ACCESS_LIMIT_TERMS = {
     "not assessed",
     "not retrieved",
@@ -60,14 +63,12 @@ def validate_coverage(
     if not isinstance(coverage, dict):
         errors.append(f"{label}: coverage must be an object")
         return
-    if not coverage:
-        return
     unexpected = sorted(set(coverage) - COVERAGE_AXES)
     if unexpected:
         errors.append(f"{label}: invalid coverage axes: {', '.join(unexpected)}")
     missing = sorted(COVERAGE_AXES - set(coverage))
     if missing:
-        errors.append(f"{label}: non-seed coverage is missing axes: {', '.join(missing)}")
+        errors.append(f"{label}: coverage is missing axes: {', '.join(missing)}")
     for axis, entry in coverage.items():
         axis_label = f"{label}: coverage.{axis}"
         if not isinstance(entry, dict):
@@ -131,6 +132,7 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
     allowed_scores = set(coverage_scores)
     source_ids = {source.get("id") for source in registry["sources"] if isinstance(source, dict)}
     ids: set[str] = set()
+    survey_identifier_counts: dict[str, int] = {}
     for index, survey in enumerate(surveys):
         label = f"surveys[{index}]"
         if not isinstance(survey, dict):
@@ -148,6 +150,16 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
             if survey_id in ids:
                 errors.append(f"{label}: duplicate id {survey_id!r}")
             ids.add(survey_id)
+            match = SURVEY_IDENTIFIER_PATTERN.match(survey_id)
+            if match is None:
+                errors.append(
+                    f"{label}: id must begin with a survey identifier such as 'S01-'"
+                )
+            else:
+                identifier = match.group(1)
+                survey_identifier_counts[identifier] = (
+                    survey_identifier_counts.get(identifier, 0) + 1
+                )
         if not isinstance(survey["source_id"], str) or survey["source_id"] not in source_ids:
             errors.append(f"{label}: unresolved source_id {survey['source_id']!r}")
         if not isinstance(survey["full_text_status"], str) or survey["full_text_status"] not in full_text_statuses:
@@ -175,6 +187,32 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
             errors.append(f"{label}: verification.reviewed_on must be an ISO YYYY-MM-DD date")
         if not isinstance(verification.get("reviewer"), str) or not verification["reviewer"].strip():
             errors.append(f"{label}: verification.reviewer must be a nonempty string")
+
+    if len(surveys) != len(REQUIRED_SURVEY_IDENTIFIERS):
+        errors.append(
+            "prior-survey-coverage must contain exactly 37 survey records, "
+            f"found {len(surveys)}"
+        )
+    observed_identifiers = set(survey_identifier_counts)
+    missing_identifiers = sorted(REQUIRED_SURVEY_IDENTIFIERS - observed_identifiers)
+    if missing_identifiers:
+        errors.append(
+            f"missing survey identifier(s): {', '.join(missing_identifiers)}"
+        )
+    unexpected_identifiers = sorted(observed_identifiers - REQUIRED_SURVEY_IDENTIFIERS)
+    if unexpected_identifiers:
+        errors.append(
+            f"unexpected survey identifier(s): {', '.join(unexpected_identifiers)}"
+        )
+    duplicate_identifiers = sorted(
+        identifier
+        for identifier, count in survey_identifier_counts.items()
+        if count > 1
+    )
+    if duplicate_identifiers:
+        errors.append(
+            f"duplicate survey identifier(s): {', '.join(duplicate_identifiers)}"
+        )
     return errors
 
 
