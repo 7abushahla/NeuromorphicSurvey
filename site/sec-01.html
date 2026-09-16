@@ -76,6 +76,63 @@ deployment, and application reviews. Each line establishes an important part of 
 alone follows a trained SNN from its computational definition through software and hardware
 boundaries to a clearly stated measurement claim.</p>
 
+<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
+background needed to understand SNN construction. They compare neuron models, learning rules,
+surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
+conversion method rather than a complete deployment route
+<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
+explains why different training routes produce different constraints. It does not usually trace
+whether those constraints remain representable after export and mapping.</p>
+
+<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
+what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
+population, and graded-payload representations impose different state, payload, precision, and
+stopping requirements. The present survey uses these code families as execution contracts in
+Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
+Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
+<d-cite key="auge"></d-cite>.</p>
+
+<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
+programming models, compilers, and mapping environments. NIR provides an important precedent. It
+makes neural primitives portable enough to compare implementations and exposes semantic
+disagreement across back ends
+<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
+The remaining question is edge-specific. A graph format does not by itself state whether reset,
+delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
+Sections 10 and 11 make those alternatives explicit.</p>
+
+<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
+applications. A platform-focused account can provide deep measured evidence for one target. Davies
+et al., for example, document Loihi results across several workloads. Broader hardware surveys
+compare implementation approaches and design constraints
+<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
+Neither strength establishes that a model definition or compiler route transfers unchanged across
+platform families. Sections 12 and 13 therefore compare execution models through common contract
+fields before evaluating any named route.</p>
+
+<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
+an essential separation between hardware-independent proxy evaluation and hardware-aware or
+physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
+reviews show the breadth of vision, audio, control, and other workloads
+<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
+classify each published claim by physical execution, documented path, model, or simulation, and
+they do not require a named edge-by-edge route from a trained network to a target. This survey
+bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
+and an explicit measurement boundary.</p>
+
+<p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
+address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
+the same questions of every route. What is mathematically defined? What can the software
+represent? What does the target execute? What was measured, where, and against which baseline?
+The answer may be a physical route, a transformed route, a blocked route, or an unexercised
+documented path. Each answer remains useful when its evidence boundary is stated.</p>
+
+<p>This gap raises a practical question for the field. When a new low-timestep conversion method
+improves finite-window accuracy in simulation, does its own deployment route reach named physical
+silicon with measurement, or does deployment proceed through an older pipeline, a directly trained
+model, or a platform-native code? The evidence synthesis returns to this question without assuming
+its answer in advance.</p>
+
 <p>Table 1 compares the surveyed works across codes and neuron models, learning and conversion,
 software, compilers and interchange, hardware, boundary semantics, evidence types, and traced chip
 routes. Full, partial, and mentioned indicate the depth of coverage within a work. They do not
@@ -140,114 +197,29 @@ rank the quality of its results.</p>
 <div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
 </div>
 
-<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
-background needed to understand SNN construction. They compare neuron models, learning rules,
-surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
-conversion method rather than a complete deployment route
-<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
-explains why different training routes produce different constraints. It does not usually trace
-whether those constraints remain representable after export and mapping.</p>
+<h3 id="survey-contributions">1.2 Contributions</h3>
 
-<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
-what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
-population, and graded-payload representations impose different state, payload, precision, and
-stopping requirements. The present survey uses these code families as execution contracts in
-Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
-Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
-<d-cite key="auge"></d-cite>.</p>
+<p>This survey makes the following key contributions:</p>
 
-<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
-programming models, compilers, and mapping environments. NIR provides an important precedent. It
-makes neural primitives portable enough to compare implementations and exposes semantic
-disagreement across back ends
-<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
-The remaining question is edge-specific. A graph format does not by itself state whether reset,
-delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
-Sections 10 and 11 make those alternatives explicit.</p>
+<ol>
+<li>We provide a deployment-centered field-entry reference for neuromorphic computing, covering
+the computational and representational concepts needed to follow an SNN from model definition to
+a stated deployment claim.</li>
+<li>We present a pedagogical dependency chain from computation and representation through neuron
+and synapse dynamics, temporal semantics, neural codes, learning, ANN-to-SNN conversion, software,
+hardware execution, measurement, applications, and open problems.</li>
+<li>We connect direct training and ANN-to-SNN conversion at a common deployable SNN contract. The
+contract identifies the semantic fields that must be defined mathematically, represented in
+software, and faithfully executed on a target.</li>
+<li>We introduce a claim-level evidence framework and a typed route vocabulary. These distinguish
+physical measurement, physical fidelity, a documented route, a hardware model, and software
+evidence without assigning one label to an entire paper.</li>
+<li>We synthesize platform capabilities from vendor documentation, SDKs, mapper constraints,
+development kits, release notes, and examples. We then interpret applications by workload and
+measurement boundary rather than by vendor, making the limits of each reported route explicit.</li>
+</ol>
 
-<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
-applications. A platform-focused account can provide deep measured evidence for one target. Davies
-et al., for example, document Loihi results across several workloads. Broader hardware surveys
-compare implementation approaches and design constraints
-<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
-Neither strength establishes that a model definition or compiler route transfers unchanged across
-platform families. Sections 12 and 13 therefore compare execution models through common contract
-fields before evaluating any named route.</p>
-
-<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
-an essential separation between hardware-independent proxy evaluation and hardware-aware or
-physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
-reviews show the breadth of vision, audio, control, and other workloads
-<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
-classify each published claim by physical execution, documented path, model, or simulation, and
-they do not require a named edge-by-edge route from a trained network to a target. This survey
-bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
-and an explicit measurement boundary.</p>
-
-<p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
-address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
-the same questions of every route. What is mathematically defined? What can the software
-represent? What does the target execute? What was measured, where, and against which baseline?
-The answer may be a physical route, a transformed route, a blocked route, or an unexercised
-documented path. Each answer remains useful when its evidence boundary is stated.</p>
-
-<h3 id="evidence-guide">1.2 Evidence Guide</h3>
-
-<p>A benchmark protocol separates physical evaluation from a proxy so that a future submission can
-report both honestly. A literature survey has a different task. It must classify claims already in
-print, including the route evidence that surrounds an accuracy, energy, or latency result. The
-five classes below refine that distinction. They apply to a claim, not to an entire paper. One
-paper can therefore contain an E5 accuracy result and an E3 documented route, or an E2 fidelity
-result without an energy measurement. The classes are not quality grades.</p>
-
-<div class="ptable-wrap" id="table-evidence-classes">
-<table class="ptable">
-<caption><b>Table 2:</b> Evidence classes for individual deployment claims.</caption>
-<thead><tr><th class="ctr">Class</th><th>Meaning</th><th>What it does not establish</th></tr></thead>
-<tbody>
-<tr><td class="ctr"><span class="ev ev-e1">E1</span></td><td>Physical hardware with measured latency, energy, power, or system performance.</td><td>Equivalence to a different platform, workload, or boundary.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e2">E2</span></td><td>Physical hardware with accuracy or fidelity measurement only.</td><td>Measured latency, power, or energy.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e3">E3</span></td><td>A documented but unexercised deployment route.</td><td>A published run of the model across that route.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e4">E4</span></td><td>A hardware model, RTL synthesis, or cycle-level simulation without fabricated silicon.</td><td>Physical execution.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e5">E5</span></td><td>Software simulation, an analytical proxy, or algorithm-only evidence.</td><td>A hardware capability or deployment measurement.</td></tr>
-</tbody>
-</table>
-</div>
-
-<p>The classes prevent several recurring substitutions. Fewer timesteps do not prove lower
-wall-clock latency. Fewer spikes do not prove lower energy. A lower operation count does not prove
-lower measured power. A documented exporter does not prove that a published model reached silicon.
-Sections 4, 11, and 14 define the terms needed to make these differences operational. The evidence
-guide then remains fixed throughout the article.</p>
-
-<h3 id="survey-contributions">1.3 What This Survey Contributes</h3>
-
-<p>The first contribution is an explanatory path from computation and representation to deployment
-evidence. It gives direct training and conversion a common destination rather than treating them
-as separate fields. The destination is the deployable SNN contract. It records the semantic fields
-that must be defined mathematically, represented in software, and faithfully executed on a target.</p>
-
-<p>The second contribution is a claim-level evidence framework. E1 through E5 distinguish physical
-measurement, physical fidelity, documented route, hardware model, and software evidence without
-collapsing them into a paper-level label. The framework is paired with a typed route vocabulary.
-Every edge records its input, output, preserved and transformed semantics, rejected features,
-route state, source, and evidence limit.</p>
-
-<p>The third contribution is a deployment synthesis organized around routes and measurement
-boundaries. Platform capabilities are interpreted through official documentation, SDKs, mapper
-constraints, development kits, release notes, and examples. Applications are then grouped by
-workload rather than by vendor. This organization lets a reader compare what was actually executed
-and measured without assuming that a device family, a simulator, and a deployment route are
-interchangeable.</p>
-
-<p>These tools motivate a question that the evidence synthesis will test rather than answer here.
-Recent low-timestep conversion papers improve finite-window accuracy in simulation. Do their own
-methods reach named physical silicon with measurement, or does deployment proceed through older
-pipelines, directly trained models, or platform-native codes? Section 16 gives the counting policy,
-falsifier, counterexamples, and qualifications. Section 1 deliberately does not present that
-result in advance.</p>
-
-<h3 id="survey-roadmap">1.4 Organization of the Survey</h3>
+<h3 id="survey-roadmap">1.3 Organization</h3>
 
 <p>Sections 2 through 4 define computation, state, neuron and synapse dynamics, temporal semantics,
 codes, and decoding. Sections 5 and 6 introduce the learning fork and bound direct-training detail.

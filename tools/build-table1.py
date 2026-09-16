@@ -264,7 +264,10 @@ def main() -> None:
     if marker in section:
         if section.count(marker) != 1:
             raise ValueError("Section 1 must contain TABLE1 placement marker exactly once")
-        replacement = section.replace(marker, table)
+        start = section.index('<div class="ptable-wrap l-page t1-wide cov-table" id="table-1"')
+        end = end_of_div(section, start)
+        without_previous_table = section[:start] + section[end:]
+        replacement = without_previous_table.replace(marker, table)
     else:
         start = section.index('<div class="ptable-wrap')
         end = end_of_div(section, start)

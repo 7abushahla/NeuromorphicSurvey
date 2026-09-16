@@ -908,6 +908,63 @@ deployment, and application reviews. Each line establishes an important part of 
 alone follows a trained SNN from its computational definition through software and hardware
 boundaries to a clearly stated measurement claim.</p>
 
+<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
+background needed to understand SNN construction. They compare neuron models, learning rules,
+surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
+conversion method rather than a complete deployment route
+<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
+explains why different training routes produce different constraints. It does not usually trace
+whether those constraints remain representable after export and mapping.</p>
+
+<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
+what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
+population, and graded-payload representations impose different state, payload, precision, and
+stopping requirements. The present survey uses these code families as execution contracts in
+Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
+Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
+<d-cite key="auge"></d-cite>.</p>
+
+<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
+programming models, compilers, and mapping environments. NIR provides an important precedent. It
+makes neural primitives portable enough to compare implementations and exposes semantic
+disagreement across back ends
+<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
+The remaining question is edge-specific. A graph format does not by itself state whether reset,
+delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
+Sections 10 and 11 make those alternatives explicit.</p>
+
+<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
+applications. A platform-focused account can provide deep measured evidence for one target. Davies
+et al., for example, document Loihi results across several workloads. Broader hardware surveys
+compare implementation approaches and design constraints
+<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
+Neither strength establishes that a model definition or compiler route transfers unchanged across
+platform families. Sections 12 and 13 therefore compare execution models through common contract
+fields before evaluating any named route.</p>
+
+<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
+an essential separation between hardware-independent proxy evaluation and hardware-aware or
+physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
+reviews show the breadth of vision, audio, control, and other workloads
+<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
+classify each published claim by physical execution, documented path, model, or simulation, and
+they do not require a named edge-by-edge route from a trained network to a target. This survey
+bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
+and an explicit measurement boundary.</p>
+
+<p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
+address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
+the same questions of every route. What is mathematically defined? What can the software
+represent? What does the target execute? What was measured, where, and against which baseline?
+The answer may be a physical route, a transformed route, a blocked route, or an unexercised
+documented path. Each answer remains useful when its evidence boundary is stated.</p>
+
+<p>This gap raises a practical question for the field. When a new low-timestep conversion method
+improves finite-window accuracy in simulation, does its own deployment route reach named physical
+silicon with measurement, or does deployment proceed through an older pipeline, a directly trained
+model, or a platform-native code? The evidence synthesis returns to this question without assuming
+its answer in advance.</p>
+
 <p>Table 1 compares the surveyed works across codes and neuron models, learning and conversion,
 software, compilers and interchange, hardware, boundary semantics, evidence types, and traced chip
 routes. Full, partial, and mentioned indicate the depth of coverage within a work. They do not
@@ -972,114 +1029,29 @@ rank the quality of its results.</p>
 <div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
 </div>
 
-<p><strong>Models and learning.</strong> Foundational and algorithm-centered surveys establish the
-background needed to understand SNN construction. They compare neuron models, learning rules,
-surrogate gradients, conversion, and applications. Their main unit of analysis is a learning or
-conversion method rather than a complete deployment route
-<d-cite key="roy-2019-spike-machine-intelligence,nunes-2022,khan-2025"></d-cite>. This literature
-explains why different training routes produce different constraints. It does not usually trace
-whether those constraints remain representable after export and mapping.</p>
+<h3 id="survey-contributions">1.2&ensp;Contributions</h3>
 
-<p><strong>Coding.</strong> Code-centered work explains how a value becomes a spike representation and
-what a decoder recovers. That distinction matters for deployment because rate, first-spike-time,
-population, and graded-payload representations impose different state, payload, precision, and
-stopping requirements. The present survey uses these code families as execution contracts in
-Sections 4 and 10. It does not repeat a general coding survey. For a broader code taxonomy, see
-Auge et al., particularly for the signal-representation trade-offs outside ANN-to-SNN conversion
-<d-cite key="auge"></d-cite>.</p>
+<p>This survey makes the following key contributions:</p>
 
-<p><strong>Software and interoperability.</strong> Framework and toolchain reviews identify simulators,
-programming models, compilers, and mapping environments. NIR provides an important precedent. It
-makes neural primitives portable enough to compare implementations and exposes semantic
-disagreement across back ends
-<d-cite key="manna-2023-frameworks,huynh-2022-implementing-snns,pedersen-2024-nir"></d-cite>.
-The remaining question is edge-specific. A graph format does not by itself state whether reset,
-delay, payload, readout, or host work is preserved, transformed, rejected, or only documented.
-Sections 10 and 11 make those alternatives explicit.</p>
+<ol>
+<li>We provide a deployment-centered field-entry reference for neuromorphic computing, covering
+the computational and representational concepts needed to follow an SNN from model definition to
+a stated deployment claim.</li>
+<li>We present a pedagogical dependency chain from computation and representation through neuron
+and synapse dynamics, temporal semantics, neural codes, learning, ANN-to-SNN conversion, software,
+hardware execution, measurement, applications, and open problems.</li>
+<li>We connect direct training and ANN-to-SNN conversion at a common deployable SNN contract. The
+contract identifies the semantic fields that must be defined mathematically, represented in
+software, and faithfully executed on a target.</li>
+<li>We introduce a claim-level evidence framework and a typed route vocabulary. These distinguish
+physical measurement, physical fidelity, a documented route, a hardware model, and software
+evidence without assigning one label to an entire paper.</li>
+<li>We synthesize platform capabilities from vendor documentation, SDKs, mapper constraints,
+development kits, release notes, and examples. We then interpret applications by workload and
+measurement boundary rather than by vendor, making the limits of each reported route explicit.</li>
+</ol>
 
-<p><strong>Hardware.</strong> Hardware surveys describe chips, circuits, execution styles, and selected
-applications. A platform-focused account can provide deep measured evidence for one target. Davies
-et al., for example, document Loihi results across several workloads. Broader hardware surveys
-compare implementation approaches and design constraints
-<d-cite key="davies-2021-loihi,bouvier-2019-hardware-implementations,shrestha-2022-models-hardware"></d-cite>.
-Neither strength establishes that a model definition or compiler route transfers unchanged across
-platform families. Sections 12 and 13 therefore compare execution models through common contract
-fields before evaluating any named route.</p>
-
-<p><strong>Benchmarking, deployment, and applications.</strong> NeuroBench and the EdgeSNN survey make
-an essential separation between hardware-independent proxy evaluation and hardware-aware or
-physical-system evaluation <d-cite key="yik-2025-neurobench,deng-2025-edgesnn"></d-cite>. Application
-reviews show the breadth of vision, audio, control, and other workloads
-<d-cite key="yamazaki-2022"></d-cite>. These are strong precedents. They do not retrospectively
-classify each published claim by physical execution, documented path, model, or simulation, and
-they do not require a named edge-by-edge route from a trained network to a target. This survey
-bridges those two omissions through a deployable SNN contract, typed software and hardware edges,
-and an explicit measurement boundary.</p>
-
-<p>The resulting gap is narrower than a claim that earlier work ignored deployment. Prior surveys
-address important pieces of the problem. The gap is an end-to-end synthesis that lets a reader ask
-the same questions of every route. What is mathematically defined? What can the software
-represent? What does the target execute? What was measured, where, and against which baseline?
-The answer may be a physical route, a transformed route, a blocked route, or an unexercised
-documented path. Each answer remains useful when its evidence boundary is stated.</p>
-
-<h3 id="evidence-guide">1.2&ensp;Evidence Guide</h3>
-
-<p>A benchmark protocol separates physical evaluation from a proxy so that a future submission can
-report both honestly. A literature survey has a different task. It must classify claims already in
-print, including the route evidence that surrounds an accuracy, energy, or latency result. The
-five classes below refine that distinction. They apply to a claim, not to an entire paper. One
-paper can therefore contain an E5 accuracy result and an E3 documented route, or an E2 fidelity
-result without an energy measurement. The classes are not quality grades.</p>
-
-<div class="ptable-wrap" id="table-evidence-classes">
-<table class="ptable">
-<caption><b>Table 2:</b> Evidence classes for individual deployment claims.</caption>
-<thead><tr><th class="ctr">Class</th><th>Meaning</th><th>What it does not establish</th></tr></thead>
-<tbody>
-<tr><td class="ctr"><span class="ev ev-e1">E1</span></td><td>Physical hardware with measured latency, energy, power, or system performance.</td><td>Equivalence to a different platform, workload, or boundary.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e2">E2</span></td><td>Physical hardware with accuracy or fidelity measurement only.</td><td>Measured latency, power, or energy.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e3">E3</span></td><td>A documented but unexercised deployment route.</td><td>A published run of the model across that route.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e4">E4</span></td><td>A hardware model, RTL synthesis, or cycle-level simulation without fabricated silicon.</td><td>Physical execution.</td></tr>
-<tr><td class="ctr"><span class="ev ev-e5">E5</span></td><td>Software simulation, an analytical proxy, or algorithm-only evidence.</td><td>A hardware capability or deployment measurement.</td></tr>
-</tbody>
-</table>
-</div>
-
-<p>The classes prevent several recurring substitutions. Fewer timesteps do not prove lower
-wall-clock latency. Fewer spikes do not prove lower energy. A lower operation count does not prove
-lower measured power. A documented exporter does not prove that a published model reached silicon.
-Sections 4, 11, and 14 define the terms needed to make these differences operational. The evidence
-guide then remains fixed throughout the article.</p>
-
-<h3 id="survey-contributions">1.3&ensp;What This Survey Contributes</h3>
-
-<p>The first contribution is an explanatory path from computation and representation to deployment
-evidence. It gives direct training and conversion a common destination rather than treating them
-as separate fields. The destination is the deployable SNN contract. It records the semantic fields
-that must be defined mathematically, represented in software, and faithfully executed on a target.</p>
-
-<p>The second contribution is a claim-level evidence framework. E1 through E5 distinguish physical
-measurement, physical fidelity, documented route, hardware model, and software evidence without
-collapsing them into a paper-level label. The framework is paired with a typed route vocabulary.
-Every edge records its input, output, preserved and transformed semantics, rejected features,
-route state, source, and evidence limit.</p>
-
-<p>The third contribution is a deployment synthesis organized around routes and measurement
-boundaries. Platform capabilities are interpreted through official documentation, SDKs, mapper
-constraints, development kits, release notes, and examples. Applications are then grouped by
-workload rather than by vendor. This organization lets a reader compare what was actually executed
-and measured without assuming that a device family, a simulator, and a deployment route are
-interchangeable.</p>
-
-<p>These tools motivate a question that the evidence synthesis will test rather than answer here.
-Recent low-timestep conversion papers improve finite-window accuracy in simulation. Do their own
-methods reach named physical silicon with measurement, or does deployment proceed through older
-pipelines, directly trained models, or platform-native codes? Section 16 gives the counting policy,
-falsifier, counterexamples, and qualifications. Section 1 deliberately does not present that
-result in advance.</p>
-
-<h3 id="survey-roadmap">1.4&ensp;Organization of the Survey</h3>
+<h3 id="survey-roadmap">1.3&ensp;Organization</h3>
 
 <p>Sections 2 through 4 define computation, state, neuron and synapse dynamics, temporal semantics,
 codes, and decoding. Sections 5 and 6 introduce the learning fork and bound direct-training detail.
@@ -1854,7 +1826,36 @@ $$V(t) \leftarrow V(t) - s(t)\, V_{th}.$$
 
 <h2 id="applications">7&ensp;Applications and Deployment Evidence</h2>
 <p>This section inventories every published result located for this survey in which a trained network ran on, or was synthesized for, physical or near-physical neuromorphic hardware. Each result is separated by evidence class, <span class="ev ev-e1">E1</span> through <span class="ev ev-e5">E5</span>, and by whether the network was converted from a pretrained ANN, directly trained with a surrogate gradient, or hand-designed with local plasticity. The pattern that emerges is not a single deployment literature but several disconnected ones, each tied to a specific chip vendor's own toolchain, with the low-<code>T</code> conversion literature almost entirely absent from the physical-silicon record.</p>
-<h3 id="loihi-deployments">7.1&ensp;Loihi-family deployments</h3>
+
+<h3 id="evidence-guide">7.1&ensp;Evidence Classes</h3>
+
+<p>A benchmark protocol separates physical evaluation from a proxy so that a future submission can
+report both honestly. A literature survey has a different task. It must classify claims already in
+print, including the route evidence that surrounds an accuracy, energy, or latency result. The
+five classes below refine that distinction. They apply to a claim, not to an entire paper. One
+paper can therefore contain an E5 accuracy result and an E3 documented route, or an E2 fidelity
+result without an energy measurement. The classes are not quality grades.</p>
+
+<div class="ptable-wrap" id="table-evidence-classes">
+<table class="ptable">
+<caption><b>Table 8.</b> Evidence classes for individual deployment claims.</caption>
+<thead><tr><th class="ctr">Class</th><th>Meaning</th><th>What it does not establish</th></tr></thead>
+<tbody>
+<tr><td class="ctr"><span class="ev ev-e1">E1</span></td><td>Physical hardware with measured latency, energy, power, or system performance.</td><td>Equivalence to a different platform, workload, or boundary.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e2">E2</span></td><td>Physical hardware with accuracy or fidelity measurement only.</td><td>Measured latency, power, or energy.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e3">E3</span></td><td>A documented but unexercised deployment route.</td><td>A published run of the model across that route.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e4">E4</span></td><td>A hardware model, RTL synthesis, or cycle-level simulation without fabricated silicon.</td><td>Physical execution.</td></tr>
+<tr><td class="ctr"><span class="ev ev-e5">E5</span></td><td>Software simulation, an analytical proxy, or algorithm-only evidence.</td><td>A hardware capability or deployment measurement.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The classes prevent several recurring substitutions. Fewer timesteps do not prove lower
+wall-clock latency. Fewer spikes do not prove lower energy. A lower operation count does not prove
+lower measured power. A documented exporter does not prove that a published model reached silicon.
+The evidence guide remains fixed throughout the deployment analysis.</p>
+
+<h3 id="loihi-deployments">7.2&ensp;Loihi-family deployments</h3>
 <p><strong>The NxTF-era conversion results, on physical Loihi 1.</strong> Rueckauer et al.'s NxTF compiler took a 4-layer CNN, trained conventionally in Keras, through SNN Toolbox's rate-coded conversion pipeline, and ran it on physical Loihi 1 hardware. On MNIST, the converted network reached 0.79% error at 100 timesteps, using 14 neurocores, measuring 0.66 mJ energy, 6.65 ms delay, and 4.38 µJ·s energy-delay product (EDP) <d-cite key="nxtf,quartz"></d-cite>. On CIFAR-10, an off-the-shelf MobileNet converted the same way reached 8.52% error at roughly 400 timesteps, spanning 1,753 neuromorphic cores across 14 Loihi chips, at 102 mJ, 340 ms, and 34,926 µJ·s EDP <d-cite key="nxtf,quartz"></d-cite>. The same paper also ran SLAYER-trained (directly trained, not converted) convolutional SNNs on N-MNIST and DVS Gestures on the same physical chip <d-cite key="nxtf"></d-cite>. These are the only classic rate-coded, IF-neuron ANN-to-SNN conversions of a CNN found running on physical Loihi silicon anywhere in this survey, and both are Loihi 1, not Loihi 2.</p>
 <p>Massa et al. deployed a gesture-recognition network to physical Loihi 1 the same way, through SNN Toolbox, but the pipeline first accumulates DVS events into frames and trains a conventional DNN on those frames before conversion, so the deployed SNN is a frame-trained network wearing an event-camera dataset, not a native event processor <d-cite key="massa-2020"></d-cite>. Measured: 11.43 ms per-frame classification plus 150 ms of preprocessing, 6.24 FPS effective throughput, 89.64% accuracy, 37 cores. QCFS itself cites this paper, along with Singh et al.'s Gesture-SNN, in its related work as prior physical-hardware evidence, making QCFS the single exception among its own lineage to citing deployment work as acknowledged prior art rather than motivational throat-clearing <d-cite key="singh-2021-gesture-snn,qcfs"></d-cite>.</p>
 <p><strong>The genuine falsifiers.</strong> Two papers propose a new conversion method and measure it on physical silicon. Quartz, a time-to-first-spike (TTFS) conversion scheme, deploys to physical Loihi 1 and reports a like-for-like, on-chip EDP comparison against a rate-coded baseline also run on Loihi: 0.9 µJ·s versus 4.38 µJ·s on MNIST, 10.3 mJ·s versus roughly 34.9 mJ·s on CIFAR-10 <d-cite key="quartz"></d-cite>. Brehove et al. convert a post-training-quantized ANN into a Sigma-Delta Neural Network and deploy it on a physical 16-chip Loihi 2 VPX board, benchmarking a YOLOv3-style detector against a Jetson Xavier <d-cite key="brehove"></d-cite>. Both papers abandon rate coding for a platform-native code, temporal single-spike coding for Quartz and graded sigma-delta spikes for Brehove, and no paper was found that keeps rate coding, proposes a new conversion algorithm, and reaches physical silicon.</p>
@@ -1869,28 +1870,28 @@ $$V(t) \leftarrow V(t) - s(t)\, V_{th}.$$
 <p>Tang, Shah, and Michmizos's biologically constrained head-direction circuit for unidimensional SLAM ran on physical Loihi with dynamic power 100 times lower than GMapping on a CPU <d-cite key="tang-slam-loihi"></d-cite>. The Locally Competitive Algorithm, a provably convergent spiking solver for LASSO, appeared in Loihi's own introductory paper with an EDP improvement of more than three orders of magnitude over an Atom CPU running LARS/FISTA <d-cite key="loihi1"></d-cite>, and was subsequently extended to Loihi 2 for sparse coding <d-cite key="parpart2023-lca-loihi2"></d-cite> and convolutional sparse coding <d-cite key="convlca-2025-lca"></d-cite>. A Boolean satisfiability solver encoded as an SNN ran on physical Loihi, the first reported CSP/SAT implementation on embedded neuromorphic hardware <d-cite key="satcsp-2020"></d-cite>.</p>
 <p><strong>Directly trained (gradient-based) robotics, audio, EEG, and radar work.</strong> A spiking actor network co-trained end-to-end with a deep critic via a surrogate-gradient extension of STBP drove mapless robot navigation on a physical Kapoho Bay Loihi board, reaching 75 times lower energy per inference than DDPG on a Jetson TX2 <d-cite key="sddpg"></d-cite>. An industrial peg-in-hole force-control policy, trained via spiking reinforcement learning in simulation, ran on both physical Loihi 1 and Loihi 2, at 1.8 ms and 1.5 ms latency respectively and 53 µJ dynamic energy per inference on Loihi 2, against roughly 3,800 µJ on a CPU <d-cite key="force-control"></d-cite>. Kreiser et al.'s hand-designed path-integration circuit for iCub head-pose estimation ran on Kapoho Bay with a closed loop under 10 ms, though only accuracy, not energy, was reported <d-cite key="kreiser2020-icub-headpose"></d-cite>. Recurrent SNNs for EMG gesture classification reached 983 times lower energy and 19 times lower latency than a GPU at batch size 50 on a Nahuku 32 board <d-cite key="bezugam2023-emg-loihi"></d-cite>, and a separate implementation on a Kapoho Bay board reached 74% accuracy at 5.7 ms and 41 mW <d-cite key="vitale2022-emg-loihi"></d-cite>. A tri-modal EMG-plus-DVS sign-language classifier spanning Loihi and the ODIN/MorphIC chips matched GPU accuracy with a 30 to 600 times better energy-delay product <d-cite key="ceolini-emgdvs-fusion"></d-cite>. A graded-SNN seizure predictor reached 99.14% accuracy and 25.1 mJ per input on Loihi 2 <d-cite key="eeg-seizure-loihi2"></d-cite>; a separate motor-imagery decoder reported a self-described 95% energy advantage over DNNs, not independently re-verified in this pass <d-cite key="eeg-motor-imagery-repo"></d-cite>. A vehicle-mounted automotive radar pipeline ran real-time, on-chip FFT, non-coherent integration, and CFAR detection on Loihi 2, the first such deployment on real (not simulated) radar data <d-cite key="radar-automotive-2026"></d-cite>, and a separate spiking-resonator radar pipeline on simulated data measured full-activation power at 2.62 W with activity-gated sparsity cutting energy roughly 60% <d-cite key="radar-resonator-2025"></d-cite>. Keyword spotting on Loihi beat CPU, GPU, Jetson TX1, and Movidius NCS baselines at equivalent accuracy, with the advantage growing with network size <d-cite key="blouw2019-kws-loihi"></d-cite>.</p>
 <p><strong>Toolchain status.</strong> NxSDK/NxTF targeted Loihi 1 only and is superseded. Lava, Lava-DL, and NetX targeted Loihi 2 and were the documented forward path from 2021 onward, but all <code>lava-nc</code> repositories were archived by Intel around May 2026, with Intel stating it is developing a next-generation Loihi architecture and SDK rather than continuing Lava <d-cite key="lava-archived-2026"></d-cite>. No published, peer-reviewed paper was found running a classic rate-coded, IF-neuron, ANN-to-SNN-converted CNN, the style the QCFS lineage established, on physical Loihi 2 silicon. The closest analogues are Brehove et al.'s sigma-delta conversion, a different, non-rate-coded scheme purpose-built to avoid rate coding's inefficiency on Loihi 2, and the NxTF rate-coded conversions, which ran on Loihi 1, not Loihi 2 <d-cite key="nxtf"></d-cite>. Intel's own technical brief states typical use of Loihi 2's 32-bit graded-spike payload at 8-bit precision, "a negligible extra energy cost compared to binary spike processing" <d-cite key="loihi2"></d-cite>, and Davies et al.'s survey states directly why: rate-coded feedforward conversion needs more timesteps as layer count grows, and large networks spanning multiple chips congest inter-chip mesh links that carry roughly 30 times less bandwidth than on-chip links, making converted rate-coded models "less attractive for neuromorphic architectures optimized for sparsity" on Loihi 2 specifically <d-cite key="davies-2021-loihi"></d-cite>.</p>
-<h3 id="speck-deployments">7.2&ensp;DYNAP-CNN and Speck event-vision deployments</h3>
+<h3 id="speck-deployments">7.3&ensp;DYNAP-CNN and Speck event-vision deployments</h3>
 <p>DYNAP-CNN is the processor core, and Speck is a system-on-chip integrating DYNAP-CNN with an on-chip dynamic vision sensor on one die <d-cite key="sinabs-docs-overview"></d-cite>. Both expose nine configurable computing cores, each a fixed <code>Conv2d → Integrate-and-Fire → optional SumPool2d</code> pipeline stage, with no global clock driving the convolutional path <d-cite key="sinabs-docs-overview"></d-cite>. Richter et al.'s characterization of the fabricated Speck1 ASIC measured an end-to-end latency of <strong>3.36 µs for a single event traversing all nine sCNN layers</strong>, and 1.58 µs through one layer, explicitly contrasted against clocked chips: "Speck1 is specifically built to consume real-time data, its latency is significantly lower than Loihi1/2 and TrueNorth which architecturally introduce a latency of one timestep Δt on event generation in each layer" <d-cite key="richter"></d-cite>. A software-side <code>num_timesteps</code> in the Sinabs toolchain only exists at the boundary where a rate-coded raster is converted into individually timestamped events; once on-chip, the network has no notion of a timestep and reacts continuously to each event's arrival <d-cite key="richter,sinabs-docs-overview"></d-cite>.</p>
 <p>Yao et al.'s Nature Communications characterization of the fabricated Speck chip measured real-time power as low as 0.70 mW and resting power of 0.42 mW across DVS128 Gesture, Gait-day, Gait-night, and HAR-DVS, with input masking trading accuracy for power (for example, plus 9.0 percentage points on Gesture at 50% masking, at 3.8 mW versus 9.5 mW unmasked) <d-cite key="speck-dynamic-snn"></d-cite>. Liu et al.'s live face-recognition demonstration on the DynapCNN predecessor chip reported sub-mW power and a 98% recognition rate on a recorded DVS dataset, though the accuracy figure was validated against a software simulation rather than measured live on-chip <d-cite key="liu-2019-facedemo"></d-cite>. A book-chapter comparison of a small CNN on a DynapCNN devkit against a Kendryte K210 and an STM32L4R9 used the toolchain's <code>raster_to_events</code> path to feed a genuinely rate-coded, static-image MNIST classifier to physical silicon, reaching 98.79% balanced accuracy with energy estimated from synaptic operation counts rather than directly measured on a power sensor <d-cite key="riverpub-mnist-dynapcnn"></d-cite>. No object-detection network was found measured on physical DYNAP-CNN or Speck silicon anywhere in this search.</p>
 <p>The weight resolution on DYNAP-CNN and Speck is 8 bits, and membrane-potential state is 16 bits <d-cite key="sinabs-docs-overview"></d-cite>. The default neuron is nonleaky integrate-and-fire with reset-by-subtraction, the same reset convention the classical rate-coding conversion literature uses <d-cite key="sinabs-docs-overview"></d-cite>. There is no native BatchNorm layer type; Speck- targeted networks are built without BatchNorm from the start rather than relying on a fold-in utility <d-cite key="sinabs-docs-overview"></d-cite>. SynSense's separate Xylo product line, for audio and IMU rather than vision, is genuinely clocked and synchronous, unlike DYNAP-CNN and Speck, and its own published keyword-spotting deployment reached 95% accuracy at 6.6 µJ dynamic energy per inference on physical XyloAudio 2 silicon, beating Loihi and SpiNNaker2 on the same benchmark table <d-cite key="xylo-kws"></d-cite>.</p>
-<h3 id="spinnaker-brainscales">7.3&ensp;SpiNNaker and BrainScaleS deployments</h3>
+<h3 id="spinnaker-brainscales">7.4&ensp;SpiNNaker and BrainScaleS deployments</h3>
 <p><strong>SpiNNaker.</strong> sPyNNaker's software stack exposes a documented SNN Toolbox backend, and the clearest physical result is Patiño-Saucedo et al.'s conventional LeNet, trained in Keras, converted with SNN Toolbox's rate-coded threshold-balancing pipeline, and deployed on a physical <strong>SpiNNaker-103 machine (48 chips, 864 ARM cores)</strong>. The full 10,000-sample MNIST test set was propagated through the physical hardware, reaching <strong>98.20%</strong> accuracy, with <strong>15 ms of recorded spiking activity per sample</strong> and a measured wall-clock inference time of <strong>roughly 0.4 s per sample</strong>, against about 10 s per sample for a NEST software simulation of the identical PyNN model <d-cite key="patino-saucedo-2020"></d-cite>. A companion STBP spiking CNN for event-based N-MNIST, directly trained rather than converted, reached 97.92% on the same physical machine <d-cite key="patino-saucedo-2020"></d-cite>. An earlier DBN-to-SNN conversion (rate-coded, Poisson pixel encoding) ran on a single physical SpiNNaker chip, reaching 95.01% accuracy, 0.3 W power, and roughly 20 ms latency <d-cite key="stromatias2015-dbn-spinnaker"></d-cite>. A design-space-exploration study reported 98.85% accuracy on a physical SpiNNaker target with a faster hyperparameter search, though the latency and energy figures were not confirmed in the retrieved text <d-cite key="galanis-2020-spinnaker"></d-cite>. A motor-imagery EEG decoder mapped directly to a spiking CNN and deployed on physical SpiNNaker reached 73.72% against 75.63% for the original CNN, a 1.91-point accuracy drop from conversion and deployment <d-cite key="pals-2021-eeg-spinnaker"></d-cite>. No CIFAR-10-scale or larger, VGG- or ResNet-class rate-coded CNN conversion was found running on physical SpiNNaker 1 or SpiNNaker 2 silicon anywhere in this search. The one VGG-16/ResNet-50-scale SpiNNaker2 result, Kelber et al.'s mapping study, reports 43.5 ms and 19.5 ms inference times, but the paper states plainly that "as the SpiNNaker2 chip is not yet available, we developed a Python simulator that replicates the timings," making the reported figures a pre-silicon timing simulation, not a hardware measurement <d-cite key="kelber-2020-spinnaker2sim"></d-cite>. Arfa et al. deployed natively trained, 8-bit quantized SNNs on a physical single-chip SpiNNaker2 test board for DVS Gesture recognition, reaching 94.13% on-chip against roughly 94.6% in floating-point software, an SNN-native deployment rather than a converted static-image CNN <d-cite key="arfa-2025-spinnaker2"></d-cite>.</p>
 <p><strong>BrainScaleS.</strong> Schmitt et al. converted a deep ReLU network to a spiking network on the BrainScaleS-1 wafer-scale analog system using explicit rate coding, disabling the AdEx model's adaptation and exponential features so the analog neuron approximates a ReLU <d-cite key="schmitt2017-hitl"></d-cite>. <strong>Direct transfer without retraining collapsed accuracy from 97% (software) to 72%</strong> on a handwritten-digit classification task, because analog device mismatch and trial-to-trial variation distort the rate-coded correspondence. <strong>Hardware- in-the-loop training, computing gradients in software using the ReLU derivative as an approximation of the untractable hardware activation function, recovered accuracy to 95%</strong>, close to the software model <d-cite key="schmitt2017-hitl"></d-cite>. The paper is explicit that the algorithm had no exact knowledge of the neuron and synapse parameters on the analog substrate, and that using the ReLU derivative as a stand-in circumvented rather than solved the problem of an intractable analog activation function <d-cite key="schmitt2017-hitl"></d-cite>.</p>
 <p><strong>BrainScaleS-2's CNN-scale demonstrations use a non-spiking, analog matrix-multiply mode, not spike-rate conversion.</strong> The same physical substrate can be reconfigured, by disabling neuron leak and choosing the reset point so the ADC saturates at the reset voltage, into a stateless analog vector-matrix multiplier rather than a genuine multi-timestep spiking integrator <d-cite key="weis2020-annmode"></d-cite>. A three-layer CNN classifying MNIST in this "hagen" mode, with weights and activations quantized to 6 and 5 bits, went from 98.29% in float32 software to 98.10% after quantization, collapsed to 92.13% on direct, uncorrected transfer to the chip, and recovered to <strong>98.01% after hardware-in-the-loop training</strong> <d-cite key="weis2020-annmode"></d-cite>. A deployed BrainScaleS-2 mobile system running this same non-spiking mode for ECG atrial-fibrillation detection measured 276 µs classification time and 192 µJ ASIC energy per sample at 5.6 W system power, with a 93.7% detection rate <d-cite key="stradmann2021-mobile"></d-cite>. A separate line of work trains genuinely spiking, surrogate- gradient networks directly on BrainScaleS-2, not by conversion, reaching 97.6% MNIST accuracy at 8 µs latency and 2.4 µJ per classified image on physical silicon <d-cite key="cramer2022-surrogate"></d-cite>. No source was found reporting a rate-coded, spike-count IF conversion of a CNN at CIFAR-10 or ImageNet scale running on any BrainScaleS system; every BrainScaleS deployment above that reaches usable accuracy does so through hardware-in-the- loop retraining, not a one-shot convert-and-deploy pipeline.</p>
-<h3 id="fpga-asic">7.4&ensp;FPGA and custom ASIC implementations</h3>
+<h3 id="fpga-asic">7.5&ensp;FPGA and custom ASIC implementations</h3>
 <p><strong>Board-measured (<span class="ev ev-e1">E1</span>).</strong> SyncNN explicitly targets rate-encoding IF-model SNNs with reset-by-subtraction, stating directly, "we focus on the IF model: the membrane potential is just added or subtracted by the weight of the connection... and is reset immediately once it reaches the threshold value," and proves a synchronous reformulation that runs downstream layers once rather than for the full timestep window <d-cite key="syncnn"></d-cite>. Measured across three physical Xilinx ARM-FPGA boards (ZCU102, ZCU104, ZED), it reaches 99.6% accuracy and 13,086 FPS on MNIST, its headline throughput claim, with SVHN and CIFAR-10 also evaluated at 16-, 8-, and 4-bit weight quantization <d-cite key="syncnn"></d-cite>. Spiker+ generalizes an earlier LIF-only FPGA accelerator into a configurable multi-layer architecture offering six neuron models, IF, first-order LIF, and second-order LIF, each with a choice of hard or subtractive reset, the first FPGA accelerator surveyed to offer reset-by-subtraction as a named, user-selectable option matching the QCFS-style IF neuron <d-cite key="spikerplus"></d-cite>. Measured on physical Xilinx FPGA synthesis and deployment, it reaches 93.85% on MNIST at 780 µs and 180 mW using a 100-timestep encoding window, and 95% on AudioMNIST at 290 mW <d-cite key="spikerplus"></d-cite>. Cerebron is the clearest FPGA accelerator explicitly built around the ANN-to-SNN conversion literature, stating directly that it uses "an open-source SNNtoolbox" for conversion <d-cite key="cerebron"></d-cite>. Measured on a physical Xilinx XC7Z100 FPGA at 200 MHz, it reaches 99.40% on an MNIST ConvNet at 0.026 ms and 0.04 mJ per image, 91.90% on a thinned MobileNet for CIFAR-10 at 10.63 ms and 14.88 mJ, and 97.30% on a lane-segmentation SegNet at 0.80 ms and 1.12 mJ <d-cite key="cerebron"></d-cite>.</p>
 <p><strong>Synthesized but unfabricated (<span class="ev ev-e4">E4</span>).</strong> PASCAL proves an exact, integer-level equivalence between a QCFS-activated ANN and an IF-neuron SNN using a spike-accumulation neuron with soft reset, and reports a hardware-efficiency result derived from an analytical operation-count model, not a synthesized circuit <d-cite key="pascal"></d-cite>. Its acknowledgments separately credit a collaborator for benchmarking the work on an unnamed "neuromorphic architectural simulator," but no simulator result is reported in the paper body, so PASCAL's own hardware-adjacent claim remains <span class="ev ev-e5">E5</span> with an unreported <span class="ev ev-e4">E4</span> gesture <d-cite key="pascal"></d-cite>. APEX takes PASCAL's spike-accumulation neuron and implements its full spike-generation datapath as a fully combinational circuit inside the LoAS accelerator framework, synthesized with Synopsys Design Compiler at 400 MHz on 40 nm CMOS, evaluated by cycle-level simulation rather than fabricated silicon, and reports a 61.9% energy reduction at matched accuracy against a standard, non-PASC IF neuron baseline <d-cite key="apex"></d-cite>. NeuroFlex independently extends PASCAL's neuron to column-level hybrid ANN/SNN scheduling within a layer, synthesized with Synopsys Design Compiler at 560 MHz on the same 40 nm node, again evaluated by RTL synthesis and a Python cycle-level simulator rather than a fabricated chip, reporting PE-array utilization gains from fine-grained scheduling <d-cite key="neuroflex"></d-cite>. <strong>APEX and NeuroFlex both build directly on PASCAL's spike-accumulation neuron and reuse near-identical LoAS and SparTen baselines and Synopsys synthesis methodology; APEX shares a co-author, Gopalakrishnan Srinivasan, with PASCAL itself</strong> <d-cite key="apex,neuroflex,pascal"></d-cite>. None of the three has been fabricated. The board-measured accelerators above, SyncNN, Spiker+, and Cerebron, are <span class="ev ev-e1">E1</span> because a physical device ran the network and reported the number; PASCAL, APEX, and NeuroFlex are <span class="ev ev-e4">E4</span> at best because Synopsys Design Compiler synthesis and a cycle-level simulator, however precise, are not a fabricated chip.</p>
-<h3 id="event-sensing">7.5&ensp;Event-based sensing and what actually computes on the events</h3>
+<h3 id="event-sensing">7.6&ensp;Event-based sensing and what actually computes on the events</h3>
 <p>Most published event-vision pipelines do not process events natively. A 2025 survey states this directly: "most event-based deep learning pipelines convert asynchronous events into dense representations (particularly voxel grids) before neural network processing" <d-cite key="v2v2025-neurips"></d-cite>. Of the six representation families a comprehensive event-vision survey catalogs, image-based, surface-based, learning-based, voxel-based, graph-based, and spike-based, only the last is native to spiking hardware, and the other five collapse the asynchronous stream into a dense tensor handed to a conventional CNN or transformer <d-cite key="eventvision2023-survey"></d-cite>. Concretely, Prophesee's own production object-detection pipeline accumulates events into a frame buffer before calling a conventional TorchScript network on CPU or GPU <d-cite key="prophesee-docs-detection"></d-cite>; the pedestrian-detection literature frames its central research question as frame CNNs versus asynchronous sparse CNNs, with frame reconstruction remaining one of exactly two mainstream options <d-cite key="prophesee-2025-pedestrian"></d-cite>; and even a "Loihi paper," Massa et al.'s gesture recognition, states plainly that events must first be collected into frames and used to train a DNN before that DNN is converted for deployment <d-cite key="massa-2020"></d-cite>.</p>
 <p>Where the survey looked across roughly twenty application papers spanning optical flow, detection, automotive, SLAM, high-speed robotics, and gesture recognition, the compute platform behind the majority is a GPU or workstation for algorithm development, an embedded CPU, Raspberry Pi, or Jetson for the majority of real-time onboard robotics demos, and an FPGA running a conventional, non-spiking CNN accelerator (the AMD/Xilinx DPU, in most cases) for a distinct and fairly common third category, especially for drones and SLAM <d-cite key="a14-application-survey"></d-cite>. A vendor's own production reference designs make the pattern explicit. Prophesee's GenX320 sensor documentation states its CPI/AER output path "is mainly destined for integration with neuromorphic systems," implying the sensor's default, primary output path is not, and the vendor's own reference kits target a Raspberry Pi 5 and an STM32 microcontroller, not a spiking chip <d-cite key="prophesee-genx320-docs"></d-cite>.</p>
 <p><strong>Some processors marketed as neuromorphic are confirmed non-spiking by their own makers.</strong> GrAI Matter Labs is the explicit case. An EE Times interview with the company states directly, "while GrAI Matter describes its technology as 'brain-inspired,' its NeuronFlow technology is based on a digital SoC architecture optimized for deep learning acceleration (no spiking networks here)" <d-cite key="eetimes-graimatter"></d-cite>. NeuronFlow's core primitive performs change-based, delta-quantized activations of a conventional ANN, exploiting temporal sparsity inside an otherwise ordinary MAC-based dataflow accelerator, and its own architecture paper describes its events as "valued events... not simple spikes as usual in neuromorphic systems" <d-cite key="neuronflow-2020"></d-cite>. A conventional Xilinx DPU fed by an event sensor, as in the Kria-Prophesee object-detection pipeline and the FPGA-drone obstacle-avoidance work, is architecturally an ordinary systolic-array CNN accelerator with zero spiking neurons; from the DPU's perspective, an event camera is just a low-latency frame source <d-cite key="kria-prophesee-vitisai,bonazzi2025-fpga-drone-dpu"></d-cite>.</p>
 <p><strong>Genuine sensor-to-spiking-chip pipelines exist but are a minority, concentrated in gesture recognition and simple closed-loop control.</strong> IBM's TrueNorth-plus-DVS128 gesture recognizer is the clearest landmark instance, a live DVS event stream feeding a TrueNorth spiking CNN with no host-side frame accumulation in the deployed path, measuring 105 ms onset latency, under 200 mW, and 96.5% accuracy <d-cite key="truenorth-dvs-gesture"></d-cite>. SynSense's Speck reports vendor-measured sub-5 mW power and sub-50 ms response for gesture recognition with no frame reconstruction <d-cite key="synsense-speck-gesture-datasheet"></d-cite>, and the GelNeuro tactile system feeds DVS-like marker-motion events directly into a physical Speck2f spiking CNN, reaching 96.3% accuracy at 80 ms and 19.6 mW <d-cite key="gelneuro"></d-cite>. DYNAP-SE closes a spiking control loop directly against an iCub robot's joint encoder <d-cite key="dynapse-icub-pcontroller"></d-cite>, and a separate DYNAP-SE deployment localizes touch on an e-skin at 185 µW median inference power <d-cite key="dynap-se-tactile"></d-cite>. A SpiNNaker-driven goalkeeper robot closes an event-camera-to-servo loop fully on-chip, disconnected from any PC, at 6.5 ms response latency and 85% interception accuracy <d-cite key="spinnaker-goalkeeper"></d-cite>. Outside this cluster of gesture recognition and simple closed-loop control, event-vision applications, SLAM, optical flow, automotive detection, and high-speed catching or robotics, essentially all route through a conventional compute platform after frame reconstruction.</p>
-<h3 id="cross-case">7.6&ensp;Cross-case evidence table</h3>
+<h3 id="cross-case">7.7&ensp;Cross-case evidence table</h3>
 <p>This is the survey's central exhibit: every paper located in this research that touches
 physical or synthesized hardware, tagged by which population it belongs to.</p>
 <div class="ptable-wrap l-page t1-wide" id="table-evidence" data-table-toolbar>
 <table class="ptable">
-<caption><b>Table 8.</b> Cross-case evidence for works located in this survey that address physical or synthesized neuromorphic hardware. Rows retain method family, toolchain, target, measurement, and evidence class.</caption>
+<caption><b>Table 9.</b> Cross-case evidence for works located in this survey that address physical or synthesized neuromorphic hardware. Rows retain method family, toolchain, target, measurement, and evidence class.</caption>
 <thead><tr><th>Paper</th><th>Method family</th><th>Population</th><th>Toolchain</th><th>Target</th><th>Measured</th><th>Class</th></tr></thead>
 <tbody>
 <tr><td>NxTF MNIST <d-cite key="nxtf"></d-cite></td><td>Rate-coded ANN-SNN conversion</td><td>deployment</td><td>SNN Toolbox → NxTF</td><td>Loihi 1 (physical)</td><td>error, energy, delay, EDP</td><td><span class="ev ev-e1">E1</span></td></tr>
@@ -1960,7 +1961,7 @@ physical or synthesized hardware, tagged by which population it belongs to.</p>
 <div class="caveat">
 <p><strong>Two qualifications the research established, and which the survey states rather than smooths over.</strong> First, QCFS itself is the single exception in its own lineage: it cites two physical-hardware papers, Massa et al. 2020 and Singh et al.'s Gesture-SNN, in its related work as acknowledged prior art, not motivational framing, while 12 of its 13 audited descendants cite hardware only in the introduction as generic motivation and never as executed prior art <d-cite key="a17-two-populations"></d-cite>. Second, Adaptive Fission, a NeurIPS 2025 paper whose own algorithmic contribution is population coding, a non-rate-coded scheme, reports rate-coded QCFS and SRP baseline configurations measured on physical Lynxi HP201 silicon inside its own Table 1, alongside its own fission-modified results <d-cite key="jiang-2025-adaptive-fission"></d-cite>. This means a rate-coded QCFS-lineage output has, in fact, touched physical neuromorphic silicon once, not in QCFS's or SRP's own papers, which remain <span class="ev ev-e5">E5</span>, but as a baseline row inside a different paper whose own innovation abandons rate coding. The defensible claim is therefore not that rate-coded QCFS output has never touched silicon under any circumstances, but that no QCFS-lineage paper deploys its own method to silicon, and the one time it happened, it took a different research group's non-rate-coding innovation to motivate doing so <d-cite key="jiang-2025-adaptive-fission,a17-two-populations"></d-cite>.</p>
 </div>
-<h3 id="measurement">7.7&ensp;Measurement and comparability</h3>
+<h3 id="measurement">7.8&ensp;Measurement and comparability</h3>
 <p>Reported efficiency numbers across this literature are not comparable to one another, for reasons that recur across every platform surveyed above.</p>
 <p><strong>SynOps estimates establish an operation-count ratio, not joules.</strong> The "0.9 pJ MAC, 0.1 pJ AC" figures cited across most SNN papers trace to a single ISSCC 2014 plenary talk's Table 1.1.9, reporting rough energy costs for a 45 nm process at 0.9 V <d-cite key="horowitz-2014"></d-cite>. The talk itself stresses that computation is a minority of total system energy once memory access is included, and that a programmable processor's per-instruction overhead, roughly 70 pJ per instruction from fetch and register clocking, dwarfs the per-operation figure entirely <d-cite key="horowitz-2014"></d-cite>. Multiple independent, hardware-realistic studies confirm the gap this produces is large and systematic. Bhattacharjee et al. benchmark published SNN algorithms on two hardware-realistic accelerator models and find "the actual energy-efficiency improvements of recent SNN algorithmic works differ significantly from their estimated values due to various hardware bottlenecks" <d-cite key="bhattacharjee-2023-hardware"></d-cite>. Shen et al. propose replacing the timestep-versus-bit-width asymmetry with a unified "Bit Budget" metric precisely because SNN papers are routinely compared against unquantized, rather than similarly optimized, ANN baselines <d-cite key="shen-2024-cvpr"></d-cite>. A SynOps-based energy number establishes, at best, a relative operation-count ratio under an implicit, usually unstated hardware model, one process node, one precision, no memory-access cost, no neuron-state-update cost, and no routing cost.</p>
 <p><strong>Static and leakage power dominate measured energy on synchronous chips, so reducing <code>T</code> does not reduce energy proportionally.</strong> A sigma-delta conversion study on Loihi 2 varies effective sparsity and reports throughput improving substantially, from 176 to 362 FPS, while "total power usage... remained relatively consistent for all experiments as it is dominated by static draw" <d-cite key="brehove"></d-cite>. A separate LCA study on Loihi 2 measures static power essentially constant near 0.54 W across all sparsity settings, nearly double the dynamic power even at the sparsest, most favorable operating point <d-cite key="parpart2023-lca-loihi2"></d-cite>. On a synchronous, clocked digital chip with SRAM-resident weights and state, static power is drawn continuously for the full duration a network is mapped and powered, independent of how much useful spiking work a given timestep performs, so cutting <code>T</code> reduces only the dynamic term and can even increase energy per inference if the reduction also reduces the throughput benefit of parallelism across a fixed static floor.</p>
