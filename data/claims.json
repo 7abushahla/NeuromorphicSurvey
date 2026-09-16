@@ -6,6 +6,7 @@
       "claim_type": "method",
       "statement": "NIR neuron primitives reset state to a fixed value and do not encode reset by subtraction.",
       "evidence_class": null,
+      "reports_deployment_evidence": false,
       "source_ids": ["pedersen-2024-nir"],
       "locators": ["Primitive definitions and reference implementation"],
       "verification_status": "provisional",

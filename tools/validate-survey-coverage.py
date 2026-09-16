@@ -64,7 +64,7 @@ def validate_coverage(coverage: object, errors: list[str], label: str) -> None:
         if absent:
             errors.append(f"{axis_label} missing required field(s): {', '.join(absent)}")
             continue
-        if entry["score"] not in COVERAGE_SCORES:
+        if not isinstance(entry["score"], str) or entry["score"] not in COVERAGE_SCORES:
             errors.append(f"{axis_label}: invalid score {entry['score']!r}")
         for field in ("basis", "locator"):
             if not isinstance(entry[field], str) or not entry[field].strip():
@@ -106,7 +106,7 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
             if survey_id in ids:
                 errors.append(f"{label}: duplicate id {survey_id!r}")
             ids.add(survey_id)
-        if survey["source_id"] not in source_ids:
+        if not isinstance(survey["source_id"], str) or survey["source_id"] not in source_ids:
             errors.append(f"{label}: unresolved source_id {survey['source_id']!r}")
         if survey["full_text_status"] not in verification_states:
             errors.append(f"{label}: invalid full_text_status {survey['full_text_status']!r}")

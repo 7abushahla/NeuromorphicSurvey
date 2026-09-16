@@ -34,6 +34,7 @@ SOURCE_TYPES = {
     "official_mapper_constraints",
     "official_release_note",
     "official_measured_example",
+    "marketing_material",
     "secondary_material",
     "general_web",
 }
@@ -101,11 +102,11 @@ def validate(schema: object, registry: object) -> list[str]:
             errors.append(f"{label}: year must be an integer")
         if not valid_http_url(source["url"]):
             errors.append(f"{label}: url must be an absolute HTTP(S) URL")
-        if source["source_type"] not in SOURCE_TYPES:
+        if not isinstance(source["source_type"], str) or source["source_type"] not in SOURCE_TYPES:
             errors.append(f"{label}: invalid source_type {source['source_type']!r}")
-        if source["retrieval_status"] not in RETRIEVAL_STATES:
+        if not isinstance(source["retrieval_status"], str) or source["retrieval_status"] not in RETRIEVAL_STATES:
             errors.append(f"{label}: invalid retrieval_status {source['retrieval_status']!r}")
-        if source["verification_status"] not in verification_states:
+        if not isinstance(source["verification_status"], str) or source["verification_status"] not in verification_states:
             errors.append(f"{label}: invalid verification_status {source['verification_status']!r}")
         if not valid_date(source["retrieved_on"]):
             errors.append(f"{label}: retrieved_on must be an ISO YYYY-MM-DD date")
