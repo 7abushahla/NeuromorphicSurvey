@@ -92,6 +92,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
     <link rel="shortcut icon" href="assets/img/tmlr-favicon.ico"/>
     <link rel="stylesheet" href="assets/css/main.css?v=20260910w">
     <link rel="stylesheet" href="assets/figure.css?v=20260916c">
+    <link rel="stylesheet" href="assets/figures.css?v=20260916c">
 
     <!-- jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -500,36 +501,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       /* ---- Figure 8: isolate the forward or the backward pass ---- */
       .f4-fwd, .f4-bwd { transition: filter 0.25s, opacity 0.2s; }
       #figure-8 svg.f4-iso-fwd .f4-bwd,
-      #figure-8 svg.f4-iso-bwd .f4-fwd { opacity: 0.12; }
       /* ---- Figures 2-4: isolate the field, step or mapping under the cursor ---- */
-      #figure-2 .f2-fld, #figure-3 .f3-stp, #figure-4 .f4s-zero, #figure-4 .f4s-lvl { cursor: help; }
-      #figure-2 .f2-fld { transition: opacity 0.15s; }
-      #figure-2 svg:hover .f2-fld { opacity: 0.30; }
-      #figure-2 svg .f2-fld:hover { opacity: 1; }
-      #figure-3 .f3-band { transition: opacity 0.15s; }
-      #figure-3 .f3-stp:hover .f3-band { opacity: 0.10; }
-      #figure-9 .fl-hit { cursor: ew-resize; }
-      #figure-9 .fl-probe { opacity: 0; transition: opacity 0.12s; }
-      #figure-9 .fl-live .fl-probe { opacity: 1; }
-      #figure-9 .fl-live .fl-static { opacity: 0.22; }
-      #figure-9 .fl-static { transition: opacity 0.12s; }
-      #figure-12 .f12-in { cursor: pointer; }
-      #figure-12 .f12-tile, #figure-12 .f12-cell rect { transition: opacity 0.14s, stroke-width 0.14s; }
-      #figure-12.f12-live .f12-cell rect { opacity: 0.28; }
-      #figure-12 .f12-cell.f12-on rect { opacity: 1; stroke-width: 4; }
-      #figure-12.f12-live .f12-in .f12-tile { opacity: 0.4; }
-      #figure-12 .f12-in.f12-sel .f12-tile { opacity: 1; stroke: #2698BA; stroke-width: 4; }
-      #figure-12 .f12-in:focus-visible .f12-tile { stroke: #2698BA; stroke-width: 4; }
-      #figure-7 .fq-box { cursor: help; }
-      #figure-7 .fq-box rect { transition: stroke-width 0.12s; }
-      #figure-7 .fq-box:hover rect { stroke-width: 4.6; }
-      #figure-5 .fg-cubes { cursor: help; }
-      #figure-5 .fg-face { transition: stroke-width 0.12s; }
-      #figure-5 .fg-cubes:hover .fg-face { stroke-width: 2.8; }
-      #figure-5 .fg-region { transition: fill-opacity 0.12s; }
-      #figure-5 .fg-cubes:hover .fg-region { fill-opacity: 0.38; stroke-dasharray: none; }
-      #figure-4 .f4s-tick { transition: stroke-width 0.12s; }
-      #figure-4 .f4s-lvl:hover .f4s-tick { stroke-width: 9; }
       /* ---- Reference card for citations inside tables ----
          The table wrapper scrolls horizontally and so clips distill's own
          hover box; this card is fixed to the viewport instead. */
@@ -716,8 +688,6 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
         background: #fdf3e0; border-radius: 3px;
         box-shadow: 0 0 0 6px #fdf3e0; transition: background 0.25s, box-shadow 0.25s; }
 
-      .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
-                  text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
       d-article d-contents { grid-row: auto / span 26; }
     </style>
   </head>

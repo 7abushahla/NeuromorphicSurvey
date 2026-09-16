@@ -124,6 +124,8 @@ TOC = [
 # carries the paper tables, the coverage heat map, the figure chrome, the contents
 # nav, the cross-reference links and the back-to-top control, so none of that is
 # restated here. Only what is specific to tracing deployment evidence is.
+FIG_RULE = re.compile(r'^ *#figure-\d+[^{\n]*\{[^}\n]*\}\n', re.M)
+
 EXTRA_CSS = """
       /* ---- Additions for this survey ---- */
       /* Evidence classes. The argument rests on keeping these apart, so they are
@@ -229,8 +231,6 @@ EXTRA_CSS = """
         background: #fdf3e0; border-radius: 3px;
         box-shadow: 0 0 0 6px #fdf3e0; transition: background 0.25s, box-shadow 0.25s; }
 
-      .fig-todo { padding: 2rem; border: 2px dashed #b9c2cc; border-radius: 8px;
-                  text-align: center; color: #778; font-size: 0.8rem; background: #f8f9fb; }
       d-article d-contents { grid-row: auto / span 26; }
 """
 
@@ -264,7 +264,16 @@ def main():
     # visual system is the template's and is left exactly as it is.
     head = head.replace('<link rel="stylesheet" href="assets/css/main.css?v=20260910w">',
                         '<link rel="stylesheet" href="assets/css/main.css?v=20260910w">\n'
-                        f'    <link rel="stylesheet" href="assets/figure.css?v={VER}">')
+                        f'    <link rel="stylesheet" href="assets/figure.css?v={VER}">\n'
+                        f'    <link rel="stylesheet" href="assets/figures.css?v={VER}">')
+    # The sibling survey's figures 1 through 12 are not this survey's figures, they
+    # merely share the ids figure-N. Its per-figure interaction rules therefore come
+    # across the clone aimed at our drawings and matching nothing in them. Dead rules
+    # pointing at live ids are worse than absent ones, so they are dropped here rather
+    # than left for someone to debug later. Our own per-figure rules arrive separately
+    # through assets/figures.css.
+    head = FIG_RULE.sub('', head)
+
     head = head.replace('    </style>', EXTRA_CSS + '    </style>', 1)
 
     # The abstract block opens the article, exactly as upstream.
