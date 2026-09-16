@@ -159,7 +159,11 @@ def normalize_survey(
     survey: dict[str, object], candidate: dict[str, object], batch_name: str,
 ) -> dict[str, object]:
     full_text_status = normalized_full_text_status(survey, candidate)
-    inspected = survey.get("inspected_urls") or candidate.get("inspected_urls")
+    inspected = [
+        *list(survey.get("retrieval_sources") or []),
+        *list(survey.get("inspected_urls") or []),
+        *list(candidate.get("inspected_urls") or []),
+    ]
     if not inspected:
         inspected = [
             candidate.get("canonical_url") or candidate.get("url")
@@ -208,6 +212,8 @@ def normalize_source(
         or fallback.get("url")
     )
     doi = candidate.get("doi") or survey.get("doi") or fallback.get("doi")
+    if isinstance(doi, str) and doi.startswith("unassigned:"):
+        doi = None
     accepted_manuscript_note = (
         "Source is a peer-reviewed accepted manuscript, not the final version of record."
     )
@@ -216,7 +222,7 @@ def normalize_source(
         notes = notes.replace(accepted_manuscript_note, "").strip()
     note_parts = [notes]
     if not doi:
-        doi = f"unassigned:{source_id}"
+        doi = None
         note_parts.append("No DOI was established during the audit.")
     if source_type_raw == "accepted_manuscript":
         note_parts.append(accepted_manuscript_note)
@@ -231,7 +237,7 @@ def normalize_source(
         "authors": str(candidate.get("authors") or survey.get("authors") or fallback.get("authors")),
         "year": int(candidate.get("year") or survey.get("year") or fallback.get("year")),
         "venue": str(candidate.get("venue") or survey.get("venue") or fallback.get("venue")),
-        "doi": str(doi),
+        "doi": str(doi) if doi is not None else None,
         "url": str(canonical_url),
         "source_type": SOURCE_TYPE_MAP.get(source_type_raw, source_type_raw),
         "retrieval_status": SOURCE_RETRIEVAL_MAP[retrieval_raw],

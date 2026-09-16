@@ -8,7 +8,7 @@
       "authors": "Abdalla Rashed, Jorge Dias",
       "year": 2025,
       "venue": "EdgeAI4R Poster, OpenReview WuiVAPrgi3",
-      "doi": "unassigned:anon-edge-survey",
+      "doi": null,
       "url": "https://openreview.net/forum?id=WuiVAPrgi3",
       "source_type": "preprint",
       "retrieval_status": "full_text",
@@ -20,7 +20,7 @@
         "Sec. II, Background"
       ],
       "aliases": [],
-      "notes": "OpenReview record and PDF inspected. API fallback was unavailable."
+      "notes": "OpenReview record and PDF inspected. API fallback was unavailable. No DOI was established during the audit."
     },
     {
       "id": "basu-2022",
@@ -109,7 +109,7 @@
       "authors": "S. Deng et al.",
       "year": 2025,
       "venue": "arXiv",
-      "doi": "unassigned:deng-2025-edgesnn",
+      "doi": "10.48550/arXiv.2507.14069",
       "url": "https://arxiv.org/abs/2507.14069",
       "source_type": "preprint",
       "retrieval_status": "full_text",
@@ -228,7 +228,7 @@
       "authors": "P. K. Huynh, M. L. Varshika, A. Paul, M. Isik, A. Balaji, and A. Das",
       "year": 2022,
       "venue": "arXiv",
-      "doi": "unassigned:huynh-2022-implementing-snns",
+      "doi": "10.48550/arXiv.2202.08897",
       "url": "https://doi.org/10.48550/arxiv.2202.08897",
       "source_type": "preprint",
       "retrieval_status": "full_text",
@@ -480,10 +480,11 @@
       "verification_status": "provisional",
       "retrieved_on": "2026-09-16",
       "locators": [
-        "Publisher abstract"
+        "Publisher abstract",
+        "Prior vault identifier for IEEE document 11488853"
       ],
       "aliases": [],
-      "notes": "Identity verified. No full text retrieved, so all positive scores remain mentioned."
+      "notes": "Identity verified. No full text retrieved, so unsupported negative judgments remain unassessed."
     },
     {
       "id": "prior-s35-caviglia-2026",
@@ -520,7 +521,8 @@
       "retrieved_on": "2026-09-16",
       "locators": [
         "arXiv abstract",
-        "submission history 2026-08-27"
+        "Submission history dated 2026-08-27",
+        "Retrieval failures for the HTML and PDF endpoints"
       ],
       "aliases": [],
       "notes": "Submitted 2026-08-27. HTML and PDF retrieval failed, so no abstract claim is promoted above mentioned."
@@ -533,7 +535,7 @@
       "year": 2026,
       "venue": "Neuromorphic Computing and Engineering",
       "doi": "10.1088/2634-4386/aea4eb",
-      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb",
       "source_type": "peer_reviewed",
       "retrieval_status": "full_text",
       "verification_status": "verified",
@@ -594,7 +596,7 @@
       "authors": "C. D. Schuman et al.",
       "year": 2017,
       "venue": "arXiv",
-      "doi": "unassigned:schuman-2017-hardware-survey",
+      "doi": "10.48550/arXiv.1705.06963",
       "url": "https://doi.org/10.48550/arxiv.1705.06963",
       "source_type": "preprint",
       "retrieval_status": "full_text",

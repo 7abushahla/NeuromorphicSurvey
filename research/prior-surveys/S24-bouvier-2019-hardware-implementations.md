@@ -13,7 +13,7 @@ Inspected URLs:
 
 Only bibliographic metadata was available from the inspected publisher records. The title and later secondary citations suggest hardware relevance, but neither is treated as coverage evidence. No taxonomy, explanatory contribution, deployment depth, or omission judgment can be verified from primary text.
 
-Verification limit: no substantive primary text was retrieved. Every axis is marked none to avoid inferring coverage from the title or citation context.
+Verification limit: no substantive primary text was retrieved. All axes are unassessed because the full text was unavailable. Unassessed is not evidence that the inaccessible paper lacks any topic.
 
 ## Coverage scores
 

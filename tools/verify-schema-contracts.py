@@ -51,6 +51,9 @@ def main() -> int:
     claim_validate = evidence_module["validate"]
     platform_validate = evidence_module["validate_platform_capabilities"]
     coverage_validate = runpy.run_path(ROOT / "tools/validate-survey-coverage.py")["validate"]
+    normalize_source = runpy.run_path(
+        ROOT / "tools/merge-prior-survey-batches.py"
+    )["normalize_source"]
 
     checks = 0
 
@@ -78,6 +81,53 @@ def main() -> int:
         "invalid source_type",
         "malformed source type",
     )
+
+    null_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        null_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = None
+    check_valid(
+        source_validate(schema, null_doi_registry),
+        "source with no established DOI",
+    )
+
+    empty_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        empty_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = ""
+    check_error(
+        source_validate(schema, empty_doi_registry),
+        "doi must be null or a nonempty string",
+        "source with an empty DOI",
+    )
+
+    malformed_doi_registry = copy.deepcopy(registry)
+    record_by_id(
+        malformed_doi_registry["sources"], "pedersen-2024-nir", "source",
+    )["doi"] = []
+    check_error(
+        source_validate(schema, malformed_doi_registry),
+        "doi must be null or a nonempty string",
+        "source with a non-string DOI",
+    )
+
+    normalized_legacy_doi = normalize_source(
+        {
+            "id": "doi-normalization-fixture",
+            "title": "DOI normalization fixture",
+            "authors": "Fixture Author",
+            "year": 2026,
+            "venue": "Fixture Venue",
+            "url": "https://example.org/doi-normalization-fixture",
+            "source_type": "preprint",
+            "retrieval_status": "metadata_only",
+        },
+        {},
+        {"doi": "unassigned:doi-normalization-fixture"},
+    )
+    if normalized_legacy_doi["doi"] is not None:
+        raise AssertionError("legacy synthetic DOI must normalize to null")
+    checks += 1
 
     missing_flag_claims = copy.deepcopy(claims)
     del record_by_id(
@@ -293,7 +343,7 @@ def main() -> int:
         "unassessed coverage without an access boundary",
     )
 
-    expected_checks = 31
+    expected_checks = 35
     if checks != expected_checks:
         raise AssertionError(f"expected {expected_checks} contract checks, executed {checks}")
     print(f"verify-schema-contracts: {checks} contract checks passed")

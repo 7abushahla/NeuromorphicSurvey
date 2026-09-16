@@ -12,7 +12,7 @@ Inspected URLs:
 
 Only bibliographic metadata was recovered. The title and a later secondary citation are not used to score technical coverage. No primary-text taxonomy, explanation, deployment depth, or omission can be verified.
 
-Verification limit: inaccessible primary text. The all-none record is a retrieval limitation, not a finding that the paper contains no relevant material.
+Verification limit: inaccessible primary text. All axes are unassessed because the full text was unavailable. Unassessed is not evidence that the inaccessible paper lacks any topic.
 
 ## Coverage scores
 

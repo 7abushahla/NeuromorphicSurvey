@@ -96,8 +96,11 @@ def validate(schema: object, registry: object) -> list[str]:
         if missing:
             errors.append(f"{label}: missing required field(s): {', '.join(missing)}")
             continue
-        for field in ("id", "canonical_key", "title", "authors", "venue", "doi"):
+        for field in ("id", "canonical_key", "title", "authors", "venue"):
             require_nonempty_string(source, field, errors, label)
+        doi = source["doi"]
+        if doi is not None and (not isinstance(doi, str) or not doi.strip()):
+            errors.append(f"{label}: doi must be null or a nonempty string")
         if not isinstance(source["year"], int) or isinstance(source["year"], bool):
             errors.append(f"{label}: year must be an integer")
         if not valid_http_url(source["url"]):

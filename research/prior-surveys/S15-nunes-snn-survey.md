@@ -29,4 +29,4 @@ Exa discovery metadata describes a review of SNN foundations, learning rules, ne
 
 ## Verification limits
 
-`none` in this provisional table means no verified score can be assigned from retrieved evidence. It does not claim that the inaccessible paper lacks the topic.
+All axes are unassessed because the full text was unavailable. Unassessed is not evidence that the inaccessible paper lacks any topic.

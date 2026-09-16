@@ -13,7 +13,7 @@ Inspected URLs:
 
 The primary full text was not recovered. Existing raw notes characterize a five-dimensional chip-comparison framework, but that claim cannot be independently verified here and is not used to award coverage. Deployment depth is unverified.
 
-Verification limit: no substantive paper text was retrieved. The all-none scores are conservative and do not assert substantive absence.
+Verification limit: no substantive paper text was retrieved. All axes are unassessed because the full text was unavailable. Unassessed is not evidence that the inaccessible paper lacks any topic.
 
 ## Coverage scores
 

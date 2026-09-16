@@ -5,57 +5,209 @@
   "source_candidates": [
     {
       "source_id": "prior-s29-ayasi-2025",
+      "title": "A Practical Tutorial on Spiking Neural Networks: Comprehensive Review, Models, Experiments, Software Tools, and Implementation Guidelines",
+      "authors": "Bahgat Ayasi; Cristóbal J. Carmona; Mohammed Saleh; Angel M. García-Vico",
+      "year": 2025,
+      "venue": "Eng",
+      "doi": "10.3390/eng6110304",
+      "canonical_url": "https://www.mdpi.com/2673-4117/6/11/304",
       "url": "https://www.mdpi.com/2673-4117/6/11/304",
       "source_type": "peer_reviewed",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 2 to 4",
+        "Table 1",
+        "Section 3 Implementation Frameworks and Tools"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.20944/preprints202509.2072.v1",
+        "https://www.mdpi.com/2673-4117/6/11/304"
+      ],
+      "notes": "Full-text tutorial-study. Energy values are GPU operation-count proxies."
     },
     {
       "source_id": "prior-s30-alabdulwahid-2024",
+      "title": "A Survey on Neuromorphic Architectures for Running Artificial Intelligence Algorithms",
+      "authors": "Seham Al Abdul Wahid; Arghavan Asad; Farah Mohammadi",
+      "year": 2024,
+      "venue": "Electronics",
+      "doi": "10.3390/electronics13152963",
+      "canonical_url": "https://www.mdpi.com/2079-9292/13/15/2963",
       "url": "https://www.mdpi.com/2079-9292/13/15/2963",
       "source_type": "peer_reviewed",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Section 2",
+        "Section 3",
+        "Table 1"
+      ],
+      "inspected_urls": [
+        "https://www.researchgate.net/publication/382613210_A_Survey_on_Neuromorphic_Architectures_for_Running_Artificial_Intelligence_Algorithms",
+        "https://www.mdpi.com/2079-9292/13/15/2963"
+      ],
+      "notes": "Hardware comparison is descriptive, not normalized deployment evidence."
     },
     {
       "source_id": "prior-s31-tayaraninajaran-2021",
+      "title": "Event-Based Sensing and Signal Processing in the Visual, Auditory, and Olfactory Domain: A Review",
+      "authors": "Mohammad-Hassan Tayarani-Najaran; Michael Schmuker",
+      "year": 2021,
+      "venue": "Frontiers in Neural Circuits",
+      "doi": "10.3389/fncir.2021.610446",
+      "canonical_url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full",
       "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full",
       "source_type": "peer_reviewed",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1 to 5",
+        "Section 1.1"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.3389/fncir.2021.610446",
+        "https://public-pages-files-2025.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/text",
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full"
+      ],
+      "notes": "Sensor AER is not NIR-level interchange."
     },
     {
       "source_id": "prior-s32-cimarelli-2025",
+      "title": "Hardware, Algorithms, and Applications of the Neuromorphic Vision Sensor: a Review",
+      "authors": "Claudio Cimarelli; Jose Andres Millan-Romera; Holger Voos; José Luis Sánchez-López",
+      "year": 2025,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2504.08588",
+      "canonical_url": "https://arxiv.org/html/2504.08588",
       "url": "https://arxiv.org/html/2504.08588",
       "source_type": "preprint",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections I, II, and IV",
+        "Sensor timeline"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.48550/arxiv.2504.08588",
+        "https://arxiv.org/abs/2504.08588",
+        "https://arxiv.org/html/2504.08588",
+        "https://arxiv.org/pdf/2504.08588"
+      ],
+      "notes": "Verified preprint full text. Sensor hardware is not SNN compute hardware."
     },
     {
       "source_id": "prior-s33-hegao-2026",
+      "title": "A Four-Stage Structural Evolution Framework for Spiking Neural Networks: A Review and Perspective from Binary ANN to Event-Driven Models",
+      "authors": "Hao He; Shuang Gao",
+      "year": 2026,
+      "venue": "Neural Processing Letters",
+      "doi": "10.1007/s11063-025-11832-z",
+      "canonical_url": "https://link.springer.com/article/10.1007/s11063-025-11832-z",
       "url": "https://link.springer.com/article/10.1007/s11063-025-11832-z",
       "source_type": "peer_reviewed",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Sections 1 and 2",
+        "Table 1",
+        "Section 2.4"
+      ],
+      "inspected_urls": [
+        "https://link.springer.com/article/10.1007/s11063-025-11832-z"
+      ],
+      "notes": "Recent published review with deliberately narrow LIF direct-training scope."
     },
     {
       "source_id": "prior-s34-luu-2026",
+      "title": "A Survey on Spiking Neural Network Foundation and Recent Progress",
+      "authors": "Nhan Trong Luu; Duong Trung Luu; Pham Ngoc Nam; Truong Cong Thang",
+      "year": 2026,
+      "venue": "IEEE Access",
+      "doi": "10.1109/ACCESS.2026.3685666",
+      "canonical_url": "https://doi.org/10.1109/access.2026.3685666",
       "url": "https://doi.org/10.1109/access.2026.3685666",
       "source_type": "peer_reviewed",
-      "retrieval_status": "partial"
+      "retrieval_status": "partial",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Publisher abstract",
+        "Prior vault identifier for IEEE document 11488853"
+      ],
+      "inspected_urls": [
+        "https://doi.org/10.1109/access.2026.3685666"
+      ],
+      "notes": "Identity verified. No full text retrieved, so unsupported negative judgments remain unassessed."
     },
     {
       "source_id": "prior-s35-caviglia-2026",
+      "title": "NeuroTrain: Surveying Local Learning Rules for Spiking Neural Networks with an Open Benchmarking Framework",
+      "authors": "Alessio Caviglia; Filippo Marostica; Roberta Bardini; Alessandro Savino; Stefano Di Carlo",
+      "year": 2026,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2605.15058",
+      "canonical_url": "https://arxiv.org/html/2605.15058",
       "url": "https://arxiv.org/html/2605.15058",
       "source_type": "preprint",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "Sections 1 to 5"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/abs/2605.15058",
+        "https://arxiv.org/html/2605.15058",
+        "https://arxiv.org/pdf/2605.15058"
+      ],
+      "notes": "HTML full text reviewed. Journal annotation is not independently verified as a version of record."
     },
     {
       "source_id": "prior-s36-du-2026",
+      "title": "Benchmarking spiking neural networks across sensing modalities on edge devices",
+      "authors": "Xin Du; Di Yu; Changze Lv; Yuqi Zhang; Zhuo Chen; Wentao Tong; Helin Zheng; Weisong Zhang; Xiaofan Zhao; Linshan Jiang; Shijie Ji; Hui Fang; Xiaoqing Zheng; Gang Pan; Shuiguang Deng",
+      "year": 2026,
+      "venue": "arXiv",
+      "doi": "10.48550/arXiv.2609.00026",
+      "canonical_url": "https://arxiv.org/abs/2609.00026",
       "url": "https://arxiv.org/abs/2609.00026",
       "source_type": "preprint",
-      "retrieval_status": "not_retrieved"
+      "retrieval_status": "not_retrieved",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "arXiv abstract",
+        "Submission history dated 2026-08-27",
+        "Retrieval failures for the HTML and PDF endpoints"
+      ],
+      "inspected_urls": [
+        "https://arxiv.org/abs/2609.00026",
+        "https://arxiv.org/html/2609.00026",
+        "https://arxiv.org/pdf/2609.00026"
+      ],
+      "notes": "Submitted 2026-08-27. HTML and PDF retrieval failed, so no abstract claim is promoted above mentioned."
     },
     {
       "source_id": "prior-s37-farsa-2026",
+      "title": "GPU and RISC-V Acceleration for Neuromorphic Computing Based on Spiking Neural Networks: Taxonomy, Comparison, and Open Challenges",
+      "authors": "Edris Zaman Farsa; Amirhossein Ilkhani; Marc Reichenbach; Amirreza Yousefzadeh; Arash Ahmadi; Alexander Serb; J. Harkin",
+      "year": 2026,
+      "venue": "Neuromorphic Computing and Engineering",
+      "doi": "10.1088/2634-4386/aea4eb",
+      "canonical_url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb",
       "url": "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf",
       "source_type": "accepted_manuscript",
-      "retrieval_status": "verified"
+      "retrieval_status": "verified",
+      "retrieved_on": "2026-09-16",
+      "locators": [
+        "Abstract",
+        "Sections II to VI",
+        "Figures 1 and 2"
+      ],
+      "inspected_urls": [
+        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb",
+        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf"
+      ],
+      "notes": "Accepted manuscript online 2026-09-09, not final version of record."
     }
   ],
   "surveys": [
@@ -64,7 +216,8 @@
       "source_id": "prior-s29-ayasi-2025",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://www.mdpi.com/2673-4117/6/11/304"
+        "https://www.mdpi.com/2673-4117/6/11/304",
+        "https://doi.org/10.20944/preprints202509.2072.v1"
       ],
       "coverage": {
         "A": {
@@ -144,7 +297,8 @@
       "source_id": "prior-s30-alabdulwahid-2024",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://www.mdpi.com/2079-9292/13/15/2963"
+        "https://www.mdpi.com/2079-9292/13/15/2963",
+        "https://www.researchgate.net/publication/382613210_A_Survey_on_Neuromorphic_Architectures_for_Running_Artificial_Intelligence_Algorithms"
       ],
       "coverage": {
         "A": {
@@ -224,7 +378,9 @@
       "source_id": "prior-s31-tayaraninajaran-2021",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full"
+        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/full",
+        "https://doi.org/10.3389/fncir.2021.610446",
+        "https://public-pages-files-2025.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2021.610446/text"
       ],
       "coverage": {
         "A": {
@@ -304,7 +460,10 @@
       "source_id": "prior-s32-cimarelli-2025",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://arxiv.org/html/2504.08588"
+        "https://arxiv.org/html/2504.08588",
+        "https://doi.org/10.48550/arxiv.2504.08588",
+        "https://arxiv.org/abs/2504.08588",
+        "https://arxiv.org/pdf/2504.08588"
       ],
       "coverage": {
         "A": {
@@ -544,7 +703,9 @@
       "source_id": "prior-s35-caviglia-2026",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://arxiv.org/html/2605.15058"
+        "https://arxiv.org/html/2605.15058",
+        "https://arxiv.org/abs/2605.15058",
+        "https://arxiv.org/pdf/2605.15058"
       ],
       "coverage": {
         "A": {
@@ -624,7 +785,9 @@
       "source_id": "prior-s36-du-2026",
       "full_text_status": "not_retrieved",
       "retrieval_sources": [
-        "https://arxiv.org/abs/2609.00026"
+        "https://arxiv.org/abs/2609.00026",
+        "https://arxiv.org/html/2609.00026",
+        "https://arxiv.org/pdf/2609.00026"
       ],
       "coverage": {
         "A": {
@@ -704,7 +867,8 @@
       "source_id": "prior-s37-farsa-2026",
       "full_text_status": "verified",
       "retrieval_sources": [
-        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf"
+        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb/pdf",
+        "https://iopscience.iop.org/article/10.1088/2634-4386/aea4eb"
       ],
       "coverage": {
         "A": {
@@ -782,5 +946,5 @@
   ],
   "discovery_results_returned": 55,
   "sources_reviewed_definition": "Sum of numResults across Exa discovery searches, not a count of documents used as evidence.",
-  "inspected_url_count": 9
+  "inspected_url_count": 21
 }
