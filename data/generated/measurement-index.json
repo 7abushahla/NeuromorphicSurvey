@@ -1,0 +1,4173 @@
+{
+  "schema_version": "1",
+  "view": "measurement-index",
+  "generated_by": "tools/build-data-views.py",
+  "generated_from": [
+    "data/evidence-papers.json",
+    "data/source-registry.json"
+  ],
+  "measurements": [
+    {
+      "id": "adafire",
+      "title": "Adaptive Calibration: A Unified Conversion Framework of Spiking Neural Networks",
+      "authors": "Wang, Z., Fang, Y., Cao, J., Ren, H., Xu, R.",
+      "year": 2025,
+      "venue": "AAAI (Oral)",
+      "url": "https://arxiv.org/abs/2412.16219",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Adaptive-Firing (burst) neuron with training-free calibration reaches T=8 headline versus T=32 competitors at equal energy.",
+      "neuron": "Adaptive-Firing (burst) neuron",
+      "reset": "not specified beyond standard convention",
+      "encoding": "rate/burst",
+      "input_encoding": "inherits Calibration/QCFS-family convention",
+      "timesteps": "T=8 headline",
+      "metric": "accuracy and theoretical energy reduction in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Energy figures come from 'the method of calculating the theoretical energy...shown in the Appendix', an explicit SynOps-style theoretical estimate, not measured; Loihi 2/Speck cited twice as motivation for the burst-firing choice."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet",
+        "CIFAR10-DVS",
+        "N-Caltech101",
+        "PASCAL VOC",
+        "MS COCO"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (bic-L/burst-ann2snn)"
+      },
+      "comparability_notes": "Energy figures come from 'the method of calculating the theoretical energy...shown in the Appendix', an explicit SynOps-style theoretical estimate, not measured; Loihi 2/Speck cited twice as motivation for the burst-firing choice.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "adafire"
+      ],
+      "source_refs": [
+        {
+          "source_id": "adafire",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "adafire",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "adaptive-fission",
+      "title": "Adaptive Fission",
+      "authors": "Jiang, Y. et al.",
+      "year": 2025,
+      "venue": "NeurIPS",
+      "url": "not found",
+      "family": "population-coding",
+      "population": "both",
+      "method_summary": "Population-coding scheme (a third coding category distinct from rate and temporal coding) applied post-training on top of existing conversion methods including QCFS and SRP; deployed and measured on a physical Lynxi HP201 accelerator.",
+      "neuron": "population-coded (built atop existing IF-based conversion methods)",
+      "reset": "not found",
+      "encoding": "population coding (distinct from rate and temporal coding)",
+      "input_encoding": "not found",
+      "timesteps": "T=16/32 baseline rows reported (QCFS/SRP, No Fission)",
+      "metric": "on-chip memory, seconds per evaluation epoch, and system watt-hours per epoch at batch size 32",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "E1 on physical HP201. Board sensors include peripherals, memory, and I/O. The paper does not report per-sample latency or energy, and closed interfaces prevent core-only measurement. Table 1 also contains unmodified no-Fission QCFS and SRP baseline rows."
+      },
+      "workload": [
+        "not found (dataset names not captured in audit excerpt)"
+      ],
+      "platform": {
+        "target_hardware": "Lynxi HP201 (commercial successor to Tianjic)",
+        "toolchain": "custom, Table 1 baselines include unmodified QCFS and SRP"
+      },
+      "comparability_notes": "E1 on physical HP201. Board sensors include peripherals, memory, and I/O. The paper does not report per-sample latency or energy, and closed interfaces prevent core-only measurement. Table 1 also contains unmodified no-Fission QCFS and SRP baseline rows.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "adaptive-fission"
+      ],
+      "source_refs": [
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Abstract and Introduction, pp. 1-2",
+            "Adaptive Fission, Appendix E.1-E.2, pp. 24-25",
+            "Adaptive Fission, Section 6.1, p. 7",
+            "Adaptive Fission, Table 1, p. 8",
+            "Appendix C, Hardware Compatibility, pp. 23-24",
+            "Appendix E.1, Hardware Resources, p. 24",
+            "Section 3.2, Population Coding, pp. 3-4",
+            "Section 4, Adaptive Fission, pp. 4-7",
+            "Section 6.1, Implementations, pp. 7-8",
+            "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
+            "Table 1 and Section 6.2, pp. 8-9"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "adaptive-fission",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+      "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+      "year": 2024,
+      "venue": "Asilomar Conference on Signals, Systems, and Computers",
+      "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "method_summary": "Extends Few-Spikes conversion to complex-valued layers for an unfolded multidimensional harmonic-retrieval network.",
+      "neuron": "complex-valued Few-Spikes neuron",
+      "reset": "temporal Few-Spikes dynamics, not ordinary rate-coded IF reset",
+      "encoding": "serialized temporal Few-Spikes code",
+      "input_encoding": "problem-specific harmonic-retrieval input",
+      "timesteps": "few serialized temporal positions rather than a firing-rate window",
+      "metric": "board power and task performance against NVIDIA Jetson Xavier",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "The proposed conversion itself reaches physical silicon, but its representation is a temporal Few-Spikes code rather than rate coding."
+      },
+      "workload": [
+        "synthetic multidimensional harmonic-retrieval workloads"
+      ],
+      "platform": {
+        "target_hardware": "physical single-chip SpiNNaker2 board",
+        "toolchain": "custom mapping to SpiNNaker2"
+      },
+      "comparability_notes": "The proposed conversion itself reaches physical silicon, but its representation is a temporal Few-Spikes code rather than rate coding.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Figure 4, p. 5",
+            "Section IV, pp. 4-5",
+            "Sections III-A and III-B, pp. 3-4"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "apex",
+      "title": "APEX: A Dual-Sparsity Accelerator for Precise and Efficient SNN Inference",
+      "authors": "Manjunath, V. et al. (incl. Gopalakrishnan Srinivasan, a PASCAL co-author)",
+      "year": 2026,
+      "venue": "arXiv:2608.19046",
+      "url": "https://arxiv.org/abs/2608.19046",
+      "family": "hardware-accelerator",
+      "population": "algorithm",
+      "method_summary": "Integrates PASCAL's PASC-IF neuron natively into the LoAS accelerator dataflow as a fully combinational circuit, synthesized and evaluated across a mixed-precision (INT4/INT8) design-space sweep.",
+      "neuron": "PASC-IF, soft reset",
+      "reset": "soft reset",
+      "encoding": "spike-count based",
+      "input_encoding": "not found",
+      "timesteps": "T in {4,8,16}",
+      "metric": "power overhead (1.3-5.4%), area overhead (2.1-2.7%), energy per inference (69.23 mJ at T=8 vs 181.76 mJ LoAS baseline at T=32), via RTL synthesis at 400MHz/40nm and cycle-level simulation",
+      "boundary": {
+        "evidence_class": "E4",
+        "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",
+        "paper_specific_notes": "RTL synthesis plus cycle-level simulation, not fabricated silicon; a much broader design-space sweep than PASCAL's own single-point A.10 check, but still a hardware model rather than a measured chip."
+      },
+      "workload": [
+        "AlexNet",
+        "VGG-16",
+        "ResNet-18/34 (workload-level, not classification-accuracy-centric)"
+      ],
+      "platform": {
+        "target_hardware": "none (RTL synthesis model only)",
+        "toolchain": "RTL + Synopsys Design Compiler, 40nm CMOS"
+      },
+      "comparability_notes": "RTL synthesis plus cycle-level simulation, not fabricated silicon; a much broader design-space sweep than PASCAL's own single-point A.10 check, but still a hardware model rather than a measured chip.",
+      "evidence_class": "E4",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "apex"
+      ],
+      "source_refs": [
+        {
+          "source_id": "apex",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "apex",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+      "authors": "S. Arfa, B. Vogginger, C. Mayr",
+      "year": 2025,
+      "venue": "International Conference on Neuromorphic Systems",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Hardware-aware fine-tuning and quantization of directly trained spiking Q-networks.",
+      "neuron": "subtractive-reset spiking neuron",
+      "reset": "subtraction",
+      "encoding": "rate coding",
+      "input_encoding": "reinforcement-learning state input",
+      "timesteps": "10 or 20 ticks",
+      "metric": "latency, dynamic power, and energy",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "A genuine low-timestep rate-coded physical deployment, but direct training rather than ANN-to-SNN conversion."
+      },
+      "workload": [
+        "CartPole",
+        "Acrobot"
+      ],
+      "platform": {
+        "target_hardware": "physical SpiNNaker2 board",
+        "toolchain": "custom SpiNNaker2 deployment"
+      },
+      "comparability_notes": "A genuine low-timestep rate-coded physical deployment, but direct training rather than ANN-to-SNN conversion.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "locators": [
+            "Sections III-A and III-C, pp. 3-4",
+            "Sections IV-C and IV-D, pp. 5-7",
+            "Table III, p. 7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "brehove-2026",
+      "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
+      "authors": "Brehove, M., Tumpa, S.A., Kyubwa, E., Menon, N., Narayanan, V.",
+      "year": 2026,
+      "venue": "ICONS",
+      "url": "https://arxiv.org/abs/2505.06417",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "method_summary": "Converts an ANN to a Sigma-Delta Neural Network (SDNN) using Loihi 2's native graded spikes (16-bit signed-integer payload activation deltas), explicitly not rate-coded IF/QCFS; deployed and measured on physical Loihi 2.",
+      "neuron": "graded-spike SDNN neuron (not IF/LIF)",
+      "reset": "not applicable (graded/analog sigma-delta spikes, not binary IF reset)",
+      "encoding": "graded/sigma-delta (16-bit signed-integer payload), not rate coding",
+      "input_encoding": "native Loihi 2 graded spikes",
+      "timesteps": "not applicable in the classic sense (graded-spike delta encoding)",
+      "metric": "chip-probe latency, throughput, power, energy per frame, and EDP under ordinary-I/O and on-chip-replay conditions",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "E1. Host-side input-delta generation and output accumulation or decoding remain outside the neurocores. The Jetson comparison uses whole-SoC power and is not boundary-identical."
+      },
+      "workload": [
+        "not found (exact benchmark set not detailed in audit excerpt)"
+      ],
+      "platform": {
+        "target_hardware": "in-house 16-chip Intel Loihi 2 VPX development board",
+        "toolchain": "nxkernel 0.3.0 with modified Loihi 2 microcode"
+      },
+      "comparability_notes": "E1. Host-side input-delta generation and output accumulation or decoding remain outside the neurocores. The Jetson comparison uses whole-SoC power and is not boundary-identical.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "brehove"
+      ],
+      "source_refs": [
+        {
+          "source_id": "brehove",
+          "locators": [
+            "Abstract and Introduction, pp. 1-2",
+            "Algorithm 1, p. 3",
+            "Section 3.1 and Algorithm 1, graded sigma-delta encoding reviewed in Audit C",
+            "Section 3.1, Conversion and Implementation on Loihi 2, pp. 2-3",
+            "Section 3.1, pp. 2-3",
+            "Section 3.5, Benchmarking Loihi 2, p. 4",
+            "Table 3 and Sections 4.3-4.5, pp. 5-7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "brehove",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "burst-spikes",
+      "title": "Efficient and Accurate Conversion of Spiking Neural Network with Burst Spikes",
+      "authors": "Li, Y., Zeng, Y.",
+      "year": 2022,
+      "venue": "IJCAI",
+      "url": "https://arxiv.org/abs/2204.13271",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Burst-spike IF neuron allowing multiple spikes per step (bounded by Gamma) plus LIPooling, reducing timesteps below 100.",
+      "neuron": "burst-spike IF (multi-spike per step)",
+      "reset": "not found",
+      "encoding": "rate",
+      "input_encoding": "standard rate/analog input",
+      "timesteps": "<100 headline, ablations to 32+",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'0.693x energy consumption' is computed, not measured; design-constraint reasoning about neuromorphic hardware capacity, no chip run."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "'0.693x energy consumption' is computed, not measured; design-constraint reasoning about neuromorphic hardware capacity, no chip run.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "burst-spikes"
+      ],
+      "source_refs": [
+        {
+          "source_id": "burst-spikes",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "burst-spikes",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "cao-2015",
+      "title": "Spiking Deep Convolutional Neural Networks for Energy-Efficient Object Recognition",
+      "authors": "Cao, Y., Chen, Y., Khosla, D.",
+      "year": 2015,
+      "venue": "IJCV 113(1):54-66",
+      "url": "https://doi.org/10.1007/s11263-014-0788-3",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Converts pretrained CNNs to spiking form via rank-order/spike-count-based IF neurons, evaluated on DARPA Neovision2 and CIFAR-10.",
+      "neuron": "IF (rank-order / spike-count based)",
+      "reset": "not reset-by-subtraction; predates formalization, spike-count mapping",
+      "encoding": "rate / spike-count",
+      "input_encoding": "direct spike generation proportional to pixel intensity (not Poisson)",
+      "timesteps": "not a fixed global T; simulated over a spike-count window",
+      "metric": "classification accuracy in software simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Abstract's 'hardware mapping analysis' is an analytical estimate of a hypothetical mapping to SyNAPSE-style hardware, not a measured run; no chip/simulator specified."
+      },
+      "workload": [
+        "DARPA Neovision2 Tower",
+        "CIFAR-10"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom (unnamed)"
+      },
+      "comparability_notes": "Abstract's 'hardware mapping analysis' is an analytical estimate of a hypothetical mapping to SyNAPSE-style hardware, not a measured run; no chip/simulator specified.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "cao-2015"
+      ],
+      "source_refs": [
+        {
+          "source_id": "cao-2015",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "cao-2015",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "cerebron",
+      "title": "Cerebron: A Reconfigurable Architecture for Spatiotemporal Sparse Spiking Neural Networks",
+      "authors": "Chen, Q., Gao, C., Fu, Y.",
+      "year": 2022,
+      "venue": "IEEE TVLSI",
+      "url": "https://doi.org/10.1109/tvlsi.2022.3196839",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "FPGA accelerator explicitly built around the classical ANN-to-SNN conversion literature (SNNtoolbox/Rueckauer-style), with a reconfigurable compute engine and dynamic workload scheduling for spike sparsity.",
+      "neuron": "converted via Rueckauer-style SNNtoolbox (implies IF, standard reset-by-subtraction)",
+      "reset": "not explicitly restated (inherited from SNNtoolbox)",
+      "encoding": "not explicitly restated (inherited from SNNtoolbox)",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "accuracy (99.40% MNIST), latency (0.026ms/image), energy (0.04mJ/image), measured on physical FPGA",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Clearest FPGA accelerator in this survey explicitly built around the ANN-to-SNN conversion literature rather than direct training."
+      },
+      "workload": [
+        "MNIST",
+        "CIFAR-10",
+        "lane-segmentation SegNet (MLND-Capstone)"
+      ],
+      "platform": {
+        "target_hardware": "Xilinx XC7Z100 FPGA (200MHz, physical implementation)",
+        "toolchain": "SNNtoolbox (Rueckauer et al.) + custom RTL"
+      },
+      "comparability_notes": "Clearest FPGA accelerator in this survey explicitly built around the ANN-to-SNN conversion literature rather than direct training.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "cerebron"
+      ],
+      "source_refs": [
+        {
+          "source_id": "cerebron",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "cerebron",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "clp-snn",
+      "title": "Online Continual Learning on Intel Loihi 2 via a Co-designed Spiking Neural Network",
+      "authors": "not fully specified in audit excerpt",
+      "year": 2025,
+      "venue": "arXiv:2511.01553",
+      "url": "https://arxiv.org/abs/2511.01553",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Custom local three-factor learning rule (contributed to Lava) for online continual learning directly on Loihi 2.",
+      "neuron": "spiking neural state machine",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "not applicable (online learning)",
+      "metric": "latency (0.33 ms), energy (0.05/0.01 mJ), EDP measured on physical chip; 113x lower latency, 6600x lower energy vs Jetson Orin Nano",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "On-chip learning/adaptation, not offline-trained-then-deployed in the strict sense, but directly trained/adapted on physical Loihi 2 silicon."
+      },
+      "workload": [
+        "OpenLORIS few-shot robotic vision"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi 2, INT8",
+        "toolchain": "Lava"
+      },
+      "comparability_notes": "On-chip learning/adaptation, not offline-trained-then-deployed in the strict sense, but directly trained/adapted on physical Loihi 2 silicon.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "clp-snn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "clp-snn",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "clp-snn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "cos",
+      "title": "Bridging the Gap between ANNs and SNNs by Calibrating Offset Spikes",
+      "authors": "Hao, Z., Ding, J., Bu, T., Huang, T., Yu, Z.",
+      "year": 2023,
+      "venue": "ICLR",
+      "url": "https://arxiv.org/abs/2302.10685",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Detects and calibrates offset spikes via initial-membrane-potential shifting and iterative calibration, reaching near-lossless conversion at T=6.",
+      "neuron": "IF",
+      "reset": "subtraction (offset-spike shifting)",
+      "encoding": "rate",
+      "input_encoding": "direct/analog (inherits QCFS convention)",
+      "timesteps": "T=2,4,6,8 (headline 6-step: 4 calib + 2 inference)",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'Hampers the practical applications of SNNs to neuromorphic chips' is motivation-only language; no hardware experiments section."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (hzc1208/ANN2SNN_COS)"
+      },
+      "comparability_notes": "'Hampers the practical applications of SNNs to neuromorphic chips' is motivation-only language; no hardware experiments section.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "cos"
+      ],
+      "source_refs": [
+        {
+          "source_id": "cos",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "cos",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "cs-qcfs",
+      "title": "CS-QCFS: Bridging the performance gap in ultra-low latency SNNs",
+      "authors": "Yang, H., Yang, S., Zhang, L., Dou, H., Shen, F., Zhao, J.",
+      "year": 2024,
+      "venue": "Neural Networks",
+      "url": "https://doi.org/10.1016/j.neunet.2024.107076",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Channel-wise Softplus-QCFS activation with per-channel threshold, guaranteed positive, reaching T=1 headline accuracy.",
+      "neuron": "IF",
+      "reset": "not found in excerpt",
+      "encoding": "rate",
+      "input_encoding": "inherits QCFS direct/analog convention",
+      "timesteps": "T=1 headline",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Reference list cites Loihi (Davies et al.) only as a citation, not an experiment; all reported results are CIFAR-10/100 accuracy tables."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Reference list cites Loihi (Davies et al.) only as a citation, not an experiment; all reported results are CIFAR-10/100 accuracy tables.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "cs-qcfs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "cs-qcfs",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "cs-qcfs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "datta2025-snn-meets-ann",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Low-timestep error-free conversion with delayed firing and reset plus batch-normalization bias adjustment.",
+      "neuron": "modified IF",
+      "reset": "postponed firing and reset after input-current accumulation",
+      "encoding": "binary spikes over a short window",
+      "input_encoding": "direct current input in reported image experiments",
+      "timesteps": "4 on ImageNet headline result",
+      "metric": "framework-level accuracy only",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Table 12 is E5 for accuracy. The separately asserted Lava-DL-to-Loihi route is E3 because no physical backend or device measurement is disclosed."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "Loihi route asserted but no generation or physical board identified",
+        "toolchain": "PyTorch and Lava-DL"
+      },
+      "comparability_notes": "Table 12 is E5 for accuracy. The separately asserted Lava-DL-to-Loihi route is E3 because no physical backend or device measurement is disclosed.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "datta2025-snn-meets-ann"
+      ],
+      "source_refs": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "locators": [
+            "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23",
+            "Appendix A.10, pp. 22-23",
+            "Table 12, p. 23"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "diehl-2015",
+      "title": "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing",
+      "authors": "Diehl, P.U., Neil, D., Binas, J., Cook, M., Liu, S.-C., Pfeiffer, M.",
+      "year": 2015,
+      "venue": "IJCNN",
+      "url": "https://doi.org/10.1109/IJCNN.2015.7280696",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Introduces weight/threshold balancing for near-lossless ANN-to-SNN conversion, IF neurons with reset-to-zero, evaluated on MNIST.",
+      "neuron": "IF (non-leaky)",
+      "reset": "reset-to-zero",
+      "encoding": "rate",
+      "input_encoding": "Poisson-rate spike trains from pixel intensities",
+      "timesteps": "~20ms simulated time to near-max accuracy",
+      "metric": "classification accuracy in software simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "All results from custom MATLAB IF simulator; no chip run despite intro mention of specialized hardware."
+      },
+      "workload": [
+        "MNIST"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom vectorized MATLAB IF simulator (convlifsim.m)"
+      },
+      "comparability_notes": "All results from custom MATLAB IF simulator; no chip run despite intro mention of specialized hardware.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "diehl"
+      ],
+      "source_refs": [
+        {
+          "source_id": "diehl",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "diehl",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "dynamic-confidence",
+      "title": "Unleashing the Potential of Spiking Neural Networks with Dynamic Confidence",
+      "authors": "Li, C., Jones, E., Furber, S.",
+      "year": 2023,
+      "venue": "ICCV",
+      "url": "https://arxiv.org/abs/2303.10276",
+      "family": "early-exit",
+      "population": "algorithm",
+      "method_summary": "Decodes a confidence signal from SNN outputs over time and uses a Pareto-calibrated threshold for per-sample early termination on top of QCFS/QFFS SNNs.",
+      "neuron": "soft-reset IF (as in QCFS/QFFS)",
+      "reset": "subtraction",
+      "encoding": "rate",
+      "input_encoding": "inherits base method's encoding (QCFS/QFFS)",
+      "timesteps": "baseline T=4/T=14, average reduced to ~1.28-4.71",
+      "metric": "accuracy and spike-count reduction (proxy) in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Explicit authorial self-disclaimer: 'the real power saving when running on neuromorphic hardware is unknown to us'; spike-count reduction reported only as an indirect proxy for hardware energy."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Explicit authorial self-disclaimer: 'the real power saving when running on neuromorphic hardware is unknown to us'; spike-count reduction reported only as an indirect proxy for hardware energy.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "dynamic-confidence"
+      ],
+      "source_refs": [
+        {
+          "source_id": "dynamic-confidence",
+          "locators": [
+            "Dynamic Confidence paper, Sections 5.2 and 6.2, PDF pp. 5-7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "dynamic-confidence",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "dynap-se-tactile",
+      "title": "Bioinspired spiking architecture enables energy constrained touch encoding",
+      "authors": "Ortone, A. et al.",
+      "year": 2026,
+      "venue": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-026-68858-7",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "FBG-based e-skin drives an SNN mimicking early somatosensory processing, implemented on the DYNAP-SE mixed-signal analog neuromorphic chip for tactile localization.",
+      "neuron": "DYNAP-SE adaptive-exponential analog neurons (4096)",
+      "reset": "not found",
+      "encoding": "event-driven, analog",
+      "input_encoding": "FBG e-skin events",
+      "timesteps": "not applicable (analog continuous-time)",
+      "metric": "localization error (5.33 +/- 0.15 mm, 8% worse than software), median inference power (185 uW), resting power (8.7 uW), measured on physical chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Explicitly contrasted against an estimated ~mW-class ARM implementation of the same dynamics."
+      },
+      "workload": [
+        "tactile localization task"
+      ],
+      "platform": {
+        "target_hardware": "DYNAP-SE (physical, mixed-signal)",
+        "toolchain": "custom DYNAP-SE configuration"
+      },
+      "comparability_notes": "Explicitly contrasted against an estimated ~mW-class ARM implementation of the same dynamics.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "dynap-se-tactile"
+      ],
+      "source_refs": [
+        {
+          "source_id": "dynap-se-tactile",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "dynap-se-tactile",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "eedn",
+      "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
+      "authors": "Esser, S.K., Merolla, P.A., Arthur, J.V., Cassidy, A.S., Appuswamy, R., Andreopoulos, A., Berg, D.J., McKinstry, J.L., Melano, T., Barch, D.R., Di Nolfo, C., Datta, P., Amir, A., Taba, B., Flickner, M.D., Modha, D.S.",
+      "year": 2016,
+      "venue": "PNAS 113(41):11441-11446",
+      "url": "https://doi.org/10.1073/pnas.1604850113",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Eedn trains CNNs directly under TrueNorth's hardware constraints (binary neurons, trinary synapses) via constrained backprop, mapping natively onto the chip; not classical conversion.",
+      "neuron": "constrained IF variant (23-param TrueNorth neuron)",
+      "reset": "not reset-by-subtraction; one-tick spatial spike-count coding",
+      "encoding": "spatial population coding within one tick (not temporal rate coding)",
+      "input_encoding": "not applicable (hardware-constrained direct training)",
+      "timesteps": "1 tick (1 kHz) per classification",
+      "metric": "accuracy, throughput (1200-2600 FPS), power (25-275 mW) measured on physical silicon",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Accuracy/throughput measured on NS1e, power separately measured on NS1t at matched supply voltage; genuine chip measurement."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "SVHN",
+        "GTSRB",
+        "LOGO32",
+        "VAD",
+        "TIMIT (classification)",
+        "TIMIT (frames)"
+      ],
+      "platform": {
+        "target_hardware": "IBM TrueNorth (NS1e/NS16e boards)",
+        "toolchain": "Eedn + Corelet compilation flow"
+      },
+      "comparability_notes": "Accuracy/throughput measured on NS1e, power separately measured on NS1t at matched supply voltage; genuine chip measurement.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "truenorth"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "eventprop-delays",
+      "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
+      "authors": "Meszaros, A., Knight, J., Timcheck, J., Nowotny, T.",
+      "year": 2025,
+      "venue": "arXiv:2510.13757",
+      "url": "https://arxiv.org/abs/2510.13757",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "mlGeNN EventProp (exact-gradient BPTT) training with learned synaptic delays, deployed via NetX to physical Loihi 2 for keyword spotting.",
+      "neuron": "LIF w/ exponential synapses + learned delays",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "up to 62 delay steps",
+      "metric": "latency (1.46-1.54 ms), total/dynamic energy (0.21-0.46 mJ), EDP measured on physical chip; 18x faster, 250x less energy than Jetson Orin Nano (batch=1)",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "IO-unconstrained steady-state measurement on physical single-chip Loihi 2."
+      },
+      "workload": [
+        "Spiking Heidelberg Digits",
+        "Spiking Speech Commands"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi 2 (single-chip, Oheo Gulch)",
+        "toolchain": "mlGeNN (EventProp) -> NetX"
+      },
+      "comparability_notes": "IO-unconstrained steady-state measurement on physical single-chip Loihi 2.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "eventprop-delays"
+      ],
+      "source_refs": [
+        {
+          "source_id": "eventprop-delays",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "eventprop-delays",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "exodus",
+      "title": "EXODUS: Stable and Efficient Training of Spiking Neural Networks",
+      "authors": "Bauer, F., Lenz, G., Haghighatshoar, S., Sheik, S.",
+      "year": 2023,
+      "venue": "Frontiers in Neuroscience (also arXiv:2205.10242)",
+      "url": "https://arxiv.org/abs/2205.10242",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Exact-gradient variant of SLAYER for faster, more stable SNN training; a training-speed contribution, not itself deployed.",
+      "neuron": "IAF/LIF/ExpLeak",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "task-dependent",
+      "metric": "training speed vs BPTT and SLAYER on GPU",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: EXODUS itself, as opposed to downstream Sinabs/DynapCNN users, was never run on physical hardware in this paper; benchmarked only against un-optimized BPTT and SLAYER on an NVIDIA 1080 Ti."
+      },
+      "workload": [
+        "DVS Gesture",
+        "Spiking Heidelberg Digits",
+        "Spiking Speech Commands"
+      ],
+      "platform": {
+        "target_hardware": "none (deployment only possible downstream via Sinabs -> DynapCNN/Speck, not exercised in this paper)",
+        "toolchain": "custom CUDA (Sinabs plugin)"
+      },
+      "comparability_notes": "NOT FOUND: EXODUS itself, as opposed to downstream Sinabs/DynapCNN users, was never run on physical hardware in this paper; benchmarked only against un-optimized BPTT and SLAYER on an NVIDIA 1080 Ti.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "exodus"
+      ],
+      "source_refs": [
+        {
+          "source_id": "exodus",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "exodus",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "fast-snn",
+      "title": "Fast-SNN: Fast Spiking Neural Network by Converting Quantized ANN",
+      "authors": "Hu, Y., Zheng, Q., Jiang, X., Pan, G.",
+      "year": 2023,
+      "venue": "IEEE TPAMI",
+      "url": "https://arxiv.org/abs/2305.19868",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Signed IF neuron (reset by adding threshold on negative spike) with layer-wise fine-tuning, converting quantized ANN at T=3-15.",
+      "neuron": "signed IF (reset by adding threshold on negative spike)",
+      "reset": "additive (signed)",
+      "encoding": "rate",
+      "input_encoding": "direct/analog (constant current injecting bias term)",
+      "timesteps": "T=3,7,15 (classification, detection, segmentation)",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'Loihi already supports signed spikes' is cited as design justification for the signed-IF neuron choice, not an executed deployment."
+      },
+      "workload": [
+        "ImageNet",
+        "PASCAL VOC 2007/2012"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "'Loihi already supports signed spikes' is cited as design justification for the signed-IF neuron choice, not an executed deployment.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "fast-snn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "fast-snn",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "fast-snn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "firefly",
+      "title": "FireFly v2: Advancing Hardware Support for High-Performance Spiking Neural Network With a Spatiotemporal FPGA Accelerator",
+      "authors": "Li, J., Shen, J., Zhao, R., Zhang, X., Zeng, Y.",
+      "year": 2024,
+      "venue": "IEEE TCAD",
+      "url": "https://doi.org/10.1109/tcad.2024.3380550",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Generalized multiplex-accumulate FPGA accelerator for LIF-type spiking dynamics mapped onto DSP48E2 hard blocks, eliminating membrane-potential storage via on-the-fly spike generation.",
+      "neuron": "LIF (generic ODE given)",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "peak power efficiency (835.9 GOP/s/W), peak throughput (8192 GOP/s), measured on physical FPGA boards",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Highest clock frequency (500-600MHz) among FPGA SNN accelerators surveyed; physical board measurement, not synthesis estimate."
+      },
+      "workload": [
+        "MNIST",
+        "CIFAR-10",
+        "CIFAR-100",
+        "DVS-Gesture"
+      ],
+      "platform": {
+        "target_hardware": "Zynq UltraScale+ edge FPGA boards (xczu3eg/xczu5ev/xczu7ev, KV260, ZCU104)",
+        "toolchain": "custom HDL for Xilinx UltraScale DSP48E2"
+      },
+      "comparability_notes": "Highest clock frequency (500-600MHz) among FPGA SNN accelerators surveyed; physical board measurement, not synthesis estimate.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "firefly"
+      ],
+      "source_refs": [
+        {
+          "source_id": "firefly",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "firefly",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "force-control",
+      "title": "Neuromorphic force-control in an industrial task: validating energy and latency benefits",
+      "authors": "not fully specified in audit excerpt",
+      "year": 2024,
+      "venue": "arXiv:2403.08928",
+      "url": "https://arxiv.org/abs/2403.08928",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "SNN policy trained via spiking RL in simulation (PyTorch), ported to physical Loihi 1/Loihi 2 for industrial peg-in-hole insertion with a KUKA arm.",
+      "neuron": "spiking (RL-trained)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "latency (1.5-1.8 ms) and dynamic energy (53+/-17 uJ/inference, Loihi 2) measured on physical chips, compared to CPU (3800 uJ) and GPU (~100s uJ)",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Measured on both physical Loihi 1 and Loihi 2 silicon."
+      },
+      "workload": [
+        "not applicable (industrial object-insertion task)"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi 1 (Kapoho Bay) and Loihi 2 (Oheo Gulch, remote)",
+        "toolchain": "PyTorch (training) -> NxSDK (Loihi 1) / Lava (Loihi 2)"
+      },
+      "comparability_notes": "Measured on both physical Loihi 1 and Loihi 2 silicon.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "force-control"
+      ],
+      "source_refs": [
+        {
+          "source_id": "force-control",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "force-control",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "gelneuro",
+      "title": "GelNeuro",
+      "authors": "not fully specified in audit excerpt",
+      "year": 2026,
+      "venue": "preprint",
+      "url": "https://pubdb.com/paper/2607.05241",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "GelSight optical-tactile front end generates DVS-like marker-motion events consumed directly by a Speck2f spiking CNN for texture recognition, no frame reconstruction.",
+      "neuron": "spiking CNN (DYNAP-CNN)",
+      "reset": "not found",
+      "encoding": "event-driven",
+      "input_encoding": "DVS-like marker-motion events from optical-tactile sensor",
+      "timesteps": "80ms inference window",
+      "metric": "accuracy (96.3%), inference window (80ms), board-level active power (19.6mW), measured hardware-in-the-loop on physical chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Architecturally identical to a genuine sensor-to-spiking-chip pipeline (no frame reconstruction), peer-reviewed."
+      },
+      "workload": [
+        "15-class texture recognition"
+      ],
+      "platform": {
+        "target_hardware": "SynSense Speck2f",
+        "toolchain": "Sinabs"
+      },
+      "comparability_notes": "Architecturally identical to a genuine sensor-to-spiking-chip pipeline (no frame reconstruction), peer-reviewed.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "gelneuro"
+      ],
+      "source_refs": [
+        {
+          "source_id": "gelneuro",
+          "locators": [
+            "assets/bibliography/references.bib entry gelneuro-2026",
+            "site/sec-07.html reference gelneuro-2026"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "gelneuro",
+          "retrieval_status": "metadata_only",
+          "verification_status": "rejected"
+        }
+      ],
+      "verification_status": "rejected"
+    },
+    {
+      "id": "hiaer-spike-cri",
+      "title": "DVS128 Gesture Inference on HiAER-Spike Hardware",
+      "authors": "UCSD ISN (HiAER-Spike/CRI project)",
+      "year": 2024,
+      "venue": "hardware documentation",
+      "url": "https://isn.ucsd.edu/hiaer-spike/auto_examples/plot_dvs_gesture_inference.html",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "SpikingJelly-trained DVS128 Gesture network converted via hs_api to the CRI format and run on physical CRI FPGA-based neuromorphic hardware.",
+      "neuron": "stride-2 conv SCNN",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "10 frames + 6 drain steps",
+      "timesteps": "10+6",
+      "metric": "accuracy, clock cycles, HBM accesses recorded per sample on physical hardware",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "SpikingJelly-trained network reaching physical (FPGA-based) neuromorphic silicon, independent of the Lava/Loihi path; one of only a small handful of SpikingJelly-trained networks found to reach any physical chip."
+      },
+      "workload": [
+        "DVS128 Gesture"
+      ],
+      "platform": {
+        "target_hardware": "CRI FPGA-based neuromorphic hardware (UCSD HiAER-Spike)",
+        "toolchain": "SpikingJelly (training) -> hs_api (CRI-format conversion)"
+      },
+      "comparability_notes": "SpikingJelly-trained network reaching physical (FPGA-based) neuromorphic silicon, independent of the Lava/Loihi path; one of only a small handful of SpikingJelly-trained networks found to reach any physical chip.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "imam-cleland-olfaction",
+      "title": "Rapid online learning and robust recall in a neuromorphic olfactory circuit",
+      "authors": "Imam, N., Cleland, T.A.",
+      "year": 2020,
+      "venue": "Nature Machine Intelligence",
+      "url": "not found",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "Hand-designed (biologically derived STDP circuit) odor-identification network on Loihi, one-shot learning via local plasticity rules.",
+      "neuron": "hand-designed STDP circuit (not gradient-trained)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "wind-tunnel chemosensor data",
+      "timesteps": "200 (5 gamma cycles)",
+      "metric": "latency (2.75 ms/sniff), energy (0.43 mJ total, 0.12 mJ dynamic) per sniff, measured on physical chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "A 2023 replication study (Dennler, van Schaik and Schmuker, arXiv 2309.11555) found the underlying dataset suffers from sensor drift and a non-randomized protocol, and that a simple hash-table baseline matches or beats the network's accuracy under proper train/test splitting; the hardware latency/energy measurement itself is not invalidated, but the algorithmic/scientific claim is substantially undercut."
+      },
+      "workload": [
+        "wind-tunnel chemosensor odor dataset"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi (72-core network)",
+        "toolchain": "hand-designed Loihi microcode"
+      },
+      "comparability_notes": "A 2023 replication study (Dennler, van Schaik and Schmuker, arXiv 2309.11555) found the underlying dataset suffers from sensor drift and a non-randomized protocol, and that a simple hash-table baseline matches or beats the network's accuracy under proper train/test splitting; the hardware latency/energy measurement itself is not invalidated, but the algorithmic/scientific claim is substantially undercut.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "imam-cleland-olfaction"
+      ],
+      "source_refs": [
+        {
+          "source_id": "imam-cleland-olfaction",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "imam-cleland-olfaction",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "kelber-2020",
+      "title": "Benchmarking Deep Spiking Neural Networks on Neuromorphic Hardware",
+      "authors": "Kelber, F., Wunderlich, T., Zoglauer, G., Stradmann, Y., Vogginger, B., Hoeppner, S., et al.",
+      "year": 2020,
+      "venue": "arXiv:2004.01656",
+      "url": "https://arxiv.org/abs/2004.01656",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Benchmarks converted (pretrained-then-spiking) networks across BrainScaleS, Spikey, and SpiNNaker, with hardware-in-the-loop retraining for the analog systems.",
+      "neuron": "standard threshold-balancing style (network-dependent)",
+      "reset": "not found",
+      "encoding": "rate",
+      "input_encoding": "standard 'converting pre-trained non-spiking to spiking' methodology",
+      "timesteps": "not found (network-dependent)",
+      "metric": "accuracy and energy-per-inference measured with real power meters (SpiNNaker/Spikey); BrainScaleS energy estimated from published per-event data",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "SpiNNaker/Spikey energy measured directly with power meters; BrainScaleS energy figure specifically is estimated from prior published per-synaptic-event data, not measured in this study, per the paper's own flag."
+      },
+      "workload": [
+        "five networks incl. 784-1200-1200-10 scale"
+      ],
+      "platform": {
+        "target_hardware": "BrainScaleS, Spikey, SpiNNaker",
+        "toolchain": "NEST/GeNN for software baselines, native toolchains per hardware"
+      },
+      "comparability_notes": "SpiNNaker/Spikey energy measured directly with power meters; BrainScaleS energy figure specifically is estimated from prior published per-synaptic-event data, not measured in this study, per the paper's own flag.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "kelber-2020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "kelber-2020",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "kelber-2020",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "massa-2020",
+      "title": "An Efficient Spiking Neural Network for Recognizing Gestures with a DVS Camera on the Loihi Neuromorphic Processor",
+      "authors": "Massa, R., Marchisio, A., Martina, M., Shafique, M.",
+      "year": 2020,
+      "venue": "IJCNN",
+      "url": "https://doi.org/10.1109/IJCNN48605.2020.9207109",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Applies SNN Toolbox (Rueckauer 2017) DNN-to-SNN conversion, deployed via NxSDK on physical Loihi for DVS gesture recognition; events pre-accumulated into frames before conversion.",
+      "neuron": "IF",
+      "reset": "inherited from SNN Toolbox convention (reset-by-subtraction)",
+      "encoding": "rate",
+      "input_encoding": "frame-accumulated events, then standard rate-based conversion (not native event-driven)",
+      "timesteps": "not fixed (per-frame classification)",
+      "metric": "accuracy (89.64%) and per-frame latency (11.43 ms) measured on-chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Accuracy and latency measured on physical Loihi silicon; events are pre-converted to frames before the DNN-to-SNN conversion step (not a fully native event pipeline)."
+      },
+      "workload": [
+        "DvsGesture",
+        "MNIST",
+        "CIFAR-10"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi (37 cores)",
+        "toolchain": "SNN Toolbox + NxSDK"
+      },
+      "comparability_notes": "Accuracy and latency measured on physical Loihi silicon; events are pre-converted to frames before the DNN-to-SNN conversion step (not a fully native event pipeline).",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "massa-2020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "massa-2020",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "massa-2020",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "morphic",
+      "title": "MorphIC: A 65-nm 738k-Synapse/mm2 Quad-Core Binary-Weight Digital Neuromorphic Processor with Stochastic Spike-Driven Online Learning",
+      "authors": "Frenkel, C., Legat, J.-D., Bol, D.",
+      "year": 2019,
+      "venue": "ISCAS / journal (arXiv:1904.08513)",
+      "url": "https://arxiv.org/abs/1904.08513",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Quad-core binary-weight digital neuromorphic ASIC embedding stochastic SDSP online learning; directly measures rate coding vs rank-order coding energy cost on the same fabricated chip.",
+      "neuron": "LIF",
+      "reset": "not found",
+      "encoding": "rate coding (measured baseline) and rank-order coding (measured alternative)",
+      "input_encoding": "not found",
+      "timesteps": "not applicable (event-driven, per-classification energy reported)",
+      "metric": "energy per SOP (30-65 pJ), MNIST accuracy (97.8% rate coding, ~95.9% rank-order), energy per classification (205 uJ rate coding vs 21.8 uJ rank-order), all measured on fabricated chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Directly relevant data point for this thesis: rate coding measured to cost roughly 10x more energy than rank-order (first-spike) coding for near-equivalent accuracy on real fabricated silicon."
+      },
+      "workload": [
+        "MNIST"
+      ],
+      "platform": {
+        "target_hardware": "MorphIC ASIC (65nm, fabricated)",
+        "toolchain": "custom HDL (UMC 65nm LP CMOS)"
+      },
+      "comparability_notes": "Directly relevant data point for this thesis: rate coding measured to cost roughly 10x more energy than rank-order (first-spike) coding for near-equivalent accuracy on real fabricated silicon.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "morphic"
+      ],
+      "source_refs": [
+        {
+          "source_id": "morphic",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "morphic",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "mt-snn-frontiers-2026",
+      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
+      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "year": 2026,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2026.1783326",
+      "family": "mixed-timestep",
+      "population": "algorithm",
+      "method_summary": "The accepted abstract names Scaled Synaptic Current Accumulation. Full method and result details were not available in the reviewed access path.",
+      "neuron": "not established from the accepted abstract",
+      "reset": "not established from the accepted abstract",
+      "encoding": "not established from the accepted abstract",
+      "input_encoding": "not established from the accepted abstract",
+      "timesteps": "mixed timestep, detailed schedule not verified from the accepted abstract",
+      "metric": "not verified from the accepted abstract",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Only the accepted-article abstract was reviewed. It supports the title, publication identity, and the named SSCA mechanism, but not the withdrawn manuscript numerical claims."
+      },
+      "workload": [
+        "not established from the accepted abstract"
+      ],
+      "platform": {
+        "target_hardware": "none established from the accepted abstract",
+        "toolchain": "not established from the accepted abstract"
+      },
+      "comparability_notes": "Only the accepted-article abstract was reviewed. It supports the title, publication identity, and the named SSCA mechanism, but not the withdrawn manuscript numerical claims.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "mt-snn-frontiers-2026"
+      ],
+      "source_refs": [
+        {
+          "source_id": "mt-snn-frontiers-2026",
+          "locators": [
+            "Frontiers in Neuroscience accepted-article abstract, DOI 10.3389/fnins.2026.1783326",
+            "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/abstract"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "mt-snn-frontiers-2026",
+          "retrieval_status": "partial_text",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
+      "year": 2026,
+      "venue": "Withdrawn ICLR 2026 submission",
+      "url": "https://openreview.net/pdf?id=4dwAZRr9L5",
+      "family": "mixed-timestep",
+      "population": "algorithm",
+      "method_summary": "The withdrawn ICLR manuscript learns static layerwise horizons and uses average-and-repeat temporal alignment.",
+      "neuron": "IF-based mixed-timestep (per QAC lineage)",
+      "reset": "subtraction (per QAC lineage)",
+      "encoding": "rate",
+      "input_encoding": "not found",
+      "timesteps": "4.88 is the simple arithmetic mean of layerwise horizons for ResNet-34/ImageNet-1K, not measured hardware latency",
+      "metric": "software accuracy; a separate four-RTX-4090 full-validation wall-clock experiment; analytical operation-count energy",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "E5. The supplied withdrawn manuscript reports 73.63 percent ImageNet-1K top-1 at a 4.88 layer mean. Its Appendix C energy values use operation counts and assumed 45 nm costs. Appendix E is qualitative. No compiler, RTL, simulator, or physical chip executes the mixed-horizon schedule."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet-1K",
+        "CIFAR10-DVS",
+        "DVS-Gesture"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "E5. The supplied withdrawn manuscript reports 73.63 percent ImageNet-1K top-1 at a 4.88 layer mean. Its Appendix C energy values use operation counts and assumed 45 nm costs. Appendix E is qualitative. No compiler, RTL, simulator, or physical chip executes the mixed-horizon schedule.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "mt-snn-withdrawn-iclr"
+      ],
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Local PDF SHA-256 6d7f507f6f35e8bf99afbab2ac53a11687b80f407061f9122466229817670845",
+            "Supplied MT-SNN manuscript, Algorithm 1, Phase B, PDF p. 16",
+            "Supplied MT-SNN manuscript, Appendix C, Tables 7-8 and Eqs. 22-23, PDF pp. 16-17",
+            "Supplied MT-SNN manuscript, Appendix E, Figure 7 and Algorithm 2, PDF p. 18",
+            "Supplied MT-SNN manuscript, Appendix E, PDF p. 18",
+            "Supplied MT-SNN manuscript, Section 5.1 and Table 1, PDF p. 7",
+            "Supplied MT-SNN manuscript, Section 5.4 and Table 4, PDF p. 9",
+            "Supplied MT-SNN manuscript, Sections 4.2-4.3 and Eq. 20, PDF pp. 5-7",
+            "Supplied MT-SNN manuscript, Sections 4.2-4.3, PDF pp. 5-7",
+            "Supplied withdrawn ICLR manuscript, title page and Eq. 20, PDF pp. 1 and 7",
+            "The energy-model text and tables were independently extracted with PyMuPDF 1.28.2 and pypdf",
+            "The pipeline-stall passage was independently extracted with PyMuPDF 1.28.2 and pypdf, then visually checked on rendered PDF p. 18",
+            "The values and mean definition were independently extracted with PyMuPDF 1.28.2 and pypdf, then visually checked on rendered PDF pp. 7 and 9"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "neuroflex",
+      "title": "NeuroFlex: Column-Exact ANN-SNN Co-Execution Accelerator with Cost-Guided Scheduling",
+      "authors": "Manjunath, V. et al.",
+      "year": 2025,
+      "venue": "arXiv:2511.05215",
+      "url": "https://arxiv.org/abs/2511.05215",
+      "family": "hardware-accelerator",
+      "population": "algorithm",
+      "method_summary": "Extends PASCAL's integer-exact QCFS-SNN equivalence to column-level hybrid ANN/SNN execution scheduling within a layer.",
+      "neuron": "PASC-IF (integer-exact spike generation), INT8",
+      "reset": "soft reset",
+      "encoding": "spike-count based",
+      "input_encoding": "integer-exact from QCFS activation",
+      "timesteps": "tied to per-column QCFS L (not a single headline T)",
+      "metric": "PE-array utilization (98.6-99.3%), EDP/throughput; RTL synthesized at 560MHz/40nm, not fabricated silicon",
+      "boundary": {
+        "evidence_class": "E4",
+        "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",
+        "paper_specific_notes": "RTL synthesis plus cycle-level simulator; textbook hardware modeling, not physical silicon."
+      },
+      "workload": [
+        "VGG-16",
+        "ResNet-34",
+        "GoogLeNet",
+        "BERT"
+      ],
+      "platform": {
+        "target_hardware": "none (RTL synthesis model only)",
+        "toolchain": "RTL + Synopsys Design Compiler + CACTI 7.0 + Python cycle-level simulator"
+      },
+      "comparability_notes": "RTL synthesis plus cycle-level simulator; textbook hardware modeling, not physical silicon.",
+      "evidence_class": "E4",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "neuroflex"
+      ],
+      "source_refs": [
+        {
+          "source_id": "neuroflex",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "neuroflex",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "northpole",
+      "title": "Neural inference at the frontier of energy, space, and time",
+      "authors": "Modha, D.S. et al.",
+      "year": 2023,
+      "venue": "Science",
+      "url": "https://doi.org/10.1126/science.adh1174",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "NorthPole is a purely digital, low-precision (8/4/2-bit) spatial-dataflow inference accelerator inspired by TrueNorth's memory-locality principles, with no spiking/event-driven neuron model.",
+      "neuron": "not applicable (non-spiking digital NPU)",
+      "reset": "not applicable",
+      "encoding": "not applicable",
+      "input_encoding": "not applicable",
+      "timesteps": "not applicable",
+      "metric": "FPS/W, FPS/transistor, latency measured on physical fabricated chip vs GPU/CPU baselines",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Genuine measured silicon performance, but NorthPole is a non-spiking digital inference chip, out of direct scope for comparison to IF/rate-coded SNN hardware."
+      },
+      "workload": [
+        "ResNet-50",
+        "YOLOv4"
+      ],
+      "platform": {
+        "target_hardware": "IBM NorthPole (12nm, physical PCIe card)",
+        "toolchain": "custom digital NPU compiler"
+      },
+      "comparability_notes": "Genuine measured silicon performance, but NorthPole is a non-spiking digital inference chip, out of direct scope for comparison to IF/rate-coded SNN hardware.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "northpole"
+      ],
+      "source_refs": [
+        {
+          "source_id": "northpole",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "northpole",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "nxtf",
+      "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
+      "authors": "Rueckauer, B., Bybee, C., Goettsche, R., Singh, Y., Mishra, J., Wild, A.",
+      "year": 2021,
+      "venue": "arXiv:2101.04261 (later ACM TACO)",
+      "url": "https://doi.org/10.1145/3501770",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "NxTF is a Loihi-side compiler using SNN Toolbox as its conversion front-end; benchmarks error, energy, and delay on real Loihi silicon vs GPU/CPU.",
+      "neuron": "IF",
+      "reset": "reset-by-subtraction (SNN Toolbox convention)",
+      "encoding": "rate",
+      "input_encoding": "standard SNN Toolbox rate-based conversion",
+      "timesteps": "not fixed globally",
+      "metric": "error rate, energy-per-sample (mJ), delay-per-sample (ms) measured on physical Loihi silicon",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "All figures measured on physical Loihi silicon, compared directly to CPU/GPU TensorFlow baselines."
+      },
+      "workload": [
+        "N-MNIST",
+        "MNIST",
+        "CIFAR-10",
+        "DVS Gestures"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi (up to 16 chips)",
+        "toolchain": "SNN Toolbox + NxTF"
+      },
+      "comparability_notes": "All figures measured on physical Loihi silicon, compared directly to CPU/GPU TensorFlow baselines.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "nxtf"
+      ],
+      "source_refs": [
+        {
+          "source_id": "nxtf",
+          "locators": [
+            "NxTF paper Section 2.3.6 and Section 3.2.1",
+            "Rueckauer et al. 2022, Section 2.3.6, pp. 9-10",
+            "Rueckauer et al. 2022, Section 3.2.1, pp. 13-14, measurement method and footnote 4",
+            "Rueckauer et al. 2022, Table 2 and Sections 3.2.2-3.2.3, pp. 14-17",
+            "Section 2.3.6, reset and rate-coded NxTF route reviewed in Audits B and C"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "nxtf",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "odin",
+      "title": "A 0.086-mm2 12.7-pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital Spiking Neuromorphic Processor in 28-nm CMOS",
+      "authors": "Frenkel, C., Lefebvre, M., Legat, J.-D., Bol, D.",
+      "year": 2019,
+      "venue": "IEEE TBioCAS",
+      "url": "https://arxiv.org/abs/1804.07858",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "ODIN is a single-core online-learning (SDSP) digital spiking neuromorphic ASIC embedding rank-order-coded on-chip learning.",
+      "neuron": "LIF or custom Izhikevich-like",
+      "reset": "not found (SDSP-driven, not standard IF hard/subtractive)",
+      "encoding": "rank-order coding",
+      "input_encoding": "not applicable (on-chip SDSP learning)",
+      "timesteps": "event-driven",
+      "metric": "energy per synaptic operation (12.7 pJ minimum), accuracy (84.5%), energy per inference (15 nJ), measured on fabricated chips",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Measured on 9 fabricated chips."
+      },
+      "workload": [
+        "MNIST (6k images, single-layer 10-neuron network)"
+      ],
+      "platform": {
+        "target_hardware": "ODIN ASIC (28nm FDSOI, 9 fabricated chips tested)",
+        "toolchain": "custom HDL (open-source, ChFrenkel/ODIN)"
+      },
+      "comparability_notes": "Measured on 9 fabricated chips.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "odin"
+      ],
+      "source_refs": [
+        {
+          "source_id": "odin",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "odin",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "opi",
+      "title": "Optimized Potential Initialization for Low-latency Spiking Neural Networks",
+      "authors": "Bu, T., Ding, J., Yu, Z., Huang, T.",
+      "year": 2022,
+      "venue": "AAAI",
+      "url": "https://arxiv.org/abs/2202.01440",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Sets optimal non-zero initial membrane potential (theta/2) for IF neurons with reset-by-subtraction to reduce conversion error at low T.",
+      "neuron": "IF",
+      "reset": "subtraction",
+      "encoding": "rate",
+      "input_encoding": "direct/analog (Rueckauer convention)",
+      "timesteps": "<=32 targeted, results shown 8-512+",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "No hardware section, no chip named anywhere in the paper."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "No hardware section, no chip named anywhere in the paper.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "opi"
+      ],
+      "source_refs": [
+        {
+          "source_id": "opi",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "opi",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "opt-conv",
+      "title": "Optimal Conversion of Conventional Artificial Neural Networks to Spiking Neural Networks",
+      "authors": "Deng, S., Gu, S.",
+      "year": 2021,
+      "venue": "ICLR",
+      "url": "https://arxiv.org/abs/2103.00476",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Threshold-shift plus soft-reset conversion method (threshold ReLU and activation shift) reducing timesteps to near-lossless conversion.",
+      "neuron": "IF",
+      "reset": "reset-by-subtraction (soft reset), combined with threshold balancing",
+      "encoding": "rate",
+      "input_encoding": "standard rate-based conversion",
+      "timesteps": "T~=16-100 near-lossless, T=256 for best ImageNet numbers",
+      "metric": "classification accuracy in software simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Abstract explicitly hedges deployment as future potential ('promising to get implanted onto embedded platforms'); all numbers from software simulation."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (Jackn0/snn_optimal_conversion_pipeline)"
+      },
+      "comparability_notes": "Abstract explicitly hedges deployment as future potential ('promising to get implanted onto embedded platforms'); all numbers from software simulation.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "opt-conv"
+      ],
+      "source_refs": [
+        {
+          "source_id": "opt-conv",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "opt-conv",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "pascal",
+      "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
+      "authors": "Ramesh, P., Srinivasan, G.",
+      "year": 2025,
+      "venue": "TMLR",
+      "url": "https://arxiv.org/abs/2505.01730",
+      "family": "mixed-timestep",
+      "population": "algorithm",
+      "method_summary": "PASC-IF is paired with a static per-layer Adaptive Layerwise horizon. Its reported T_eff is an energy-overhead-weighted layer statistic rather than measured latency.",
+      "neuron": "PASC-IF (spike accumulation, soft reset, excitatory + inhibitory spikes)",
+      "reset": "soft reset (not subtractive/hard)",
+      "encoding": "spike-count based (not classic rate coding)",
+      "input_encoding": "inherits QCFS activation/encoding convention",
+      "timesteps": "T_eff 2.13-12.94 as an analytical layer statistic. The released ResNet-18/CIFAR-10 T_eff=3.14 script silently truncates 17 listed layer horizons to 10 coefficients through zip().",
+      "metric": "E4 RTL synthesis and cycle simulation cover only uniform T=4 PASC-IF overhead. Mixed-horizon accuracy and T_eff remain software and analytical results.",
+      "boundary": {
+        "evidence_class": "E4",
+        "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",
+        "paper_specific_notes": "Appendix A.10 is E4 for VGG-16/CIFAR-10 at uniform T=4. It does not validate Adaptive Layerwise mixed-horizon execution. The published T_eff=3.14 result has an unresolved 17-layer-to-10-coefficient cardinality conflict in the released script."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none for the T_eff headline; custom in-house LoAS/SparTen-based accelerator (RTL synthesis) for the uniform-T=4 neuron-overhead check",
+        "toolchain": "custom PyTorch (BrainSeek-Lab/PASCAL)"
+      },
+      "comparability_notes": "Appendix A.10 is E4 for VGG-16/CIFAR-10 at uniform T=4. It does not validate Adaptive Layerwise mixed-horizon execution. The published T_eff=3.14 result has an unresolved 17-layer-to-10-coefficient cardinality conflict in the released script.",
+      "evidence_class": "E4",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "pascal"
+      ],
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "Independent recomputation gives 3.1361557645729463 from the first 10 paired values, 1.8447975085723214 if that sum is divided by 17, and 2.411764705882353 for the simple mean of all 17 timestep values",
+            "PASCAL TMLR paper, Algorithm 1, PDF p. 5",
+            "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "TMLR paper, Algorithm 1, PDF p. 5",
+            "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
+            "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
+            "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
+            "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
+            "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://github.com/BrainSeek-Lab/PASCAL"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "pascal",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "patino-saucedo-2020",
+      "title": "Event-driven implementation of deep spiking convolutional neural networks for supervised classification using the SpiNNaker neuromorphic platform",
+      "authors": "Patino-Saucedo, A., Rostro-Gonzalez, H., Serrano-Gotarredona, T., Linares-Barranco, B.",
+      "year": 2020,
+      "venue": "Neural Networks 121:319-328",
+      "url": "https://doi.org/10.1016/j.neunet.2019.09.008",
+      "family": "classical-conversion",
+      "population": "deployment",
+      "method_summary": "Direct conversion of a pretrained LeNet CNN via the SNN Toolbox (threshold-balancing) deployed on physical SpiNNaker for MNIST, plus a separately-trained STBP direct-training network for event-based N-MNIST, both deployed on SpiNNaker.",
+      "neuron": "IF (threshold-balancing conversion) and STBP-trained (direct training, N-MNIST)",
+      "reset": "reset-by-subtraction (SNN Toolbox convention)",
+      "encoding": "rate (both methods)",
+      "input_encoding": "rate-coded",
+      "timesteps": "not found",
+      "metric": "accuracy (98.2% MNIST conversion, 97.92% N-MNIST STBP), measured on physical hardware",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Predates the QCFS lineage by construction (2020); best reported SpiNNaker accuracy at the time for the conversion result."
+      },
+      "workload": [
+        "MNIST",
+        "N-MNIST"
+      ],
+      "platform": {
+        "target_hardware": "SpiNNaker (103-machine, 48 chips)",
+        "toolchain": "SNN Toolbox (conversion); STBP (direct training)"
+      },
+      "comparability_notes": "Predates the QCFS lineage by construction (2020); best reported SpiNNaker accuracy at the time for the conversion result.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "patino-saucedo-2020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "patino-saucedo-2020",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "patino-saucedo-2020",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "plif",
+      "title": "Incorporating Learnable Membrane Time Constant to Enhance Learning of Spiking Neural Networks",
+      "authors": "Fang, W. et al.",
+      "year": 2021,
+      "venue": "ICCV",
+      "url": "https://arxiv.org/abs/2007.05785",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Parametric Leaky Integrate-and-Fire (PLIF) neuron with learnable membrane time constant.",
+      "neuron": "PLIF",
+      "reset": "not found",
+      "encoding": "rate/temporal",
+      "input_encoding": "not found",
+      "timesteps": "8 (static), 10-20 (neuromorphic)",
+      "metric": "accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no hardware execution."
+      },
+      "workload": [
+        "MNIST",
+        "Fashion-MNIST",
+        "CIFAR-10",
+        "N-MNIST",
+        "CIFAR10-DVS",
+        "DVS128 Gesture"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "SpikingJelly"
+      },
+      "comparability_notes": "NOT FOUND: no hardware execution.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "plif"
+      ],
+      "source_refs": [
+        {
+          "source_id": "plif",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "plif",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "qac",
+      "title": "QAC: Quantization-Aware Conversion for Mixed-Timestep Spiking Neural Networks",
+      "authors": "Guo, M., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "year": 2025,
+      "venue": "Submitted to ICLR 2025 (OpenReview, no confirmed acceptance)",
+      "url": "https://openreview.net/forum?id=D4sQzdMvcG",
+      "family": "mixed-timestep",
+      "population": "algorithm",
+      "method_summary": "QAC maps learned per-layer activation quantization settings to static layerwise timestep counts and aligns adjacent layers by temporal averaging and repetition.",
+      "neuron": "IF, soft reset",
+      "reset": "subtraction",
+      "encoding": "rate",
+      "input_encoding": "not detailed in audit excerpt",
+      "timesteps": "average 2.76 (ResNet-18/CIFAR-10, per-layer arithmetic mean, not a sum)",
+      "metric": "software accuracy against the arithmetic mean of layerwise timestep counts",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "E5 only. The average timestep is neither elapsed time nor cycle count. Section 7.7 is qualitative and warns of pipeline stalls. No compiler, mapper, simulator, RTL, or physical processor executes the proposal."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (LSQ-style quantizer)"
+      },
+      "comparability_notes": "E5 only. The average timestep is neither elapsed time nor cycle count. Section 7.7 is qualitative and warns of pipeline stalls. No compiler, mapper, simulator, RTL, or physical processor executes the proposal.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "qac"
+      ],
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "Complete inspections of public revisions p4ZjfNpLYo and rXoJz4T7cw",
+            "Independent public revision rXoJz4T7cw confirms the same method, https://openreview.net/notes/edits/attachment?id=rXoJz4T7cw&name=pdf",
+            "OpenReview public revision attachment p4ZjfNpLYo, Figure 2 and Section 5.1, PDF pp. 7 and 9",
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.7 and Algorithm 2, PDF pp. 21-23",
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.7, Figure 4, PDF pp. 21-23",
+            "OpenReview public revision attachment p4ZjfNpLYo, Section 7.8, PDF p. 24",
+            "OpenReview public revision attachment p4ZjfNpLYo, Sections 4.2-4.3, Eqs. 11-13, PDF pp. 5-8",
+            "OpenReview public revision attachment p4ZjfNpLYo, contribution summary and Table 1, PDF pp. 2 and 5",
+            "OpenReview public revision attachment rXoJz4T7cw, complete-text search",
+            "QAC public revision p4ZjfNpLYo, Section 7.7, PDF pp. 21-23",
+            "QAC public revision p4ZjfNpLYo, Sections 4.2-4.3, PDF pp. 5-8",
+            "https://openreview.net/notes/edits/attachment?id=p4ZjfNpLYo&name=pdf",
+            "https://openreview.net/notes/edits/attachment?id=rXoJz4T7cw&name=pdf"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "qac",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "qcfs",
+      "title": "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks",
+      "authors": "Bu, T., Fang, W., Ding, J., Dai, P., Yu, Z., Huang, T.",
+      "year": 2022,
+      "venue": "ICLR",
+      "url": "https://arxiv.org/abs/2303.04347",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Quantization Clip-Floor-Shift (QCFS) ANN activation trained to be bit-identical to an IF neuron in SNN mode, enabling high accuracy at very low T.",
+      "neuron": "IF, soft/subtractive reset",
+      "reset": "subtraction",
+      "encoding": "rate",
+      "input_encoding": "direct/analog first layer (constant current, Rueckauer 2017 convention)",
+      "timesteps": "T=1 (future work only), 4, 8, 16, 32, ..., 512+",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "All results from software simulation; conclusion states results 'can benefit implementations on neuromorphic hardware' as aspirational framing only, no experiments-section hardware content."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (putshua/SNN_conversion_QCFS)"
+      },
+      "comparability_notes": "All results from software simulation; conclusion states results 'can benefit implementations on neuromorphic hardware' as aspirational framing only, no experiments-section hardware content.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "qcfs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "qcfs",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "qcfs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "qffs",
+      "title": "Quantization Framework for Fast Spiking Neural Networks",
+      "authors": "Li, C., Ma, L., Furber, S.",
+      "year": 2022,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://www.frontiersin.org/articles/10.3389/fnins.2022.918793/full",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "LSQ-based quantization-aware ANN converted to SNN with 'occasional noise' suppression, explicit analog-coded input.",
+      "neuron": "IF",
+      "reset": "not specified beyond standard convention",
+      "encoding": "rate",
+      "input_encoding": "explicitly analog-coded (Rueckauer et al. 2017 convention)",
+      "timesteps": "T=4 (CIFAR-10), T=8/10 (ImageNet)",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Despite co-author Furber's SpiNNaker affiliation, no SpiNNaker run reported anywhere in the paper (confirmed against full text)."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Despite co-author Furber's SpiNNaker affiliation, no SpiNNaker run reported anywhere in the paper (confirmed against full text).",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "qffs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "qffs",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "qffs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "quartz",
+      "title": "Ultra-low-power Image Classification on Neuromorphic Hardware",
+      "authors": "Lenz, C., Orchard, G., Sheik, S.",
+      "year": 2024,
+      "venue": "arXiv:2309.16795 (v2)",
+      "url": "https://arxiv.org/abs/2309.16795",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "method_summary": "Quartz proposes Time-To-First-Spike (TTFS) ANN-to-SNN conversion using counterweight and rectifier synapses, avoiding the dynamic-threshold machinery of earlier TTFS methods; deployed and measured on physical Loihi 1.",
+      "neuron": "non-leaky IF, single spike per neuron (TTFS)",
+      "reset": "not applicable (fires exactly once per sample)",
+      "encoding": "temporal (TTFS), explicitly abandons rate coding",
+      "input_encoding": "TTFS encoding",
+      "timesteps": "not applicable in the classic multi-step rate sense (single-spike temporal code)",
+      "metric": "physical Loihi 1 latency, static and dynamic power, energy, and EDP. The table has a CIFAR-10 energy-unit inconsistency, and the preferred corrected CIFAR-10 EDP uses an estimated placement correction.",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "E1 on physical Nahuku 32 using NxSDK 1.0.0. MNIST values are direct measurements. For CIFAR-10, power multiplied by latency and the table EDP imply about 563 mJ rather than the 564 microjoule label; the preferred 10.3 mJ-s EDP is placement-corrected rather than directly measured."
+      },
+      "workload": [
+        "MNIST",
+        "CIFAR-10"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi 1 (Nahuku 32 board, ncl-ext-ghrd-01)",
+        "toolchain": "custom (NxSDK 1.0.0)"
+      },
+      "comparability_notes": "E1 on physical Nahuku 32 using NxSDK 1.0.0. MNIST values are direct measurements. For CIFAR-10, power multiplied by latency and the table EDP imply about 563 mJ rather than the 564 microjoule label; the preferred 10.3 mJ-s EDP is placement-corrected rather than directly measured.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "quartz"
+      ],
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Abstract, pp. 1-2",
+            "Data availability statement, p. 10",
+            "Section 2 and Section 5, rate-code exclusion reviewed in Audit C",
+            "Section 2, Proposed ANN-to-SNN Conversion Method, pp. 2-4",
+            "Section 4, Results on Loihi, pp. 6-9",
+            "Section 5, Discussion, pp. 9-10",
+            "Table 2, p. 7",
+            "Table 3 and Section 4.2, pp. 8-9"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "quartz",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "reckon",
+      "title": "ReckOn: A 28-nm Sub-mm2 Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales",
+      "authors": "Frenkel, C., Indiveri, G.",
+      "year": 2022,
+      "venue": "ISSCC (arXiv:2208.09759)",
+      "url": "https://arxiv.org/abs/2208.09759",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Spiking RNN processor with a feed-forward-eligibility-trace e-prop/BPTT approximation, enabling on-chip supervised learning over second-long timescales.",
+      "neuron": "LIF",
+      "reset": "not found",
+      "encoding": "not applicable (e-prop-based)",
+      "input_encoding": "not found",
+      "timesteps": "not applicable (continuous processing)",
+      "metric": "accuracy (87.3-96.4%), peak efficiency (5.3 pJ/SOP), energy per step, measured on fabricated chips",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Measured on 5 fabricated chips, end-to-end on-chip learning demonstrated on three benchmarks."
+      },
+      "workload": [
+        "DVS Gestures",
+        "Spiking Heidelberg Digits",
+        "synthetic rodent-navigation task"
+      ],
+      "platform": {
+        "target_hardware": "ReckOn ASIC (28nm FDSOI, 5 fabricated chips)",
+        "toolchain": "custom HDL (open-source, ChFrenkel/ReckOn)"
+      },
+      "comparability_notes": "Measured on 5 fabricated chips, end-to-end on-chip learning demonstrated on three benchmarks.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "reckon"
+      ],
+      "source_refs": [
+        {
+          "source_id": "reckon",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "reckon",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "rmp-snn",
+      "title": "RMP-SNN: Residual Membrane Potential Neuron for Enabling Deeper High-Accuracy and Low-Latency Spiking Neural Network",
+      "authors": "Han, B., Srinivasan, G., Roy, K.",
+      "year": 2020,
+      "venue": "CVPR",
+      "url": "https://doi.org/10.1109/CVPR42600.2020.01357",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Residual membrane potential (soft-reset) IF neuron with optimal threshold initialization, reduces conversion loss at fewer timesteps.",
+      "neuron": "RMP neuron (soft-reset IF)",
+      "reset": "reset-by-subtraction (residual membrane potential)",
+      "encoding": "rate",
+      "input_encoding": "standard threshold-balancing/rate-based pipeline",
+      "timesteps": "64-2048",
+      "metric": "classification accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "All experiments GPU-simulated; no hardware section found in the audit."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "All experiments GPU-simulated; no hardware section found in the audit.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "rmp"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rmp",
+          "locators": [
+            "Structured metadata from evidence-papers.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rmp",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "rueckauer-2017",
+      "title": "Conversion of Continuous-Valued Deep Networks to Efficient Event-Driven Networks for Image Classification",
+      "authors": "Rueckauer, B., Lungu, I.-A., Hu, Y., Pfeiffer, M., Liu, S.-C.",
+      "year": 2017,
+      "venue": "Frontiers in Neuroscience 11:682",
+      "url": "https://doi.org/10.3389/fnins.2017.00682",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Introduces reset-by-subtraction and compares Poisson vs analog first-layer input encoding for ANN-to-SNN conversion; origin of the SNN Toolbox.",
+      "neuron": "IF",
+      "reset": "reset-by-subtraction (introduced here)",
+      "encoding": "rate (Poisson) and direct/analog compared",
+      "input_encoding": "both Poisson and constant analog current tested; analog substantially reduces error",
+      "timesteps": "varies by experiment",
+      "metric": "classification accuracy in software simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "All results from SNN Toolbox's own software simulator; neuromorphic chips discussed only as future/target deployment context."
+      },
+      "workload": [
+        "MNIST",
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none (in this paper)",
+        "toolchain": "SNN Toolbox (own software simulator)"
+      },
+      "comparability_notes": "All results from SNN Toolbox's own software simulator; neuromorphic chips discussed only as future/target deployment context.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "rueckauer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rueckauer",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rueckauer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "sddpg",
+      "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
+      "authors": "not fully specified in audit excerpt (Michmizos group)",
+      "year": 2020,
+      "venue": "arXiv:2003.01157",
+      "url": "https://arxiv.org/abs/2003.01157",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Spiking actor network co-trained end-to-end with a deep critic via gradient descent (STBP extension), deployed on Loihi for real-world TurtleBot2 mapless navigation.",
+      "neuron": "spiking (STBP-based)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "T=5,10,25,50",
+      "metric": "idle/dynamic power, inferences/s, microjoules/inference measured on physical chip; 75x less energy per inference than DDPG on Jetson TX2",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "One of the few directly-trained (gradient-based) Loihi robotics papers found in the audit."
+      },
+      "workload": [
+        "not applicable (real-world robot navigation task)"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi (Kapoho Bay, 2 chips)",
+        "toolchain": "custom STBP extension"
+      },
+      "comparability_notes": "One of the few directly-trained (gradient-based) Loihi robotics papers found in the audit.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "sddpg"
+      ],
+      "source_refs": [
+        {
+          "source_id": "sddpg",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "sddpg",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "seenn",
+      "title": "SEENN: Towards Temporal Spiking Early-Exit Neural Networks",
+      "authors": "Li, Y., Geller, T., Kim, Y., Panda, P.",
+      "year": 2023,
+      "venue": "NeurIPS",
+      "url": "https://arxiv.org/abs/2304.01230",
+      "family": "early-exit",
+      "population": "algorithm",
+      "method_summary": "SEENN-I (confidence thresholding) and SEENN-II (RL policy) decide when to exit early per sample, reaching average T~1.08 on CIFAR-10.",
+      "neuron": "inherits QCFS/TET base SNN",
+      "reset": "inherits base method",
+      "encoding": "rate",
+      "input_encoding": "inherits base method's convention",
+      "timesteps": "avg 1.08 (CIFAR-10, SEENN-II) up to full T=6 baselines",
+      "metric": "GPU throughput latency (V100) and SynOps-style op-count energy estimate",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Section 4.3 explicitly states latency uses a GPU (Tesla V100); energy is 'a rough measure to count only the energy of operations', an explicit op-count estimate, not a chip measurement."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet",
+        "CIFAR10-DVS"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Section 4.3 explicitly states latency uses a GPU (Tesla V100); energy is 'a rough measure to count only the energy of operations', an explicit op-count estimate, not a chip measurement.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "seenn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "seenn",
+          "locators": [
+            "SEENN paper, method and Section 4.3, PDF pp. 2-4 and 8"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "seenn",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "seneca",
+      "title": "SENECA: building a fully digital neuromorphic processor, design trade-offs and challenges",
+      "authors": "Tang, G. et al. (imec)",
+      "year": 2023,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2023.1187252",
+      "family": "hardware-accelerator",
+      "population": "algorithm",
+      "method_summary": "RISC-V-based digital neuromorphic processor architecture pairing a flexible controller with vector-like Neuron Processing Elements; balances flexibility and efficiency.",
+      "neuron": "programmable/RISC-V-defined",
+      "reset": "configurable (user-defined)",
+      "encoding": "configurable",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "0.47mm^2 synthesized area, 2.8 pJ/SOP, via RTL synthesis and power-estimation software, not measured on a physical chip",
+      "boundary": {
+        "evidence_class": "E4",
+        "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",
+        "paper_specific_notes": "Explicitly confirmed via a TU Delft MSc thesis: 'no physical chip implementation of SENeCA exists at the time of writing'; all figures are synthesis/simulation-based."
+      },
+      "workload": [
+        "not found"
+      ],
+      "platform": {
+        "target_hardware": "none (not yet fabricated)",
+        "toolchain": "HDL simulator + power-estimation software"
+      },
+      "comparability_notes": "Explicitly confirmed via a TU Delft MSc thesis: 'no physical chip implementation of SENeCA exists at the time of writing'; all figures are synthesis/simulation-based.",
+      "evidence_class": "E4",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "seneca"
+      ],
+      "source_refs": [
+        {
+          "source_id": "seneca",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "seneca",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "sengupta-2019",
+      "title": "Going Deeper in Spiking Neural Networks: VGG and Residual Architectures",
+      "authors": "Sengupta, A., Ye, Y., Wang, R., Liu, C., Roy, K.",
+      "year": 2019,
+      "venue": "Frontiers in Neuroscience 13:95",
+      "url": "https://doi.org/10.3389/fnins.2019.00095",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "SPIKE-NORM threshold-balancing conversion enabling deep VGG/ResNet SNNs on CIFAR-10/ImageNet.",
+      "neuron": "IF (hard reset)",
+      "reset": "reset-to-zero",
+      "encoding": "rate",
+      "input_encoding": "Poisson spike trains used in weight-normalization; standard rate coding for evaluation",
+      "timesteps": "2500",
+      "metric": "classification accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "SynOps-style analytical estimate of hardware overhead from spike sparsity, not a chip measurement; classification results from 5 GPU-simulated runs."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "SynOps-style analytical estimate of hardware overhead from spike sparsity, not a chip measurement; classification results from 5 GPU-simulated runs.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "sengupta"
+      ],
+      "source_refs": [
+        {
+          "source_id": "sengupta",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "sengupta",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "sew-resnet",
+      "title": "Deep Residual Learning in Spiking Neural Networks",
+      "authors": "Fang, W. et al.",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "url": "https://arxiv.org/abs/2102.04159",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Spike-Element-Wise ResNet enabling very deep directly-trained (surrogate-gradient) SNNs.",
+      "neuron": "IF/PLIF",
+      "reset": "not found in audit excerpt",
+      "encoding": "rate/temporal (BPTT-trained)",
+      "input_encoding": "not found",
+      "timesteps": "T=4 (ImageNet), 16 (DVS Gesture, CIFAR10-DVS)",
+      "metric": "accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no hardware execution reported in the paper or repo."
+      },
+      "workload": [
+        "ImageNet",
+        "DVS Gesture",
+        "CIFAR10-DVS"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "PyTorch + SpikingJelly"
+      },
+      "comparability_notes": "NOT FOUND: no hardware execution reported in the paper or repo.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "sew-resnet"
+      ],
+      "source_refs": [
+        {
+          "source_id": "sew-resnet",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "sew-resnet",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "slayer",
+      "title": "SLAYER: Spike Layer Error Reassignment in Time",
+      "authors": "Shrestha, S.B., Orchard, G.",
+      "year": 2018,
+      "venue": "NeurIPS",
+      "url": "https://arxiv.org/abs/1810.08646",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Backprop-through-time training algorithm for spiking networks, explicitly framed as an offline training system to configure a network before deploying it to a chip.",
+      "neuron": "CUBA-LIF",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "~300-350 (DVS Gesture)",
+      "metric": "accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E3",
+        "description": "documented but unexercised deployment route",
+        "paper_specific_notes": "No hardware run in the original paper; paper explicitly states SLAYER's role is 'an offline training system to configure a network before deploying it to a chip', the path is documented, not executed."
+      },
+      "workload": [
+        "MNIST",
+        "N-MNIST",
+        "DVS Gesture",
+        "TIDIGITS"
+      ],
+      "platform": {
+        "target_hardware": "none (in original paper)",
+        "toolchain": "custom CUDA (predecessor of Lava-DL slayer)"
+      },
+      "comparability_notes": "No hardware run in the original paper; paper explicitly states SLAYER's role is 'an offline training system to configure a network before deploying it to a chip', the path is documented, not executed.",
+      "evidence_class": "E3",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "slayer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slayer",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slayer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "slayer-nxtf-gesture",
+      "title": "SLAYER-trained CNN on Loihi 1 via NxTF (Intel nxsdk_modules_ncl DVS Gesture tutorial)",
+      "authors": "Intel intel-nrc-ecosystem/models (d_slayer_nxtf_gestures.py)",
+      "year": 2020,
+      "venue": "repository documentation / tutorial",
+      "url": "https://github.com/intel-nrc-ecosystem/models",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "SLAYER-trained network deployed via NxTF/NxSDK on a physical Loihi board, with execution-time and energy probes built into the script.",
+      "neuron": "CUBA/IF",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "~24-1024 bins",
+      "metric": "latency and energy measured via PerformanceProbeCondition on physical hardware",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Physical Loihi board execution with built-in performance probes."
+      },
+      "workload": [
+        "DVS Gesture"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi 1 board (ncl-ext-ghrd-01)",
+        "toolchain": "SLAYER (training) -> NxTF/NxSDK (deployment)"
+      },
+      "comparability_notes": "Physical Loihi board execution with built-in performance probes.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "slayer-nxtf-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "slip-relu",
+      "title": "A Unified Optimization Framework of ANN-SNN Conversion",
+      "authors": "Jiang, H., Anumasa, S., De Masi, G., Xiong, H., Gu, B.",
+      "year": 2023,
+      "venue": "ICML",
+      "url": "https://proceedings.mlr.press/v202/jiang23a.html",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "SlipReLU (weighted ReLU + step function) activation with a shift term achieves the first claimed 1-step (T=1) conversion.",
+      "neuron": "IF",
+      "reset": "not specified beyond standard convention",
+      "encoding": "rate",
+      "input_encoding": "direct/analog",
+      "timesteps": "T=1,2,4",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Zero chip names anywhere in the paper (verified against full text); single generic 'neuromorphic hardware' mention in intro."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (HaiyanJiang/SNN_Conversion_unified)"
+      },
+      "comparability_notes": "Zero chip names anywhere in the paper (verified against full text); single generic 'neuromorphic hardware' mention in intro.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "slip-relu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slip-relu",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slip-relu",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "snm",
+      "title": "Signed Neuron with Memory: Towards Simple, Accurate and High-Efficient ANN-SNN Conversion",
+      "authors": "Wang, Y., Zhang, M., Chen, Y., Qu, H.",
+      "year": 2022,
+      "venue": "IJCAI",
+      "url": "https://www.ijcai.org/proceedings/2022/0347.pdf",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Signed neuron with memory (allows negative/positive spikes) plus neuron-wise normalization for low-T conversion.",
+      "neuron": "signed neuron with memory",
+      "reset": "not found",
+      "encoding": "rate",
+      "input_encoding": "standard rate/analog input, no Poisson discussion",
+      "timesteps": "<=128 headline, tables to 1024",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'Potential for ultra-low-power event-driven neuromorphic hardware implementation' is abstract motivation only, no hardware section."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "'Potential for ultra-low-power event-driven neuromorphic hardware implementation' is abstract motivation only, no hardware section.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "snm"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snm",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snm",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "snn-calibration",
+      "title": "A Free Lunch From ANN: Towards Efficient, Accurate Spiking Neural Networks Calibration",
+      "authors": "Li, Y., Deng, S., Dong, X., Gong, R., Gu, S.",
+      "year": 2021,
+      "venue": "ICML",
+      "url": "https://arxiv.org/abs/2106.06984",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Calibrates bias/weights/initial membrane potential for extremely-low-latency conversion (T<=256), using continuous input at first layer.",
+      "neuron": "IF",
+      "reset": "standard threshold-balancing/soft-reset conventions from prior work",
+      "encoding": "rate",
+      "input_encoding": "continuous/analog input at first layer by explicit design (avoids binary spike generation)",
+      "timesteps": "T<=256, ImageNet results as low as T=128",
+      "metric": "classification accuracy and SynOps-based energy estimate in software simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Energy claims computed from Rathi and Roy 2020's per-operation energy constants (0.9 pJ/add, 4.6 pJ/multiply), explicitly not measured on any chip."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch, single NVIDIA GTX 1080Ti"
+      },
+      "comparability_notes": "Energy claims computed from Rathi and Roy 2020's per-operation energy constants (0.9 pJ/add, 4.6 pJ/multiply), explicitly not measured on any chip.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "snn-calibration"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snn-calibration",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snn-calibration",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "speck-dynamic-snn",
+      "title": "Spike-based dynamic computing with asynchronous sensing-computing neuromorphic chip",
+      "authors": "Yao, M., Richter, O., Zhao, G., Qiao, N., Xing, Y., Wang, D., Hu, T., Fang, W., Demirci, T., De Marchi, M., Deng, L., Yan, T., Nielsen, C., Sheik, S., Wu, C., Tian, Y., Xu, B., Li, G.",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-024-47811-6",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Dynamic SNN / temporal-attention framework trained via Sinabs, deployed on a physical Speck chip for gesture/gait/HAR-DVS tasks.",
+      "neuron": "IF",
+      "reset": "not found",
+      "encoding": "temporal, event-driven",
+      "input_encoding": "task-dependent",
+      "timesteps": "task-dependent",
+      "metric": "real-time power (as low as 0.70 mW), latency (3.36 us per input), accuracy gains from input masking, all measured on physical chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Physical Speck chip measurement, including a SpikingJelly co-author on the author list."
+      },
+      "workload": [
+        "DVS128 Gesture",
+        "DVS128 Gait-day",
+        "DVS128 Gait-night",
+        "HAR-DVS"
+      ],
+      "platform": {
+        "target_hardware": "SynSense Speck",
+        "toolchain": "Sinabs"
+      },
+      "comparability_notes": "Physical Speck chip measurement, including a SpikingJelly co-author on the author list.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "speck-dynamic-snn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "speck-dynamic-snn",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "speck-dynamic-snn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "speck1",
+      "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Dynamic Neural Network",
+      "authors": "Richter, O. et al. (SynSense)",
+      "year": 2023,
+      "venue": "arXiv:2304.06793 (IEEE)",
+      "url": "https://arxiv.org/abs/2304.06793",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Head-to-head, same-chip comparison of direct BPTT training vs ANN2SNN conversion on the physical Speck1 chip for N-MNIST.",
+      "neuron": "IF",
+      "reset": "not found",
+      "encoding": "temporal, event-driven",
+      "input_encoding": "300ms exposure window",
+      "timesteps": "not applicable (event-driven)",
+      "metric": "on-chip accuracy (98.50% BPTT vs 98.56% offline), energy (180 uJ/inference BPTT-CNN vs 141 uJ ANN2SNN on the same chip); also compares Loihi1-SLAYER (620 uJ) and Loihi1-SNN-TB (290 uJ) on NMNIST",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Direct BPTT training measured to give higher on-chip accuracy than ANN2SNN conversion at modest energy cost, on the same physical chip."
+      },
+      "workload": [
+        "N-MNIST"
+      ],
+      "platform": {
+        "target_hardware": "Speck1 (SynSense)",
+        "toolchain": "Sinabs + BPTT direct training (contrasted with ANN2SNN in the same table)"
+      },
+      "comparability_notes": "Direct BPTT training measured to give higher on-chip accuracy than ANN2SNN conversion at modest energy cost, on the same physical chip.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "richter"
+      ],
+      "source_refs": [
+        {
+          "source_id": "richter",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "richter",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spike-driven-transformer",
+      "title": "Spike-driven Transformer V2: Meta Spiking Neural Network Architecture Inspiring the Design of Next-generation Neuromorphic Chips",
+      "authors": "Yao, M. et al.",
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "url": "https://openreview.net/forum?id=1SIBN5Xyw7",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Spike-driven MS-residual transformer for ImageNet/COCO/ADE20K.",
+      "neuron": "LIF, MS-residual",
+      "reset": "not found",
+      "encoding": "temporal, spike-driven",
+      "input_encoding": "not found",
+      "timesteps": "T=1-4",
+      "metric": "theoretical energy only",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no physical hardware run reported; theoretical energy only."
+      },
+      "workload": [
+        "ImageNet",
+        "COCO",
+        "ADE20K"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "PyTorch + SpikingJelly"
+      },
+      "comparability_notes": "NOT FOUND: no physical hardware run reported; theoretical energy only.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "spike-driven-transformer-v2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spike-driven-transformer-v2",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spike-driven-transformer-v2",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spikeconverter",
+      "title": "SpikeConverter: An Efficient Conversion Framework Zipping the Gap between ANNs and SNNs",
+      "authors": "Liu, F., Zhao, W., Chen, Y., Wang, Z., Jiang, L.",
+      "year": 2022,
+      "venue": "AAAI",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/download/20061/19820",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Inverse-leaky IF (iLIF) neuron with temporal separation scheme, reducing conversion timesteps to 16.",
+      "neuron": "inverse-leaky IF (iLIF)",
+      "reset": "not found",
+      "encoding": "rate",
+      "input_encoding": "standard conversion convention, not Poisson",
+      "timesteps": "16 steps headline",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'More power-efficient computation...in specialized neuromorphic hardware' is background motivation only."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "'More power-efficient computation...in specialized neuromorphic hardware' is background motivation only.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "spikeconverter"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spikeconverter",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spikeconverter",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spikerplus",
+      "title": "Spiker+: A Framework for the Generation of Efficient Spiking Neural Networks FPGA Accelerators for Inference at the Edge",
+      "authors": "Carpegna, A., Savino, A., Di Carlo, S.",
+      "year": 2024,
+      "venue": "IEEE TETC",
+      "url": "https://doi.org/10.1109/tetc.2024.3511676",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Configurable multi-layer FPGA accelerator framework offering six neuron models (IF, first- and second-order LIF, each with hard or subtractive reset), the first surveyed accelerator to offer reset-by-subtraction as a named configuration option.",
+      "neuron": "IF, 1st/2nd-order LIF (configurable)",
+      "reset": "user-selectable hard or subtractive (reset-by-subtraction)",
+      "encoding": "not explicitly stated as rate coding",
+      "input_encoding": "not found",
+      "timesteps": "100-timestep encoding window (MNIST)",
+      "metric": "accuracy (93.85% MNIST), latency (780us/image), power (180mW), measured on physical FPGA synthesis+deployment",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "First accelerator surveyed with reset-by-subtraction as an explicit, named, user-selectable configuration, directly matching QCFS-style IF-with-reset-by-subtraction."
+      },
+      "workload": [
+        "MNIST",
+        "Spiking Heidelberg Dataset",
+        "AudioMNIST"
+      ],
+      "platform": {
+        "target_hardware": "Xilinx FPGA (physical synthesis + deployment)",
+        "toolchain": "BPTT-trainable (via snnTorch) or offline-trained"
+      },
+      "comparability_notes": "First accelerator surveyed with reset-by-subtraction as an explicit, named, user-selectable configuration, directly matching QCFS-style IF-with-reset-by-subtraction.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "spikerplus"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spikerplus",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spikerplus",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spikformer",
+      "title": "Spikformer: When Spiking Neural Network Meets Transformer",
+      "authors": "Zhou, Z. et al.",
+      "year": 2022,
+      "venue": "arXiv:2209.15425 (ICLR 2023)",
+      "url": "https://arxiv.org/abs/2209.15425",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Spike-based self-attention (spiking Q/K/V, no softmax) transformer trained directly with surrogate gradients.",
+      "neuron": "LIF (spike Q/K/V)",
+      "reset": "not found",
+      "encoding": "temporal (spike-based attention)",
+      "input_encoding": "not found",
+      "timesteps": "T=4 (ImageNet), 10-16 (DVS Gesture/CIFAR10-DVS)",
+      "metric": "theoretical SOP-based energy estimate (45nm MAC/AC constants), never measured on silicon",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no physical hardware run; energy figures are theoretical estimates only."
+      },
+      "workload": [
+        "ImageNet",
+        "CIFAR",
+        "CIFAR10-DVS",
+        "DVS128 Gesture"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "PyTorch + SpikingJelly + timm"
+      },
+      "comparability_notes": "NOT FOUND: no physical hardware run; energy figures are theoretical estimates only.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "spikformer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spikformer",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spikformer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spikingformer",
+      "title": "Spikingformer: A Key Foundation Model for Spiking Neural Networks",
+      "authors": "Zhou, C., Yu, L., Zhou, Z., Zhang, H., Wang, Z., Zhou, Y., Ma, Z., Tian, Y.",
+      "year": 2026,
+      "venue": "AAAI (arXiv:2304.11954)",
+      "url": "https://arxiv.org/abs/2304.11954",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Spike-driven MS-residual redesign, arguing SEW-ResNet/Spikformer-style residuals are unsuitable for mainstream neuromorphic hardware deployment due to leftover integer-float multiplications.",
+      "neuron": "LIF, MS-residual (spike-driven)",
+      "reset": "not found",
+      "encoding": "temporal, spike-driven",
+      "input_encoding": "not found",
+      "timesteps": "T=4",
+      "metric": "theoretical 45nm energy model only",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no hardware execution; only a theoretical energy model despite an explicit architectural argument for hardware deployability."
+      },
+      "workload": [
+        "13 datasets incl. ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "PyTorch + SpikingJelly"
+      },
+      "comparability_notes": "NOT FOUND: no hardware execution; only a theoretical energy model despite an explicit architectural argument for hardware deployability.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "spikingformer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spikingformer",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spikingformer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "spinnaker-goalkeeper",
+      "title": "System integration of neuromorphic DVS+SpiNNaker+servomotor robot (goalkeeper)",
+      "authors": "Cheng, R., Nikolic, K.",
+      "year": 2020,
+      "venue": "TechRxiv",
+      "url": "https://doi.org/10.36227/techrxiv.11854254",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "DVS (AER camera) to SNN on SpiNNaker to servo motor, fully closed-loop robot goalkeeper, disconnected from any PC.",
+      "neuron": "SNN on SpiNNaker (numerically-integrated LIF or other model, spike-packet communication)",
+      "reset": "not found",
+      "encoding": "event-driven",
+      "input_encoding": "live DVS AER camera stream",
+      "timesteps": "real-time closed loop",
+      "metric": "response latency (6.5ms), interception accuracy (85%, balls up to 1 m/s), max system power (7.15W), measured on physical hardware",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Fully closed-loop, disconnected from any PC."
+      },
+      "workload": [
+        "not applicable (robot ball-interception task)"
+      ],
+      "platform": {
+        "target_hardware": "SpiNNaker (physical)",
+        "toolchain": "SpiNNaker native toolchain"
+      },
+      "comparability_notes": "Fully closed-loop, disconnected from any PC.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "spinnaker-goalkeeper"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spinnaker-goalkeeper",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spinnaker-goalkeeper",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "srp",
+      "title": "Reducing ANN-SNN Conversion Error through Residual Membrane Potential",
+      "authors": "Hao, Z., Bu, T., Ding, J., Huang, T., Yu, Z.",
+      "year": 2023,
+      "venue": "AAAI",
+      "url": "https://arxiv.org/abs/2302.02091",
+      "family": "low-latency-conversion",
+      "population": "algorithm",
+      "method_summary": "Two-stage calibration+inference SRP scheme reads out residual membrane potential built on QCFS activation, reducing latency to as few as 4 steps.",
+      "neuron": "IF (built on QCFS activation)",
+      "reset": "subtraction",
+      "encoding": "rate",
+      "input_encoding": "direct/analog (inherits QCFS convention)",
+      "timesteps": "T=4,8,16,32 (headline tau=4)",
+      "metric": "accuracy vs T in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Conclusion states aspiration to 'promote practical application of SNNs on neuromorphic chips'; no experiments-section hardware content."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Conclusion states aspiration to 'promote practical application of SNNs on neuromorphic chips'; no experiments-section hardware content.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "srp"
+      ],
+      "source_refs": [
+        {
+          "source_id": "srp",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "srp",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "stromatias-2015",
+      "title": "Scalable Energy-Efficient, Low-Latency Implementations of (Trained) Spiking Deep Belief Networks on SpiNNaker",
+      "authors": "Stromatias, E., Neil, D., Galluppi, F., Pfeiffer, M., Liu, S.-C., Furber, S.",
+      "year": 2015,
+      "venue": "IJCNN",
+      "url": "https://doi.org/10.1109/IJCNN.2015.7280625",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Deep Belief Network trained offline via contrastive divergence, realized as a spiking network and run on SpiNNaker.",
+      "neuron": "LIF (DBN spiking realization)",
+      "reset": "not found",
+      "encoding": "rate",
+      "input_encoding": "rate-coded",
+      "timesteps": "not specified (real-time operation)",
+      "metric": "accuracy (95%, measured on-chip), latency (tens of ms), power (<0.3W) measured on physical hardware",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Accuracy, latency, and power dissipation all measured on physical SpiNNaker silicon."
+      },
+      "workload": [
+        "MNIST"
+      ],
+      "platform": {
+        "target_hardware": "SpiNNaker (single chip; power-scaling estimates extrapolated to 48-chip board)",
+        "toolchain": "SpiNNaker software stack"
+      },
+      "comparability_notes": "Accuracy, latency, and power dissipation all measured on physical SpiNNaker silicon.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "stromatias-2015"
+      ],
+      "source_refs": [
+        {
+          "source_id": "stromatias-2015",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "stromatias-2015",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "syncnn",
+      "title": "SyncNN: Evaluating and Accelerating Spiking Neural Networks on FPGAs",
+      "authors": "Panchapakesan, A., Fang, Z., Li, J.",
+      "year": 2022,
+      "venue": "FPL 2021 / ACM TRETS 2022",
+      "url": "https://doi.org/10.1145/3514253",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Synchronous reformulation of rate-encoded IF-neuron SNN inference proven mathematically equivalent to standard multi-timestep execution, explicitly using reset-by-subtraction and Poisson rate coding, deployed on multiple physical FPGA boards.",
+      "neuron": "IF",
+      "reset": "subtraction (explicit Vm[o] -= Vth)",
+      "encoding": "rate (Poisson)",
+      "input_encoding": "Poisson rate encoding of input image",
+      "timesteps": "dataset/network-dependent, not fixed",
+      "metric": "accuracy (99.6% MNIST), throughput (13086 FPS MNIST), measured across three real FPGA boards, not just synthesis estimates",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Closest FPGA match to this thesis's QCFS-style IF+reset-by-subtraction+rate-coding assumptions; deployed and measured on real hardware, not synthesis estimates only."
+      },
+      "workload": [
+        "MNIST",
+        "SVHN",
+        "CIFAR-10"
+      ],
+      "platform": {
+        "target_hardware": "Xilinx ARM-FPGA SoC boards (ZCU102, ZCU104, ZED)",
+        "toolchain": "Vitis HLS/SDSoC (github.com/SFU-HiAccel/SyncNN)"
+      },
+      "comparability_notes": "Closest FPGA match to this thesis's QCFS-style IF+reset-by-subtraction+rate-coding assumptions; deployed and measured on real hardware, not synthesis estimates only.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "syncnn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "syncnn",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "syncnn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "tang-slam-loihi",
+      "title": "Spiking Neural Network on Neuromorphic Hardware for Energy-Efficient Unidimensional SLAM",
+      "authors": "Tang, G., Shah, A., Michmizos, K.P.",
+      "year": 2019,
+      "venue": "arXiv:1903.02504",
+      "url": "https://arxiv.org/abs/1903.02504",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "Hand-designed, biologically constrained head-direction/Bayesian-inference circuit for robot localization and mapping on Loihi.",
+      "neuron": "hand-designed (biologically constrained)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "dynamic power (100x less than GMapping on CPU), comparable localization accuracy, measured on physical chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Measured on physical Loihi hardware."
+      },
+      "workload": [
+        "not applicable (robot head-direction localization task)"
+      ],
+      "platform": {
+        "target_hardware": "Intel Loihi (Nahuku 8-chip board), 82 cores",
+        "toolchain": "hand-designed Loihi microcode"
+      },
+      "comparability_notes": "Measured on physical Loihi hardware.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "tang-slam-loihi"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tang-slam-loihi",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tang-slam-loihi",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "tcl",
+      "title": "TCL: an ANN-to-SNN Conversion with Trainable Clipping Layers",
+      "authors": "Ho, N.-D., Chang, I.-J.",
+      "year": 2021,
+      "venue": "DAC",
+      "url": "https://doi.org/10.1109/DAC18074.2021.9586266",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Trainable clipping layers set on the ANN side pre-conversion reduce required simulated 'cycles' for standard IF conversion.",
+      "neuron": "IF, standard threshold-balancing conversion",
+      "reset": "not the paper's focus; standard IF conversion assumed",
+      "encoding": "rate",
+      "input_encoding": "standard rate-based/threshold-balancing conversion",
+      "timesteps": "20-350 simulated 'cycles' (PyTorch timesteps, not hardware clock cycles)",
+      "metric": "classification accuracy in PyTorch simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Terminology risk: 'cycles' are simulated discrete SNN timesteps in PyTorch, not hardware clock cycles; no chip or cycle-accurate model described anywhere."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "Terminology risk: 'cycles' are simulated discrete SNN timesteps in PyTorch, not hardware clock cycles; no chip or cycle-accurate model described anywhere.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "tcl"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tcl",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tcl",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "tdbn",
+      "title": "Going Deeper With Directly-Trained Larger Spiking Neural Networks",
+      "authors": "Zheng, H., Wu, Y., Deng, L., Hu, Y., Li, G.",
+      "year": 2021,
+      "venue": "AAAI",
+      "url": "https://arxiv.org/abs/2011.05280",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Threshold-dependent batch normalization (tdBN/STBP-tdBN) enabling deeper directly-trained SNNs.",
+      "neuron": "LIF",
+      "reset": "not found",
+      "encoding": "temporal (STBP)",
+      "input_encoding": "not found",
+      "timesteps": "T=2-6",
+      "metric": "accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Paper frames tdBN's batchnorm-fold as 'enabling efficient implementation on neuromorphic hardware' but reports no actual chip run, a design argument only."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet",
+        "DVS-CIFAR10",
+        "DVS Gesture"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (STBP)"
+      },
+      "comparability_notes": "Paper frames tdBN's batchnorm-fold as 'enabling efficient implementation on neuromorphic hardware' but reports no actual chip run, a design argument only.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "tdbn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tdbn",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tdbn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "temporal-flexibility",
+      "title": "Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness",
+      "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
+      "year": 2025,
+      "venue": "ICLR (Poster)",
+      "url": "https://arxiv.org/html/2503.17394v1",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "Mixed Time-step Training samples stagewise timestep vectors during training to produce temporally robust weights. The physical Speck2e inference path is fully event-driven and timestep-free rather than a static mixed-horizon execution schedule.",
+      "neuron": "LIF/general SNN stages with learned communication modules",
+      "reset": "not found",
+      "encoding": "unstated; native asynchronous DVS events at deployment, not rate coding",
+      "input_encoding": "not detailed",
+      "timesteps": "trained across T in {1,...,6}; deployed on event-driven (timestep-free) Speck2e",
+      "metric": "physical Speck2e accuracy and output-spike fidelity relative to simulation",
+      "boundary": {
+        "evidence_class": "E2",
+        "description": "physical hardware with accuracy or fidelity measurement only",
+        "paper_specific_notes": "E2. Table 5 reports 98.57 percent Speck accuracy, 3.92 percent simulator-to-chip spike difference, and 2.81 percent repeated-chip difference. No latency or energy is reported. The training timestep vector is not scheduled on chip."
+      },
+      "workload": [
+        "N-MNIST"
+      ],
+      "platform": {
+        "target_hardware": "Speck2e Devkit (SynSense)",
+        "toolchain": "custom PyTorch training, Speck2e SDK for deployment"
+      },
+      "comparability_notes": "E2. Table 5 reports 98.57 percent Speck accuracy, 3.92 percent simulator-to-chip spike difference, and 2.81 percent repeated-chip difference. No latency or energy is reported. The training timestep vector is not scheduled on chip.",
+      "evidence_class": "E2",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "temporal-flexibility"
+      ],
+      "source_refs": [
+        {
+          "source_id": "temporal-flexibility",
+          "locators": [
+            "ICLR 2025 paper, Sections 4.4 and 5.1, Table 5, PDF pp. 7-9",
+            "ICLR 2025 paper, abstract and Section 4.3.3, Algorithm 1, PDF pp. 1 and 7",
+            "Repository commit c320f925b3894b7526a2adacc979610a2fb00f0d, train-event-driven/utils.py, lines 189-238",
+            "Repository commit c320f925b3894b7526a2adacc979610a2fb00f0d, train-time-stepped/utils.py, lines 45-94",
+            "Temporal Flexibility ICLR 2025 paper, Sections 3.3, 4.4, and 5.1, PDF pp. 4 and 7-9",
+            "https://github.com/brain-intelligence-lab/temporal_flexibility_in_SNN"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "temporal-flexibility",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "tet",
+      "title": "Temporal Efficient Training of Spiking Neural Network via Gradient Re-weighting",
+      "authors": "Deng, S., Wu, Y., et al.",
+      "year": 2022,
+      "venue": "ICLR",
+      "url": "https://arxiv.org/abs/2202.11946",
+      "family": "direct-training",
+      "population": "algorithm",
+      "method_summary": "TET reweights per-timestep gradients for better convergence of directly-trained SNNs at low T.",
+      "neuron": "LIF (on SEW-ResNet/tdBN backbones)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "T=2-6",
+      "metric": "accuracy in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "NOT FOUND: no hardware execution."
+      },
+      "workload": [
+        "CIFAR-10/100",
+        "ImageNet",
+        "DVS-CIFAR10"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch"
+      },
+      "comparability_notes": "NOT FOUND: no hardware execution.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "tet"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tet",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tet",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "tianjic",
+      "title": "Towards artificial general intelligence with hybrid Tianjic chip architecture",
+      "authors": "Pei, J., Deng, L., Song, S., Zhao, M., et al.",
+      "year": 2019,
+      "venue": "Nature 572:106-111",
+      "url": "https://www.nature.com/articles/s41586-019-1424-8",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Many-core hybrid chip running both ANN and SNN modes on shared building blocks (axon, synapse, dendrite, soma, router); demonstrated on an unmanned bicycle.",
+      "neuron": "hybrid ANN/SNN FCore (SNN mode: membrane-potential integration, threshold, reset)",
+      "reset": "not found",
+      "encoding": "not specified in retrieved sources",
+      "input_encoding": "not specified",
+      "timesteps": "streaming execution mode",
+      "metric": "real-time hardware-in-the-loop robotics demonstration; throughput 1.6x-10^2x and power-efficiency 12x-10^4x vs GPU baselines",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Genuine hardware-in-the-loop demonstration, not simulation."
+      },
+      "workload": [
+        "not applicable (robotics demo: object detection, tracking, voice recognition, obstacle avoidance, balance control)"
+      ],
+      "platform": {
+        "target_hardware": "Tianjic chip (physical, single chip)",
+        "toolchain": "Tianjic native toolchain"
+      },
+      "comparability_notes": "Genuine hardware-in-the-loop demonstration, not simulation.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "tianjic"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tianjic",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tianjic",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "truenorth-dvs-gesture",
+      "title": "A Low Power, Fully Event-Based Gesture Recognition System",
+      "authors": "Amir, A. et al.",
+      "year": 2017,
+      "venue": "CVPR",
+      "url": "https://doi.org/10.1109/cvpr.2017.781",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "Live DVS128 event stream fed directly into a TrueNorth spiking CNN, no host-side frame accumulation in the deployed path; the canonical genuine end-to-end sensor-to-spiking-chip example.",
+      "neuron": "TrueNorth constrained IF (1M spiking neurons)",
+      "reset": "not found",
+      "encoding": "event-driven, native to TrueNorth",
+      "input_encoding": "live DVS128 event stream, no frame reconstruction",
+      "timesteps": "real-time streaming",
+      "metric": "gesture-onset latency (105ms), power (<200mW), accuracy (96.5%), measured on physical chip with live camera feed",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Strongest E1 example of true sensor-to-spiking-chip processing with no host-side frame accumulation in the deployed path."
+      },
+      "workload": [
+        "DvsGesture (11 gestures, 29 subjects)"
+      ],
+      "platform": {
+        "target_hardware": "IBM TrueNorth (physical)",
+        "toolchain": "Eedn/Corelet"
+      },
+      "comparability_notes": "Strongest E1 example of true sensor-to-spiking-chip processing with no host-side frame accumulation in the deployed path.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "truenorth-dvs-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "tsc",
+      "title": "Deep Spiking Neural Network: Energy Efficiency Through Time Based Coding",
+      "authors": "Han, B., Roy, K.",
+      "year": 2020,
+      "venue": "ECCV",
+      "url": "https://doi.org/10.1007/978-3-030-58607-2_23",
+      "family": "classical-conversion",
+      "population": "algorithm",
+      "method_summary": "Temporal-Switch-Coding (TSC): at most two spikes per pixel encode intensity via inter-spike timing, reducing latency vs rate coding.",
+      "neuron": "TSC spiking neuron (soft-reset, dual-spike)",
+      "reset": "soft reset",
+      "encoding": "temporal (TSC), not Poisson or constant current",
+      "input_encoding": "temporal-switch coding, timing between two spikes encodes intensity",
+      "timesteps": "7-14.5x lower latency than rate-coded SNN of same accuracy (T not fixed to single number)",
+      "metric": "classification accuracy and analytical operation counts in GPU simulation",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "'30-60x fewer addition operations' is an analytical/SynOps-style complexity count, not measured on silicon."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none",
+        "toolchain": "custom PyTorch (purdue-nrl/TSC-SNN)"
+      },
+      "comparability_notes": "'30-60x fewer addition operations' is an analytical/SynOps-style complexity count, not measured on silicon.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "tsc"
+      ],
+      "source_refs": [
+        {
+          "source_id": "tsc",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "tsc",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "ubrain",
+      "title": "uBrain: An Event-Driven and Fully Synthesizable Architecture for Spiking Neural Networks",
+      "authors": "not fully specified in audit excerpt",
+      "year": 2021,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.664208/full",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "Fully digital, clockless, event-driven SNN IC designed for ANN-to-SNN-conversion-friendly always-on edge inference (ISI readout, ReLU-to-accumulator-wraparound mapping).",
+      "neuron": "ReLU-to-accumulator-wraparound (ANN-to-SNN-conversion-friendly), ISI readout",
+      "reset": "wraparound reset (accumulator overflow), not classic subtractive reset",
+      "encoding": "inter-spike-interval (ISI)-based, not classic rate coding",
+      "input_encoding": "not found",
+      "timesteps": "not applicable (ISI-based, event rate 100Hz-655kHz)",
+      "metric": "power (70uW), energy per classification (308-340 nJ), MNIST accuracy (93.4%), measured on fabricated chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Explicitly designed to ease ANN-to-SNN conversion; measured on a fabricated 40nm prototype."
+      },
+      "workload": [
+        "radar hand-gesture dataset",
+        "MNIST (ANN-trained-then-converted)"
+      ],
+      "platform": {
+        "target_hardware": "mu-Brain ASIC (fabricated 40nm prototype)",
+        "toolchain": "custom HDL, 40nm CMOS"
+      },
+      "comparability_notes": "Explicitly designed to ease ANN-to-SNN conversion; measured on a fabricated 40nm prototype.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "ubrain"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ubrain",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "ubrain",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "xpikeformer",
+      "title": "Xpikeformer: Hybrid Analog-Digital Hardware Acceleration for Spiking Transformers",
+      "authors": "Song, S., Katti, N., Simeone, O., Rajendran, B.",
+      "year": 2024,
+      "venue": "arXiv:2408.08794",
+      "url": "https://arxiv.org/abs/2408.08794",
+      "family": "hardware-accelerator",
+      "population": "algorithm",
+      "method_summary": "Custom hybrid analog/digital accelerator design for spiking transformers, evaluated via circuit simulation and an FPGA prototype of the attention tile only.",
+      "neuron": "LIF",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "not found",
+      "timesteps": "not applicable (hardware-level simulation)",
+      "metric": "circuit-simulated performance/energy, plus an FPGA prototype for one sub-block",
+      "boundary": {
+        "evidence_class": "E4",
+        "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",
+        "paper_specific_notes": "NeuroSim-based circuit simulation plus an FPGA prototype of the attention tile only, not a full physical ASIC of a full spiking transformer."
+      },
+      "workload": [
+        "ImageNet-1K",
+        "wireless symbol detection"
+      ],
+      "platform": {
+        "target_hardware": "FPGA (attention tile sub-block only, not full-chip silicon)",
+        "toolchain": "NeuroSim circuit simulation + FPGA prototype"
+      },
+      "comparability_notes": "NeuroSim-based circuit simulation plus an FPGA prototype of the attention tile only, not a full physical ASIC of a full spiking transformer.",
+      "evidence_class": "E4",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "xpikeformer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "xpikeformer",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "xpikeformer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "xylo-kws",
+      "title": "Micro-power spoken keyword spotting on Xylo Audio 2",
+      "authors": "Bos, H., Muir, D. (SynSense)",
+      "year": 2024,
+      "venue": "arXiv:2406.15112",
+      "url": "https://arxiv.org/abs/2406.15112",
+      "family": "direct-training",
+      "population": "deployment",
+      "method_summary": "Directly trained LIF SNN (quantized via Rockpool) for keyword spotting deployed on the commercial Xylo Audio 2 chip.",
+      "neuron": "LIF (quantized via Rockpool)",
+      "reset": "not found",
+      "encoding": "temporal",
+      "input_encoding": "audio (Aloha KWS benchmark)",
+      "timesteps": "not found",
+      "metric": "accuracy (95%), dynamic power (291 uW), dynamic energy/inference (6.6 uJ), all measured on physical chip; compared against GPU/CPU/Jetson/Movidius/Loihi/SpiNNaker2",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Best-in-class among compared devices in the same benchmark table; commercial, purpose-built chip with a direct-training-first deployment pipeline."
+      },
+      "workload": [
+        "Aloha KWS benchmark"
+      ],
+      "platform": {
+        "target_hardware": "Xylo Audio 2 (SynSense, commercial)",
+        "toolchain": "Rockpool -> Xylo"
+      },
+      "comparability_notes": "Best-in-class among compared devices in the same benchmark table; commercial, purpose-built chip with a direct-training-first deployment pipeline.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "xylo-kws"
+      ],
+      "source_refs": [
+        {
+          "source_id": "xylo-kws",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "xylo-kws",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    }
+  ]
+}
