@@ -1,0 +1,3 @@
+#figure-11 .f11-help { cursor: help; }
+#figure-11 .f11-band { transition: opacity 0.15s; }
+#figure-11 .f11-help:hover .f11-band { opacity: 0.09; }

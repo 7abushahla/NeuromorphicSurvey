@@ -1,0 +1,165 @@
+<figure class="pfig l-body" id="figure-14">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <svg viewBox="0 0 1200 1135" role="img" aria-labelledby="f14title f14desc">
+      <title id="f14title">Five ways an input reaches the first layer of a spiking neural network</title>
+      <desc id="f14desc">A comparison of Poisson rate encoding, deterministic count encoding, a repeated frame or value at each step, direct constant current, and event-native sensing. The figure distinguishes the object delivered to the first SNN layer and the qualitative source of temporal variability.</desc>
+      <defs>
+        <marker id="f14arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+        <marker id="f14arrred" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#D63A2F"/></marker>
+      </defs>
+
+      <text x="600" y="43" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">What actually enters the first SNN layer?</text>
+      <text x="600" y="72" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Terms grouped under input encoding can denote materially different temporal interfaces.</text>
+
+      <g style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">
+        <text x="57" y="118">Convention</text>
+        <text x="287" y="118">Temporal object</text>
+        <text x="620" y="118">What reaches layer 1</text>
+        <text x="956" y="118">Temporal consequence</text>
+      </g>
+      <line x1="42" y1="137" x2="1158" y2="137" stroke="#000" stroke-width="2.2"/>
+
+      <g class="f14-help">
+        <title>Poisson rate encoding samples a random binary spike event at each algorithmic step. Input magnitude is represented statistically by the event count or rate over a window, so repeated evaluations can differ.</title>
+        <rect x="42" y="154" width="1116" height="164" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
+        <rect x="42" y="154" width="212" height="164" rx="10" fill="#CFE2F3"/>
+        <text x="66" y="194" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Poisson rate</text>
+        <text x="66" y="223" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">stochastic binary</text>
+        <text x="66" y="248" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">spike raster</text>
+        <text x="66" y="282" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">rate represents magnitude</text>
+
+        <line x1="292" y1="259" x2="521" y2="259" stroke="#000" stroke-width="2.2" marker-end="url(#f14arr)"/>
+        <g stroke="#D63A2F" stroke-width="4.6"><line x1="312" y1="259" x2="312" y2="208"/><line x1="361" y1="259" x2="361" y2="225"/><line x1="436" y1="259" x2="436" y2="200"/><line x1="481" y1="259" x2="481" y2="218"/></g>
+        <text x="406" y="291" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">new random sample at each step</text>
+
+        <line x1="536" y1="236" x2="588" y2="236" stroke="#000" stroke-width="2.4" marker-end="url(#f14arr)"/>
+        <rect x="600" y="187" width="274" height="100" rx="8" fill="#CCFFCC" stroke="#000" stroke-width="2.2"/>
+        <text x="737" y="221" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Binary input events</text>
+        <text x="737" y="249" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">event address + step time</text>
+        <text x="737" y="274" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">then a synaptic effect</text>
+
+        <rect x="910" y="187" width="218" height="100" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
+        <text x="928" y="221" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Sampling variability</text>
+        <text x="928" y="250" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">The same value can yield</text>
+        <text x="928" y="273" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">different rasters.</text>
+        <rect class="f14-band" x="42" y="154" width="1116" height="164" rx="10" fill="#D63A2F" opacity="0"/><rect x="42" y="154" width="1116" height="164" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <g class="f14-help">
+        <title>Deterministic count or rate encoding schedules binary events so that a chosen count represents the input over a window. Its timing rule must be stated because a count alone does not determine a unique spike train.</title>
+        <rect x="42" y="334" width="1116" height="164" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
+        <rect x="42" y="334" width="212" height="164" rx="10" fill="#CDEBCD"/>
+        <text x="66" y="374" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Deterministic</text>
+        <text x="66" y="403" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">count or rate</text>
+        <text x="66" y="431" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">scheduled binary events</text>
+        <text x="66" y="463" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">count represents magnitude</text>
+
+        <line x1="292" y1="439" x2="521" y2="439" stroke="#000" stroke-width="2.2" marker-end="url(#f14arr)"/>
+        <g stroke="#D63A2F" stroke-width="4.6"><line x1="320" y1="439" x2="320" y2="388"/><line x1="392" y1="439" x2="392" y2="388"/><line x1="465" y1="439" x2="465" y2="388"/></g>
+        <g stroke="#8a94a0" stroke-width="1.4" stroke-dasharray="4 4"><line x1="356" y1="399" x2="356" y2="448"/><line x1="429" y1="399" x2="429" y2="448"/></g>
+        <text x="406" y="471" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">a specified scheduling rule</text>
+
+        <line x1="536" y1="416" x2="588" y2="416" stroke="#000" stroke-width="2.4" marker-end="url(#f14arr)"/>
+        <rect x="600" y="367" width="274" height="100" rx="8" fill="#CCFFCC" stroke="#000" stroke-width="2.2"/>
+        <text x="737" y="401" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Binary input events</text>
+        <text x="737" y="429" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">event address + step time</text>
+        <text x="737" y="454" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">then a synaptic effect</text>
+
+        <rect x="910" y="367" width="218" height="100" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
+        <text x="928" y="401" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">No sampling noise</text>
+        <text x="928" y="430" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">Timing still depends on</text>
+        <text x="928" y="453" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">the stated schedule.</text>
+        <rect class="f14-band" x="42" y="334" width="1116" height="164" rx="10" fill="#D63A2F" opacity="0"/><rect x="42" y="334" width="1116" height="164" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <g class="f14-help">
+        <title>A repeated frame or value supplies the same input value at every algorithmic step. It is not a binary spike raster unless a separate encoder turns each repeated value into events.</title>
+        <rect x="42" y="514" width="1116" height="164" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
+        <rect x="42" y="514" width="212" height="164" rx="10" fill="#FFDDA6"/>
+        <text x="66" y="554" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Repeated frame</text>
+        <text x="66" y="583" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">or value</text>
+        <text x="66" y="612" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">same value at each step</text>
+        <text x="66" y="644" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">often an image or feature map</text>
+
+        <g fill="#fff" stroke="#000" stroke-width="2.2"><rect x="292" y="554" width="52" height="48" rx="5"/><rect x="363" y="554" width="52" height="48" rx="5"/><rect x="434" y="554" width="52" height="48" rx="5"/></g>
+        <g style="font-family:'Times New Roman',Times,serif;font-size:26px;font-style:italic" fill="#000"><text x="318" y="586" text-anchor="middle">x</text><text x="389" y="586" text-anchor="middle">x</text><text x="460" y="586" text-anchor="middle">x</text></g>
+        <line x1="292" y1="626" x2="521" y2="626" stroke="#000" stroke-width="2.2" marker-end="url(#f14arr)"/>
+        <text x="406" y="653" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">value persists across steps</text>
+
+        <line x1="536" y1="596" x2="588" y2="596" stroke="#000" stroke-width="2.4" marker-end="url(#f14arr)"/>
+        <rect x="600" y="547" width="274" height="100" rx="8" fill="#FFFF66" stroke="#000" stroke-width="2.2"/>
+        <text x="737" y="581" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Value or input drive</text>
+        <text x="737" y="609" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">at every algorithmic step</text>
+        <text x="737" y="634" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">encoder must be explicit</text>
+
+        <rect x="910" y="547" width="218" height="100" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
+        <text x="928" y="581" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">No encoder noise</text>
+        <text x="928" y="610" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">Not itself a spike</text>
+        <text x="928" y="633" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">code.</text>
+        <rect class="f14-band" x="42" y="514" width="1116" height="164" rx="10" fill="#D63A2F" opacity="0"/><rect x="42" y="514" width="1116" height="164" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <g class="f14-help">
+        <title>Direct constant-current input provides a current or drive value to the first layer. This is not a spike code at the network input. Whether it is a literal analog current or a digitally implemented recurrence depends on the execution target.</title>
+        <rect x="42" y="694" width="1116" height="164" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
+        <rect x="42" y="694" width="212" height="164" rx="10" fill="#CFE2F3"/>
+        <text x="66" y="734" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Direct constant</text>
+        <text x="66" y="763" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">current</text>
+        <text x="66" y="791" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">external drive to layer 1</text>
+        <text x="66" y="824" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">not a spike code</text>
+
+        <line x1="292" y1="785" x2="521" y2="785" stroke="#D63A2F" stroke-width="4.6" marker-end="url(#f14arrred)"/>
+        <text x="406" y="766" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-size:25px;font-style:italic" fill="#000">I<tspan dy="6" style="font-size:16px">ext</tspan><tspan dy="-6">[t] = x</tspan></text>
+        <text x="406" y="817" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">drive held during the input window</text>
+
+        <line x1="536" y1="776" x2="588" y2="776" stroke="#000" stroke-width="2.4" marker-end="url(#f14arr)"/>
+        <rect x="600" y="727" width="274" height="100" rx="8" fill="#FFFF66" stroke="#000" stroke-width="2.2"/>
+        <text x="737" y="761" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Current or drive term</text>
+        <text x="737" y="789" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">added to first-layer state</text>
+        <text x="737" y="814" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">without input spike events</text>
+
+        <rect x="910" y="727" width="218" height="100" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
+        <text x="928" y="761" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">No input raster</text>
+        <text x="928" y="790" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">Interface semantics must</text>
+        <text x="928" y="813" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">state the drive model.</text>
+        <rect class="f14-band" x="42" y="694" width="1116" height="164" rx="10" fill="#D63A2F" opacity="0"/><rect x="42" y="694" width="1116" height="164" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <g class="f14-help">
+        <title>An event-native sensor emits asynchronous records when it observes a change or another sensor-defined condition. Events carry address and time, often with polarity or payload, rather than being synthesized from a static frame.</title>
+        <rect x="42" y="874" width="1116" height="164" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
+        <rect x="42" y="874" width="212" height="164" rx="10" fill="#CDEBCD"/>
+        <text x="66" y="914" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Event-native</text>
+        <text x="66" y="943" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">sensing</text>
+        <text x="66" y="971" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">sensor-produced events</text>
+        <text x="66" y="1004" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">not synthesized from a frame</text>
+
+        <line x1="292" y1="965" x2="521" y2="965" stroke="#000" stroke-width="2.2" marker-end="url(#f14arr)"/>
+        <g fill="#D63A2F" stroke="#000" stroke-width="1.4"><rect x="308" y="915" width="38" height="31" rx="4"/><rect x="381" y="936" width="38" height="31" rx="4"/><rect x="461" y="900" width="38" height="31" rx="4"/></g>
+        <g style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700" fill="#fff"><text x="327" y="936" text-anchor="middle">+</text><text x="400" y="957" text-anchor="middle">−</text><text x="480" y="921" text-anchor="middle">+</text></g>
+        <text x="406" y="997" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">address, time, polarity or payload</text>
+
+        <line x1="536" y1="956" x2="588" y2="956" stroke="#000" stroke-width="2.4" marker-end="url(#f14arr)"/>
+        <rect x="600" y="907" width="274" height="100" rx="8" fill="#CCFFCC" stroke="#000" stroke-width="2.2"/>
+        <text x="737" y="941" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Sensor event packets</text>
+        <text x="737" y="969" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">address + physical time</text>
+        <text x="737" y="994" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">payload depends on the sensor</text>
+
+        <rect x="910" y="907" width="218" height="100" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
+        <text x="928" y="941" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Data-driven timing</text>
+        <text x="928" y="970" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">Activity follows observed</text>
+        <text x="928" y="993" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">sensor changes.</text>
+        <rect class="f14-band" x="42" y="874" width="1116" height="164" rx="10" fill="#D63A2F" opacity="0"/><rect x="42" y="874" width="1116" height="164" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <g class="f14-help">
+        <title>The input convention is part of the deployable SNN contract. It determines whether the route begins with a stochastic encoder, a deterministic schedule, repeated values, a direct drive, or sensor events. These alternatives should not be compared as though they were one input representation.</title>
+        <rect x="42" y="1062" width="1116" height="50" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+        <text x="600" y="1094" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Deployment check, state the input object, its timing convention, and any encoder before comparing a route.</text>
+        <rect class="f14-band" x="42" y="1062" width="1116" height="50" rx="8" fill="#D63A2F" opacity="0"/><rect x="42" y="1062" width="1116" height="50" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+    </svg>
+  </div>
+  <div class="fig-hint">Hover a row for the semantic distinction at the first-layer interface.</div>
+  <figcaption><b>Figure 14:</b> Input conventions often grouped under rate coding do not deliver the same temporal object to the first SNN layer. Poisson and deterministic approaches produce binary event schedules, whereas repeated values and direct constant current supply a value or drive, and event-native sensors provide asynchronously timed records. The encoding or input rule should therefore be stated before comparing accuracy, latency, activity, or deployment cost.</figcaption>
+</figure>

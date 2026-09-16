@@ -1,0 +1,3 @@
+#figure-9 .f9-hot { cursor: help; }
+#figure-9 .f9-band { transition: opacity 0.15s; }
+#figure-9 .f9-hot:hover .f9-band { opacity: 0.08; }
