@@ -684,7 +684,7 @@
     "venue": "2025 International Conference on Neuromorphic Systems",
     "category": "Deployment",
     "type": "peer-reviewed",
-    "url": "https://doi.org/10.1109/ICONS69015.2025.00022",
+    "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
     "summary": "Rate-coded, directly trained reinforcement-learning SNN with measured power, energy, and duration on physical SpiNNaker2."
   },
   {

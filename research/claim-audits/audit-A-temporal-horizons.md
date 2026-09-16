@@ -105,7 +105,7 @@ Appendix E repeats the two-path hardware discussion found in QAC. It states that
 
 ## Temporal Flexibility and MTT
 
-The canonical paper is “Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness,” by Kangrui Du, Yuhang Wu, Shikuang Deng, and Shi Gu. The source-registry record currently abbreviates the first and third authors incorrectly, and the separate `mtt` record is a stale duplicate with a noncanonical title.
+The canonical paper is “Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness,” by Kangrui Du, Yuhang Wu, Shikuang Deng, and Shi Gu. The source registry now carries that verified identity, with `mtt` retained only as a legacy alias.
 
 Mixed Time-step Training samples a vector of timestep values and assigns them to network stages during training. Algorithm 1 on PDF p. 7 and the public code both confirm this behavior. The time-stepped implementation samples stage values in `train-time-stepped/utils.py`, lines 63-83. The event-driven implementation samples configurations in `train-event-driven/utils.py`, lines 189-228.
 

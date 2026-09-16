@@ -9,18 +9,22 @@
       "statement": "Quartz is an ANN-to-SNN conversion method whose activation representation is time to first spike, with one information-bearing spike per neuron and a balancing or rectifier event. It is not a spike-count or firing-rate code.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "quartz"
-      ],
-      "locators": [
-        "Abstract, pp. 1-2",
-        "Section 2, Proposed ANN-to-SNN Conversion Method, pp. 2-4",
-        "Section 5, Discussion, pp. 9-10"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [],
-      "scope": "Mathematical neural code used by Quartz, distinct from the physical deployment evidence"
+      "scope": "Mathematical neural code used by Quartz, distinct from the physical deployment evidence",
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Abstract, pp. 1-2",
+            "Section 2, Proposed ANN-to-SNN Conversion Method, pp. 2-4",
+            "Section 5, Discussion, pp. 9-10"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-quartz-loihi1-e1",
@@ -28,21 +32,25 @@
       "statement": "Quartz was executed on named physical Loihi 1 silicon and reports measured latency, power, energy per inference, and energy-delay product. This is E1 evidence for Quartz itself.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "quartz"
-      ],
-      "locators": [
-        "Section 4, Results on Loihi, pp. 6-9",
-        "Table 2, p. 7",
-        "Table 3 and Section 4.2, pp. 8-9",
-        "Data availability statement, p. 10"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "NxSDK 1.0.0 on the physical Loihi 1 Nahuku 32 board ncl-ext-ghrd-01. Table 3 separates neuromorphic-core and Lakemont x86 static and dynamic power. The MNIST figures are measured. The paper's preferred CIFAR-10 EDP uses an estimated corrected static-power placement rather than the raw measured placement.",
       "conflicts_with": [
-        "conflict-quartz-cifar-energy-units-and-static-correction"
+        "rate-silicon-claim-boundary"
       ],
-      "scope": "Physical deployment of the proposed Quartz method, not the rate-coded comparison rows"
+      "scope": "Physical deployment of the proposed Quartz method, not the rate-coded comparison rows",
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Section 4, Results on Loihi, pp. 6-9",
+            "Table 2, p. 7",
+            "Table 3 and Section 4.2, pp. 8-9",
+            "Data availability statement, p. 10"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-brehove-uses-graded-sigma-delta-not-rate-code",
@@ -50,18 +58,22 @@
       "statement": "Brehove et al. convert quantized ANNs to sigma-delta neural networks that transmit signed, graded activation deltas. The payload represents changes in activation rather than a firing rate estimated from binary spike counts.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "brehove"
-      ],
-      "locators": [
-        "Abstract and Introduction, pp. 1-2",
-        "Section 3.1, Conversion and Implementation on Loihi 2, pp. 2-3",
-        "Algorithm 1, p. 3"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [],
-      "scope": "Mathematical and physical event representation of the Brehove et al. conversion"
+      "scope": "Mathematical and physical event representation of the Brehove et al. conversion",
+      "source_refs": [
+        {
+          "source_id": "brehove",
+          "locators": [
+            "Abstract and Introduction, pp. 1-2",
+            "Section 3.1, Conversion and Implementation on Loihi 2, pp. 2-3",
+            "Algorithm 1, p. 3"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-brehove-loihi2-e1",
@@ -69,18 +81,22 @@
       "statement": "Brehove et al. deploy their converted sigma-delta networks on physical Loihi 2 and report accuracy, latency, throughput, power, energy per frame, and energy-delay product. This is E1 evidence for the proposed conversion method.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "brehove"
-      ],
-      "locators": [
-        "Section 3.1, pp. 2-3",
-        "Section 3.5, Benchmarking Loihi 2, p. 4",
-        "Table 3 and Sections 4.3-4.5, pp. 5-7"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "An in-house 16-chip Loihi 2 VPX development board running nxkernel 0.3.0. Loihi activity probes provide chip power and timing. The paper separately reports ordinary I/O and replay-from-on-chip-memory conditions. Host-side input delta generation and output accumulation or decoding remain outside the neurocores. The Jetson comparison uses whole-SoC power and is not boundary-identical.",
       "conflicts_with": [],
-      "scope": "Physical execution of the proposed ANN-to-SDNN conversion on Loihi 2"
+      "scope": "Physical execution of the proposed ANN-to-SDNN conversion on Loihi 2",
+      "source_refs": [
+        {
+          "source_id": "brehove",
+          "locators": [
+            "Section 3.1, pp. 2-3",
+            "Section 3.5, Benchmarking Loihi 2, p. 4",
+            "Table 3 and Sections 4.3-4.5, pp. 5-7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-adaptive-fission-uses-population-code",
@@ -88,19 +104,23 @@
       "statement": "Adaptive Fission replaces additional temporal integration with a group of binary neurons carrying unequal fixed weights. Its proposed contribution is a population code layered on existing converted or directly trained SNNs, not unchanged rate coding.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "adaptive-fission"
-      ],
-      "locators": [
-        "Abstract and Introduction, pp. 1-2",
-        "Section 3.2, Population Coding, pp. 3-4",
-        "Section 4, Adaptive Fission, pp. 4-7",
-        "Appendix C, Hardware Compatibility, pp. 23-24"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [],
-      "scope": "Coding mechanism introduced by Adaptive Fission"
+      "scope": "Coding mechanism introduced by Adaptive Fission",
+      "source_refs": [
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Abstract and Introduction, pp. 1-2",
+            "Section 3.2, Population Coding, pp. 3-4",
+            "Section 4, Adaptive Fission, pp. 4-7",
+            "Appendix C, Hardware Compatibility, pp. 23-24"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-adaptive-fission-hp201-e1",
@@ -108,18 +128,22 @@
       "statement": "Adaptive Fission and its comparison configurations were executed on a physical Lynxi HP201 accelerator. Table 1 reports on-chip memory, time per epoch, and system energy per epoch. This is E1 evidence, with a system-sensor rather than core-only energy boundary.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "adaptive-fission"
-      ],
-      "locators": [
-        "Section 6.1, Implementations, pp. 7-8",
-        "Table 1 and Section 6.2, pp. 8-9",
-        "Appendix E.1, Hardware Resources, p. 24"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Physical Lynxi HP201 PCIe accelerator, batch size 32. The table reports seconds and watt-hours per evaluation epoch rather than per-sample latency and energy. Energy comes from board sensor readings and includes peripheral circuits, memory, and I/O. Closed interfaces prevent core-only power and operation-count measurement.",
       "conflicts_with": [],
-      "scope": "Physical deployment of Adaptive Fission and the baselines included in the same hardware table"
+      "scope": "Physical deployment of Adaptive Fission and the baselines included in the same hardware table",
+      "source_refs": [
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Section 6.1, Implementations, pp. 7-8",
+            "Table 1 and Section 6.2, pp. 8-9",
+            "Appendix E.1, Hardware Resources, p. 24"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-qcfs-srp-baselines-reach-hp201-e1",
@@ -127,22 +151,24 @@
       "statement": "Adaptive Fission reports unmodified no-Fission QCFS and SRP baseline rows measured on physical Lynxi HP201 silicon. Rate-coded QCFS-lineage networks therefore have reached silicon, although QCFS and SRP did not report these deployments in their own method papers.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "adaptive-fission",
-        "qcfs",
-        "srp"
-      ],
-      "locators": [
-        "Adaptive Fission, Section 6.1, p. 7",
-        "Adaptive Fission, Table 1, p. 8",
-        "Adaptive Fission, Appendix E.1-E.2, pp. 24-25"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "The same HP201 batch-32, per-epoch, system-sensor boundary used for the Adaptive Fission rows. The rate-coded rows are imported baseline implementations from the original QCFS and SRP codebases. They are not deployments reported by the original QCFS or SRP papers.",
       "conflicts_with": [
-        "conflict-method-paper-versus-later-method-deployment"
+        "rate-silicon-claim-boundary"
       ],
-      "scope": "Later third-party physical execution of existing QCFS and SRP methods, not evidence that their proposing papers deployed"
+      "scope": "Later third-party physical execution of existing QCFS and SRP methods, not evidence that their proposing papers deployed",
+      "source_refs": [
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Adaptive Fission, Section 6.1, p. 7",
+            "Adaptive Fission, Table 1, p. 8",
+            "Adaptive Fission, Appendix E.1-E.2, pp. 24-25"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-akida-standard-route-collapses-rate-window",
@@ -150,24 +176,46 @@
       "statement": "The standard QuantizeML to CNN2SNN route maps a uniformly quantized integer model to the Akida runtime without a user-exposed multi-timestep firing-rate window. Independent physical-hardware studies describe the converted path as a stepwise quantized ReLU evaluated in one timestep. It must not be classified as ordinary multi-timestep rate coding solely because BrainChip calls the result an SNN.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "brainchip-quantizeml-docs",
-        "brainchip-cnn2snn-docs",
-        "ziegler2024-akida-robotics",
-        "lunghi2025-akida-space"
-      ],
-      "locators": [
-        "QuantizeML user guide, Overview, FixedPoint representation, and Quantization flow, MetaTF 2.19.3",
-        "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3",
-        "Ziegler et al., Section III-B.2 and III-C, pp. 4-5",
-        "Lunghi et al., Section 4.1, pp. 19-20"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [
-        "conflict-akida-snn-label-versus-rate-code-semantics"
+        "rate-silicon-claim-boundary"
       ],
-      "scope": "Observable semantics of the standard converted-CNN route. This does not deny separate temporal or recurrent Akida layer types and does not infer undocumented circuit internals."
+      "scope": "Observable semantics of the standard converted-CNN route. This does not deny separate temporal or recurrent Akida layer types and does not infer undocumented circuit internals.",
+      "source_refs": [
+        {
+          "source_id": "brainchip-quantizeml-docs",
+          "locators": [
+            "QuantizeML user guide, Overview, FixedPoint representation, and Quantization flow, MetaTF 2.19.3"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "locators": [
+            "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "locators": [
+            "Ziegler et al., Section III-B.2 and III-C, pp. 4-5"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "locators": [
+            "Lunghi et al., Section 4.1, pp. 19-20"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-akida-hardware-results-do-not-falsify-conversion-claim",
@@ -175,42 +223,38 @@
       "statement": "Physical Akida studies report real latency, power, and energy measurements, but they reuse BrainChip's existing QuantizeML and CNN2SNN toolchain rather than introducing a new low-timestep rate-coded ANN-to-SNN conversion algorithm. They therefore do not falsify the narrow paper-level claim.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "ziegler2024-akida-robotics",
-        "lunghi2025-akida-space",
-        "akida-benchmarks2025",
-        "brainchip-cnn2snn-docs"
-      ],
-      "locators": [
-        "Ziegler et al., Table V and Section IV, pp. 6-7",
-        "Lunghi et al., Sections 4.1-4.2 and Table 4, pp. 19-21",
-        "Putra and Shafique, Sections II-B, III, and IV, pp. 3-8"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Named physical AKD1000 or Akida PCIe hardware. Individual studies use different boundaries. Ziegler et al. report measured Akida inference and forward-pass latency plus Akida power. Lunghi et al. report device energy per frame and explicitly expose idle-floor power. Putra and Shafique report application-level latency, power, and energy on AKD1000.",
       "conflicts_with": [
-        "conflict-akida-snn-label-versus-rate-code-semantics"
+        "rate-silicon-claim-boundary"
       ],
-      "scope": "Akida as an E1 deployment route and boundary case, not as evidence for a new rate-coded conversion algorithm"
-    },
-    {
-      "id": "claim-temporal-flexibility-speck-is-e2-not-rate-conversion",
-      "claim_type": "scope",
-      "statement": "Temporal Flexibility in Spiking Neural Networks is a direct-training temporal-generalization method. Its physical Speck2e experiment reports spike-train fidelity rather than latency or energy, and the deployed workload uses native asynchronous event input. It is E2 and is not a rate-coded ANN-to-SNN conversion falsifier.",
-      "evidence_class": "E2",
-      "reports_deployment_evidence": true,
-      "source_ids": [
-        "temporal-flexibility"
-      ],
-      "locators": [
-        "Section 2, Direct Training and ANN-SNN Conversion distinction",
-        "Section 4.3, Event-driven Friendliness and Table 5",
-        "Appendix A.3, Training Details for Event-driven Experiments"
-      ],
-      "verification_status": "verified",
-      "measurement_boundary": "Physical Speck2e Devkit on NMNIST. The paper reports spike difference between the chip and its software simulator. It reports no measured on-chip latency, power, or energy for the proposed method.",
-      "conflicts_with": [],
-      "scope": "Rejected candidate from the deliberate falsifier search"
+      "scope": "Akida as an E1 deployment route and boundary case, not as evidence for a new rate-coded conversion algorithm",
+      "source_refs": [
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "locators": [
+            "Ziegler et al., Table V and Section IV, pp. 6-7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "locators": [
+            "Lunghi et al., Sections 4.1-4.2 and Table 4, pp. 19-21"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "akida-benchmarks2025",
+          "locators": [
+            "Putra and Shafique, Sections II-B, III, and IV, pp. 3-8"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-no-paper-level-rate-coded-low-t-conversion-falsifier-found",
@@ -218,27 +262,54 @@
       "statement": "Through 2026-09-16, the audited corpus and deliberate falsifier search found no paper that both introduces a recent low-timestep, spike-count or firing-rate-coded ANN-to-SNN conversion algorithm and reports that same proposed algorithm on named physical neuromorphic silicon with an on-device measurement. This is a bounded search result, not a universal impossibility claim.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "quartz",
-        "brehove",
-        "adaptive-fission",
-        "qcfs",
-        "srp",
-        "temporal-flexibility",
-        "nxtf",
-        "brainchip-cnn2snn-docs"
-      ],
-      "locators": [
-        "Audit C candidate matrix and falsifier search log",
-        "Conflict note rate-silicon-claim-boundary.md"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [
-        "conflict-broad-rate-coded-silicon-claim",
-        "conflict-method-paper-versus-later-method-deployment"
+        "rate-silicon-claim-boundary"
       ],
-      "scope": "Paper-level, recent low-timestep ANN-to-SNN conversion methods using spike-count or firing-rate representation. It excludes direct-training methods, application papers that reuse an existing converter, classical conversion deployments, non-silicon synthesis, and later third-party baseline deployments."
+      "scope": "Paper-level, recent low-timestep ANN-to-SNN conversion methods using spike-count or firing-rate representation. It excludes direct-training methods, application papers that reuse an existing converter, classical conversion deployments, non-silicon synthesis, and later third-party baseline deployments.",
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Section 2 and Section 5, rate-code exclusion reviewed in Audit C"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "brehove",
+          "locators": [
+            "Section 3.1 and Algorithm 1, graded sigma-delta encoding reviewed in Audit C"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Sections 3.2 and 4, population-code distinction reviewed in Audit C"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "nxtf",
+          "locators": [
+            "Section 2.3.6, reset and rate-coded NxTF route reviewed in Audits B and C"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "locators": [
+            "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-andrei-few-spikes-not-rate-code",
@@ -246,18 +317,22 @@
       "statement": "Andrei et al. extend Few-Spikes conversion to complex-valued layers. The resulting serialized temporal binary code represents values through spike timing and learned temporal coefficients rather than through firing-rate estimation.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "andrei2024-deep-unrolling-spinnaker2"
-      ],
-      "locators": [
-        "Sections III-A and III-B, pp. 3-4"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "Neural code introduced by the complex-valued Few-Spikes conversion"
+      "scope": "Neural code introduced by the complex-valued Few-Spikes conversion",
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Sections III-A and III-B, pp. 3-4"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-andrei-spinnaker2-e1",
@@ -265,19 +340,23 @@
       "statement": "Andrei et al. map their proposed complex-valued Few-Spikes conversion to a physical single-chip SpiNNaker2 board and report board-power measurements. This is E1 evidence for the proposed conversion method.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "andrei2024-deep-unrolling-spinnaker2"
-      ],
-      "locators": [
-        "Section IV, pp. 4-5",
-        "Figure 4, p. 5"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Physical single-chip SpiNNaker2 board. SpiNNcloud software reports board power for the deployed SNN. The comparison target is an NVIDIA Jetson Xavier running the source CNN.",
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "Physical execution of the proposed complex-valued Few-Spikes conversion"
+      "scope": "Physical execution of the proposed complex-valued Few-Spikes conversion",
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Section IV, pp. 4-5",
+            "Figure 4, p. 5"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-arfa-rate-coded-direct-training-not-conversion",
@@ -285,18 +364,22 @@
       "statement": "Arfa et al. execute a genuine low-timestep rate-coded SNN on SpiNNaker2, but the method uses direct Q-learning and surrogate-gradient fine-tuning rather than ANN-to-SNN conversion.",
       "evidence_class": null,
       "reports_deployment_evidence": false,
-      "source_ids": [
-        "arfa2025-spiking-q-spinnaker2"
-      ],
-      "locators": [
-        "Sections III-A and III-C, pp. 3-4"
-      ],
       "verification_status": "verified",
       "measurement_boundary": null,
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "A direct-training counterexample to broad wording, but not to the narrow conversion claim"
+      "scope": "A direct-training counterexample to broad wording, but not to the narrow conversion claim",
+      "source_refs": [
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "locators": [
+            "Sections III-A and III-C, pp. 3-4"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-arfa-spinnaker2-e1",
@@ -304,19 +387,23 @@
       "statement": "Arfa et al. report physical SpiNNaker2 latency, dynamic power, and energy measurements for rate-coded spiking Q-networks run for 10 or 20 ticks. This is E1 evidence for a directly trained low-timestep rate-coded SNN.",
       "evidence_class": "E1",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "arfa2025-spiking-q-spinnaker2"
-      ],
-      "locators": [
-        "Sections IV-C and IV-D, pp. 5-7",
-        "Table III, p. 7"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Physical SpiNNaker2 board executing 8-bit quantized spiking Q-networks. The reported boundary includes inference duration, dynamic power, and energy per episode or inference as defined in the paper, compared with a GTX 1650 GPU.",
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "Physical direct-training deployment, not ANN-to-SNN conversion"
+      "scope": "Physical direct-training deployment, not ANN-to-SNN conversion",
+      "source_refs": [
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "locators": [
+            "Sections IV-C and IV-D, pp. 5-7",
+            "Table III, p. 7"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-datta-lavadl-accuracy-e5",
@@ -324,19 +411,23 @@
       "statement": "When SNN Meets ANN reports PyTorch and Lava-DL accuracy for the proposed low-timestep conversion, but the paper does not establish that the Lava-DL result used a physical neuromorphic backend. The reported accuracy result is therefore E5.",
       "evidence_class": "E5",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "datta2025-snn-meets-ann"
-      ],
-      "locators": [
-        "Appendix A.10, pp. 22-23",
-        "Table 12, p. 23"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Framework-level PyTorch and Lava-DL accuracy comparison. No named chip generation, physical board, profiler, power, latency, or resource measurement is disclosed.",
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "Accuracy evidence for the proposed method, not physical-silicon evidence"
+      "scope": "Accuracy evidence for the proposed method, not physical-silicon evidence",
+      "source_refs": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "locators": [
+            "Appendix A.10, pp. 22-23",
+            "Table 12, p. 23"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     },
     {
       "id": "claim-datta-loihi-route-e3",
@@ -344,18 +435,22 @@
       "statement": "When SNN Meets ANN describes a Lava-DL route toward Loihi, but it does not identify the Loihi generation, board, backend configuration, or a physical measurement. The route is E3 rather than physical deployment evidence.",
       "evidence_class": "E3",
       "reports_deployment_evidence": true,
-      "source_ids": [
-        "datta2025-snn-meets-ann"
-      ],
-      "locators": [
-        "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23"
-      ],
       "verification_status": "verified",
       "measurement_boundary": "Documented Lava-DL route assertion only. Physical execution is unverified and no Loihi generation is identified.",
       "conflicts_with": [
         "rate-silicon-claim-boundary"
       ],
-      "scope": "Toolchain path claim kept separate from the E5 accuracy result"
+      "scope": "Toolchain path claim kept separate from the E5 accuracy result",
+      "source_refs": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "locators": [
+            "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
     }
   ]
 }

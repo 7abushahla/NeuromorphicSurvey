@@ -181,7 +181,7 @@ Algorithms on Neuromorphic Hardware,” Asilomar, 2024, doi:
 
 [C5] S. Arfa, B. Vogginger, and C. Mayr, “Hardware-Aware Fine-Tuning of Spiking
 Q-Networks on the SpiNNaker2 Neuromorphic Platform,” ICONS, 2025, doi:
-10.1109/ICONS69015.2025.00022. Source ID
+10.1109/ICONS69015.2025.00021. Source ID
 `arfa2025-spiking-q-spinnaker2`.
 <https://arxiv.org/abs/2507.23562>
 
@@ -205,7 +205,7 @@ arXiv:2403.10677, 2024. Source ID `ziegler2024-akida-robotics`.
 Extreme Edge Efficiency,” TMLR, 2025. Source ID `datta2025-snn-meets-ann`.
 <https://openreview.net/forum?id=WOwQKguWT0>
 
-[C11] X. Du, Y. Wu, L. Deng, and S. Gu, “Temporal Flexibility in Spiking Neural
+[C11] K. Du, Y. Wu, S. Deng, and S. Gu, “Temporal Flexibility in Spiking Neural
 Networks,” ICLR, 2025. Source ID `temporal-flexibility`.
 <https://arxiv.org/abs/2503.17394>
 
@@ -213,8 +213,9 @@ Networks,” ICLR, 2025. Source ID `temporal-flexibility`.
 space applications,” arXiv:2505.11418, 2025. Source ID `lunghi2025-akida-space`.
 <https://arxiv.org/abs/2505.11418>
 
-[C13] R. V. W. Putra and M. Shafique, “Enabling Efficient Processing of Spiking Neural
-Networks on Commodity Neuromorphic Processors,” arXiv:2504.00957, 2025. Source ID
+[C13] R. V. W. Putra, P. Wickramasinghe, and M. Shafique, “Enabling Efficient
+Processing of Spiking Neural Networks with On-Chip Learning on Commodity
+Neuromorphic Processors for Edge AI Systems,” arXiv:2504.00957, 2025. Source ID
 `akida-benchmarks2025`.
 <https://arxiv.org/abs/2504.00957>
 

@@ -963,15 +963,15 @@
       ]
     },
     {
-      "id": "mt-snn",
-      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
-      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
       "year": 2026,
-      "venue": "Frontiers in Neuroscience (originally submitted to ICLR 2026, withdrawn)",
-      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/full",
+      "venue": "Withdrawn ICLR 2026 submission",
+      "url": "https://openreview.net/pdf?id=4dwAZRr9L5",
       "population": "algorithm",
       "family": "mixed-timestep",
-      "method_summary": "The withdrawn ICLR manuscript learns static layerwise horizons and uses average-and-repeat temporal alignment. The accepted Frontiers abstract instead names Scaled Synaptic Current Accumulation, so alignment details are version-specific.",
+      "method_summary": "The withdrawn ICLR manuscript learns static layerwise horizons and uses average-and-repeat temporal alignment.",
       "neuron": "IF-based mixed-timestep (per QAC lineage)",
       "reset": "subtraction (per QAC lineage)",
       "encoding": "rate",
@@ -990,7 +990,35 @@
       "evidence_notes": "E5. The supplied withdrawn manuscript reports 73.63 percent ImageNet-1K top-1 at a 4.88 layer mean. Its Appendix C energy values use operation counts and assumed 45 nm costs. Appendix E is qualitative. No compiler, RTL, simulator, or physical chip executes the mixed-horizon schedule.",
       "cites_hardware_where": "Appendix E gives qualitative accelerator and multicore pipeline reasoning only",
       "sources": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
+      ]
+    },
+    {
+      "id": "mt-snn-frontiers-2026",
+      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
+      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "year": 2026,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2026.1783326",
+      "population": "algorithm",
+      "family": "mixed-timestep",
+      "method_summary": "The accepted abstract names Scaled Synaptic Current Accumulation. Full method and result details were not available in the reviewed access path.",
+      "neuron": "not established from the accepted abstract",
+      "reset": "not established from the accepted abstract",
+      "encoding": "not established from the accepted abstract",
+      "input_encoding": "not established from the accepted abstract",
+      "timesteps": "mixed timestep, detailed schedule not verified from the accepted abstract",
+      "datasets": [
+        "not established from the accepted abstract"
+      ],
+      "toolchain": "not established from the accepted abstract",
+      "target_hardware": "none established from the accepted abstract",
+      "what_was_measured": "not verified from the accepted abstract",
+      "evidence": "E5",
+      "evidence_notes": "Only the accepted-article abstract was reviewed. It supports the title, publication identity, and the named SSCA mechanism, but not the withdrawn manuscript numerical claims.",
+      "cites_hardware_where": "not established from the accepted abstract",
+      "sources": [
+        "mt-snn-frontiers-2026"
       ]
     },
     {
@@ -1674,7 +1702,7 @@
       "venue": "NeurIPS",
       "url": "not found",
       "population": "both",
-      "family": "mixed-timestep",
+      "family": "population-coding",
       "method_summary": "Population-coding scheme (a third coding category distinct from rate and temporal coding) applied post-training on top of existing conversion methods including QCFS and SRP; deployed and measured on a physical Lynxi HP201 accelerator.",
       "neuron": "population-coded (built atop existing IF-based conversion methods)",
       "reset": "not found",
@@ -2220,7 +2248,7 @@
       "authors": "S. Arfa, B. Vogginger, C. Mayr",
       "year": 2025,
       "venue": "International Conference on Neuromorphic Systems",
-      "url": "https://doi.org/10.1109/ICONS69015.2025.00022",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
       "population": "deployment",
       "family": "direct-training",
       "method_summary": "Hardware-aware fine-tuning and quantization of directly trained spiking Q-networks.",
@@ -2562,15 +2590,25 @@
       "type": "preprint"
     },
     {
-      "id": "mt-snn",
-      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
-      "authors": "Guo, M., Yao, X., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "id": "mt-snn-withdrawn-iclr",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
       "year": 2026,
-      "venue": "Frontiers in Neuroscience (originally submitted to ICLR 2026, withdrawn)",
-      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1783326/full",
+      "venue": "Withdrawn ICLR 2026 submission",
+      "url": "https://openreview.net/pdf?id=4dwAZRr9L5",
+      "type": "preprint",
+      "notes": "Withdrawn ICLR manuscript reviewed in full. It is distinct from the accepted Frontiers article and supports only claims explicitly tied to this version."
+    },
+    {
+      "id": "mt-snn-frontiers-2026",
+      "title": "Mixed-Timestep Spiking Neural Networks: A Temporal Alignment Framework for High-Efficiency Neuromorphic Computing",
+      "authors": "M. Guo, X. Yao, Q. Li, Y. Li, J. Cheng, L. Chen",
+      "year": 2026,
+      "venue": "Frontiers in Neuroscience",
+      "url": "https://doi.org/10.3389/fnins.2026.1783326",
       "type": "peer-reviewed",
       "doi": "10.3389/fnins.2026.1783326",
-      "notes": "The accepted Frontiers record and the supplied withdrawn ICLR manuscript share a method lineage but differ in the named temporal-alignment mechanism."
+      "notes": "Accepted publication. Only the abstract was available in the reviewed access path, so detailed claims remain provisional."
     },
     {
       "id": "temporal-flexibility",
@@ -2948,6 +2986,33 @@
       "year": 2020,
       "venue": "Neural Networks 121:319-328",
       "url": "https://doi.org/10.1016/j.neunet.2019.09.008",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+      "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+      "year": 2024,
+      "venue": "Asilomar Conference on Signals, Systems, and Computers",
+      "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+      "authors": "S. Arfa, B. Vogginger, C. Mayr",
+      "year": 2025,
+      "venue": "International Conference on Neuromorphic Systems",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+      "type": "peer-reviewed"
+    },
+    {
+      "id": "datta2025-snn-meets-ann",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
       "type": "peer-reviewed"
     }
   ]

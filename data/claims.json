@@ -509,7 +509,7 @@
       "evidence_class": null,
       "reports_deployment_evidence": false,
       "source_ids": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "Supplied MT-SNN manuscript, Sections 4.2-4.3 and Eq. 20, PDF pp. 5-7",
@@ -530,7 +530,7 @@
       "evidence_class": null,
       "reports_deployment_evidence": false,
       "source_ids": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "Supplied MT-SNN manuscript, Section 5.1 and Table 1, PDF p. 7",
@@ -549,7 +549,8 @@
       "evidence_class": null,
       "reports_deployment_evidence": false,
       "source_ids": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr",
+        "mt-snn-frontiers-2026"
       ],
       "locators": [
         "Supplied withdrawn ICLR manuscript, title page and Eq. 20, PDF pp. 1 and 7",
@@ -570,7 +571,7 @@
       "evidence_class": null,
       "reports_deployment_evidence": false,
       "source_ids": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "Supplied MT-SNN manuscript, Appendix C, Tables 7-8 and Eqs. 22-23, PDF pp. 16-17",
@@ -588,7 +589,7 @@
       "evidence_class": null,
       "reports_deployment_evidence": false,
       "source_ids": [
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "Supplied MT-SNN manuscript, Appendix E, Figure 7 and Algorithm 2, PDF p. 18",
@@ -654,7 +655,7 @@
         "dynamic-confidence",
         "pascal",
         "qac",
-        "mt-snn"
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "SEENN paper, method and Section 4.3, PDF pp. 2-4 and 8",
@@ -701,8 +702,8 @@
       "source_ids": [
         "pascal",
         "qac",
-        "mt-snn",
-        "temporal-flexibility"
+        "temporal-flexibility",
+        "mt-snn-withdrawn-iclr"
       ],
       "locators": [
         "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",

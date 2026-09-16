@@ -125,13 +125,6 @@ METADATA_OVERRIDES: dict[str, dict[str, object]] = {
             "The legacy MTT record names the paper's training method."
         ),
     },
-    "mt-snn": {
-        "doi": "10.3389/fnins.2026.1783326",
-        "note": (
-            "The accepted Frontiers record and the withdrawn ICLR manuscript "
-            "share a method lineage but name different temporal-alignment mechanisms."
-        ),
-    },
     "qcfs": {
         "title": (
             "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency "
@@ -597,12 +590,13 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
             record["_index"] = index
             records.append(record)
 
-    # Claim audits are full-text review artifacts. Promote every source that an audit
-    # actually inspected by adding a rank-zero overlay with the reviewed locators.
-    # Metadata continues to come from the structured source inputs above, so the audit
-    # cannot silently invent a new work or overwrite bibliographic identity.
+    # Claim audits carry source-specific review states and locators. Add one rank-zero
+    # overlay per inspected source. Metadata continues to come from the structured
+    # source inputs, so an audit cannot invent or overwrite bibliographic identity.
     audited_locators: dict[str, set[str]] = defaultdict(set)
     audited_origins: dict[str, set[str]] = defaultdict(set)
+    audited_retrieval_states: dict[str, set[str]] = defaultdict(set)
+    audited_verification_states: dict[str, set[str]] = defaultdict(set)
     for audit_path in sorted((root / "research/claim-audits").glob("audit-*.json")):
         audit = read_json(audit_path)
         claims = audit.get("claims")
@@ -613,29 +607,67 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
                 raise ValueError(
                     f"{audit_path.name} claim {claim_index} is not an object"
                 )
-            source_ids = claim.get("source_ids")
-            locators = claim.get("locators")
-            if not isinstance(source_ids, list) or not all(
-                isinstance(source_id, str) and source_id for source_id in source_ids
-            ):
+            source_refs = claim.get("source_refs")
+            if not isinstance(source_refs, list) or not source_refs:
                 raise ValueError(
-                    f"{audit_path.name} claim {claim_index} has invalid source_ids"
+                    f"{audit_path.name} claim {claim_index} has invalid source_refs"
                 )
-            if not isinstance(locators, list) or not all(
-                isinstance(locator, str) and locator for locator in locators
-            ):
-                raise ValueError(
-                    f"{audit_path.name} claim {claim_index} has invalid locators"
-                )
-            for source_id in source_ids:
+            for ref_index, source_ref in enumerate(source_refs):
+                if not isinstance(source_ref, dict):
+                    raise ValueError(
+                        f"{audit_path.name} claim {claim_index} source ref "
+                        f"{ref_index} is not an object"
+                    )
+                source_id = source_ref.get("source_id")
+                locators = source_ref.get("locators")
+                retrieval_status = source_ref.get("retrieval_status")
+                verification_status = source_ref.get("verification_status")
+                if not isinstance(source_id, str) or not source_id:
+                    raise ValueError(
+                        f"{audit_path.name} claim {claim_index} source ref "
+                        f"{ref_index} has invalid source_id"
+                    )
+                if not isinstance(locators, list) or not locators or not all(
+                    isinstance(locator, str) and locator for locator in locators
+                ):
+                    raise ValueError(
+                        f"{audit_path.name} claim {claim_index} source ref "
+                        f"{source_id!r} has invalid locators"
+                    )
+                if retrieval_status not in {
+                    "full_text", "partial_text", "metadata_only", "not_retrieved"
+                }:
+                    raise ValueError(
+                        f"{audit_path.name} claim {claim_index} source ref "
+                        f"{source_id!r} has invalid retrieval_status"
+                    )
+                if verification_status not in {
+                    "verified", "provisional", "conflicted", "rejected"
+                }:
+                    raise ValueError(
+                        f"{audit_path.name} claim {claim_index} source ref "
+                        f"{source_id!r} has invalid verification_status"
+                    )
                 audited_locators[source_id].update(locators)
                 audited_origins[source_id].add(audit_path.name)
+                audited_retrieval_states[source_id].add(str(retrieval_status))
+                audited_verification_states[source_id].add(str(verification_status))
 
     metadata_by_id: dict[str, list[dict[str, object]]] = defaultdict(list)
     for record in records:
         metadata_by_id[str(record["id"])].append(record)
     audit_count = 0
     for source_id in sorted(audited_locators):
+        if len(audited_retrieval_states[source_id]) != 1:
+            raise ValueError(
+                f"claim-audited source {source_id!r} has inconsistent retrieval states: "
+                f"{sorted(audited_retrieval_states[source_id])}"
+            )
+        if len(audited_verification_states[source_id]) != 1:
+            raise ValueError(
+                f"claim-audited source {source_id!r} has inconsistent verification states: "
+                f"{sorted(audited_verification_states[source_id])}"
+            )
         candidates = metadata_by_id.get(source_id, [])
         if not candidates:
             raise ValueError(
@@ -649,13 +681,19 @@ def load_input_records(root: Path) -> tuple[list[dict[str, object]], dict[str, s
         }
         overlay.update({
             "id": source_id,
-            "retrieval_status": "full_text",
-            "verification_status": "verified",
+            "retrieval_status": next(iter(audited_retrieval_states[source_id])),
+            "verification_status": next(iter(audited_verification_states[source_id])),
             "retrieved_on": AUDIT_DATE,
             "locators": sorted(audited_locators[source_id]),
             "notes": (
-                "Full text, official documentation, or released source was inspected "
-                "in " + ", ".join(sorted(audited_origins[source_id])) + "."
+                (
+                    "Full text, official documentation, or released source was inspected in "
+                    if next(iter(audited_retrieval_states[source_id])) == "full_text"
+                    else "Partial text or an abstract was inspected in "
+                    if next(iter(audited_retrieval_states[source_id])) == "partial_text"
+                    else "Source metadata was inspected in "
+                )
+                + ", ".join(sorted(audited_origins[source_id])) + "."
             ),
             "_origin": "research/claim-audits",
             "_rank": 0,

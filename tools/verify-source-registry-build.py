@@ -130,6 +130,14 @@ def main() -> int:
         raise AssertionError("source-registry build is not deterministic")
     checks += 1
 
+    committed_registry = (ROOT / "data/source-registry.json").read_text()
+    committed_log = (ROOT / "research/source-validation-log.md").read_text()
+    if committed_registry != first_bytes or committed_log != log_text:
+        raise AssertionError(
+            "committed source-registry outputs differ from a fresh deterministic build"
+        )
+    checks += 1
+
     sources = registry.get("sources")
     if not isinstance(sources, list):
         raise AssertionError("generated registry lacks a sources array")
@@ -149,9 +157,9 @@ def main() -> int:
     checks += 1
 
     input_records, _, input_counts = load_input_records(ROOT)
-    if len(input_records) != 357 or sum(input_counts.values()) != 357:
+    if len(input_records) != 368 or sum(input_counts.values()) != 368:
         raise AssertionError(
-            f"expected 357 structured input rows, got {len(input_records)}"
+            f"expected 368 structured input rows, got {len(input_records)}"
         )
     row_addresses = [
         f"{record['_origin']}:{record['id']}" for record in input_records
@@ -224,7 +232,7 @@ def main() -> int:
         "andrei2024-deep-unrolling-spinnaker2",
         "arfa2025-spiking-q-spinnaker2",
         "datta2025-snn-meets-ann",
-        "mt-snn",
+        "mt-snn-withdrawn-iclr",
         "pascal",
         "qac",
         "temporal-flexibility",
@@ -245,6 +253,28 @@ def main() -> int:
             "claim-audited sources were not promoted from their reviewed inputs: "
             f"{stale_audited_sources}"
         )
+    checks += 1
+
+
+    frontiers = sources_by_id["mt-snn-frontiers-2026"]
+    if (
+        frontiers["retrieval_status"] != "partial_text"
+        or frontiers["verification_status"] != "provisional"
+    ):
+        raise AssertionError("accepted MT-SNN access level must remain partial/provisional")
+    if any("manuscript" in locator.lower() for locator in frontiers["locators"]):
+        raise AssertionError("withdrawn-manuscript locators leaked into accepted MT-SNN")
+    withdrawn = sources_by_id["mt-snn-withdrawn-iclr"]
+    if any("frontiers" in locator.lower() for locator in withdrawn["locators"]):
+        raise AssertionError("accepted-article locators leaked into withdrawn MT-SNN")
+    if any("MT-SNN" in locator for locator in sources_by_id["pascal"]["locators"]):
+        raise AssertionError("a co-cited MT-SNN locator was promoted onto PASCAL")
+    arfa = sources_by_id["arfa2025-spiking-q-spinnaker2"]
+    if arfa["title"] != (
+        "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 "
+        "Neuromorphic Platform"
+    ) or arfa["doi"] != "10.1109/icons69015.2025.00021":
+        raise AssertionError("Arfa exact title/DOI regression failed")
     checks += 1
 
     conflict_fixture = [
@@ -281,12 +311,12 @@ def main() -> int:
         )
     checks += 1
 
-    if diagnostics.get("true_duplicate_count") != 84:
+    if diagnostics.get("true_duplicate_count") != 86:
         raise AssertionError(
-            "duplicate-cluster accounting must include only the 84 multi-input "
+            "duplicate-cluster accounting must include only the 86 multi-input "
             f"clusters, got {diagnostics.get('true_duplicate_count')!r}"
         )
-    if len(diagnostics.get("merged_groups", [])) != 84:
+    if len(diagnostics.get("merged_groups", [])) != 86:
         raise AssertionError("merged_groups contains singleton provenance aliases")
     checks += 1
 

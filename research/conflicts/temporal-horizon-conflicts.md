@@ -38,11 +38,12 @@ The supplied 23-page manuscript is the withdrawn ICLR 2026 version. It uses aver
 
 The records agree on static layerwise timestep allocation and the ImageNet headline. They should not be treated as interchangeable evidence for the alignment implementation until the accepted full text is posted and inspected.
 
-## Temporal Flexibility has duplicate and inaccurate source metadata
+## Temporal Flexibility metadata was reconciled
 
-The canonical source is `temporal-flexibility`. The registry also contains the stale duplicate `mtt` with the title “Multi-Timestep Training for Spiking Neural Networks.” The paper's title is “Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness.” Its authors are Kangrui Du, Yuhang Wu, Shikuang Deng, and Shi Gu. The canonical registry currently gives `Du, X.` and `Deng, L.`, which do not match the paper.
-
-No canonical registry was changed in this audit, as required by the task boundary.
+The canonical source is `temporal-flexibility`. The legacy `mtt` identifier is retained
+only as an alias. The registry uses the paper title “Temporal Flexibility in Spiking
+Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness”
+and the verified authors Kangrui Du, Yuhang Wu, Shikuang Deng, and Shi Gu.
 
 ## The no-hardware conclusion must remain bounded
 

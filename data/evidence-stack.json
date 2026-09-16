@@ -53,7 +53,7 @@
         "orchard2021-loihi2signal",
         "intel-loihi2-brief",
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta",
+        "brehove",
         "lava-github-archived",
         "intel-inrc-confluence"
       ]
@@ -592,7 +592,7 @@
       "attributes": {},
       "sources": [
         "deneve2022-ttfs-unifying",
-        "lenz2023-quartz"
+        "quartz"
       ]
     },
     {
@@ -638,7 +638,7 @@
       "attributes": {},
       "sources": [
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta"
+        "brehove"
       ]
     },
     {
@@ -770,7 +770,7 @@
       "attributes": {},
       "sources": [
         "spikingjelly-paper",
-        "spikingjelly-docs-lavaexchange",
+        "spj-lava",
         "a18-sourcecode-comparison"
       ]
     },
@@ -948,7 +948,7 @@
       "summary": "SpikingJelly module implementing the documented pipeline SpikingJelly -> Lava DL -> Lava -> Loihi: data-layout conversion ([T,N,*] to [N,*,T]), IF/LIF-to-CubaLIFNode conversion via BlockContainer, export_hdf5() producing the same HDF5 schema lava.lib.dl.netx consumes.",
       "attributes": {},
       "sources": [
-        "spikingjelly-docs-lavaexchange",
+        "spj-lava",
         "a18-sourcecode-comparison"
       ]
     },
@@ -1045,7 +1045,7 @@
       "summary": "Lenz, Orchard, Sheik's time-to-first-spike (TTFS) ANN-to-SNN converter for Loihi, explicitly not rate-coded; states plainly that prior temporal-coding conversion methods had not been demonstrated on physical neuromorphic hardware before this work, and that \"no soft reset of membrane potentials [is] needed\" because TTFS neurons fire at most once.",
       "attributes": {},
       "sources": [
-        "lenz2023-quartz"
+        "quartz"
       ]
     },
     {
@@ -1137,7 +1137,7 @@
         "rueckauer2022-nxtf",
         "rueckauer2017-conversion",
         "riverpub-mnist-dynapcnn",
-        "bu2022-qcfs",
+        "qcfs",
         "auge2021-encodingsurvey"
       ]
     },
@@ -1195,7 +1195,7 @@
       },
       "sources": [
         "bonazzi2025-fpga-drone-dpu",
-        "brehove2026-sigmadelta",
+        "brehove",
         "akida-benchmarks2025"
       ]
     },
@@ -1396,7 +1396,7 @@
       },
       "sources": [
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta",
+        "brehove",
         "backprop-loihi-pmc",
         "truenorth-neuron-model-doc",
         "eventprop-spinnaker2-backprop"
@@ -1413,7 +1413,7 @@
       },
       "sources": [
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta",
+        "brehove",
         "boeshertz2024-rnn-mapping",
         "eventprop-spinnaker2-backprop"
       ]
@@ -1510,7 +1510,7 @@
       },
       "sources": [
         "rueckauer2017-conversion",
-        "bu2022-qcfs",
+        "qcfs",
         "massa2020-loihi-gesture"
       ]
     },
@@ -1608,7 +1608,7 @@
       },
       "sources": [
         "rueckauer2017-conversion",
-        "bu2022-qcfs"
+        "qcfs"
       ]
     },
     {
@@ -1729,7 +1729,7 @@
       },
       "sources": [
         "adaptive-fission",
-        "bu2022-qcfs",
+        "qcfs",
         "datta2025-snn-meets-ann",
         "li2022-burstspikes",
         "ramesh2025-pascal"
@@ -1747,7 +1747,7 @@
       },
       "sources": [
         "guo2025-qac",
-        "bu2022-qcfs",
+        "qcfs",
         "ramesh2025-pascal",
         "neuroscale2025-natcomm"
       ]
@@ -1765,8 +1765,8 @@
       "sources": [
         "adaptive-fission",
         "andrei2024-deep-unrolling-spinnaker2",
-        "brehove2026-sigmadelta",
-        "lenz2023-quartz"
+        "brehove",
+        "quartz"
       ]
     },
     {
@@ -1970,6 +1970,199 @@
       "sources": [
         "datta2025-snn-meets-ann"
       ]
+    },
+    {
+      "id": "spikingjelly-rate-coding-recipe",
+      "type": "method",
+      "name": "Spikingjelly Rate Coding Recipe",
+      "layer": "Method",
+      "summary": "SpikingJelly rate-coding ANN-to-SNN recipe with subtractive reset.",
+      "attributes": {},
+      "sources": [
+        "a18-sourcecode-comparison"
+      ]
+    },
+    {
+      "id": "spikingjelly-nir-exporter",
+      "type": "toolchain",
+      "name": "Spikingjelly Nir Exporter",
+      "layer": "Toolchain",
+      "summary": "SpikingJelly NIR exporter and its hard-reset compatibility gate.",
+      "attributes": {},
+      "sources": [
+        "spikingjelly-source-tonir"
+      ]
+    },
+    {
+      "id": "spikingjelly-lava-exchange",
+      "type": "toolchain",
+      "name": "Spikingjelly Lava Exchange",
+      "layer": "Toolchain",
+      "summary": "SpikingJelly Lava exchange path for restricted hard-zero graphs.",
+      "attributes": {},
+      "sources": [
+        "spj-lava"
+      ]
+    },
+    {
+      "id": "lava-dl-netx-hdf5",
+      "type": "artifact",
+      "name": "Lava Dl Netx Hdf5",
+      "layer": "Artifact",
+      "summary": "Lava-DL HDF5 graph consumed by NetX.",
+      "attributes": {},
+      "sources": [
+        "lava-dl-netx-docs"
+      ]
+    },
+    {
+      "id": "nir-1.0.8",
+      "type": "ir",
+      "name": "Nir 1.0.8",
+      "layer": "Intermediate representation",
+      "summary": "NIR 1.0.8 graph with fixed reset-potential fields.",
+      "attributes": {},
+      "sources": [
+        "neuroir-docs",
+        "nir-neuron-primitives-source"
+      ]
+    },
+    {
+      "id": "lava-lif-or-lava-dl-cuba",
+      "type": "runtime",
+      "name": "Lava Lif Or Lava Dl Cuba",
+      "layer": "Runtime",
+      "summary": "Lava LIF or Lava-DL CUBA implementation selected by the official NIR example.",
+      "attributes": {},
+      "sources": [
+        "lava-github-archived",
+        "lava-dl-slayer-docs"
+      ]
+    },
+    {
+      "id": "nir-imported-lava-dl-forward",
+      "type": "runtime",
+      "name": "Nir Imported Lava Dl Forward",
+      "layer": "Runtime",
+      "summary": "Forward execution of a NIR-imported Lava-DL module with persistent state.",
+      "attributes": {},
+      "sources": [
+        "neuroir-docs"
+      ]
+    },
+    {
+      "id": "next-sample",
+      "type": "boundary",
+      "name": "Next Sample",
+      "layer": "Execution boundary",
+      "summary": "Boundary between consecutive input samples.",
+      "attributes": {},
+      "sources": [
+        "neuroir-docs"
+      ]
+    },
+    {
+      "id": "lava-dl-netx-hdf5-cuba",
+      "type": "artifact",
+      "name": "Lava Dl Netx Hdf5 Cuba",
+      "layer": "Artifact",
+      "summary": "NetX HDF5 CUBA or LOIHI neuron record.",
+      "attributes": {},
+      "sources": [
+        "lava-dl-netx-docs"
+      ]
+    },
+    {
+      "id": "lava-lif-process",
+      "type": "runtime",
+      "name": "Lava Lif Process",
+      "layer": "Runtime",
+      "summary": "Lava built-in LIF or LIFReset process.",
+      "attributes": {},
+      "sources": [
+        "lava-github-archived"
+      ]
+    },
+    {
+      "id": "nxtf-logical-soft-reset-neuron",
+      "type": "method",
+      "name": "Nxtf Logical Soft Reset Neuron",
+      "layer": "Method",
+      "summary": "NxTF logical rate-coded neuron with subtractive reset.",
+      "attributes": {},
+      "sources": [
+        "nxtf",
+        "nxtf-repository"
+      ]
+    },
+    {
+      "id": "loihi1-compartment-graph",
+      "type": "hardware-mapping",
+      "name": "Loihi1 Compartment Graph",
+      "layer": "Hardware mapping",
+      "summary": "Coupled Loihi 1 compartments used to emulate subtractive reset.",
+      "attributes": {},
+      "sources": [
+        "nxtf",
+        "nxtf-repository"
+      ]
+    },
+    {
+      "id": "sinabs-membrane-subtract",
+      "type": "method",
+      "name": "Sinabs Membrane Subtract",
+      "layer": "Method",
+      "summary": "Sinabs IAF or LIF neuron using MembraneSubtract.",
+      "attributes": {},
+      "sources": [
+        "sinabs-docs"
+      ]
+    },
+    {
+      "id": "speck-dynapcnn-core",
+      "type": "hardware-mapping",
+      "name": "Speck Dynapcnn Core",
+      "layer": "Hardware mapping",
+      "summary": "Speck DYNAP-CNN core mapping used by Sinabs.",
+      "attributes": {},
+      "sources": [
+        "sinabs-docs"
+      ]
+    },
+    {
+      "id": "sinabs-3.1.3",
+      "type": "toolchain",
+      "name": "Sinabs 3.1.3",
+      "layer": "Toolchain",
+      "summary": "Sinabs 3.1.3 conversion and NIR bridge.",
+      "attributes": {},
+      "sources": [
+        "sinabs-docs",
+        "sinabs-nir"
+      ]
+    },
+    {
+      "id": "lava-or-netx-soft-reset-intent",
+      "type": "method",
+      "name": "Lava Or Netx Soft Reset Intent",
+      "layer": "Method",
+      "summary": "Requested subtractive-reset behavior entering a Lava or NetX route.",
+      "attributes": {},
+      "sources": [
+        "lava-github-archived",
+        "lava-dl-netx-docs"
+      ]
+    },
+    {
+      "id": "loihi2-custom-neuron",
+      "type": "hardware-mapping",
+      "name": "Loihi2 Custom Neuron",
+      "layer": "Hardware mapping",
+      "summary": "Potential Loihi 2 custom-neuron implementation, not established by the reviewed public route.",
+      "attributes": {},
+      "sources": [
+        "pedersen-2024-nir"
+      ]
     }
   ],
   "edges": [
@@ -2046,7 +2239,7 @@
       "evidence": "E3",
       "sources": [
         "a18-sourcecode-comparison",
-        "spikingjelly-docs-lavaexchange",
+        "spj-lava",
         "spj-lava"
       ],
       "notes": "SpikingJelly 2.0.0rc1 rejects the default rate-coding conversion output because v_reset=None. A separately configured hard-zero model can enter the restricted Lava-DL HDF5 route, but that is a different input contract.",
@@ -2069,7 +2262,7 @@
       "evidence": "E3",
       "sources": [
         "lava-dl-netx-docs",
-        "spikingjelly-docs-lavaexchange"
+        "spj-lava"
       ],
       "capability_class": "native",
       "route_state": "unexercised",
@@ -2724,7 +2917,7 @@
       ],
       "evidence": "E3",
       "sources": [
-        "spikingjelly-docs-lavaexchange"
+        "spj-lava"
       ]
     },
     {
@@ -3092,7 +3285,7 @@
       ],
       "evidence": "E1",
       "sources": [
-        "brehove2026-sigmadelta"
+        "brehove"
       ],
       "notes": "The only object-detection network found running on physical spiking silicon in the survey; no rate-coded/IF conversion of an object detector has been demonstrated on any physical chip."
     },
@@ -3425,7 +3618,7 @@
       "evidence": "E4",
       "sources": [
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta"
+        "brehove"
       ],
       "notes": "Strictly more general than a signed binary spike, since the payload subsumes +/-1."
     },
@@ -3443,7 +3636,7 @@
       "evidence": "E1",
       "sources": [
         "shrestha2023-loihi2video",
-        "brehove2026-sigmadelta"
+        "brehove"
       ],
       "notes": "Demonstrated in a fielded YOLO-KP detector: 112 FPS, 5.0 ms latency, 20 mJ/frame."
     },
@@ -3854,7 +4047,7 @@
       ],
       "evidence": "E1",
       "sources": [
-        "lenz2023-quartz"
+        "quartz"
       ],
       "notes": ""
     },
@@ -3871,7 +4064,7 @@
       ],
       "evidence": "E1",
       "sources": [
-        "brehove2026-sigmadelta"
+        "brehove"
       ],
       "notes": ""
     },
@@ -3958,15 +4151,35 @@
       "measurement_boundary": null,
       "platform_generation": null,
       "toolchain_version": "SpikingJelly 2.0.0rc1",
-      "source_ids": [
+      "notes": "The exporter fails explicitly. Replacing v_reset=None with zero changes the model contract.",
+      "source_refs": [
+        {
+          "source_id": "spikingjelly-source-tonir",
+          "locators": [
+            "nir_exchange/to_nir.py lines 180-184"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "a18-sourcecode-comparison",
+          "locators": [
+            "rate_coding.py lines 590-593 and 647-650"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Unsupported route from spikingjelly-rate-coding-recipe to spikingjelly-nir-exporter. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [],
+      "breaks": [
+        "Rejected: subtractive reset"
+      ],
+      "evidence": null,
+      "sources": [
         "spikingjelly-source-tonir",
         "a18-sourcecode-comparison"
-      ],
-      "locators": [
-        "rate_coding.py lines 590-593 and 647-650",
-        "nir_exchange/to_nir.py lines 180-184"
-      ],
-      "notes": "The exporter fails explicitly. Replacing v_reset=None with zero changes the model contract."
+      ]
     },
     {
       "id": "audit-b-spikingjelly-rate-to-lava-exchange",
@@ -3991,14 +4204,27 @@
       "measurement_boundary": null,
       "platform_generation": "Loihi 2 path through Lava-DL when a compatible model is supplied",
       "toolchain_version": "SpikingJelly 2.0.0rc1",
-      "source_ids": [
-        "spj-lava",
-        "a18-sourcecode-comparison"
+      "notes": "A hard-zero model is accepted, but it is not the default rate-conversion output.",
+      "source_refs": [
+        {
+          "source_id": "spj-lava",
+          "locators": [
+            "lava_exchange.py lines 743-780 and 1175-1189"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
       ],
-      "locators": [
-        "lava_exchange.py lines 743-780 and 1175-1189"
+      "mechanism": "Unsupported route from spikingjelly-rate-coding-recipe to spikingjelly-lava-exchange. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [],
+      "breaks": [
+        "Rejected: subtractive reset",
+        "Rejected: nonzero fixed reset"
       ],
-      "notes": "A hard-zero model is accepted, but it is not the default rate-conversion output."
+      "evidence": null,
+      "sources": [
+        "spj-lava"
+      ]
     },
     {
       "id": "audit-b-spikingjelly-hard-zero-to-netx-hdf5",
@@ -4034,15 +4260,42 @@
       "measurement_boundary": "Documented export and NetX import path only. No physical result for this specific SpikingJelly route was located.",
       "platform_generation": "Loihi 2 target path",
       "toolchain_version": "SpikingJelly 2.0.0rc1 and Lava-DL 0.6.0",
-      "source_ids": [
+      "notes": "E3 applies to the deployment path, not to a measured result.",
+      "source_refs": [
+        {
+          "source_id": "spj-lava",
+          "locators": [
+            "SpikingJelly lava_exchange.py to_blocks and export_HDF5"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lava-dl-netx-docs",
+          "locators": [
+            "Lava-DL NetX HDF5 README and hdf5.py"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Transformed route from spikingjelly-lava-exchange to lava-dl-netx-hdf5. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "hard-zero post-spike reset"
+      ],
+      "breaks": [
+        "Transformed: IF and LIF are represented as Lava-DL CUBA blocks",
+        "Transformed: weights are quantized",
+        "Transformed: average pooling becomes sum pooling with downstream rescaling",
+        "Rejected: bias in exported Conv2d or Linear",
+        "Rejected: LIF decay_input=True",
+        "Rejected: operators outside the enumerated block patterns"
+      ],
+      "evidence": "E3",
+      "sources": [
         "spj-lava",
         "lava-dl-netx-docs"
-      ],
-      "locators": [
-        "SpikingJelly lava_exchange.py to_blocks and export_HDF5",
-        "Lava-DL NetX HDF5 README and hdf5.py"
-      ],
-      "notes": "E3 applies to the deployment path, not to a measured result."
+      ]
     },
     {
       "id": "audit-b-nir-to-official-lava-example",
@@ -4072,16 +4325,46 @@
       "measurement_boundary": null,
       "platform_generation": "Lava public process models; no physical platform established by the example",
       "toolchain_version": "NIR 1.0.8 example with Lava 0.10.0 and Lava-DL 0.6.0 APIs",
-      "source_ids": [
+      "notes": "The example is not evidence that every NIR-to-Lava importer has this behavior.",
+      "source_refs": [
+        {
+          "source_id": "neuroir-docs",
+          "locators": [
+            "NIR docs/source/examples/lava/nir_to_lava.py, Lava LIF branch and Lava-DL IF and CubaLIF branches"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lava-github-archived",
+          "locators": [
+            "Lava and Lava-DL hard-zero reset implementations"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lava-dl-slayer-docs",
+          "locators": [
+            "Lava and Lava-DL hard-zero reset implementations"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Transformed route from nir-1.0.8 to lava-lif-or-lava-dl-cuba. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "zero-valued fixed reset only"
+      ],
+      "breaks": [
+        "Transformed: nonzero fixed v_reset is discarded"
+      ],
+      "evidence": null,
+      "sources": [
         "neuroir-docs",
         "lava-github-archived",
         "lava-dl-slayer-docs"
-      ],
-      "locators": [
-        "NIR docs/source/examples/lava/nir_to_lava.py, Lava LIF branch and Lava-DL IF and CubaLIF branches",
-        "Lava and Lava-DL hard-zero reset implementations"
-      ],
-      "notes": "The example is not evidence that every NIR-to-Lava importer has this behavior."
+      ]
     },
     {
       "id": "audit-b-nir-lava-dl-sample-boundary",
@@ -4105,13 +4388,26 @@
       "measurement_boundary": null,
       "platform_generation": null,
       "toolchain_version": "NIR 1.0.8 official Lava example",
-      "source_ids": [
+      "notes": "This is sample-boundary state management, not a post-spike reset rule.",
+      "source_refs": [
+        {
+          "source_id": "neuroir-docs",
+          "locators": [
+            "NIR docs/source/examples/lava/nir_to_lava.py, module warning lines 3-6"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Host-assisted route from nir-imported-lava-dl-forward to next-sample. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [],
+      "breaks": [
+        "Transformed: state is cleared between samples by caller action"
+      ],
+      "evidence": null,
+      "sources": [
         "neuroir-docs"
-      ],
-      "locators": [
-        "NIR docs/source/examples/lava/nir_to_lava.py, module warning lines 3-6"
-      ],
-      "notes": "This is sample-boundary state management, not a post-spike reset rule."
+      ]
     },
     {
       "id": "audit-b-netx-cuba-to-lava-lif",
@@ -4142,15 +4438,39 @@
       "measurement_boundary": "Documented NetX reconstruction path. No reset-specific physical measurement is asserted by this edge.",
       "platform_generation": "Lava runtime, with Loihi 2 deployment available through nonpublic hardware components",
       "toolchain_version": "Lava-DL 0.6.0 and Lava 0.10.0",
-      "source_ids": [
+      "notes": "Native refers to the built-in Lava LIF behavior, not to proof about arbitrary custom Loihi microcode.",
+      "source_refs": [
+        {
+          "source_id": "lava-dl-netx-docs",
+          "locators": [
+            "Lava-DL hdf5.py lines 140-163"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lava-github-archived",
+          "locators": [
+            "Lava LIF and LIFReset process models"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Native route from lava-dl-netx-hdf5-cuba to lava-lif-process. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "threshold and decay parameters",
+        "hard-zero post-spike reset"
+      ],
+      "breaks": [
+        "Transformed: optional reset_interval selects periodic state-clearing process",
+        "Rejected: post-spike subtractive-reset field, which is absent from the schema"
+      ],
+      "evidence": "E3",
+      "sources": [
         "lava-dl-netx-docs",
         "lava-github-archived"
-      ],
-      "locators": [
-        "Lava-DL hdf5.py lines 140-163",
-        "Lava LIF and LIFReset process models"
-      ],
-      "notes": "Native refers to the built-in Lava LIF behavior, not to proof about arbitrary custom Loihi microcode."
+      ]
     },
     {
       "id": "audit-b-nxtf-soft-reset-to-loihi1",
@@ -4178,15 +4498,37 @@
       "measurement_boundary": "Physical Loihi 1 through NxSDK 0.9.5 on Nahuku32. Published measurements include active neurocores and embedded x86 processors. Reset mode must be checked per workload.",
       "platform_generation": "Intel Loihi 1",
       "toolchain_version": "NxTF archived code and NxSDK 0.9.5 measurement environment",
-      "source_ids": [
+      "notes": "E1 establishes the physical NxTF route. It does not establish soft reset for every table entry.",
+      "source_refs": [
+        {
+          "source_id": "nxtf",
+          "locators": [
+            "NxTF paper Section 2.3.6 and Section 3.2.1"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "nxtf-repository",
+          "locators": [
+            "dnn_layers.py lines 404-535 and 814-925"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Emulated route from nxtf-logical-soft-reset-neuron to loihi1-compartment-graph. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "logical subtractive-reset behavior within fixed-point limits"
+      ],
+      "breaks": [
+        "Transformed: one logical neuron becomes two hardware compartments"
+      ],
+      "evidence": "E1",
+      "sources": [
         "nxtf",
-        "nxtf-text"
-      ],
-      "locators": [
-        "NxTF paper Section 2.3.6 and Section 3.2.1",
-        "dnn_layers.py lines 404-535 and 814-925"
-      ],
-      "notes": "E1 establishes the physical NxTF route. It does not establish soft reset for every table entry."
+        "nxtf-repository"
+      ]
     },
     {
       "id": "audit-b-sinabs-subtractive-to-speck",
@@ -4218,16 +4560,33 @@
       "measurement_boundary": "Official documented devkit route. No measurement is attached to this generic route edge.",
       "platform_generation": "SynSense Speck family through DYNAP-CNN",
       "toolchain_version": "Sinabs 3.1.3",
-      "source_ids": [
-        "sinabs-docs",
-        "sinabs"
+      "notes": "Native applies to reset semantics. The graph and numeric representation still change.",
+      "source_refs": [
+        {
+          "source_id": "sinabs-docs",
+          "locators": [
+            "from_torch.py conversion default",
+            "dynapcnn.py return_to_zero mapping",
+            "docs/speck/faqs/tips_for_training.md reset section"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
       ],
-      "locators": [
-        "from_torch.py conversion default",
-        "dynapcnn.py return_to_zero mapping",
-        "docs/speck/faqs/tips_for_training.md reset section"
+      "mechanism": "Native route from sinabs-membrane-subtract to speck-dynapcnn-core. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "reset by threshold subtraction"
       ],
-      "notes": "Native applies to reset semantics. The graph and numeric representation still change."
+      "breaks": [
+        "Transformed: average pooling to sum pooling",
+        "Transformed: linear to 1 by 1 convolution",
+        "Transformed: weights and state to chip precision",
+        "Rejected: reset functions other than MembraneSubtract and MembraneReset"
+      ],
+      "evidence": "E3",
+      "sources": [
+        "sinabs-docs"
+      ]
     },
     {
       "id": "audit-b-nir-to-sinabs",
@@ -4253,17 +4612,44 @@
       "measurement_boundary": "The official notebook reports 90 percent accuracy on 50 N-MNIST samples on a physical Speck 2F module. It reports no energy or latency.",
       "platform_generation": "SynSense Speck 2F module after DynapcnnNetwork mapping",
       "toolchain_version": "Sinabs 3.1.3 NIR bridge; official notebook last changed 2025-10-31",
-      "source_ids": [
+      "notes": "Physical execution proves route viability, not reset preservation.",
+      "source_refs": [
+        {
+          "source_id": "sinabs-nir",
+          "locators": [
+            "Sinabs nir.py lines 86-108"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "sinabs-nir-to-speck-tutorial",
+          "locators": [
+            "NIR-to-Speck notebook cells 5, 9, and 15"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "nir-neuron-primitives-source",
+          "locators": [
+            "NIR neuron fixed-reset defaults"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Transformed route from nir-1.0.8 to sinabs-3.1.3. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [],
+      "breaks": [
+        "Transformed: fixed reset becomes subtractive reset"
+      ],
+      "evidence": "E2",
+      "sources": [
         "sinabs-nir",
         "sinabs-nir-to-speck-tutorial",
         "nir-neuron-primitives-source"
-      ],
-      "locators": [
-        "Sinabs nir.py lines 86-108",
-        "NIR-to-Speck notebook cells 5, 9, and 15",
-        "NIR neuron fixed-reset defaults"
-      ],
-      "notes": "Physical execution proves route viability, not reset preservation."
+      ]
     },
     {
       "id": "audit-b-sinabs-to-nir",
@@ -4292,15 +4678,38 @@
       "measurement_boundary": null,
       "platform_generation": null,
       "toolchain_version": "Sinabs 3.1.3 and NIR 1.0.8",
-      "source_ids": [
+      "notes": "The exporter does not inspect reset_fn.",
+      "source_refs": [
+        {
+          "source_id": "sinabs-nir",
+          "locators": [
+            "Sinabs nir.py lines 156-171"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "nir-neuron-primitives-source",
+          "locators": [
+            "NIR neuron.py missing-field defaults"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Transformed route from sinabs-3.1.3 to nir-1.0.8. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [
+        "fixed-zero reset only when that was already the Sinabs behavior"
+      ],
+      "breaks": [
+        "Transformed: subtractive reset becomes fixed zero",
+        "Transformed: nonzero fixed reset becomes fixed zero"
+      ],
+      "evidence": null,
+      "sources": [
         "sinabs-nir",
         "nir-neuron-primitives-source"
-      ],
-      "locators": [
-        "Sinabs nir.py lines 156-171",
-        "NIR neuron.py missing-field defaults"
-      ],
-      "notes": "The exporter does not inspect reset_fn."
+      ]
     },
     {
       "id": "audit-b-lava-netx-soft-reset-to-loihi2",
@@ -4320,16 +4729,42 @@
       "measurement_boundary": null,
       "platform_generation": "Intel Loihi 2",
       "toolchain_version": "Public Lava 0.10.0 and Lava-DL 0.6.0 artifacts",
-      "source_ids": [
+      "notes": "Loihi 2 programmability makes impossibility an invalid inference. No reviewed public route documents this specific mapping.",
+      "source_refs": [
+        {
+          "source_id": "lava-github-archived",
+          "locators": [
+            "Public Lava built-in LIF and NetX schemas"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lava-dl-netx-docs",
+          "locators": [
+            "Public Lava built-in LIF and NetX schemas"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "pedersen-2024-nir",
+          "locators": [
+            "Pedersen et al. 2024 hardware-platform discussion of Loihi 2 custom microcode"
+          ],
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "mechanism": "Undocumented route from lava-or-netx-soft-reset-intent to loihi2-custom-neuron. The typed input, typed output, transformation, rejection, and notes fields define the exact boundary.",
+      "preserves": [],
+      "breaks": [],
+      "evidence": null,
+      "sources": [
         "lava-github-archived",
         "lava-dl-netx-docs",
         "pedersen-2024-nir"
-      ],
-      "locators": [
-        "Public Lava built-in LIF and NetX schemas",
-        "Pedersen et al. 2024 hardware-platform discussion of Loihi 2 custom microcode"
-      ],
-      "notes": "Loihi 2 programmability makes impossibility an invalid inference. No reviewed public route documents this specific mapping."
+      ]
     },
     {
       "id": "pasc-if-to-pascal-uniform-t4-model",
@@ -4551,7 +4986,7 @@
       "type": "preprint"
     },
     {
-      "id": "brehove2026-sigmadelta",
+      "id": "brehove",
       "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
       "authors": "M. Brehove, S. A. Tumpa, E. Kyubwa, N. Menon, V. Narayanan",
       "year": 2026,
@@ -5037,7 +5472,7 @@
       "type": "community-commentary"
     },
     {
-      "id": "lenz2023-quartz",
+      "id": "quartz",
       "title": "Ultra-low-power Image Classification on Neuromorphic Hardware (Quartz)",
       "authors": "C. Lenz, G. Orchard, S. Sheik",
       "year": 2023,
@@ -5055,7 +5490,7 @@
       "type": "peer-reviewed"
     },
     {
-      "id": "spikingjelly-docs-lavaexchange",
+      "id": "spj-lava",
       "title": "Convert to Lava for Loihi Deployment",
       "authors": "SpikingJelly project",
       "year": 2026,
@@ -5452,12 +5887,13 @@
     },
     {
       "id": "akida-benchmarks2025",
-      "title": "Enabling Efficient Processing of Spiking Neural Networks on commodity neuromorphic processors",
-      "authors": "Unattributed in source excerpt",
+      "title": "Enabling Efficient Processing of Spiking Neural Networks with On-Chip Learning on Commodity Neuromorphic Processors for Edge AI Systems",
+      "authors": "Rachmad Vidya Wicaksana Putra, Pasindu Wickramasinghe, Muhammad Shafique",
       "year": 2025,
       "venue": "arXiv:2504.00957",
-      "url": "https://arxiv.org/html/2504.00957v1",
-      "type": "preprint"
+      "url": "https://arxiv.org/abs/2504.00957",
+      "type": "preprint",
+      "doi": "10.48550/arXiv.2504.00957"
     },
     {
       "id": "bonazzi2025-fpga-drone-dpu",
@@ -5532,7 +5968,7 @@
       "type": "peer-reviewed"
     },
     {
-      "id": "bu2022-qcfs",
+      "id": "qcfs",
       "title": "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks (QCFS)",
       "authors": "T. Bu, W. Fang, J. Ding, P. Dai, Z. Yu, T. Huang",
       "year": 2022,
@@ -5790,8 +6226,8 @@
       "authors": "S. Arfa, B. Vogginger, C. Mayr",
       "year": 2025,
       "venue": "2025 International Conference on Neuromorphic Systems",
-      "doi": "10.1109/ICONS69015.2025.00022",
-      "url": "https://doi.org/10.1109/ICONS69015.2025.00022",
+      "doi": "10.1109/ICONS69015.2025.00021",
+      "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
       "type": "peer-reviewed"
     },
     {
@@ -5802,6 +6238,93 @@
       "venue": "Transactions on Machine Learning Research",
       "url": "https://openreview.net/forum?id=WOwQKguWT0",
       "type": "peer-reviewed"
+    },
+    {
+      "id": "adaptive-fission",
+      "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+      "authors": "Jiang, Y., Chen, F., Li, Y., Liu, Y., Gao, H., Zhang, T., Fang, Y.",
+      "year": 2025,
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "url": "https://doi.org/10.52202/085713-5157",
+      "type": "peer-reviewed",
+      "doi": "10.52202/085713-5157"
+    },
+    {
+      "id": "temporal-flexibility",
+      "title": "Temporal Flexibility in Spiking Neural Networks: Towards Generalization Across Time Steps and Deployment Friendliness",
+      "authors": "Kangrui Du, Yuhang Wu, Shikuang Deng, Shi Gu",
+      "year": 2025,
+      "venue": "ICLR (Poster)",
+      "url": "https://arxiv.org/abs/2503.17394",
+      "type": "peer-reviewed",
+      "doi": "10.48550/arxiv.2503.17394"
+    },
+    {
+      "id": "sinabs-nir",
+      "title": "Deploying NIR models to Speck",
+      "authors": "Sinabs contributors",
+      "year": 2025,
+      "venue": "Official tutorial, v3.0.3",
+      "url": "https://sinabs.readthedocs.io/v3.0.3/tutorials/nir_to_speck.html",
+      "type": "official-documentation"
+    },
+    {
+      "id": "srp",
+      "title": "Reducing ANN-SNN Conversion Error through Residual Membrane Potential",
+      "authors": "Hao, Z., Bu, T., Ding, J., Huang, T., Yu, Z.",
+      "year": 2023,
+      "venue": "AAAI",
+      "url": "https://arxiv.org/abs/2302.02091",
+      "type": "peer-reviewed",
+      "doi": "10.48550/arxiv.2302.02091"
+    },
+    {
+      "id": "nxtf",
+      "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
+      "authors": "B. Rueckauer et al.",
+      "year": 2022,
+      "venue": "ACM JETC",
+      "url": "https://doi.org/10.1145/3501770",
+      "type": "peer-reviewed",
+      "doi": "10.1145/3501770"
+    },
+    {
+      "id": "nxtf-text",
+      "title": "NxTF author manuscript",
+      "authors": "B. Rueckauer et al.",
+      "year": 2022,
+      "venue": "Author manuscript",
+      "url": "https://arxiv.org/abs/2101.04261",
+      "type": "preprint",
+      "doi": "10.48550/arxiv.2101.04261"
+    },
+    {
+      "id": "sinabs",
+      "title": "Sinabs and Speck deployment basics",
+      "authors": "Sinabs contributors",
+      "year": 2025,
+      "venue": "Official documentation, v3.1.1",
+      "url": "https://sinabs.readthedocs.io/v3.1.1/speck/the_basics.html",
+      "type": "official-sdk-documentation"
+    },
+    {
+      "id": "pedersen-2024-nir",
+      "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
+      "authors": "J. E. Pedersen et al.",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-024-52259-9",
+      "type": "peer-reviewed",
+      "doi": "10.1038/s41467-024-52259-9"
+    },
+    {
+      "id": "nxtf-repository",
+      "title": "NxTF archived source repository",
+      "authors": "Intel Neuromorphic Research Community contributors",
+      "year": 2022,
+      "venue": "Archived intel-nrc-ecosystem/models repository",
+      "url": "https://github.com/intel-nrc-ecosystem/models/tree/3dc53bfcfae1efe8772b8cb5e2c512bb28c872f8/nxsdk_modules_ncl/dnn",
+      "type": "official-repository"
     }
   ]
 }

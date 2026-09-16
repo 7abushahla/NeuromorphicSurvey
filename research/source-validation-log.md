@@ -4,33 +4,33 @@ Audit date: 2026-09-16
 
 ## Inventory
 
-- `claim-audit reviewed sources`: 37 structured source records
-- `evidence-papers.json`: 75 structured source records
-- `evidence-stack.json`: 145 structured source records
+- `claim-audit reviewed sources`: 35 structured source records
+- `evidence-papers.json`: 79 structured source records
+- `evidence-stack.json`: 154 structured source records
 - `prior-survey batches A-D`: 37 structured source records
 - `sources.json`: 63 structured source records
-- Canonical records: 246
-- Input records merged as aliases: 111
+- Canonical records: 248
+- Input records merged as aliases: 120
 - Bibliography aliases attached: 73
 
 ## Resolved duplicate groups
 
 - `a18-sourcecode-comparison` retains aliases `evidence-stack.json:a18-sourcecode-comparison`, `research/claim-audits:a18-sourcecode-comparison`.
-- `adaptive-fission` retains aliases `evidence-papers.json:adaptive-fission`, `fission`, `research/claim-audits:adaptive-fission`, `sources.json:fission`.
+- `adaptive-fission` retains aliases `evidence-papers.json:adaptive-fission`, `evidence-stack.json:adaptive-fission`, `fission`, `research/claim-audits:adaptive-fission`, `sources.json:fission`.
 - `akida-benchmarks2025` retains aliases `evidence-stack.json:akida-benchmarks2025`, `research/claim-audits:akida-benchmarks2025`.
-- `andrei2024-deep-unrolling-spinnaker2` retains aliases `evidence-stack.json:andrei2024-deep-unrolling-spinnaker2`, `research/claim-audits:andrei2024-deep-unrolling-spinnaker2`, `sources.json:andrei2024-deep-unrolling-spinnaker2`.
+- `andrei2024-deep-unrolling-spinnaker2` retains aliases `evidence-papers.json:andrei2024-deep-unrolling-spinnaker2`, `evidence-stack.json:andrei2024-deep-unrolling-spinnaker2`, `research/claim-audits:andrei2024-deep-unrolling-spinnaker2`, `sources.json:andrei2024-deep-unrolling-spinnaker2`.
 - `apex` retains aliases `apex2026`, `evidence-papers.json:apex`, `evidence-stack.json:apex2026`.
-- `arfa2025-spiking-q-spinnaker2` retains aliases `evidence-stack.json:arfa2025-spiking-q-spinnaker2`, `research/claim-audits:arfa2025-spiking-q-spinnaker2`, `sources.json:arfa2025-spiking-q-spinnaker2`.
+- `arfa2025-spiking-q-spinnaker2` retains aliases `evidence-papers.json:arfa2025-spiking-q-spinnaker2`, `evidence-stack.json:arfa2025-spiking-q-spinnaker2`, `research/claim-audits:arfa2025-spiking-q-spinnaker2`, `sources.json:arfa2025-spiking-q-spinnaker2`.
 - `auge` retains aliases `auge2021`, `auge2021-encodingsurvey`, `evidence-stack.json:auge2021-encodingsurvey`, `sources.json:auge`.
 - `bidl` retains aliases `evidence-stack.json:lynxi-bidl-github`, `lynxi-bidl-github`, `sources.json:bidl`.
 - `brainchip-cnn2snn-docs` retains aliases `evidence-stack.json:brainchip-cnn2snn-docs`, `research/claim-audits:brainchip-cnn2snn-docs`.
 - `brainchip-quantizeml-docs` retains aliases `evidence-stack.json:brainchip-quantizeml-docs`, `research/claim-audits:brainchip-quantizeml-docs`.
-- `brehove` retains aliases `Brehove26-SigmaDelta`, `brehove-2026`, `brehove-text`, `brehove2025`, `brehove2026-sigmadelta`, `evidence-papers.json:brehove-2026`, `evidence-stack.json:brehove2026-sigmadelta`, `research/claim-audits:brehove`, `sources.json:brehove`, `sources.json:brehove-text`.
+- `brehove` retains aliases `Brehove26-SigmaDelta`, `brehove-2026`, `brehove-text`, `brehove2025`, `evidence-papers.json:brehove-2026`, `evidence-stack.json:brehove`, `research/claim-audits:brehove`, `sources.json:brehove`, `sources.json:brehove-text`.
 - `bss` retains aliases `brainscales-pehle2022`, `evidence-stack.json:pehle2022-bss2`, `pehle-2022-brainscales-multicomp`, `pehle2022-bss2`, `sources.json:bss`.
 - `burst-spikes` retains aliases `evidence-papers.json:burst-spikes`, `evidence-stack.json:li2022-burstspikes`, `li-2022-burstspikes`, `li2022-burstspikes`.
 - `cao-2015` retains aliases `cao2015`, `cao2015-scnn`, `evidence-papers.json:cao-2015`, `evidence-stack.json:cao2015-scnn`.
 - `cerebron` retains aliases `ChenGaoFu22-Cerebron`, `chen2022-cerebron`, `evidence-papers.json:cerebron`, `evidence-stack.json:chen2022-cerebron`.
-- `datta2025-snn-meets-ann` retains aliases `evidence-stack.json:datta2025-snn-meets-ann`, `research/claim-audits:datta2025-snn-meets-ann`, `sources.json:datta2025-snn-meets-ann`.
+- `datta2025-snn-meets-ann` retains aliases `evidence-papers.json:datta2025-snn-meets-ann`, `evidence-stack.json:datta2025-snn-meets-ann`, `research/claim-audits:datta2025-snn-meets-ann`, `sources.json:datta2025-snn-meets-ann`.
 - `davies-2021-loihi` retains aliases `Davies21`, `davies-review`, `davies2021-survey`, `evidence-stack.json:davies2021-survey`, `research/prior-surveys/batch-A.json:davies-2021-loihi`, `sources.json:davies-review`.
 - `diehl` retains aliases `diehl-2015`, `diehl2015-weightthreshold`, `evidence-papers.json:diehl-2015`, `evidence-stack.json:diehl2015-weightthreshold`, `sources.json:diehl`.
 - `dynamic-confidence` retains aliases `evidence-papers.json:dynamic-confidence`, `research/claim-audits:dynamic-confidence`.
@@ -51,22 +51,24 @@ Audit date: 2026-09-16
 - `lunghi2025-akida-space` retains aliases `Lunghi25-SpaceSNN`, `evidence-stack.json:lunghi2025-akida-space`, `lunghi-2025-space-snn`, `research/claim-audits:lunghi2025-akida-space`.
 - `massa-2020` retains aliases `evidence-papers.json:massa-2020`, `evidence-stack.json:massa2020-loihi-gesture`, `massa2020-loihi-gesture`.
 - `morphic` retains aliases `Frenkel19-MorphIC`, `evidence-papers.json:morphic`, `evidence-stack.json:frenkel2019-morphic`, `frenkel2019`, `frenkel2019-morphic`.
-- `mt-snn` retains aliases `evidence-papers.json:mt-snn`, `research/claim-audits:mt-snn`.
+- `mt-snn-frontiers-2026` retains aliases `evidence-papers.json:mt-snn-frontiers-2026`, `research/claim-audits:mt-snn-frontiers-2026`.
+- `mt-snn-withdrawn-iclr` retains aliases `evidence-papers.json:mt-snn-withdrawn-iclr`, `research/claim-audits:mt-snn-withdrawn-iclr`.
 - `neuroflex` retains aliases `evidence-papers.json:neuroflex`, `evidence-stack.json:neuroflex2025`, `neuroflex2025`.
 - `neuroir-docs` retains aliases `evidence-stack.json:neuroir-docs`, `research/claim-audits:neuroir-docs`.
 - `neuroscale2025-natcomm` retains aliases `evidence-stack.json:neuroscale2025-natcomm`, `research/claim-audits:neuroscale2025-natcomm`.
 - `nir-neuron-primitives-source` retains aliases `evidence-stack.json:nir-neuron-primitives-source`, `research/claim-audits:nir-neuron-primitives-source`.
 - `northpole` retains aliases `evidence-papers.json:northpole`, `evidence-stack.json:northpole-science2023`, `northpole-science2023`.
-- `nxtf` retains aliases `Rueckauer21-NxTF`, `evidence-papers.json:nxtf`, `evidence-stack.json:rueckauer2022-nxtf`, `nxtf2021`, `research/claim-audits:nxtf`, `rueckauer-2021-nxtf`, `rueckauer2022-nxtf`, `sources.json:nxtf`.
-- `nxtf-text` retains aliases `research/claim-audits:nxtf-text`, `sources.json:nxtf-text`.
+- `nxtf` retains aliases `Rueckauer21-NxTF`, `evidence-papers.json:nxtf`, `evidence-stack.json:nxtf`, `evidence-stack.json:rueckauer2022-nxtf`, `nxtf2021`, `research/claim-audits:nxtf`, `rueckauer-2021-nxtf`, `rueckauer2022-nxtf`, `sources.json:nxtf`.
+- `nxtf-repository` retains aliases `evidence-stack.json:nxtf-repository`, `research/claim-audits:nxtf-repository`.
+- `nxtf-text` retains aliases `evidence-stack.json:nxtf-text`, `sources.json:nxtf-text`.
 - `pascal` retains aliases `evidence-papers.json:pascal`, `evidence-stack.json:ramesh2025-pascal`, `ramesh-2025-pascal`, `ramesh2025-pascal`, `research/claim-audits:pascal`, `sources.json:pascal`.
 - `patino-saucedo-2020` retains aliases `PatinoSaucedo20-SpiNNConv`, `evidence-papers.json:patino-saucedo-2020`, `evidence-stack.json:patino-saucedo2020-spinnaker`, `patino-saucedo2020-spinnaker`.
-- `pedersen-2024-nir` retains aliases `evidence-stack.json:nir-paper`, `nir-paper`, `research/claim-audits:pedersen-2024-nir`, `research/prior-surveys/batch-A.json:pedersen-2024-nir`.
+- `pedersen-2024-nir` retains aliases `evidence-stack.json:nir-paper`, `evidence-stack.json:pedersen-2024-nir`, `nir-paper`, `research/claim-audits:pedersen-2024-nir`, `research/prior-surveys/batch-A.json:pedersen-2024-nir`.
 - `prior-s29-ayasi-2025` retains aliases `ayasi`, `research/prior-surveys/batch-D.json:prior-s29-ayasi-2025`, `sources.json:ayasi`.
 - `prior-s34-luu-2026` retains aliases `luu`, `research/prior-surveys/batch-D.json:prior-s34-luu-2026`, `sources.json:luu`.
 - `qac` retains aliases `evidence-papers.json:qac`, `evidence-stack.json:guo2025-qac`, `guo2025-qac`, `research/claim-audits:qac`.
-- `qcfs` retains aliases `bu2022-qcfs`, `evidence-papers.json:qcfs`, `evidence-stack.json:bu2022-qcfs`, `research/claim-audits:qcfs`, `sources.json:qcfs`.
-- `quartz` retains aliases `evidence-papers.json:quartz`, `evidence-stack.json:lenz2023-quartz`, `lenz2023-quartz`, `research/claim-audits:quartz`, `sources.json:quartz`.
+- `qcfs` retains aliases `evidence-papers.json:qcfs`, `evidence-stack.json:qcfs`, `sources.json:qcfs`.
+- `quartz` retains aliases `evidence-papers.json:quartz`, `evidence-stack.json:quartz`, `research/claim-audits:quartz`, `sources.json:quartz`.
 - `reckon` retains aliases `evidence-papers.json:reckon`, `evidence-stack.json:frenkel2022-reckon`, `frenkel2022-reckon`.
 - `richter` retains aliases `Richter23-SpeckASIC`, `evidence-papers.json:speck1`, `evidence-stack.json:richter2023-speck`, `richter2023-speck`, `richter2023speck`, `sources.json:richter`, `speck1`.
 - `rmp` retains aliases `evidence-papers.json:rmp-snn`, `rmp-snn`, `sources.json:rmp`.
@@ -77,9 +79,9 @@ Audit date: 2026-09-16
 - `seenn` retains aliases `evidence-papers.json:seenn`, `research/claim-audits:seenn`.
 - `sengupta` retains aliases `evidence-papers.json:sengupta-2019`, `evidence-stack.json:sengupta2019-spikenorm`, `sengupta-2019`, `sengupta2019-spikenorm`, `sources.json:sengupta`.
 - `sew-resnet` retains aliases `evidence-papers.json:sew-resnet`, `evidence-stack.json:fang2021-sewresnet`, `fang2021-sewresnet`.
-- `sinabs` retains aliases `research/claim-audits:sinabs`, `sources.json:sinabs`.
+- `sinabs` retains aliases `evidence-stack.json:sinabs`, `sources.json:sinabs`.
 - `sinabs-docs` retains aliases `evidence-stack.json:sinabs-docs`, `research/claim-audits:sinabs-docs`.
-- `sinabs-nir` retains aliases `research/claim-audits:sinabs-nir`, `sources.json:sinabs-nir`.
+- `sinabs-nir` retains aliases `evidence-stack.json:sinabs-nir`, `research/claim-audits:sinabs-nir`, `sources.json:sinabs-nir`.
 - `sinabs-nir-to-speck-tutorial` retains aliases `evidence-stack.json:sinabs-nir-to-speck-tutorial`, `research/claim-audits:sinabs-nir-to-speck-tutorial`.
 - `speck-dynamic-snn` retains aliases `Yao24-SpeckNatComm`, `evidence-papers.json:speck-dynamic-snn`, `evidence-stack.json:yao2024-speck-natcomm`, `speck-natcomm`, `yao-2024-speck-naturecomm`, `yao2024-speck-natcomm`.
 - `spikerplus` retains aliases `Carpegna24-SpikerPlus`, `carpegna2024-spikerplus`, `evidence-papers.json:spikerplus`, `evidence-stack.json:carpegna2024-spikerplus`, `spiker-fpga`.
@@ -87,11 +89,11 @@ Audit date: 2026-09-16
 - `spinnaker-chip` retains aliases `evidence-stack.json:painkras2013-spinnaker`, `painkras2013-spinnaker`, `sources.json:spinnaker-chip`.
 - `spinnaker-goalkeeper` retains aliases `cheng2020-goalkeeper-spinnaker`, `evidence-papers.json:spinnaker-goalkeeper`, `evidence-stack.json:cheng2020-goalkeeper-spinnaker`.
 - `spj` retains aliases `SJ23-SciAdv`, `evidence-stack.json:spikingjelly-paper`, `fang-2023-spikingjelly-sciadv`, `research/claim-audits:spj`, `sources.json:spj`, `spikingjelly-paper`.
-- `spj-lava` retains aliases `SJ-LavaExchangeDocs`, `evidence-stack.json:spikingjelly-docs-lavaexchange`, `research/claim-audits:spj-lava`, `sources.json:spj-lava`, `spikingjelly-docs-lavaexchange`.
-- `srp` retains aliases `evidence-papers.json:srp`, `hao-2023-srp`, `research/claim-audits:srp`.
+- `spj-lava` retains aliases `SJ-LavaExchangeDocs`, `evidence-stack.json:spj-lava`, `research/claim-audits:spj-lava`, `sources.json:spj-lava`.
+- `srp` retains aliases `evidence-papers.json:srp`, `evidence-stack.json:srp`, `hao-2023-srp`.
 - `syncnn` retains aliases `Panchapakesan22-SyncNN`, `evidence-papers.json:syncnn`, `evidence-stack.json:panchapakesan2021-syncnn`, `panchapakesan2021-syncnn`.
 - `tang-slam-loihi` retains aliases `evidence-papers.json:tang-slam-loihi`, `evidence-stack.json:tang2019-slam-loihi`, `tang2019-slam-loihi`.
-- `temporal-flexibility` retains aliases `evidence-papers.json:temporal-flexibility`, `mtt`, `research/claim-audits:temporal-flexibility`, `sources.json:mtt`.
+- `temporal-flexibility` retains aliases `evidence-papers.json:temporal-flexibility`, `evidence-stack.json:temporal-flexibility`, `mtt`, `research/claim-audits:temporal-flexibility`, `sources.json:mtt`.
 - `tianjic` retains aliases `evidence-papers.json:tianjic`, `evidence-stack.json:pei2019-tianjic`, `pei2019-tianjic`.
 - `toolbox` retains aliases `evidence-stack.json:snn-toolbox-docs`, `snn-toolbox-docs`, `sources.json:toolbox`.
 - `truenorth` retains aliases `eedn`, `esser-2016-eedn`, `esser2016-eedn`, `evidence-papers.json:eedn`, `evidence-stack.json:esser2016-eedn`, `sources.json:truenorth`.
@@ -130,8 +132,6 @@ Audit date: 2026-09-16
 - `richter`. Title variants resolved through an explicit primary-source metadata override.
 - `sddpg`. Author variants resolved through an explicit primary-source metadata override.
 - `sew-resnet`. Title variants resolved through an explicit primary-source metadata override.
-- `sinabs`. The cited v3.1.1 documentation belongs to the 2025-11-27 release.
-- `sinabs-nir`. The cited v3.0.3 documentation belongs to the 2025-07-22 release.
 - `snntorch`. The rendered documentation identifies version 1.0.0, released on 2026-06-29.
 - `spinnaker-chip`. Title variants resolved through an explicit primary-source metadata override.
 - `spinnaker-goalkeeper`. Title variants resolved through an explicit primary-source metadata override.
@@ -148,8 +148,8 @@ Audit date: 2026-09-16
 
 ## Retrieval limits
 
-- 173 records remain metadata-only and require claim-level inspection before they can support substantive prose.
-- Metadata-only IDs: `abr-pressrelease-nengoloihi`, `adafire`, `aerovis2026-slam`, `akopyan2015-truenorth`, `apex`, `arfa`, `auge`, `backprop-loihi-pmc`, `bezugam2023-emg-loihi`, `bidl`, `bidl-pmc-paper`, `blouw2019-kws-loihi`, `boeshertz2024-rnn-mapping`, `bonazzi2025-fpga-drone-dpu`, `bootstrap`, `brainchip-akida-techbrief`, `brainchip-akida-user-guide`, `brainchip-metatf-2-19-2-release`, `bss`, `burst-spikes`, `cao-2015`, `ceolini-emgdvs-fusion`, `cerebron`, `clp-snn`, `combra-snn-eeg-repo`, `cos`, `cramer2022-surrogate`, `cs-qcfs`, `deneve2022-ttfs-unifying`, `dennler2023-olfaction-replication`, `dewolf2020-nengo-hw`, `dewolf2023-nengoloihi-arm`, `diehl`, `diff`, `dynap-se-tactile`, `dynapse-icub-pcontroller`, `eeg-seizure-loihi2`, `eventboost2024`, `eventprop-delays`, `eventprop-spinnaker2-backprop`, `eventvision2023-survey`, `exodus`, `fast-snn`, `firefly`, `force-control`, `furber2012-spinnaker`, `gelneuro`, `gonzalez2024-spinnaker2`, `hiaer-spike-cri`, `hxtorch`, `hybridsnn-nengoloihi-nsf`, `ibm2023-neuromorphic-opticalflow`, `imam-cleland-olfaction`, `inivation2026-davis346`, `innatera-pulsar-vendor`, `intel-inrc-confluence`, `kelber-2020`, `kim2018-weightedspikes`, `kreiser2020-icub-headpose`, `lava-dl-github-archived`, `lava-exec`, `lava-nc-homepage`, `lava-v0-10-release`, `li2023-firefly`, `liu2026-neuralencoding`, `loas`, `loihi1`, `loihi2`, `massa-2020`, `morphic`, `nengo-dl`, `nengo-loihi`, `netx`, `neuroflex`, `neuropod-hexapod-spinnaker`, `nir`, `nir-example`, `norse-docs`, `norse-nir-thirdparty`, `northpole`, `odin`, `one-spike`, `open-neuromorphic-akida`, `opi`, `opt-conv`, `orchard2021-loihi2signal`, `parpart2023-lca-loihi2`, `patino-saucedo-2020`, `plif`, `prophesee2026-sensors`, `pseudo`, `qffs`, `reckon`, `rhodes2018-spynnaker`, `richter`, `richter2024-dynapse2`, `riverpub-mnist-dynapcnn`, `rmp`, `rockpool-quickxylo-docs`, `rockpool-xylo-docs`, `rockpool-xyloa3-docs`, `rowley2019-spinntools`, `rueckauer`, `rueckauer2016-theory`, `satcsp-loihi-date2020`, `sawada2016-truenorth-ecosystem`, `schemmel2010-wafer`, `schmitt2017-hitl`, `scholze2026-spinnaker2chip`, `sddpg`, `sdnn`, `seneca`, `sengupta`, `sew-resnet`, `slayer`, `slayer-nxtf-gesture`, `slip-relu`, `snm`, `snn-calibration`, `snn-toolbox-github`, `snntorch`, `snntorch-docs`, `snntorch-pr388`, `speck-dynamic-snn`, `speck-manual`, `spike-driven-transformer`, `spike-driven-transformer-v2`, `spikeconverter`, `spikerplus`, `spikformer`, `spiking-yolo`, `spikingformer`, `spilger2020-hxtorch`, `spilger2022-hxtorchsnn`, `spinnaker-chip`, `spinnaker-goalkeeper`, `spinnaker2-chip`, `spinnaker2-nir-import-docs`, `spinnaker2-tools`, `spj-lynxi`, `spynnaker`, `spynnaker-v8-docs`, `ssnn`, `stradmann2021-mobile`, `stromatias`, `stromatias-2015`, `stromatias2015-dbn-spinnaker`, `syncnn`, `synsense-speck-datasheet`, `t2fsnn`, `tang-slam-loihi`, `tang2017-lca-sparsecoding`, `tcl`, `tdbn`, `temporal`, `tet`, `thorpe1996-rankorder`, `tianjic`, `toolbox`, `trinityslam2024`, `truenorth`, `truenorth-dvs-gesture`, `truenorth-neuron-model-doc`, `tsc`, `ubrain`, `v2v2025-neurips`, `vanalbada2018-spinnaker-nest`, `vitale2022-emg-loihi`, `weis2020-annmode`, `xpikeformer`, `xylo-kws`, `yan2021-spinnaker2pe`, `yao-speck`.
+- 177 records remain metadata-only and require claim-level inspection before they can support substantive prose.
+- Metadata-only IDs: `abr-pressrelease-nengoloihi`, `adafire`, `aerovis2026-slam`, `akopyan2015-truenorth`, `apex`, `arfa`, `auge`, `backprop-loihi-pmc`, `bezugam2023-emg-loihi`, `bidl`, `bidl-pmc-paper`, `blouw2019-kws-loihi`, `boeshertz2024-rnn-mapping`, `bonazzi2025-fpga-drone-dpu`, `bootstrap`, `brainchip-akida-techbrief`, `brainchip-akida-user-guide`, `brainchip-metatf-2-19-2-release`, `bss`, `burst-spikes`, `cao-2015`, `ceolini-emgdvs-fusion`, `cerebron`, `clp-snn`, `combra-snn-eeg-repo`, `cos`, `cramer2022-surrogate`, `cs-qcfs`, `deneve2022-ttfs-unifying`, `dennler2023-olfaction-replication`, `dewolf2020-nengo-hw`, `dewolf2023-nengoloihi-arm`, `diehl`, `diff`, `dynap-se-tactile`, `dynapse-icub-pcontroller`, `eeg-seizure-loihi2`, `eventboost2024`, `eventprop-delays`, `eventprop-spinnaker2-backprop`, `eventvision2023-survey`, `exodus`, `fast-snn`, `firefly`, `force-control`, `furber2012-spinnaker`, `gelneuro`, `gonzalez2024-spinnaker2`, `hiaer-spike-cri`, `hxtorch`, `hybridsnn-nengoloihi-nsf`, `ibm2023-neuromorphic-opticalflow`, `imam-cleland-olfaction`, `inivation2026-davis346`, `innatera-pulsar-vendor`, `intel-inrc-confluence`, `kelber-2020`, `kim2018-weightedspikes`, `kreiser2020-icub-headpose`, `lava-dl-github-archived`, `lava-exec`, `lava-nc-homepage`, `lava-v0-10-release`, `li2023-firefly`, `liu2026-neuralencoding`, `loas`, `loihi1`, `loihi2`, `massa-2020`, `morphic`, `nengo-dl`, `nengo-loihi`, `netx`, `neuroflex`, `neuropod-hexapod-spinnaker`, `nir`, `nir-example`, `norse-docs`, `norse-nir-thirdparty`, `northpole`, `nxtf-text`, `odin`, `one-spike`, `open-neuromorphic-akida`, `opi`, `opt-conv`, `orchard2021-loihi2signal`, `parpart2023-lca-loihi2`, `patino-saucedo-2020`, `plif`, `prophesee2026-sensors`, `pseudo`, `qcfs`, `qffs`, `reckon`, `rhodes2018-spynnaker`, `richter`, `richter2024-dynapse2`, `riverpub-mnist-dynapcnn`, `rmp`, `rockpool-quickxylo-docs`, `rockpool-xylo-docs`, `rockpool-xyloa3-docs`, `rowley2019-spinntools`, `rueckauer`, `rueckauer2016-theory`, `satcsp-loihi-date2020`, `sawada2016-truenorth-ecosystem`, `schemmel2010-wafer`, `schmitt2017-hitl`, `scholze2026-spinnaker2chip`, `sddpg`, `sdnn`, `seneca`, `sengupta`, `sew-resnet`, `sinabs`, `slayer`, `slayer-nxtf-gesture`, `slip-relu`, `snm`, `snn-calibration`, `snn-toolbox-github`, `snntorch`, `snntorch-docs`, `snntorch-pr388`, `speck-dynamic-snn`, `speck-manual`, `spike-driven-transformer`, `spike-driven-transformer-v2`, `spikeconverter`, `spikerplus`, `spikformer`, `spiking-yolo`, `spikingformer`, `spilger2020-hxtorch`, `spilger2022-hxtorchsnn`, `spinnaker-chip`, `spinnaker-goalkeeper`, `spinnaker2-chip`, `spinnaker2-nir-import-docs`, `spinnaker2-tools`, `spj-lynxi`, `spynnaker`, `spynnaker-v8-docs`, `srp`, `ssnn`, `stradmann2021-mobile`, `stromatias`, `stromatias-2015`, `stromatias2015-dbn-spinnaker`, `syncnn`, `synsense-speck-datasheet`, `t2fsnn`, `tang-slam-loihi`, `tang2017-lca-sparsecoding`, `tcl`, `tdbn`, `temporal`, `tet`, `thorpe1996-rankorder`, `tianjic`, `toolbox`, `trinityslam2024`, `truenorth`, `truenorth-dvs-gesture`, `truenorth-neuron-model-doc`, `tsc`, `ubrain`, `v2v2025-neurips`, `vanalbada2018-spinnaker-nest`, `vitale2022-emg-loihi`, `weis2020-annmode`, `xpikeformer`, `xylo-kws`, `yan2021-spinnaker2pe`, `yao-speck`.
 - 0 records are explicitly not retrieved: none.
 
 ## Deferred bibliography migration
