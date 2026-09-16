@@ -11,36 +11,55 @@ vocabulary that Sections 3 through 15 depend on.</p>
 
 <h3 id="values-state-events">2.1 Values, State, and Events</h3>
 
-<p>An ANN unit produces its output by a weighted sum of its inputs followed by a static
-nonlinearity, evaluated once for each input presentation. The result, denoted \(a^l\) for
-a unit in layer \(l\), is a real-valued number. It is a value in the strict sense used
-throughout this survey. It depends only on the current input, carries no memory of a
-previous evaluation, and is not scheduled in time. An ANN activation is static within one
-evaluation. It is a complete description of that unit's output at that input, not a
-reduced or impoverished version of something else.</p>
+<p>This survey considers the feedforward ANN inference setting, in which a trained
+network is evaluated layer by layer on a fixed input. In that setting, an ANN unit
+produces its output by a weighted sum of its inputs followed by a static nonlinearity,
+evaluated once for each input presentation. The result, denoted \(a^l\) for a unit in
+layer \(l\), is a real-valued number. It is a value in the strict sense used throughout
+this survey. Within one evaluation it depends only on the current input and carries no
+memory of a previous evaluation; recurrent and state-space architectures, where a unit's
+output also depends on state carried forward from a previous evaluation, fall outside
+this setting and outside the scope of this survey. An ANN activation is a static quantity
+within one evaluation, fully determined by the current input rather than updated from its
+own previous value. It is a complete description of that unit's output at that input, not
+a reduced or impoverished version of something else.</p>
 
-<p>A spiking unit instead emits a discrete event, denoted \(z_i^l[t]\in\{0,1\}\) for unit
-\(i\) in layer \(l\) at discrete algorithmic step \(t\), and typically also carries an
-internal state \(u_i^l[t]\), the membrane potential, that persists from step to step and
-is written and later read rather than recomputed independently each time. \(t\) indexes a
-discrete algorithmic step here, not a duration of physical time. A physical or modeled
-duration is instead denoted \(\tau\), and the two are not interchangeable until a
-simulation-to-hardware mapping states how a step corresponds to a duration. On its own, a
-single event carries almost no information. It either occurred at that step or it did
-not. What carries information is the relationship between events across steps, their
-count, their timing, or the pattern they form, together with the state that produced
-them.</p>
+<p>A spiking unit instead emits a discrete event. The plainest case is a bare binary
+spike, denoted \(z_i^l[t]\in\{0,1\}\) for unit \(i\) in layer \(l\) at discrete
+algorithmic step \(t\). At a known source and step it either occurs or it does not, and
+that occurrence is all the event reports. A deployed event is not always this bare. It may
+additionally carry a source or destination address, a timestamp, a polarity, an event
+type, or an integer or graded payload \(p_{ik}\), depending on the sensor, protocol, or
+neuron model that produces it. This survey's \(z_i^l[t]\) notation covers the binary case;
+payload-carrying events are introduced with the signed and graded neuron models of Section
+3, Neuron and Synapse Dynamics, and with the coding schemes of Section 4, Temporal
+Semantics, Neural Codes, and Decoding, where a code or a platform needs them. A spiking
+unit also typically carries an internal state \(u_i^l[t]\), the membrane potential, that
+persists from step to step and is written and later read rather than recomputed
+independently each time. \(t\) indexes a discrete algorithmic step here, not a duration of
+physical time. A physical or modeled duration is instead denoted \(\tau\), and the two are
+not interchangeable until a simulation-to-hardware mapping states how a step corresponds
+to a duration. On its own, a bare binary event carries almost no information. It either
+occurred at that step or it did not. What carries information is the relationship between
+events across steps, their count, their timing, or the pattern they form, together with
+the state that produced them, or, once a payload is declared, the payload itself.</p>
 
 <p>Three objects therefore need to stay distinct. A value is a quantity that depends only
 on the current input and needs no notion of time to be defined, such as \(a^l\). A state
 is a quantity that persists, is updated using its own previous value, and can be read at
-a later step, such as \(u_i^l[t]\). An event is a discrete, typically binary, occurrence
-tied to a specific step or time, such as \(z_i^l[t]\). A temporal signal is any quantity
-indexed by \(t\) or \(\tau\), which includes a spike train, a decaying state trajectory,
-and a time-varying input current, whether or not any individual sample of it carries a
-large payload. A value has no temporal index. A state and an event both do, but a state
-is read continuously across steps while an event is a punctual occurrence at one of
-them.</p>
+a later step, such as \(u_i^l[t]\). An event is a discrete occurrence tied to a specific
+step or time, binary at minimum and optionally carrying the address, timing, or payload
+fields introduced above, such as \(z_i^l[t]\). A temporal signal is any quantity indexed
+by \(t\) or \(\tau\), which includes a spike train, a decaying state trajectory, and a
+time-varying input current, whether or not any individual sample of it carries a large
+payload; a sample of such a signal can itself be a real-valued quantity, so carrying a
+temporal index is not what separates a value from a state. The distinction that matters
+instead is between a static activation, fully determined within one evaluation and not
+updated from a previous value, and a persistent state, whose current value is computed
+from its own previous value and so must be written and read again across evaluations or
+steps. In this sense \(a^l\) is static and \(u_i^l[t]\) is persistent. A state and an event
+both carry a temporal index, but a state is read continuously across steps while an event
+is a punctual occurrence at one of them.</p>
 
 <figure class="pfig l-body" id="figure-2">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1130 690" role="img" aria-label="A biological neuron paired with the artificial neuron abstraction, with the three discarded quantities named">
@@ -217,30 +236,43 @@ them.</p>
 <h3 id="dense-sparse-conditional">2.2 Dense Computation, Sparse Activity, and Conditional Execution</h3>
 
 <p>In a feedforward ANN evaluation, every unit at every layer produces an activation value
-on every input presentation, regardless of that value's magnitude. Layer-to-layer
-computation is dense. A weighted sum touches every incoming weight and every activation,
-structured as a matrix multiplication, and the arithmetic performed does not depend on
-whether a particular activation happens to equal zero. A rectified activation of exactly
-zero still occupies a multiply-accumulate (MAC) operation whose result is simply
-discarded.</p>
+on every input presentation, and the tensor that holds those activations is dense in the
+representational sense. It logically represents every position, including one whose value
+happens to equal zero. Layer-to-layer computation structured as a matrix multiplication
+touches every incoming weight and every position of that tensor by default. Whether the
+arithmetic engine that executes this matrix multiplication actually performs a
+multiply-accumulate (MAC) operation for a position that evaluates to zero, or recognizes
+the zero and skips it, is a separate question of execution. A dense representation is
+compatible with either choice, a fixed schedule that performs the operation everywhere or
+a compiler and hardware combination that inspects the tensor and conditionally skips a
+known zero.</p>
 
 <p>In a network of spiking units, the event \(z_i^l[t]\) defined above is either present
-or absent at a given step. When a substantial fraction of a layer's events are absent
-within a finite horizon, an activity pattern this survey calls sparse, the computation
-associated with a silent unit can in principle be skipped rather than performed and
-discarded. Communication can be sparse in the same sense. A layer then transmits only its
-nonzero events rather than a dense vector covering every unit, so the amount transmitted
-depends on how many units fired rather than on how many units exist
+or absent at a given step. A sparse representation, unlike the dense tensor above,
+explicitly stores or communicates only the selected nonzero positions rather than every
+position by default. When a substantial fraction of a layer's events are absent within a
+finite horizon, an activity pattern this survey calls sparse, that sparse representation
+carries less to store or transmit, and the computation associated with a silent unit can
+in principle be skipped rather than performed and discarded. Communication can be sparse
+in the same sense. A layer then transmits only its nonzero events rather than a dense
+vector covering every unit, so the amount transmitted depends on how many units fired
+rather than on how many units exist
 <d-cite key="cao-2015,gebregiorgis-2025-spike-based-overview"></d-cite>.</p>
 
-<p>This distinction describes what the representation makes available, not what a given
-implementation does with it. Whether a silent unit's absent event actually causes
-downstream work to be skipped, an execution style this survey calls conditional, or is
-instead computed by a dense array that pads out the same zero contribution, is a hardware
-and compiler decision separate from the network's activity pattern. A high event rate,
-close to one event per unit per step, leaves sparse activity with little advantage over
-dense computation, and a network may require many steps before enough silence
-accumulates for skipping to matter at all.</p>
+<p>This distinction describes what a representation makes available, not what a given
+implementation does with it, and it applies symmetrically to both representations
+introduced above. Either a dense tensor or a sparse representation can be executed
+densely, with every position or every possible event slot processed uniformly, or with
+conditional skipping, an execution style this survey calls conditional, in which absent
+activity is recognized and the corresponding work is not performed. Which of the two a
+given implementation adopts is a hardware and compiler decision separate from the
+network's activity pattern. An event stream makes the absence of activity explicit at the
+representation level, which can make conditional communication and conditional
+accumulation a natural strategy to adopt, but that explicitness does not by itself
+guarantee that a given execution substrate adopts it. A high event rate, close to one
+event per unit per step, leaves sparse activity with little advantage over dense
+computation, and a network may require many steps before enough silence accumulates for
+skipping to matter at all.</p>
 
 <p>Consequently, fewer spikes and fewer hardware operations are not the same claim. The
 second requires an execution substrate that treats an absent event as work to be skipped
@@ -265,10 +297,13 @@ on a conventional processor is a spiking algorithm in this sense whether or not 
 of that simulation is triggered by an event. An
 execution model is event-driven when a core or process advances only when an event
 demands it, rather than on every tick of a shared clock. This is a property of how
-computation proceeds, not of how the algorithm was specified. A complete system is
-neuromorphic in the strongest and least common sense when an event-driven sensor, a
-spiking algorithm, and an event-driven execution substrate are paired throughout, with no
-stage reintroducing dense, clocked computation.</p>
+computation proceeds, not of how the algorithm was specified. A fourth sense applies to a
+complete system rather than to one stage. A system is an end-to-end event-driven system
+when an event-driven sensor, a spiking algorithm, and an event-driven execution substrate
+are paired throughout, with no stage reintroducing dense, clocked computation. This fourth
+sense is the conjunction of the previous three holding simultaneously across every stage,
+not a stronger or purer version of any single one of them, and it is also the least common
+of the four to hold in practice.</p>
 
 <p>These four senses do not transfer into one another automatically. An event-native
 sensor stream does not establish that the algorithm consuming it is spiking, since a
@@ -285,12 +320,16 @@ claim is made here.</p>
 <h3 id="representation-execution">2.4 Why Representation Constrains Execution</h3>
 
 <p>The representation chosen at one point of the model-to-device chain restricts which
-execution strategies remain faithful to it at the next. A dense, real-valued activation
-\(a^l\) must be multiplied against a weight and accumulated, and nothing about that
-representation says the multiplication can be omitted for a particular unit, since a
-value close to zero is still a value that must be multiplied. Executing a layer of such
-units efficiently favors an engine built around dense multiply-accumulate arithmetic,
-because every unit contributes a term regardless of magnitude.</p>
+execution strategies remain faithful to it at the next, though it does not by itself pick
+one. A dense, real-valued activation \(a^l\) is represented the same way whether its value
+is far from zero or exactly zero, so the representation alone gives an execution engine no
+signal that a particular unit's contribution can be omitted; a value close to zero has the
+same representational status as any other value. Executing a layer of such units
+efficiently therefore favors, by default, an engine built around dense
+multiply-accumulate arithmetic that processes every unit uniformly. As in the discussion
+above, a compiler and hardware combination that inspects the tensor for zero-valued
+positions and skips the corresponding operation remains a separate execution choice that
+the dense representation neither forces nor forbids.</p>
 
 <p>A binary event \(z_i^l[t]\) is a discrete occurrence rather than a magnitude to
 multiply. Where a synaptic weight is fixed in advance, the operation triggered by an
