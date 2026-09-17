@@ -113,10 +113,10 @@
       "year": 1949,
       "venue": "Wiley",
       "doi": null,
-      "url": "https://en.wikipedia.org/wiki/Organization_of_Behavior",
+      "url": "https://search.worldcat.org/title/569043119",
       "source_type": "secondary_material",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire book"
@@ -124,7 +124,7 @@
       "aliases": [
         "hebb1949"
       ],
-      "notes": "Activity-dependent learning. Book published by John Wiley and Sons in New York. Title, author, year, publisher, and location verified through multiple sources including Wikipedia.",
+      "notes": "Activity-dependent learning. Book published by John Wiley and Sons in New York. Title, author, year, publisher, and location verified through multiple sources including Wikipedia. Title, authors, publisher and year confirmed together on 2026-09-17 from a library catalog record found with exa.",
       "purpose": "external"
     },
     {
@@ -326,10 +326,10 @@
       "year": 2014,
       "venue": "Cambridge University Press",
       "doi": null,
-      "url": "https://neuronaldynamics.epfl.ch",
+      "url": "https://www.cambridge.org/core/books/neuronal-dynamics/75375090046733765596191E23B2959D",
       "source_type": "secondary_material",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire book, Sections 2.6, 3.1, 4.2"
@@ -337,20 +337,20 @@
       "aliases": [
         "gerstner2014-neuronal-dynamics"
       ],
-      "notes": "Book (578 pages, ISBN 9781107635197). For Sections 2.6, 3.1, 4.2 covering membrane biophysics, RC derivation, spike trains as point process. Online edition provides limited content.",
+      "notes": "Book (578 pages, ISBN 9781107635197). For Sections 2.6, 3.1, 4.2 covering membrane biophysics, RC derivation, spike trains as point process. Online edition provides limited content. Title, authors, publisher and year confirmed together on 2026-09-17 from the publisher's catalog page found with exa.",
       "purpose": "external"
     },
     {
       "id": "rieke1997-spikes",
       "title": "Spikes: Exploring the Neural Code",
       "authors": "F. Rieke, D. Warland, R. de Ruyter van Steveninck, W. Bialek",
-      "year": 1997,
+      "year": 1996,
       "venue": "MIT Press",
       "doi": null,
-      "url": "https://www.goodreads.com/book/show/330914.Spikes",
+      "url": "https://mitpress.mit.edu/9780262181747/spikes/",
       "source_type": "secondary_material",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire book"
@@ -358,7 +358,7 @@
       "aliases": [
         "rieke1997-spikes"
       ],
-      "notes": "Survey uses this for the neural-code and information-theory referral in Section 4.2. Hardcover published December 1996; cited as 1997.",
+      "notes": "Survey uses this for the neural-code and information-theory referral in Section 4.2. Hardcover published December 1996; cited as 1997. The MIT Press page states publication on December 2, 1996 (hardcover); the copyright year printed in the book, and the year most citations use, is 1997, which the id keeps. Verified on 2026-09-17 from the publisher's catalog page.",
       "purpose": "external"
     },
     {
@@ -368,10 +368,10 @@
       "year": 2001,
       "venue": "MIT Press",
       "doi": null,
-      "url": "https://www.abebooks.com/9780262041997/Theoretical-Neuroscience-Computational-Mathematical-Modeling-0262041995/plp",
+      "url": "https://mitpress.mit.edu/9780262041997/theoretical-neuroscience/",
       "source_type": "secondary_material",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire book"
@@ -379,7 +379,7 @@
       "aliases": [
         "dayan2001-theoretical-neuroscience"
       ],
-      "notes": "Survey uses this for mutual information and decoding referral in Section 4.2.",
+      "notes": "Survey uses this for mutual information and decoding referral in Section 4.2. Title, authors, publisher and year confirmed together on 2026-09-17 from the publisher's catalog page found with exa.",
       "purpose": "external"
     },
     {
