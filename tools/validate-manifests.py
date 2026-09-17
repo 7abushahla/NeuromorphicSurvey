@@ -118,8 +118,8 @@ def validate_figures(figures_data, section_ids, strict, errors):
     if not isinstance(figures, list):
         errors.append("figure manifest figures must be a list")
         return
-    if len(figures) != 22:
-        errors.append(f"figure manifest must contain 22 records, found {len(figures)}")
+    if len(figures) != 24:
+        errors.append(f"figure manifest must contain 24 records, found {len(figures)}")
 
     ids = []
     numbers = []

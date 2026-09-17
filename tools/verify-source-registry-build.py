@@ -208,9 +208,13 @@ def main() -> int:
         raise AssertionError(
             "builder did not consume 108 frozen bibliography migration records"
         )
-    if len(input_records) != 476 or sum(input_counts.values()) != 476:
+    foundations_rows = len(
+        json.loads((ROOT / "data/foundations-sources.json").read_text())["sources"]
+    )
+    expected_rows = 476 + foundations_rows
+    if len(input_records) != expected_rows or sum(input_counts.values()) != expected_rows:
         raise AssertionError(
-            f"expected 476 structured input rows, got {len(input_records)}"
+            f"expected {expected_rows} structured input rows, got {len(input_records)}"
         )
     row_addresses = [
         f"{record['_origin']}:{record['id']}" for record in input_records

@@ -19,6 +19,7 @@ INPUTS = (
     ("evidence-papers.json", "sources", 2),
     ("evidence-stack.json", "sources", 3),
     ("bibliography-migration-sources.json", "sources", 4),
+    ("foundations-sources.json", "sources", 5),
 )
 TRACKING_QUERY_PREFIXES = ("utm_",)
 TRACKING_QUERY_KEYS = {"fbclid", "gclid"}
