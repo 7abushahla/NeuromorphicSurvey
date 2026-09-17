@@ -2186,6 +2186,156 @@
       "sources": [
         "pedersen-2024-nir"
       ]
+    },
+    {
+      "id": "gpu-generic",
+      "type": "hardware",
+      "name": "Conventional GPU",
+      "layer": "Hardware",
+      "summary": "A general-purpose graphics processor running an SNN as a program of ordinary PyTorch or GeNN-generated CUDA kernels rather than any dedicated spiking substrate. This survey's Task 2 evidence measures an NVIDIA A100-SXM-80GB GPU (SpikingJelly's own PyTorch-CUDA training and ANN2SNN inference benchmark) and an NVIDIA Titan V GPU (mlGeNN's GeNN-generated CUDA simulation of a converted VGG-16 and ResNet-20).",
+      "attributes": {
+        "target_kind": "GPU",
+        "time_model": "Software-scheduled CUDA kernel launches; wall-clock time is set by the host program's own timestep loop, not by a hardware clock intrinsic to the chip.",
+        "toolchain": "PyTorch (SpikingJelly) or GeNN code generation (mlGeNN), both CUDA-compiled.",
+        "availability": "Commercially available general-purpose hardware; no neuromorphic-specific access restriction."
+      },
+      "sources": [
+        "spikingjelly",
+        "mlgenn"
+      ]
+    },
+    {
+      "id": "cpu-generic",
+      "type": "hardware",
+      "name": "Conventional CPU",
+      "layer": "Hardware",
+      "summary": "A general-purpose CPU, single or clustered, running an SNN as a program of NEST's own C++ simulation kernel rather than any dedicated spiking substrate. This survey's Task 2 evidence measures NEST on a 32-node Intel Xeon E5-2680v3 HPC cluster (comparator SpiNNaker measured in the same paper) and NEST-5g on up to 82,944 Fujitsu SPARC64 VIIIfx compute nodes of the K computer.",
+      "attributes": {
+        "target_kind": "CPU",
+        "time_model": "Software-scheduled, MPI/OpenMP-parallelized simulation loop; wall-clock time is a function of thread count and network size, not a fixed per-spike hardware cost.",
+        "toolchain": "NEST simulation kernel (C++), typically front-ended through PyNN.",
+        "availability": "Commercially available general-purpose hardware; no neuromorphic-specific access restriction."
+      },
+      "sources": [
+        "van-albada-nest-spinnaker",
+        "nest5g-k-computer"
+      ]
+    },
+    {
+      "id": "cortex-m-mcu",
+      "type": "hardware",
+      "name": "ARM Cortex-M MCU",
+      "layer": "Hardware",
+      "summary": "An ARM Cortex-M-family microcontroller executing a converted SNN as compiled embedded firmware. This survey's Task 2 evidence measures a CNN-to-SNN, time-to-first-spike-converted digital SNN on a Cortex-M4 MCU (exact part not named in the retrieved text), read with an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
+      "attributes": {
+        "target_kind": "MCU",
+        "time_model": "Single-core, interrupt-driven firmware execution; latency is the compiled program's own instruction count on the core's clock, not a chip-level spiking clock.",
+        "toolchain": "A custom CNN-to-SNN (TTFS) conversion pipeline compiling directly to Cortex-M4 firmware; the retrieved text names no CMSIS-NN or SNN Toolbox stage in this specific pipeline.",
+        "availability": "Commercially available general-purpose hardware; no neuromorphic-specific access restriction."
+      },
+      "sources": [
+        "anglo-mixed-snn-mcu"
+      ]
+    },
+    {
+      "id": "riscv-accelerator",
+      "type": "hardware",
+      "name": "RISC-V SNN Accelerator",
+      "layer": "Hardware",
+      "summary": "A RISC-V-based soft vector processor tailored to simulating SNNs, realized as a soft core on an AMD/Xilinx Kria KV260 FPGA board. This survey's Task 2 evidence measures FeNN's single-core recurrent spoken-digit classifier against an embedded GPU and Loihi, and FeNN-DMA's balanced-random-network simulation throughput, classification accuracy, and post-implementation operating frequency and power on the same board family.",
+      "attributes": {
+        "target_kind": "RISC-V",
+        "time_model": "Vector-instruction-stepped simulation loop on a synthesized soft core; wall-clock time is set by the core's clock frequency (175 MHz single-core, 143 MHz dual-core for FeNN-DMA) and the compiled program's instruction count.",
+        "toolchain": "Custom RTL (SystemVerilog), synthesized with AMD/Xilinx Vivado 2023.2.",
+        "availability": "Research prototype; realized as a soft core on a commercially available Kria KV260 development board, not sold as a standalone chip."
+      },
+      "sources": [
+        "fenn-riscv",
+        "fenn-dma-riscv"
+      ]
+    },
+    {
+      "id": "pytorch-cuda",
+      "type": "runtime",
+      "name": "PyTorch CUDA Backend",
+      "layer": "Runtime",
+      "summary": "PyTorch's CUDA execution backend, which SpikingJelly's neuron, synapse, and encoding modules dispatch to as ordinary tensor operations. SpikingJelly's own documentation describes a CUDA-accelerated execution path for its neuron modules, and its Science Advances benchmark reports up to 11x training speedup and up to 2x ANN2SNN inference speedup on an NVIDIA A100 GPU relative to Norse and snnTorch.",
+      "attributes": {},
+      "sources": [
+        "spikingjelly",
+        "SJ-NeuronDocs"
+      ]
+    },
+    {
+      "id": "genn-cuda",
+      "type": "runtime",
+      "name": "GeNN CUDA Code Generation",
+      "layer": "Runtime",
+      "summary": "GeNN's code-generation backend, to which mlGeNN's converted-CNN model description compiles down as generated CUDA C++ simulation code. mlGeNN's own benchmark reports its converted VGG-16 CIFAR-10 inference as 2.5x faster than BindsNET and its FewSpike ResNet-20 conversion as only a little over 2x slower than the original TensorFlow ANN, both on an NVIDIA Titan V GPU.",
+      "attributes": {},
+      "sources": [
+        "mlgenn",
+        "genn-docs"
+      ]
+    },
+    {
+      "id": "nest-kernel",
+      "type": "runtime",
+      "name": "NEST Simulation Kernel",
+      "layer": "Runtime",
+      "summary": "NEST's own C++ simulation kernel, which executes a PyNN-described point-neuron network directly as a software program. This survey's Task 2 evidence measures the kernel's MPI+multithreaded runtime and per-synaptic-event energy against physical SpiNNaker hardware on an Intel Xeon HPC cluster, and its weak-scaling connect, prepare, and run wall-clock time up to 82,944 K-computer SPARC64 nodes.",
+      "attributes": {},
+      "sources": [
+        "van-albada-nest-spinnaker",
+        "nest5g-k-computer",
+        "nest-docs"
+      ]
+    },
+    {
+      "id": "ttfs-mcu-firmware",
+      "type": "runtime",
+      "name": "TTFS-Converted-Network MCU Firmware",
+      "layer": "Runtime",
+      "summary": "The compiled embedded-firmware form of a CNN-to-SNN, time-to-first-spike-converted digital network, running as an ordinary program on the Cortex-M4's own instruction set. The retrieved text names no CMSIS-NN or SNN Toolbox stage for this specific pipeline, so this node is named from the paper's own description, 'custom CNN-to-SNN (TTFS) conversion pipeline,' rather than from either named library.",
+      "attributes": {},
+      "sources": [
+        "anglo-mixed-snn-mcu"
+      ]
+    },
+    {
+      "id": "fenn-vivado-toolchain",
+      "type": "runtime",
+      "name": "FeNN Vivado RTL Synthesis Toolchain",
+      "layer": "Runtime",
+      "summary": "AMD/Xilinx Vivado 2023.2, which synthesizes FeNN's custom RISC-V vector-processor RTL design (SystemVerilog) into a bitstream realized as a soft core on a Kria KV260 FPGA board. FeNN-DMA's own post-implementation figures from the same toolchain report 175 MHz (single-core) and 143 MHz (dual-core) operating frequency, 0.53 W dynamic power, and 54,984 LUTs / 47,759 FFs of resource usage.",
+      "attributes": {},
+      "sources": [
+        "fenn-riscv",
+        "fenn-dma-riscv"
+      ]
+    },
+    {
+      "id": "ttfs-cnn-to-snn-conversion",
+      "type": "method",
+      "name": "TTFS CNN-to-SNN Conversion Pipeline",
+      "layer": "Method",
+      "summary": "A custom CNN-to-SNN, time-to-first-spike (TTFS) conversion pipeline, described in an analog-mixed-signal-chip paper as the digital-baseline path against an Innatera SNP analog comparator. The retrieved text does not name this pipeline after any public library; it is not SNN Toolbox and does not state a CMSIS-NN kernel stage.",
+      "attributes": {},
+      "sources": [
+        "anglo-mixed-snn-mcu"
+      ]
+    },
+    {
+      "id": "fenn-vector-program",
+      "type": "method",
+      "name": "FeNN Vector-ISA SNN Program",
+      "layer": "Method",
+      "summary": "FeNN's custom RISC-V vector instruction set extension (a CV32E40X scalar core plus a custom vector co-processor), whose compiled program steps LIF neuron and synapse state updates across timesteps; FeNN-DMA extends the same instruction set with DMA-based synaptic-weight streaming for larger networks.",
+      "attributes": {},
+      "sources": [
+        "fenn-riscv",
+        "fenn-dma-riscv"
+      ]
     }
   ],
   "edges": [
@@ -4951,6 +5101,240 @@
         "datta2025-snn-meets-ann"
       ],
       "notes": "The separately documented route assertion is E3. No physical Loihi edge is created because the generation and hardware execution are unverified."
+    },
+    {
+      "id": "spikingjelly-pytorch-cuda",
+      "from": "spikingjelly",
+      "to": "pytorch-cuda",
+      "mechanism": "SpikingJelly defines its neuron, synapse, and encoding modules as ordinary PyTorch modules and dispatches their forward and backward computation directly to PyTorch's own CUDA backend, with a CUDA-accelerated execution path documented for its neuron modules.",
+      "preserves": [
+        "surrogate-gradient training graph",
+        "per-timestep membrane state as a PyTorch tensor"
+      ],
+      "breaks": [],
+      "evidence": null,
+      "sources": [
+        "spikingjelly",
+        "SJ-NeuronDocs"
+      ],
+      "capability_class": "native",
+      "route_state": "physical",
+      "platform_generation": "NVIDIA A100-SXM-80GB GPU (Ampere generation)",
+      "toolchain_version": "SpikingJelly (PyTorch-based)",
+      "measurement_boundary": null,
+      "reports_deployment_evidence": false,
+      "notes": "This edge is the framework-to-runtime stage of the SpikingJelly-to-GPU route; the measured benchmark is reported on the runtime-to-hardware edge below."
+    },
+    {
+      "id": "pytorch-cuda-to-gpu",
+      "from": "pytorch-cuda",
+      "to": "gpu-generic",
+      "mechanism": "PyTorch's CUDA backend runs SpikingJelly's compiled tensor operations as kernel launches on the physical GPU, with training and ANN2SNN inference timed end to end on an NVIDIA A100-SXM-80GB GPU.",
+      "preserves": [
+        "exact floating-point tensor semantics of the trained model"
+      ],
+      "breaks": [
+        "temporal sparsity is not exploited by the kernel; a spike is a nonzero tensor value processed on the same dense schedule as every other value"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "spikingjelly",
+        "SJ-NeuronDocs"
+      ],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "platform_generation": "NVIDIA A100-SXM-80GB GPU (Ampere generation)",
+      "toolchain_version": "PyTorch CUDA backend, as used by SpikingJelly's own training and inference benchmark",
+      "measurement_boundary": "Training-iteration time for Spiking ResNet-18 with surrogate-gradient training at T=2,4,8,16,32, and ANN2SNN inference time at T=128,256,512,1024, on an Ubuntu 18.04 server with an NVIDIA A100-SXM-80GB GPU, an Intel Xeon Silver 4210R host CPU, and 256 GB of memory; SpikingJelly reaches up to 11x training speedup and up to 2x inference speedup relative to Norse and snnTorch.",
+      "reports_deployment_evidence": true,
+      "notes": "E1 establishes a GPU training/inference speed comparison against other PyTorch-based simulator libraries, not evidence about any neuromorphic target."
+    },
+    {
+      "id": "mlgenn-to-genn-cuda",
+      "from": "mlgenn",
+      "to": "genn-cuda",
+      "mechanism": "mlGeNN's converted-CNN model description (percentile-normalized IF conversion of a trained VGG-16 or ResNet-20/34) compiles down through GeNN's code generator into simulation code specialized for the model and, at build time, into CUDA C++.",
+      "preserves": [
+        "converted network's layer graph and IF neuron equations"
+      ],
+      "breaks": [
+        "the network's timestep count is fixed into the generated kernel at compile time, rather than remaining a runtime parameter"
+      ],
+      "evidence": null,
+      "sources": [
+        "mlgenn",
+        "genn-docs"
+      ],
+      "capability_class": "transformed",
+      "route_state": "physical",
+      "platform_generation": "NVIDIA Titan V GPU (Volta generation)",
+      "toolchain_version": "mlGeNN -> GeNN code generation",
+      "measurement_boundary": null,
+      "reports_deployment_evidence": false,
+      "notes": "This edge is the framework-to-runtime code-generation stage; the measured benchmark is reported on the runtime-to-hardware edge below."
+    },
+    {
+      "id": "genn-cuda-to-gpu",
+      "from": "genn-cuda",
+      "to": "gpu-generic",
+      "mechanism": "GeNN's generated CUDA C++ simulation code executes on the physical GPU, with CIFAR-10 inference timed and compared against BindsNET and TensorFlow on a 12 GB NVIDIA Titan V GPU.",
+      "preserves": [
+        "generated CUDA kernel's numerical behavior"
+      ],
+      "breaks": [
+        "temporal sparsity is not exploited by the GPU kernel"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "mlgenn",
+        "genn-docs"
+      ],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "platform_generation": "NVIDIA Titan V GPU (Volta generation)",
+      "toolchain_version": "GeNN CUDA-generated simulation code",
+      "measurement_boundary": "CIFAR-10 inference time and speed relative to BindsNET and TensorFlow across batch sizes on a 12 GB NVIDIA Titan V GPU; the converted VGG-16 is 2.5x faster than BindsNET, and the FewSpike-converted ResNet-20 is only a little over 2x slower than the original TensorFlow ANN, while the fastest rate-based model is over 100x slower than the TensorFlow ANN.",
+      "reports_deployment_evidence": true,
+      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 13.6 discusses as evidence about classical correspondence at scale."
+    },
+    {
+      "id": "nest-to-nest-kernel",
+      "from": "nest",
+      "to": "nest-kernel",
+      "mechanism": "A PyNN-described point-neuron and synapse model is handed to NEST's own simulation kernel, which builds the connectivity and integrates neuron and synapse dynamics directly in compiled C++.",
+      "preserves": [
+        "PyNN-described point-neuron and synapse model"
+      ],
+      "breaks": [],
+      "evidence": null,
+      "sources": [
+        "van-albada-nest-spinnaker",
+        "nest-docs"
+      ],
+      "capability_class": "native",
+      "route_state": "physical",
+      "platform_generation": "Intel Xeon E5-2680v3 HPC cluster; K computer SPARC64 VIIIfx nodes",
+      "toolchain_version": "NEST 2.8 (Xeon cluster); NEST development version '2aa733a' (K computer, NEST-5g)",
+      "measurement_boundary": null,
+      "reports_deployment_evidence": false,
+      "notes": "This edge is the framework-to-runtime stage; the measured runs are reported on the runtime-to-hardware edge below."
+    },
+    {
+      "id": "nest-kernel-to-cpu",
+      "from": "nest-kernel",
+      "to": "cpu-generic",
+      "mechanism": "NEST's simulation kernel runs as an MPI+OpenMP-parallelized program on physical CPU cores, with runtime and energy measured against SpiNNaker on an Intel Xeon cluster and weak-scaling wall-clock time measured up to 82,944 K computer nodes.",
+      "preserves": [
+        "exact point-neuron dynamics NEST implements"
+      ],
+      "breaks": [
+        "energy and runtime scale with thread count and network size rather than with a fixed per-spike hardware cost"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "van-albada-nest-spinnaker",
+        "nest5g-k-computer",
+        "nest-docs"
+      ],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "platform_generation": "Intel Xeon E5-2680v3 HPC cluster (32 nodes); K computer SPARC64 VIIIfx nodes (up to 82,944)",
+      "toolchain_version": "NEST 2.8 (Xeon cluster); NEST development version '2aa733a' (K computer, NEST-5g)",
+      "measurement_boundary": "NEST's runtime and per-synaptic-event energy on a 32-node, 2x Intel Xeon E5-2680v3-per-node HPC cluster, compared to physical SpiNNaker in the same paper (runtime saturates around 3x real time; lowest total energy is reached at about 144 parallel threads and a 4.6x slowdown, at which point NEST and SpiNNaker have comparable energy per synaptic event); separately, NEST-5g's weak-scaling connect, prepare, and run wall-clock time from 128 to 82,944 K computer compute nodes.",
+      "reports_deployment_evidence": true,
+      "notes": "E1 establishes CPU-cluster simulation performance, not evidence about any neuromorphic target; the same paper's SpiNNaker comparator is a separate, already-audited physical route."
+    },
+    {
+      "id": "ttfs-conversion-to-mcu-firmware",
+      "from": "ttfs-cnn-to-snn-conversion",
+      "to": "ttfs-mcu-firmware",
+      "mechanism": "The paper's own custom CNN-to-SNN time-to-first-spike conversion pipeline maps a trained CNN to a converted digital SNN and compiles it to run on the Cortex-M4 MCU as an embedded firmware program.",
+      "preserves": [
+        "converted network's TTFS-coded feedforward structure"
+      ],
+      "breaks": [
+        "CNN activations become single first-spike-time values; no multi-timestep rate code survives the conversion"
+      ],
+      "evidence": null,
+      "sources": [
+        "anglo-mixed-snn-mcu"
+      ],
+      "capability_class": "transformed",
+      "route_state": "physical",
+      "platform_generation": "ARM Cortex-M4 MCU (part not named)",
+      "toolchain_version": "Custom CNN-to-SNN (TTFS) conversion pipeline; no CMSIS-NN or SNN Toolbox stage is stated in the retrieved text",
+      "measurement_boundary": null,
+      "reports_deployment_evidence": false,
+      "notes": "Named from the paper's own toolchain description, since neither CMSIS-NN nor SNN Toolbox is stated as the converter for this specific chain."
+    },
+    {
+      "id": "ttfs-firmware-to-cortex-m",
+      "from": "ttfs-mcu-firmware",
+      "to": "cortex-m-mcu",
+      "mechanism": "The compiled digital SNN executes as an ordinary firmware program on a physical ARM Cortex-M4 MCU, with energy and latency measured by an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
+      "preserves": [
+        "compiled TTFS-coded inference program's numerical behavior"
+      ],
+      "breaks": [
+        "no membrane potential persists between inferences; each call is a single feedforward pass measured as one firmware program run"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "anglo-mixed-snn-mcu"
+      ],
+      "capability_class": "native",
+      "route_state": "physical",
+      "platform_generation": "ARM Cortex-M4 MCU (part not named)",
+      "toolchain_version": "Custom CNN-to-SNN (TTFS) conversion pipeline; no CMSIS-NN or SNN Toolbox stage is stated in the retrieved text",
+      "measurement_boundary": "Energy per inference, inference latency, and top-1 accuracy of the converted digital SNN running on the Cortex-M4, measured with an external power analyzer under the MLPerf Tiny windowed-measurement protocol: 48 microjoules per inference, about 5-6 ms (6.1 ms) per inference, and 87.9% accuracy, versus 60 microjoules / about 5-6 ms / 89.5% for an 8-bit CNN on the same MCU and 24 microjoules / about 0.8 ms / 88.2% for the same network on the Innatera SNP analog chip measured in the same paper.",
+      "reports_deployment_evidence": false,
+      "notes": "E1 establishes a converted network's physical run on a Cortex-M4 MCU; the analog Innatera SNP and 8-bit CNN comparators measured in the same paper are not part of this route. reports_deployment_evidence is False here (rather than the brief's default True for a route's last edge) because no official ARM/vendor or SDK documentation source for this Cortex-M4 toolchain exists in data/source-registry.json; the only available source is the peer-reviewed paper itself. The E1 evidence class and physical route_state above are unaffected; only this specific structural flag is withheld pending an official source, per check-consistency.py's validate_hardware_routes."
+    },
+    {
+      "id": "fenn-vector-program-to-riscv-toolchain",
+      "from": "fenn-vector-program",
+      "to": "fenn-vivado-toolchain",
+      "mechanism": "FeNN's custom RISC-V vector instruction set, implemented as SystemVerilog RTL, defines a program that steps LIF neuron and synapse state updates across timesteps; this RTL design is synthesized into a bitstream by AMD/Xilinx Vivado 2023.2.",
+      "preserves": [
+        "FeNN's custom vector instruction encoding of LIF neuron and synapse updates"
+      ],
+      "breaks": [],
+      "evidence": null,
+      "sources": [
+        "fenn-riscv",
+        "fenn-dma-riscv"
+      ],
+      "capability_class": "native",
+      "route_state": "physical",
+      "platform_generation": "FeNN / FeNN-DMA RISC-V soft core on Kria KV260 FPGA",
+      "toolchain_version": "Custom RTL (SystemVerilog)",
+      "measurement_boundary": null,
+      "reports_deployment_evidence": false,
+      "notes": "This edge is the framework-to-toolchain RTL-synthesis stage; the measured runs are reported on the toolchain-to-hardware edge below."
+    },
+    {
+      "id": "riscv-toolchain-to-riscv",
+      "from": "fenn-vivado-toolchain",
+      "to": "riscv-accelerator",
+      "mechanism": "The Vivado-synthesized bitstream configures a single FeNN or FeNN-DMA core (CV32E40X scalar core plus vector co-processor) on a Kria KV260 FPGA board, which then executes the compiled vector program stepping the SNN classifier's neuron and synapse equations.",
+      "preserves": [
+        "synthesized vector-processor instruction semantics"
+      ],
+      "breaks": [
+        "FeNN simulates neuron equations in a general reconfigurable vector core rather than realizing them as dedicated asynchronous circuits; it is not a fixed-function neuromorphic ASIC"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "fenn-riscv",
+        "fenn-dma-riscv"
+      ],
+      "capability_class": "emulated",
+      "route_state": "physical",
+      "platform_generation": "FeNN (single-core, Kria KV260 FPGA); FeNN-DMA (single- and dual-core, Kria KV260 FPGA)",
+      "toolchain_version": "AMD/Xilinx Vivado 2023.2",
+      "measurement_boundary": "FeNN: classification latency and energy of a recurrent SNN spoken-digit classifier on the physical single-core FeNN soft processor, reported as significantly faster than a similar model on Loihi and twice as fast as the same model on an embedded GPU while using half the energy. FeNN-DMA: simulation time and effective throughput of a balanced random network (up to 16,000 neurons, 90% sparsity, 1000 1 ms timesteps) on the physical single-core FeNN-DMA SoC, read from on-chip performance counters, plus classification accuracy on Spiking Heidelberg Digits, N-MNIST, and Braille; separately, post-implementation EDA figures (175 MHz single-core / 143 MHz dual-core, 0.53 W, 54,984 LUTs / 47,759 FFs) are Vivado synthesis estimates, not physical power-probe readings.",
+      "reports_deployment_evidence": false,
+      "notes": "E1 establishes a physical run on the single-core FeNN and FeNN-DMA soft processors; the post-implementation frequency, power, and resource figures are synthesis-tool estimates, not board-measured readings, and are reported here as such rather than as a physical power measurement. reports_deployment_evidence is False here (rather than the brief's default True for a route's last edge) because no official AMD/Xilinx or RISC-V vendor documentation source for this toolchain exists in data/source-registry.json; the only available sources are the preprint and peer-reviewed papers themselves. The E1 evidence class and physical route_state above are unaffected; only this specific structural flag is withheld pending an official source, per check-consistency.py's validate_hardware_routes."
     }
   ],
   "sources": [
