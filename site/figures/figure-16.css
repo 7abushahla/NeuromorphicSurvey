@@ -1,3 +1,0 @@
-#figure-16 .f16-hot { cursor: help; }
-#figure-16 .f16-band { transition: opacity 0.15s; }
-#figure-16 .f16-hot:hover .f16-band { opacity: 0.10; }
