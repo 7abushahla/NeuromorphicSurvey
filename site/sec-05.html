@@ -46,4 +46,20 @@ The semantic reason is the one <a href="#values-state-events">Section 2.2</a> al
 </table>
 </div>
 
+<p>Table 9 grades how a claim was established. Table 10 names what the claim was established on, by the machine the claim describes, in one vocabulary that every evidence marker, Table 1, and the stack map of <a href="#figure-26">Figure 26</a> share. The chip beside a marker is the target of the claim beside it, not the paper's headline platform, and a paper can carry claims on two targets.</p>
+
+<div class="ptable-wrap" id="table-target-buckets">
+<table class="ptable">
+<caption><b>Table 10:</b> Target buckets for deployment claims, by the machine the claim describes.</caption>
+<thead><tr><th>Bucket</th><th>Chips</th><th>What a claim on it establishes</th><th>What it cannot establish</th></tr></thead>
+<tbody>
+<tr><td>Conventional</td><td><span class="tk tk-cpu">CPU</span> <span class="tk tk-gpu">GPU</span> <span class="tk tk-mcu">MCU</span> <span class="tk tk-risc-v">RISC-V</span> <span class="tk tk-npu">NPU</span> <span class="tk tk-event-npu">event NPU</span></td><td>The network runs as a program on a conventional processor, or as a converted network on an event-domain accelerator that exposes no spiking model, whatever software steps it; latency, energy, and throughput are those of the processor and its memory; accuracy is the model's under that software's semantics.</td><td>Any property of neuromorphic silicon, and any energy or latency advantage that depends on event-driven execution the processor does not perform.</td></tr>
+<tr><td>Simulated</td><td><span class="tk tk-simulator">simulator</span></td><td>The network runs on a model of a neuromorphic chip that is not the silicon, a vendor's software simulator, a register-transfer or cycle-level model, or an FPGA emulating a named chip; functional fidelity to the chip's documented semantics, and cycle or instruction counts where the model is cycle-accurate.</td><td>Measured power or energy on the chip, real event timing at a stated boundary, and any behavior the model does not document.</td></tr>
+<tr><td>Neuromorphic</td><td><span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td>The network runs on fabricated neuromorphic silicon, or on a custom spiking accelerator on an FPGA measured as its own target; whatever the measurement boundary of <a href="#measurement-boundaries">Section 15.2, Measurement Boundaries,</a> admits.</td><td>Equivalence to a different chip, workload, or boundary, and anything the route to the chip transformed on the way (<a href="#complete-deployment-routes">Section 14, Complete Deployment Routes</a>).</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Two boundaries follow from the rule. A simulator running on a GPU is a conventional claim about the GPU when the claim is about the run, and a simulated claim about the chip only when the simulator is the chip's own model and the claim is about the chip's semantics. A custom FPGA accelerator that is itself the measured target is neuromorphic hardware with the chip word FPGA; an FPGA that stands in for a named chip is a simulator.</p>
+
 <p>The classes block several substitutions that recur across this literature. Fewer timesteps do not prove lower wall-clock latency. Fewer spikes do not prove lower energy. A lower operation count does not prove lower measured power. A documented exporter does not prove that a model reached silicon. Treating any one of these proxies as the measurement it stands in for turns a route that is merely documented, or a result that is merely simulated, into a claim about physical hardware that the record does not support. The time symbols in <a href="#time-vocabulary">Section 4.1</a>, the software boundaries in <a href="#framework-boundary">Section 12</a>, and the measurement boundaries in <a href="#measurement-boundaries">Section 15.2</a> define the terms that make these distinctions operational. <a href="#direct-snn-training">Section 6</a> applies the classes from its first deployment record onward, beginning with the on-chip-learning deployments tabulated there.</p>
