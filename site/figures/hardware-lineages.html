@@ -2,11 +2,12 @@
 <!-- Provenance of every dated node (conceptual figure; no measured quantity is drawn).
      Each year below was read from the registered record in data/source-registry.json and
      data/foundations-sources.json on 2026-09-17, not from memory. Key, then locator.
-     Left column, conventional digital hardware.
+     Left column, conventional digital hardware, in drawn order. The column opens with the 1945 report level with Mead 1990,
+     the idea and then the device that realizes it, the same reading the right column uses from Mead 1990 to the subthreshold transistor.
+     1945 stored-program machine and the clock; vonneumann1945-edvac; First draft of a report on the EDVAC, Sec. 2.2 to 2.5 (the three organs; the instructions must be remembered), Sec. 6.3 (the central clock) and Sec. 14.1 (orders and numbers in the same memory); 1993 reprint DOI 10.1109/85.238389.
      1948 transistor; bardeen1948-transistor; Phys. Rev. vol. 74, p. 230; DOI 10.1103/physrev.74.230.
      1963 CMOS; wanlass1963-cmos; ISSCC 1963 Digest of Technical Papers; DOI 10.1109/isscc.1963.1157450.
      TTL, undated; horowitz2015-art-of-electronics; The Art of Electronics, 3rd ed., digital electronics chapters.
-     1945 stored-program machine and the clock; vonneumann1945-edvac; First draft of a report on the EDVAC, Sec. 2.2 to 2.5 (the three organs; the instructions must be remembered), Sec. 6.3 (the central clock) and Sec. 14.1 (orders and numbers in the same memory); 1993 reprint DOI 10.1109/85.238389.
      memory hierarchy, undated; backus1978-von-neumann-style; Commun. ACM vol. 21, no. 8, pp. 613-641, introduction; DOI 10.1145/359576.359579.
      1971 microprocessor; faggin1996-4004; IEEE Micro vol. 16, no. 6, pp. 10-20, abstract (the 4004 introduced in November 1971); DOI 10.1109/40.546561.
        The registry year of this key is 1996, the year of the history article; the drawn year 1971 is the introduction date that the locator states.
@@ -26,7 +27,7 @@
      GPU is named without citation. The dashed frames around the three chip-family boxes in each column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow and no arrows inside. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1456" role="img" aria-labelledby="f4title f4desc">
     <title id="f4title">Two hardware lineages side by side, the conventional machine that simulates an SNN and the neuromorphic circuit that implements it</title>
-    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them. The left column is conventional digital hardware, the machine every reader knows. It runs from the transistor of 1948, a switch that is on or off, through logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), to the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ. A small clock box hangs from that machine, every step synchronous and gated by a central clock. Below it the memory hierarchy moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, and GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's, drawn level with the left transistor. Then the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching levels, what the transistor does, what a program is, how time passes, how units talk, and where memory is. Two dashed crossings run right to left, from SpiNNaker back to the microprocessor level as the first crossing, and from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
+    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them, both opening at the same row. The left column is conventional digital hardware, the machine every reader knows. It opens with the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ, drawn level with Mead's 1990 paper on the right, with a small clock box hanging beside it, every step synchronous and gated by a central clock. An arrow leads down to the transistor of 1948, a switch that is on or off, drawn level with the right column's subthreshold transistor, then to logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), then past an empty row to the memory hierarchy, which moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, and GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's. Then, past an empty row, the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching rows, what a program is at the opening row, what the transistor does at the transistor row, how time passes at the silicon neuron row, how units talk at the memory hierarchy and address-event row, and where memory is at the digital cores row. Two dashed crossings run right to left, from SpiNNaker back to the microprocessor level as the first crossing, and from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
     <defs>
       <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -45,16 +46,16 @@
       <title>The rail names what the neuromorphic circuit changes at each level, the element, the program, the passage of time, the way units talk, and the place of memory.</title>
       <text x="741" y="112" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#8a94a0">What the circuit changes</text>
 
+      <text x="741" y="176" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">what a program is,</text>
+      <text x="741" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">instruction stream against</text>
+      <text x="741" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the circuit's dynamics</text>
+
       <text x="741" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">what the transistor does,</text>
       <text x="741" y="316" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">switch against analog element</text>
 
-      <text x="741" y="514" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">what a program is,</text>
-      <text x="741" y="534" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">instruction stream against</text>
-      <text x="741" y="552" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the circuit's dynamics</text>
-
-      <text x="741" y="610" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">how time passes,</text>
-      <text x="741" y="630" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the clock against</text>
-      <text x="741" y="648" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">physics or events</text>
+      <text x="741" y="514" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">how time passes,</text>
+      <text x="741" y="534" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the clock against</text>
+      <text x="741" y="552" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">physics or events</text>
 
       <text x="741" y="706" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">how units talk,</text>
       <text x="741" y="726" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">data words on a bus</text>
@@ -64,11 +65,33 @@
       <text x="741" y="860" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a separate store against</text>
       <text x="741" y="878" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">beside the neuron</text>
 
-      <rect class="f4-band" x="626" y="276" width="230" height="620" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="626" y="276" width="230" height="620" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="626" y="156" width="230" height="740" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="626" y="156" width="230" height="740" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- left column, conventional digital hardware -->
+    <!-- row 0, the founding document, level with Mead 1990; the clock hangs beside it -->
+    <g class="f4-hot">
+      <title>Von Neumann's 1945 report holds instructions and numbers in one memory apart from the arithmetic organ, a design that predates the transistor below it and was later built from it.</title>
+      <rect x="20" y="150" width="330" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="185" y="177" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Stored-program machine 1945</text>
+      <text x="185" y="200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">instructions and numbers in one memory,</text>
+      <text x="185" y="219" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">apart from the arithmetic organ</text>
+      <rect class="f4-band" x="20" y="150" width="330" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="150" width="330" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>Section 6.3 of the 1945 report makes every step synchronous and gated by a central clock, which is why the bottom line says that time is the clock.</title>
+      <line x1="350" y1="190" x2="370" y2="190" stroke="#000" stroke-width="2.2"/>
+      <rect x="370" y="158" width="190" height="64" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="465" y="181" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">The clock</text>
+      <text x="465" y="199" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">every step synchronous,</text>
+      <text x="465" y="215" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">gated by a central clock</text>
+      <rect class="f4-band" x="370" y="158" width="190" height="64" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="370" y="158" width="190" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="230" x2="290" y2="262" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
     <g class="f4-hot">
       <title>Bardeen and Brattain's 1948 device is used here as a switch that is on or off, and everything below it in the column is built from that switch.</title>
       <rect x="20" y="264" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
@@ -88,30 +111,7 @@
       <rect class="f4-band" x="20" y="378" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="20" y="378" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="290" y1="458" x2="290" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-
-    <g class="f4-hot">
-      <title>Von Neumann's 1945 report holds instructions and numbers in one memory apart from the arithmetic organ, and that design predates the transistor it was later built from.</title>
-      <rect x="20" y="492" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-      <text x="290" y="519" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Stored-program machine 1945</text>
-      <text x="290" y="542" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">instructions and numbers in one memory,</text>
-      <text x="290" y="562" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">apart from the arithmetic organ</text>
-      <rect class="f4-band" x="20" y="492" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="492" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <line x1="290" y1="572" x2="290" y2="676" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-
-    <!-- the clock, hanging from the stored-program box -->
-    <g class="f4-hot">
-      <title>Section 6.3 of the 1945 report makes every step synchronous and gated by a central clock, which is why the bottom line says that time is the clock.</title>
-      <line x1="445" y1="572" x2="445" y2="590" stroke="#000" stroke-width="2.2"/>
-      <rect x="330" y="590" width="230" height="64" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-      <text x="445" y="614" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">The clock</text>
-      <text x="445" y="632" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">every step synchronous,</text>
-      <text x="445" y="648" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">gated by a central clock</text>
-      <rect class="f4-band" x="330" y="590" width="230" height="64" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="330" y="590" width="230" height="64" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
+    <line x1="290" y1="458" x2="290" y2="676" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <g class="f4-hot">
       <title>Backus named the word-at-a-time traffic between processor and memory the von Neumann bottleneck in 1978, and a weight held in memory reaches the arithmetic only across it.</title>
@@ -344,5 +344,5 @@
     </g>
   </svg></div>
   <div class="fig-hint">Hover a box, the rail, a dashed crossing, a bottom line, or a landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column runs from the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step. Below sit the bottleneck of Backus<d-cite key="backus1978-von-neumann-style"></d-cite>, the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>, a systolic array. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric and a simulator running the right column's equations on the left. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
+  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric and a simulator running the right column's equations on the left. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
 </figure>
