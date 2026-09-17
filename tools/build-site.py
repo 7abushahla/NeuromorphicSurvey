@@ -19,7 +19,7 @@ SITE = ROOT / 'site'
 ORDER = ['shell-head.html', 'sec-01.html', 'sec-02.html', 'sec-03.html', 'sec-04.html', 'sec-05.html',
          'sec-06.html', 'sec-07.html', 'sec-08.html', 'sec-09.html', 'sec-10.html',
          'sec-11.html', 'sec-12.html', 'sec-13.html', 'shell-figure.html', 'sec-14.html',
-         'sec-15.html', 'shell-tail.html']
+         'sec-15.html', 'sec-16.html', 'sec-17.html', 'sec-18.html', 'shell-tail.html']
 
 REF_UL = re.compile(r'<ul class="refs"[^>]*>.*?</ul>', re.S)
 CITE = re.compile(r'<a class="cite" data-ref="([^"]+)"[^>]*>\[[^\]]*\]</a>')
