@@ -1,0 +1,348 @@
+<figure class="pfig l-body" id="figure-4">
+<!-- Provenance of every dated node (conceptual figure; no measured quantity is drawn).
+     Each year below was read from the registered record in data/source-registry.json and
+     data/foundations-sources.json on 2026-09-17, not from memory. Key, then locator.
+     Left column, conventional digital hardware.
+     1948 transistor; bardeen1948-transistor; Phys. Rev. vol. 74, p. 230; DOI 10.1103/physrev.74.230.
+     1963 CMOS; wanlass1963-cmos; ISSCC 1963 Digest of Technical Papers; DOI 10.1109/isscc.1963.1157450.
+     TTL, undated; horowitz2015-art-of-electronics; The Art of Electronics, 3rd ed., digital electronics chapters.
+     1945 stored-program machine and the clock; vonneumann1945-edvac; First draft of a report on the EDVAC, Sec. 2.2 to 2.5 (the three organs; the instructions must be remembered), Sec. 6.3 (the central clock) and Sec. 14.1 (orders and numbers in the same memory); 1993 reprint DOI 10.1109/85.238389.
+     memory hierarchy, undated; backus1978-von-neumann-style; Commun. ACM vol. 21, no. 8, pp. 613-641, introduction; DOI 10.1145/359576.359579.
+     1971 microprocessor; faggin1996-4004; IEEE Micro vol. 16, no. 6, pp. 10-20, abstract (the 4004 introduced in November 1971); DOI 10.1109/40.546561.
+       The registry year of this key is 1996, the year of the history article; the drawn year 1971 is the introduction date that the locator states.
+     1980 RISC; patterson1980-risc; ACM SIGARCH Comput. Archit. News vol. 8, no. 6, pp. 25-33; DOI 10.1145/641914.641917.
+     2011 RISC-V; waterman2011-riscv; UCB/EECS-2011-62, Sec. 1.
+     2017 TPU; jouppi2017-tpu; ISCA 2017, Sec. 2, pp. 3-4 of the arXiv copy (256 by 256 8-bit MACs, systolic execution); DOI 10.1145/3079856.3080246.
+     Right column, neuromorphic hardware.
+     1989 subthreshold transistor; mead1989-analog-vlsi; Analog VLSI and Neural Systems, Addison-Wesley, catalog record.
+     1990 Mead; mead1990; Proc. IEEE vol. 78, no. 10, pp. 1629-1636; DOI 10.1109/5.58356.
+     1991 silicon neuron; mahowald1991-silicon-neuron; Nature vol. 354, no. 6354, pp. 515-518; DOI 10.1038/354515a0.
+     1992 AER; mahowald1992-aer; Caltech doctoral dissertation, Sec. 3.3 pp. 84-86; DOI 10.7907/z9cz35cd.
+     2000 AER; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, no. 5, pp. 416-434, p. 418; DOI 10.1109/82.842110.
+     2014 TrueNorth; merolla2014-truenorth; Science vol. 345, no. 6197, pp. 668-673; DOI 10.1126/science.1254642.
+     2018 Loihi; loihi1; IEEE Micro 2018; DOI 10.1109/mm.2018.112130359.
+     BrainScaleS, undated; bss; Front. Neurosci. 2022; DOI 10.3389/fnins.2022.795876.
+     SpiNNaker, undated; furber2012-spinnaker; IEEE Trans. Comput. 2012; DOI 10.1109/tc.2012.142.
+     GPU is named without citation. The dashed frames around the three chip-family boxes in each column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow and no arrows inside. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1456" role="img" aria-labelledby="f4title f4desc">
+    <title id="f4title">Two hardware lineages side by side, the conventional machine that simulates an SNN and the neuromorphic circuit that implements it</title>
+    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them. The left column is conventional digital hardware, the machine every reader knows. It runs from the transistor of 1948, a switch that is on or off, through logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), to the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ. A small clock box hangs from that machine, every step synchronous and gated by a central clock. Below it the memory hierarchy moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, and GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's, drawn level with the left transistor. Then the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching levels, what the transistor does, what a program is, how time passes, how units talk, and where memory is. Two dashed crossings run right to left, from SpiNNaker back to the microprocessor level as the first crossing, and from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
+    <defs>
+      <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+    </defs>
+
+    <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700" fill="#000">Two hardware lineages, the machine that simulates and the circuit that implements</text>
+    <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">A dependency picture, not a timeline. Read down each column, then across the rail.</text>
+
+    <!-- column headers -->
+    <text x="290" y="112" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Conventional digital hardware</text>
+    <text x="290" y="134" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">the machine every reader knows</text>
+    <text x="1150" y="112" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Neuromorphic hardware</text>
+    <text x="1150" y="134" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">the circuit that implements</text>
+
+    <!-- contrast rail -->
+    <g class="f4-hot">
+      <title>The rail names what the neuromorphic circuit changes at each level, the element, the program, the passage of time, the way units talk, and the place of memory.</title>
+      <text x="741" y="112" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#8a94a0">What the circuit changes</text>
+
+      <text x="741" y="296" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">what the transistor does,</text>
+      <text x="741" y="316" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">switch against analog element</text>
+
+      <text x="741" y="514" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">what a program is,</text>
+      <text x="741" y="534" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">instruction stream against</text>
+      <text x="741" y="552" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the circuit's dynamics</text>
+
+      <text x="741" y="610" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">how time passes,</text>
+      <text x="741" y="630" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the clock against</text>
+      <text x="741" y="648" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">physics or events</text>
+
+      <text x="741" y="706" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">how units talk,</text>
+      <text x="741" y="726" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">data words on a bus</text>
+      <text x="741" y="744" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">against addresses on AER</text>
+
+      <text x="741" y="840" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">where memory is,</text>
+      <text x="741" y="860" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a separate store against</text>
+      <text x="741" y="878" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">beside the neuron</text>
+
+      <rect class="f4-band" x="626" y="276" width="230" height="620" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="626" y="276" width="230" height="620" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- left column, conventional digital hardware -->
+    <g class="f4-hot">
+      <title>Bardeen and Brattain's 1948 device is used here as a switch that is on or off, and everything below it in the column is built from that switch.</title>
+      <rect x="20" y="264" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="293" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Transistor 1948</text>
+      <text x="290" y="324" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">a switch, on or off</text>
+      <rect class="f4-band" x="20" y="264" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="264" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="344" x2="290" y2="376" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <g class="f4-hot">
+      <title>Gates are built from switches, and the complementary MOS pairing that Wanlass and Sah reported in 1963 draws power chiefly when a gate switches.</title>
+      <rect x="20" y="378" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="405" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Logic families, TTL then CMOS 1963</text>
+      <text x="290" y="428" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">gates built from switches,</text>
+      <text x="290" y="448" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">CMOS draws power chiefly when it switches</text>
+      <rect class="f4-band" x="20" y="378" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="378" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="458" x2="290" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <g class="f4-hot">
+      <title>Von Neumann's 1945 report holds instructions and numbers in one memory apart from the arithmetic organ, and that design predates the transistor it was later built from.</title>
+      <rect x="20" y="492" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="519" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Stored-program machine 1945</text>
+      <text x="290" y="542" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">instructions and numbers in one memory,</text>
+      <text x="290" y="562" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">apart from the arithmetic organ</text>
+      <rect class="f4-band" x="20" y="492" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="492" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="572" x2="290" y2="676" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- the clock, hanging from the stored-program box -->
+    <g class="f4-hot">
+      <title>Section 6.3 of the 1945 report makes every step synchronous and gated by a central clock, which is why the bottom line says that time is the clock.</title>
+      <line x1="445" y1="572" x2="445" y2="590" stroke="#000" stroke-width="2.2"/>
+      <rect x="330" y="590" width="230" height="64" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="445" y="614" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">The clock</text>
+      <text x="445" y="632" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">every step synchronous,</text>
+      <text x="445" y="648" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">gated by a central clock</text>
+      <rect class="f4-band" x="330" y="590" width="230" height="64" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="330" y="590" width="230" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <g class="f4-hot">
+      <title>Backus named the word-at-a-time traffic between processor and memory the von Neumann bottleneck in 1978, and a weight held in memory reaches the arithmetic only across it.</title>
+      <rect x="20" y="678" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="705" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Memory hierarchy</text>
+      <text x="290" y="728" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">words move one at a time between processor and memory,</text>
+      <text x="290" y="748" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the von Neumann bottleneck</text>
+      <rect class="f4-band" x="20" y="678" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="678" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="758" x2="290" y2="810" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- left family group, the machine on a chip -->
+    <rect x="10" y="792" width="560" height="334" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
+    <text x="40" y="797" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">the machine on a chip</text>
+
+    <g class="f4-hot">
+      <title>The 4004 of November 1971, as Faggin and colleagues recount, put the whole stored-program machine on one chip.</title>
+      <rect x="20" y="812" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="841" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Microprocessor 1971</text>
+      <text x="290" y="872" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the whole machine on one chip</text>
+      <rect class="f4-band" x="20" y="812" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="812" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <g class="f4-hot">
+      <title>Patterson and Ditzel made the case for a small instruction set in 1980, and the RISC-V manual of 2011 made such a set open and suitable for direct hardware implementation.</title>
+      <rect x="20" y="920" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="949" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">RISC 1980 to RISC-V 2011</text>
+      <text x="290" y="980" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">a small instruction set, now an open one</text>
+      <rect class="f4-band" x="20" y="920" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="920" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <g class="f4-hot">
+      <title>The TPU that Jouppi and colleagues described in 2017 is a 256 by 256 array of 8-bit multiply-accumulate units run systolically, so that fewer operands are read from the buffer, because reading a large SRAM costs more energy than the arithmetic.</title>
+      <rect x="20" y="1028" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="1055" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">GPU and NPU</text>
+      <text x="290" y="1078" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">arrays of clocked multiply-accumulate units,</text>
+      <text x="290" y="1098" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the TPU's systolic array 2017</text>
+      <rect class="f4-band" x="20" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="1108" x2="290" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- left bottom line -->
+    <g class="f4-hot">
+      <title>On this machine a trained network is a program, its weights are words fetched from memory, each multiply-accumulate is an instruction, and time advances only when the clock does.</title>
+      <rect x="20" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="290" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An ANN is a program.</text>
+      <text x="290" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is a word in memory.</text>
+      <text x="290" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A multiply-accumulate is an instruction.</text>
+      <text x="290" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is the clock.</text>
+      <rect class="f4-band" x="20" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- right column, neuromorphic hardware -->
+    <g class="f4-hot">
+      <title>Mead's 1990 paper asks whether hardware can implement the computation rather than simulate it, and that question opens this column.</title>
+      <rect x="880" y="150" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="179" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Mead 1990</text>
+      <text x="1150" y="210" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">implement the computation, not simulate it</text>
+      <rect class="f4-band" x="880" y="150" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="150" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="1150" y1="230" x2="1150" y2="262" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <g class="f4-hot">
+      <title>Mead's 1989 book runs the same transistor below its threshold as an analog element whose physics mirrors the neuron's, so the column changes the element before it changes anything else.</title>
+      <rect x="880" y="264" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="291" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Subthreshold transistor 1989</text>
+      <text x="1150" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the same transistor run as an analog element</text>
+      <text x="1150" y="334" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">whose physics mirrors the neuron's</text>
+      <rect class="f4-band" x="880" y="264" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="264" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="1150" y1="344" x2="1150" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <g class="f4-hot">
+      <title>Mahowald and Douglas built a circuit whose dynamics are the neuron's, so the neuron is not computed by the circuit, it is the circuit.</title>
+      <rect x="880" y="492" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="521" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Silicon neuron 1991</text>
+      <text x="1150" y="552" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">a circuit whose dynamics are the neuron's</text>
+      <rect class="f4-band" x="880" y="492" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="492" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="1150" y1="572" x2="1150" y2="676" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <g class="f4-hot">
+      <title>In the address-event representation each event carries a neuron's address on a shared bus and time represents itself, so no clock is needed to say when a spike happened.</title>
+      <rect x="880" y="678" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="705" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Address-event representation 1992, 2000</text>
+      <text x="1150" y="728" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">addresses on a shared bus,</text>
+      <text x="1150" y="748" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">timing is implicit, no clock</text>
+      <rect class="f4-band" x="880" y="678" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="678" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="1150" y1="758" x2="1150" y2="810" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- right family group, the circuit on a chip -->
+    <rect x="870" y="792" width="560" height="334" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
+    <text x="900" y="797" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">the circuit on a chip</text>
+
+    <g class="f4-hot">
+      <title>TrueNorth in 2014 and Loihi in 2018 build the neuron from asynchronous digital cores and keep the synapse memory beside the neuron rather than in a separate store.</title>
+      <rect x="880" y="812" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="839" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Digital cores, TrueNorth 2014, Loihi 2018</text>
+      <text x="1150" y="862" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">asynchronous digital cores,</text>
+      <text x="1150" y="882" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">synapse memory beside the neuron</text>
+      <rect class="f4-band" x="880" y="812" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="812" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <g class="f4-hot">
+      <title>BrainScaleS runs physical neuron circuits faster than biology, so time here is the physics of the circuit.</title>
+      <rect x="880" y="920" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="949" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Accelerated analog, BrainScaleS</text>
+      <text x="1150" y="980" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">physical neuron circuits running faster than biology</text>
+      <rect class="f4-band" x="880" y="920" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="920" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <g class="f4-hot">
+      <title>SpiNNaker places conventional ARM cores inside a neuromorphic packet router, so it is a machine from the left column running the right column's equations inside a neuromorphic fabric.</title>
+      <rect x="880" y="1028" width="540" height="80" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="1057" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Many-core software, SpiNNaker</text>
+      <text x="1150" y="1088" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">conventional ARM cores inside a neuromorphic packet router</text>
+      <rect class="f4-band" x="880" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="1150" y1="1108" x2="1150" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- right bottom line -->
+    <g class="f4-hot">
+      <title>On this circuit the network is the circuit's own dynamics, a weight is synapse state kept beside the neuron, a spike is an event, and time is either the physics of the circuit or the event itself.</title>
+      <rect x="880" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="1150" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An SNN is the circuit's dynamics.</text>
+      <text x="1150" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is synapse state beside the neuron.</text>
+      <text x="1150" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A spike is an event.</text>
+      <text x="1150" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is physics, or the event itself.</text>
+      <rect class="f4-band" x="880" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- first crossing, SpiNNaker back to the microprocessor level -->
+    <g class="f4-hot">
+      <title>SpiNNaker's ARM cores are conventional processors, so the dashed edge returns to the left column's microprocessor level, the first crossing between the lineages.</title>
+      <path d="M880,1068 H598 V852 H562" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="612" y="1014" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">first crossing,</text>
+      <text x="612" y="1032" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">conventional cores in</text>
+      <text x="612" y="1050" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a neuromorphic fabric</text>
+      <rect class="f4-band" x="584" y="840" width="28" height="240" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="584" y="840" width="28" height="240" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="604" y="998" width="272" height="82" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="604" y="998" width="272" height="82" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- second crossing, the right bottom line to the left bottom line -->
+    <g class="f4-hot">
+      <title>A simulator on the left column's machine steps the right column's equations, so an SNN run in software is the left machine computing what the right circuit would be.</title>
+      <line x1="880" y1="1276" x2="562" y2="1276" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="721" y="1194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">second crossing,</text>
+      <text x="721" y="1212" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a simulator runs the right</text>
+      <text x="721" y="1230" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">column's equations on the</text>
+      <text x="721" y="1248" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">left column's machine</text>
+      <rect class="f4-band" x="566" y="1178" width="310" height="112" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="566" y="1178" width="310" height="112" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- landmark strip, ordinal, both lineages -->
+    <g class="f4-hot">
+      <title>The strip orders the dated nodes of both lineages by year with even spacing, so distances along it carry no meaning, and the dot color says which column a node belongs to.</title>
+      <text x="80" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
+      <circle cx="1112" cy="1347" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+      <text x="1126" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">conventional</text>
+      <circle cx="1262" cy="1347" r="7" fill="#d5dbe2" stroke="#000" stroke-width="1.5"/>
+      <text x="1276" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic</text>
+      <line x1="80" y1="1390" x2="1400" y2="1390" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
+      <g stroke="#000" stroke-width="1.5">
+        <circle cx="110" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="207" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="304" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="401" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="498" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="595" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="692" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="789" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="886" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="983" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="1080" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="1177" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="1274" cy="1390" r="7" fill="#FFDDA6"/>
+        <circle cx="1371" cy="1390" r="7" fill="#d5dbe2"/>
+      </g>
+      <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000" text-anchor="middle">
+        <text x="110" y="1376">1945</text>
+        <text x="207" y="1376">1948</text>
+        <text x="304" y="1376">1963</text>
+        <text x="401" y="1376">1971</text>
+        <text x="498" y="1376">1980</text>
+        <text x="595" y="1376">1989</text>
+        <text x="692" y="1376">1990</text>
+        <text x="789" y="1376">1991</text>
+        <text x="886" y="1376">1992</text>
+        <text x="983" y="1376">2000</text>
+        <text x="1080" y="1376">2011</text>
+        <text x="1177" y="1376">2014</text>
+        <text x="1274" y="1376">2017</text>
+        <text x="1371" y="1376">2018</text>
+      </g>
+      <g style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333" text-anchor="middle">
+        <text x="110" y="1416">stored program</text>
+        <text x="207" y="1438">transistor</text>
+        <text x="304" y="1416">CMOS</text>
+        <text x="401" y="1438">microprocessor</text>
+        <text x="498" y="1416">RISC</text>
+        <text x="595" y="1438">subthreshold, Mead</text>
+        <text x="692" y="1416">Mead</text>
+        <text x="789" y="1438">silicon neuron</text>
+        <text x="886" y="1416">AER, Mahowald</text>
+        <text x="983" y="1438">AER, Boahen</text>
+        <text x="1080" y="1416">RISC-V</text>
+        <text x="1177" y="1438">TrueNorth</text>
+        <text x="1274" y="1416">TPU</text>
+        <text x="1371" y="1438">Loihi</text>
+      </g>
+      <rect class="f4-band" x="60" y="1334" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="60" y="1334" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+  </svg></div>
+  <div class="fig-hint">Hover a box, the rail, a dashed crossing, a bottom line, or a landmark for the one sentence it carries.</div>
+  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column runs from the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step. Below sit the bottleneck of Backus<d-cite key="backus1978-von-neumann-style"></d-cite>, the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>, a systolic array. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric and a simulator running the right column's equations on the left. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
+</figure>

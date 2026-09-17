@@ -1,4 +1,4 @@
-#figure-9 .f9-hot { cursor: help; }
-#figure-9 .f9-band { transition: opacity 0.15s; }
-#figure-9 .f9-hot:hover .f9-band { opacity: 0.10; }
-#figure-9 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+#figure-10 .f10-hot { cursor: help; }
+#figure-10 .f10-band { transition: opacity 0.15s; }
+#figure-10 .f10-hot:hover .f10-band { opacity: 0.10; }
+#figure-10 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

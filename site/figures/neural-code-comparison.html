@@ -1,10 +1,10 @@
-<figure class="pfig l-body" id="figure-17">
+<figure class="pfig l-body" id="figure-18">
   <div style="max-width: 720px; margin: 0 auto;">
-    <svg viewBox="0 0 1200 1180" role="img" aria-labelledby="f17title f17desc">
-      <title id="f17title">Neural codes compared by represented variable, encoder, transmitted object, decoder, horizon, precision, and cost</title>
-      <desc id="f17desc">Conceptual illustration. Eight rows compare rate or count, time to first spike, phase, burst, population, sigma-delta, rank order, and direct current input. Each row states the represented variable and encoder, draws the transmitted object with its payload named, states the decoder, and lists the observation horizon, the precision mechanism, the spike cost, and the spatial cost. Direct current is separated because it is an input boundary convention rather than an internal neural code. No row claims an equal value or equal precision with another.</desc>
+    <svg viewBox="0 0 1200 1180" role="img" aria-labelledby="f18title f18desc">
+      <title id="f18title">Neural codes compared by represented variable, encoder, transmitted object, decoder, horizon, precision, and cost</title>
+      <desc id="f18desc">Conceptual illustration. Eight rows compare rate or count, time to first spike, phase, burst, population, sigma-delta, rank order, and direct current input. Each row states the represented variable and encoder, draws the transmitted object with its payload named, states the decoder, and lists the observation horizon, the precision mechanism, the spike cost, and the spatial cost. Direct current is separated because it is an input boundary convention rather than an internal neural code. No row claims an equal value or equal precision with another.</desc>
       <defs>
-        <marker id="f17arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+        <marker id="f18arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
       </defs>
 
       <text x="46" y="43" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">A neural code specifies what an event pattern means</text>
@@ -20,7 +20,7 @@
       <text x="785" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Decoder</text>
       <text x="960" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Horizon and cost</text>
       
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Rate or count coding represents a magnitude by the number of unit events in a stated observation window. The window length, threshold, reset rule, and decoder define the represented value.</title>
         <rect x="42" y="256" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="256" width="196" height="98"  fill="#CFE2F3"/>
@@ -31,9 +31,9 @@
         <text x="651" y="342" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events z[t], counted over T steps</text>
         <text x="785" y="283" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Count <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan>) or</text><text x="785" y="306" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">fraction <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#961;</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan>)</text>
         <text x="960" y="283" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> steps, uniform 1/<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> grid</text><text x="960" y="306" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">up to <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> spikes per neuron</text><text x="960" y="329" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">one neuron per value</text>
-        <rect class="f17-band" x="42" y="256" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="256" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="256" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="256" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Time-to-first-spike coding represents a magnitude by a first-event time. Timing resolution and the deadline are part of the code because they determine which latency distinctions survive execution.</title>
         <rect x="42" y="354" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="354" width="196" height="98"  fill="#FFDDA6"/>
@@ -44,9 +44,9 @@
         <text x="651" y="440" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">one timing event per neuron, the first is read</text>
         <text x="785" y="381" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Winner-take-all or</text><text x="785" y="404" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">temporal weighting</text>
         <text x="960" y="381" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">one spike, quantized to the tick</text><text x="960" y="404" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">floor set by <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#916;t</tspan></text><text x="960" y="427" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">one spike per neuron</text>
-        <rect class="f17-band" x="42" y="354" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="354" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="354" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="354" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Phase coding assigns a known weight to each slot of a repeating cycle. The decoder sums the weights of the slots that carried a spike, so a shared phase reference and the weight schedule are part of the representation.</title>
         <rect x="42" y="452" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="452" width="196" height="98"  fill="#CDEBCD"/>
@@ -57,9 +57,9 @@
         <text x="651" y="538" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events with meaningful phase, weights 4, 2, 1</text>
         <text x="785" y="479" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Weighted sum of</text><text x="785" y="502" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">active phases</text>
         <text x="960" y="479" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan>-step cycle, network-wide</text><text x="960" y="502" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">exponential 2<tspan dy="-6" style="font-size:10px;font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan><tspan dy="6"></tspan> grid</text><text x="960" y="525" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">up to <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan> spikes per cycle</text>
-        <rect class="f17-band" x="42" y="452" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="452" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="452" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="452" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Burst coding keeps a count-like meaning but allows several unit events in one algorithmic step when the residual potential is large. The neuron and runtime must define how that multiplicity is represented.</title>
         <rect x="42" y="550" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="550" width="196" height="98"  fill="#F9D4EA"/>
@@ -70,9 +70,9 @@
         <text x="651" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events, several allowed in one step</text>
         <text x="785" y="577" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Count over the window,</text><text x="785" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">as in rate coding</text>
         <text x="960" y="577" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">fewer steps for an equal count</text><text x="960" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">same grid as rate coding</text><text x="960" y="623" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">same total spikes, denser</text>
-        <rect class="f17-band" x="42" y="550" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="550" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="550" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="550" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Population coding distributes a value across several neurons. It is a spatial axis that combines with rate, temporal, or other codes, so its cost is paid in neurons rather than in steps.</title>
         <rect x="42" y="648" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="648" width="196" height="98"  fill="#CFE2F3"/>
@@ -83,9 +83,9 @@
         <text x="651" y="734" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">joint activity, itself rate or time coded</text>
         <text x="785" y="675" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Ensemble readout over</text><text x="785" y="698" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">the whole population</text>
         <text x="960" y="675" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">as few as one step</text><text x="960" y="698" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">precision set by <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> and inner code</text><text x="960" y="721" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">spatial cost, <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> neurons</text>
-        <rect class="f17-band" x="42" y="648" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="648" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="648" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="648" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Sigma-delta coding transmits a signed change in activation as a graded event payload and reconstructs the signal by a running sum. A binary event count is not equivalent to this payload-bearing channel.</title>
         <rect x="42" y="746" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="746" width="196" height="98"  fill="#FFDDA6"/>
@@ -96,9 +96,9 @@
         <text x="651" y="832" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">graded signed payload <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">p</tspan> per spike</text>
         <text x="785" y="773" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Running-sum</text><text x="785" y="796" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">reconstruction</text>
         <text x="960" y="773" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">one spike per transmitted change</text><text x="960" y="796" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">payload width sets precision</text><text x="960" y="819" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">near zero spikes for static input</text>
-        <rect class="f17-band" x="42" y="746" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="746" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="746" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="746" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Rank order coding represents the relative firing order across a population, not an absolute magnitude. The decoder must preserve the ordering, and the original amplitude cannot be recovered from order alone.</title>
         <rect x="42" y="844" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
         <rect x="42" y="844" width="196" height="98"  fill="#CDEBCD"/>
@@ -109,9 +109,9 @@
         <text x="651" y="930" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">one order-bearing timing event per neuron</text>
         <text x="785" y="871" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Shunting-inhibition</text><text x="785" y="894" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">decoder, order-sensitive</text>
         <text x="960" y="871" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">single feedforward wave</text><text x="960" y="894" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">ordinal, log<tspan dy="5" style="font-size:10px">2</tspan><tspan dy="-5"></tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan>!) bits per group</text><text x="960" y="917" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">about <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> spikes</text>
-        <rect class="f17-band" x="42" y="844" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="844" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="844" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="844" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-      <g class="f17-row">
+      <g class="f18-row">
         <title>Direct constant current is an input-boundary convention, not an internal neural code. A real-valued input drives the first layer at each step, so this boundary needs a real-valued input path and has no spike-train decoder.</title>
         <rect x="42" y="972" width="1116" height="126" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <rect x="42" y="972" width="196" height="126" rx="8" fill="#F9D4EA"/>
@@ -123,12 +123,12 @@
         <text x="785" y="999" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Not applicable at</text><text x="785" y="1022" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">the input stage</text>
         <text x="960" y="999" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">held for the whole window</text><text x="960" y="1022" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">not quantized by this stage</text><text x="960" y="1045" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">no input spikes, MAC layer</text>
         <text x="62" y="1056" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700" fill="#D63A2F">not an internal spike code</text><text x="785" y="1078" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">Only the outputs of later layers need be spiking.</text>
-        <rect class="f17-band" x="42" y="972" width="1116" height="126" rx="8" fill="#D63A2F" opacity="0"/><rect x="42" y="972" width="1116" height="126" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f18-band" x="42" y="972" width="1116" height="126" rx="8" fill="#D63A2F" opacity="0"/><rect x="42" y="972" width="1116" height="126" fill="#000" opacity="0" pointer-events="all"/>
       </g>
 
       <text x="42" y="1142" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">A deployment report should name the code, its encoder and decoder, its timing interpretation, and the payload or state semantics carried across the chosen route.</text>
     </svg>
   </div>
   <div class="fig-hint">Hover a row to see the semantic field that distinguishes that representation.</div>
-  <figcaption><b>Figure 17:</b> Conceptual comparison of eight neural codes through one template, what variable each represents, how its encoder produces the representation, what object travels, what decoder recovers the result, and what horizon, precision, spike cost, and spatial cost it implies. Rate and burst codes count unit events over a window, so their precision is the uniform \(1/T\) grid and their cost is paid in steps. Time-to-first-spike coding spends timing resolution and is floored by the tick \(\Delta t\). Phase coding buys an exponential \(2^K\) grid with a network-wide cycle. Population coding pays in neurons rather than steps, and each unit inside it still carries a rate or timing code of its own. Sigma-delta coding transmits a graded signed payload and reconstructs by a running sum, so a binary count is not equivalent to it. Rank order coding carries an ordering rather than a magnitude and cannot recover amplitude. Direct constant current is set apart because it is an input boundary convention rather than an internal spike code, delivering a real-valued current to a first layer that must multiply. The rows do not carry a common value at a common precision, and no universal precision, latency, activity, or energy ordering follows from them.</figcaption>
+  <figcaption><b>Figure 18:</b> Conceptual comparison of eight neural codes through one template, what variable each represents, how its encoder produces the representation, what object travels, what decoder recovers the result, and what horizon, precision, spike cost, and spatial cost it implies. Rate and burst codes count unit events over a window, so their precision is the uniform \(1/T\) grid and their cost is paid in steps. Time-to-first-spike coding spends timing resolution and is floored by the tick \(\Delta t\). Phase coding buys an exponential \(2^K\) grid with a network-wide cycle. Population coding pays in neurons rather than steps, and each unit inside it still carries a rate or timing code of its own. Sigma-delta coding transmits a graded signed payload and reconstructs by a running sum, so a binary count is not equivalent to it. Rank order coding carries an ordering rather than a magnitude and cannot recover amplitude. Direct constant current is set apart because it is an input boundary convention rather than an internal spike code, delivering a real-valued current to a first layer that must multiply. The rows do not carry a common value at a common precision, and no universal precision, latency, activity, or energy ordering follows from them.</figcaption>
 </figure>

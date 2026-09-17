@@ -20,29 +20,30 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 | 1 | survey-architecture | 1 Introduction | planned | placeholder caption in 1.3 |
 | 2 | biological-neuron | 2 Computation and Representation | implemented | conceptual, numbers from Gerstner et al. 2014 Ch. 1 (rest, pulse, refractory periods); trace schematic |
 | 3 | lineage-tree | 2 | implemented | conceptual lineage tree; fourteen dated nodes cite their primary sources; dashed conversion edge; landmark strip ordinal |
-| 4 | execution-stacks | 2 | implemented | conceptual; conventional path (CMSIS-NN, Horowitz) beside the neuromorphic path, two dashed crossings; no measured quantity |
+| 4 | hardware-lineages | 2 | implemented | conceptual; two dated hardware lineages side by side (transistor to TPU; Mead to SpiNNaker), five-contrast rail, two dashed crossings, two bottom lines; fourteen landmark years from the registry, faggin1996-4004 carrying the 4004 date 1971 stated in its locator |
+| 8 | execution-stacks | 2 | implemented | conceptual; conventional path (CMSIS-NN, Horowitz) beside the neuromorphic path, two dashed crossings; no measured quantity; installed in 2.5 |
 | 5 | representation-comparison | 2 | implemented | derived (preserved as approved) |
 | 6 | network-snn-architecture | 2 | implemented | conceptual |
 | 7 | ann-snn-computation | 2 | implemented | conceptual |
-| 8 | rc-if-lif-origin | 3 Neuron and Synapse Dynamics | implemented | conceptual |
-| 9 | model-menu | 3 | implemented | derived (Izhikevich 2004 Fig. 2 numbers, plus count over 22 columns; platform tags carry registry statuses) |
-| 10 | neuron-through-time | 3 | implemented | derived (LIF, forward Euler, inputs in fragment) |
-| 11 | neuron-model-comparison | 3 | implemented | derived (staged update, mini-traces computed) |
-| 12 | original-neuron-model-comparison | 3 | implemented, original | derived traces; documented platform statuses |
-| 13 | original-reset-rule-comparison | 3 | implemented, original | derived (eight-step window; asymptotic claim cited) |
-| 14 | reset-rule-comparison | 3 | implemented | derived (five-step window) |
-| 15 | encoder-snn-decoder | 4 Temporal Semantics, Neural Codes, and Decoding | implemented | conceptual |
-| 16 | input-encoding-modes | 4 | implemented | conceptual |
-| 17 | neural-code-comparison | 4 | implemented | conceptual template |
-| 18 | original-neural-code-comparison | 4 | implemented, original | illustrative value per code; reported costs cited |
-| 19 | hardware-time-model-comparison | 4, end of 4.4 | implemented | conceptual lanes; no measured quantity drawn |
-| 20 | original-hardware-time-model-comparison | 4, end of 4.4 | implemented, original | schematic timing; documented Speck, Loihi and BrainScaleS-2 values cited |
-| 21 | classical-conversion-pipeline | 7 Classical ANN-to-SNN Conversion | planned | placeholder caption in 7.6 |
-| 22 | finite-time-error-propagation | 8 Finite-Time Error and Low-Latency Conversion | planned | placeholder caption in 8.1 |
-| 23 | deployable-snn-contract | 10 The Deployable SNN Contract | planned | placeholder caption in 10.2 |
-| 24 | software-boundary | 11 Software, Interchange, and Compilation | planned | placeholder caption in 11.3 |
-| 25 | deployment-stack-map | 13 Complete Deployment Routes | implemented, interactive | `site/shell-figure.html`, generated from `data/generated/route-index.json` |
-| 26 | measurement-boundary | 14 Deployment Measurement | planned | placeholder caption in 14.2 |
+| 9 | rc-if-lif-origin | 3 Neuron and Synapse Dynamics | implemented | conceptual |
+| 10 | model-menu | 3 | implemented | derived (Izhikevich 2004 Fig. 2 numbers, plus count over 22 columns; platform tags carry registry statuses) |
+| 11 | neuron-through-time | 3 | implemented | derived (LIF, forward Euler, inputs in fragment) |
+| 12 | neuron-model-comparison | 3 | implemented | derived (staged update, mini-traces computed) |
+| 13 | original-neuron-model-comparison | 3 | implemented, original | derived traces; documented platform statuses |
+| 14 | original-reset-rule-comparison | 3 | implemented, original | derived (eight-step window; asymptotic claim cited) |
+| 15 | reset-rule-comparison | 3 | implemented | derived (five-step window) |
+| 16 | encoder-snn-decoder | 4 Temporal Semantics, Neural Codes, and Decoding | implemented | conceptual |
+| 17 | input-encoding-modes | 4 | implemented | conceptual |
+| 18 | neural-code-comparison | 4 | implemented | conceptual template |
+| 19 | original-neural-code-comparison | 4 | implemented, original | illustrative value per code; reported costs cited |
+| 20 | hardware-time-model-comparison | 4, end of 4.4 | implemented | conceptual lanes; no measured quantity drawn |
+| 21 | original-hardware-time-model-comparison | 4, end of 4.4 | implemented, original | schematic timing; documented Speck, Loihi and BrainScaleS-2 values cited |
+| 22 | classical-conversion-pipeline | 7 Classical ANN-to-SNN Conversion | planned | placeholder caption in 7.6 |
+| 23 | finite-time-error-propagation | 8 Finite-Time Error and Low-Latency Conversion | planned | placeholder caption in 8.1 |
+| 24 | deployable-snn-contract | 10 The Deployable SNN Contract | planned | placeholder caption in 10.2 |
+| 25 | software-boundary | 11 Software, Interchange, and Compilation | planned | placeholder caption in 11.3 |
+| 26 | deployment-stack-map | 13 Complete Deployment Routes | implemented, interactive | `site/shell-figure.html`, generated from `data/generated/route-index.json` |
+| 27 | measurement-boundary | 14 Deployment Measurement | planned | placeholder caption in 14.2 |
 
 ## Pending
 
@@ -58,4 +59,4 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 
 ## Verification result
 
-`check-figures.py` passes for all 19 implemented static figures; `validate-manifests.py` passes; the built page carries captions 1 to 26 in order with zero dangling anchors. The foundations lineage pass of 2026-09-17 added `lineage-tree` (Section 2.1) and `model-menu` (Section 3.1) and moved the two hardware-time figures to the end of 4.4; a user-directed amendment the same day added `biological-neuron` (Figure 2) before the lineage tree (Figure 3) and `execution-stacks` (Figure 4) after it, so the two model figures are now Figures 3 and 9 and the hardware-time figures 19 and 20; both new figures were rendered at 720 px and 400 px and reviewed for overlap, clipping, registry fidelity and source fidelity before commit. Each implemented figure was rendered at 720 px and 400 px column width during the 2026-09-17 audit and inspected for overlap and clipping. This verifies markup, numbering and layout; the derived values were recomputed by the figure worker from the equations recorded in each fragment.
+`check-figures.py` passes for all 20 implemented static figures; `validate-manifests.py` passes; the built page carries captions 1 to 27 in order with zero dangling anchors. The foundations lineage pass of 2026-09-17 added `lineage-tree` (Section 2.1) and `model-menu` (Section 3.1) and moved the two hardware-time figures to the end of 4.4; a user-directed amendment the same day added `biological-neuron` (Figure 2) before the lineage tree (Figure 3) and `execution-stacks` after it, which a second amendment moved to 2.5 (Figure 8) and replaced in 2.1 by `hardware-lineages` (Figure 4), the two dated hardware lineages side by side, so the two model figures are now Figures 3 and 10 and the hardware-time figures 20 and 21; both new figures were rendered at 720 px and 400 px and reviewed for overlap, clipping, registry fidelity and source fidelity before commit. Each implemented figure was rendered at 720 px and 400 px column width during the 2026-09-17 audit and inspected for overlap and clipping. This verifies markup, numbering and layout; the derived values were recomputed by the figure worker from the equations recorded in each fragment.
