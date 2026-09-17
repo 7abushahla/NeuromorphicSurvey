@@ -1697,7 +1697,7 @@
       "origin_id": "cap-loihi-1-threshold_reset",
       "classification": "conceptual",
       "classification_basis": "platform contract capability, not a measurement record",
-      "label": "Native Loihi 1 reset clears the compartment. NxTF represents subtraction reset with a two-compartment recurrent inhibition construction.",
+      "label": "Native Loihi 1 reset clears the compartment. NxTF emulates subtraction reset with a two-compartment recurrent inhibition construction that doubles compartment allocation for every neuron configured this way.",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -1729,7 +1729,7 @@
       "verification_status": "provisional",
       "eligible_for_substantive_use": false,
       "route_state": "physical",
-      "capability_status": "transformed"
+      "capability_status": "emulated"
     },
     {
       "id": "capability:cap-loihi-1-time_termination",

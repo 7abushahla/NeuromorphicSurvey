@@ -334,7 +334,7 @@ with \(0<\gamma^l<1\) a second local decay constant and \(\kappa^l\) a coupling 
 
 <h3 id="reset-and-refractory">3.4 Reset Semantics</h3>
 
-<p>The reset stage \(\mathcal{R}^l\) is the last of the four functions in Section 3.1's update, and it is the one this survey treats as load-bearing rather than incidental, because the correctness argument behind rate-coded ANN-to-SNN conversion depends on which reset rule it implements. Two rules recur across every model in Section 3.2; the literature and this survey call them reset-to-zero and reset-by-subtraction, with hard reset and soft reset as common aliases used once here and not repeated.</p>
+<p>The reset stage \(\mathcal{R}^l\) is the last of the four functions in Section 3.1's update, and it is the one this survey treats as load-bearing rather than incidental, because the correctness argument behind rate-coded ANN-to-SNN conversion depends on which reset rule it implements. Two rules recur across every model in Section 3.2; the literature and this survey call them reset-to-zero and reset-by-subtraction, with hard reset and soft reset as the common aliases, which later sections use only where a cited source or toolchain names the rule that way.</p>
 
 <p>Reset-to-zero clamps the post-reset state to a fixed baseline, usually zero, whenever an event is emitted, and otherwise leaves the pre-reset candidate unchanged, as follows.
 \[
