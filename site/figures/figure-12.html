@@ -1,7 +1,7 @@
 <figure class="pfig l-body" id="figure-12">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1180 750" role="img" aria-labelledby="f12title f12desc">
     <title id="f12title">The transformations between application data, spike events, spiking computation, and an application result</title>
-    <desc id="f12desc">Conventional application data can be encoded into events before entering a spiking neural network. An event-native sensor bypasses that conventional encoder, but its events still require stated semantics. A readout or decoder converts output events into a result usable by the application.</desc>
+    <desc id="f12desc">Conceptual illustration of the path input data, optional encoder, SNN event computation, decoder or readout, result. Conventional application data must be encoded into a stated temporal input before the SNN consumes it. An event-native sensor bypasses that conventional encoder, but its events still require stated semantics at the first-layer boundary. A readout or decoder converts output events into a result usable by the application, since the network does not itself emit a class label.</desc>
     <defs>
       <marker id="f12arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
       <marker id="f12arrred" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#D63A2F"/></marker>
@@ -35,8 +35,8 @@
     <g class="f12-hot">
       <title>An encoder maps values into a stated temporal representation. It can generate stochastic rate events, deterministic count events, a temporal code, or a direct current-like drive. These choices are not interchangeable.</title>
       <rect x="272" y="151" width="218" height="193" rx="10" fill="#CDEBCD" stroke="#000" stroke-width="2.2"/>
-      <text x="381" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">Encoder</text>
-      <text x="381" y="216" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">values become temporal input</text>
+      <text x="381" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Encoder (optional)</text>
+      <text x="381" y="216" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">values become a temporal input</text>
       <line x1="302" y1="266" x2="460" y2="266" stroke="#000" stroke-width="1.8"/>
       <path d="M317,248 V280 M349,254 V280 M385,239 V280 M421,250 V280 M448,244 V280" stroke="#D63A2F" stroke-width="4.6"/>
       <text x="381" y="309" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">events, counts, timings,</text>
@@ -49,14 +49,15 @@
 
     <!-- shared event interface -->
     <g class="f12-hot">
-      <title>The event interface is a semantic boundary. It should state the event fields, time basis, payload convention, and how the first layer consumes the input. A spike is only one possible event form.</title>
+      <title>The network computes on events. Its input boundary is a semantic contract that states the event fields, time basis, payload convention, and how the first layer consumes the input. A binary spike is only one possible event form, and an image or a waveform is not something the network consumes as it stands.</title>
       <rect x="530" y="151" width="290" height="193" rx="10" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
-      <text x="675" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">SNN event interface</text>
-      <text x="675" y="216" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">what the first layer receives</text>
-      <rect x="558" y="239" width="234" height="61" rx="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/>
-      <text x="575" y="265" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">event = (address, time,</text>
-      <text x="575" y="288" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">type or payload?)</text>
-      <text x="675" y="327" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">semantic contract, not only a data type</text>
+      <text x="675" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">SNN, event computation</text>
+      <text x="675" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">what the first layer receives</text>
+      <rect x="558" y="232" width="234" height="80" rx="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/>
+      <text x="575" y="256" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">event = (address, time,</text>
+      <text x="575" y="279" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">polarity or type,</text>
+      <text x="575" y="302" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">optional payload <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">p</tspan>)</text>
+      <text x="675" y="333" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">a semantic contract, not a data type</text>
       <rect class="f12-band" x="530" y="151" width="290" height="193" rx="10" fill="#D63A2F" opacity="0"/>
       <rect x="530" y="151" width="290" height="193" fill="#000" opacity="0" pointer-events="all"/>
     </g>
@@ -68,7 +69,8 @@
       <title>A decoder or readout maps output activity to a task variable. It may count events, use first-spike time, compare a population, or apply another specified rule. An application should not treat the raw event stream as self-explanatory.</title>
       <rect x="860" y="151" width="280" height="193" rx="10" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <line x1="1000" y1="151" x2="1000" y2="344" stroke="#000" stroke-width="2.2"/>
-      <text x="930" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Decoder or readout</text>
+      <text x="930" y="188" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Decoder</text>
+      <text x="930" y="212" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">or readout</text>
       <line x1="885" y1="246" x2="973" y2="246" stroke="#000" stroke-width="1.8"/>
       <path d="M900,229 V260 M925,236 V260 M950,222 V260" stroke="#D63A2F" stroke-width="4.6"/>
       <text x="930" y="289" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">count, timing,</text>
@@ -89,7 +91,7 @@
     <g class="f12-hot">
       <title>An event camera, cochlea-like sensor, or other event-native device can emit changes as events. This does not make its output universally compatible with an SNN. Polarity, timestamps, payloads, bins, and first-layer consumption still need a stated interpretation.</title>
       <rect x="56" y="492" width="228" height="168" rx="10" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
-      <text x="170" y="530" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Event-native sensor</text>
+      <text x="170" y="530" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Event-native sensor</text>
       <text x="170" y="558" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">change-triggered output</text>
       <rect x="88" y="580" width="164" height="45" rx="5" fill="#fff" stroke="#6B8CBE" stroke-width="2"/>
       <circle cx="109" cy="602" r="7" fill="#D63A2F"/>
@@ -102,17 +104,17 @@
     </g>
 
     <path d="M284,576 H424 V536 H530" fill="none" stroke="#000" stroke-width="2.5" marker-end="url(#f12arr)"/>
-    <text x="404" y="511" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">bypasses conventional encoder</text>
+    <text x="395" y="511" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#000">bypasses the conventional encoder</text>
 
     <g class="f12-hot">
       <title>The same network may need a distinct adapter for event-native input. The adapter can bin events, preserve precise timestamps, map addresses, transform polarity, or supply a payload. The required choice is part of the deployable SNN contract.</title>
       <rect x="530" y="484" width="290" height="176" rx="10" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
-      <text x="675" y="522" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">Event semantics and adapter</text>
+      <text x="675" y="522" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Event adapter</text>
       <text x="675" y="550" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">the required interpretation remains</text>
       <text x="675" y="584" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">preserve, bin, map,</text>
       <text x="675" y="609" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">or transform event fields</text>
       <rect x="568" y="628" width="214" height="1" fill="#000"/>
-      <text x="675" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">input must match the first-layer contract</text>
+      <text x="675" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">must match the first-layer contract</text>
       <rect class="f12-band" x="530" y="484" width="290" height="176" rx="10" fill="#D63A2F" opacity="0"/>
       <rect x="530" y="484" width="290" height="176" fill="#000" opacity="0" pointer-events="all"/>
     </g>
@@ -122,7 +124,7 @@
       <title>The downstream SNN and readout retain their responsibilities in an event-native route. The specific time model, payload, and decoder must still agree with the sensor and software-hardware path.</title>
       <rect x="860" y="484" width="280" height="176" rx="10" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="1000" y="522" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:700" fill="#000">SNN and readout</text>
-      <text x="1000" y="551" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">the same application obligation</text>
+      <text x="1000" y="551" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the same application obligation</text>
       <line x1="888" y1="584" x2="1112" y2="584" stroke="#000" stroke-width="1.8"/>
       <path d="M908,568 V599 M946,568 V599 M995,568 V599 M1048,568 V599 M1085,568 V599" stroke="#D63A2F" stroke-width="4.6"/>
       <text x="1000" y="629" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">events become a usable result</text>
@@ -134,5 +136,5 @@
     <text x="590" y="710" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Deployment question, does every transformation have stated and supported semantics?</text>
   </svg></div>
   <div class="fig-hint">Hover a stage for the representation boundary or semantic obligation it carries.</div>
-  <figcaption><b>Figure 12:</b> Conventional application data reaches an SNN through an encoder that establishes a temporal input convention, while event-native sensors provide a separate entry route. Both routes require explicit event semantics at the first-layer boundary. A decoder or readout converts output events into an application result, so the temporal code and its inverse are part of the complete system definition.</figcaption>
+  <figcaption><b>Figure 12:</b> Conceptual illustration of the transformations that connect application data to an SNN and its output to an application result, input data, an optional encoder, SNN event computation, a decoder or readout, and the result. An SNN does not inherently consume an image, a waveform, or a sensor sample and does not inherently emit a class label. On the input side a stated convention, the encoder, turns sampled values into the temporal object the first layer receives, and on the output side a stated readout rule turns output events into a label, an estimate, or an action. Encoder and decoder are drawn as distinct boundary boxes because they are system boundaries in their own right. An event-native sensor bypasses the conventional value-to-event encoder but not the need for event semantics, since its address, time, and polarity fields must still match what the first layer accepts.</figcaption>
 </figure>

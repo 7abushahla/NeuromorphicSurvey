@@ -339,9 +339,9 @@ a full layered network, from arriving events through weighted, delayed synapses 
 state update to a decoder that turns output activity into an application result.</p>
 
 <figure class="pfig l-body" id="figure-2">
-  <div style="max-width: 1100px; margin: 0 auto;"><svg viewBox="0 0 1440 820" role="img" aria-label="A network-level spiking neural network. General event packets enter a layered network through weighted, delayed synapses. Each neuron retains state, compares it with a threshold, resets after firing, and emits output events that are decoded at an application boundary.">
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 820" role="img" aria-label="A network-level spiking neural network. General event packets, of which the binary spike is one case, enter a layered network through weighted and delayed synapses. Each neuron carries a state across algorithmic steps, compares it with a threshold, resets after firing, and emits output events that remain events until a decoder reads them at the SNN boundary. A lower strip shows one neuron in one algorithmic step. Conceptual illustration.">
 <title>From input events to decoded output in a spiking neural network</title>
-<desc>A general event can carry an address, timestamp, polarity or type, and an optional graded payload. Binary spikes are one special case. Events traverse weighted and delayed synapses into stateful neurons, which threshold and reset before emitting new events. A decoder turns output activity into an application result.</desc>
+<desc>A general event can carry an address, timestamp, polarity or type, and an optional payload. Binary spikes are one special case. Events traverse weighted and delayed synapses into stateful neurons, which threshold and reset before emitting new events. Output remains an event stream until a decoder turns it into an application result. A neuron below threshold sends nothing, which does not by itself show that hardware skipped work.</desc>
 <defs>
   <marker id="f2arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
   <marker id="f2arrred" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
@@ -352,18 +352,18 @@ state update to a decoder that turns output activity into an application result.
 
 <!-- input event panel -->
 <g class="f2-hot"><title>An event is a packet, not necessarily a one bit spike. Its fields depend on the sensor, software representation, and target hardware.</title>
-  <rect x="34" y="112" width="252" height="342" rx="12" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+  <rect x="34" y="112" width="252" height="342" rx="12" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
   <rect class="f2-hl" x="34" y="112" width="252" height="342" rx="12" fill="#D63A2F" opacity="0"/>
   <text x="160" y="150" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Input events</text>
   <text x="160" y="179" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">one packet at a time</text>
   <rect x="58" y="198" width="204" height="92" rx="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
-  <text x="76" y="226" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">event <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">e</tspan> = (address, time,</text>
+  <text x="76" y="226" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">event = (address, time,</text>
   <text x="76" y="251" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">polarity or type,</text>
-  <text x="76" y="276" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">graded payload?)</text>
+  <text x="76" y="276" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">optional payload <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">p</tspan>)</text>
   <text x="58" y="326" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Binary spike, a special case</text>
   <rect x="58" y="342" width="204" height="59" rx="8" fill="#fff" stroke="#D63A2F" stroke-width="2.2"/>
-  <text x="76" y="366" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">address + time</text>
-  <text x="76" y="390" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">unit binary event</text>
+  <text x="76" y="366" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">address + step, no payload</text>
+  <text x="76" y="390" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] &#8712; {0, 1}</text>
   <line x1="76" y1="423" x2="238" y2="423" stroke="#000" stroke-width="2.2"/>
   <path d="M92,410 V436 M124,410 V436 M156,410 V436 M188,410 V436 M220,410 V436" stroke="#D63A2F" stroke-width="4.6"/>
   <rect x="34" y="112" width="252" height="342" fill="#000" opacity="0" pointer-events="all"/>
@@ -382,13 +382,13 @@ state update to a decoder that turns output activity into an application result.
 <text x="971" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Output layer</text>
 
 <!-- synapses input to hidden -->
-<g class="f2-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping can include a weight, a delay, and platform-specific routing constraints.</title>
+<g class="f2-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping applies a weight and, where the model specifies one, a delay.</title>
   <line x1="439" y1="253" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="439" y1="253" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="439" y1="331" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="439" y1="331" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="439" y1="409" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-  <text x="540" y="260" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:12px">ij</tspan><tspan dy="-6">, </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">d</tspan><tspan dy="6" style="font-size:12px">ij</tspan></text>
+  <text x="540" y="260" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:12px">ij</tspan><tspan dy="-6">, </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">d</tspan><tspan dy="6" style="font-size:12px">ij</tspan></text>
   <rect class="f2-hl" x="450" y="225" width="178" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="450" y="225" width="178" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
@@ -399,15 +399,15 @@ state update to a decoder that turns output activity into an application result.
   <line x1="748" y1="248" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="748" y1="326" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
   <line x1="748" y1="326" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-  <text x="844" y="286" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">weighted, delayed</text>
-  <text x="844" y="309" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">event routing</text>
+  <text x="844" y="286" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">weighted, delayed</text>
+  <text x="844" y="309" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">event routing</text>
   <rect class="f2-hl" x="763" y="225" width="160" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="763" y="225" width="160" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- neuron glyphs -->
 <g class="f2-hot"><title>A neuron is not merely a relay. It retains a state variable between arrivals, then applies its threshold and reset semantics when deciding whether to emit an event.</title>
-  <g fill="#CCFFCC" stroke="#6AA168" stroke-width="2.6">
+  <g fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6">
     <circle cx="415" cy="253" r="25"/><circle cx="415" cy="331" r="25"/><circle cx="415" cy="409" r="25"/>
     <circle cx="696" cy="248" r="25"/><circle cx="696" cy="326" r="25"/>
     <circle cx="971" cy="253" r="25"/><circle cx="971" cy="331" r="25"/>
@@ -417,17 +417,17 @@ state update to a decoder that turns output activity into an application result.
     <text x="696" y="255" text-anchor="middle">u</text><text x="696" y="333" text-anchor="middle">u</text>
     <text x="971" y="260" text-anchor="middle">u</text><text x="971" y="338" text-anchor="middle">u</text>
   </g>
-  <path d="M679,218 C663,196 725,196 711,218" fill="none" stroke="#6B8CBE" stroke-width="2.2" marker-end="url(#f2arr)"/>
-  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f2arr)" stroke-dasharray="6 4"/>
-  <text x="723" y="389" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset</text>
+  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f2arr)" stroke-dasharray="7 5"/>
+  <text x="723" y="389" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset after an event</text>
   <rect class="f2-hl" x="382" y="218" width="622" height="218" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="382" y="218" width="622" height="218" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- output route and decoder -->
+<text x="696" y="480" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">A neuron below threshold sends nothing on its edges. Whether a target skips that work is a separate question.</text>
 <line x1="996" y1="292" x2="1088" y2="292" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
 <path d="M1018,277 V307 M1040,277 V307 M1062,277 V307" stroke="#D63A2F" stroke-width="4.6"/>
-<line x1="1076" y1="102" x2="1076" y2="464" stroke="#000" stroke-width="2.2" stroke-dasharray="9 7"/>
+<line x1="1076" y1="102" x2="1076" y2="464" stroke="#8a94a0" stroke-width="2.4"/>
 <text x="1076" y="91" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">SNN boundary</text>
 
 <g class="f2-hot"><title>A decoder makes the network output usable by the application. It can count events, use their first time, combine populations, or apply another platform-specific rule.</title>
@@ -444,17 +444,18 @@ state update to a decoder that turns output activity into an application result.
 
 <!-- operating cycle -->
 <line x1="34" y1="500" x2="1396" y2="500" stroke="#d5dbe2" stroke-width="2.2"/>
-<text x="720" y="540" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">One neuron, one algorithmic step</text>
+<circle cx="404" cy="532" r="16" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.4"/><text x="404" y="539" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:18px" fill="#000">u</text>
+<text x="432" y="540" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">One network node, one algorithmic step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan></text>
 
 <g class="f2-hot"><title>An SNN alternates event communication and local state updates. The precise order, reset, delay, and payload rules must be specified before a software result can be compared with hardware execution.</title>
-  <rect x="79" y="583" width="217" height="112" rx="10" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+  <rect x="79" y="583" width="217" height="112" rx="10" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
   <text x="187" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">1. Arriving events</text>
   <text x="187" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">address, time, payload</text>
   <text x="187" y="678" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">select synaptic effects</text>
-  <rect x="360" y="583" width="217" height="112" rx="10" fill="#CCFFCC" stroke="#000" stroke-width="2.2"/>
+  <rect x="360" y="583" width="217" height="112" rx="10" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.2"/>
   <text x="468" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">2. State update</text>
-  <text x="468" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">synaptic input changes</text>
-  <text x="468" y="678" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>]</text>
+  <text x="468" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">weighted input added to</text>
+  <text x="468" y="678" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>&#8722;1], the carried state</text>
   <rect x="641" y="583" width="217" height="112" rx="10" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
   <text x="750" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">3. Threshold</text>
   <text x="750" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] compared with <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">θ</tspan></text>
@@ -467,13 +468,13 @@ state update to a decoder that turns output activity into an application result.
   <line x1="577" y1="639" x2="630" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
   <line x1="858" y1="639" x2="911" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f2arr)"/>
   <path d="M1031,710 C1031,764 187,764 187,710" fill="none" stroke="#6B8CBE" stroke-width="2.8" marker-end="url(#f2arr)"/>
-  <text x="609" y="789" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">state persists. Output events become input events for downstream neurons.</text>
+  <text x="609" y="789" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">the state persists to step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>+1. Output events become input events for downstream neurons.</text>
   <rect class="f2-hl" x="60" y="560" width="1100" height="240" rx="10" fill="#D63A2F" opacity="0"/>
   <rect x="60" y="560" width="1100" height="240" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 </svg></div>
   <div class="fig-hint">Hover the event, synapse, neuron, decoder, or operating cycle for the semantic distinction it carries.</div>
-  <figcaption><b>Figure 2:</b> A network-level SNN routes event packets through weighted and potentially delayed synapses while each neuron maintains a state across algorithmic steps. Thresholding and reset transform local state into new events, and a decoder converts the resulting activity into an application-level output. Binary spikes are a common special case of this broader event interface.</figcaption>
+  <figcaption><b>Figure 2:</b> Conceptual illustration of an SNN as a network rather than an isolated spiking unit. Edges transmit events and apply a synaptic weight \(w_{ij}\) and, where a model specifies one, a delay \(d_{ij}\). Each neuron carries a state \(u[t]\) across algorithmic steps, tests it against a threshold, and resets after emitting, and the output remains an event stream until a stated decoder reads it into a label, an estimate, or an action. A general event can carry an address, a time, a polarity or type, and an optional payload \(p\), and the bare binary spike \(z[t]\in\{0,1\}\) is one important special case. A neuron that stays below threshold sends nothing on its edges, which makes communication of only the events that occur possible, but that absence does not by itself establish that a given execution substrate skipped the corresponding work.</figcaption>
 </figure>
 
 <h3 id="dense-sparse-conditional">2.2 Dense Computation, Sparse Activity, and Conditional Execution</h3>
@@ -502,7 +503,7 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
 <figure class="pfig l-body" id="figure-3">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1180 760" role="img" aria-labelledby="f3title f3desc">
     <title id="f3title">Parallel layer computations in an artificial neural network and a spiking neural network</title>
-    <desc id="f3desc">The upper path represents values through a weighted aggregation and static nonlinearity. The lower path represents discrete events, accumulates only arriving events into persistent state, applies a threshold and reset, then emits events. An annotation separates the representation from whether a particular implementation executes conditionally.</desc>
+    <desc id="f3desc">Conceptual illustration. The upper path represents values through a weighted aggregation and static nonlinearity. The lower path represents discrete events, accumulates arriving events into persistent state, applies a threshold and reset, then emits events. A bottom strip separates activity sparsity from conditional execution and states that either representation can be executed densely or conditionally.</desc>
     <defs>
       <marker id="f3arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
       <marker id="f3arrred" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#D63A2F"/></marker>
@@ -514,14 +515,15 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
     <g class="f3-hot">
       <title>An ANN layer carries a real-valued activation. Its value is complete for the current evaluation, even if that value happens to be zero.</title>
       <rect x="42" y="102" width="1096" height="212" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
-      <rect x="42" y="102" width="184" height="212" rx="10" fill="#CFE2F3"/>
-      <path d="M42,142 V112 A10,10 0 0 1 52,102 H216 A10,10 0 0 1 226,112 V142 Z" fill="#8fbfef"/>
+      <rect x="42" y="102" width="184" height="212" rx="10" fill="#D8EFD3"/>
+      <path d="M42,142 V112 A10,10 0 0 1 52,102 H216 A10,10 0 0 1 226,112 V142 Z" fill="#6AA168"/>
       <line x1="42" y1="142" x2="226" y2="142" stroke="#000" stroke-width="2.2"/>
-      <text x="134" y="128" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">ANN layer</text>
+      <text x="134" y="128" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#fff">ANN layer</text>
       <text x="134" y="173" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;letter-spacing:1px" fill="#555">REPRESENTATION</text>
-      <text x="134" y="206" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000">real-valued activation</text>
-      <text x="134" y="236" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:16px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> ∈ ℝ</tspan></text>
-      <rect class="f3-band" x="42" y="102" width="184" height="212" rx="10" fill="#8fbfef" opacity="0"/>
+      <text x="134" y="200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000">real-valued</text>
+      <text x="134" y="224" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000">activation</text>
+      <text x="134" y="258" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:16px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> ∈ ℝ</tspan></text>
+      <rect class="f3-band" x="42" y="102" width="184" height="212" rx="10" fill="#6AA168" opacity="0"/>
       <rect x="42" y="102" width="184" height="212" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
@@ -549,15 +551,15 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
 
     <g class="f3-hot">
       <title>The output is another real-valued activation, available to the next layer during this evaluation.</title>
-      <rect x="726" y="164" width="190" height="102" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+      <rect x="726" y="164" width="190" height="102" rx="8" fill="#D8EFD3" stroke="#000" stroke-width="2.2"/>
       <text x="821" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Output value</text>
       <text x="821" y="229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:16px">i</tspan></text>
-      <rect class="f3-band" x="726" y="164" width="190" height="102" rx="8" fill="#CFE2F3" opacity="0"/>
+      <rect class="f3-band" x="726" y="164" width="190" height="102" rx="8" fill="#6AA168" opacity="0"/>
       <rect x="726" y="164" width="190" height="102" fill="#000" opacity="0" pointer-events="all"/>
     </g>
     <line x1="682" y1="215" x2="726" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <text x="944" y="202" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">No persistent state</text>
-    <text x="944" y="228" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">between algorithmic steps</text>
+    <text x="944" y="228" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">between steps</text>
     <line x1="916" y1="215" x2="936" y2="215" stroke="#000" stroke-width="2.2"/>
 
     <g class="f3-hot">
@@ -582,9 +584,10 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
     <g class="f3-hot">
       <title>For fixed-weight binary or unit-payload events, an arriving event selects a known weight and can be accumulated without a runtime multiplication. This is not true for every event representation.</title>
       <rect x="260" y="438" width="202" height="118" rx="8" fill="#CDEBCD" stroke="#000" stroke-width="2.2"/>
-      <text x="361" y="468" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Weighted accumulation</text>
-      <text x="361" y="498" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">Σ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">ij</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan><tspan dy="6" style="font-size:13px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif">[</tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan><tspan style="font-family:Arial,Helvetica,sans-serif">]</tspan></text>
-      <text x="361" y="530" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">only arriving events need work</text>
+      <text x="361" y="462" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Weighted</text>
+      <text x="361" y="486" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">accumulation</text>
+      <text x="361" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">Σ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">ij</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan><tspan dy="6" style="font-size:13px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif">[</tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan><tspan style="font-family:Arial,Helvetica,sans-serif">]</tspan></text>
+      <text x="361" y="543" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">arriving events select weights</text>
       <rect class="f3-band" x="260" y="438" width="202" height="118" rx="8" fill="#CDEBCD" opacity="0"/>
       <rect x="260" y="438" width="202" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
@@ -592,21 +595,22 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
 
     <g class="f3-hot">
       <title>The membrane state persists. At the next timestep it starts from its previous value, rather than recomputing only from the current input events.</title>
-      <rect x="502" y="438" width="196" height="118" rx="8" fill="#FFFF66" stroke="#000" stroke-width="2.2"/>
+      <rect x="502" y="438" width="196" height="118" rx="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
       <text x="600" y="468" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Persistent state</text>
       <text x="600" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan><tspan dy="6" style="font-size:14px">i</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif">[</tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan><tspan style="font-family:Arial,Helvetica,sans-serif">−1] + current</tspan></text>
       <path d="M552,536 C538,590 661,590 648,536" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
       <text x="600" y="606" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">retained to the next step</text>
-      <rect class="f3-band" x="502" y="438" width="196" height="118" rx="8" fill="#FFFF66" opacity="0"/>
+      <rect class="f3-band" x="502" y="438" width="196" height="118" rx="8" fill="#6B8CBE" opacity="0"/>
       <rect x="502" y="438" width="196" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
     <line x1="462" y1="497" x2="502" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f3arrred)"/>
 
     <g class="f3-hot">
-      <title>Thresholding converts state into an output event. The threshold is non-differentiable, which is why direct SNN training needs a stated gradient treatment.</title>
+      <title>Thresholding converts state into an output event. The comparison is made on the pre-reset state at this step, and only then is the reset rule applied.</title>
       <rect x="738" y="438" width="156" height="118" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="816" y="476" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Threshold</text>
-      <text x="816" y="510" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] ≥ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">θ</tspan> ?</text>
+      <text x="816" y="510" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#361;</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] ≥ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">θ</tspan> ?</text>
+      <text x="816" y="538" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">on the pre-reset state</text>
       <rect class="f3-band" x="738" y="438" width="156" height="118" rx="8" fill="#FFDDA6" opacity="0"/>
       <rect x="738" y="438" width="156" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
@@ -629,25 +633,27 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
     <text x="850" y="598" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">emitted events</text>
 
     <g class="f3-hot">
-      <title>Activity sparsity is a property of the event stream. Conditional execution is a property of a particular accelerator, runtime, and mapping. One does not automatically establish the other.</title>
+      <title>Activity sparsity is a property of the event stream. Conditional execution is a property of a particular accelerator, runtime, and mapping. One does not establish the other, and a dense tensor can also be executed with zero skipping while an event representation can be simulated densely.</title>
       <rect x="42" y="666" width="1096" height="58" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
       <rect x="42" y="666" width="250" height="58" rx="8" fill="#F9D4EA"/>
       <text x="60" y="690" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Activity sparsity</text>
-      <text x="60" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">few events arrive at a step</text>
-      <line x1="312" y1="695" x2="414" y2="695" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+      <text x="60" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">few events occur at a step</text>
+      <text x="363" y="690" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#D63A2F">does not imply</text>
+      <text x="363" y="712" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">either can run dense</text>
       <rect x="434" y="666" width="294" height="58" rx="8" fill="#CDEBCD"/>
       <text x="452" y="690" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Conditional execution</text>
-      <text x="452" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">a platform may skip inactive work</text>
-      <line x1="748" y1="695" x2="850" y2="695" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+      <text x="452" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">a substrate may skip absent work</text>
+      <text x="799" y="690" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#D63A2F">is established by</text>
+      <text x="799" y="712" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">measurement only</text>
       <rect x="870" y="666" width="268" height="58" rx="8" fill="#d5dbe2"/>
       <text x="888" y="690" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Deployment check</text>
-      <text x="888" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">verify the actual route</text>
+      <text x="888" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">verify the route that ran</text>
       <rect class="f3-band" x="42" y="666" width="1096" height="58" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="42" y="666" width="1096" height="58" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a block for the represented quantity, state transition, or execution claim it separates.</div>
-  <figcaption><b>Figure 3:</b> An ANN layer propagates real-valued activations through weighted aggregation and a static nonlinearity. An SNN layer propagates events, accumulates their effect into persistent state, applies a threshold and reset, and emits later events. Event sparsity does not by itself prove conditional execution. For fixed-weight binary or unit-payload events, an arriving event can select and accumulate a known weight without a runtime multiplication. Graded payloads can instead require multiplication or another transformed operation.</figcaption>
+  <figcaption><b>Figure 3:</b> Conceptual illustration of one layer under the two representations of Section 2.1. In the ANN path, values enter a weighted aggregation, a static nonlinearity is evaluated once for the input presentation, and values leave the layer with no state carried to a later step. In the SNN path, events trigger weighted accumulation into a persistent state \(u_i[t]\), the state is tested against the threshold \(\theta\), the reset rule is applied after an emission, and events leave the layer. For a binary or unit-payload event with a fixed synaptic weight, an arriving event selects and accumulates a known weight without a runtime multiplication; a graded payload may instead require a multiplication or another transformed operation. The bottom strip keeps representation, activity sparsity, and conditional execution apart. A dense tensor can be executed with zero skipping and an event representation can be simulated densely, so few events at a step neither prove nor require that a substrate skipped work, and only a measurement on that substrate establishes it.</figcaption>
 </figure>
 
 <p>The absence of an event and the numerical value zero are different representational

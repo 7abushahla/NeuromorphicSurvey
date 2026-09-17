@@ -1,177 +1,128 @@
 <figure class="pfig l-body" id="figure-14">
   <div style="max-width: 720px; margin: 0 auto;">
     <svg viewBox="0 0 1200 1180" role="img" aria-labelledby="f14title f14desc">
-      <title id="f14title">Neural codes differ in the variable carried and the contract they require</title>
-      <desc id="f14desc">Eight rows compare rate or count, time to first spike, phase, burst, population, sigma-delta, rank order, and direct current input. The rows identify the represented variable, a compact example, the usual readout, and the operational constraint that must be preserved. Direct current is separated because it is an input boundary convention rather than an internal neural code.</desc>
+      <title id="f14title">Neural codes compared by represented variable, encoder, transmitted object, decoder, horizon, precision, and cost</title>
+      <desc id="f14desc">Conceptual illustration. Eight rows compare rate or count, time to first spike, phase, burst, population, sigma-delta, rank order, and direct current input. Each row states the represented variable and encoder, draws the transmitted object with its payload named, states the decoder, and lists the observation horizon, the precision mechanism, the spike cost, and the spatial cost. Direct current is separated because it is an input boundary convention rather than an internal neural code. No row claims an equal value or equal precision with another.</desc>
       <defs>
         <marker id="f14arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
       </defs>
 
       <text x="46" y="43" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">A neural code specifies what an event pattern means</text>
-      <text x="46" y="72" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">These are semantic distinctions. Precision, latency, activity, and energy depend on the chosen encoder, horizon, data, and execution path.</text>
+      <text x="46" y="72" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Represented variable, encoder, transmitted object, decoder, horizon, precision, and cost are stated per mechanism, not per benchmark.</text>
 
       <rect x="42" y="100" width="1116" height="58" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-      <text x="62" y="136" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">The comparison is not a common-cost ranking. A code changes the represented variable and therefore changes what a platform and decoder must preserve.</text>
+      <text x="62" y="136" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Not a common-cost ranking. No row carries a common value at a common precision, and each spends a different resource.</text>
 
       <rect x="42" y="186" width="1116" height="56" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
       <text x="62" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Code</text>
-      <text x="265" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">What carries the information</text>
-      <text x="552" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Compact pattern</text>
-      <text x="804" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Typical readout</text>
-      <text x="990" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Required contract</text>
-
-      <!-- Rate and count -->
+      <text x="250" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Represented variable, encoder</text>
+      <text x="556" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Transmitted object</text>
+      <text x="785" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Decoder</text>
+      <text x="960" y="220" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Horizon and cost</text>
+      
       <g class="f14-row">
-        <title>Rate or count coding represents magnitude by the number of unit events in a stated observation window. The window length, threshold, reset rule, and decoder define the represented value.</title>
-        <rect x="42" y="256" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="256" width="196" height="98" fill="#CFE2F3"/>
+        <title>Rate or count coding represents a magnitude by the number of unit events in a stated observation window. The window length, threshold, reset rule, and decoder define the represented value.</title>
+        <rect x="42" y="256" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="256" width="196" height="98"  fill="#CFE2F3"/>
         <text x="62" y="289" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Rate or count</text>
-        <text x="62" y="316" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">unit events over a window</text>
-        <text x="265" y="287" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Magnitude in a spike count</text>
-        <text x="265" y="316" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">or its count divided by time</text>
-        <line x1="556" y1="318" x2="746" y2="318" stroke="#000" stroke-width="1.8"/>
-        <g stroke="#D63A2F" stroke-width="4.6"><line x1="578" y1="318" x2="578" y2="278"/><line x1="620" y1="318" x2="620" y2="291"/><line x1="663" y1="318" x2="663" y2="276"/><line x1="724" y1="318" x2="724" y2="285"/></g>
-        <text x="651" y="342" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">count in a stated T-step window</text>
-        <text x="804" y="287" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Count or rate estimate</text>
-        <text x="804" y="316" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">over the same window</text>
-        <text x="990" y="287" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">T, reset, threshold</text>
-        <text x="990" y="316" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">and binary event rule</text>
-        <rect class="f14-band" x="42" y="256" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="256" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="314" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">unit events over a window</text>
+        <text x="250" y="283" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar activation</text><text x="250" y="306" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, Poisson process or</text><text x="250" y="329" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">constant-current integration</text>
+        <line x1="556" y1="318" x2="746" y2="318" stroke="#000" stroke-width="1.8"/><line x1="578" y1="318" x2="578" y2="278" stroke="#D63A2F" stroke-width="4.6"/><line x1="620" y1="318" x2="620" y2="291" stroke="#D63A2F" stroke-width="4.6"/><line x1="663" y1="318" x2="663" y2="276" stroke="#D63A2F" stroke-width="4.6"/><line x1="724" y1="318" x2="724" y2="285" stroke="#D63A2F" stroke-width="4.6"/>
+        <text x="651" y="342" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events z[t], counted over T steps</text>
+        <text x="785" y="283" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Count <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan>) or</text><text x="785" y="306" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">fraction <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#961;</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan>)</text>
+        <text x="960" y="283" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> steps, uniform 1/<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> grid</text><text x="960" y="306" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">up to <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> spikes per neuron</text><text x="960" y="329" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">one neuron per value</text>
+        <rect class="f14-band" x="42" y="256" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="256" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- TTFS -->
       <g class="f14-row">
-        <title>Time-to-first-spike coding represents magnitude by a first-event time. Timing resolution and deadline are part of the code because they determine which latency distinctions survive execution.</title>
-        <rect x="42" y="354" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="354" width="196" height="98" fill="#FFDDA6"/>
-        <text x="62" y="387" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Time to first spike</text>
-        <text x="62" y="414" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">TTFS or latency code</text>
-        <text x="265" y="385" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">First-event time</text>
-        <text x="265" y="414" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">earlier or later encodes value</text>
-        <line x1="556" y1="416" x2="746" y2="416" stroke="#000" stroke-width="1.8"/>
-        <line x1="598" y1="416" x2="598" y2="368" stroke="#D63A2F" stroke-width="4.6"/>
-        <line x1="662" y1="416" x2="662" y2="390" stroke="#D63A2F" stroke-width="2.2" stroke-dasharray="5 4"/>
-        <text x="651" y="440" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">first event is read</text>
-        <text x="804" y="385" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">First arrival time</text>
-        <text x="804" y="414" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">or earliest output class</text>
-        <text x="990" y="385" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Time grid, deadline</text>
-        <text x="990" y="414" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">must preserve order</text>
-        <rect class="f14-band" x="42" y="354" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="354" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <title>Time-to-first-spike coding represents a magnitude by a first-event time. Timing resolution and the deadline are part of the code because they determine which latency distinctions survive execution.</title>
+        <rect x="42" y="354" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="354" width="196" height="98"  fill="#FFDDA6"/>
+        <text x="62" y="387" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">TTFS</text>
+        <text x="62" y="412" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">time to first spike, latency</text>
+        <text x="250" y="381" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar, encoded as a latency</text><text x="250" y="404" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, value-to-latency map,</text><text x="250" y="427" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">one spike per neuron</text>
+        <line x1="556" y1="416" x2="746" y2="416" stroke="#000" stroke-width="1.8"/><line x1="598" y1="416" x2="598" y2="368" stroke="#D63A2F" stroke-width="4.6"/><line x1="662" y1="416" x2="662" y2="390" stroke="#b9c2cc" stroke-width="2.2"/>
+        <text x="651" y="440" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">one timing event per neuron, the first is read</text>
+        <text x="785" y="381" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Winner-take-all or</text><text x="785" y="404" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">temporal weighting</text>
+        <text x="960" y="381" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">one spike, quantized to the tick</text><text x="960" y="404" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">floor set by <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#916;t</tspan></text><text x="960" y="427" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">one spike per neuron</text>
+        <rect class="f14-band" x="42" y="354" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="354" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Phase -->
       <g class="f14-row">
-        <title>Phase coding assigns a known weight to each temporal slot. The decoder sums those slot weights, so a shared phase reference and the weight schedule are part of the representation.</title>
-        <rect x="42" y="452" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="452" width="196" height="98" fill="#CDEBCD"/>
+        <title>Phase coding assigns a known weight to each slot of a repeating cycle. The decoder sums the weights of the slots that carried a spike, so a shared phase reference and the weight schedule are part of the representation.</title>
+        <rect x="42" y="452" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="452" width="196" height="98"  fill="#CDEBCD"/>
         <text x="62" y="485" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Phase</text>
-        <text x="62" y="512" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">weighted time slots</text>
-        <text x="265" y="483" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Event position with known weight</text>
-        <text x="265" y="512" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">within a shared phase cycle</text>
-        <line x1="556" y1="514" x2="746" y2="514" stroke="#000" stroke-width="1.8"/>
-        <g stroke="#000" stroke-width="1.2"><line x1="584" y1="504" x2="584" y2="524"/><line x1="626" y1="504" x2="626" y2="524"/><line x1="668" y1="504" x2="668" y2="524"/><line x1="710" y1="504" x2="710" y2="524"/></g>
-        <line x1="584" y1="514" x2="584" y2="468" stroke="#D63A2F" stroke-width="4.6"/>
-        <text x="584" y="465" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">4</text><text x="626" y="490" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">2</text><text x="668" y="504" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">1</text>
-        <text x="804" y="483" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Weighted slot sum</text>
-        <text x="804" y="512" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">according to phase schedule</text>
-        <text x="990" y="483" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Shared time reference</text>
-        <text x="990" y="512" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">and slot-weight rule</text>
-        <rect class="f14-band" x="42" y="452" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="452" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="510" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">weighted time slots</text>
+        <text x="250" y="479" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar activation</text><text x="250" y="502" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, spike phase in a <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan>-step</text><text x="250" y="525" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">cycle with power-of-two weights</text>
+        <line x1="556" y1="514" x2="746" y2="514" stroke="#000" stroke-width="1.8"/><line x1="584" y1="504" x2="584" y2="524" stroke="#000" stroke-width="1.2"/><line x1="626" y1="504" x2="626" y2="524" stroke="#000" stroke-width="1.2"/><line x1="668" y1="504" x2="668" y2="524" stroke="#000" stroke-width="1.2"/><line x1="710" y1="504" x2="710" y2="524" stroke="#000" stroke-width="1.2"/><line x1="584" y1="514" x2="584" y2="468" stroke="#D63A2F" stroke-width="4.6"/><line x1="668" y1="514" x2="668" y2="468" stroke="#D63A2F" stroke-width="4.6"/><text x="584" y="465" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">4</text><text x="626" y="490" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">2</text><text x="668" y="465" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">1</text>
+        <text x="651" y="538" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events with meaningful phase, weights 4, 2, 1</text>
+        <text x="785" y="479" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Weighted sum of</text><text x="785" y="502" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">active phases</text>
+        <text x="960" y="479" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan>-step cycle, network-wide</text><text x="960" y="502" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">exponential 2<tspan dy="-6" style="font-size:10px;font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan><tspan dy="6"></tspan> grid</text><text x="960" y="525" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">up to <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">K</tspan> spikes per cycle</text>
+        <rect class="f14-band" x="42" y="452" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="452" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Burst -->
       <g class="f14-row">
-        <title>Burst coding preserves a count-like meaning but allows several unit events in a short interval or one algorithmic step. The neuron and runtime must define how such multiplicity is represented.</title>
-        <rect x="42" y="550" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="550" width="196" height="98" fill="#F9D4EA"/>
+        <title>Burst coding keeps a count-like meaning but allows several unit events in one algorithmic step when the residual potential is large. The neuron and runtime must define how that multiplicity is represented.</title>
+        <rect x="42" y="550" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="550" width="196" height="98"  fill="#F9D4EA"/>
         <text x="62" y="583" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Burst</text>
-        <text x="62" y="610" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">count packed in time</text>
-        <text x="265" y="581" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Multiplicity of unit events</text>
-        <text x="265" y="610" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">inside a short interval</text>
-        <line x1="556" y1="612" x2="746" y2="612" stroke="#000" stroke-width="1.8"/>
-        <g stroke="#D63A2F" stroke-width="4.6"><line x1="600" y1="612" x2="600" y2="568"/><line x1="610" y1="612" x2="610" y2="575"/><line x1="620" y1="612" x2="620" y2="568"/><line x1="630" y1="612" x2="630" y2="581"/><line x1="692" y1="612" x2="692" y2="573"/></g>
-        <text x="804" y="581" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Count over a stated interval</text>
-        <text x="804" y="610" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">with defined within-step behavior</text>
-        <text x="990" y="581" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Multi-event rule</text>
-        <text x="990" y="610" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">and time granularity</text>
-        <rect class="f14-band" x="42" y="550" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="550" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="608" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">count packed in time</text>
+        <text x="250" y="577" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar activation</text><text x="250" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, multi-spike emission</text><text x="250" y="623" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">on a large residual potential</text>
+        <line x1="556" y1="612" x2="746" y2="612" stroke="#000" stroke-width="1.8"/><line x1="600" y1="612" x2="600" y2="568" stroke="#D63A2F" stroke-width="4.6"/><line x1="610" y1="612" x2="610" y2="575" stroke="#D63A2F" stroke-width="4.6"/><line x1="620" y1="612" x2="620" y2="568" stroke="#D63A2F" stroke-width="4.6"/><line x1="630" y1="612" x2="630" y2="581" stroke="#D63A2F" stroke-width="4.6"/><line x1="692" y1="612" x2="692" y2="573" stroke="#D63A2F" stroke-width="4.6"/>
+        <text x="651" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">binary events, several allowed in one step</text>
+        <text x="785" y="577" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Count over the window,</text><text x="785" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">as in rate coding</text>
+        <text x="960" y="577" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">fewer steps for an equal count</text><text x="960" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">same grid as rate coding</text><text x="960" y="623" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">same total spikes, denser</text>
+        <rect class="f14-band" x="42" y="550" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="550" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Population -->
       <g class="f14-row">
-        <title>Population coding distributes information across several neurons. It is a spatial axis that can be combined with rate, temporal, or other event codes, so its resource use is not directly comparable with a single-neuron temporal code.</title>
-        <rect x="42" y="648" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="648" width="196" height="98" fill="#CFE2F3"/>
+        <title>Population coding distributes a value across several neurons. It is a spatial axis that combines with rate, temporal, or other codes, so its cost is paid in neurons rather than in steps.</title>
+        <rect x="42" y="648" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="648" width="196" height="98"  fill="#CFE2F3"/>
         <text x="62" y="681" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Population</text>
-        <text x="62" y="708" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">spatial multiplexing axis</text>
-        <text x="265" y="679" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Joint activity across neurons</text>
-        <text x="265" y="708" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">for example, tuning-curve responses</text>
-        <g fill="#CDEBCD" stroke="#000" stroke-width="1.8"><circle cx="583" cy="683" r="15"/><circle cx="626" cy="683" r="15"/><circle cx="669" cy="683" r="15"/><circle cx="712" cy="683" r="15"/></g>
-        <g stroke="#D63A2F" stroke-width="4.2"><line x1="583" y1="716" x2="583" y2="700"/><line x1="669" y1="716" x2="669" y2="694"/><line x1="712" y1="716" x2="712" y2="703"/></g>
-        <text x="647" y="738" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">activity pattern across units</text>
-        <text x="804" y="679" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Ensemble readout</text>
-        <text x="804" y="708" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">not one neuron's rate alone</text>
-        <text x="990" y="679" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Units and tuning rule</text>
-        <text x="990" y="708" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">plus each unit's code</text>
-        <rect class="f14-band" x="42" y="648" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="648" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="706" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">spatial multiplexing axis</text>
+        <text x="250" y="675" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar or vector, distributed</text><text x="250" y="698" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">across <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> neurons. Encoder,</text><text x="250" y="721" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">tuning curves across the group</text>
+        <g fill="#CDEBCD" stroke="#000" stroke-width="1.8"><circle cx="583" cy="683" r="15"/><circle cx="626" cy="683" r="15"/><circle cx="669" cy="683" r="15"/><circle cx="712" cy="683" r="15"/></g><line x1="583" y1="716" x2="583" y2="700" stroke="#D63A2F" stroke-width="4.6"/><line x1="669" y1="716" x2="669" y2="694" stroke="#D63A2F" stroke-width="4.6"/><line x1="712" y1="716" x2="712" y2="703" stroke="#D63A2F" stroke-width="4.6"/>
+        <text x="651" y="734" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">joint activity, itself rate or time coded</text>
+        <text x="785" y="675" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Ensemble readout over</text><text x="785" y="698" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">the whole population</text>
+        <text x="960" y="675" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">as few as one step</text><text x="960" y="698" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">precision set by <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> and inner code</text><text x="960" y="721" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">spatial cost, <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> neurons</text>
+        <rect class="f14-band" x="42" y="648" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="648" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Sigma delta -->
       <g class="f14-row">
-        <title>Sigma-delta coding transmits a signed change in activation, often as a graded event payload, and reconstructs the signal by a running sum. A binary event count is not equivalent to this payload-bearing channel.</title>
-        <rect x="42" y="746" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="746" width="196" height="98" fill="#FFDDA6"/>
+        <title>Sigma-delta coding transmits a signed change in activation as a graded event payload and reconstructs the signal by a running sum. A binary event count is not equivalent to this payload-bearing channel.</title>
+        <rect x="42" y="746" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="746" width="196" height="98"  fill="#FFDDA6"/>
         <text x="62" y="779" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Sigma-delta</text>
-        <text x="62" y="806" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">graded signed changes</text>
-        <text x="265" y="777" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Activation delta in an event payload</text>
-        <text x="265" y="806" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">rather than a unit-event count</text>
-        <line x1="556" y1="808" x2="746" y2="808" stroke="#000" stroke-width="1.8"/>
-        <rect x="583" y="770" width="43" height="38" rx="4" fill="#FFDDA6" stroke="#000" stroke-width="1.8"/><text x="604" y="796" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">+3</text>
-        <rect x="675" y="782" width="43" height="26" rx="4" fill="#CFE2F3" stroke="#000" stroke-width="1.8"/><text x="696" y="802" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000">−1</text>
-        <text x="804" y="777" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Running reconstruction</text>
-        <text x="804" y="806" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">of transmitted changes</text>
-        <text x="990" y="777" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Payload, sign, state</text>
-        <text x="990" y="806" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">and delta threshold</text>
-        <rect class="f14-band" x="42" y="746" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="746" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="804" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">graded signed changes</text>
+        <text x="250" y="773" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Slowly varying scalar activation</text><text x="250" y="796" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, delta transmitter with a</text><text x="250" y="819" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">threshold on the change since last send</text>
+        <line x1="556" y1="808" x2="746" y2="808" stroke="#000" stroke-width="1.8"/><rect x="583" y="770" width="43" height="38" rx="4" fill="#FFDDA6" stroke="#000" stroke-width="1.8"/><text x="604" y="796" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">+3</text><rect x="675" y="782" width="43" height="26" rx="4" fill="#CFE2F3" stroke="#000" stroke-width="1.8"/><text x="696" y="802" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000">&#8722;1</text>
+        <text x="651" y="832" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">graded signed payload <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">p</tspan> per spike</text>
+        <text x="785" y="773" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Running-sum</text><text x="785" y="796" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">reconstruction</text>
+        <text x="960" y="773" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">one spike per transmitted change</text><text x="960" y="796" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">payload width sets precision</text><text x="960" y="819" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">near zero spikes for static input</text>
+        <rect class="f14-band" x="42" y="746" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="746" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Rank order -->
       <g class="f14-row">
-        <title>Rank order coding represents the relative firing order across a population, not absolute magnitude. The decoder must preserve the ordering, and the code cannot reconstruct the original amplitude from order alone.</title>
-        <rect x="42" y="844" width="1116" height="98" fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
-        <rect x="42" y="844" width="196" height="98" fill="#CDEBCD"/>
+        <title>Rank order coding represents the relative firing order across a population, not an absolute magnitude. The decoder must preserve the ordering, and the original amplitude cannot be recovered from order alone.</title>
+        <rect x="42" y="844" width="1116" height="98"  fill="#fff" stroke="#c9d2db" stroke-width="1.6"/>
+        <rect x="42" y="844" width="196" height="98"  fill="#CDEBCD"/>
         <text x="62" y="877" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Rank order</text>
-        <text x="62" y="904" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">relative order, not amplitude</text>
-        <text x="265" y="875" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Permutation of first-event arrivals</text>
-        <text x="265" y="904" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">across a population</text>
-        <line x1="556" y1="906" x2="746" y2="906" stroke="#000" stroke-width="1.8"/>
-        <g stroke="#D63A2F" stroke-width="4.6"><line x1="585" y1="906" x2="585" y2="862"/><line x1="645" y1="906" x2="645" y2="880"/><line x1="704" y1="906" x2="704" y2="872"/></g>
-        <text x="585" y="853" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">1st</text><text x="645" y="873" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">3rd</text><text x="704" y="864" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">2nd</text>
-        <text x="804" y="875" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Order-sensitive readout</text>
-        <text x="804" y="904" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">such as rank-weighted integration</text>
-        <text x="990" y="875" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Unit identity and order</text>
-        <text x="990" y="904" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">amplitude is discarded</text>
-        <rect class="f14-band" x="42" y="844" width="1116" height="98" fill="#D63A2F" opacity="0"/><rect x="42" y="844" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
+        <text x="62" y="902" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">order, not amplitude</text>
+        <text x="250" y="871" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Relative order only, no magnitude</text><text x="250" y="894" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, analog-to-delay conversion</text><text x="250" y="917" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">across a population</text>
+        <line x1="556" y1="906" x2="746" y2="906" stroke="#000" stroke-width="1.8"/><line x1="585" y1="906" x2="585" y2="862" stroke="#D63A2F" stroke-width="4.6"/><line x1="645" y1="906" x2="645" y2="880" stroke="#D63A2F" stroke-width="4.6"/><line x1="704" y1="906" x2="704" y2="872" stroke="#D63A2F" stroke-width="4.6"/><text x="585" y="853" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">1st</text><text x="645" y="873" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">3rd</text><text x="704" y="864" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">2nd</text>
+        <text x="651" y="930" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">one order-bearing timing event per neuron</text>
+        <text x="785" y="871" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Shunting-inhibition</text><text x="785" y="894" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">decoder, order-sensitive</text>
+        <text x="960" y="871" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">single feedforward wave</text><text x="960" y="894" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">ordinal, log<tspan dy="5" style="font-size:10px">2</tspan><tspan dy="-5"></tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan>!) bits per group</text><text x="960" y="917" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">about <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">N</tspan> spikes</text>
+        <rect class="f14-band" x="42" y="844" width="1116" height="98"  fill="#D63A2F" opacity="0"/><rect x="42" y="844" width="1116" height="98" fill="#000" opacity="0" pointer-events="all"/>
       </g>
-
-      <!-- Direct input -->
       <g class="f14-row">
-        <title>Direct constant current is an input-boundary convention, not an internal neural code. A real-valued input drives the first layer at each step, so this boundary requires a real-valued input path and has no spike-train decoder.</title>
+        <title>Direct constant current is an input-boundary convention, not an internal neural code. A real-valued input drives the first layer at each step, so this boundary needs a real-valued input path and has no spike-train decoder.</title>
         <rect x="42" y="972" width="1116" height="126" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <rect x="42" y="972" width="196" height="126" rx="8" fill="#F9D4EA"/>
-        <text x="62" y="1007" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Direct current</text>
-        <text x="62" y="1034" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">input boundary convention</text>
-        <text x="62" y="1060" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">not an internal spike code</text>
-        <text x="265" y="1005" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Real-valued input applied to first layer</text>
-        <text x="265" y="1034" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">at each algorithmic step</text>
-        <line x1="556" y1="1040" x2="746" y2="1040" stroke="#000" stroke-width="1.8"/>
-        <path d="M564,1024 C585,1000 602,1065 625,1040 S667,1005 690,1040 S724,1062 742,1028" fill="none" stroke="#8fbfef" stroke-width="4.6"/>
-        <text x="651" y="1070" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">continuous or fixed-point value</text>
-        <text x="804" y="1005" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">No input spike decoder</text>
-        <text x="804" y="1034" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">the first layer receives a value</text>
-        <text x="990" y="1005" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Input format, first layer</text>
-        <text x="990" y="1034" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">value accumulation path</text>
-        <text x="265" y="1072" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">Only subsequent layer outputs need be spiking.</text>
+        <text x="62" y="1005" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Direct current</text>
+        <text x="62" y="1030" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">input boundary convention</text>
+        <text x="250" y="999" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Scalar input feature</text><text x="250" y="1022" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Encoder, none. A constant analog</text><text x="250" y="1045" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">current at the input stage only</text>
+        <line x1="556" y1="1040" x2="746" y2="1040" stroke="#000" stroke-width="1.8"/><path d="M564,1024 C585,1000 602,1065 625,1040 S667,1005 690,1040 S724,1062 742,1028" fill="none" stroke="#6AA168" stroke-width="4.6"/>
+        <text x="651" y="1086" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">real-valued current, continuous or fixed-point</text>
+        <text x="785" y="999" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">Not applicable at</text><text x="785" y="1022" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">the input stage</text>
+        <text x="960" y="999" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#000">held for the whole window</text><text x="960" y="1022" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">not quantized by this stage</text><text x="960" y="1045" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#333">no input spikes, MAC layer</text>
+        <text x="62" y="1056" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700" fill="#D63A2F">not an internal spike code</text><text x="785" y="1078" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">Only the outputs of later layers need be spiking.</text>
         <rect class="f14-band" x="42" y="972" width="1116" height="126" rx="8" fill="#D63A2F" opacity="0"/><rect x="42" y="972" width="1116" height="126" fill="#000" opacity="0" pointer-events="all"/>
       </g>
 
@@ -179,5 +130,5 @@
     </svg>
   </div>
   <div class="fig-hint">Hover a row to see the semantic field that distinguishes that representation.</div>
-  <figcaption><b>Figure 14:</b> Neural codes differ in the variable that their event patterns represent and in the encoder, decoder, timing, payload, and state semantics that make that representation meaningful. Rate and burst codes use counts, TTFS and phase codes use timing, population coding uses joint spatial activity, sigma-delta coding uses graded changes, and rank-order coding uses relative arrival order. Direct constant-current input is shown separately because it is an input-boundary convention, not an internal spike code. These differences do not imply a universal precision, latency, activity, or energy ordering.</figcaption>
+  <figcaption><b>Figure 14:</b> Conceptual comparison of eight neural codes through one template, what variable each represents, how its encoder produces the representation, what object travels, what decoder recovers the result, and what horizon, precision, spike cost, and spatial cost it implies. Rate and burst codes count unit events over a window, so their precision is the uniform \(1/T\) grid and their cost is paid in steps. Time-to-first-spike coding spends timing resolution and is floored by the tick \(\Delta t\). Phase coding buys an exponential \(2^K\) grid with a network-wide cycle. Population coding pays in neurons rather than steps, and each unit inside it still carries a rate or timing code of its own. Sigma-delta coding transmits a graded signed payload and reconstructs by a running sum, so a binary count is not equivalent to it. Rank order coding carries an ordering rather than a magnitude and cannot recover amplitude. Direct constant current is set apart because it is an input boundary convention rather than an internal spike code, delivering a real-valued current to a first layer that must multiply. The rows do not carry a common value at a common precision, and no universal precision, latency, activity, or energy ordering follows from them.</figcaption>
 </figure>
