@@ -13,12 +13,19 @@ BUCKETS = {b["name"] for b in KINDS["buckets"]}
 
 
 class VocabularyTests(unittest.TestCase):
-    def test_eight_words_three_buckets(self):
-        self.assertEqual(WORDS, {"CPU", "GPU", "MCU", "RISC-V", "NPU", "simulator", "neuromorphic", "FPGA"})
+    def test_nine_words_three_buckets(self):
+        self.assertEqual(WORDS, {"CPU", "GPU", "MCU", "RISC-V", "NPU", "event NPU", "simulator", "neuromorphic", "FPGA"})
         self.assertEqual(BUCKETS, {"conventional", "simulated", "neuromorphic"})
         for kind in KINDS["kinds"]:
             self.assertIn(kind["bucket"], BUCKETS)
-            self.assertEqual(kind["css"], "tk-" + kind["word"].lower())
+            self.assertEqual(kind["css"], "tk-" + kind["word"].lower().replace(" ", "-"))
+
+    def test_event_npu_is_conventional_and_akida_carries_it(self):
+        event_npu = next(k for k in KINDS["kinds"] if k["word"] == "event NPU")
+        self.assertEqual(event_npu["bucket"], "conventional")
+        nodes = json.loads((ROOT / "data/evidence-stack.json").read_text())["nodes"]
+        akida = next(n for n in nodes if n["id"] == "akida")
+        self.assertEqual(akida["attributes"]["target_kind"], "event NPU")
 
     def test_every_evidence_paper_has_a_target_kind(self):
         papers = json.loads((ROOT / "data/evidence-papers.json").read_text())["papers"]

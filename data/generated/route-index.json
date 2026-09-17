@@ -106,7 +106,7 @@
         "toolchain": "MetaTF: QuantizeML (quantization-aware training/PTQ) -> CNN2SNN (convert() -> .fbz) -> Akida runtime (hardware or software simulator).",
         "availability": "Commercially purchasable: AKD1000 PCIe dev board $289, Raspberry Pi kits $995-$1,495; AKD1500 commercial shipments began June 2026 (~2,000 units shipped by Aug 2026, yield issues under investigation).",
         "price": "AKD1000 PCIe dev board $289; AKD1500 PCIe commercial-temp 5-pack $199.99 (~$40/chip).",
-        "target_kind": "neuromorphic"
+        "target_kind": "event NPU"
       },
       "source_ids": [
         "brainchip-akida-techbrief",

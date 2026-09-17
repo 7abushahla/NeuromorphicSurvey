@@ -13,7 +13,8 @@
     {"word": "GPU", "css": "tk-gpu", "bucket": "conventional", "meaning": "A graphics processor, including embedded modules such as Jetson."},
     {"word": "MCU", "css": "tk-mcu", "bucket": "conventional", "meaning": "A microcontroller, for example Cortex-M."},
     {"word": "RISC-V", "css": "tk-risc-v", "bucket": "conventional", "meaning": "A RISC-V core or a RISC-V-based accelerator."},
-    {"word": "NPU", "css": "tk-npu", "bucket": "conventional", "meaning": "A non-spiking neural accelerator, including NorthPole."},
+    {"word": "NPU", "css": "tk-npu", "bucket": "conventional", "meaning": "A dedicated neural processing unit for dense integer inference, the NPU of the quantization survey (Ethos-U-class accelerators in NPU-integrated MCUs, Coral Edge TPU, phone NPUs) and NorthPole."},
+    {"word": "event NPU", "css": "tk-event-npu", "bucket": "conventional", "meaning": "An event-domain neural accelerator that runs a converted, quantized network as sparse events without exposing a spiking neuron model over T; Akida. Not the dense NPU, and not neuromorphic silicon with a spiking contract."},
     {"word": "simulator", "css": "tk-simulator", "bucket": "simulated", "meaning": "A chip's software simulator, an RTL or cycle-level model, or an FPGA emulating a named chip."},
     {"word": "neuromorphic", "css": "tk-neuromorphic", "bucket": "neuromorphic", "meaning": "Fabricated neuromorphic silicon; the sentence or the row names the chip."},
     {"word": "FPGA", "css": "tk-fpga", "bucket": "neuromorphic", "meaning": "A custom spiking accelerator on an FPGA measured as its own target."}
