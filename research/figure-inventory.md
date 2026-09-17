@@ -47,6 +47,8 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 
 ## Renumbering procedure
 
+`tools/renumber-figures.py` performs steps 1 and 2 (dry run by default, `--apply` to write).
+
 1. Read article order from the site manifest's fragment order and, inside each fragment, the order of `<figure id="figure-N">` elements (the interactive map by its `<figcaption id>`).
 2. Map old to new display numbers from that order and rewrite, from the one mapping, the manifest, each fragment's `id`, caption label and `fN` id prefix, each CSS scope, and every `figure-N` anchor and `Figure N` text token in section and shell fragments (never the template CSS in `shell-head.html`).
 3. Run `tools/install-figures.py`, `tools/build-site.py`, `tools/check-figures.py`, `tools/validate-manifests.py`, and confirm the built page's captions run 1 to N with no dangling anchors.
