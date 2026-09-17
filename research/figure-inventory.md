@@ -6,7 +6,7 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 
 ## Policy
 
-- **Additive set.** The original survey figures are kept beside their revised successors. Their drawings and comparative layouts are preserved; their captions are scoped to what the drawing shows, their platform labels carry a documented status, and any number beyond the drawn window cites the derivation it comes from.
+- **One drawing per comparison.** Where the earlier survey and this one drew the same comparison, the drawing tied to the staged update of Section 3.2 stays; the other is kept in `research/retired-figures/` and is not on the page.
 - **Provenance in the caption.** Every implemented figure states whether it is a conceptual illustration, derived from stated equations or a stated input sequence (with the equations and inputs recorded in a comment inside the fragment), or carries documented or measured platform values, each cited beside the platform.
 - **Notation.** Survey symbols from `research/rewrite/notation.md`. A figure that keeps its original symbols maps them to the survey's in its caption.
 - **Visual system.** Persistent state blue, binary spikes as red vertical marks, thresholds black dashed, real-valued values and currents green, encoders and decoders as distinct boundary boxes, documented or measured annotations visibly different from conceptual ones.

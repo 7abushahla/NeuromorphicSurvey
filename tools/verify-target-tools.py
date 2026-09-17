@@ -242,6 +242,45 @@ class PopulationSummaryTests(unittest.TestCase):
         for row in rows:
             self.assertEqual(row["total"], row["algorithm"] + row["deployment"] + row["both"], row["family"])
 
+    def test_population_fragment_guard_finds_the_anchor_and_catches_a_stale_count(self):
+        import importlib.util
+        import tempfile
+        spec = importlib.util.spec_from_file_location("check_counts_population", ROOT / "tools/check-counts.py")
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as d:
+            tmp = Path(d)
+            (tmp / "site").mkdir(); (tmp / "data").mkdir()
+            (tmp / "site/sec-a.html").write_text('<h2 id="a">1 A</h2><p>Nothing here.</p>')
+            (tmp / "site/sec-b.html").write_text(
+                '<h2 id="b">2 B</h2>\n'
+                '<h3 id="population-counts">2.1 Population Counts</h3>\n'
+                '<p>Each of its 4 records carry a population field.</p>\n'
+                '<div class="ptable-wrap" id="table-population-counts"><table>'
+                '<caption><b>Table 4:</b> counts.</caption>'
+                '<tbody><tr><td><strong>Total</strong></td>'
+                '<td class="ctr"><strong>1</strong></td>'
+                '<td class="ctr"><strong>2</strong></td>'
+                '<td class="ctr"><strong>1</strong></td>'
+                '<td class="ctr"><strong>4</strong></td></tr></tbody></table></div>'
+            )
+            manifest = {"schema_version": 1, "fragments": [
+                {"id": "section-01-a", "kind": "section", "display_number": 1, "title": "A", "fragment": "site/sec-a.html"},
+                {"id": "section-02-b", "kind": "section", "display_number": 2, "title": "B", "fragment": "site/sec-b.html"},
+            ]}
+            manifest_path = tmp / "data/site-manifest.json"
+            manifest_path.write_text(json.dumps(manifest))
+            module.ROOT = tmp
+            fragment_path = module.population_fragment(manifest_path)
+            self.assertEqual(fragment_path, tmp / "site/sec-b.html")
+            view = {"record_total": 4, "population_counts": {"exclusive": {"algorithm": 1, "deployment": 2, "both": 1}}}
+            summary, errors = module.check_population_prose(fragment_path.read_text(), view, fragment_path.name)
+            self.assertEqual(errors, [], errors)
+            self.assertIn("sec-b.html", summary)
+            bad_text = fragment_path.read_text().replace("Each of its 4 records", "Each of its 5 records")
+            _, bad_errors = module.check_population_prose(bad_text, view, fragment_path.name)
+            self.assertTrue(bad_errors)
+            self.assertIn("sec-b.html", bad_errors[0])
+
 
 if __name__ == "__main__":
     unittest.main()

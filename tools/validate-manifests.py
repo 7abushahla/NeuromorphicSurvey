@@ -59,7 +59,7 @@ def validate_site(site, errors):
     fragments = site.get("fragments")
     if not isinstance(fragments, list):
         errors.append("site manifest fragments must be a list")
-        return set()
+        return set(), None
 
     ids = []
     sections = []
@@ -115,30 +115,28 @@ def validate_site(site, errors):
     if not fragments or fragments[-1].get("id") != "shell-tail":
         errors.append("site manifest must end with shell-tail")
 
+    routes_section_id = None
     maps = [record for record in fragments if record.get("kind") == "interactive"]
     if len(maps) != 1 or maps[0].get("id") != "interactive-deployment-map":
         errors.append("site manifest must contain one interactive-deployment-map fragment")
     else:
-        try:
-            map_index = fragments.index(maps[0])
-            section_index = next(
-                index for index, record in enumerate(fragments)
-                if record.get("id") == "section-14-complete-deployment-routes"
-            )
-            if map_index != section_index + 1:
-                errors.append("interactive-deployment-map must follow Section 14 directly")
-        except StopIteration:
-            errors.append("site manifest is missing section-14-complete-deployment-routes")
-    return {record.get("id") for record in sections if isinstance(record.get("id"), str)}
+        map_index = fragments.index(maps[0])
+        previous = fragments[map_index - 1] if map_index > 0 else {}
+        if previous.get("kind") != "section" or not str(previous.get("id", "")).endswith("-complete-deployment-routes"):
+            errors.append("interactive-deployment-map must follow the complete-deployment-routes section directly")
+        routes_section_id = previous.get("id")
+    section_ids = {record.get("id") for record in sections if isinstance(record.get("id"), str)}
+    return section_ids, routes_section_id
 
 
-def validate_figures(figures_data, section_ids, strict, errors):
+def validate_figures(figures_data, section_ids, routes_section_id, strict, errors):
     figures = figures_data.get("figures")
     if not isinstance(figures, list):
         errors.append("figure manifest figures must be a list")
         return
-    if len(figures) != 27:
-        errors.append(f"figure manifest must contain 27 records, found {len(figures)}")
+    expected = list(range(1, len(figures) + 1))
+    if sorted(n for n in (r.get("display_number") for r in figures if isinstance(r, dict)) if type(n) is int) != expected:
+        errors.append(f"figure display numbers must be exactly 1..{len(figures)}")
 
     ids = []
     numbers = []
@@ -193,9 +191,9 @@ def validate_figures(figures_data, section_ids, strict, errors):
         errors.append(f"figure manifest must contain exactly one interactive figure, found {len(interactive)}")
     elif (
         interactive[0].get("id") != "deployment-stack-map"
-        or interactive[0].get("destination_section") != "section-14-complete-deployment-routes"
+        or interactive[0].get("destination_section") != routes_section_id
     ):
-        errors.append("the interactive figure must be deployment-stack-map in Section 14")
+        errors.append("the interactive figure must be deployment-stack-map in the complete-deployment-routes section")
 
 
 def main():
@@ -209,8 +207,8 @@ def main():
     errors = []
     site = load_manifest(SITE_MANIFEST, "site", errors)
     figures = load_manifest(FIGURE_MANIFEST, "figure", errors)
-    section_ids = validate_site(site, errors)
-    validate_figures(figures, section_ids, args.strict, errors)
+    section_ids, routes_section_id = validate_site(site, errors)
+    validate_figures(figures, section_ids, routes_section_id, args.strict, errors)
 
     if errors:
         print(f"manifest validation failed with {len(errors)} problem(s):", file=sys.stderr)

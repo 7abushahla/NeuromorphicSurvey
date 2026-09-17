@@ -10,9 +10,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 page = (ROOT / 'index.html').read_text()
-headings = {}
-for m in re.finditer(r'<h([2-4])\b[^>]*\bid="([^"]+)"[^>]*>\s*(\d+(?:\.\d+)*)', page):
+headings, titles = {}, {}
+# The built page separates a heading's number from its title with the entity &ensp;
+# (see build-site.py's HEADING substitution), not a literal space, so the separator
+# here must accept either.
+for m in re.finditer(r'<h([2-4])\b[^>]*\bid="([^"]+)"[^>]*>\s*(\d+(?:\.\d+)*)(?:\s|&ensp;)+(.*?)</h\1>', page, re.S):
     headings[m.group(2)] = m.group(3)
+    titles[m.group(2)] = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', m.group(4))).strip()
 numbers = set(headings.values())
 tables = set(re.findall(r'<b>\s*Table\s+(\d+)\s*:\s*</b>', page))
 figures = set(re.findall(r'id="figure-(\d+)"', page))
@@ -28,6 +32,14 @@ for m in re.finditer(r'<a href="#([^"]+)">\s*Section (\d+(?:\.\d+)*)', page):
         # cross-subsection or cross-section mismatch (e.g. token says Section 3
         # but the anchor's heading is 4.2) still fails.
         errors.append(f'anchor #{anchor} is heading {headings[anchor]} but the token says Section {num}')
+# An anchored token that carries words, "Section N, Words,</a>", must carry the heading's own title.
+# Prose wraps across a line break inside the token text (word-wrapped source), so the
+# comparison collapses whitespace the same way the title text above already does.
+for m in re.finditer(r'<a href="#([^"]+)">\s*Section (\d+(?:\.\d+)*),\s*([^<]*?)\s*</a>', page):
+    anchor, num = m.group(1), m.group(2)
+    words = re.sub(r'\s+', ' ', m.group(3)).rstrip(',').strip()
+    if anchor in titles and words != titles[anchor]:
+        errors.append(f'anchor #{anchor} is titled "{titles[anchor]}" but the token says "Section {num}, {words}"')
 for m in re.finditer(r'\bSection (\d+(?:\.\d+)*)', page):
     if m.group(1) not in numbers:
         errors.append(f'"Section {m.group(1)}" names no heading')

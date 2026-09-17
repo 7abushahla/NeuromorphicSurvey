@@ -72,53 +72,30 @@
 #figure-12 .f12-band { transition: opacity 0.15s; }
 #figure-12 .f12-help:hover .f12-band { opacity: 0.09; }
 
-/* ---- original-neuron-model-comparison (Figure 13) ---- */
-#figure-13 { text-align: center; }
-#figure-13 svg { width: 100%; height: auto; }
-#figure-13 .f13-pan { cursor: help; }
-#figure-13 .f13-pan:hover .f13-hl { opacity: 0.07; }
-#figure-13 .f13-hl { transition: opacity 0.15s; }
-#figure-13 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+/* ---- reset-rule-comparison (Figure 13) ---- */
+#figure-13 .f13-help { cursor: help; }
+#figure-13 .f13-band { transition: opacity 0.15s; }
+#figure-13 .f13-help:hover .f13-band { opacity: 0.08; }
 
-/* ---- original-reset-rule-comparison (Figure 14) ---- */
+/* ---- encoder-snn-decoder (Figure 14) ---- */
+#figure-14 { text-align: center; }
+#figure-14 svg { width: 100%; height: auto; }
 #figure-14 .f14-hot { cursor: help; }
 #figure-14 .f14-band { transition: opacity 0.15s; }
-#figure-14 .f14-hot:hover .f14-band { opacity: 0.14; }
+#figure-14 .f14-hot:hover .f14-band { opacity: 0.10; }
+#figure-14 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
 
-/* ---- reset-rule-comparison (Figure 15) ---- */
+/* ---- input-encoding-modes (Figure 15) ---- */
 #figure-15 .f15-help { cursor: help; }
 #figure-15 .f15-band { transition: opacity 0.15s; }
-#figure-15 .f15-help:hover .f15-band { opacity: 0.08; }
+#figure-15 .f15-help:hover .f15-band { opacity: 0.10; }
 
-/* ---- encoder-snn-decoder (Figure 16) ---- */
-#figure-16 { text-align: center; }
-#figure-16 svg { width: 100%; height: auto; }
-#figure-16 .f16-hot { cursor: help; }
+/* ---- neural-code-comparison (Figure 16) ---- */
+#figure-16 .f16-row { cursor: help; }
 #figure-16 .f16-band { transition: opacity 0.15s; }
-#figure-16 .f16-hot:hover .f16-band { opacity: 0.10; }
-#figure-16 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+#figure-16 .f16-row:hover .f16-band { opacity: 0.08; }
 
-/* ---- input-encoding-modes (Figure 17) ---- */
-#figure-17 .f17-help { cursor: help; }
+/* ---- hardware-time-model-comparison (Figure 17) ---- */
+#figure-17 .f17-hot { cursor: help; }
 #figure-17 .f17-band { transition: opacity 0.15s; }
-#figure-17 .f17-help:hover .f17-band { opacity: 0.10; }
-
-/* ---- neural-code-comparison (Figure 18) ---- */
-#figure-18 .f18-row { cursor: help; }
-#figure-18 .f18-band { transition: opacity 0.15s; }
-#figure-18 .f18-row:hover .f18-band { opacity: 0.08; }
-
-/* ---- original-neural-code-comparison (Figure 19) ---- */
-#figure-19 .f19-row { cursor: help; }
-#figure-19 .f19-band { transition: opacity 0.15s; }
-#figure-19 .f19-row:hover .f19-band { opacity: 0.08; }
-
-/* ---- hardware-time-model-comparison (Figure 20) ---- */
-#figure-20 .f20-hot { cursor: help; }
-#figure-20 .f20-band { transition: opacity 0.15s; }
-#figure-20 .f20-hot:hover .f20-band { opacity: 0.10; }
-
-/* ---- original-hardware-time-model-comparison (Figure 21) ---- */
-#figure-21 .f21-hot { cursor: help; }
-#figure-21 .f21-band { transition: opacity 0.15s; }
-#figure-21 .f21-hot:hover .f21-band { opacity: 0.10; }
+#figure-17 .f17-hot:hover .f17-band { opacity: 0.10; }

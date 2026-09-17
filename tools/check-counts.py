@@ -187,44 +187,58 @@ def validate_measurement_view(
     return errors
 
 
-def check_section_17_population_prose(
-    html_text: str, view: dict[str, Any] | None
+def population_fragment(site_manifest_path: Path) -> Path:
+    """The section fragment that holds the stable anchor population-counts."""
+    manifest = load_json(site_manifest_path)
+    for record in manifest.get("fragments", []):
+        if record.get("kind") != "section":
+            continue
+        path = ROOT / record["fragment"]
+        if 'id="population-counts"' in path.read_text():
+            return path
+    raise ValueError("no section fragment holds the population-counts anchor")
+
+
+def check_population_prose(
+    html_text: str, view: dict[str, Any] | None, fragment_name: str
 ) -> tuple[str, list[str]]:
-    """Guard 17.1's 'Each of its N records' sentence and Table 31's Total row
-    against the evidence-population-summary view, so a future corpus edit
-    that forgets to update the prose fails the build instead of drifting.
+    """Guard the population-counts anchor's 'Each of its N records' sentence and
+    the Total row of the first table after it against the evidence-population-
+    summary view, so a future corpus edit that forgets to update the prose fails
+    the build instead of drifting.
     """
     errors: list[str] = []
     if not isinstance(view, dict):
-        return "", ["evidence-population-summary.json is missing; cannot guard Section 17 prose"]
+        return "", [f"evidence-population-summary.json is missing; cannot guard {fragment_name} population counts prose"]
     record_total = view.get("record_total")
     exclusive = (view.get("population_counts") or {}).get("exclusive") or {}
 
     sentence_match = re.search(r"Each of its (\d+) records", html_text)
     sentence_n = int(sentence_match.group(1)) if sentence_match else None
     if sentence_match is None:
-        errors.append("site/sec-17.html: 17.1's 'Each of its N records' sentence not found")
+        errors.append(f"{fragment_name}: population counts 'Each of its N records' sentence not found")
     elif sentence_n != record_total:
         errors.append(
-            f"site/sec-17.html: 'Each of its {sentence_n} records' does not match "
+            f"{fragment_name}: population counts 'Each of its {sentence_n} records' does not match "
             f"the view's record_total {record_total}"
         )
 
-    caption_index = html_text.find("<b>Table 31:</b>")
+    table_match = re.search(r'id="population-counts".*?<caption><b>Table (\d+):</b>', html_text, re.S)
     row: tuple[int, int, int, int] | None = None
-    if caption_index == -1:
-        errors.append("site/sec-17.html: Table 31's caption ('<b>Table 31:</b>') not found")
+    if table_match is None:
+        errors.append(f"{fragment_name}: population counts table caption not found after id=\"population-counts\"")
     else:
+        table_number = table_match.group(1)
         row_match = re.search(
             r"<tr><td><strong>Total</strong></td>"
             r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
             r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
             r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
             r"<td class=\"ctr\"><strong>(\d+)</strong></td>",
-            html_text[caption_index:],
+            html_text[table_match.end():],
         )
         if row_match is None:
-            errors.append("site/sec-17.html: Table 31's Total row not found after its caption")
+            errors.append(f"{fragment_name}: population counts Table {table_number}'s Total row not found after its caption")
         else:
             row = (
                 int(row_match.group(1)), int(row_match.group(2)),
@@ -236,14 +250,14 @@ def check_section_17_population_prose(
             )
             if row != expected:
                 errors.append(
-                    "site/sec-17.html: Table 31's Total row "
+                    f"{fragment_name}: population counts Table {table_number}'s Total row "
                     f"(algorithm={row[0]}, deployment={row[1]}, both={row[2]}, total={row[3]}) "
                     f"does not match the view's exclusive counts and record_total {expected}"
                 )
 
     summary = (
-        "check-counts: sec-17.html 17.1 'Each of its N records' "
-        f"N={sentence_n} and Table 31 Total row {row} compared against "
+        f"check-counts: {fragment_name} population counts 'Each of its N records' "
+        f"N={sentence_n} and Table Total row {row} compared against "
         f"evidence-population-summary record_total={record_total} exclusive={exclusive}"
     )
     return summary, errors
@@ -384,7 +398,7 @@ def main() -> int:
         "--generated-dir", type=Path, default=ROOT / "data/generated"
     )
     parser.add_argument(
-        "--section-17", type=Path, default=ROOT / "site/sec-17.html"
+        "--site-manifest", type=Path, default=ROOT / "data/site-manifest.json"
     )
     parser.add_argument(
         "--section-1", type=Path, default=ROOT / "site/sec-01.html"
@@ -400,8 +414,11 @@ def main() -> int:
             for path in sorted(args.generated_dir.glob("*.json"))
         }
         summary, errors = validate_counts(papers, surveys, generated)
-        prose_summary, prose_errors = check_section_17_population_prose(
-            args.section_17.read_text(), generated.get("evidence-population-summary.json")
+        population_path = population_fragment(args.site_manifest)
+        prose_summary, prose_errors = check_population_prose(
+            population_path.read_text(),
+            generated.get("evidence-population-summary.json"),
+            population_path.name,
         )
         errors.extend(prose_errors)
         gap_summary, gap_errors = check_section_1_gap_prose(
@@ -412,7 +429,7 @@ def main() -> int:
         errors = [str(error)]
         summary = {}
     except OSError as error:
-        errors = [f"cannot read {args.section_17} or {args.section_1}: {error}"]
+        errors = [f"cannot read {args.site_manifest} or {args.section_1}: {error}"]
         summary = {}
     if errors:
         print("check-counts: FAILED", file=sys.stderr)
