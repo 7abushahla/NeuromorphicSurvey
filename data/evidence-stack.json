@@ -18,7 +18,8 @@
         "host_interface": "unknown",
         "toolchain": "NxSDK / NxTF (Keras-derived compiler), discontinued; Intel redirects INRC members to Lava since 2022.",
         "availability": "Not commercially available; INRC membership required (research/evaluation only), cloud access via Neuromorphic Research Cloud.",
-        "price": "Not sold; access only via INRC membership."
+        "price": "Not sold; access only via INRC membership.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "davies2018-loihi",
@@ -46,7 +47,8 @@
         "host_interface": "unknown",
         "toolchain": "Lava / Lava-DL (SLAYER 2.0, Bootstrap, NetX) - archived by Intel as of 2026-05-13; successor SDK unannounced.",
         "availability": "Not commercially available for the general public; obtainable only via INRC membership (Oheo Gulch single-chip and Kapoho Point 8-chip boards); commercial/government orgs can purchase an on-site Kapoho Point system.",
-        "price": "Not publicly listed; gated behind INRC membership and Intel evaluation."
+        "price": "Not publicly listed; gated behind INRC membership and Intel evaluation.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "davies2021-survey",
@@ -76,7 +78,8 @@
         "host_interface": "unknown",
         "toolchain": "sPyNNaker (PyNN backend) + SpiNNTools (partition/place/route/load/execute/extract pipeline).",
         "availability": "Hosted at University of Manchester (up to ~1.04M-core machine) plus standalone 4-/48-chip boards; free EBRAINS-account access for evaluation/basic research.",
-        "price": "Not sold as a product; free access via EBRAINS Collaboratory account for research."
+        "price": "Not sold as a product; free access via EBRAINS Collaboratory account for research.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "painkras2013-spinnaker",
@@ -104,7 +107,8 @@
         "host_interface": "unknown",
         "toolchain": "py-spinnaker2 (PyNN-inspired API), NIR importer, Brian2-based software-emulation fallback.",
         "availability": "Commercially deployed via SpiNNcloud Systems (Dresden half-scale system, Sandia National Labs, University of Leipzig); largest system stood up ~30,000 chips as of mid-2025 (vendor statement).",
-        "price": "Sold as commercial supercomputing systems/racks; per-chip/per-board pricing not published."
+        "price": "Sold as commercial supercomputing systems/racks; per-chip/per-board pricing not published.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "yan2021-spinnaker2pe",
@@ -131,7 +135,8 @@
         "host_interface": "SPI/serial I/O, interrupt pins for up to 15+1 classes; USB 3.1 host connection for the Dev Kit.",
         "toolchain": "Sinabs (from_model/DynapcnnNetwork) -> samna runtime.",
         "availability": "Speck Dev Kit and Demo Kit are purchasable/orderable hardware products, no research-membership gate (unlike Loihi/INRC).",
-        "price": "List pricing not publicly posted (\"available only on application\"); Speck Demo Kit early-bird batch reported around $199 (trade press)."
+        "price": "List pricing not publicly posted (\"available only on application\"); Speck Demo Kit early-bird batch reported around $199 (trade press).",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "sinabs-docs",
@@ -158,7 +163,8 @@
         "host_interface": "unknown",
         "toolchain": "Sinabs -> samna.",
         "availability": "Devkit historically available (2019 announcement); largely superseded by Speck in current SynSense product listings.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "sinabs-docs",
@@ -184,7 +190,8 @@
         "host_interface": "unknown",
         "toolchain": "Rockpool (mapper() -> quantize_methods -> config_from_specification()) -> XyloSamna/XyloMonitor.",
         "availability": "Commercially orderable Dev Kits (pricing on application); no research-membership gate.",
-        "price": "Not publicly listed (\"pricing on application\")."
+        "price": "Not publicly listed (\"pricing on application\").",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "rockpool-xylo-docs",
@@ -210,7 +217,8 @@
         "host_interface": "unknown",
         "toolchain": "PyNN (pynn.brainscales / neuromorphic hardware backend) via EBRAINS platform.",
         "availability": "Free remote access via EBRAINS (evaluation/basic research); not commercially purchasable.",
-        "price": "Not sold; free EBRAINS remote access."
+        "price": "Not sold; free EBRAINS remote access.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "schemmel2010-wafer",
@@ -235,7 +243,8 @@
         "host_interface": "unknown",
         "toolchain": "hxtorch (perceptron/MAC mode and hxtorch.snn spiking mode), PyNN (pynn_brainscales.brainscales2), calix calibration library.",
         "availability": "Free remote access via EBRAINS (evaluation/basic research, queued jobs, SLURM-based scheduling); not commercially purchasable.",
-        "price": "Not sold; free EBRAINS remote access."
+        "price": "Not sold; free EBRAINS remote access.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "pehle2022-bss2",
@@ -264,7 +273,8 @@
         "host_interface": "unknown",
         "toolchain": "Eedn (backprop training with trinary weights + triangle-function surrogate) -> Corelet compiler -> NS1e/NS16e boards.",
         "availability": "Not commercially available; discontinued since mid-2010s DARPA SyNAPSE era, distributed only to a limited research ecosystem (30+ institutions).",
-        "price": "Not sold."
+        "price": "Not sold.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "akopyan2015-truenorth",
@@ -290,7 +300,8 @@
         "host_interface": "PCIe card.",
         "toolchain": "Conventional DNN inference toolchain, not a spiking-network toolchain.",
         "availability": "Deployed as a PCIe accelerator card, benchmarked against GPU/CPU on ResNet-50/YOLOv4.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "NPU"
       },
       "sources": [
         "northpole-science2023"
@@ -314,7 +325,8 @@
         "host_interface": "unknown",
         "toolchain": "First-generation automatic model-mapping/compiling toolchain (Tsinghua); commercial descendant is Lynxi's BIDL/Lyngor/LynSDK stack.",
         "availability": "Research chip (2019 Nature paper); commercial lineage continues through Lynxi Technologies spinout products.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "pei2019-tianjic"
@@ -338,7 +350,8 @@
         "host_interface": "unknown",
         "toolchain": "BIDL (PyTorch-based training/deployment framework) -> Lyngor compiler -> LynSDK runtime; batch size 1 only on-chip; training requires GPU, only inference targets the chip.",
         "availability": "Commercially available in China (HP300/KA200/edge boxes); NOT FOUND evidence of availability, distribution, or benchmarking outside mainland China.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "lynxi-bidl-github",
@@ -364,7 +377,8 @@
         "host_interface": "AKD1000: PCIe 2.1 x2, USB 3.0, I3C/I2S/UART/JTAG. AKD1500: PCIe Gen2 + SPI. Akida Pico: SPI only, standalone (no host CPU required).",
         "toolchain": "MetaTF: QuantizeML (quantization-aware training/PTQ) -> CNN2SNN (convert() -> .fbz) -> Akida runtime (hardware or software simulator).",
         "availability": "Commercially purchasable: AKD1000 PCIe dev board $289, Raspberry Pi kits $995-$1,495; AKD1500 commercial shipments began June 2026 (~2,000 units shipped by Aug 2026, yield issues under investigation).",
-        "price": "AKD1000 PCIe dev board $289; AKD1500 PCIe commercial-temp 5-pack $199.99 (~$40/chip)."
+        "price": "AKD1000 PCIe dev board $289; AKD1500 PCIe commercial-temp 5-pack $199.99 (~$40/chip).",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "brainchip-cnn2snn-docs",
@@ -393,7 +407,8 @@
         "host_interface": "unknown",
         "toolchain": "unknown",
         "availability": "Academic research chip (UCLouvain), not commercially sold.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "frenkel2019-morphic"
@@ -417,7 +432,8 @@
         "host_interface": "unknown",
         "toolchain": "Rockpool DynapSim (approximate, explicitly non-hardware-exact simulator).",
         "availability": "Commercially available via SynSense.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "pehle2022-bss2"
@@ -441,7 +457,8 @@
         "host_interface": "unknown",
         "toolchain": "Talamo SDK (PyTorch extension: spike encoders/decoders, e.g. IFEncoder, MaxRateDecoder; pipe.to(innatera_soc) device deployment).",
         "availability": "Commercially available (production shipments 2Q25 per vendor).",
-        "price": "Not publicly listed."
+        "price": "Not publicly listed.",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "innatera-pulsar-vendor"
@@ -465,7 +482,8 @@
         "host_interface": "unknown",
         "toolchain": "SNN Toolbox (offline conversion) -> Cerebron RTL/bitstream.",
         "availability": "Academic FPGA implementation, not a commercial product.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "FPGA"
       },
       "sources": [
         "chen2022-cerebron"
@@ -489,7 +507,8 @@
         "host_interface": "unknown",
         "toolchain": "PASCAL (algorithm) -> APEX (RTL synthesis/cycle simulation).",
         "availability": "Not fabricated; RTL synthesis and cycle-level simulation result only.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "simulator"
       },
       "sources": [
         "apex2026",
@@ -514,7 +533,8 @@
         "host_interface": "unknown",
         "toolchain": "Vitis HLS/SDSoC hardware-mode build.",
         "availability": "Academic FPGA implementation (open-source), not a commercial product.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "FPGA"
       },
       "sources": [
         "panchapakesan2021-syncnn"
@@ -538,7 +558,8 @@
         "host_interface": "unknown",
         "toolchain": "PASCAL (algorithm) -> NeuroFlex (RTL synthesis/cycle simulation, CACTI 7.0 memory modeling).",
         "availability": "Not fabricated; RTL synthesis and cycle-level simulation result only.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "simulator"
       },
       "sources": [
         "neuroflex2025",
@@ -563,7 +584,8 @@
         "host_interface": "unknown",
         "toolchain": "Design-dependent: Vitis HLS/SDSoC (SyncNN), custom VHDL generators (Spiker+), Xilinx Vivado synthesis (general).",
         "availability": "Any standard Xilinx/general FPGA development board; academic/open-source designs, not commercial neuromorphic products.",
-        "price": "unknown"
+        "price": "unknown",
+        "target_kind": "FPGA"
       },
       "sources": [
         "panchapakesan2021-syncnn",
@@ -1926,7 +1948,8 @@
       "layer": "Hardware",
       "summary": "A physical Lynxi accelerator used for Adaptive Fission and no-Fission QCFS and SRP baseline measurements. It is kept distinct from the KA200 platform.",
       "attributes": {
-        "measurement_boundary": "batch-32 seconds and watt-hours per evaluation epoch from board sensors; includes peripherals, memory, and I/O"
+        "measurement_boundary": "batch-32 seconds and watt-hours per evaluation epoch from board sensors; includes peripherals, memory, and I/O",
+        "target_kind": "neuromorphic"
       },
       "sources": [
         "adaptive-fission"

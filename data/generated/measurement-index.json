@@ -1934,7 +1934,7 @@
       "verification_status": "provisional"
     },
     {
-      "id": "pascal",
+      "id": "pascal-none",
       "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
       "authors": "Ramesh, P., Srinivasan, G.",
       "year": 2025,
@@ -1948,7 +1948,71 @@
       "encoding": "spike-count based (not classic rate coding)",
       "input_encoding": "inherits QCFS activation/encoding convention",
       "timesteps": "T_eff 2.13-12.94 as an analytical layer statistic. The released ResNet-18/CIFAR-10 T_eff=3.14 script silently truncates 17 listed layer horizons to 10 coefficients through zip().",
-      "metric": "E4 RTL synthesis and cycle simulation cover only uniform T=4 PASC-IF overhead. Mixed-horizon accuracy and T_eff remain software and analytical results.",
+      "metric": "software accuracy vs. T_eff (layer statistic, 2.13-12.94 range); published ResNet-18/CIFAR-10 T_eff=3.14 headline, reproducible only via an undocumented 17-layer-to-10-coefficient truncation in the released script",
+      "boundary": {
+        "evidence_class": "E5",
+        "description": "software simulation, analytical proxy, or algorithm-only evidence",
+        "paper_specific_notes": "Appendix A.10 is E4 for VGG-16/CIFAR-10 at uniform T=4. It does not validate Adaptive Layerwise mixed-horizon execution. The published T_eff=3.14 result has an unresolved 17-layer-to-10-coefficient cardinality conflict in the released script."
+      },
+      "workload": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "none for the T_eff headline; custom in-house LoAS/SparTen-based accelerator (RTL synthesis) for the uniform-T=4 neuron-overhead check",
+        "toolchain": "custom PyTorch (BrainSeek-Lab/PASCAL)"
+      },
+      "comparability_notes": "Appendix A.10 is E4 for VGG-16/CIFAR-10 at uniform T=4. It does not validate Adaptive Layerwise mixed-horizon execution. The published T_eff=3.14 result has an unresolved 17-layer-to-10-coefficient cardinality conflict in the released script.",
+      "evidence_class": "E5",
+      "is_physical_measurement": false,
+      "source_ids": [
+        "pascal"
+      ],
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "Independent recomputation gives 3.1361557645729463 from the first 10 paired values, 1.8447975085723214 if that sum is divided by 17, and 2.411764705882353 for the simple mean of all 17 timestep values",
+            "PASCAL TMLR paper, Algorithm 1, PDF p. 5",
+            "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
+            "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "TMLR paper, Algorithm 1, PDF p. 5",
+            "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
+            "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
+            "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
+            "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
+            "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://github.com/BrainSeek-Lab/PASCAL"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "pascal",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "pascal-simulator",
+      "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
+      "authors": "Ramesh, P., Srinivasan, G.",
+      "year": 2025,
+      "venue": "TMLR",
+      "url": "https://arxiv.org/abs/2505.01730",
+      "family": "mixed-timestep",
+      "population": "algorithm",
+      "method_summary": "PASC-IF is paired with a static per-layer Adaptive Layerwise horizon. Its reported T_eff is an energy-overhead-weighted layer statistic rather than measured latency.",
+      "neuron": "PASC-IF (spike accumulation, soft reset, excitatory + inhibitory spikes)",
+      "reset": "soft reset (not subtractive/hard)",
+      "encoding": "spike-count based (not classic rate coding)",
+      "input_encoding": "inherits QCFS activation/encoding convention",
+      "timesteps": "T_eff 2.13-12.94 as an analytical layer statistic. The released ResNet-18/CIFAR-10 T_eff=3.14 script silently truncates 17 listed layer horizons to 10 coefficients through zip().",
+      "metric": "RTL synthesis and cycle-accurate simulation of PASC-IF neuron overhead vs. standard IF at uniform T=4 (VGG-16, CIFAR-10), modified LoAS/SparTen accelerator models, Synopsys Design Compiler, 560 MHz, 40nm",
       "boundary": {
         "evidence_class": "E4",
         "description": "hardware model, synthesis, or cycle-level simulation without fabricated silicon",

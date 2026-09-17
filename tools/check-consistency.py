@@ -225,6 +225,28 @@ def validate_documents(documents: dict[str, object], root: Path = ROOT) -> list[
         ids[label], id_errors = unique_ids(rows, label)
         errors.extend(id_errors)
 
+    kinds_doc = load_json(root / "data/target-kinds.json") if (root / "data/target-kinds.json").exists() else None
+    if not isinstance(kinds_doc, dict) or not isinstance(kinds_doc.get("kinds"), list):
+        errors.append("data/target-kinds.json must contain a kinds array")
+        kind_words: set[str] = set()
+    else:
+        kind_words = {k.get("word") for k in kinds_doc["kinds"] if isinstance(k, dict)}
+    for index, paper in enumerate(collections["papers"]):
+        label = f"evidence-papers.papers[{index}]"
+        kind = paper.get("target_kind")
+        if kind not in kind_words | {"none"}:
+            errors.append(f"{label}: target_kind must be one of {sorted(kind_words)} or 'none'; found {kind!r}")
+        if not isinstance(paper.get("target_qualifier"), str):
+            errors.append(f"{label}: target_qualifier must be a string")
+        if kind == "none" and paper.get("evidence") != "E5":
+            errors.append(f"{label}: target_kind 'none' is only valid for E5 evidence")
+    for index, node in enumerate(collections["nodes"]):
+        if node.get("type") != "hardware":
+            continue
+        kind = (node.get("attributes") or {}).get("target_kind")
+        if kind not in kind_words:
+            errors.append(f"evidence-stack.nodes[{index}] ({node.get('id')}): hardware node requires attributes.target_kind from data/target-kinds.json; found {kind!r}")
+
     errors.extend(check_legacy_sources(documents["sources.json"], "sources.json", records, aliases))
     errors.extend(check_legacy_sources(stack.get("sources") if isinstance(stack, dict) else None, "evidence-stack.sources", records, aliases))
     errors.extend(check_legacy_sources(paper_doc.get("sources") if isinstance(paper_doc, dict) else None, "evidence-papers.sources", records, aliases))

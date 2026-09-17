@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "buckets": [
+    {"name": "conventional", "hue": "blue", "fill": "#E4F0F9", "ink": "#155F8F", "line": "#1F77B4",
+     "meaning": "The claim's target is a conventional processor, whatever software steps the network."},
+    {"name": "simulated", "hue": "gray", "fill": "#ECEEF1", "ink": "#4A5560", "line": "#8A94A0",
+     "meaning": "The claim's target is a model of neuromorphic hardware that is not the silicon."},
+    {"name": "neuromorphic", "hue": "warm", "fill": "#FBEBDA", "ink": "#8F4A06", "line": "#D9760C",
+     "meaning": "The claim's target is fabricated neuromorphic silicon, or a custom spiking accelerator on an FPGA measured as its own target."}
+  ],
+  "kinds": [
+    {"word": "CPU", "css": "tk-cpu", "bucket": "conventional", "meaning": "A general-purpose processor, single or clustered."},
+    {"word": "GPU", "css": "tk-gpu", "bucket": "conventional", "meaning": "A graphics processor, including embedded modules such as Jetson."},
+    {"word": "MCU", "css": "tk-mcu", "bucket": "conventional", "meaning": "A microcontroller, for example Cortex-M."},
+    {"word": "RISC-V", "css": "tk-risc-v", "bucket": "conventional", "meaning": "A RISC-V core or a RISC-V-based accelerator."},
+    {"word": "NPU", "css": "tk-npu", "bucket": "conventional", "meaning": "A non-spiking neural accelerator, including NorthPole."},
+    {"word": "simulator", "css": "tk-simulator", "bucket": "simulated", "meaning": "A chip's software simulator, an RTL or cycle-level model, or an FPGA emulating a named chip."},
+    {"word": "neuromorphic", "css": "tk-neuromorphic", "bucket": "neuromorphic", "meaning": "Fabricated neuromorphic silicon; the sentence or the row names the chip."},
+    {"word": "FPGA", "css": "tk-fpga", "bucket": "neuromorphic", "meaning": "A custom spiking accelerator on an FPGA measured as its own target."}
+  ]
+}

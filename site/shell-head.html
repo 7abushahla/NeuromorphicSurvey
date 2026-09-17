@@ -596,6 +596,19 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       .ev-e5 { background: #7B8494; }
       .ev-blocked { background: #C0392B; }
 
+      /* Target chips. One vocabulary (data/target-kinds.json) wherever a target is named:
+         beside an evidence marker, in Table 1, and on the stack map's legend. */
+      .tk { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.03em;
+            padding: 0.04rem 0.4rem; border-radius: 3px; border: 1px solid; vertical-align: 0.06rem; white-space: nowrap; }
+      .tk-cpu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-gpu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-mcu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-risc-v { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-npu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-simulator { color: #4A5560; background: #ECEEF1; border-color: #8A94A0; }
+      .tk-neuromorphic { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
+      .tk-fpga { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
+
       d-article .caveat { padding: 0.55rem 0.85rem; border-left: 3px solid #C0392B;
         background: #fbeceb; border-radius: 0 6px 6px 0; color: #7d2820; font-size: 0.92rem; }
       d-article .keypoint { padding: 0.55rem 0.85rem; border-left: 3px solid #1f2430;
