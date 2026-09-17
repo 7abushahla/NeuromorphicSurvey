@@ -1,0 +1,3 @@
+#figure-4 .f4-hot { cursor: help; }
+#figure-4 .f4-band { transition: opacity 0.15s; }
+#figure-4 .f4-hot:hover .f4-band { opacity: 0.14; }

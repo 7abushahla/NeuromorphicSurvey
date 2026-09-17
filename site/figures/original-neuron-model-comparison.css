@@ -1,0 +1,6 @@
+#figure-8 { text-align: center; }
+#figure-8 svg { width: 100%; height: auto; }
+#figure-8 .f8-pan { cursor: help; }
+#figure-8 .f8-pan:hover .f8-hl { opacity: 0.07; }
+#figure-8 .f8-hl { transition: opacity 0.15s; }
+#figure-8 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

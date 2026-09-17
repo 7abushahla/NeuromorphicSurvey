@@ -1,3 +1,0 @@
-#figure-1 .f1-hot { cursor: help; }
-#figure-1 .f1-hl { transition: opacity 0.15s; }
-#figure-1 .f1-hot:hover .f1-hl { opacity: 0.10; }

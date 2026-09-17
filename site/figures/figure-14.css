@@ -1,3 +1,0 @@
-#figure-14 .f14-row { cursor: help; }
-#figure-14 .f14-band { transition: opacity 0.15s; }
-#figure-14 .f14-row:hover .f14-band { opacity: 0.08; }

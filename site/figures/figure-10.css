@@ -1,3 +1,0 @@
-#figure-10 .f10-hot { cursor: help; }
-#figure-10 .f10-band { transition: opacity 0.15s; }
-#figure-10 .f10-hot:hover .f10-band { opacity: 0.10; }

@@ -1,3 +1,0 @@
-#figure-13 .f13-help { cursor: help; }
-#figure-13 .f13-band { transition: opacity 0.15s; }
-#figure-13 .f13-help:hover .f13-band { opacity: 0.10; }

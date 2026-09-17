@@ -1,6 +1,0 @@
-#figure-12 { text-align: center; }
-#figure-12 svg { width: 100%; height: auto; }
-#figure-12 .f12-hot { cursor: help; }
-#figure-12 .f12-band { transition: opacity 0.15s; }
-#figure-12 .f12-hot:hover .f12-band { opacity: 0.10; }
-#figure-12 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

@@ -1,3 +1,0 @@
-#figure-8 .f8-hot { cursor: help; }
-#figure-8 .f8-band { transition: opacity 0.15s; }
-#figure-8 .f8-hot:hover .f8-band { opacity: 0.14; }
