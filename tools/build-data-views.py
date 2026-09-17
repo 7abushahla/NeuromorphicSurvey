@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import runpy
 import sys
 import tempfile
 import unittest
@@ -18,10 +19,21 @@ DEFAULT_OUTPUT_DIR = ROOT / "data/generated"
 VIEW_FILENAMES = (
     "prior-survey-family-summary.json",
     "prior-survey-targets-summary.json",
+    "evidence-population-summary.json",
     "claim-index.json",
     "route-index.json",
     "measurement-index.json",
     "figure-inputs.json",
+)
+EVIDENCE_POPULATION_FAMILY_ORDER = (
+    "classical-conversion",
+    "low-latency-conversion",
+    "mixed-timestep",
+    "early-exit",
+    "population-coding",
+    "direct-training",
+    "hardware-accelerator",
+    "application",
 )
 AXIS_LABELS = {
     "A": "neuron models",
@@ -294,6 +306,92 @@ def build_prior_survey_targets_summary(
         "bucket_survey_counts": bucket_survey_counts,
         "surveys_covering_all_three_buckets": surveys_covering_all_three_buckets,
         "surveys": survey_records,
+    }
+
+
+def build_evidence_population_summary(
+    paper_payload: dict[str, Any],
+    target_kinds_payload: dict[str, Any],
+) -> dict[str, Any]:
+    """Population and family counts for evidence-papers.json, plus deploying records.
+
+    The population_counts block below is built with the exact counting rule of
+    tools/check-counts.py's population_counts() (loaded here via runpy, since
+    tools/ is a script directory rather than an importable package), so that
+    check-counts.py's staleness guard can compare a future edit against this
+    view without the two ever disagreeing on how a count is taken.
+    """
+    papers = paper_payload["papers"]
+    count_module = runpy.run_path(str(ROOT / "tools/check-counts.py"))
+    counts, count_errors = count_module["population_counts"](paper_payload)
+    require(not count_errors, "; ".join(count_errors))
+
+    kind_bucket = {
+        str(kind["word"]): str(kind["bucket"]) for kind in target_kinds_payload["kinds"]
+    }
+
+    record_total = len(papers)
+    source_groups: dict[tuple[str, ...], list[str]] = defaultdict(list)
+    for paper in papers:
+        source_groups[tuple(sorted(paper.get("sources") or []))].append(str(paper["id"]))
+    paper_total = len(source_groups)
+
+    family_counts: dict[str, Counter[str]] = {
+        family: Counter() for family in EVIDENCE_POPULATION_FAMILY_ORDER
+    }
+    for paper in papers:
+        family = paper.get("family")
+        require(
+            family in family_counts,
+            f"evidence paper {paper.get('id')!r} has family {family!r}, "
+            "not one of the eight families Table 31 rows",
+        )
+        family_counts[family][paper["population"]] += 1
+
+    family_population = []
+    for family in EVIDENCE_POPULATION_FAMILY_ORDER:
+        tally = family_counts[family]
+        algorithm = tally.get("algorithm", 0)
+        deployment = tally.get("deployment", 0)
+        both = tally.get("both", 0)
+        family_population.append(
+            {
+                "family": family,
+                "algorithm": algorithm,
+                "deployment": deployment,
+                "both": both,
+                "total": algorithm + deployment + both,
+            }
+        )
+
+    deploying_records = []
+    for paper in sorted(papers, key=lambda item: str(item["id"])):
+        if paper.get("population") not in ("deployment", "both"):
+            continue
+        target_kind = paper.get("target_kind")
+        bucket = kind_bucket.get(str(target_kind))
+        require(
+            bucket is not None,
+            f"evidence paper {paper['id']!r} has target_kind {target_kind!r}, "
+            "not one of data/target-kinds.json's declared kinds",
+        )
+        deploying_records.append(
+            {
+                "id": paper["id"],
+                "family": paper["family"],
+                "population": paper["population"],
+                "target_kind": target_kind,
+                "target_qualifier": paper.get("target_qualifier"),
+                "bucket": bucket,
+            }
+        )
+
+    return {
+        "record_total": record_total,
+        "paper_total": paper_total,
+        "population_counts": counts,
+        "family_population": family_population,
+        "deploying_records": deploying_records,
     }
 
 
@@ -1186,6 +1284,9 @@ def build_outputs(root: Path = ROOT) -> dict[str, dict[str, Any]]:
     targets_summary = build_prior_survey_targets_summary(
         surveys, target_kinds_payload, source_lookup
     )
+    evidence_population_summary = build_evidence_population_summary(
+        paper_payload, target_kinds_payload
+    )
     claim_index = build_claim_index(claims, audit_claims, source_lookup)
     route_index = build_route_index(
         edges, nodes, capabilities, source_lookup, schema
@@ -1212,6 +1313,12 @@ def build_outputs(root: Path = ROOT) -> dict[str, dict[str, Any]]:
             schema_version=schema_version,
             view="prior-survey-targets-summary",
             generated_from=("data/prior-survey-coverage.json", "data/target-kinds.json"),
+        ),
+        "evidence-population-summary.json": add_view_metadata(
+            evidence_population_summary,
+            schema_version=schema_version,
+            view="evidence-population-summary",
+            generated_from=("data/evidence-papers.json", "data/target-kinds.json"),
         ),
         "claim-index.json": add_view_metadata(
             claim_index,

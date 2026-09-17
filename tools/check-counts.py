@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -186,6 +187,68 @@ def validate_measurement_view(
     return errors
 
 
+def check_section_17_population_prose(
+    html_text: str, view: dict[str, Any] | None
+) -> tuple[str, list[str]]:
+    """Guard 17.1's 'Each of its N records' sentence and Table 31's Total row
+    against the evidence-population-summary view, so a future corpus edit
+    that forgets to update the prose fails the build instead of drifting.
+    """
+    errors: list[str] = []
+    if not isinstance(view, dict):
+        return "", ["evidence-population-summary.json is missing; cannot guard Section 17 prose"]
+    record_total = view.get("record_total")
+    exclusive = (view.get("population_counts") or {}).get("exclusive") or {}
+
+    sentence_match = re.search(r"Each of its (\d+) records", html_text)
+    sentence_n = int(sentence_match.group(1)) if sentence_match else None
+    if sentence_match is None:
+        errors.append("site/sec-17.html: 17.1's 'Each of its N records' sentence not found")
+    elif sentence_n != record_total:
+        errors.append(
+            f"site/sec-17.html: 'Each of its {sentence_n} records' does not match "
+            f"the view's record_total {record_total}"
+        )
+
+    caption_index = html_text.find("<b>Table 31:</b>")
+    row: tuple[int, int, int, int] | None = None
+    if caption_index == -1:
+        errors.append("site/sec-17.html: Table 31's caption ('<b>Table 31:</b>') not found")
+    else:
+        row_match = re.search(
+            r"<tr><td><strong>Total</strong></td>"
+            r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
+            r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
+            r"<td class=\"ctr\"><strong>(\d+)</strong></td>"
+            r"<td class=\"ctr\"><strong>(\d+)</strong></td>",
+            html_text[caption_index:],
+        )
+        if row_match is None:
+            errors.append("site/sec-17.html: Table 31's Total row not found after its caption")
+        else:
+            row = (
+                int(row_match.group(1)), int(row_match.group(2)),
+                int(row_match.group(3)), int(row_match.group(4)),
+            )
+            expected = (
+                exclusive.get("algorithm"), exclusive.get("deployment"),
+                exclusive.get("both"), record_total,
+            )
+            if row != expected:
+                errors.append(
+                    "site/sec-17.html: Table 31's Total row "
+                    f"(algorithm={row[0]}, deployment={row[1]}, both={row[2]}, total={row[3]}) "
+                    f"does not match the view's exclusive counts and record_total {expected}"
+                )
+
+    summary = (
+        "check-counts: sec-17.html 17.1 'Each of its N records' "
+        f"N={sentence_n} and Table 31 Total row {row} compared against "
+        f"evidence-population-summary record_total={record_total} exclusive={exclusive}"
+    )
+    return summary, errors
+
+
 def validate_counts(
     papers_document: object,
     surveys_document: object,
@@ -216,7 +279,11 @@ def main() -> int:
     parser.add_argument(
         "--generated-dir", type=Path, default=ROOT / "data/generated"
     )
+    parser.add_argument(
+        "--section-17", type=Path, default=ROOT / "site/sec-17.html"
+    )
     args = parser.parse_args()
+    prose_summary = ""
     try:
         papers = load_json(args.papers)
         surveys = load_json(args.surveys)
@@ -225,8 +292,15 @@ def main() -> int:
             for path in sorted(args.generated_dir.glob("*.json"))
         }
         summary, errors = validate_counts(papers, surveys, generated)
+        prose_summary, prose_errors = check_section_17_population_prose(
+            args.section_17.read_text(), generated.get("evidence-population-summary.json")
+        )
+        errors.extend(prose_errors)
     except ValueError as error:
         errors = [str(error)]
+        summary = {}
+    except OSError as error:
+        errors = [f"cannot read {args.section_17}: {error}"]
         summary = {}
     if errors:
         print("check-counts: FAILED", file=sys.stderr)
@@ -254,6 +328,7 @@ def main() -> int:
         "check-counts: "
         f"{len(generated)} generated artifact(s), no stale unqualified population headlines"
     )
+    print(prose_summary)
     return 0
 
 

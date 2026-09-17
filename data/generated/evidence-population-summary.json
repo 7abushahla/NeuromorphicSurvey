@@ -1,0 +1,459 @@
+{
+  "schema_version": "1",
+  "view": "evidence-population-summary",
+  "generated_by": "tools/build-data-views.py",
+  "generated_from": [
+    "data/evidence-papers.json",
+    "data/target-kinds.json"
+  ],
+  "record_total": 90,
+  "paper_total": 89,
+  "population_counts": {
+    "exclusive": {
+      "algorithm": 43,
+      "deployment": 40,
+      "both": 7
+    },
+    "inclusive": {
+      "algorithm": 50,
+      "deployment": 47
+    },
+    "total_unique": 90
+  },
+  "family_population": [
+    {
+      "family": "classical-conversion",
+      "algorithm": 9,
+      "deployment": 1,
+      "both": 1,
+      "total": 11
+    },
+    {
+      "family": "low-latency-conversion",
+      "algorithm": 13,
+      "deployment": 1,
+      "both": 3,
+      "total": 17
+    },
+    {
+      "family": "mixed-timestep",
+      "algorithm": 5,
+      "deployment": 0,
+      "both": 0,
+      "total": 5
+    },
+    {
+      "family": "early-exit",
+      "algorithm": 2,
+      "deployment": 0,
+      "both": 0,
+      "total": 2
+    },
+    {
+      "family": "population-coding",
+      "algorithm": 0,
+      "deployment": 0,
+      "both": 1,
+      "total": 1
+    },
+    {
+      "family": "direct-training",
+      "algorithm": 10,
+      "deployment": 10,
+      "both": 0,
+      "total": 20
+    },
+    {
+      "family": "hardware-accelerator",
+      "algorithm": 4,
+      "deployment": 17,
+      "both": 0,
+      "total": 21
+    },
+    {
+      "family": "application",
+      "algorithm": 0,
+      "deployment": 11,
+      "both": 2,
+      "total": 13
+    }
+  ],
+  "deploying_records": [
+    {
+      "id": "adaptive-fission",
+      "family": "population-coding",
+      "population": "both",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Lynxi HP201 (commercial successor to Tianjic)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "andrei2024-deep-unrolling-spinnaker2",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "physical single-chip SpiNNaker2 board",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "anglo-mixed-snn-mcu",
+      "family": "low-latency-conversion",
+      "population": "deployment",
+      "target_kind": "MCU",
+      "target_qualifier": "MCU (Cortex-M4 family, part not named; converted-SNN baseline in an analog-chip paper)",
+      "bucket": "conventional"
+    },
+    {
+      "id": "arfa2025-spiking-q-spinnaker2",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "physical SpiNNaker2 board",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "brehove-2026",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 2, in-house 16-chip VPX development board",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "cerebron",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "FPGA",
+      "target_qualifier": "Xilinx XC7Z100 FPGA (200MHz, physical implementation)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "clp-snn",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 2, INT8",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "coral-edge-tpu-tracking",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "NPU",
+      "target_qualifier": "Google Coral Edge TPU Dev Board (commercial NPU); comparator Intel Compute Stick measured in the same paper",
+      "bucket": "conventional"
+    },
+    {
+      "id": "dynap-se-tactile",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "DYNAP-SE (physical, mixed-signal)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "eedn",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "IBM TrueNorth (NS1e/NS16e boards)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "eventprop-delays",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 2 (single-chip, Oheo Gulch)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "fenn-dma-riscv",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "RISC-V",
+      "target_qualifier": "RISC-V (custom-ISA SNN system-on-chip, softcore on Kria KV260 FPGA)",
+      "bucket": "conventional"
+    },
+    {
+      "id": "fenn-riscv",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "RISC-V",
+      "target_qualifier": "RISC-V (custom-ISA SNN vector processor, soft core on Kria KV260 FPGA); comparator embedded GPU and Loihi cited in the same paper",
+      "bucket": "conventional"
+    },
+    {
+      "id": "firefly",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "FPGA",
+      "target_qualifier": "Zynq UltraScale+ edge FPGA boards (xczu3eg/xczu5ev/xczu7ev, KV260, ZCU104)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "force-control",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 1 (Kapoho Bay) and Loihi 2 (Oheo Gulch, remote)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "gelneuro",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "SynSense Speck2f",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "hiaer-spike-cri",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "FPGA",
+      "target_qualifier": "UCSD HiAER-Spike (CRI FPGA-based neuromorphic hardware)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "imam-cleland-olfaction",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi (72-core network)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "kelber-2020",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "BrainScaleS, Spikey, SpiNNaker",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "massa-2020",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi (37 cores)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "memory-decoupled-mcu",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "MCU",
+      "target_qualifier": "STM32H7 ARM Cortex-M7 MCU, physical benchmark",
+      "bucket": "conventional"
+    },
+    {
+      "id": "mlgenn",
+      "family": "classical-conversion",
+      "population": "both",
+      "target_kind": "GPU",
+      "target_qualifier": "NVIDIA Titan V GPU (12 GB), GeNN CUDA simulation",
+      "bucket": "conventional"
+    },
+    {
+      "id": "morphic",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "MorphIC ASIC (65nm, fabricated)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "nest5g-k-computer",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "CPU",
+      "target_qualifier": "K computer (Fujitsu SPARC64 VIIIfx CPU nodes), up to 82,944 compute nodes / 663,552 threads",
+      "bucket": "conventional"
+    },
+    {
+      "id": "northpole",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "NPU",
+      "target_qualifier": "IBM NorthPole, non-spiking digital accelerator",
+      "bucket": "conventional"
+    },
+    {
+      "id": "nxtf",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi (up to 16 chips)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "odin",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "ODIN ASIC (28nm FDSOI, 9 fabricated chips tested)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "onoszko-stm32n6-npu",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "NPU",
+      "target_qualifier": "STM32N657X0 MCU-embedded ST Neural-ART NPU; comparator Cortex-M55 CPU measured in the same thesis",
+      "bucket": "conventional"
+    },
+    {
+      "id": "patino-saucedo-2020",
+      "family": "classical-conversion",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "SpiNNaker (103-machine, 48 chips)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "quartz",
+      "family": "low-latency-conversion",
+      "population": "both",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 1 (Nahuku 32 board, ncl-ext-ghrd-01)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "reckon",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "ReckOn ASIC (28nm FDSOI, 5 fabricated chips)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "sddpg",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi (Kapoho Bay, 2 chips)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "slayer-nxtf-gesture",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi 1 board (ncl-ext-ghrd-01)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "snntorch-portenta-h7",
+      "family": "application",
+      "population": "both",
+      "target_kind": "MCU",
+      "target_qualifier": "Arduino Portenta H7 / STM32H747 Cortex-M7 @ 480 MHz; comparator desktop Intel Core i3-10100F CPU measured in the same paper. Note: the model is directly trained with surrogate gradients and compiled to C, not an ANN-to-SNN converted network.",
+      "bucket": "conventional"
+    },
+    {
+      "id": "speck-dynamic-snn",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "SynSense Speck",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "speck1",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Speck1 (SynSense)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "spikerplus",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "FPGA",
+      "target_qualifier": "Xilinx FPGA (physical synthesis + deployment)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "spikingjelly",
+      "family": "application",
+      "population": "both",
+      "target_kind": "GPU",
+      "target_qualifier": "NVIDIA A100-SXM-80GB GPU, PyTorch-based SpikingJelly CUDA training acceleration",
+      "bucket": "conventional"
+    },
+    {
+      "id": "spinnaker-goalkeeper",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "SpiNNaker (physical)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "stromatias-2015",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "SpiNNaker (single chip; power-scaling estimates extrapolated to 48-chip board)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "syncnn",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "FPGA",
+      "target_qualifier": "Xilinx ARM-FPGA SoC boards (ZCU102, ZCU104, ZED)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "tang-slam-loihi",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Intel Loihi (Nahuku 8-chip board), 82 cores",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "tianjic",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Tianjic chip (physical, single chip)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "truenorth-dvs-gesture",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "IBM TrueNorth (physical)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "ubrain",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "mu-Brain ASIC (fabricated 40nm prototype)",
+      "bucket": "neuromorphic"
+    },
+    {
+      "id": "van-albada-nest-spinnaker",
+      "family": "application",
+      "population": "deployment",
+      "target_kind": "CPU",
+      "target_qualifier": "Intel Xeon E5-2680v3 HPC cluster (NEST simulation); comparator SpiNNaker (physical digital neuromorphic hardware) measured in the same paper",
+      "bucket": "conventional"
+    },
+    {
+      "id": "xylo-kws",
+      "family": "direct-training",
+      "population": "deployment",
+      "target_kind": "neuromorphic",
+      "target_qualifier": "Xylo Audio 2 (SynSense, commercial)",
+      "bucket": "neuromorphic"
+    }
+  ]
+}

@@ -212,5 +212,36 @@ class EvidenceMarkerCheckerTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("E1 marker without a target chip", result.stdout + result.stderr)
 
+class PopulationSummaryTests(unittest.TestCase):
+    """The evidence-population-summary view stays in lockstep with evidence-papers.json."""
+
+    def test_record_total_matches_the_paper_count(self):
+        view = json.loads((ROOT / "data/generated/evidence-population-summary.json").read_text())
+        papers = json.loads((ROOT / "data/evidence-papers.json").read_text())["papers"]
+        self.assertEqual(view["view"], "evidence-population-summary")
+        self.assertEqual(view["record_total"], len(papers))
+
+    def test_population_counts_match_check_counts(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("check_counts", ROOT / "tools/check-counts.py")
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        papers_document = json.loads((ROOT / "data/evidence-papers.json").read_text())
+        expected, errors = module.population_counts(papers_document)
+        self.assertEqual(errors, [])
+        view = json.loads((ROOT / "data/generated/evidence-population-summary.json").read_text())
+        self.assertEqual(view["population_counts"], expected)
+
+    def test_family_rows_sum_to_the_total(self):
+        view = json.loads((ROOT / "data/generated/evidence-population-summary.json").read_text())
+        rows = view["family_population"]
+        exclusive = view["population_counts"]["exclusive"]
+        self.assertEqual(sum(row["algorithm"] for row in rows), exclusive["algorithm"])
+        self.assertEqual(sum(row["deployment"] for row in rows), exclusive["deployment"])
+        self.assertEqual(sum(row["both"] for row in rows), exclusive["both"])
+        self.assertEqual(sum(row["total"] for row in rows), view["record_total"])
+        for row in rows:
+            self.assertEqual(row["total"], row["algorithm"] + row["deployment"] + row["both"], row["family"])
+
+
 if __name__ == "__main__":
     unittest.main()

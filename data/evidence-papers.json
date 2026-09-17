@@ -2802,7 +2802,7 @@
       "venue": "Sustainable Computing and Intelligent Systems (SCIS 2025), Lecture Notes in Networks and Systems vol. 1929, pp. 115-127",
       "url": "https://doi.org/10.1007/978-3-032-22911-3_9",
       "population": "deployment",
-      "family": "conversion",
+      "family": "low-latency-conversion",
       "method_summary": "A quantized 8-bit CNN (e.g. MobileNetV2) is converted to a spiking network via Time-to-First-Spike encoding with layer-wise normalization and threshold calibration, then benchmarked as a digital SNN on an ARM Cortex-M4 MCU against the same converted SNN deployed on an analog-mixed-signal neuromorphic chip (named in the body text as Innatera SNP) and against the original 8-bit CNN on the same MCU.",
       "neuron": "not found (TTFS-encoded spiking neuron; specific model not named in the retrieved text)",
       "reset": "not found",
