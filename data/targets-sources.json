@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "spikingjelly",
+      "title": "SpikingJelly: An open-source machine learning infrastructure platform for spike-based intelligence",
+      "authors": "W. Fang, Y. Chen, J. Ding, Z. Yu, T. Masquelier, D. Chen, L. Huang, H. Zhou, G. Li, Y. Tian",
+      "year": 2023,
+      "venue": "Science Advances 9(40):eadi1480",
+      "doi": "10.1126/sciadv.adi1480",
+      "url": "https://www.science.org/doi/10.1126/sciadv.adi1480",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Introduction (Emerging spiking deep learning methods)",
+        "arXiv:2310.16620v1 (same work), Experimental setup paragraph (Ubuntu 18.04 server, Intel Xeon Silver 4210R CPU, NVIDIA A100-SXM-80GB GPU, 256 GB memory)",
+        "arXiv:2310.16620v1, Fig. 1d and surrounding text (11x training speedup at T=32, 2x inference speedup, vs. Norse 1.0.0 and SNNTorch 0.6.0)"
+      ],
+      "aliases": [],
+      "notes": "The Science Advances publisher page (science.org) returned a crawl error / Cloudflare challenge past the introduction, so the methods and results sections were not retrieved from the publisher directly. The arXiv preprint (arXiv:2310.16620v1, 'SpikingJelly: An open-source machine learning infrastructure platform for spike-based intelligence', submitted 25 Oct 2023) is the same work (same title, authors, abstract text, and 11x claim) and was retrieved in full via curl + pypdf; it confirms the full author list (Fang, Chen, Ding, Yu, Masquelier, Chen, Huang, Zhou, Li, Tian) and the specific GPU (NVIDIA A100-SXM-80GB) used for the training-speed benchmark. Year remains 2023 (Science Advances volume 9, issue 40), consistent with the arXiv submission date.",
+      "purpose": "external"
+    },
+    {
+      "id": "mlgenn",
+      "title": "mlGeNN: accelerating SNN inference using GPU-enabled neural networks",
+      "authors": "J. P. Turner, J. C. Knight, A. Subramanian, T. Nowotny",
+      "year": 2022,
+      "venue": "Neuromorphic Computing and Engineering 2(2):024002",
+      "doi": "10.1088/2634-4386/ac5ac5",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ac5ac5",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section 2.1 GPU architecture",
+        "Figures 4-5 and captions",
+        "Table 2 (ImageNet comparison)"
+      ],
+      "aliases": [],
+      "notes": "Full open-access PDF retrieved and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "van-albada-nest-spinnaker",
+      "title": "Performance Comparison of the Digital Neuromorphic Hardware SpiNNaker and the Neural Network Simulation Software NEST for a Full-Scale Cortical Microcircuit Model",
+      "authors": "S. J. van Albada, A. G. Rowley, J. Senk, M. Hopkins, M. Schmidt, A. B. Stokes, D. R. Lester, M. Diesmann, S. B. Furber",
+      "year": 2018,
+      "venue": "Frontiers in Neuroscience 12:291",
+      "doi": "10.3389/fnins.2018.00291",
+      "url": "https://doi.org/10.3389/fnins.2018.00291",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Materials and Methods (NEST HPC cluster specification)",
+        "Results (runtime and energy consumption)"
+      ],
+      "aliases": [],
+      "notes": "Full PDF retrieved via Frontiers and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "nest5g-k-computer",
+      "title": "NEST-5g performance assessment report",
+      "authors": "B. Wylie (author, JSC); J. Pronold (applicant); I. Kitayama, J. Igarashi, M. Diesmann, J. Jordan, S. Kunkel, M. Helias (contributors)",
+      "year": 2018,
+      "venue": "POP (Performance Optimisation and Productivity) Centre of Excellence, Application Report POP AR 111",
+      "doi": null,
+      "url": "https://pop-coe.eu/sites/default/files/pop_files/pop-ar-nest5g.pdf",
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Section 1 Background (Machine Description)",
+        "Section 2 Setup",
+        "Section 4 Scalability"
+      ],
+      "aliases": [],
+      "notes": "Full PDF retrieved and read directly. Document is dated 2018-04-09; the retrieval-agent candidate table's 2017 reflects the pre-release NEST version tag date, not the report's own date.",
+      "purpose": "external"
+    },
+    {
+      "id": "onoszko-stm32n6-npu",
+      "title": "Implementing Spiking Neural Networks on NPU-Equipped Microcontroller: Analysis of NPU Acceleration for Embedded AI Systems",
+      "authors": "B. Onoszko, N. Törnqvist",
+      "year": 2025,
+      "venue": "KTH Royal Institute of Technology, Degree Project in Technology (first cycle, 15 credits)",
+      "doi": null,
+      "url": "https://www.diva-portal.org/smash/get/diva2:2005915/FULLTEXT01.pdf",
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Chapter 1 Introduction",
+        "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+      ],
+      "aliases": [],
+      "notes": "Full PDF retrieved from DiVA portal and read directly. This is a first-cycle (bachelor-level) degree project, not a peer-reviewed publication.",
+      "purpose": "external"
+    },
+    {
+      "id": "snntorch-portenta-h7",
+      "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
+      "authors": "K. C. Jurzec, T. Szydlo, M. Wielgosz",
+      "year": 2025,
+      "venue": "arXiv:2511.12136 [cs.CV]",
+      "doi": "10.48550/arXiv.2511.12136",
+      "url": "https://arxiv.org/abs/2511.12136",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section III-B Deployment Platforms and Evaluation Protocol",
+        "Section IV Results (Table I, Figure 6)"
+      ],
+      "aliases": [],
+      "notes": "Full HTML text retrieved from arXiv and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "memory-decoupled-mcu",
+      "title": "Memory-Decoupled Event-Driven SNN Deployment on Edge Microcontrollers",
+      "authors": "C. Yang (杨灿阳), J. X. Li",
+      "year": 2026,
+      "venue": "IEEE ICSP 2026",
+      "doi": "10.1109/icsp69961.2026.11540798",
+      "url": "https://doi.org/10.1109/icsp69961.2026.11540798",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract"
+      ],
+      "aliases": [],
+      "notes": "Only the abstract and bibliographic metadata were accessible (IEEE Xplore full text is paywalled); the reported latency/energy figures are taken from the abstract itself and were not cross-checked against the full body or figures.",
+      "purpose": "external"
+    },
+    {
+      "id": "fenn-riscv",
+      "title": "FeNN: A RISC-V vector processor for Spiking Neural Network acceleration",
+      "authors": "Z. Aizaz, J. C. Knight, T. Nowotny",
+      "year": 2025,
+      "venue": "NICE 2025 (Neuro-Inspired Computational Elements Conference); arXiv:2506.11760",
+      "doi": "10.48550/arXiv.2506.11760",
+      "url": "https://arxiv.org/abs/2506.11760",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section II-C System-on-Chip design",
+        "Section III Results"
+      ],
+      "aliases": [],
+      "notes": "Full arXiv PDF (v1) retrieved and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "fenn-dma-riscv",
+      "title": "FeNN-DMA: A RISC-V system-on-chip for spiking neural network acceleration",
+      "authors": "Z. Aizaz, J. C. Knight, T. Nowotny",
+      "year": 2026,
+      "venue": "Neuromorphic Computing and Engineering 6(2):024013",
+      "doi": "10.1088/2634-4386/ae688e",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ae688e",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section 3.1 Implementation",
+        "Table 2"
+      ],
+      "aliases": [],
+      "notes": "Full open-access PDF retrieved and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "coral-edge-tpu-tracking",
+      "title": "High-Speed, Real-Time, Spike-Based Object Tracking and Path Prediction on Google Edge TPU",
+      "authors": "J. Sengupta, R. Kubendran, E. Neftci, A. Andreou",
+      "year": 2020,
+      "venue": "IEEE International Conference on Artificial Intelligence Circuits and Systems (AICAS)",
+      "doi": null,
+      "url": "https://par.nsf.gov/servlets/purl/10212648",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Section II Demo Setup",
+        "Table I Performance Comparison",
+        "Section III Conclusion"
+      ],
+      "aliases": [],
+      "notes": "Full short paper (NSF PAR-hosted PDF/text) retrieved and read directly.",
+      "purpose": "external"
+    },
+    {
+      "id": "anglo-mixed-snn-mcu",
+      "title": "Event Driven Spiking Neural Network Using Analog Mixed Signals",
+      "authors": "S. Rawat, S. Sharma, S. Rizwan, P. Upadhyay, M. Niyogi, G. Thakur",
+      "year": 2026,
+      "venue": "Sustainable Computing and Intelligent Systems (SCIS 2025), Lecture Notes in Networks and Systems vol. 1929",
+      "doi": "10.1007/978-3-032-22911-3_9",
+      "url": "https://doi.org/10.1007/978-3-032-22911-3_9",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section 3.2 Heterogeneous Hardware Deployment",
+        "Section 6.3 Hardware Platforms (Digital MCU Baseline; Neuromorphic Deployment: Innatera SNP)",
+        "Section 7 Results and Table 1 (energy, latency, accuracy per platform)"
+      ],
+      "aliases": [],
+      "notes": "Full open-access chapter page (Springer, DOI landing page) retrieved and read in full, including the Results section and Table 1. Publisher-listed title reads 'Event Driven Spiking Neural Network Using Analog Mixed Signals'; the retrieval agent's candidate-table title used 'Anglo Mix Signals', an apparent transcription artifact of the same publisher page, corrected here against the page's own rendered title.",
+      "purpose": "external"
+    },
+    {
+      "id": "brian2-stimberg2019",
+      "title": "Brian 2, an intuitive and efficient neural simulator",
+      "authors": "M. Stimberg, R. Brette, D. F. M. Goodman",
+      "year": 2019,
+      "venue": "eLife",
+      "doi": "10.7554/eLife.47314",
+      "url": "https://doi.org/10.7554/eLife.47314",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "eLife article body, sections read: Abstract, eLife digest, Introduction, Materials and methods (Design and implementation; Mathematical level; Computational experiment level; Implementation level), Discussion, Appendix 1 (Design details)",
+        "\"Differential equations are specified in strings using mathematical notation\" (Materials and methods)",
+        "\"Standalone mode executes an independent binary file compiled from C++ code\" (Materials and methods)",
+        "\"Brian2GeNN uses the GPU-enhanced Neural Network simulator (GeNN) to accelerate simulations\" (Discussion)"
+      ],
+      "aliases": [
+        "brian2-stimberg2019"
+      ],
+      "notes": "Canonical reference paper for Brian2, body read directly from eLife (open access). Confirms bibliographic metadata (Stimberg, Brette, Goodman; eLife 2019; doi 10.7554/eLife.47314). Executes: neuron/synapse dynamics specified as differential equations in strings, supporting hybrid continuous+discrete-event systems, point integrate-and-fire neurons, graded synapses, and limited multi-compartment models. Runs on: CPU by default (Python runtime mode calling C++ via the weave library, or a standalone mode compiling to an independent C++ binary) across Windows, OS X, and Linux; GPU acceleration is reached only through separate companion projects Brian2GeNN (via the GeNN simulator) and the then-ongoing Brian2CUDA, not Brian2 itself. Reaches: no neuromorphic hardware backend stated anywhere in the body read. A run can claim: numerical simulation of the specified differential-equation model, not hardware execution.",
+      "purpose": "external"
+    },
+    {
+      "id": "nest-docs",
+      "title": "NEST simulator documentation",
+      "authors": null,
+      "year": null,
+      "venue": "Official documentation",
+      "doi": null,
+      "url": "https://nest-simulator.readthedocs.io/en/stable/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://nest-simulator.readthedocs.io/en/stable/ (\"Welcome to the NEST Simulator documentation!\")",
+        "https://nest-simulator.readthedocs.io/en/stable/models/index.html (\"Model directory\")",
+        "https://nest-simulator.readthedocs.io/en/stable/installation/index.html (\"Install and run NEST\")"
+      ],
+      "aliases": [
+        "nest-docs"
+      ],
+      "notes": "NEST's own documentation, created because the only prior registry hit for NEST (vanalbada2018-spinnaker-nest) is a SpiNNaker-vs-NEST comparison paper, not NEST's own page. Executes: \"NEST is used in computational neuroscience to model and study behavior of large networks of neurons\"; the model directory states NEST \"has over 100 models\" of neurons, synapses, and devices, including leaky/exponential/adaptive integrate-and-fire variants, Hodgkin-Huxley, Izhikevich, static and short-term-plasticity (Tsodyks) synapses, STDP variants, and gap junctions. Runs on: installable on Linux, macOS, Windows, and cross-platform Docker, with a dedicated guide to \"Optimize performance of HPC Systems\" and a \"Guide to parallel computing\"; no GPU support stated on the pages read. Reaches: no neuromorphic hardware backend stated on the pages read. A run can claim: \"A NEST simulation is created with input from stimulation devices, neuron models, and synapse models, along with connection rules\", i.e. a numerical simulation of network dynamics, not hardware execution.",
+      "purpose": "external"
+    },
+    {
+      "id": "neuron-docs",
+      "title": "The NEURON simulator documentation",
+      "authors": null,
+      "year": null,
+      "venue": "Official documentation",
+      "doi": null,
+      "url": "https://www.neuronsimulator.org/en/latest/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://www.neuronsimulator.org/en/latest/ (landing page, redirect target of https://nrn.readthedocs.io/en/latest/)"
+      ],
+      "aliases": [
+        "neuron-docs"
+      ],
+      "notes": "NEURON's own documentation, created because the only prior registry hit for NEURON (SJ-NeuronDocs) is a SpikingJelly tutorial page, not NEURON's own page. Only the landing page was read; quickstart.html and about.html both returned 404 on this pass. Executes: \"NEURON is a simulator for neurons and networks of neurons\"; the page does not state which neuron/model classes (compartmental, ion-channel-based, or otherwise) it executes. Runs on: \"runs efficiently on your local machine, in the cloud, or on an HPC\", with mentions of Google Colab, the Neuroscience Gateway, and EBRAINS as hosted options; no CPU/GPU/MPI parallelization detail stated. Reaches: no neuromorphic hardware backend stated on the page read. A run can claim: the page only says users \"Build and simulate models using Python, HOC, and/or NEURON's graphical interface\"; it does not characterize what kind of dynamics a run represents.",
+      "purpose": "external"
+    },
+    {
+      "id": "genn-docs",
+      "title": "GeNN (GPU-enhanced Neuronal Networks)",
+      "authors": null,
+      "year": null,
+      "venue": "Official documentation",
+      "doi": null,
+      "url": "https://genn-team.github.io/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://genn-team.github.io/ (GeNN project homepage)",
+        "https://genn-team.github.io/genn/documentation/4/html/d2/dba/SpineML.html (\"GeNN: SpineML and SpineCreator\", GeNN 4.9.0 documentation body page, fix round 2)"
+      ],
+      "aliases": [
+        "genn-docs"
+      ],
+      "notes": "GeNN's own project homepage, created because the only prior registry hit for GeNN (Turner22-mlGeNN) is the mlGeNN paper, a variant library built on GeNN, not GeNN's own page. Executes: \"GeNN is a GPU enhanced Neuronal Network simulation environment based on NVIDIA CUDA technology\", described as \"a code generation framework for accelerated brain simulations\" (code-generated neuron/synapse model simulations, model classes not enumerated on this page). Runs on: NVIDIA GPUs via CUDA; the page states no CPU-only execution path. Reaches: no neuromorphic hardware backend stated; the homepage instead cites a claim that GPUs running GeNN \"Outperform Current HPC and Neuromorphic Solutions in Terms of Speed and Energy When Simulating a Highly-Connected Cortical Model\" (i.e. GeNN is offered as an alternative to neuromorphic hardware, not a path onto it). A run can claim: GPU-executed code-generated simulation of the specified brain model. Maintained by the GeNN Team (J. Knight, T. Nowotny, University of Sussex); foundational publication Yavuz et al. 2016, Scientific Reports, doi 10.1038/srep18854, cited by the team page but its body not itself re-read for this record. Fix round 2 added a documentation body page (not the homepage): the SpineML integration page, GeNN 4.9.0. It walks through configuring SpineCreator to use a GeNN installation as a simulator and running an experiment, and it names a \"GENN_SPINEML_CPU_ONLY\" environment variable for CPU-only operation of the SpineML integration, which qualifies the homepage's \"no CPU-only execution path\" statement, that path exists at least for this integration. retrieval_status stays full_text, now supported by a documentation body page, not only the landing page.",
+      "purpose": "external"
+    },
+    {
+      "id": "samna-docs",
+      "title": "Samna documentation",
+      "authors": null,
+      "year": null,
+      "venue": "Official documentation",
+      "doi": null,
+      "url": "https://synsense-sys-int.gitlab.io/samna/0.48.6/index.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://synsense-sys-int.gitlab.io/samna/0.48.6/index.html (\"Welcome to Samna's Documentation!\", redirect target of https://synsense-sys-int.gitlab.io/samna/)",
+        "https://synsense-sys-int.gitlab.io/samna/0.46.1/models/speckSeries/summary.html (\"Speck Series\", a chip-specific samna documentation page, fix round 2)"
+      ],
+      "aliases": [
+        "samna-docs"
+      ],
+      "notes": "SynSense's own samna documentation. Created because samna was previously covered only by a Rockpool Xylo record and a Sinabs Speck-deployment tutorial, both different tools. States \"Samna is the API to interact with SynSense devices from your PC\", providing device configuration, event-data routing, and device management via Python bindings run on a host PC. The landing page's table of contents references \"Chip Models\" and \"Development Kits\" sections but this page itself does not enumerate Speck, Xylo, or DYNAP by name; deeper chip-specific pages were not fetched in this pass. A run can claim: direct interaction with and control of the physical SynSense device from the host, not a simulation. Fix round 2 added a chip-specific documentation body page under the samna docs site (Speck Series, v0.46.1). It names and describes the chip directly, \"Speck is a comprehensive, multicore spiking neural network processing chip which is able to support large-scale spiking convolutional neural network (SCNN) with an fully asynchronous chip architecture\", integrating a DVS sensor for event-driven visual sensing at few-ms response latency and milliwatt-scale power. This resolves the earlier note that the landing page alone did not name Speck. retrieval_status stays full_text, now supported by a chip-specific documentation page, not only the landing page.",
+      "purpose": "external"
+    },
+    {
+      "id": "carlsim",
+      "title": "CARLsim: An Efficient, Easy-to-Use, GPU-Accelerated Library for Simulating Large-Scale Spiking Neural Network Models",
+      "authors": "T.-S. Chou, H. J. Kashyap, J. Xing, S. Listopad, E. L. Rounds, M. Beyeler, N. Dutt, J. L. Krichmar",
+      "year": 2013,
+      "venue": "GitHub/CARLsim5 Documentation",
+      "doi": null,
+      "url": "https://github.com/UCI-CARL/CARLsim5",
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "CARLsim is an efficient, easy-to-use, GPU-accelerated library for simulating large-scale spiking neural network models with a high degree of biological detail",
+        "Supports Izhikevich spiking neurons with realistic synaptic dynamics",
+        "Execution on CPU (generic x86) and GPU (CUDA-enabled, compute capability 2.0+)",
+        "PyNN-like programming interface in C/C++"
+      ],
+      "aliases": [
+        "carlsim"
+      ],
+      "notes": "Simulator providing GPU acceleration for SNN simulation. Implements Izhikevich neuron model with programmable parameters at synapse, neuron, and network levels. No neuromorphic hardware backends; simulation-only. Supports Linux and macOS with CMake build system. Author list corrected in fix round 2 to the full citation the GitHub README itself gives (\"If you use CARLsim or PyCARL in your research, please cite our papers CARLsim and PyCARL\", followed by the CARLsim 4 citation), replacing the earlier informal \"Carrillo, S., Ros, E., and others\" form, which is not the list the README gives.",
+      "purpose": "external"
+    },
+    {
+      "id": "nxsdk",
+      "title": "NxSDK: Intel Loihi Neuromorphic Processor Software",
+      "authors": "Intel Neuromorphic Research Community",
+      "year": 2019,
+      "venue": "Intel Labs",
+      "doi": null,
+      "url": "https://github.com/IntelLabs/nxsdk",
+      "source_type": "official_vendor_documentation",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Hardware backend uses Intel's NxSDK API to execute models directly on Loihi boards",
+        "Referenced in NengoLoihi as pathway for Loihi hardware execution"
+      ],
+      "aliases": [
+        "nxsdk"
+      ],
+      "notes": "Software development kit for Intel Loihi neuromorphic processor. Primary interface for low-level hardware execution. Mentioned in NengoLoihi documentation as the API enabling direct Loihi hardware execution from high-level frameworks. No standalone documentation page with full technical specifications located.",
+      "purpose": "external"
+    },
+    {
+      "id": "fpga-truenorth-emulation",
+      "title": "FPGA Based Emulation Environment for Neuromorphic Architectures",
+      "authors": "S. Valancius, E. Richter, R. Purdy, K. Rockowitz, M. Inouye, J. Mack, N. Kumbhare, K. Fair, J. Mixter, A. Akoglu",
+      "year": 2020,
+      "venue": "2020 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)",
+      "doi": "10.1109/ipdpsw50202.2020.00022",
+      "url": "https://ar5iv.labs.arxiv.org/html/2004.06061",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Abstract",
+        "Section I Introduction",
+        "Section II Reference Architecture Overview and Implementation (II-A Neuron Block, II-B Core SRAM, II-C Router, II-D Scheduler)",
+        "Table II (post-implementation resource usage on Xilinx Zynq UltraScale+ XCZU9EG)"
+      ],
+      "aliases": [],
+      "notes": "Added in fix round 2, finding 2, to fill the \"Hardware Emulation\" catalog group's missing \"FPGA emulation of a named chip\" entry. Read via the arXiv mirror (ar5iv.labs.arxiv.org/html/2004.06061); the published IEEE Xplore version carries the doi above. The paper reimplements IBM TrueNorth's five per-core components (neuron block, core SRAM, router, scheduler, token controller) as a reference design realized on a Xilinx Zynq UltraScale+ MPSoC ZCU102 development board (XCZU9EG FPGA), then validates it against IBM's own Compass simulator on MNIST and vector-matrix-multiplication case studies.",
+      "purpose": "external"
+    }
+  ]
+}

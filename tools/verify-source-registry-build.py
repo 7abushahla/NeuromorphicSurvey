@@ -211,7 +211,10 @@ def main() -> int:
     foundations_rows = len(
         json.loads((ROOT / "data/foundations-sources.json").read_text())["sources"]
     )
-    expected_rows = 476 + foundations_rows
+    targets_rows = len(
+        json.loads((ROOT / "data/targets-sources.json").read_text())["sources"]
+    )
+    expected_rows = 476 + foundations_rows + targets_rows
     if len(input_records) != expected_rows or sum(input_counts.values()) != expected_rows:
         raise AssertionError(
             f"expected {expected_rows} structured input rows, got {len(input_records)}"

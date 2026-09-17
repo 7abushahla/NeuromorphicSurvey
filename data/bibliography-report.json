@@ -9,18 +9,18 @@
     "a17-two-populations",
     "a18-sourcecode-comparison"
   ],
-  "cited": 226,
+  "cited": 228,
   "cited_aliased": 7,
-  "cited_keys": 232,
-  "defined": 385,
+  "cited_keys": 234,
+  "defined": 401,
   "duplicate": 0,
   "match_methods": {
-    "registry": 232
+    "registry": 234
   },
   "reference_keys": 0,
   "reference_only": 0,
   "reference_only_unresolved": 0,
-  "uncited": 159,
+  "uncited": 173,
   "unresolved": 0,
   "unresolved_cited": [],
   "unresolved_reference_only": []

@@ -4018,7 +4018,9 @@
         {
           "source_id": "vanalbada2018-spinnaker-nest",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "Abstract",
+            "Materials and Methods (NEST HPC cluster specification)",
+            "Results (runtime and energy consumption)"
           ]
         }
       ],
@@ -4030,8 +4032,8 @@
         },
         {
           "source_id": "vanalbada2018-spinnaker-nest",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ]
     },
@@ -6318,7 +6320,9 @@
         {
           "source_id": "vanalbada2018-spinnaker-nest",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "Abstract",
+            "Materials and Methods (NEST HPC cluster specification)",
+            "Results (runtime and energy consumption)"
           ]
         }
       ],
@@ -6345,8 +6349,8 @@
         },
         {
           "source_id": "vanalbada2018-spinnaker-nest",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ]
     },
@@ -19549,7 +19553,9 @@
         {
           "source_id": "vanalbada2018-spinnaker-nest",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "Abstract",
+            "Materials and Methods (NEST HPC cluster specification)",
+            "Results (runtime and energy consumption)"
           ]
         }
       ],
@@ -19561,8 +19567,8 @@
         },
         {
           "source_id": "vanalbada2018-spinnaker-nest",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
       "input_shape": "legacy",

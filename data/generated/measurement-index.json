@@ -179,6 +179,61 @@
       "verification_status": "verified"
     },
     {
+      "id": "anglo-mixed-snn-mcu",
+      "title": "Event Driven Spiking Neural Network Using Analog Mixed Signals",
+      "authors": "Rawat, S., Sharma, S., Rizwan, S., Upadhyay, P., Niyogi, M., Thakur, G.",
+      "year": 2026,
+      "venue": "Sustainable Computing and Intelligent Systems (SCIS 2025), Lecture Notes in Networks and Systems vol. 1929, pp. 115-127",
+      "url": "https://doi.org/10.1007/978-3-032-22911-3_9",
+      "family": "conversion",
+      "population": "deployment",
+      "method_summary": "A quantized 8-bit CNN (e.g. MobileNetV2) is converted to a spiking network via Time-to-First-Spike encoding with layer-wise normalization and threshold calibration, then benchmarked as a digital SNN on an ARM Cortex-M4 MCU against the same converted SNN deployed on an analog-mixed-signal neuromorphic chip (named in the body text as Innatera SNP) and against the original 8-bit CNN on the same MCU.",
+      "neuron": "not found (TTFS-encoded spiking neuron; specific model not named in the retrieved text)",
+      "reset": "not found",
+      "encoding": "Time-to-First-Spike (TTFS)",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "energy per inference, inference latency, and top-1 accuracy of the converted digital SNN running on the Cortex-M4, measured with an external power analyzer under the MLPerf Tiny windowed-measurement protocol: the digital SNN on the Cortex-M4 uses 48 microjoules per inference, takes about 5-6 ms (6.1 ms) per inference, and reaches 87.9% accuracy, versus 60 microjoules / ~5-6 ms / 89.5% for the 8-bit CNN on the same MCU and 24 microjoules / ~0.8 ms / 88.2% for the same network on the Innatera SNP analog chip",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Section 6.3 'Hardware Platforms' states the machine directly: 'Digital MCU Baseline: All models are deployed on the ARM Cortex-M4 MCU, representative of processors commonly used in real-edge devices.' Section 7 'Results' states the measurement: 'the analog SNNs consume merely 24 microjoules per inference, less than half the energy per inference of the 8-bit CNN on the MCU at 60 microjoules and lower than that of the digital SNN at 48 microjoules', and 'digital SNNs on the Cortex-M4... take about five to six milliseconds per inference.' This is not the comparator pattern of the previously rejected candidates 27-30 (another paper's own claim measured on a chip, with an externally cited Jetson/CPU number): here, the Cortex-M4 run of the paper's own converted SNN is itself a directly measured target, one of the paper's own two head-to-head hardware platforms, not a citation to someone else's number. Correction to the controller's ruling: the fuller text names the comparator analog chip as 'Innatera SNP' (Sections 5.2 and 6.3), so it is not unnamed as initially assumed; the qualifier's 'analog-chip paper' wording is kept but the chip's name is recorded here rather than claimed unknown."
+      },
+      "workload": [
+        "CIFAR-10",
+        "Google Speech Commands"
+      ],
+      "platform": {
+        "target_hardware": "ARM Cortex-M4 MCU (part not named); comparator: Innatera SNP analog-mixed-signal neuromorphic chip, measured in the same paper",
+        "toolchain": "custom CNN-to-SNN (TTFS) conversion pipeline -> ARM Cortex-M4 MCU / Innatera SNP"
+      },
+      "comparability_notes": "Section 6.3 'Hardware Platforms' states the machine directly: 'Digital MCU Baseline: All models are deployed on the ARM Cortex-M4 MCU, representative of processors commonly used in real-edge devices.' Section 7 'Results' states the measurement: 'the analog SNNs consume merely 24 microjoules per inference, less than half the energy per inference of the 8-bit CNN on the MCU at 60 microjoules and lower than that of the digital SNN at 48 microjoules', and 'digital SNNs on the Cortex-M4... take about five to six milliseconds per inference.' This is not the comparator pattern of the previously rejected candidates 27-30 (another paper's own claim measured on a chip, with an externally cited Jetson/CPU number): here, the Cortex-M4 run of the paper's own converted SNN is itself a directly measured target, one of the paper's own two head-to-head hardware platforms, not a citation to someone else's number. Correction to the controller's ruling: the fuller text names the comparator analog chip as 'Innatera SNP' (Sections 5.2 and 6.3), so it is not unnamed as initially assumed; the qualifier's 'analog-chip paper' wording is kept but the chip's name is recorded here rather than claimed unknown.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "anglo-mixed-snn-mcu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "anglo-mixed-snn-mcu",
+          "locators": [
+            "Abstract",
+            "Section 3.2 Heterogeneous Hardware Deployment",
+            "Section 6.3 Hardware Platforms (Digital MCU Baseline; Neuromorphic Deployment: Innatera SNP)",
+            "Section 7 Results and Table 1 (energy, latency, accuracy per platform)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "anglo-mixed-snn-mcu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
       "id": "apex",
       "title": "APEX: A Dual-Sparsity Accelerator for Precise and Efficient SNN Inference",
       "authors": "Manjunath, V. et al. (incl. Gopalakrishnan Srinivasan, a PASCAL co-author)",
@@ -550,6 +605,59 @@
         }
       ],
       "verification_status": "provisional"
+    },
+    {
+      "id": "coral-edge-tpu-tracking",
+      "title": "High-Speed, Real-Time, Spike-Based Object Tracking and Path Prediction on Google Edge TPU",
+      "authors": "Sengupta, J., Kubendran, R., Neftci, E., Andreou, A.",
+      "year": 2020,
+      "venue": "IEEE International Conference on Artificial Intelligence Circuits and Systems (AICAS)",
+      "url": "https://par.nsf.gov/servlets/purl/10212648",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "A DAVIS240C event-based vision sensor is paired with a spike-based tracking network (trained in TensorFlow) and a path-prediction MLP, both deployed on the Google Coral Edge TPU Dev Board (an 8-bit fixed-point NPU) and benchmarked live against the same networks running on an Intel Compute Stick (64-bit floating-point).",
+      "neuron": "not found",
+      "reset": "not found",
+      "encoding": "asynchronous, event-based (address-event) spikes from the DVS sensor",
+      "input_encoding": "direct DAVIS240C dynamic-vision-sensor spike stream",
+      "timesteps": "not found",
+      "metric": "power, model size, latency, and computational efficiency measured on both platforms: Edge TPU 1.72 W / 0.5 MB / 4 ms / 1.057 GOPS/mW versus Intel Compute Stick 5.48 W / 1.8 MB / 27 ms / 0.052 GOPS/mW",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Table I ('Performance Comparison') reports measured power, model size, latency, and computational efficiency for the Google Edge TPU versus the Intel Compute Stick on the same tracking/prediction task. Full short paper read directly."
+      },
+      "workload": [
+        "not applicable (live demo: bouncing-ball tracking task with DAVIS240C sensors)"
+      ],
+      "platform": {
+        "target_hardware": "Google Coral Edge TPU Dev Board (8-bit fixed-point NPU); comparator: Intel Compute Stick (64-bit floating-point), measured in the same paper",
+        "toolchain": "TensorFlow -> Coral Edge TPU Dev Board (8-bit fixed-point)"
+      },
+      "comparability_notes": "Table I ('Performance Comparison') reports measured power, model size, latency, and computational efficiency for the Google Edge TPU versus the Intel Compute Stick on the same tracking/prediction task. Full short paper read directly.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "coral-edge-tpu-tracking"
+      ],
+      "source_refs": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "locators": [
+            "Section II Demo Setup",
+            "Section III Conclusion",
+            "Table I Performance Comparison"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
     },
     {
       "id": "cos",
@@ -1081,6 +1189,114 @@
       "verification_status": "provisional"
     },
     {
+      "id": "fenn-dma-riscv",
+      "title": "FeNN-DMA: A RISC-V system-on-chip for spiking neural network acceleration",
+      "authors": "Aizaz, Z., Knight, J.C., Nowotny, T.",
+      "year": 2026,
+      "venue": "Neuromorphic Computing and Engineering 6(2):024013",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ae688e",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "FeNN-DMA, a RISC-V system-on-chip pairing a softcore with a vector co-processor and a DMA-based memory path, is implemented on Xilinx/AMD UltraScale+ FPGAs (single- and dual-core Kria KV260 SoCs), scaling to 16,000 neurons and 256 million synapses per core with programmable neuron models.",
+      "neuron": "programmable (LIF, Izhikevich, and other models supported; evaluated with LIF-family neurons)",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "simulation time and effective throughput of a balanced random network (up to 16,000 neurons, 90% sparsity, 1000 1 ms timesteps) running on the physical single-core FeNN-DMA SoC, read from on-chip performance counters; classification accuracy on Spiking Heidelberg Digits, N-MNIST, and Braille running on FeNN-DMA; and, separately, post-implementation EDA tool figures for operating frequency (175 MHz single-core, 143 MHz dual-core), dynamic power (0.53 W), and resource usage (54,984 LUTs, 47,759 FFs) from Vivado synthesis/implementation of the same design on the Kria KV260 SoC",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Section 3.3 and Figure 6 state the design was run on the physical single-core FeNN-DMA SoC and its simulation time and throughput were measured directly, \"Points represent measured simulation times... running on a single FeNN core\" and \"'Measured' is based on total simulation time, 'Measured synapses' is calculated using performance counters around the event propagation process group\". This is a run on the board, not only a tool report, so E1 stands. Separately, the frequency, dynamic power, and resource-usage figures in Section 3.1 and Table 2 are post-implementation EDA tool reports from Vivado synthesis and implementation, not probe measurements on the board; Table 2's own footnote marks some of the compared designs' power figures as produced \"using a more accurate methodology based on switching activity files\", the same post-implementation estimation method, not a physical power probe. Full PDF read directly (Abstract, Introduction, Section 2 Methods, Section 3 Results, Table 2)."
+      },
+      "workload": [
+        "Spiking Heidelberg Digits",
+        "Neuromorphic MNIST (N-MNIST)",
+        "Braille tactile classification"
+      ],
+      "platform": {
+        "target_hardware": "FeNN-DMA: RISC-V system-on-chip (softcore + vector co-processor) on AMD/Xilinx Kria KV260 FPGA boards (single-core 175 MHz, dual-core 143 MHz)",
+        "toolchain": "custom RTL (SystemVerilog) synthesized with AMD Vivado Design Suite 2023.2, on Kria KV260 boards"
+      },
+      "comparability_notes": "Section 3.3 and Figure 6 state the design was run on the physical single-core FeNN-DMA SoC and its simulation time and throughput were measured directly, \"Points represent measured simulation times... running on a single FeNN core\" and \"'Measured' is based on total simulation time, 'Measured synapses' is calculated using performance counters around the event propagation process group\". This is a run on the board, not only a tool report, so E1 stands. Separately, the frequency, dynamic power, and resource-usage figures in Section 3.1 and Table 2 are post-implementation EDA tool reports from Vivado synthesis and implementation, not probe measurements on the board; Table 2's own footnote marks some of the compared designs' power figures as produced \"using a more accurate methodology based on switching activity files\", the same post-implementation estimation method, not a physical power probe. Full PDF read directly (Abstract, Introduction, Section 2 Methods, Section 3 Results, Table 2).",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "fenn-dma-riscv"
+      ],
+      "source_refs": [
+        {
+          "source_id": "fenn-dma-riscv",
+          "locators": [
+            "Abstract",
+            "Section 3.1 Implementation",
+            "Table 2"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "fenn-dma-riscv",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "fenn-riscv",
+      "title": "FeNN: A RISC-V vector processor for Spiking Neural Network acceleration",
+      "authors": "Aizaz, Z., Knight, J.C., Nowotny, T.",
+      "year": 2025,
+      "venue": "NICE 2025 (Neuro-Inspired Computational Elements Conference); arXiv:2506.11760",
+      "url": "https://arxiv.org/abs/2506.11760",
+      "family": "hardware-accelerator",
+      "population": "deployment",
+      "method_summary": "FeNN, a fully programmable RISC-V-based soft vector processor tightly coupled to a CV32E40X RISC-V scalar core, implemented on Xilinx/AMD FPGAs (Kria KV260 prototype, scalable to Alveo U55C), uses stochastic rounding and 16-bit fixed-point arithmetic to simulate adaptive-LIF recurrent SNNs.",
+      "neuron": "Adaptive Leaky Integrate-and-Fire (ALIF)",
+      "reset": "subtractive (firing threshold Vth subtracted from membrane voltage V on spike)",
+      "encoding": "not found",
+      "input_encoding": "Poisson spiking input (synthetic tests); spoken-digit audio features for the classifier",
+      "timesteps": "not found",
+      "metric": "classification latency and energy of a recurrent SNN spoken-digit classifier: 'this classifier runs significantly faster than a similar model running on Loihi and twice as fast as the same model running on an embedded GPU while using half the energy'",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Abstract and Results state a single FeNN core simulates the SNN classifier faster than both an embedded GPU and Loihi. Per the controller ruling, FeNN is classified RISC-V (a RISC-V soft core on an FPGA), not FPGA or neuromorphic, since the design is a programmable RISC-V accelerator rather than a fixed-function spiking ASIC. Full arXiv PDF read directly (Abstract, Introduction, Methods, Results)."
+      },
+      "workload": [
+        "spoken-digit classification dataset (cited as reference [15]; exact name not stated in the retrieved excerpt)"
+      ],
+      "platform": {
+        "target_hardware": "FeNN: RISC-V soft vector processor (CV32E40X scalar core + custom vector co-processor) on an AMD/Xilinx Kria KV260 FPGA board; comparators: an embedded GPU and Intel Loihi, referenced in the same paper",
+        "toolchain": "custom RTL (SystemVerilog) synthesized with Xilinx Vivado 2023.2, on a Kria KV260 development board"
+      },
+      "comparability_notes": "Abstract and Results state a single FeNN core simulates the SNN classifier faster than both an embedded GPU and Loihi. Per the controller ruling, FeNN is classified RISC-V (a RISC-V soft core on an FPGA), not FPGA or neuromorphic, since the design is a programmable RISC-V accelerator rather than a fixed-function spiking ASIC. Full arXiv PDF read directly (Abstract, Introduction, Methods, Results).",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "fenn-riscv"
+      ],
+      "source_refs": [
+        {
+          "source_id": "fenn-riscv",
+          "locators": [
+            "Abstract",
+            "Section II-C System-on-Chip design",
+            "Section III Results"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "fenn-riscv",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
       "id": "firefly",
       "title": "FireFly v2: Advancing Hardware Support for High-Performance Spiking Neural Network With a Spatiotemporal FPGA Accelerator",
       "authors": "Li, J., Shen, J., Zhao, R., Zhang, X., Zeng, Y.",
@@ -1444,6 +1660,111 @@
       "verification_status": "provisional"
     },
     {
+      "id": "memory-decoupled-mcu",
+      "title": "Memory-Decoupled Event-Driven SNN Deployment on Edge Microcontrollers",
+      "authors": "Yang, C. (杨灿阳), Li, J.X.",
+      "year": 2026,
+      "venue": "IEEE ICSP 2026 (International Conference on Signal Processing)",
+      "url": "https://doi.org/10.1109/icsp69961.2026.11540798",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "A hardware-software co-optimization architecture for ARM Cortex-M7 decouples SNN time-step unrolling from memory footprint via a double-depth rolling array (reducing dynamic-state memory from O(N x T) to O(N)) and an event-driven sparse COO-format execution path, physically benchmarked on an STM32H7 board.",
+      "neuron": "recurrent SNN (LIF-family; exact reset not stated in the retrieved abstract)",
+      "reset": "not found",
+      "encoding": "event-driven, sparse spike execution (Coordinate List / COO format)",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "peak dynamic SRAM overhead reduction (~74%) and, for a recurrent SNN (784-256-10) with partial readout on MNIST, an inference latency of 197.69 ms and an energy consumption of 76.98 mJ, measured on the physical STM32H7 MCU",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Abstract states 'Physical benchmarks on the STM32H7 MCU across both static MNIST and continuous Speech wake-word tasks' and reports the 197.69 ms latency / 76.98 mJ energy figures for the MNIST recurrent-SNN configuration. Only the abstract/metadata page was retrieved (IEEE Xplore full text is paywalled); the full body was not read."
+      },
+      "workload": [
+        "MNIST (static)",
+        "speech wake-word (continuous)"
+      ],
+      "platform": {
+        "target_hardware": "STM32H7 ARM Cortex-M7 MCU",
+        "toolchain": "not found (custom hardware-software co-optimization framework; training toolchain not stated in the retrieved abstract)"
+      },
+      "comparability_notes": "Abstract states 'Physical benchmarks on the STM32H7 MCU across both static MNIST and continuous Speech wake-word tasks' and reports the 197.69 ms latency / 76.98 mJ energy figures for the MNIST recurrent-SNN configuration. Only the abstract/metadata page was retrieved (IEEE Xplore full text is paywalled); the full body was not read.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "memory-decoupled-mcu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "memory-decoupled-mcu",
+          "locators": [
+            "Abstract"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "memory-decoupled-mcu",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
+      "id": "mlgenn",
+      "title": "mlGeNN: accelerating SNN inference using GPU-enabled neural networks",
+      "authors": "Turner, J.P., Knight, J.C., Subramanian, A., Nowotny, T.",
+      "year": 2022,
+      "venue": "Neuromorphic Computing and Engineering 2(2):024002",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ac5ac5",
+      "family": "classical-conversion",
+      "population": "both",
+      "method_summary": "mlGeNN, a Python library that converts Keras-specified ANNs to SNNs via rate-based and few-spike ANN-to-SNN conversion, then simulates the converted SNNs on GPU using the GeNN simulator with extensions for convolutional connectivity and batching.",
+      "neuron": "not found",
+      "reset": "not found",
+      "encoding": "rate-based and few-spike (temporal) conversion, evaluated separately",
+      "input_encoding": "not found",
+      "timesteps": "T=2500 (rate-based VGG-16), T=1000 (rate-based ResNet-20); K=10 (few-spike VGG-16), K=8 (few-spike ResNet-20)",
+      "metric": "CIFAR-10 inference time and speed relative to BindsNET and TensorFlow across batch sizes; VGG-16 inference measured 2.5x faster than BindsNET, and the ResNet-20 few-spike model only a little over 2x slower than the original TensorFlow ANN, while the fastest rate-based model is over 100x slower than the TensorFlow ANN",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Figure captions state 'A 12 GB Titan V GPU was used for all experiments' for both the accuracy sweep (Figure 4) and the batch-size/inference-time sweep (Figure 5); full open-access PDF read directly, including Section 2.1 'GPU architecture'."
+      },
+      "workload": [
+        "CIFAR-10",
+        "ImageNet"
+      ],
+      "platform": {
+        "target_hardware": "NVIDIA Titan V GPU (12 GB)",
+        "toolchain": "mlGeNN -> GeNN (CUDA)"
+      },
+      "comparability_notes": "Figure captions state 'A 12 GB Titan V GPU was used for all experiments' for both the accuracy sweep (Figure 4) and the batch-size/inference-time sweep (Figure 5); full open-access PDF read directly, including Section 2.1 'GPU architecture'.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "Turner22-mlGeNN"
+      ],
+      "source_refs": [
+        {
+          "source_id": "Turner22-mlGeNN",
+          "locators": [
+            "assets/bibliography/references.bib entry Turner22-mlGeNN",
+            "site/sec-06.html reference Turner22-mlGeNN"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "Turner22-mlGeNN",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional"
+    },
+    {
       "id": "morphic",
       "title": "MorphIC: A 65-nm 738k-Synapse/mm2 Quad-Core Binary-Weight Digital Neuromorphic Processor with Stochastic Spike-Driven Online Learning",
       "authors": "Frenkel, C., Legat, J.-D., Bol, D.",
@@ -1606,6 +1927,59 @@
       "source_statuses": [
         {
           "source_id": "mt-snn-withdrawn-iclr",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
+      "id": "nest5g-k-computer",
+      "title": "NEST-5g performance assessment report",
+      "authors": "Wylie, B. (author, JSC); Pronold, J. (applicant); Kitayama, I., Igarashi, J., Diesmann, M., Jordan, J., Kunkel, S., Helias, M. (contributors)",
+      "year": 2018,
+      "venue": "POP (Performance Optimisation and Productivity) Centre of Excellence, Application Report POP AR 111",
+      "url": "https://pop-coe.eu/sites/default/files/pop_files/pop-ar-nest5g.pdf",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "A performance and scalability audit of the NEST large-scale neuronal-network simulator's weak-scaling behavior on a petascale CPU supercomputer, using a balanced random-network benchmark (hpc_benchmark.sli) with 12,500 neurons per MPI process.",
+      "neuron": "not found",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "500 ms simulated biological time (Tsim500)",
+      "metric": "weak-scaling wall-clock time of NEST-5g's connect, prepare, and run phases from 128 to 82,944 compute nodes; connect (build) time stays roughly constant at about 80 seconds while the prepare and run phases grow with node count",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "The report's 'Machine Description' names the K computer and its SPARC64 VIIIfx CPU nodes explicitly; Section 4 'Scalability' reports measured wall-clock weak-scaling times. Full PDF read directly."
+      },
+      "workload": [
+        "not applicable (synthetic balanced random-network benchmark, hpc_benchmark.sli)"
+      ],
+      "platform": {
+        "target_hardware": "K computer at RIKEN AICS: 82,944 compute nodes, each with 1 Fujitsu SPARC64 VIIIfx 8-core 2.0 GHz processor, Tofu interconnect",
+        "toolchain": "NEST (development version tagged '2aa733a') with MPI+OpenMP; profiled with Scalasca/Score-P"
+      },
+      "comparability_notes": "The report's 'Machine Description' names the K computer and its SPARC64 VIIIfx CPU nodes explicitly; Section 4 'Scalability' reports measured wall-clock weak-scaling times. Full PDF read directly.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "nest5g-k-computer"
+      ],
+      "source_refs": [
+        {
+          "source_id": "nest5g-k-computer",
+          "locators": [
+            "Section 1 Background (Machine Description)",
+            "Section 2 Setup",
+            "Section 4 Scalability"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "nest5g-k-computer",
           "retrieval_status": "full_text",
           "verification_status": "verified"
         }
@@ -1826,6 +2200,59 @@
         }
       ],
       "verification_status": "provisional"
+    },
+    {
+      "id": "onoszko-stm32n6-npu",
+      "title": "Implementing Spiking Neural Networks on NPU-Equipped Microcontroller: Analysis of NPU Acceleration for Embedded AI Systems",
+      "authors": "Onoszko, B., Törnqvist, N.",
+      "year": 2025,
+      "venue": "KTH Royal Institute of Technology, Degree Project in Technology (first cycle, 15 credits)",
+      "url": "https://www.diva-portal.org/smash/get/diva2:2005915/FULLTEXT01.pdf",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "A Leaky Integrate-and-Fire SNN, built with TensorFlow Lite and quantized via the STEdgeAI toolchain, is deployed on the STM32N657X0 microcontroller and run on both its integrated ST Neural-ART NPU and its Cortex-M55 CPU, with on-board power measurement comparing the two execution paths.",
+      "neuron": "Leaky Integrate-and-Fire (LIF)",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "time-per-sample and total energy per inference measured on-board (STLINK-V3PWR probe) for both the NPU and CPU execution paths, across 100- and 1000-node models with 1-10 layers; e.g. for the 1000-node, 10-layer model the NPU takes 277.16 ms and 50,965.60 uJ per sample versus 2096.48 ms and 225,784.64 uJ per sample on the Cortex-M55 CPU",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Results state 'The values in Table 5.1 and Table 5.2 were recorded during inference on the ST Neural-ART processor' and 'The values in Tables 5.3 and 5.4 were recorded during inference on the Cortex-M55 processor', with measured time-per-sample and energy tables for both. Full PDF read directly (Introduction, Methods overview, and Results chapter)."
+      },
+      "workload": [
+        "not found"
+      ],
+      "platform": {
+        "target_hardware": "STM32N657X0 MCU: ST Neural-ART NPU and Cortex-M55 CPU (same chip, two execution paths)",
+        "toolchain": "TensorFlow Lite -> STEdgeAI (STMicroelectronics) -> STM32N657X0 (NUCLEO-N657X0-Q board)"
+      },
+      "comparability_notes": "Results state 'The values in Table 5.1 and Table 5.2 were recorded during inference on the ST Neural-ART processor' and 'The values in Tables 5.3 and 5.4 were recorded during inference on the Cortex-M55 processor', with measured time-per-sample and energy tables for both. Full PDF read directly (Introduction, Methods overview, and Results chapter).",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
     },
     {
       "id": "opi",
@@ -3081,6 +3508,60 @@
       "verification_status": "provisional"
     },
     {
+      "id": "snntorch-portenta-h7",
+      "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
+      "authors": "Jurzec, K.C., Szydlo, T., Wielgosz, M.",
+      "year": 2025,
+      "venue": "arXiv:2511.12136",
+      "url": "https://arxiv.org/abs/2511.12136",
+      "family": "application",
+      "population": "both",
+      "method_summary": "SNN models trained offline in SNNTorch with surrogate-gradient backpropagation-through-time are exported and re-implemented as a lightweight, statically-allocated C runtime, with spike-driven pruning of inactive neurons/filters, then run on a desktop CPU and on a physical Arduino Portenta H7 microcontroller.",
+      "neuron": "Leaky Integrate-and-Fire (LIF)",
+      "reset": "not found",
+      "encoding": "event-driven spike trains from neuromorphic sensors, binned into fixed-size time-step frames",
+      "input_encoding": "address-event (N-MNIST: DVS event camera); tactile spike events (ST-MNIST)",
+      "timesteps": "~300 time steps average for N-MNIST",
+      "metric": "end-to-end inference latency and functional equivalence (accuracy/F1) on desktop CPU and on the physical Portenta H7 board; on desktop, the C runtime achieves ~10.68x speedup over Python SNNTorch (0.224 s vs 2.393 s per inference) and ~21.18x with pruning (0.113 s); Figure 6 reports a 7.4-7.5x speedup for the Arduino runtime over the SNNTorch baseline on ST-MNIST",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Section III-B ('Deployment Platforms and Evaluation Protocol') names the Arduino Portenta H7 / STM32H747 board and the desktop Intel Core i3-10100F CPU as the two benchmarked machines and describes on-board timer measurement; Results (Table I and Figure 6) report measured per-inference latency for both. Full HTML text read directly, including the Results section."
+      },
+      "workload": [
+        "N-MNIST",
+        "ST-MNIST"
+      ],
+      "platform": {
+        "target_hardware": "Arduino Portenta H7 (STM32H747: Cortex-M7 @ 480 MHz + Cortex-M4, 512 KB SRAM); comparator: desktop Intel Core i3-10100F CPU",
+        "toolchain": "SNNTorch (PyTorch) -> custom C runtime"
+      },
+      "comparability_notes": "Section III-B ('Deployment Platforms and Evaluation Protocol') names the Arduino Portenta H7 / STM32H747 board and the desktop Intel Core i3-10100F CPU as the two benchmarked machines and describes on-board timer measurement; Results (Table I and Figure 6) report measured per-inference latency for both. Full HTML text read directly, including the Results section.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
+    },
+    {
       "id": "speck-dynamic-snn",
       "title": "Spike-based dynamic computing with asynchronous sensing-computing neuromorphic chip",
       "authors": "Yao, M., Richter, O., Zhao, G., Qiao, N., Xing, Y., Wang, D., Hu, T., Fang, W., Demirci, T., De Marchi, M., Deng, L., Yan, T., Nielsen, C., Sheik, S., Wu, C., Tian, Y., Xu, B., Li, G.",
@@ -3448,6 +3929,57 @@
         }
       ],
       "verification_status": "provisional"
+    },
+    {
+      "id": "spikingjelly",
+      "title": "SpikingJelly: An open-source machine learning infrastructure platform for spike-based intelligence",
+      "authors": "Fang, W., Chen, Y., Ding, J., Yu, Z., Masquelier, T., Chen, D., Huang, L., Zhou, H., Li, G., Tian, Y.",
+      "year": 2023,
+      "venue": "Science Advances 9(40):eadi1480",
+      "url": "https://www.science.org/doi/10.1126/sciadv.adi1480",
+      "family": "application",
+      "population": "both",
+      "method_summary": "Full-stack open-source SNN infrastructure combining ANN-to-SNN conversion and surrogate-gradient direct training, with GPU-accelerated training via CUDA-based semiautomatic code generation and multilevel inheritance, plus deployment tooling for neuromorphic chips.",
+      "neuron": "not found",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "not found",
+      "metric": "training-iteration time for Spiking ResNet-18 with the surrogate gradient method at T=2,4,8,16,32, and ANN2SNN inference time at T=128,256,512,1024, compared against Norse (v1.0.0) and SNNTorch (v0.6.0); SpikingJelly reaches up to 11x training speedup at T=32 and up to 2x inference speedup",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Confirmed against the arXiv preprint full text (arXiv:2310.16620v1, the same work as the Science Advances publication): 'The experiments are performed on an Ubuntu 18.04 server with an Intel Xeon Silver 4210R CPU, an NVIDIA A100-SXM-80GB GPU, and 256 GB of memory.' Measurement: 'SpikingJelly has a notable training speed advantage over other frameworks, yielding higher speedup when T is larger, e.g., up to 11x when T = 32' (Fig. 1d), and 'SpikingJelly also achieves up to 2x speedup over other frameworks' for ANN2SNN inference at T=128. The Science Advances publisher page (science.org) remained blocked by a Cloudflare challenge past the introduction; the arXiv preprint is the same paper (same title, authors, abstract, and 11x claim) and was read in full to confirm the GPU model and author list."
+      },
+      "workload": [
+        "not found"
+      ],
+      "platform": {
+        "target_hardware": "NVIDIA A100-SXM-80GB GPU (Ubuntu 18.04 server, Intel Xeon Silver 4210R host CPU, 256 GB memory)",
+        "toolchain": "SpikingJelly (PyTorch-based)"
+      },
+      "comparability_notes": "Confirmed against the arXiv preprint full text (arXiv:2310.16620v1, the same work as the Science Advances publication): 'The experiments are performed on an Ubuntu 18.04 server with an Intel Xeon Silver 4210R CPU, an NVIDIA A100-SXM-80GB GPU, and 256 GB of memory.' Measurement: 'SpikingJelly has a notable training speed advantage over other frameworks, yielding higher speedup when T is larger, e.g., up to 11x when T = 32' (Fig. 1d), and 'SpikingJelly also achieves up to 2x speedup over other frameworks' for ANN2SNN inference at T=128. The Science Advances publisher page (science.org) remained blocked by a Cloudflare challenge past the introduction; the arXiv preprint is the same paper (same title, authors, abstract, and 11x claim) and was read in full to confirm the GPU model and author list.",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "spj"
+      ],
+      "source_refs": [
+        {
+          "source_id": "spj",
+          "locators": [
+            "SpikingJelly 2.0.0rc1, docs/source/tutorials/en/neuron.rst, lines 31-36 and 111-129"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "spj",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
     },
     {
       "id": "spinnaker-goalkeeper",
@@ -4129,6 +4661,59 @@
         }
       ],
       "verification_status": "provisional"
+    },
+    {
+      "id": "van-albada-nest-spinnaker",
+      "title": "Performance Comparison of the Digital Neuromorphic Hardware SpiNNaker and the Neural Network Simulation Software NEST for a Full-Scale Cortical Microcircuit Model",
+      "authors": "van Albada, S.J., Rowley, A.G., Senk, J., Hopkins, M., Schmidt, M., Stokes, A.B., Lester, D.R., Diesmann, M., Furber, S.B.",
+      "year": 2018,
+      "venue": "Frontiers in Neuroscience 12:291",
+      "url": "https://doi.org/10.3389/fnins.2018.00291",
+      "family": "application",
+      "population": "deployment",
+      "method_summary": "A full-scale (~80,000-neuron, 0.3-billion-synapse) cortical microcircuit model is simulated both on the NEST simulator, run on a conventional HPC CPU cluster, and on the SpiNNaker digital neuromorphic hardware, comparing accuracy, runtime, and power/energy consumption between the two.",
+      "neuron": "leaky integrate-and-fire (LIF)",
+      "reset": "not found",
+      "encoding": "not found",
+      "input_encoding": "not found",
+      "timesteps": "NEST: 0.1 ms integration step; SpiNNaker: 1 ms integration step, slowed down to match NEST's accuracy",
+      "metric": "runtime and power/energy consumption of NEST on the Xeon cluster versus SpiNNaker for the same microcircuit model; NEST's runtime saturates around 3x real time using hybrid MPI+multithreading parallelization, and its lowest total energy consumption is reached at around 144 parallel threads and a 4.6x slowdown, at which setting NEST and SpiNNaker have a comparable energy consumption per synaptic event",
+      "boundary": {
+        "evidence_class": "E1",
+        "description": "physical hardware with latency, energy, power, or system performance measurement",
+        "paper_specific_notes": "Materials and Methods state the NEST simulations 'are performed on a high-performance computing (HPC) cluster with 32 compute nodes. Each node is equipped with 2 Intel Xeon E5-2680v3 processors...'; the Abstract/Results report the measured runtime and energy-per-synaptic-event figures for both machines. Full PDF read directly (Abstract, Materials and Methods, Results)."
+      },
+      "workload": [
+        "not applicable (cortical microcircuit connectivity model, not a classification benchmark)"
+      ],
+      "platform": {
+        "target_hardware": "HPC cluster, 32 nodes, 2x Intel Xeon E5-2680v3 per node (2.5 GHz, 128 GB RAM); comparator: SpiNNaker digital neuromorphic hardware, multi-board",
+        "toolchain": "PyNN (simulator-independent description) -> NEST 2.8 / SpiNNaker software stack"
+      },
+      "comparability_notes": "Materials and Methods state the NEST simulations 'are performed on a high-performance computing (HPC) cluster with 32 compute nodes. Each node is equipped with 2 Intel Xeon E5-2680v3 processors...'; the Abstract/Results report the measured runtime and energy-per-synaptic-event figures for both machines. Full PDF read directly (Abstract, Materials and Methods, Results).",
+      "evidence_class": "E1",
+      "is_physical_measurement": true,
+      "source_ids": [
+        "vanalbada2018-spinnaker-nest"
+      ],
+      "source_refs": [
+        {
+          "source_id": "vanalbada2018-spinnaker-nest",
+          "locators": [
+            "Abstract",
+            "Materials and Methods (NEST HPC cluster specification)",
+            "Results (runtime and energy consumption)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "vanalbada2018-spinnaker-nest",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified"
     },
     {
       "id": "xpikeformer",

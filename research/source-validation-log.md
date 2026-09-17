@@ -11,12 +11,14 @@ Audit date: 2026-09-16
 - `foundations-sources.json`: 33 structured source records
 - `prior-survey batches A-D`: 37 structured source records
 - `sources.json`: 63 structured source records
-- Canonical records: 385
-- Input records merged as aliases: 124
+- `targets-sources.json`: 19 structured source records
+- Canonical records: 401
+- Input records merged as aliases: 127
 - Bibliography aliases attached: 89
 
 ## Resolved duplicate groups
 
+- `Turner22-mlGeNN` retains aliases `bibliography-migration-sources.json:Turner22-mlGeNN`, `mlgenn`, `targets-sources.json:mlgenn`.
 - `a18-sourcecode-comparison` retains aliases `A18-Research`, `bibliography-migration-sources.json:a18-sourcecode-comparison`, `evidence-stack.json:a18-sourcecode-comparison`, `research/claim-audits:a18-sourcecode-comparison`.
 - `adaptive-fission` retains aliases `evidence-papers.json:adaptive-fission`, `evidence-stack.json:adaptive-fission`, `fission`, `research/claim-audits:adaptive-fission`, `sources.json:fission`.
 - `akida-benchmarks2025` retains aliases `evidence-stack.json:akida-benchmarks2025`, `research/claim-audits:akida-benchmarks2025`.
@@ -91,7 +93,7 @@ Audit date: 2026-09-16
 - `spikingjelly-source-tonir` retains aliases `evidence-stack.json:spikingjelly-source-tonir`, `research/claim-audits:spikingjelly-source-tonir`.
 - `spinnaker-chip` retains aliases `evidence-stack.json:painkras2013-spinnaker`, `painkras2013-spinnaker`, `sources.json:spinnaker-chip`.
 - `spinnaker-goalkeeper` retains aliases `cheng2020-goalkeeper-spinnaker`, `evidence-papers.json:spinnaker-goalkeeper`, `evidence-stack.json:cheng2020-goalkeeper-spinnaker`.
-- `spj` retains aliases `SJ23-SciAdv`, `evidence-stack.json:spikingjelly-paper`, `fang-2023-spikingjelly-sciadv`, `research/claim-audits:spj`, `sources.json:spj`, `spikingjelly-paper`.
+- `spj` retains aliases `SJ23-SciAdv`, `evidence-stack.json:spikingjelly-paper`, `fang-2023-spikingjelly-sciadv`, `research/claim-audits:spj`, `sources.json:spj`, `spikingjelly`, `spikingjelly-paper`, `targets-sources.json:spikingjelly`.
 - `spj-lava` retains aliases `SJ-LavaExchangeDocs`, `evidence-stack.json:spj-lava`, `research/claim-audits:spj-lava`, `sources.json:spj-lava`.
 - `srp` retains aliases `evidence-papers.json:srp`, `evidence-stack.json:srp`, `hao-2023-srp`.
 - `syncnn` retains aliases `Panchapakesan22-SyncNN`, `evidence-papers.json:syncnn`, `evidence-stack.json:panchapakesan2021-syncnn`, `panchapakesan2021-syncnn`.
@@ -101,6 +103,7 @@ Audit date: 2026-09-16
 - `toolbox` retains aliases `evidence-stack.json:snn-toolbox-docs`, `snn-toolbox-docs`, `sources.json:toolbox`.
 - `truenorth` retains aliases `eedn`, `esser-2016-eedn`, `esser2016-eedn`, `evidence-papers.json:eedn`, `evidence-stack.json:esser2016-eedn`, `sources.json:truenorth`.
 - `truenorth-dvs-gesture` retains aliases `amir2017-truenorth-gesture`, `evidence-papers.json:truenorth-dvs-gesture`, `evidence-stack.json:amir2017-truenorth-gesture`.
+- `vanalbada2018-spinnaker-nest` retains aliases `evidence-stack.json:vanalbada2018-spinnaker-nest`, `targets-sources.json:van-albada-nest-spinnaker`, `van-albada-nest-spinnaker`.
 - `xylo-kws` retains aliases `Bos24-XyloKWS`, `bosmuir2024-xylo-kws`, `evidence-papers.json:xylo-kws`, `evidence-stack.json:bosmuir2024-xylo-kws`.
 - `yik-2025-neurobench` retains aliases `neurobench`, `research/prior-surveys/batch-A.json:yik-2025-neurobench`, `sources.json:neurobench`.
 - `ziegler2024-akida-robotics` retains aliases `Ziegler24-FastObjects`, `evidence-stack.json:ziegler2024-akida-robotics`, `research/claim-audits:ziegler2024-akida-robotics`.
@@ -142,8 +145,8 @@ Audit date: 2026-09-16
 
 ## Retrieval limits
 
-- 296 records remain metadata-only and require claim-level inspection before they can support substantive prose.
-- Metadata-only IDs: `Akopyan15-TrueNorth`, `BindsNET18`, `BrainChip-AKD1000Brief`, `BrainChip-AKD1500Brief`, `CNN2SNN-Source`, `EBRAINS-Access`, `EBRAINS-BSS`, `HBP-Guidebook`, `Innatera-EETimes`, `Innatera-Talamo`, `Lynxi-HP300`, `Lynxi-KA200`, `NIR-Primitives`, `NengoDL-Rasmussen19`, `NengoLoihi-Docs`, `Norse-Docs`, `PyNN-Docs`, `PynnBSS2-Docs`, `SJ-ANN2SNNDocs`, `SJ-NIRExchangeSource`, `SJ-NeuronDocs`, `Shidqi22-SENECAThesis`, `Sinabs-FromTorch`, `Sinabs-TrainingTips`, `SpiNNcloud24-PR`, `Spyx-Docs`, `SynSense-SpeckDatasheet`, `SynSense-SpeckOverview`, `Thorpe98-RankOrder`, `Turner22-mlGeNN`, `abr-pressrelease-nengoloihi`, `ace-snn2022`, `adafire`, `adrian1926`, `aerovis2026-slam`, `akida-hw-constraints`, `akida-story-2016`, `akopyan2015-truenorth`, `apex`, `arfa-2025-spinnaker2`, `auge`, `backprop-loihi-pmc`, `bardeen1948-transistor`, `bellec2018`, `bezugam2023-emg-loihi`, `bhattacharjee-2023-hardware`, `bidl`, `bidl-pmc-paper`, `blouw2019-kws-loihi`, `boeshertz2024-rnn-mapping`, `bonazzi2025-fpga-drone-dpu`, `bootstrap`, `borst1999-information`, `brainchip-akida-techbrief`, `brainchip-akida-user-guide`, `brainchip-metatf-2-19-2-release`, `brainscales-accel`, `brette2005-adex`, `bsnn-2022`, `bss`, `burst-spikes`, `cao-2015`, `ceolini-emgdvs-fusion`, `cerco-spikenet-docs`, `cerebron`, `clp-snn`, `cnn2snn-source-inspection`, `combra-snn-eeg-repo`, `convlca-2025-lca`, `cos`, `cramer2022-surrogate`, `cs-qcfs`, `dayan2001-theoretical-neuroscience`, `deneve2022-ttfs-unifying`, `dennler2023-olfaction-replication`, `dewolf2020-nengo-hw`, `dewolf2023-nengoloihi-arm`, `diehl`, `diff`, `ding-2021-optimalconv`, `dynap-se-tactile`, `dynapse-icub-pcontroller`, `eeg-motor-imagery-repo`, `eeg-seizure-loihi2`, `eetimes-graimatter`, `ettfs-2024`, `eventboost2024`, `eventprop-delays`, `eventprop-spinnaker2-backprop`, `eventvision2023-survey`, `exodus`, `faggin1996-4004`, `fast-snn`, `firefly`, `force-control`, `furber2012-spinnaker`, `galanis-2020-spinnaker`, `gelneuro`, `gonzalez2024-spinnaker2`, `guo2021`, `hbp-guidebook`, `hebb1949`, `hiaer-spike-cri`, `hodgkin1952`, `horowitz-2014`, `horowitz2015-art-of-electronics`, `hxtorch`, `hybridsnn-nengoloihi-nsf`, `ibm2023-neuromorphic-opticalflow`, `ijcai2025negspike`, `imam-cleland-olfaction`, `inivation2026-davis346`, `innatera-pulsar-vendor`, `intel-inrc-confluence`, `izhikevich2003`, `jelly-lava-source`, `jelly-nir-source`, `jiang-2025-adaptive-fission`, `kelber-2020`, `kelber-2020-spinnaker2sim`, `kim-2020-roc-scnn`, `kim-2022-rate-vs-direct`, `kim2018-weightedspikes`, `kreiser2020-icub-headpose`, `kria-prophesee-vitisai`, `lapicque1907`, `latency-framework2026`, `lava-archived-2026`, `lava-dl-docs`, `lava-dl-github-archived`, `lava-dl-readme`, `lava-exec`, `lava-nc-homepage`, `lava-v0-10-release`, `li2023-firefly`, `liu-2019-facedemo`, `liu2026-neuralencoding`, `loas`, `loihi1`, `loihi2`, `maass1997`, `mahowald1991-silicon-neuron`, `massa-2020`, `mcculloch1943`, `mead1989-analog-vlsi`, `merolla2014-truenorth`, `morphic`, `moyer-2020-semieng`, `narduzzi-2025-eflop`, `nengo-dl`, `nengo-loihi`, `nengoloihi-cifar10-example`, `netx`, `neuroflex`, `neuronflow-2020`, `neuropod-hexapod-spinnaker`, `nir`, `nir-example`, `nir-porting-guide`, `norse-docs`, `norse-nir-thirdparty`, `northpole`, `nxtf-text`, `odin`, `one-spike`, `open-neuromorphic-akida`, `opi`, `opt-conv`, `orchard2021-loihi2signal`, `pals-2021-eeg-spinnaker`, `parpart2023-lca-loihi2`, `patino-saucedo-2020`, `pehle-2022-bmtk`, `plif`, `prophesee-2025-pedestrian`, `prophesee-docs-detection`, `prophesee-genx320-docs`, `prophesee2026-sensors`, `pseudo`, `qcfs`, `qffs`, `quianquiroga2009-decoding`, `radar-automotive-2026`, `radar-resonator-2025`, `reckon`, `rhodes2018-spynnaker`, `richter`, `richter2024-dynapse2`, `rieke1997-spikes`, `riverpub-mnist-dynapcnn`, `rmp`, `rockpool-quickxylo-docs`, `rockpool-xylo-docs`, `rockpool-xyloa3-docs`, `rowley2019-spinntools`, `rueckauer`, `rueckauer2016-theory`, `satcsp-2020`, `satcsp-loihi-date2020`, `sawada2016-truenorth-ecosystem`, `schemmel2010-wafer`, `schmitt2017-hitl`, `scholze2026-spinnaker2chip`, `sddpg`, `sdnn`, `seneca`, `sengupta`, `serrano-2015-convnets`, `sew-resnet`, `shannon1948`, `shen-2024-cvpr`, `sia-fpga`, `sinabs`, `sinabs-discretize-api`, `sinabs-docs-overview`, `sinabs-nmnist-tutorial`, `singh-2021-gesture-snn`, `slayer`, `slayer-nxtf-gesture`, `slip-relu`, `snm`, `snn-calibration`, `snn-toolbox-github`, `snnTorch-Docs`, `snntoolbox-docs`, `snntoolbox-issues`, `snntorch`, `snntorch-docs`, `snntorch-pr-426`, `snntorch-pr388`, `speck-datasheet`, `speck-dynamic-snn`, `speck-manual`, `spike-driven-transformer`, `spike-driven-transformer-v2`, `spikeconverter`, `spiker-2022`, `spiker-plus-fpga`, `spikerplus`, `spikformer`, `spiking-yolo`, `spikingformer`, `spikingjelly-issue543`, `spikingjelly-loihi2-2026`, `spilger2020-hxtorch`, `spilger2022-hxtorchsnn`, `spinnaker-1ms`, `spinnaker-chip`, `spinnaker-goalkeeper`, `spinnaker-neuron-lab-manual`, `spinnaker2-chip`, `spinnaker2-nir-import-docs`, `spinnaker2-tools`, `spj-lynxi`, `spynnaker`, `spynnaker-v8-docs`, `srp`, `ssnn`, `stradmann2021-mobile`, `stromatias`, `stromatias-2015`, `stromatias2015-dbn-spinnaker`, `swsc2024`, `syncnn`, `synsense-speck-datasheet`, `synsense-speck-gesture-datasheet`, `t2fsnn`, `tang-slam-loihi`, `tang2017-lca-sparsecoding`, `tcl`, `tdbn`, `temporal`, `tet`, `thorpe-spikebased`, `thorpe1996-rankorder`, `tianjic`, `toolbox`, `trinityslam2024`, `truenorth`, `truenorth-dvs-gesture`, `truenorth-neuron-model-doc`, `tsc`, `ubrain`, `v2v2025-neurips`, `vanalbada2018-spinnaker-nest`, `vitale2022-emg-loihi`, `wanlass1963-cmos`, `weis2020-annmode`, `xpikeformer`, `xylo-kws`, `yan2021-spinnaker2pe`, `yao-speck`, `yao-spikedriven`, `yoso2020`, `zhou-2024-spikformerv2`, `zou2023negspike`.
+- 298 records remain metadata-only and require claim-level inspection before they can support substantive prose.
+- Metadata-only IDs: `Akopyan15-TrueNorth`, `BindsNET18`, `BrainChip-AKD1000Brief`, `BrainChip-AKD1500Brief`, `CNN2SNN-Source`, `EBRAINS-Access`, `EBRAINS-BSS`, `HBP-Guidebook`, `Innatera-EETimes`, `Innatera-Talamo`, `Lynxi-HP300`, `Lynxi-KA200`, `NIR-Primitives`, `NengoDL-Rasmussen19`, `NengoLoihi-Docs`, `Norse-Docs`, `PyNN-Docs`, `PynnBSS2-Docs`, `SJ-ANN2SNNDocs`, `SJ-NIRExchangeSource`, `SJ-NeuronDocs`, `Shidqi22-SENECAThesis`, `Sinabs-FromTorch`, `Sinabs-TrainingTips`, `SpiNNcloud24-PR`, `Spyx-Docs`, `SynSense-SpeckDatasheet`, `SynSense-SpeckOverview`, `Thorpe98-RankOrder`, `Turner22-mlGeNN`, `abr-pressrelease-nengoloihi`, `ace-snn2022`, `adafire`, `adrian1926`, `aerovis2026-slam`, `akida-hw-constraints`, `akida-story-2016`, `akopyan2015-truenorth`, `apex`, `arfa-2025-spinnaker2`, `auge`, `backprop-loihi-pmc`, `bardeen1948-transistor`, `bellec2018`, `bezugam2023-emg-loihi`, `bhattacharjee-2023-hardware`, `bidl`, `bidl-pmc-paper`, `blouw2019-kws-loihi`, `boeshertz2024-rnn-mapping`, `bonazzi2025-fpga-drone-dpu`, `bootstrap`, `borst1999-information`, `brainchip-akida-techbrief`, `brainchip-akida-user-guide`, `brainchip-metatf-2-19-2-release`, `brainscales-accel`, `brette2005-adex`, `bsnn-2022`, `bss`, `burst-spikes`, `cao-2015`, `ceolini-emgdvs-fusion`, `cerco-spikenet-docs`, `cerebron`, `clp-snn`, `cnn2snn-source-inspection`, `combra-snn-eeg-repo`, `convlca-2025-lca`, `cos`, `cramer2022-surrogate`, `cs-qcfs`, `dayan2001-theoretical-neuroscience`, `deneve2022-ttfs-unifying`, `dennler2023-olfaction-replication`, `dewolf2020-nengo-hw`, `dewolf2023-nengoloihi-arm`, `diehl`, `diff`, `ding-2021-optimalconv`, `dynap-se-tactile`, `dynapse-icub-pcontroller`, `eeg-motor-imagery-repo`, `eeg-seizure-loihi2`, `eetimes-graimatter`, `ettfs-2024`, `eventboost2024`, `eventprop-delays`, `eventprop-spinnaker2-backprop`, `eventvision2023-survey`, `exodus`, `faggin1996-4004`, `fast-snn`, `firefly`, `force-control`, `furber2012-spinnaker`, `galanis-2020-spinnaker`, `gelneuro`, `gonzalez2024-spinnaker2`, `guo2021`, `hbp-guidebook`, `hebb1949`, `hiaer-spike-cri`, `hodgkin1952`, `horowitz-2014`, `horowitz2015-art-of-electronics`, `hxtorch`, `hybridsnn-nengoloihi-nsf`, `ibm2023-neuromorphic-opticalflow`, `ijcai2025negspike`, `imam-cleland-olfaction`, `inivation2026-davis346`, `innatera-pulsar-vendor`, `intel-inrc-confluence`, `izhikevich2003`, `jelly-lava-source`, `jelly-nir-source`, `jiang-2025-adaptive-fission`, `kelber-2020`, `kelber-2020-spinnaker2sim`, `kim-2020-roc-scnn`, `kim-2022-rate-vs-direct`, `kim2018-weightedspikes`, `kreiser2020-icub-headpose`, `kria-prophesee-vitisai`, `lapicque1907`, `latency-framework2026`, `lava-archived-2026`, `lava-dl-docs`, `lava-dl-github-archived`, `lava-dl-readme`, `lava-exec`, `lava-nc-homepage`, `lava-v0-10-release`, `li2023-firefly`, `liu-2019-facedemo`, `liu2026-neuralencoding`, `loas`, `loihi1`, `loihi2`, `maass1997`, `mahowald1991-silicon-neuron`, `massa-2020`, `mcculloch1943`, `mead1989-analog-vlsi`, `memory-decoupled-mcu`, `merolla2014-truenorth`, `morphic`, `moyer-2020-semieng`, `narduzzi-2025-eflop`, `nengo-dl`, `nengo-loihi`, `nengoloihi-cifar10-example`, `netx`, `neuroflex`, `neuron-docs`, `neuronflow-2020`, `neuropod-hexapod-spinnaker`, `nir`, `nir-example`, `nir-porting-guide`, `norse-docs`, `norse-nir-thirdparty`, `northpole`, `nxsdk`, `nxtf-text`, `odin`, `one-spike`, `open-neuromorphic-akida`, `opi`, `opt-conv`, `orchard2021-loihi2signal`, `pals-2021-eeg-spinnaker`, `parpart2023-lca-loihi2`, `patino-saucedo-2020`, `pehle-2022-bmtk`, `plif`, `prophesee-2025-pedestrian`, `prophesee-docs-detection`, `prophesee-genx320-docs`, `prophesee2026-sensors`, `pseudo`, `qcfs`, `qffs`, `quianquiroga2009-decoding`, `radar-automotive-2026`, `radar-resonator-2025`, `reckon`, `rhodes2018-spynnaker`, `richter`, `richter2024-dynapse2`, `rieke1997-spikes`, `riverpub-mnist-dynapcnn`, `rmp`, `rockpool-quickxylo-docs`, `rockpool-xylo-docs`, `rockpool-xyloa3-docs`, `rowley2019-spinntools`, `rueckauer`, `rueckauer2016-theory`, `satcsp-2020`, `satcsp-loihi-date2020`, `sawada2016-truenorth-ecosystem`, `schemmel2010-wafer`, `schmitt2017-hitl`, `scholze2026-spinnaker2chip`, `sddpg`, `sdnn`, `seneca`, `sengupta`, `serrano-2015-convnets`, `sew-resnet`, `shannon1948`, `shen-2024-cvpr`, `sia-fpga`, `sinabs`, `sinabs-discretize-api`, `sinabs-docs-overview`, `sinabs-nmnist-tutorial`, `singh-2021-gesture-snn`, `slayer`, `slayer-nxtf-gesture`, `slip-relu`, `snm`, `snn-calibration`, `snn-toolbox-github`, `snnTorch-Docs`, `snntoolbox-docs`, `snntoolbox-issues`, `snntorch`, `snntorch-docs`, `snntorch-pr-426`, `snntorch-pr388`, `speck-datasheet`, `speck-dynamic-snn`, `speck-manual`, `spike-driven-transformer`, `spike-driven-transformer-v2`, `spikeconverter`, `spiker-2022`, `spiker-plus-fpga`, `spikerplus`, `spikformer`, `spiking-yolo`, `spikingformer`, `spikingjelly-issue543`, `spikingjelly-loihi2-2026`, `spilger2020-hxtorch`, `spilger2022-hxtorchsnn`, `spinnaker-1ms`, `spinnaker-chip`, `spinnaker-goalkeeper`, `spinnaker-neuron-lab-manual`, `spinnaker2-chip`, `spinnaker2-nir-import-docs`, `spinnaker2-tools`, `spj-lynxi`, `spynnaker`, `spynnaker-v8-docs`, `srp`, `ssnn`, `stradmann2021-mobile`, `stromatias`, `stromatias-2015`, `stromatias2015-dbn-spinnaker`, `swsc2024`, `syncnn`, `synsense-speck-datasheet`, `synsense-speck-gesture-datasheet`, `t2fsnn`, `tang-slam-loihi`, `tang2017-lca-sparsecoding`, `tcl`, `tdbn`, `temporal`, `tet`, `thorpe-spikebased`, `thorpe1996-rankorder`, `tianjic`, `toolbox`, `trinityslam2024`, `truenorth`, `truenorth-dvs-gesture`, `truenorth-neuron-model-doc`, `tsc`, `ubrain`, `v2v2025-neurips`, `vitale2022-emg-loihi`, `wanlass1963-cmos`, `weis2020-annmode`, `xpikeformer`, `xylo-kws`, `yan2021-spinnaker2pe`, `yao-speck`, `yao-spikedriven`, `yoso2020`, `zhou-2024-spikformerv2`, `zou2023negspike`.
 - 0 records are explicitly not retrieved: none.
 
 ## Unresolved metadata
@@ -201,11 +204,13 @@ Audit date: 2026-09-16
 - `brainchip-quantizeml-docs`: `doi`.
 - `brainscales-accel`: `authors`, `year`, `venue`, `doi`.
 - `bsnn-2022`: `authors`.
+- `carlsim`: `doi`.
 - `ceolini-emgdvs-fusion`: `doi`.
 - `cerco-spikenet-docs`: `year`, `venue`, `doi`.
 - `cnn2snn-source-inspection`: `authors`, `year`, `venue`, `doi`, `url`.
 - `combra-snn-eeg-repo`: `doi`.
 - `convlca-2025-lca`: `authors`, `year`, `venue`, `doi`, `url`.
+- `coral-edge-tpu-tracking`: `doi`.
 - `cramer2022-surrogate`: `doi`.
 - `datta2025-snn-meets-ann`: `doi`.
 - `dayan2001-theoretical-neuroscience`: `doi`.
@@ -216,6 +221,7 @@ Audit date: 2026-09-16
 - `eeg-seizure-loihi2`: `doi`.
 - `eetimes-graimatter`: `year`, `venue`, `doi`, `url`.
 - `ettfs-2024`: `authors`, `venue`, `doi`.
+- `genn-docs`: `authors`, `year`, `doi`.
 - `gerstner2014-neuronal-dynamics`: `doi`.
 - `gonzalez2024-spinnaker2`: `doi`.
 - `hbp-guidebook`: `authors`, `year`, `venue`, `doi`.
@@ -259,8 +265,11 @@ Audit date: 2026-09-16
 - `nengo-dl`: `doi`.
 - `nengo-loihi`: `doi`.
 - `nengoloihi-cifar10-example`: `authors`, `year`, `venue`, `doi`.
+- `nest-docs`: `authors`, `year`, `doi`.
+- `nest5g-k-computer`: `doi`.
 - `netx`: `doi`.
 - `neuroir-docs`: `doi`.
+- `neuron-docs`: `authors`, `year`, `doi`.
 - `neuronflow-2020`: `authors`.
 - `neuropod-hexapod-spinnaker`: `doi`.
 - `nir`: `doi`.
@@ -269,7 +278,9 @@ Audit date: 2026-09-16
 - `nir-porting-guide`: `authors`, `year`, `venue`, `doi`.
 - `norse-docs`: `doi`.
 - `norse-nir-thirdparty`: `doi`.
+- `nxsdk`: `doi`.
 - `nxtf-repository`: `doi`.
+- `onoszko-stm32n6-npu`: `doi`.
 - `open-neuromorphic-akida`: `doi`.
 - `pehle-2022-bmtk`: `authors`, `venue`.
 - `prophesee-2025-pedestrian`: `venue`, `doi`, `url`.
@@ -286,6 +297,7 @@ Audit date: 2026-09-16
 - `rockpool-xylo-docs`: `doi`.
 - `rockpool-xyloa3-docs`: `doi`.
 - `rueckauer2016-theory`: `doi`.
+- `samna-docs`: `authors`, `year`, `doi`.
 - `satcsp-2020`: `authors`, `doi`, `url`.
 - `sawada2016-truenorth-ecosystem`: `doi`.
 - `schmitt2017-hitl`: `doi`.
@@ -322,7 +334,6 @@ Audit date: 2026-09-16
 - `spinnaker-neuron-lab-manual`: `year`, `venue`, `doi`.
 - `spinnaker2-nir-import-docs`: `doi`.
 - `spinnaker2-tools`: `doi`.
-- `spj`: `doi`.
 - `spj-lava`: `doi`.
 - `spj-lynxi`: `doi`.
 - `spynnaker`: `doi`.
