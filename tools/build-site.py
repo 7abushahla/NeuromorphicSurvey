@@ -66,6 +66,37 @@ def normalize_tables(text):
 
     return WRAP_OPEN.sub(fix, text)
 
+TOC_H = re.compile(r'<h([23])\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
+TOC_FIG = re.compile(r'<figcaption[^>]*\bid="(figure-\d+)"[^>]*>\s*<b>Figure (\d+):</b>')
+TAGS = re.compile(r'<[^>]+>')
+NAV = re.compile(r'(<h3>Contents</h3>\s*)(.*?)(\s*</nav>)', re.S)
+
+
+def toc_entries(parts):
+    manifest = json.loads((ROOT / 'data/figure-manifest.json').read_text())
+    concept = {f['fragment'].split('/')[-1]: f['concept'] for f in manifest['figures']}
+    out = ['<div><a href="#abstract">Abstract</a></div>']
+    for f, text in parts:
+        if f.startswith('sec-'):
+            for level, hid, title in TOC_H.findall(text):
+                title = ' '.join(TAGS.sub('', title).split())
+                cls = ' class="toc-sub"' if level == '3' else ''
+                out.append(f'<div{cls}><a href="#{hid}">{title}</a></div>')
+        elif f.startswith('shell-figure'):
+            m = TOC_FIG.search(text)
+            if m:
+                out.append(f'<div><a href="#{m.group(1)}">Figure {m.group(2)}&ensp;'
+                           f'{concept.get(f, "Interactive figure")}</a></div>')
+    return out
+
+
+def insert_toc(doc, parts):
+    entries = '\n            '.join(toc_entries(parts))
+    doc, n = NAV.subn(lambda m: f'{m.group(1)}{entries}{m.group(3)}', doc, count=1)
+    if n != 1:
+        sys.exit('table of contents frame (<h3>Contents</h3> ... </nav>) not found')
+    return doc
+
 
 def main():
     missing = [f for f in ORDER if not (SITE / f).exists()]
@@ -129,7 +160,13 @@ def main():
                         CITE_RUN.sub(join_run, CITE.sub(sub_cite, text))))
              for f, text in parts]
 
+    # 5. The table of contents is generated from the live headings, in build order, so
+    #    it never lags the fragments. The shell keeps only the nav's frame and the
+    #    Abstract entry; every h2 and h3 of a section fragment becomes an entry, and the
+    #    interactive figure fragment contributes its own line at its position.
+    parts = [(f, text) for f, text in parts]
     doc = '\n'.join(text for _, text in parts)
+    doc = insert_toc(doc, parts)
     (ROOT / 'index.html').write_text(doc)
 
     cited = {k for c in re.findall(r'<d-cite key="([^"]+)"></d-cite>', doc) for k in c.split(',')}

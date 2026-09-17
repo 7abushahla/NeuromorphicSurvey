@@ -771,56 +771,68 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
             <div><a href="#abstract">Abstract</a></div>
             <div><a href="#introduction">1&ensp;Introduction</a></div>
             <div class="toc-sub"><a href="#existing-surveys">1.1&ensp;Existing Surveys</a></div>
-            <div class="toc-sub"><a href="#contributions">1.2&ensp;Contributions</a></div>
-            <div class="toc-sub"><a href="#organization">1.3&ensp;Organization</a></div>
-            <div><a href="#preliminaries">2&ensp;Preliminaries</a></div>
-            <div class="toc-sub"><a href="#biological-neurons">2.1&ensp;From Biological Neurons to Spiking Models</a></div>
-            <div class="toc-sub"><a href="#neuron-models">2.2&ensp;Spiking Neuron Models</a></div>
-            <div class="toc-sub"><a href="#neural-codes">2.3&ensp;Neural Codes</a></div>
-            <div class="toc-sub"><a href="#formalization">2.4&ensp;Formalization</a></div>
-            <div class="toc-sub"><a href="#execution-contracts">2.5&ensp;Execution Contracts for Deployment</a></div>
-            <div><a href="#training-paths">3&ensp;Primary Training Paths</a></div>
-            <div class="toc-sub"><a href="#direct-training">3.1&ensp;Direct Training</a></div>
-            <div class="toc-sub"><a href="#classical-conversion">3.2&ensp;Classical ANN-to-SNN Conversion</a></div>
-            <div><a href="#advanced-conversion">4&ensp;Advanced Conversion Techniques</a></div>
-            <div class="toc-sub"><a href="#low-latency-conversion">4.1&ensp;Low-Latency Conversion</a></div>
-            <div class="toc-sub"><a href="#quantization-distribution-aware">4.2&ensp;Quantization- and Distribution-Aware Conversion</a></div>
-            <div class="toc-sub"><a href="#mixed-timestep">4.3&ensp;Mixed-Timestep and Per-Layer Allocation</a></div>
-            <div class="toc-sub"><a href="#hardware-aware-conversion">4.4&ensp;Hardware-Aware and Co-Designed Conversion</a></div>
-            <div class="toc-sub"><a href="#hybrid-calibration-finetuning">4.5&ensp;Hybrid and Calibration-Based Fine-Tuning</a></div>
-            <div><a href="#alternative-codes">5&ensp;Alternative Codes and Non-Rate Representations</a></div>
-            <div class="toc-sub"><a href="#temporal-ttfs">5.1&ensp;Temporal and Time-to-First-Spike</a></div>
-            <div class="toc-sub"><a href="#phase-weighted-slot">5.2&ensp;Phase and Weighted-Slot</a></div>
-            <div class="toc-sub"><a href="#sigma-delta-payloads">5.3&ensp;Differential, Sigma-Delta, and Graded Payloads</a></div>
-            <div class="toc-sub"><a href="#rank-order-coding">5.4&ensp;Rank Order Coding</a></div>
-            <div><a href="#deployment-stack">6&ensp;Hardware and Software Deployment Stack</a></div>
-            <div class="toc-sub"><a href="#hardware-platforms">6.1&ensp;Neuromorphic Hardware Platforms</a></div>
-            <div class="toc-sub2"><a href="#per-platform-notes">6.1.1&ensp;Per-Platform Notes</a></div>
-            <div class="toc-sub2"><a href="#akida-examined-critically">6.1.2&ensp;Akida, Examined Critically</a></div>
-            <div class="toc-sub"><a href="#frameworks">6.2&ensp;Training and Simulation Frameworks</a></div>
-            <div class="toc-sub"><a href="#export-compile">6.3&ensp;Export, Interchange, and Compilation</a></div>
-            <div class="toc-sub"><a href="#runtime">6.4&ensp;Runtime and Host I/O</a></div>
-            <div class="toc-sub"><a href="#routes">6.5&ensp;Documented Routes</a></div>
-            <div><a href="#applications">7&ensp;Applications and Deployment Evidence</a></div>
-            <div class="toc-sub"><a href="#loihi-deployments">7.1&ensp;Loihi-Family Deployments</a></div>
-            <div class="toc-sub"><a href="#speck-deployments">7.2&ensp;DYNAP-CNN and Speck Event-Vision Deployments</a></div>
-            <div class="toc-sub"><a href="#spinnaker-brainscales">7.3&ensp;SpiNNaker and BrainScaleS Deployments</a></div>
-            <div class="toc-sub"><a href="#fpga-asic">7.4&ensp;FPGA and Custom ASIC Implementations</a></div>
-            <div class="toc-sub"><a href="#event-sensing">7.5&ensp;Event-Based Sensing</a></div>
-            <div class="toc-sub"><a href="#cross-case">7.6&ensp;Cross-Case Evidence Table</a></div>
-            <div class="toc-sub"><a href="#measurement">7.7&ensp;Measurement and Comparability</a></div>
-            <div><a href="#figure-1">Figure 1&ensp;The Deployment Stack</a></div>
-            <div><a href="#challenges">8&ensp;Challenges and Future Directions</a></div>
-            <div class="toc-sub"><a href="#ch-operators">8.1&ensp;Operator Coverage in SNN Toolchains</a></div>
-            <div class="toc-sub"><a href="#ch-reset">8.2&ensp;Reset-Semantics Mismatch</a></div>
-            <div class="toc-sub"><a href="#ch-encoding">8.3&ensp;Input Encoding and Output Readout</a></div>
-            <div class="toc-sub"><a href="#ch-timemodel">8.4&ensp;Time-Model Mismatch</a></div>
-            <div class="toc-sub"><a href="#ch-perlayer">8.5&ensp;Per-Layer Timestep Horizons</a></div>
-            <div class="toc-sub"><a href="#ch-measurement">8.6&ensp;Measurement Boundaries</a></div>
-            <div class="toc-sub"><a href="#ch-decay">8.7&ensp;Device Availability and Toolchain Decay</a></div>
-            <div class="toc-sub"><a href="#ch-portability">8.8&ensp;Interoperability and the Portability Gap</a></div>
-            <div class="toc-sub"><a href="#ch-populations">8.9&ensp;The Two-Population Division of Labor</a></div>
-            <div><a href="#conclusion">9&ensp;Conclusion</a></div>
+            <div class="toc-sub"><a href="#survey-contributions">1.2&ensp;Contributions</a></div>
+            <div class="toc-sub"><a href="#survey-roadmap">1.3&ensp;Organization</a></div>
+            <div><a href="#computation-and-representation">2&ensp;Computation and Representation</a></div>
+            <div class="toc-sub"><a href="#values-state-events">2.1&ensp;Values, State, and Events</a></div>
+            <div class="toc-sub"><a href="#dense-sparse-conditional">2.2&ensp;Dense Computation, Sparse Activity, and Conditional Execution</a></div>
+            <div class="toc-sub"><a href="#neuromorphic-event-driven">2.3&ensp;The Meanings of Neuromorphic and Event-Driven</a></div>
+            <div class="toc-sub"><a href="#representation-execution">2.4&ensp;Why Representation Constrains Execution</a></div>
+            <div class="toc-sub"><a href="#foundations-referrals">2.5&ensp;Bounding Neuroscience and Device Physics</a></div>
+            <div><a href="#neuron-and-synapse-dynamics">3&ensp;Neuron and Synapse Dynamics</a></div>
+            <div class="toc-sub"><a href="#common-state-update">3.1&ensp;A Common Staged State Update</a></div>
+            <div class="toc-sub"><a href="#neuron-model-family">3.2&ensp;The Neuron Model Family</a></div>
+            <div class="toc-sub"><a href="#synaptic-state-and-delay">3.3&ensp;Synaptic State, Delay, and Recurrent Input</a></div>
+            <div class="toc-sub"><a href="#reset-and-refractory">3.4&ensp;Reset Semantics</a></div>
+            <div class="toc-sub"><a href="#continuous-discrete-hardware">3.5&ensp;Continuous Dynamics, Discretization, and Hardware Realization</a></div>
+            <div class="toc-sub"><a href="#load-bearing-semantics">3.6&ensp;Semantics That Become Contract Fields</a></div>
+            <div><a href="#temporal-semantics-codes-decoding">4&ensp;Temporal Semantics, Neural Codes, and Decoding</a></div>
+            <div class="toc-sub"><a href="#time-vocabulary">4.1&ensp;Time vocabulary</a></div>
+            <div class="toc-sub"><a href="#encoder-channel-decoder">4.2&ensp;Encoder, channel, and decoder</a></div>
+            <div class="toc-sub"><a href="#code-families">4.3&ensp;Code families</a></div>
+            <div class="toc-sub"><a href="#code-tradeoffs">4.4&ensp;Cross-code trade-offs</a></div>
+            <div class="toc-sub"><a href="#deployment-terminology">4.5&ensp;Deployment terminology</a></div>
+            <div><a href="#learning-paradigms-two-branches">5&ensp;Learning Paradigms and the Two Branches</a></div>
+            <div class="toc-sub"><a href="#spike-learning-problem">5.1&ensp;The Spike Learning Problem</a></div>
+            <div class="toc-sub"><a href="#direct-conversion-hybrid">5.2&ensp;Direct Training, Conversion, and Hybrid Methods</a></div>
+            <div class="toc-sub"><a href="#branch-convergence">5.3&ensp;Where the Branches Converge</a></div>
+            <div class="toc-sub"><a href="#evidence-guide">5.4&ensp;Evidence Guide</a></div>
+            <div><a href="#direct-snn-training">6&ensp;Direct SNN Training</a></div>
+            <div class="toc-sub"><a href="#local-learning">6.1&ensp;Local Learning and STDP</a></div>
+            <div class="toc-sub"><a href="#surrogate-gradients">6.2&ensp;Surrogate Gradients and Backpropagation Through Time</a></div>
+            <div class="toc-sub"><a href="#online-learning">6.3&ensp;Online and Hardware-in-the-Loop Learning</a></div>
+            <div class="toc-sub"><a href="#training-cost">6.4&ensp;Training Cost, State Unrolling, and Memory</a></div>
+            <div class="toc-sub"><a href="#hardware-aware-learning">6.5&ensp;Hardware-Aware and On-Chip Learning</a></div>
+            <div class="toc-sub"><a href="#direct-training-output">6.6&ensp;What Direct Training Fixes for Deployment</a></div>
+            <div class="toc-sub"><a href="#learning-referrals">6.7&ensp;Referrals to Specialist Learning Surveys</a></div>
+            <div><a href="#classical-ann-to-snn-conversion">7&ensp;Classical ANN-to-SNN Conversion</a></div>
+            <div class="toc-sub"><a href="#conversion-purpose-assumptions">7.1&ensp;Purpose and Architectural Assumptions</a></div>
+            <div class="toc-sub"><a href="#relu-rate-correspondence">7.2&ensp;The ReLU-to-Firing-Fraction Correspondence</a></div>
+            <div class="toc-sub"><a href="#input-and-readout">7.3&ensp;Input Encoding and Output Readout</a></div>
+            <div class="toc-sub"><a href="#parameter-mapping">7.4&ensp;Parameter Mapping</a></div>
+            <div class="toc-sub"><a href="#architecture-preparation">7.5&ensp;Architecture Preparation</a></div>
+            <div class="toc-sub"><a href="#conversion-walkthrough">7.6&ensp;Walkthrough</a></div>
+            <div class="toc-sub"><a href="#asymptotic-finite-time">7.7&ensp;Asymptotic Equivalence and Finite-Time Behavior</a></div>
+            <div class="toc-sub"><a href="#classical-failure-cases">7.8&ensp;Where the Derivation Does Not Apply</a></div>
+            <div><a href="#finite-time-error-low-latency">8&ensp;Finite-Time Error and Low-Latency Conversion</a></div>
+            <div class="toc-sub"><a href="#finite-time-error-model">8.1&ensp;A general finite-time error model</a></div>
+            <div class="toc-sub"><a href="#clipping-discretization">8.2&ensp;Clipping and discretization error</a></div>
+            <div class="toc-sub"><a href="#residual-reset">8.3&ensp;Residual membrane potential and reset error</a></div>
+            <div class="toc-sub"><a href="#unevenness-timing">8.4&ensp;Unevenness error and timing error</a></div>
+            <div class="toc-sub"><a href="#architecture-dependent-error">8.5&ensp;Architecture-dependent accumulation</a></div>
+            <div class="toc-sub"><a href="#encoding-readout-error">8.6&ensp;Encoding and readout, deterministic bias versus stochastic variance</a></div>
+            <div class="toc-sub"><a href="#low-t-design-problem">8.7&ensp;The design problem finite-time error creates</a></div>
+            <div><a href="#advanced-conversion-methods">9&ensp;Advanced Conversion Methods</a></div>
+            <div class="toc-sub"><a href="#activation-shaping">9.1&ensp;Activation shaping</a></div>
+            <div class="toc-sub"><a href="#potential-reset-calibration">9.2&ensp;Potential and reset calibration</a></div>
+            <div class="toc-sub"><a href="#neuron-interventions">9.3&ensp;Neuron interventions</a></div>
+            <div class="toc-sub"><a href="#temporal-allocation">9.4&ensp;Temporal allocation</a></div>
+            <div class="toc-sub"><a href="#adaptive-inference">9.5&ensp;Adaptive inference</a></div>
+            <div class="toc-sub"><a href="#alternative-code-conversion">9.6&ensp;Alternative-code conversion</a></div>
+            <div class="toc-sub"><a href="#hardware-aware-conversion">9.7&ensp;Hardware-aware conversion</a></div>
+            <div class="toc-sub"><a href="#hybrid-fine-tuning">9.8&ensp;Hybrid fine-tuning</a></div>
+            <div class="toc-sub"><a href="#emerging-architectures">9.9&ensp;Emerging architectures</a></div>
+            <div><a href="#figure-18">Figure 18&ensp;Interactive full-stack deployment map</a></div>
           </nav>
         </d-contents>
 
