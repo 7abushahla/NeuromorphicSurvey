@@ -38,7 +38,7 @@
 
 <p>Two properties of Table 17 recur throughout the rest of this article and are stated once here rather than at every field. First, a field's status is always scoped to a named platform generation and a named toolchain version. A statement that reset by subtraction is unrepresentable in NIR is a statement about NIR 1.0.8's schema, not a permanent property of intermediate representations in general <d-cite key="neuroir-docs"></d-cite>. Second, the eleven fields are not independent in the sense that satisfying one guarantees anything about another. <a href="#platform-contract-comparison">Section 12.7</a> shows platforms whose neuron dynamics field is uniformly native while their threshold and reset field ranges from native to unsupported, which is exactly the granularity mismatch a single omnibus verdict about a chip's neuron model would hide.</p>
 
-<h3 id="definition-representation-execution">10.3 Three Questions: Definition, Representation, and Execution</h3>
+<h3 id="definition-representation-execution">10.3 Definition, Representation, and Execution</h3>
 
 <p>The three questions introduced in <a href="#contract-purpose">Section 10.1</a> are not stages of one pipeline that a field passes through in order. They are independent tests, and a field can fail any one of them while passing the other two. Restating them against the reset example makes the independence concrete rather than abstract.</p>
 
