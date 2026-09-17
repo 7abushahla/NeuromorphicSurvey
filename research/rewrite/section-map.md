@@ -19,6 +19,7 @@ integration review.
 | 8. Finite-Time Error and Low-Latency Conversion | `finite-time-error-low-latency` | `finite-time-error-model`, `clipping-discretization`, `residual-reset`, `unevenness-timing`, `architecture-dependent-error`, `encoding-readout-error`, `low-t-design-problem` | Locate each error at the pipeline stage where it enters. Separate deterministic finite-window error from stochastic encoding variance. |
 | 9. Advanced Conversion Methods | `advanced-conversion-methods` | `activation-shaping`, `potential-reset-calibration`, `neuron-interventions`, `temporal-allocation`, `adaptive-inference`, `alternative-code-conversion`, `hardware-aware-conversion`, `hybrid-fine-tuning`, `emerging-architectures` | Organize methods by intervention and the Section 8 error they target. Keep evidence class and hardware status claim-specific. |
 | 10. The Deployable SNN Contract | `deployable-snn-contract` | `contract-purpose`, `contract-fields`, `definition-representation-execution`, `contract-conformance` | Define the 11 fields that both learning branches must make explicit. Distinguish mathematical definition, software representation, and faithful execution. |
+| 11. Where an SNN Runs | `where-an-snn-runs` | `three-targets-one-network`, `conventional-platforms`, `simulated-emulated-neuromorphic`, `simulator-library-catalog`, `physical-neuromorphic-silicon`, `targets-referrals` | Names the three targets, compares the paths, catalogs simulators and libraries. |
 | 12. Software, Interchange, and Compilation | `software-interchange-compilation` | `framework-boundary`, `serialization-ir`, `export-compile-map`, `runtime-host-io`, `semantic-transformations`, `software-referrals` | Follow the software path in process order. Type every edge by input, output, preservation, transformation, rejection, route state, and evidence. |
 | 13. Hardware Execution Models | `hardware-execution-models` | `synchronous-digital`, `asynchronous-digital`, `programmable-manycore`, `analog-mixed-signal`, `fpga-asic`, `conventional-emerging`, `platform-contract-comparison` | Compare execution families through contract fields. Use platform examples only with generation, toolchain version, capability status, and evidence limits. |
 | 14. Complete Deployment Routes | `complete-deployment-routes` | `route-definition`, `physical-routes`, `routes-conventional-targets`, `approximate-transformed-routes`, `blocked-unexercised-routes`, `route-selection` | Trace named routes edge by edge. Do not infer a route from compatible-looking nodes. Place the interactive map after the prose synthesis. |
@@ -40,9 +41,9 @@ integration review.
    algorithmic horizon from hardware time and wall-clock latency.
 5. Introduce the 11-field contract in Section 10. Sections 12 through 18 use those field
    names without inventing parallel taxonomies.
-6. Present platform families in Section 13, routes in Section 14, measurement rules in
-   Section 15, and workload evidence in Section 16. A platform inventory does not replace
-   a route or measurement analysis.
+6. Present targets in Section 11, families in Section 13, routes in Section 14,
+   measurement in Section 15, workload evidence in Section 16. A platform inventory does
+   not replace a route or measurement analysis.
 7. Put specialized referrals at the boundary of the topic they delimit. Each referral
    states what the cited source explains and why the survey stops there.
 

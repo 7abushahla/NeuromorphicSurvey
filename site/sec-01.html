@@ -174,9 +174,11 @@ model, or a platform-native code? The evidence synthesis returns to this questio
 its answer in advance.</p>
 
 <p>Table 1 compares the surveyed works across codes and neuron models, learning and conversion,
-software, compilers and interchange, hardware, boundary semantics, evidence types, and traced chip
-routes. Full, partial, and mentioned indicate the depth of coverage within a work. They do not
-rank the quality of its results.</p>
+software, compilers and interchange, the targets each survey covers, boundary semantics, evidence
+types, and traced chip routes. The targets column names the hardware kinds each survey covers and
+marks whether each kind is conventional, a chip model, or neuromorphic silicon. Full, partial, and
+mentioned indicate the depth of coverage within a work. They do not rank the quality of its
+results.</p>
 
 <div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
@@ -236,6 +238,12 @@ rank the quality of its results.</p>
 </table>
 <div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>
+
+<p>None of the 37 surveys covers all three targets, a conventional processor, a chip model, and
+neuromorphic silicon, within one work. Seven cover at least one conventional target and two cover
+at least one chip model, while most name neuromorphic silicon alone.
+<a href="#where-an-snn-runs">Section 11, Where an SNN Runs,</a> takes up all three targets together
+and compares the paths between them.</p>
 
 <h3 id="survey-contributions">1.2 Contributions</h3>
 

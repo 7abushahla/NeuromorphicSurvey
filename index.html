@@ -91,7 +91,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
     <!-- Styles -->
     <link rel="shortcut icon" href="assets/img/tmlr-favicon.ico"/>
     <link rel="stylesheet" href="assets/css/main.css?v=20260910w">
-    <link rel="stylesheet" href="assets/figure.css?v=20260916c">
+    <link rel="stylesheet" href="assets/figure.css?v=20260917a">
     <link rel="stylesheet" href="assets/figures.css?v=20260916c">
 
     <!-- jQuery -->
@@ -1100,9 +1100,11 @@ model, or a platform-native code? The evidence synthesis returns to this questio
 its answer in advance.</p>
 
 <p>Table 1 compares the surveyed works across codes and neuron models, learning and conversion,
-software, compilers and interchange, hardware, boundary semantics, evidence types, and traced chip
-routes. Full, partial, and mentioned indicate the depth of coverage within a work. They do not
-rank the quality of its results.</p>
+software, compilers and interchange, the targets each survey covers, boundary semantics, evidence
+types, and traced chip routes. The targets column names the hardware kinds each survey covers and
+marks whether each kind is conventional, a chip model, or neuromorphic silicon. Full, partial, and
+mentioned indicate the depth of coverage within a work. They do not rank the quality of its
+results.</p>
 
 <div class="ptable-wrap cov-table l-page t1-wide" id="table-1" data-table-toolbar>
 <table class="ptable">
@@ -1162,6 +1164,12 @@ rank the quality of its results.</p>
 </table>
 <div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>
+
+<p>None of the 37 surveys covers all three targets, a conventional processor, a chip model, and
+neuromorphic silicon, within one work. Seven cover at least one conventional target and two cover
+at least one chip model, while most name neuromorphic silicon alone.
+<a href="#where-an-snn-runs">Section 11, Where an SNN Runs,</a> takes up all three targets together
+and compares the paths between them.</p>
 
 <h3 id="survey-contributions">1.2&ensp;Contributions</h3>
 
@@ -1821,7 +1829,10 @@ circuit's dynamics, a weight is synapse state beside the neuron, a spike is an e
 time is physics, or the event itself. The second crossing, drawn dashed, is what a
 simulator does. A simulator runs the right column's equations on the left column's
 machine, so a spiking network stepped on a CPU or a GPU is a program again, its state in
-memory and its time the clock, whatever model it steps. <a href="#representation-execution">
+memory and its time the clock, whatever model it steps.
+<a href="#where-an-snn-runs">Section 11, Where an SNN Runs,</a> makes the three targets
+that follow from this picture explicit and catalogs the software that reaches each.
+<a href="#representation-execution">
 Section 2.5, Why Representation Constrains Execution,</a> follows both paths from the
 trained network down to the part.</p>
 
@@ -3022,7 +3033,7 @@ pipeline avoids by construction. A representation that relaxes one constraint ty
 introduces another. State must be stored somewhere, and event timing must be tracked
 somewhere, even when no multiplication is required.</p>
 
-<p><a href="#figure-8">Figure 8</a> draws the two strategies as today's silicon realizes them, level by level from the trained network to the part. On the conventional path a trained ANN or CNN is quantized and compiled to integer kernels, on a Cortex-M microcontroller through the CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> and on a CPU, GPU, or NPU through the vendor's libraries, and it runs as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated. On the neuromorphic path an SNN runs as event-triggered state updates in cores that hold their synaptic weights beside the neuron, with events carried between cores by address and with time either stepped by the fabric or driven by the events themselves. The picture is not a partition. A trained ANN reaches the neuromorphic path only through conversion, the subject of Sections 7 through 9, and an SNN also runs, simulated or accelerated, on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. What differs between the two columns is where the weight lives, what moves between units, and when a unit computes, and the sections on hardware execution and deployment measurement turn each of those differences into a stated field of the deployment claim.</p>
+<p><a href="#figure-8">Figure 8</a> draws the two strategies as today's silicon realizes them, level by level from the trained network to the part. On the conventional path a trained ANN or CNN is quantized and compiled to integer kernels, on a Cortex-M microcontroller through the CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> and on a CPU, GPU, or NPU through the vendor's libraries, and it runs as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated. On the neuromorphic path an SNN runs as event-triggered state updates in cores that hold their synaptic weights beside the neuron, with events carried between cores by address and with time either stepped by the fabric or driven by the events themselves. The picture is not a partition. A trained ANN reaches the neuromorphic path only through conversion, the subject of Sections 7 through 9, and an SNN also runs, simulated or accelerated, on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. What differs between the two columns is where the weight lives, what moves between units, and when a unit computes, and the sections on hardware execution and deployment measurement turn each of those differences into a stated field of the deployment claim. <a href="#three-targets-one-network">Section 11.1, Three Targets, One Network,</a> compares the three deployment paths, target by target, against the evidence ceiling each can reach.</p>
 
 <figure class="pfig l-body" id="figure-8">
 <!-- Provenance (conceptual figure; no measured quantity is drawn).
@@ -6067,7 +6078,7 @@ One field, one clean mathematical definition, three different answers depending 
     <!-- Interactive supplements (progressive enhancement; the static page is complete without them) -->
 
   <script src="assets/tables.js?v=20260916c"></script>
-  <script type="module" src="assets/figure.js?v=20260916c"></script>
+  <script type="module" src="assets/figure.js?v=20260917a"></script>
 
   </body>
 

@@ -41,9 +41,9 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 | 22 | classical-conversion-pipeline | 7 Classical ANN-to-SNN Conversion | planned | placeholder caption in 7.6 |
 | 23 | finite-time-error-propagation | 8 Finite-Time Error and Low-Latency Conversion | planned | placeholder caption in 8.1 |
 | 24 | deployable-snn-contract | 10 The Deployable SNN Contract | planned | placeholder caption in 10.2 |
-| 25 | software-boundary | 11 Software, Interchange, and Compilation | planned | placeholder caption in 11.3 |
-| 26 | deployment-stack-map | 13 Complete Deployment Routes | implemented, interactive | `site/shell-figure.html`, generated from `data/generated/route-index.json` |
-| 27 | measurement-boundary | 14 Deployment Measurement | planned | placeholder caption in 14.2 |
+| 25 | software-boundary | 12 Software, Interchange, and Compilation | planned | placeholder caption in 12.3 |
+| 26 | deployment-stack-map | 14 Complete Deployment Routes | implemented, interactive | `site/shell-figure.html`, generated from `data/generated/route-index.json` |
+| 27 | measurement-boundary | 15 Deployment Measurement | planned | placeholder caption in 15.2 |
 
 ## Pending
 
