@@ -3,12 +3,14 @@
 
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 
 SOURCE_ROOT = Path(__file__).resolve().parent.parent
@@ -81,6 +83,58 @@ def figure_like_decorative_fragment(number=7):
   <figcaption><b>Figure {number}:</b> Decorative values beside a comparison line.</figcaption>
 </figure>
 '''
+
+
+# The fifteen section ids and titles the hardware-first reorder produces (data/section-reorder.json
+# through reorder-sections.py's slug rule). The architecture builder looks each one up by id suffix.
+ARCHITECTURE_SECTIONS = (
+    (1, "section-01-introduction", "Introduction"),
+    (2, "section-02-computation-and-representation", "Computation and Representation"),
+    (3, "section-03-neuron-and-synapse-dynamics", "Neuron and Synapse Dynamics"),
+    (4, "section-04-temporal-semantics-neural-codes-and-decoding", "Temporal Semantics, Neural Codes, and Decoding"),
+    (5, "section-05-where-an-snn-runs", "Where an SNN Runs"),
+    (6, "section-06-the-two-branches", "The Two Branches"),
+    (7, "section-07-direct-snn-training", "Direct SNN Training"),
+    (8, "section-08-ann-to-snn-conversion", "ANN-to-SNN Conversion"),
+    (9, "section-09-the-deployable-snn-contract", "The Deployable SNN Contract"),
+    (10, "section-10-software-interchange-and-compilation", "Software, Interchange, and Compilation"),
+    (11, "section-11-complete-deployment-routes", "Complete Deployment Routes"),
+    (12, "section-12-deployment-measurement", "Deployment Measurement"),
+    (13, "section-13-deployment-evidence-and-findings", "Deployment Evidence and Findings"),
+    (14, "section-14-open-problems-and-research-agenda", "Open Problems and Research Agenda"),
+    (15, "section-15-researcher-entry-guide-and-conclusion", "Researcher Entry Guide and Conclusion"),
+)
+
+
+def architecture_site_manifest(sections=ARCHITECTURE_SECTIONS):
+    fragments = [{"id": "shell-head", "kind": "shell", "fragment": "site/shell-head.html"}]
+    for number, identifier, title in sections:
+        fragments.append(
+            {
+                "id": identifier,
+                "kind": "section",
+                "display_number": number,
+                "title": title,
+                "fragment": f"site/sec-{number:02d}.html",
+            }
+        )
+    return {"schema_version": 1, "fragments": fragments}
+
+
+def svg_text_labels(fragment):
+    """Every <text> element's visible label, its runs (number tspan, wrapped lines) joined by one space."""
+    svg = ET.fromstring(re.search(r"<svg\b.*?</svg\s*>", fragment, re.S).group(0))
+    labels = []
+    for element in svg.iter():
+        if element.tag.rsplit("}", 1)[-1] == "text":
+            runs = [piece.strip() for piece in element.itertext() if piece.strip()]
+            labels.append(" ".join(" ".join(runs).split()))
+    return labels
+
+
+def section_numbers_in_order(labels):
+    """The leading number of every section label, in document order."""
+    return [int(label.split(" ", 1)[0]) for label in labels if re.match(r"\d+ ", label)]
 
 
 class FigureToolTests(unittest.TestCase):
@@ -397,6 +451,98 @@ class FigureToolTests(unittest.TestCase):
         result = self.run_tool("install-figures.py", "--check")
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("destination fragment unavailable", result.stdout + result.stderr)
+
+    def install_architecture_fixture(self):
+        """The builder, the real palette, the fifteen reordered sections, and an implemented record."""
+        shutil.copy2(
+            SOURCE_ROOT / "tools/build-figure-architecture.py",
+            self.root / "tools/build-figure-architecture.py",
+        )
+        shutil.copy2(SOURCE_ROOT / "data/target-kinds.json", self.root / "data/target-kinds.json")
+        self.write_json("data/site-manifest.json", architecture_site_manifest())
+        record = figure_record(1, identifier="survey-architecture")
+        record["fragment"] = "site/figures/survey-architecture.html"
+        record["css"] = "site/figures/survey-architecture.css"
+        self.write_manifest([record])
+        return self.root / record["fragment"], self.root / record["css"]
+
+    def test_architecture_builder_reads_manifest_and_is_idempotent(self):
+        fragment_path, css_path = self.install_architecture_fixture()
+
+        result = self.run_tool("build-figure-architecture.py")
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        fragment = fragment_path.read_text()
+        css = css_path.read_text()
+        labels = svg_text_labels(fragment)
+        for number, _identifier, title in ARCHITECTURE_SECTIONS:
+            self.assertIn(f"{number} {title}", labels)
+        numbers = section_numbers_in_order(labels)
+        self.assertEqual(numbers, sorted(numbers), "section labels are not in ascending order")
+        self.assertEqual(len(numbers), len(ARCHITECTURE_SECTIONS))
+        kinds = json.loads((SOURCE_ROOT / "data/target-kinds.json").read_text())
+        for bucket in kinds["buckets"]:
+            self.assertIn(bucket["name"], labels)
+            for key in ("fill", "ink", "line"):
+                self.assertIn(bucket[key], fragment)
+        for forbidden in ("\u2014", "&mdash;", "&#8212;"):
+            self.assertNotIn(forbidden, fragment)
+
+        check = self.run_tool("check-figures.py")
+        self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
+        self.assertIn("survey-architecture (Figure 1)", check.stdout)
+
+        again = self.run_tool("build-figure-architecture.py")
+        self.assertEqual(again.returncode, 0, again.stdout + again.stderr)
+        self.assertEqual(fragment, fragment_path.read_text())
+        self.assertEqual(css, css_path.read_text())
+
+        # The palette must be read from target-kinds.json, not typed into the builder.
+        sentinel = {"fill": "#010203", "ink": "#040506", "line": "#070809"}
+        original = next(b for b in kinds["buckets"] if b["name"] == "neuromorphic")
+        recolored = json.loads(json.dumps(kinds))
+        for bucket in recolored["buckets"]:
+            if bucket["name"] == "neuromorphic":
+                bucket.update(sentinel)
+        self.write_json("data/target-kinds.json", recolored)
+        result = self.run_tool("build-figure-architecture.py")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        recolored_fragment = fragment_path.read_text()
+        for key, value in sentinel.items():
+            self.assertIn(value, recolored_fragment)
+            self.assertNotIn(original[key], recolored_fragment)
+        self.write_json("data/target-kinds.json", kinds)
+
+        retitled = [
+            (number, identifier, "Where a Network Runs" if number == 5 else title)
+            for number, identifier, title in ARCHITECTURE_SECTIONS
+        ]
+        self.write_json("data/site-manifest.json", architecture_site_manifest(retitled))
+        result = self.run_tool("build-figure-architecture.py")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        labels = svg_text_labels(fragment_path.read_text())
+        self.assertIn("5 Where a Network Runs", labels)
+        self.assertNotIn("5 Where an SNN Runs", labels)
+
+        without_contract = [entry for entry in ARCHITECTURE_SECTIONS if entry[0] != 9]
+        self.write_json("data/site-manifest.json", architecture_site_manifest(without_contract))
+        result = self.run_tool("build-figure-architecture.py")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("-the-deployable-snn-contract", result.stdout + result.stderr)
+
+    def test_architecture_builder_refuses_a_manifest_that_moves_a_section(self):
+        fragment_path, _css_path = self.install_architecture_fixture()
+        swapped = [
+            (9 if number == 5 else 5 if number == 9 else number, identifier, title)
+            for number, identifier, title in ARCHITECTURE_SECTIONS
+        ]
+        self.write_json("data/site-manifest.json", architecture_site_manifest(swapped))
+
+        result = self.run_tool("build-figure-architecture.py")
+
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("draws hw first", result.stdout + result.stderr)
+        self.assertFalse(fragment_path.exists(), "a refused build must write nothing")
 
 
 if __name__ == "__main__":

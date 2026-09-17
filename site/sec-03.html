@@ -6,11 +6,11 @@
 
 <p>The membrane is an electrical structure, not a metaphor borrowed from electrical engineering to describe one. It separates charge across a lipid bilayer, so it has capacitance. Ion channels conduct current when open, so they are conductances. Concentration gradients across the membrane set a reversal potential for each channel type the equation below includes. \(C_m\,dV/d\tau=-g_L(V-E_L)+I_{\mathrm{syn}}(\tau)+I_{\mathrm{ext}}(\tau)\) is therefore a biophysical equation and a circuit equation at once, following Hodgkin and Huxley<d-cite key="hodgkin1952"></d-cite> and the textbook treatment of Gerstner et al.<d-cite key="gerstner2014-neuronal-dynamics"></d-cite>. The corpus this lineage draws on treats the two vocabularies the same way, as two names for one set of quantities rather than as an analogy between separate domains<d-cite key="khan-2025"></d-cite>, <d-cite key="shrestha-2022-models-hardware"></d-cite>.</p>
 
-<p>Table 6 lists the correspondence between the two vocabularies this equation mixes, so that a biological term in one paragraph and an electrical term in another name the same quantity rather than two separate claims.</p>
+<p>Table 5 lists the correspondence between the two vocabularies this equation mixes, so that a biological term in one paragraph and an electrical term in another name the same quantity rather than two separate claims.</p>
 
 <div class="ptable-wrap" id="table-two-vocabularies">
 <table class="ptable">
-<caption><b>Table 6:</b> Two vocabularies for one membrane. Each row names one quantity in the biological description and in the electrical description that follows it in this subsection.</caption>
+<caption><b>Table 5:</b> Two vocabularies for one membrane. Each row names one quantity in the biological description and in the electrical description that follows it in this subsection.</caption>
 <thead><tr><th>Biological term</th><th>Electrical term</th></tr></thead>
 <tbody>
 <tr><td>Membrane potential</td><td>Voltage</td></tr>
@@ -463,11 +463,11 @@ with \(0<\gamma^l<1\) a second local decay constant and \(\kappa^l\) a coupling 
 
 <p>Multi-compartment neurons generalize the single state triple \((q_i^l,u_i^l,a_i^l)\) into several coupled instances indexed by a compartment \(c\), each running its own copy of the staged update, with the output of one compartment entering another compartment's synaptic or membrane stage as an additional term. Only a designated somatic compartment evaluates \(\mathcal{H}\) and emits \(z_i^l[t]\); the other compartments exist purely to hold auxiliary state that a single-compartment primitive cannot represent. In the deployment-relevant literature this survey reviews, the mechanism is used less for dendritic realism than as an engineering workaround. On Loihi, a second compartment is documented as the way both a subtractive reset and spike-frequency adaptation are recovered from a hardware primitive whose native single-compartment behavior does neither, at the declared cost of doubling compartment allocation per affected neuron <a class="cite" data-ref="nxtf2021" href="#ref-nxtf2021">[nxtf2021]</a>. On BrainScaleS-2, multi-compartment structure is instead documented as native dendritic computation with genuine branch-dependent behavior, not only a workaround for a missing single-compartment feature <a class="cite" data-ref="brainscales-pehle2022" href="#ref-brainscales-pehle2022">[brainscales-pehle2022]</a>. The deployment consequence is that a model description naming "a multi-compartment neuron" is incomplete until it states which of these two roles the extra compartment plays and at what resource cost, a distinction Section 9 revisits as part of the deployable contract's neuron-equation field.</p>
 
-<p>Table 7 collects the five variants against the stage each one modifies. It is a map of where a model sits relative to the common update, not a ranking of platforms; capability status and evidence class for any named target remain claim-specific and are developed in Sections 5, 10 and 11.</p>
+<p>Table 6 collects the five variants against the stage each one modifies. It is a map of where a model sits relative to the common update, not a ranking of platforms; capability status and evidence class for any named target remain claim-specific and are developed in Sections 5, 10 and 11.</p>
 
-<div class="ptable-wrap" id="table-4">
+<div class="ptable-wrap" id="table-3">
 <table class="ptable">
-<caption><b>Table 7:</b> The neuron model family as instances of one staged update. Native or emulated status is scoped to the cited source and platform generation, not a general verdict.</caption>
+<caption><b>Table 6:</b> The neuron model family as instances of one staged update. Native or emulated status is scoped to the cited source and platform generation, not a general verdict.</caption>
 <thead><tr><th>Model</th><th>State variables</th><th>Stage(s) modified relative to IF</th><th>Documented status on a named target</th></tr></thead>
 <tbody>
 <tr><td>IF</td><td>\(u_i^l\)</td><td>none (baseline, trivial \(\mathcal{S}^l\), no decay in \(\mathcal{M}^l\), fixed \(\theta_i^l\))</td><td>Default target of rate-coded conversion <a class="cite" data-ref="cao2015" href="#ref-cao2015">[cao2015]</a>, <a class="cite" data-ref="rueckauer" href="#ref-rueckauer">[rueckauer]</a></td></tr>

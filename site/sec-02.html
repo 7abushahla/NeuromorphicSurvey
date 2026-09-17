@@ -260,7 +260,7 @@ it.</p>
 
 <p>The same words, neuron, spike, code, and neuromorphic itself, recur at every layer of
 this stack, and a reading correct at one layer is not automatically correct at the layer
-above or below it. Table 4 lists the equivalences this survey refuses to draw across
+above or below it. Table 3 lists the equivalences this survey refuses to draw across
 those layers, each attached to the subsection elsewhere in the survey that enforces the
 refusal. A parallel refusal at the level of measurement, a reduced step count against
 reduced latency, a reduced spike count against a reduced operation count, a documented
@@ -990,12 +990,12 @@ trained network down to the part.</p>
   <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. Akida, drawn as the survey's event NPU with a dashed outline inside the same frame, is the event domain processor of BrainChip's tech brief<d-cite key="brainchip-akida-techbrief"></d-cite>, in which events or spikes indicate useful information and the parameter memory is integrated with the neuronal mathematics, the event-based neural network processor of the AKD1000 product brief<d-cite key="BrainChip-AKD1000Brief"></d-cite>, and the target of the CNN2SNN guide<d-cite key="brainchip-cnn2snn-docs"></d-cite> that converts trained CNNs for its runtime, and it sits on the machine side as a deployment target this survey audits because its workload is a converted CNN, while none of those pages documents address events, physical time, a silicon-neuron ancestry, or an instruction stream. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric, a simulator running the right column's equations on the left, and Akida carrying into the circuit frame what the pages give that side, parameter memory integrated with the neuronal mathematics and events. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
 </figure>
 
-<p>Table 4 states the refusal itself, layer by layer, and names the subsection that
+<p>Table 3 states the refusal itself, layer by layer, and names the subsection that
 enforces it.</p>
 
 <div class="ptable-wrap" id="table-vocabulary-non-equivalences">
 <table class="ptable">
-<caption><b>Table 4:</b> Vocabulary-level equivalences this survey refuses to draw across the biology-to-silicon stack, and the subsection that enforces each refusal elsewhere in the article.</caption>
+<caption><b>Table 3:</b> Vocabulary-level equivalences this survey refuses to draw across the biology-to-silicon stack, and the subsection that enforces each refusal elsewhere in the article.</caption>
 <thead>
 <tr><th>Refused equivalence</th><th>Why</th><th>Enforced in</th></tr>
 </thead>
@@ -1748,14 +1748,14 @@ satisfies which of the four senses, and on which named platform, is deferred to 
 sections that introduce execution models and traced deployment routes. No platform
 claim is made here.</p>
 
-<p>Table 5 separates two axes that the senses above conflate when left unstated,
+<p>Table 4 separates two axes that the senses above conflate when left unstated,
 whether a platform's signal domain is digital or is analog or mixed-signal, and whether
 its cores advance on a shared clock or on arriving events. Each of the four
 combinations is realized in a named platform.</p>
 
 <div class="ptable-wrap" id="table-execution-axes">
 <table class="ptable">
-<caption><b>Table 5:</b> The signal-domain axis and the event-scheduling axis are independent. Each cell names one named platform that realizes the combination.</caption>
+<caption><b>Table 4:</b> The signal-domain axis and the event-scheduling axis are independent. Each cell names one named platform that realizes the combination.</caption>
 <thead>
 <tr><th></th><th>Clock-or-timestep-driven</th><th>Event-driven</th></tr>
 </thead>
@@ -1821,7 +1821,7 @@ somewhere, even when no multiplication is required.</p>
      Communication at level 3 is qualified per platform from data/platform-capabilities.json (contract fields connectivity_routing, neural_code_payload, neuron_dynamics, threshold_reset, time_termination; contract_requirement, support_detail, routing_constraints and source_locator read on 2026-09-17).
        spinnaker-1; spynnaker-v8-docs; multicast AER routing, source-addressed spike packets (address-event documented).
        speck-2f; synsense-speck-datasheet; address events carrying address, feature, polarity and timestamp, asynchronous event-driven compute (address-event documented).
-       loihi-1; loihi2, Table 4; binary spike messages traverse the asynchronous mesh (address not named for the inter-core messages; the brief's External Interfaces section names asynchronous (AER) protocols and its body says all communication between neuron cores is in the form of spike messages, read 2026-09-17).
+       loihi-1; loihi2, Table 3; binary spike messages traverse the asynchronous mesh (address not named for the inter-core messages; the brief's External Interfaces section names asynchronous (AER) protocols and its body says all communication between neuron cores is in the form of spike messages, read 2026-09-17).
        brainscales-2; hxtorch, and bss (Pehle et al., Front. Neurosci. 2022, DOI 10.3389/fnins.2022.795876, Section 2.1, read 2026-09-17); timestamped spike events through the digital event-routing fabric, which the bss paper says operates on address event-encoded packets (address-event documented).
        xylo-audio-2; rockpool-xylo-docs; integer spike counts per synchronous timestep within fixed input, recurrent and output matrices (no inter-core fabric documented).
        akida-1; brainchip-akida-user-guide and brainchip-cnn2snn-docs; converted CNN as a single event-domain pass, events carry low-bit activation information, no exposed multi-timestep LIF recurrence, no subtraction-reset sequence over T, no global simulation length T; no address-event lineage or inter-core address-event fabric is documented.

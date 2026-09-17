@@ -99,13 +99,13 @@ The order below is fixed. It is the pedagogical dependency chain approved by the
 computation and representation
   -> neuron and synapse dynamics
   -> temporal semantics, neural codes, and decoding
-  -> learning paradigms
-  -> ANN-to-SNN conversion
-  -> conversion errors and architectural constraints
+  -> where an SNN runs
+  -> learning paradigms and the two branches
+  -> ANN-to-SNN conversion, errors, and interventions
+  -> the deployable SNN contract
   -> software and compiler stack
-  -> hardware execution models
-  -> deployment measurement
-  -> applications and open problems
+  -> deployment routes and measurement
+  -> deployment evidence and open problems
 ```
 
 The direct-training and conversion branches are deliberately bounded and meet at the
@@ -114,29 +114,26 @@ before platform, route, or measurement claims are made.
 
 | Section | Required job |
 | --- | --- |
-| 1. Introduction | Reach the model-to-chip question in the first two paragraphs. State reader and scope. Synthesize the 37 earlier surveys by seven families, not row by row. Retain the complete matrix. Motivate and then define E1 through E5 once. Pose the two-population issue as a question only. Give the 18-section roadmap and precise referrals. |
+| 1. Introduction | Reach the model-to-chip question in the first two paragraphs. State reader and scope. Synthesize the 37 earlier surveys by seven families, not row by row. Retain the complete matrix. Motivate and then define E1 through E5 once. Pose the two-population issue as a question only. Give the 15-section roadmap and precise referrals. |
 | 2. Computation and Representation | Define values, state, events, time, dense computation, sparse activity, conditional execution, and sparse communication. Bound biology and device physics through referrals. Do not give platform conclusions. |
 | 3. Neuron and Synapse Dynamics | Start from the shared staged state update in `notation.md`. Derive IF, LIF, CUBA-LIF, ALIF, and multi-compartment variants. Separate model, numerical discretization, and hardware realization. Make reset semantics load-bearing. |
 | 4. Temporal Semantics, Neural Codes, and Decoding | Define every meaning of time before comparing codes. Compare rate, TTFS, phase, burst, population, sigma-delta, rank-order, and direct coding through encoder, channel, decoder, horizon, precision, and cost. |
-| 5. Learning Paradigms and the Two Branches | Explain the optimization difficulty introduced by spikes. Define direct training, conversion, and hybrid routes. Make the future convergence at the contract explicit. |
-| 6. Direct SNN Training | Cover STDP and local learning, surrogate gradients and BPTT, online learning, and hardware-aware learning only to the depth required for deployment comparison. End with specialist referrals. Do not reproduce a general learning survey. |
-| 7. Classical ANN-to-SNN Conversion | Give one complete reference derivation and walkthrough. Cover ReLU-rate correspondence, input and readout, weight and threshold scaling, bias, batch-normalization folding, pooling, residuals, output decoding, assumptions, and finite-T limits. |
-| 8. Finite-Time Error and Low-Latency Conversion | Explain clipping, saturation, count discretization, residual membrane, reset, unevenness, timing, and layerwise errors by where they enter Section 7's pipeline. Separate deterministic finite-window error from stochastic encoding variance. |
-| 9. Advanced Conversion Methods | Organize by intervention point and named error, not chronology or paper. Cover activation shaping, potential and reset, calibration, neuron changes, temporal allocation, early exit, alternative codes, co-design, and hybrid fine-tuning. Tables hold datasets and measurements. |
-| 10. The Deployable SNN Contract | Define the 11 fields and the three distinct questions of mathematical definition, software representation, and faithful execution. This is the convergence point of the two learning branches. |
-| 11. Software, Interchange, and Compilation | Follow framework, serialization, IR, compiler, mapper, runtime, and host boundaries in process order. Every edge needs input, output, preservation, transformation, rejection, route state, source, and version where available. |
-| 12. Hardware Execution Models | Compare execution families through contract fields. Use versioned vendor manuals, SDKs, devkits, mapper constraints, release notes, model zoos, and official examples. Do not create a vendor-by-vendor tour. |
-| 13. Complete Deployment Routes | Trace verified named routes edge by edge. Label physical, transformed, blocked, and unexercised routes honestly. Place the interactive map only after its prose synthesis. |
-| 14. Deployment Measurement | Define metrics and their boundaries before comparing applications. Address baseline matching, batching, event rate, static power, uncertainty, and Pareto interpretation. |
-| 15. Applications and Deployment Evidence | Organize cases by vision, audio and temporal sensing, control and robotics, and scientific or industrial workloads. For each case, record input provenance, learning route, code, on-device work, baseline, boundary, reproducibility, and E class. |
-| 16. What the Evidence Shows | Answer the Section 1 motivating question. Regenerate inclusive and exclusive population counts. State the narrow low-T rate-code falsifier and its counterexamples. Separate evidence from sociological interpretation. |
-| 17. Open Problems and Research Agenda | Derive problems from failed, transformed, blocked, obsolete, or unexercised contract edges. Do not use a generic future-work list. |
-| 18. Researcher Entry Guide and Conclusion | Give reading paths, route-choice questions, a minimum reporting checklist, specialist referrals, and a concise deployment-centered conclusion. Do not repeat the outline. |
+| 5. Where an SNN Runs | Name the three targets and compare the paths between them, then compare execution families through contract fields. Use versioned vendor manuals, SDKs, devkits, mapper constraints, release notes, model zoos, and official examples. Do not create a vendor-by-vendor tour. |
+| 6. The Two Branches | Explain the optimization difficulty introduced by spikes. Define direct training, conversion, and hybrid routes. Make the future convergence at the contract explicit. |
+| 7. Direct SNN Training | Cover STDP and local learning, surrogate gradients and BPTT, online learning, and hardware-aware learning only to the depth required for deployment comparison. End with specialist referrals. Do not reproduce a general learning survey. |
+| 8. ANN-to-SNN Conversion | Give one complete reference derivation and walkthrough, covering ReLU-rate correspondence, input and readout, weight and threshold scaling, bias, batch-normalization folding, pooling, residuals, output decoding, assumptions, and finite-T limits. Explain clipping, saturation, count discretization, residual membrane, reset, unevenness, timing, and layerwise errors by where they enter that pipeline, separating deterministic finite-window error from stochastic encoding variance. Organize interventions by intervention point and named error, not chronology or paper, covering activation shaping, potential and reset, calibration, neuron changes, temporal allocation, early exit, alternative codes, co-design, and hybrid fine-tuning; tables hold datasets and measurements. |
+| 9. The Deployable SNN Contract | Define the 11 fields and the three distinct questions of mathematical definition, software representation, and faithful execution. This is the convergence point of the two learning branches. Compare platforms directly against those fields, using platform examples only with generation, toolchain version, capability status, and evidence limits. |
+| 10. Software, Interchange, and Compilation | Catalog simulators and libraries, then follow framework, serialization, IR, compiler, mapper, runtime, and host boundaries in process order. Every edge needs input, output, preservation, transformation, rejection, route state, source, and version where available. |
+| 11. Complete Deployment Routes | Trace verified named routes edge by edge. Label physical, transformed, blocked, and unexercised routes honestly. Place the interactive map only after its prose synthesis. |
+| 12. Deployment Measurement | Define metrics and their boundaries before comparing applications. Address baseline matching, batching, event rate, static power, uncertainty, and Pareto interpretation. |
+| 13. Deployment Evidence and Findings | Organize cases by vision, audio and temporal sensing, control and robotics, and scientific or industrial workloads. For each case, record input provenance, learning route, code, on-device work, baseline, boundary, reproducibility, and E class. Answer the Section 1 motivating question, regenerate inclusive and exclusive population counts, state the narrow low-T rate-code falsifier and its counterexamples, and separate evidence from sociological interpretation. |
+| 14. Open Problems and Research Agenda | Derive problems from failed, transformed, blocked, obsolete, or unexercised contract edges. Do not use a generic future-work list. |
+| 15. Researcher Entry Guide and Conclusion | Give reading paths, route-choice questions, a minimum reporting checklist, specialist referrals, and a concise deployment-centered conclusion. Do not repeat the outline. |
 
 ### Two conclusions that need careful placement
 
 The two-population observation is a motivating question in Section 1 and a tested finding
-in Section 16. Do not use it as an opening result. Its narrow falsifier is a paper that
+in Section 13. Do not use it as an opening result. Its narrow falsifier is a paper that
 both proposes a new low-T rate-coded conversion method and measures that method on named
 silicon. No audited paper meets that condition. This does not imply that no low-T
 rate-coded SNN reaches silicon. Verified counterexamples and qualifications include
@@ -204,18 +201,19 @@ Use the local QuantizationSurvey as a writing model, not as a factual source.
 
 ## Figure and table instructions
 
-The manifest at `data/figure-manifest.json` is authoritative. It contains 22 figures, 16
-implemented (15 static plus the interactive route map) and 6 planned. Display numbers
+The manifest at `data/figure-manifest.json` is authoritative. It contains 23 figures, 18
+implemented (17 static plus the interactive route map, Figure 22) and 5 planned. Display numbers
 follow article order and are regenerated from the manifest whenever a figure is added or
 moved; a display number is never hand-coded in prose, fragments, CSS, or tools. Static
 fragments are named by semantic id under `site/figures/` (for example
 `rc-if-lif-origin.html`), not by number. The per-figure state, provenance, and policy
 are recorded in `research/figure-inventory.md`.
 
-The figure set is additive. The original survey figures (`original-neuron-model-comparison`,
+The four original survey figures (`original-neuron-model-comparison`,
 `original-reset-rule-comparison`, `original-hardware-time-model-comparison`,
-`original-neural-code-comparison`) stay beside their revised successors. Their drawings
-are preserved; their captions are scoped to what the drawing shows.
+`original-neural-code-comparison`) are retired to `research/retired-figures/`. Their
+drawings are kept there as read-only records; they are not on the page and do not appear
+in `data/figure-manifest.json`.
 
 | Rule | Requirement |
 | --- | --- |
@@ -243,14 +241,14 @@ or cross-section references.
 
 1. Read the frozen sources above and run the readiness commands below.
 2. Create the missing `sec-04.html`, `sec-05.html`, and `sec-09.html` through
-   `sec-18.html` fragments from the manifest. Do not write all sections in one pass.
+   `sec-15.html` fragments from the manifest. Do not write all sections in one pass.
 3. Draft Sections 1 through 4 first. Review terminology, equations, citations, and
    Figure 2 before moving on.
-4. Draft Sections 5 through 9. Keep direct training bounded and establish conversion
-   before advanced method taxonomy.
-5. Draft Sections 10 through 15. Make the contract drive the software, hardware, route,
+4. Draft Sections 5 through 9. Keep direct training bounded, establish the classical
+   conversion derivation and its interventions, and end at the deployable contract.
+5. Draft Sections 10 through 13. Make the contract drive the software, route,
    measurement, and workload analysis.
-6. Draft Sections 16 through 18 last, after all generated tables and cross-references
+6. Draft Sections 14 and 15 last, after all generated tables and cross-references
    are in place.
 7. Add figures only at their synthesis points. Do not let a figure determine section
    order.
@@ -301,7 +299,7 @@ Before handoff or publication, also verify the following manually.
 - Every section title and stable anchor agrees with `section-map.md`.
 - E1 through E5 appears as one definition only.
 - The matrix has all 37 records and 12 axes.
-- The Section 16 population counts come from generated data and state the counting policy.
+- The Section 13 population counts come from generated data and state the counting policy.
 - Each hardware statement has explicit provenance and qualification.
 - Each deployment result names a route state and each metric has a measurement boundary.
 - Each table and figure is introduced and interpreted, but no paragraph restates every row.
