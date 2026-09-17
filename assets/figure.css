@@ -27,10 +27,10 @@
 
 /* Grid and layers */
 .nstk-grid { display: grid; grid-template-columns: 34px minmax(0,1fr) 34px; gap: 12px; position: relative; }
-.nstk-layers { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.nstk-layers { --label-w: 176px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .nstk-layer {
   --spine: #3A414F; --tint: #E8EAEE;
-  position: relative; display: grid; grid-template-columns: 176px minmax(0,1fr); align-items: stretch;
+  position: relative; display: grid; grid-template-columns: var(--label-w) minmax(0,1fr); align-items: stretch;
   background: var(--tint); border-radius: 9px; box-shadow: 0 2px 6px rgba(20,24,40,0.10); transition: box-shadow 0.15s;
 }
 .nstk-layer[data-layer="app"]     { --spine: #6D4C9F; --tint: #EFEAF7; }
@@ -100,6 +100,29 @@
 .nstk-tracing .nstk-rowlabel { opacity: 0.5; }
 .nstk-tracing .nstk-rowlabel.nstk-on { opacity: 1; }
 .nstk-dim .nstk-label, .nstk-dim .nstk-chip, .nstk-dim .nstk-rowlabel { opacity: 0.3; }
+
+/* Hardware buckets. The hardware layer's rows sit inside three bands, one per bucket of
+   data/target-kinds.json, painted in that file's line color with the row label tinted in
+   its fill and ink. check-figure-map.py holds these three rules to the JSON. */
+.nstk-bucket { display: flex; flex-direction: column; gap: 0.62rem; border-left: 4px solid var(--bline); padding-left: 0.55rem; border-radius: 2px; }
+.nstk-bucket[data-bucket="conventional"], .nstk-row[data-bucket="conventional"], .nstk-bkey[data-bucket="conventional"] { --bline: #1F77B4; --bfill: #E4F0F9; --bink: #155F8F; }
+.nstk-bucket[data-bucket="simulated"], .nstk-row[data-bucket="simulated"], .nstk-bkey[data-bucket="simulated"] { --bline: #8A94A0; --bfill: #ECEEF1; --bink: #4A5560; }
+.nstk-bucket[data-bucket="neuromorphic"], .nstk-row[data-bucket="neuromorphic"], .nstk-bkey[data-bucket="neuromorphic"] { --bline: #D9760C; --bfill: #FBEBDA; --bink: #8F4A06; }
+.nstk-row[data-bucket] .nstk-rowlabel { background: var(--bfill); color: var(--bink); padding: 0.16rem 0.45rem; border-radius: 4px; }
+/* Akida is the event NPU, a conventional-bucket chip carrying the same dashed cue as its
+   chip word in the prose (.tk-event-npu). An outline, not the border, so the cue survives
+   every tracing state (on the route, a branch, implied) and the hover rule's outline reset. */
+.nstk-row[data-bucket="conventional"] .nstk-chip[data-k="akida"] { outline: 1px dashed var(--bink, #155F8F); outline-offset: 2px; }
+
+/* Legend under the hardware layer: the three bucket names as chips, in the vocabulary's
+   own colors, each carrying the bucket's meaning as a tooltip. */
+.nstk-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.5rem; margin: -3px 0 0; padding: 0 0.9rem 0 calc(var(--label-w) + 0.9rem); font-size: 0.64rem; color: #556; }
+.nstk-legend-lead { font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.58rem; color: #667; }
+/* Two classes, so these outrank the page's later single-class .tk defaults. */
+.nstk-legend .nstk-bkey { cursor: help; color: var(--bink); background: var(--bfill); border-color: var(--bline); }
+.nstk-legend .nstk-bkey:focus-visible { outline: 2px solid var(--bline); outline-offset: 1px; }
+/* The chip word beside an evidence marker sits at the marker's size. */
+.nstk-panel .tk { font-size: 0.58rem; vertical-align: 0; }
 
 /* Seam pins */
 .nstk-seam { position: absolute; right: 14px; bottom: 0; transform: translateY(calc(50% + 5px)); display: flex; gap: 6px; z-index: 3; }
@@ -190,5 +213,7 @@
   .nstk-label { flex-direction: row; align-items: baseline; gap: 0.5rem; border-radius: 9px 9px 0 0; padding: 0.4rem 0.8rem; }
   .nstk-row { flex-direction: column; gap: 0.15rem; }
   .nstk-rowlabel { flex-basis: auto; }
+  .nstk-row[data-bucket] .nstk-rowlabel { align-self: flex-start; }
+  .nstk-legend { padding-left: 0.9rem; }
   .nstk-rail-cell { font-size: 0.56rem; }
 }

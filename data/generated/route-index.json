@@ -256,6 +256,49 @@
       ]
     },
     {
+      "id": "akida-sim",
+      "type": "hardware",
+      "name": "Akida software backend",
+      "layer": "Hardware",
+      "summary": "BrainChip's own software simulator, on which the Akida runtime loads and runs the same CNN2SNN convert() output (a .fbz model) that it would send to AKD1000-class silicon. A run here claims software execution of the converted model's single feedforward pass on the host, not a measurement on Akida hardware; the Akida figures this survey cites as measured were taken on physical AKD1000-class hardware.",
+      "attributes": {
+        "target_kind": "simulator",
+        "time_model": "Single feedforward pass on the host, as on the silicon; no user-exposed T.",
+        "toolchain": "MetaTF: QuantizeML -> CNN2SNN convert() -> Akida runtime on the software simulator.",
+        "availability": "Part of the MetaTF toolchain; no Akida device is needed for a software run."
+      },
+      "source_ids": [
+        "brainchip-akida-user-guide",
+        "brainchip-cnn2snn-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "brainchip-akida-user-guide",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "locators": [
+            "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "brainchip-akida-user-guide",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "analog-time",
       "type": "neuron",
       "name": "Analog continuous time",
@@ -2055,6 +2098,37 @@
       ]
     },
     {
+      "id": "fpga-truenorth-emulation",
+      "type": "hardware",
+      "name": "TrueNorth FPGA emulation",
+      "layer": "Hardware",
+      "summary": "An FPGA-based emulation environment for neuromorphic architectures that reimplements IBM TrueNorth's five per-core components (neuron block, core SRAM, router, scheduler, token controller) as a reference design realized on a Xilinx Zynq UltraScale+ MPSoC ZCU102 development board (XCZU9EG FPGA), validated against IBM's own Compass simulator on MNIST and vector-matrix-multiplication case studies. An FPGA emulating a named chip; a run here claims the emulated design's behavior, not a measurement on TrueNorth silicon.",
+      "attributes": {
+        "target_kind": "simulator"
+      },
+      "source_ids": [
+        "fpga-truenorth-emulation"
+      ],
+      "source_refs": [
+        {
+          "source_id": "fpga-truenorth-emulation",
+          "locators": [
+            "Abstract",
+            "Section I Introduction",
+            "Section II Reference Architecture Overview and Implementation (II-A Neuron Block, II-B Core SRAM, II-C Router, II-D Scheduler)",
+            "Table II (post-implementation resource usage on Xilinx Zynq UltraScale+ XCZU9EG)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "fpga-truenorth-emulation",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "frame-camera",
       "type": "application",
       "name": "Frame camera",
@@ -2608,6 +2682,37 @@
         },
         {
           "source_id": "spilger2022-hxtorchsnn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "hxtorch-sim",
+      "type": "hardware",
+      "name": "hxtorch mock simulation",
+      "layer": "Hardware",
+      "summary": "hxtorch's mock mode, enabled by setting mock=True in the Experiment instance, which runs the same hxtorch.snn LIF and LI layers as a numerical simulation on the host instead of on the BrainScaleS-2 chip. BrainScaleS-2's own documentation distinguishes this from genuine hardware execution, whose returned hardware data are mapped to a dense time grid. A run here claims a simulation, not a BrainScaleS-2 measurement.",
+      "attributes": {
+        "target_kind": "simulator",
+        "time_model": "Numerical simulation on the host of the layers the chip would run in analog continuous time.",
+        "toolchain": "hxtorch.snn with mock=True on the Experiment instance.",
+        "availability": "Open-source hxtorch; no BrainScaleS-2 access is needed for a mock run."
+      },
+      "source_ids": [
+        "hxtorch"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hxtorch",
+          "locators": [
+            "Structured metadata from sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hxtorch",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -3195,6 +3300,49 @@
           "source_id": "lava-github-archived",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "lava-loihi-sim",
+      "type": "hardware",
+      "name": "Lava Loihi simulator",
+      "layer": "Hardware",
+      "summary": "Lava's CPU-side simulation backend, on which a Process's software model runs the same LIF neurons and Lava processes that the Loihi backend would run, so that a network can be prototyped on conventional CPUs and GPUs before any chip is involved. A run here claims a software emulation of Loihi's behavior, not execution on Loihi silicon.",
+      "attributes": {
+        "target_kind": "simulator",
+        "time_model": "Software-scheduled process models stepping the same timestep loop the Loihi backend would run; wall-clock time is the host's, not the chip's.",
+        "toolchain": "Lava (core) ProcessModels on the CPU backend, the same abstraction the Loihi2HwCfg backend runs on silicon.",
+        "availability": "Open-source Lava, archived by Intel as of 2026-05-13 with no further maintenance."
+      },
+      "source_ids": [
+        "lava-exec",
+        "lava-nc-homepage"
+      ],
+      "source_refs": [
+        {
+          "source_id": "lava-exec",
+          "locators": [
+            "Structured metadata from sources.json"
+          ]
+        },
+        {
+          "source_id": "lava-nc-homepage",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "lava-exec",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "lava-nc-homepage",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ]
     },
@@ -7616,6 +7764,49 @@
           "verification_status": "provisional"
         }
       ]
+    },
+    {
+      "id": "xylo-sim",
+      "type": "hardware",
+      "name": "Xylo simulator (XyloSim)",
+      "layer": "Hardware",
+      "summary": "Rockpool's bit-precise XyloSim simulator of the Xylo digital SNN core, run on the host CPU. It steps the same synchronous, time-stepped spiking LIF neurons with exponential input synapses that the Xylo hardware implements, so a network can be trained and checked before deployment. A run here claims a simulation of the Xylo core, not a measurement on Xylo silicon.",
+      "attributes": {
+        "target_kind": "simulator",
+        "time_model": "Synchronous, time-stepped simulation of Xylo's global timestep dt on the host CPU.",
+        "toolchain": "Rockpool mapper() -> quantize_methods -> config_from_specification() -> XyloSim, the same configuration that XyloSamna sends to the chip.",
+        "availability": "Open-source Rockpool; no hardware or research-membership gate."
+      },
+      "source_ids": [
+        "rockpool-quickxylo-docs",
+        "rockpool-xylo-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rockpool-xylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rockpool-xylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
     }
   ],
   "routes": [
@@ -11458,6 +11649,92 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cnn2snn-to-akida-runtime",
+      "from": "cnn2snn",
+      "to": "akida-runtime",
+      "from_node": {
+        "id": "cnn2snn",
+        "type": "compiler",
+        "name": "BrainChip CNN2SNN / QuantizeML",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "akida-runtime",
+        "type": "runtime",
+        "name": "Akida runtime",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "classification accuracy of the source quantized CNN (subject to a real accuracy cost at low bit-width without calibration/retraining, e.g. one independent study observed a drop from 90% to 30% before mitigation)"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "classification accuracy of the source quantized CNN (subject to a real accuracy cost at low bit-width without calibration/retraining, e.g. one independent study observed a drop from 90% to 30% before mitigation)"
+      ],
+      "legacy_breaks": [
+        "BREAKS essentially every primitive the rate-coded conversion literature assumes: no user-exposed multi-timestep simulation horizon T (collapses to a single feedforward pass); no membrane potential carried across timesteps; no reset-by-subtraction (static threshold-once instead of iterative subtract-and-carry); rate coding of an activation as a spike count over T is explicitly replaced by 'squashing the rate-code approximation of the ReLU into one time step', represented as a step-wise quantized ReLU"
+      ],
+      "mechanism": "CNN2SNN's convert() writes an Akida .fbz model that the Akida runtime loads for execution on physical AKD1000, AKD1500 or Akida Pico hardware.",
+      "notes": "Scoped to BrainChip standard converted-CNN execution, as on cnn2snn-to-akida. The physical measurements on this route are recorded on the cnn2snn-to-akida and akida-runtime-to-akida edges.",
+      "capability_class": null,
+      "route_state": null,
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "brainchip-cnn2snn-docs",
+        "lunghi2025-akida-space",
+        "ziegler2024-akida-robotics"
+      ],
+      "source_refs": [
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "locators": [
+            "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3"
+          ]
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "locators": [
+            "Lunghi et al., Section 4.1, pp. 19-20",
+            "Lunghi et al., Sections 4.1-4.2 and Table 4, pp. 19-21"
+          ]
+        },
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "locators": [
+            "Ziegler et al., Section III-B.2 and III-C, pp. 4-5",
+            "Ziegler et al., Table V and Section IV, pp. 6-7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
     },
     {
       "id": "codesigned-to-loihi1",
@@ -21727,6 +22004,73 @@
       "platform_capabilities": []
     },
     {
+      "id": "quartz-to-nxsdk",
+      "from": "quartz",
+      "to": "nxsdk",
+      "from_node": {
+        "id": "quartz",
+        "type": "compiler",
+        "name": "Quartz",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "nxsdk",
+        "type": "runtime",
+        "name": "NxSDK",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "no soft reset required (neurons fire at most once)"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "no soft reset required (neurons fire at most once)"
+      ],
+      "legacy_breaks": [
+        "accuracy trade-off vs. rate coding: CIFAR-10 25.14% error (Quartz, 1211 timesteps) vs. 8.52% error (rate-coded NxTF, 400 timesteps) -- Quartz trades accuracy for spike-count/energy efficiency at this scale"
+      ],
+      "mechanism": "Quartz's converted network is programmed onto Loihi 1 through NxSDK 1.0.0 on the physical Nahuku 32 board ncl-ext-ghrd-01.",
+      "notes": "The physical measurements on this route are recorded on the quartz-to-loihi1 edge.",
+      "capability_class": null,
+      "route_state": null,
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "quartz"
+      ],
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Abstract, pp. 1-2",
+            "Data availability statement, p. 10",
+            "Section 2 and Section 5, rate-code exclusion reviewed in Audit C",
+            "Section 2, Proposed ANN-to-SNN Conversion Method, pp. 2-4",
+            "Section 4, Results on Loihi, pp. 6-9",
+            "Section 5, Discussion, pp. 9-10",
+            "Table 2, p. 7",
+            "Table 3 and Section 4.2, pp. 8-9"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "quartz",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "rate-coding-to-spinnaker2",
       "from": "rate-coding",
       "to": "spinnaker-2",
@@ -23423,6 +23767,78 @@
           ]
         }
       ]
+    },
+    {
+      "id": "samna-to-xylo",
+      "from": "samna",
+      "to": "xylo",
+      "from_node": {
+        "id": "samna",
+        "type": "runtime",
+        "name": "samna",
+        "layer": "Runtime"
+      },
+      "to_node": {
+        "id": "xylo",
+        "type": "hardware",
+        "name": "SynSense Xylo",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "subtractive reset (fixed hardware property, not a software switch)"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "subtractive reset (fixed hardware property, not a software switch)"
+      ],
+      "legacy_breaks": [
+        "multi-spike-per-timestep (up to 31 events/neuron/step) departs from the single-spike-per-step assumption of most conversion theory"
+      ],
+      "mechanism": "samna applies the Xylo configuration to the physical HDK in accelerated-time or real-time streaming mode with on-chip power recording.",
+      "notes": "Micro-power keyword-spotting (Aloha benchmark) on physical XyloAudio 2 HDK is a published E1 result, with on-board current monitors sampled at 1280 Hz.",
+      "capability_class": null,
+      "route_state": null,
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "rockpool-quickxylo-docs",
+        "rockpool-xyloa3-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
     },
     {
       "id": "signed-spikes-to-loihi2",
@@ -27218,6 +27634,78 @@
       "platform_capabilities": []
     },
     {
+      "id": "spynnaker-to-spinnaker-runtime",
+      "from": "spynnaker",
+      "to": "spinnaker-runtime",
+      "from_node": {
+        "id": "spynnaker",
+        "type": "compiler",
+        "name": "sPyNNaker",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "spinnaker-runtime",
+        "type": "runtime",
+        "name": "SpiNNaker runtime",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "user-defined neuron model behavior (fully software-programmable)"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "user-defined neuron model behavior (fully software-programmable)"
+      ],
+      "legacy_breaks": [
+        "built-in sPyNNaker cell types (e.g. IF_curr_exp) use PyNN-conventional hard-reset LIF/IF semantics by default; reset-by-subtraction is achievable only by writing a bespoke C neuron model implementing a custom neuron_model_has_spiked() callback, not a built-in option"
+      ],
+      "mechanism": "sPyNNaker, through SpiNNTools, hands the runtime the partitioned machine graph, the placed vertices, the compressed multicast routing tables, the per-core parameter blocks and the compiled C executables that SpiN1API then executes.",
+      "notes": "The physical measurements on this route are recorded on the spynnaker-to-spinnaker1 and spinnaker-runtime-to-spinnaker1 edges.",
+      "capability_class": null,
+      "route_state": null,
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "rhodes2018-spynnaker",
+        "rowley2019-spinntools"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rhodes2018-spynnaker",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rowley2019-spinntools",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rhodes2018-spynnaker",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rowley2019-spinntools",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "spynnaker-to-spinnaker1",
       "from": "spynnaker",
       "to": "spinnaker-1",
@@ -28584,6 +29072,78 @@
           "source_id": "anglo-mixed-snn-mcu",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "xylo-mapper-to-samna",
+      "from": "xylo-mapper",
+      "to": "samna",
+      "from_node": {
+        "id": "xylo-mapper",
+        "type": "compiler",
+        "name": "Rockpool Xylo mapper/quantizer",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "samna",
+        "type": "runtime",
+        "name": "samna",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "subtractive reset (fixed hardware property, not a software switch)"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "subtractive reset (fixed hardware property, not a software switch)"
+      ],
+      "legacy_breaks": [
+        "multi-spike-per-timestep (up to 31 events/neuron/step) departs from the single-spike-per-step assumption of most conversion theory"
+      ],
+      "mechanism": "config_from_specification() builds the hardware configuration that XyloSamna and XyloMonitor, Rockpool's samna-backed deployment modules, apply to the HDK.",
+      "notes": "The physical measurements on this route are recorded on the xylo-mapper-to-xylo and samna-to-xylo edges.",
+      "capability_class": null,
+      "route_state": null,
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "rockpool-quickxylo-docs",
+        "rockpool-xyloa3-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ],
       "input_shape": "legacy",

@@ -11998,6 +11998,67 @@
       "capability_class": null
     },
     {
+      "id": "route:cnn2snn-to-akida-runtime",
+      "origin_type": "route",
+      "origin_id": "cnn2snn-to-akida-runtime",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "CNN2SNN's convert() writes an Akida .fbz model that the Akida runtime loads for execution on physical AKD1000, AKD1500 or Akida Pico hardware.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "brainchip-cnn2snn-docs",
+        "lunghi2025-akida-space",
+        "ziegler2024-akida-robotics"
+      ],
+      "source_refs": [
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "locators": [
+            "CNN2SNN user guide, Overview and Conversion flow, MetaTF 2.19.3"
+          ]
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "locators": [
+            "Lunghi et al., Section 4.1, pp. 19-20",
+            "Lunghi et al., Sections 4.1-4.2 and Table 4, pp. 19-21"
+          ]
+        },
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "locators": [
+            "Ziegler et al., Section III-B.2 and III-C, pp. 4-5",
+            "Ziegler et al., Table V and Section IV, pp. 6-7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "brainchip-cnn2snn-docs",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "lunghi2025-akida-space",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "ziegler2024-akida-robotics",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": null,
+      "capability_class": null
+    },
+    {
       "id": "route:codesigned-to-loihi1",
       "origin_type": "route",
       "origin_id": "codesigned-to-loihi1",
@@ -15348,6 +15409,48 @@
       "capability_class": null
     },
     {
+      "id": "route:quartz-to-nxsdk",
+      "origin_type": "route",
+      "origin_id": "quartz-to-nxsdk",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "Quartz's converted network is programmed onto Loihi 1 through NxSDK 1.0.0 on the physical Nahuku 32 board ncl-ext-ghrd-01.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "quartz"
+      ],
+      "source_refs": [
+        {
+          "source_id": "quartz",
+          "locators": [
+            "Abstract, pp. 1-2",
+            "Data availability statement, p. 10",
+            "Section 2 and Section 5, rate-code exclusion reviewed in Audit C",
+            "Section 2, Proposed ANN-to-SNN Conversion Method, pp. 2-4",
+            "Section 4, Results on Loihi, pp. 6-9",
+            "Section 5, Discussion, pp. 9-10",
+            "Table 2, p. 7",
+            "Table 3 and Section 4.2, pp. 8-9"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "quartz",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": null,
+      "capability_class": null
+    },
+    {
       "id": "route:rate-coding-to-spinnaker2",
       "origin_type": "route",
       "origin_id": "rate-coding-to-spinnaker2",
@@ -15780,6 +15883,53 @@
         },
         {
           "source_id": "speck-dynamic-snn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": null,
+      "capability_class": null
+    },
+    {
+      "id": "route:samna-to-xylo",
+      "origin_type": "route",
+      "origin_id": "samna-to-xylo",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "samna applies the Xylo configuration to the physical HDK in accelerated-time or real-time streaming mode with on-chip power recording.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "rockpool-quickxylo-docs",
+        "rockpool-xyloa3-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -16560,6 +16710,53 @@
       "capability_class": null
     },
     {
+      "id": "route:spynnaker-to-spinnaker-runtime",
+      "origin_type": "route",
+      "origin_id": "spynnaker-to-spinnaker-runtime",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "sPyNNaker, through SpiNNTools, hands the runtime the partitioned machine graph, the placed vertices, the compressed multicast routing tables, the per-core parameter blocks and the compiled C executables that SpiN1API then executes.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "rhodes2018-spynnaker",
+        "rowley2019-spinntools"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rhodes2018-spynnaker",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rowley2019-spinntools",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rhodes2018-spynnaker",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rowley2019-spinntools",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": null,
+      "capability_class": null
+    },
+    {
       "id": "route:spynnaker-to-spinnaker1",
       "origin_type": "route",
       "origin_id": "spynnaker-to-spinnaker1",
@@ -17101,6 +17298,53 @@
       "eligible_for_substantive_use": true,
       "route_state": "physical",
       "capability_class": "native"
+    },
+    {
+      "id": "route:xylo-mapper-to-samna",
+      "origin_type": "route",
+      "origin_id": "xylo-mapper-to-samna",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "config_from_specification() builds the hardware configuration that XyloSamna and XyloMonitor, Rockpool's samna-backed deployment modules, apply to the HDK.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "rockpool-quickxylo-docs",
+        "rockpool-xyloa3-docs"
+      ],
+      "source_refs": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "rockpool-quickxylo-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "rockpool-xyloa3-docs",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": null,
+      "capability_class": null
     },
     {
       "id": "route:xylo-mapper-to-xylo",
