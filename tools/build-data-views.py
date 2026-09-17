@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT_DIR = ROOT / "data/generated"
 VIEW_FILENAMES = (
     "prior-survey-family-summary.json",
+    "prior-survey-targets-summary.json",
     "claim-index.json",
     "route-index.json",
     "measurement-index.json",
@@ -247,6 +248,53 @@ def build_prior_survey_family_summary(
             }
         )
     return {"families": families}
+
+
+def build_prior_survey_targets_summary(
+    surveys: list[dict[str, Any]],
+    kinds_document: dict[str, Any],
+    source_lookup: dict[str, object] | None = None,
+) -> dict[str, Any]:
+    kind_words = [str(kind["word"]) for kind in kinds_document["kinds"]]
+    kind_bucket = {str(kind["word"]): str(kind["bucket"]) for kind in kinds_document["kinds"]}
+    bucket_names = [str(bucket["name"]) for bucket in kinds_document["buckets"]]
+
+    kind_survey_counts: dict[str, int] = {word: 0 for word in kind_words}
+    bucket_survey_counts: dict[str, int] = {name: 0 for name in bucket_names}
+    surveys_covering_all_three_buckets = 0
+    survey_records = []
+    for survey in sorted(surveys, key=lambda item: str(item["id"])):
+        targets = survey.get("targets") or {}
+        kinds = list(targets.get("kinds") or [])
+        require(
+            all(kind in kind_bucket for kind in kinds),
+            f"survey {survey['id']} names an undeclared target kind",
+        )
+        buckets = sorted_unique_strings(kind_bucket[kind] for kind in kinds)
+        for kind in kinds:
+            kind_survey_counts[kind] += 1
+        for bucket in buckets:
+            bucket_survey_counts[bucket] += 1
+        if set(buckets) == set(bucket_names):
+            surveys_covering_all_three_buckets += 1
+        source_id = str(survey["source_id"])
+        if source_lookup is not None:
+            source_id = canonical_source_id(source_id, source_lookup)
+        survey_records.append(
+            {
+                "id": survey["id"],
+                "source_id": source_id,
+                "kinds": kinds,
+                "buckets": buckets,
+            }
+        )
+    return {
+        "survey_total": len(survey_records),
+        "kind_survey_counts": kind_survey_counts,
+        "bucket_survey_counts": bucket_survey_counts,
+        "surveys_covering_all_three_buckets": surveys_covering_all_three_buckets,
+        "surveys": survey_records,
+    }
 
 
 def build_claim_index(
@@ -1098,6 +1146,7 @@ def build_outputs(root: Path = ROOT) -> dict[str, dict[str, Any]]:
     stack_payload = load_json(data_dir / "evidence-stack.json")
     paper_payload = load_json(data_dir / "evidence-papers.json")
     capability_payload = load_json(data_dir / "platform-capabilities.json")
+    target_kinds_payload = load_json(data_dir / "target-kinds.json")
 
     sources = source_payload["sources"]
     claims = claim_payload["claims"]
@@ -1134,6 +1183,9 @@ def build_outputs(root: Path = ROOT) -> dict[str, dict[str, Any]]:
             },
         }
     )
+    targets_summary = build_prior_survey_targets_summary(
+        surveys, target_kinds_payload, source_lookup
+    )
     claim_index = build_claim_index(claims, audit_claims, source_lookup)
     route_index = build_route_index(
         edges, nodes, capabilities, source_lookup, schema
@@ -1154,6 +1206,12 @@ def build_outputs(root: Path = ROOT) -> dict[str, dict[str, Any]]:
             schema_version=schema_version,
             view="prior-survey-family-summary",
             generated_from=("data/prior-survey-coverage.json", "data/source-registry.json"),
+        ),
+        "prior-survey-targets-summary.json": add_view_metadata(
+            targets_summary,
+            schema_version=schema_version,
+            view="prior-survey-targets-summary",
+            generated_from=("data/prior-survey-coverage.json", "data/target-kinds.json"),
         ),
         "claim-index.json": add_view_metadata(
             claim_index,

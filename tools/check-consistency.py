@@ -14,7 +14,8 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parent.parent
 GENERATED_FILES = (
     "claim-index.json", "figure-inputs.json", "measurement-index.json",
-    "prior-survey-family-summary.json", "route-index.json",
+    "prior-survey-family-summary.json", "prior-survey-targets-summary.json",
+    "route-index.json",
 )
 OFFICIAL_SOURCE_TYPES = {
     "official_vendor_documentation", "official_manufacturer_documentation",

@@ -137,6 +137,8 @@ def validate_surveys(document: object) -> tuple[dict[str, int], list[str]]:
                 f"{label}: coverage axes mismatch; missing={missing}, "
                 f"unexpected={unexpected}"
             )
+        if not isinstance(survey.get("targets"), dict) or not isinstance(survey["targets"].get("kinds"), list):
+            errors.append(f"{label}: targets.kinds is required")
     if all_axes != COVERAGE_AXES:
         errors.append(
             f"prior-survey coverage expected exactly 12 axes A-L, found "

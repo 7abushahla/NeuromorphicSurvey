@@ -24,7 +24,7 @@ DISPLAY_COLUMNS = (
     ("Training &amp; conversion", "Conversion", ("C", "D")),
     ("Software frameworks", "Software", ("E",)),
     ("Compilers &amp; interchange", "Compilers", ("F", "G")),
-    ("Hardware platforms", "Hardware", ("H",)),
+    ("Targets covered", "Targets", ()),
     ("Boundary semantics", "Boundaries", ("I",)),
     ("Evidence types", "Evidence", ("J",)),
     ("Traced chip routes", "Routes", ("L",)),
@@ -36,6 +36,17 @@ CELL_STYLE = {
     1: ("cov-ment", "Mentioned"),
     0: ("cov-none", ""),
 }
+
+KINDS = json.loads((ROOT / "data/target-kinds.json").read_text())
+KIND_ORDER = [k["word"] for k in KINDS["kinds"]]
+KIND_CSS = {k["word"]: k["css"] for k in KINDS["kinds"]}
+
+
+def chip_cell(survey: dict[str, Any]) -> str:
+    kinds = (survey.get("targets") or {}).get("kinds") or []
+    ordered = [k for k in KIND_ORDER if k in kinds]
+    chips = " ".join(f'<span class="tk {KIND_CSS[k]}">{html.escape(k)}</span>' for k in ordered)
+    return f'<td class="hwcell">{chips}</td>'
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -205,6 +216,9 @@ def render_table(
         scores = coverage_scores(survey, f"canonical {source_id}")
         cells = []
         for _, _, axes in DISPLAY_COLUMNS:
+            if not axes:
+                cells.append(chip_cell(survey))
+                continue
             css_class, label = CELL_STYLE[display_score(scores, axes)]
             content = f"<span>{label}</span>" if label else ""
             cells.append(f'<td class="{css_class}">{content}</td>')
@@ -223,14 +237,21 @@ def render_table(
         f'<th class="ctr" data-chip="{chip}">{title}</th>'
         for title, chip, _ in DISPLAY_COLUMNS
     )
+    ours_chips = " ".join(
+        f'<span class="tk {KIND_CSS[k]}">{html.escape(k)}</span>' for k in KIND_ORDER
+    )
+    ours_cells = "".join(
+        f'<td class="hwcell">{ours_chips}</td>' if not axes else '<td class="cov-full"><span>Full</span></td>'
+        for _, _, axes in DISPLAY_COLUMNS
+    )
     ours = (
         '<tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td>'
-        + '<td class="cov-full"><span>Full</span></td>' * len(DISPLAY_COLUMNS)
+        + ours_cells
         + "</tr>"
     )
     return f'''<div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
-<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year.</caption>
+<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, a chip model, or neuromorphic silicon.</caption>
 <thead><tr>
 <th>Survey</th>
 <th class="ctr yr" data-sort="num">Year</th>
@@ -241,7 +262,7 @@ def render_table(
 {ours}
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>'''
 
 

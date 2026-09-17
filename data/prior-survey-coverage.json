@@ -72,6 +72,13 @@
           "locator": "Results, Figs. 3-6"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Four physical platforms and seven simulators are named and evaluated; three proof-of-concept graphs run across eleven platforms, including four chips.",
+        "locator": "H axis, Results, ‘Experiments’, Fig. 2; Deployment depth"
+      },
       "strongest_contribution": "Boundary-level semantic interoperability analysis.",
       "deployment_depth": "Demonstrates selected graphs across simulators and hardware back ends.",
       "omissions": [
@@ -155,6 +162,13 @@
           "locator": "Secs. ‘Software ecosystem’ and ‘Community readiness’, pp. 806-810"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Scalable architectures and named system dimensions are central to the review.",
+        "locator": "H axis; Abstract p. 801; Figs. 1-3, pp. 802-805"
+      },
       "strongest_contribution": "High-level diagnosis of software-ecosystem gaps.",
       "deployment_depth": "Diagnostic only in retrieved material.",
       "omissions": [
@@ -236,6 +250,13 @@
           "basis": "Ingredients are covered without one full named route.",
           "locator": "Secs. IV-V"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Supporting hardware platforms form a stated foundation.",
+        "locator": "H axis; Sec. III"
       },
       "strongest_contribution": "Dual-track evaluation for EdgeSNN deployment.",
       "deployment_depth": "Broad deployment review without a fixed route.",
@@ -320,6 +341,13 @@
           "locator": "System Track Benchmark Framework"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "The systems track targets deployed hardware and names candidate systems.",
+        "locator": "H axis; System Track Benchmark Framework"
+      },
       "strongest_contribution": "Explicit separation of proxy and physical-system evaluation.",
       "deployment_depth": "Defines protocols rather than deployment cases.",
       "omissions": [
@@ -402,6 +430,13 @@
           "locator": "Secs. III-VI"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook; chip, multichip systems, mesh, and I/O are described in depth.",
+        "locator": "Title; H axis, Sec. II-A-B, Fig. 1"
+      },
       "strongest_contribution": "Measured Loihi results across application classes.",
       "deployment_depth": "High, but limited to Loihi.",
       "omissions": [
@@ -482,6 +517,13 @@
           "basis": "High-level models map to physical implementation without a comparative route.",
           "locator": "Sec. 2.2, PACMAN"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Hardware capacities and constraints are tabulated as mapping context.",
+        "locator": "H axis; Sec. 1, Table 1; Sec. 2.1"
       },
       "strongest_contribution": "System-software and mapping framework synthesis.",
       "deployment_depth": "Framework-specific mappings, not unified routes.",
@@ -565,6 +607,14 @@
           "locator": "Full-text review, Nature pp. 607-615"
         }
       },
+      "targets": {
+        "kinds": [
+          "GPU",
+          "neuromorphic"
+        ],
+        "basis": "The hardware half compares GPU execution, Neurogrid, TrueNorth, Loihi, address-event routing, networks-on-chip, in-memory computing, and several nonvolatile device families.",
+        "locator": "H axis; Nature pp. 612-615, Figs. 5-6"
+      },
       "strongest_contribution": "Connects SNN learning requirements to hardware mechanisms, limitations, and cross-layer co-design.",
       "deployment_depth": "Substantial hardware treatment with named chips and application evidence, but no reproducible software-to-silicon route.",
       "omissions": [
@@ -645,6 +695,13 @@
           "basis": "No route taxonomy.",
           "locator": "Secs. V-VII"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Hardware implementations and devices are a principal section.",
+        "locator": "H axis; Sec. V"
       },
       "strongest_contribution": "Historic integration across models, algorithms, hardware, and applications.",
       "deployment_depth": "Broad platform coverage without a deployment trace.",
@@ -728,6 +785,13 @@
           "locator": "Nature Computational Science pp. 13-14"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "SpiNNaker, BrainScaleS, ODIN, Tianjic, TrueNorth, Loihi, DYNAPs, Neurogrid, and IFAT are situated by purpose and implementation, but hardware architecture is supporting context rather than the organizing focus.",
+        "locator": "H axis; Nature Computational Science p. 11"
+      },
       "strongest_contribution": "Connects a broad algorithm taxonomy to practical deployment barriers and full-stack co-design opportunities.",
       "deployment_depth": "Names task-to-chip demonstrations and host-boundary costs, but does not specify reproducible model transformations or toolchain routes.",
       "omissions": [
@@ -808,6 +872,11 @@
           "basis": "No end-to-end route.",
           "locator": "Article overview; Neuromorphic Systems in the Wild"
         }
+      },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
       },
       "strongest_contribution": "Unified explanation of direct SNN training methods.",
       "deployment_depth": "Application context only.",
@@ -890,6 +959,13 @@
           "basis": "No complete reproducible trained-network-to-named-chip route was identified.",
           "locator": "Secs. 2.5 and 3, organization and APIs discussion"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Dedicated hardware discussion names multiple neuromorphic architectures and device technologies.",
+        "locator": "H axis; Introduction and hardware sections"
       },
       "strongest_contribution": "A multistack account connecting SNN algorithmic requirements to hardware technologies.",
       "deployment_depth": "Inventories hardware and applications but does not provide a fixed, reproducible deployment route.",
@@ -974,6 +1050,13 @@
           "locator": "Full-text inspection"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Neuromorphic hardware is listed as deployment context.",
+        "locator": "H axis locator: Introduction, TrueNorth, Loihi, SpiNNaker, and NeuroGrid examples"
+      },
       "strongest_contribution": "A practical broad review linking SNN foundations, frameworks, and computer-vision and robotics applications.",
       "deployment_depth": "Names hardware and frameworks but does not audit mapping or physical deployment routes.",
       "omissions": [
@@ -1057,6 +1140,14 @@
           "locator": "Full-text inspection"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic",
+          "event NPU"
+        ],
+        "basis": "The review inventories TrueNorth, Loihi, Tianjic, SpiNNaker, BrainScaleS, NeuronFlow, DYNAP, Akida, Mythic, and memristive approaches.",
+        "locator": "H axis; Abstract and project overview"
+      },
       "strongest_contribution": "A feature-based taxonomy of neuromorphic AI systems and projects.",
       "deployment_depth": "Architectural and project descriptive, not a software-to-hardware deployment audit.",
       "omissions": [
@@ -1139,6 +1230,13 @@
           "basis": "Tables summarize implementations rather than trace one trained network through a full route.",
           "locator": "Tables I-II"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Dedicated SNN ICs are compared across multicore, digital, and mixed-signal designs.",
+        "locator": "H axis; Abstract; Secs. II-IV"
       },
       "strongest_contribution": "Normalized circuit-level comparison of digital, mixed-signal, and large multicore SNN ICs.",
       "deployment_depth": "Compares fabricated, FPGA, and pre-silicon implementations, not full software deployment routes.",
@@ -1225,6 +1323,14 @@
           "locator": "Sec. VI, autonomous-driving discussion, PDF p. 21, publication p. 60758"
         }
       },
+      "targets": {
+        "kinds": [
+          "GPU",
+          "neuromorphic"
+        ],
+        "basis": "Section VI implements BindsNET and snnTorch and compares their abstractions, GPU support, intended learning modes, and simulation-time behavior, with Brian used as a reference point; neuromorphic hardware motivates efficiency claims, SpiNNaker appears in a reviewed example, and one Loihi implementation is summarized.",
+        "locator": "E axis, Sec. VI, PDF pp. 16-21; H axis, PDF pp. 8, 21-22"
+      },
       "strongest_contribution": "Connects biological mechanisms, coding choices, and learning routes, then tests selected direct-training methods in reproducible software experiments.",
       "deployment_depth": "Identifies conversion and training-to-inference mismatches and cites one Loihi result, but does not cover compilers, mappers, interchange formats, or a reproducible chip route.",
       "omissions": [
@@ -1308,6 +1414,13 @@
           "locator": "Sections 5-8, PDF pp. 14-28, publication pp. 188-202"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Section 5 compares TrueNorth, Loihi, SpiNNaker, BrainScaleS, DYNAP-SE, Darwin, and emerging devices, including neuron support, precision, connectivity, learning mode, and energy figures in Tables 4-5.",
+        "locator": "H axis; PDF pp. 14-16, publication pp. 188-190"
+      },
       "strongest_contribution": "Connects a four-route training taxonomy to hardware constraints, platform capabilities, broad applications, and deployment barriers.",
       "deployment_depth": "Substantive at the requirements and constraints level, but it does not compare executable compiler pipelines, SDKs, mapper behavior, or an end-to-end physical route.",
       "omissions": [
@@ -1390,6 +1503,11 @@
           "basis": "No end-to-end trained-network-to-chip route was identified.",
           "locator": "Full-text inspection"
         }
+      },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
       },
       "strongest_contribution": "A pedagogical comparison of biological intelligence, SNNs, and ANNs.",
       "deployment_depth": "No substantive deployment or hardware-route analysis.",
@@ -1475,6 +1593,11 @@
           "locator": "Full-text inspection"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind; its registered abstract page returned only an OpenReview browser-verification challenge and could not be read.",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Relates neuronal and spiking dynamics, conversion mismatch, and temporal horizon to latency and efficiency.",
       "deployment_depth": "Covers learning and benchmark efficiency, not software mapping or physical execution.",
       "omissions": [
@@ -1559,6 +1682,11 @@
           "locator": "Full-text inspection"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "An explicit DSNN compression taxonomy covering pruning, quantization, distillation, firing-rate reduction, and time-step pruning.",
       "deployment_depth": "Treats hardware as motivation, not as an audited execution pipeline.",
       "omissions": [
@@ -1642,6 +1770,13 @@
           "locator": "Sections 1-4"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Section 3 and Table 1 compare digital and analog neuromorphic circuits, including SpiNNaker, TrueNorth, Loihi 2, and fabricated implementations.",
+        "locator": "H axis; Table 1"
+      },
       "strongest_contribution": "Circuit-level comparison with normalized energy and area metrics.",
       "deployment_depth": "Circuit comparison only; no executable network-to-chip route.",
       "omissions": [
@@ -1722,6 +1857,14 @@
           "basis": "See the associated audit note for the bounded supporting rationale.",
           "locator": "Section 3"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic",
+          "FPGA"
+        ],
+        "basis": "Sections 3.1-3.2 name Loihi, SpiNNaker, FPGA, and other destinations as framework backends.",
+        "locator": "H axis; Sections 3.1-3.2"
       },
       "strongest_contribution": "Nine-framework feature inventory for data-science SNN development.",
       "deployment_depth": "Compatibility reporting only; no deployed-route validation.",
@@ -1806,6 +1949,11 @@
           "locator": "Sections 1-5"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Sensor-to-algorithm account of asynchronous event vision.",
       "deployment_depth": "Sensing and embedded processing, not trained-SNN compilation.",
       "omissions": [
@@ -1886,6 +2034,13 @@
           "basis": "Discusses mapping and deployment stages but does not trace one network through a named software stack to measured physical-chip execution.",
           "locator": "Sections 8-9, pp. 20-24"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Sections 6 and 7 cover analog, digital, mixed-signal, memory-device, and many-core SNN implementations with explicit architectural trade-offs.",
+        "locator": "H axis; pp. 11-20"
       },
       "strongest_contribution": "Hardware-aware mapping tutorial spanning partitioning, placement, crossbars, precision, memory, and synchronization.",
       "deployment_depth": "Explains deployment constraints and mapping stages but provides no complete named framework-to-silicon route.",
@@ -1968,6 +2123,15 @@
           "locator": "Table 2, p. 24"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic",
+          "simulator",
+          "FPGA"
+        ],
+        "basis": "Sections 3, 4, and 6 cover analog and digital neurocores, crossbars, large-scale systems, and embedded accelerators, including BrainScaleS, Neurogrid, TrueNorth, SpiNNaker, and Loihi; Section 6.2 and Table 2 explicitly distinguish simulated, FPGA, and fabricated technologies and flag incomparable model types and missing values.",
+        "locator": "H axis, Sections 3-4 and 6, pp. 8-24; J axis, Section 6.2 and Table 2, pp. 22-24"
+      },
       "strongest_contribution": "Joint algorithm-hardware analysis with unusually explicit accelerator evidence labels and benchmark caveats.",
       "deployment_depth": "Compact hardware route summaries for several accelerators, without modern framework or compiler paths.",
       "omissions": [
@@ -2047,6 +2211,13 @@
           "basis": "TrueNorth Eedn and Tianjic discussions connect training or mapping support to named hardware and applications without complete reproducibility details.",
           "locator": "Sections IV-A.3 and IV-E.5-6, pp. 20-24"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Sections III and IV explain design choices and detailed TrueNorth, Loihi, BrainScaleS, SpiNNaker, and Tianjic case studies.",
+        "locator": "H axis; Sections III-IV, pp. 15-24"
       },
       "strongest_contribution": "Algorithm-hardware co-design survey with substantive, platform-specific software and compiler coverage.",
       "deployment_depth": "Connects model semantics, software abstractions, compilers, and named platform applications, but not as one reproducible route.",
@@ -2129,6 +2300,13 @@
           "locator": "Sections 3.3.5 and 4, pp. 29-38"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Section 3 provides sustained treatment of Neurogrid, BrainScaleS, DYNAPs, ROLLS, Loihi, SpiNNaker, TrueNorth, Tianjic, PAICORE, ODIN, Loihi 2, SpiNNaker 2, and memristor systems.",
+        "locator": "H axis; Section 3, pp. 8-31"
+      },
       "strongest_contribution": "Five-dimensional chip taxonomy and broad workload-oriented application synthesis.",
       "deployment_depth": "Names several physical deployments and one mapped memristor workload, without complete compiler and measurement provenance.",
       "omissions": [
@@ -2209,6 +2387,13 @@
           "basis": "No substantive treatment was identified within the retrieved scope.",
           "locator": "Sections 1-4"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "This systematic review covers brain-inspired hardware, including neuromorphic, in-memory, reservoir, and hyperdimensional computing; Abstract and Sections 2-3 categorize dominant brain-inspired hardware platforms.",
+        "locator": "Scope; H axis, Abstract and Sections 2-3"
       },
       "strongest_contribution": "Systematic hardware-landscape review with normalized OPS/W reports.",
       "deployment_depth": "Hardware-landscape synthesis, not software-route execution.",
@@ -2292,6 +2477,11 @@
           "locator": "Sections 1-4"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Algorithmic taxonomy of conversion, direct training, DCNNs, and spiking Transformers.",
       "deployment_depth": "Algorithm and benchmark reporting only, not hardware deployment.",
       "omissions": [
@@ -2372,6 +2562,13 @@
           "basis": "No named-chip route.",
           "locator": "Section 4"
         }
+      },
+      "targets": {
+        "kinds": [
+          "GPU"
+        ],
+        "basis": "Abstract and Section 4 identify the reported energy as a GPU operation-count proxy; Section 4 reports GPU-proxy experiments only, with no end-to-end named-chip route.",
+        "locator": "J axis, Abstract and Section 4; L axis, Section 4"
       },
       "strongest_contribution": "Combines a broad tutorial with controlled neuron, code, framework, and proxy-energy experiments.",
       "deployment_depth": "Software experiments only; no physical neuromorphic deployment is reported.",
@@ -2454,6 +2651,14 @@
           "locator": "Article scope and Sections 3-4"
         }
       },
+      "targets": {
+        "kinds": [
+          "neuromorphic",
+          "event NPU"
+        ],
+        "basis": "Section 3 and Table 1 compare representative neuromorphic projects, including TrueNorth, Loihi, SpiNNaker, BrainScaleS, Tianjic, GrAIOne, Akida, and memristor systems.",
+        "locator": "H axis; Section 3, Table 1"
+      },
       "strongest_contribution": "Provides a compact comparison of representative neuromorphic architecture families.",
       "deployment_depth": "Descriptive hardware comparison without a traced model-to-chip route.",
       "omissions": [
@@ -2535,6 +2740,11 @@
           "basis": "No trained SNN to chip route.",
           "locator": "Article scope and Sections 3-5"
         }
+      },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
       },
       "strongest_contribution": "Unifies event-based visual, auditory, and olfactory sensing principles.",
       "deployment_depth": "Covers sensor systems rather than trained SNN deployment toolchains.",
@@ -2619,6 +2829,11 @@
           "locator": "Scope"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Connects neuromorphic vision sensor hardware with algorithms and applications.",
       "deployment_depth": "Focuses on sensing rather than compute-chip execution routes.",
       "omissions": [
@@ -2699,6 +2914,11 @@
           "locator": "Scope"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Organizes SNN development as a four-stage structural evolution from binary ANNs.",
       "deployment_depth": "Algorithmic perspective with no named physical deployment route.",
       "omissions": [
@@ -2778,6 +2998,13 @@
           "basis": "No worked route follows one trained network through export, compilation, mapping, physical execution, and measurement on a named chip.",
           "locator": "Sections XI and XIII"
         }
+      },
+      "targets": {
+        "kinds": [
+          "neuromorphic"
+        ],
+        "basis": "Section XI surveys digital, analog, mixed-signal, memristive, photonic, and quantum-inspired substrates. Table 7 compares BrainScaleS, Neurogrid, TrueNorth, SpiNNaker, Loihi, Darwin, and Dynap-SE.",
+        "locator": "H axis; Section XI, Table 7, pp. 78534-78539"
       },
       "strongest_contribution": "Provides unusually broad field-entry coverage from neuron dynamics through applications, hardware, and software frameworks.",
       "deployment_depth": "Explains hardware-aware design and mapping conceptually, but does not trace an exercised model-to-chip route.",
@@ -2861,6 +3088,11 @@
           "locator": "Scope"
         }
       },
+      "targets": {
+        "kinds": [],
+        "basis": "The dossier records no target kind",
+        "locator": "dossier"
+      },
       "strongest_contribution": "Pairs a local-learning taxonomy with an open snnTorch benchmarking framework.",
       "deployment_depth": "Benchmarking is software-based and does not establish a named physical route.",
       "omissions": [
@@ -2943,6 +3175,16 @@
           "locator": "Methods, pages 12-14"
         }
       },
+      "targets": {
+        "kinds": [
+          "CPU",
+          "GPU",
+          "NPU",
+          "simulator"
+        ],
+        "basis": "Physical measurements use NCNN on CPUs, GPUs, and NPUs in named edge devices; the Loihi, Darwin3, TrueNorth, and SpiNNaker2 results are explicitly simulated.",
+        "locator": "Scope; H axis, Results pp. 6-7, Methods pp. 12-14, Fig. 4 p. 22"
+      },
       "strongest_contribution": "Tests when SNNs benefit edge sensing across modalities, model choices, physical devices, and modeled neuromorphic platforms.",
       "deployment_depth": "Measures seven conventional edge devices and describes a complete NeuSim mapping route, while named neuromorphic chips remain simulated.",
       "omissions": [
@@ -3023,6 +3265,16 @@
           "basis": "Edge deployment is a taxonomy category, without a standard route.",
           "locator": "Section V"
         }
+      },
+      "targets": {
+        "kinds": [
+          "GPU",
+          "RISC-V",
+          "neuromorphic",
+          "FPGA"
+        ],
+        "basis": "It organizes GPU work into simulation frameworks, training acceleration, large-scale and multi-GPU simulation, and application deployments; it organizes RISC-V work into instruction-set extensions and tightly coupled cores, accelerator SoCs, programmable processors, and edge deployments; Sections II to V compare GPU, RISC-V, FPGA, ASIC, and dedicated neuromorphic hardware roles.",
+        "locator": "Scope; H axis, Sections II-V"
       },
       "strongest_contribution": "Provides a GPU and RISC-V accelerator taxonomy and identifies incompatible reporting practices.",
       "deployment_depth": "Synthesizes accelerator studies but does not trace a standard network across complete routes.",

@@ -168,7 +168,6 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       #table-1 td.cov-part { background: #D8EBF2; }
       #table-1 td.cov-part span { color: #145E75; font-weight: 500; font-size: 0.94em; }
       #table-1 td.cov-full, #table-1 td.cov-part, #table-1 td.cov-none { text-align: center; }
-      #table-1 td.hwcell { text-align: center; white-space: nowrap; }
       #table-1 .hw {
         display: inline-block; font-size: 0.8em; font-weight: 600; letter-spacing: 0.02em;
         padding: 1px 5px; margin: 0 1px; border-radius: 3px; border: 1px solid;
@@ -176,6 +175,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       #table-1 .hw.arm  { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
       #table-1 .hw.risc { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
       #table-1 .hw.npu  { color: #64408C; background: #EEE7F7; border-color: #9467BD; }
+      #table-1 td.hwcell { text-align: left; white-space: normal; }
       .t1-legend {
         display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 0.6rem;
         padding-top: 0.55rem; border-top: 1px dashed #d5dbe2;
@@ -605,6 +605,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       .tk-mcu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
       .tk-risc-v { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
       .tk-npu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; }
+      .tk-event-npu { color: #155F8F; background: #E4F0F9; border-color: #1F77B4; border-style: dashed; }
       .tk-simulator { color: #4A5560; background: #ECEEF1; border-color: #8A94A0; }
       .tk-neuromorphic { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
       .tk-fpga { color: #8F4A06; background: #FBEBDA; border-color: #D9760C; }
@@ -1097,7 +1098,7 @@ rank the quality of its results.</p>
 
 <div class="ptable-wrap cov-table l-page t1-wide" id="table-1" data-table-toolbar>
 <table class="ptable">
-<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year.</caption>
+<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, a chip model, or neuromorphic silicon.</caption>
 <thead><tr>
 <th>Survey</th>
 <th class="ctr yr" data-sort="num">Year</th>
@@ -1105,53 +1106,53 @@ rank the quality of its results.</p>
 <th class="ctr" data-chip="Conversion">Training &amp; conversion</th>
 <th class="ctr" data-chip="Software">Software frameworks</th>
 <th class="ctr" data-chip="Compilers">Compilers &amp; interchange</th>
-<th class="ctr" data-chip="Hardware">Hardware platforms</th>
+<th class="ctr" data-chip="Targets">Targets covered</th>
 <th class="ctr" data-chip="Boundaries">Boundary semantics</th>
 <th class="ctr" data-chip="Evidence">Evidence types</th>
 <th class="ctr" data-chip="Routes">Traced chip routes</th>
 </tr></thead>
 <tbody>
-<tr><td>Schuman et al. <d-cite key="schuman-2017-hardware-survey"></d-cite></td><td class="ctr yr">2017</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Bouvier et al. <d-cite key="bouvier-2019-hardware-implementations"></d-cite></td><td class="ctr yr">2019</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Roy et al. <d-cite key="roy-2019-spike-machine-intelligence"></d-cite></td><td class="ctr yr">2019</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Davies et al. <d-cite key="davies-2021-loihi"></d-cite></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Tayarani-Najaran et al. <d-cite key="prior-s31-tayaraninajaran-2021"></d-cite></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Basu et al. <d-cite key="basu-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Gallego et al. <d-cite key="gallego-2022-event-based-vision"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
-<tr><td>Huynh et al. <d-cite key="huynh-2022-implementing-snns"></d-cite></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Ivanov et al. <d-cite key="ivanov-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Nunes et al. <d-cite key="nunes-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Schuman et al. <d-cite key="schuman-2022-opportunities"></d-cite></td><td class="ctr yr">2022</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Shrestha et al. <d-cite key="shrestha-2022-models-hardware"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Yamazaki et al. <d-cite key="yamazaki-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Zheng et al. <d-cite key="zheng-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Eshraghian et al. <d-cite key="eshraghian-2023-training-snns"></d-cite></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Manna et al. <d-cite key="manna-2023-frameworks"></d-cite></td><td class="ctr yr">2023</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Rathi et al. <d-cite key="rathi-2023"></d-cite></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Hu et al. <d-cite key="hu-2024-large-scale-snns"></d-cite></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Pedersen et al. <d-cite key="pedersen-2024-nir"></d-cite></td><td class="ctr yr">2024</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Wahid et al. <d-cite key="prior-s30-alabdulwahid-2024"></d-cite></td><td class="ctr yr">2024</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Xie et al. <d-cite key="xie-2024"></d-cite></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Zolfagharinejad et al. <d-cite key="zolfagharinejad-2024-brain-inspired-systems"></d-cite></td><td class="ctr yr">2024</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Rashed et al. <d-cite key="anon-edge-survey"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Deng et al. <d-cite key="deng-2025-edgesnn"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Ferreira et al. <d-cite key="ferreira-2025-edge-ai-circuits"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Khan et al. <d-cite key="khan-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Kudithipudi et al. <d-cite key="kudithipudi-2025-neuromorphic-scale"></d-cite></td><td class="ctr yr">2025</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
-<tr><td>Ayasi et al. <d-cite key="prior-s29-ayasi-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
-<tr><td>Cimarelli et al. <d-cite key="prior-s32-cimarelli-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Yik et al. <d-cite key="yik-2025-neurobench"></d-cite></td><td class="ctr yr">2025</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>Chen et al. <d-cite key="chen-2026-neuromorphic-chips"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Gebregiorgis et al. <d-cite key="gebregiorgis-2025-spike-based-overview"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr><td>He et al. <d-cite key="prior-s33-hegao-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Luu et al. <d-cite key="prior-s34-luu-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
-<tr><td>Caviglia et al. <d-cite key="prior-s35-caviglia-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
-<tr><td>Du et al. <d-cite key="prior-s36-du-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
-<tr><td>Farsa et al. <d-cite key="prior-s37-farsa-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
-<tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td></tr>
+<tr><td>Schuman et al. <d-cite key="schuman-2017-hardware-survey"></d-cite></td><td class="ctr yr">2017</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Bouvier et al. <d-cite key="bouvier-2019-hardware-implementations"></d-cite></td><td class="ctr yr">2019</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-simulator">simulator</span> <span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Roy et al. <d-cite key="roy-2019-spike-machine-intelligence"></d-cite></td><td class="ctr yr">2019</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-gpu">GPU</span> <span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Davies et al. <d-cite key="davies-2021-loihi"></d-cite></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Tayarani-Najaran et al. <d-cite key="prior-s31-tayaraninajaran-2021"></d-cite></td><td class="ctr yr">2021</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Basu et al. <d-cite key="basu-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Gallego et al. <d-cite key="gallego-2022-event-based-vision"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Huynh et al. <d-cite key="huynh-2022-implementing-snns"></d-cite></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Ivanov et al. <d-cite key="ivanov-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-event-npu">event NPU</span> <span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Nunes et al. <d-cite key="nunes-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-gpu">GPU</span> <span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Schuman et al. <d-cite key="schuman-2022-opportunities"></d-cite></td><td class="ctr yr">2022</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Shrestha et al. <d-cite key="shrestha-2022-models-hardware"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Yamazaki et al. <d-cite key="yamazaki-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Zheng et al. <d-cite key="zheng-2022"></d-cite></td><td class="ctr yr">2022</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Eshraghian et al. <d-cite key="eshraghian-2023-training-snns"></d-cite></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Manna et al. <d-cite key="manna-2023-frameworks"></d-cite></td><td class="ctr yr">2023</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Rathi et al. <d-cite key="rathi-2023"></d-cite></td><td class="ctr yr">2023</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Hu et al. <d-cite key="hu-2024-large-scale-snns"></d-cite></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Pedersen et al. <d-cite key="pedersen-2024-nir"></d-cite></td><td class="ctr yr">2024</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Wahid et al. <d-cite key="prior-s30-alabdulwahid-2024"></d-cite></td><td class="ctr yr">2024</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-event-npu">event NPU</span> <span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Xie et al. <d-cite key="xie-2024"></d-cite></td><td class="ctr yr">2024</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Zolfagharinejad et al. <d-cite key="zolfagharinejad-2024-brain-inspired-systems"></d-cite></td><td class="ctr yr">2024</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Rashed et al. <d-cite key="anon-edge-survey"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Deng et al. <d-cite key="deng-2025-edgesnn"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Ferreira et al. <d-cite key="ferreira-2025-edge-ai-circuits"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Khan et al. <d-cite key="khan-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Kudithipudi et al. <d-cite key="kudithipudi-2025-neuromorphic-scale"></d-cite></td><td class="ctr yr">2025</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td></tr>
+<tr><td>Ayasi et al. <d-cite key="prior-s29-ayasi-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="hwcell"><span class="tk tk-gpu">GPU</span></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Cimarelli et al. <d-cite key="prior-s32-cimarelli-2025"></d-cite></td><td class="ctr yr">2025</td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Yik et al. <d-cite key="yik-2025-neurobench"></d-cite></td><td class="ctr yr">2025</td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>Chen et al. <d-cite key="chen-2026-neuromorphic-chips"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Gebregiorgis et al. <d-cite key="gebregiorgis-2025-spike-based-overview"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-none"></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr><td>He et al. <d-cite key="prior-s33-hegao-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Luu et al. <d-cite key="prior-s34-luu-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="hwcell"><span class="tk tk-neuromorphic">neuromorphic</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="cov-none"></td></tr>
+<tr><td>Caviglia et al. <d-cite key="prior-s35-caviglia-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-none"></td><td class="hwcell"></td><td class="cov-none"></td><td class="cov-ment"><span>Mentioned</span></td><td class="cov-none"></td></tr>
+<tr><td>Du et al. <d-cite key="prior-s36-du-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-cpu">CPU</span> <span class="tk tk-gpu">GPU</span> <span class="tk tk-npu">NPU</span> <span class="tk tk-simulator">simulator</span></td><td class="cov-full"><span>Full</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td></tr>
+<tr><td>Farsa et al. <d-cite key="prior-s37-farsa-2026"></d-cite></td><td class="ctr yr">2026</td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-gpu">GPU</span> <span class="tk tk-risc-v">RISC-V</span> <span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-part"><span>Partial</span></td><td class="cov-ment"><span>Mentioned</span></td></tr>
+<tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-cpu">CPU</span> <span class="tk tk-gpu">GPU</span> <span class="tk tk-mcu">MCU</span> <span class="tk tk-risc-v">RISC-V</span> <span class="tk tk-npu">NPU</span> <span class="tk tk-event-npu">event NPU</span> <span class="tk tk-simulator">simulator</span> <span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td></tr>
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>
 
 <h3 id="survey-contributions">1.2&ensp;Contributions</h3>
@@ -1488,15 +1489,29 @@ network, and the hardware branch that rejoins them to silicon.</p>
      1991 Mahowald and Douglas; mahowald1991-silicon-neuron; Nature vol. 354, no. 6354, pp. 515-518; DOI 10.1038/354515a0.
      1992 Mahowald; mahowald1992-aer; Caltech doctoral dissertation, defended May 12, 1992; DOI 10.7907/z9cz35cd.
      1997 Maass; maass1997; Neural Networks 10(9); legacy bibliography entry, year from the registry record.
+     1998 Thorpe and Gautrais; Thorpe98-RankOrder; Rank Order Coding, in Computational Neuroscience, Trends in Research 1998, Springer, pp. 113-118; DOI 10.1007/978-1-4615-4831-7_19 read from akida-lineage-check.md on 2026-09-17 (the registry record carries no DOI); the chapter is cited by title and DOI only, its text not retrieved, so the tooltip carries no gloss of the code.
      2000 Boahen; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, pp. 416-434; DOI 10.1109/82.842110.
      2003 Izhikevich; izhikevich2003; IEEE Trans. Neural Netw. 14(6); legacy bibliography entry, year from the registry record.
      2005 Brette and Gerstner; brette2005-adex; J. Neurophysiol. vol. 94, no. 5, pp. 3637-3642; DOI 10.1152/jn.00686.2005.
      2008 Lichtsteiner, Posch and Delbruck; lichtsteiner2008-dvs; IEEE J. Solid-State Circuits vol. 43, no. 2, pp. 566-576; DOI 10.1109/jssc.2007.914337.
-     FitzHugh-Nagumo, the perceptron, ANN, CNN and the platform families are drawn without dates and cite nothing.
+     FitzHugh-Nagumo, the perceptron, ANN and CNN are drawn without dates and cite nothing.
+     The platform families are drawn without dates. The fan-out from the AER box to the five families is qualified per record in the caption,
+     read on 2026-09-17 from data/platform-capabilities.json and the pages quoted in
+     .superpowers/sdd/2026-09-17-neuromorphic-foundations-lineage/aer-lineage-check.md. Family, key, then locator and the record's words.
+     SpiNNaker; spynnaker-v8-docs; platform-capabilities record cap-spinnaker-1-neural_code_payload, locator External devices and live-spike I/O guides; the multicast fabric natively carries source-addressed spike packets, multicast AER routing (address-event documented).
+     Speck; synsense-speck-datasheet; platform-capabilities record cap-speck-2f-neural_code_payload, locator Event types and DVS interface; events carry address, feature, polarity, and timestamp information (address-event documented).
+     BrainScaleS-2; bss; Pehle et al., Front. Neurosci. 2022, DOI 10.3389/fnins.2022.795876, Section 2.1; the event routing network operates on address event-encoded packets (address-event documented).
+     Loihi 2; loihi2; Intel technology brief, External Interfaces section names asynchronous (AER) protocols; the body says all communication between neuron cores is in the form of spike messages (AER named at the external interfaces only).
+     TrueNorth; merolla2014-truenorth; Science vol. 345, no. 6197, pp. 668-673, DOI 10.1126/science.1254642; paywalled, not read beyond its metadata (no per-record basis).
+     Akida; the survey's event NPU (spec amendment 1, sub-label reworded 2026-09-17); drawn dashed at the row's right end with one dashed edge, by conversion from ANN and CNN, and no edge from AER, on the pages quoted in
+     .superpowers/sdd/2026-09-17-neuromorphic-foundations-lineage/akida-lineage-check.md, read 2026-09-17. Key, then locator and the page's words.
+     brainchip-cnn2snn-docs; CNN2SNN user guide, Overview; converts Convolutional Neural Networks trained using Deep Learning methods to a Spiking Neural Network for use with the Akida Runtime (the conversion edge, and the sub-label converted CNN).
+     brainchip-akida-techbrief; tech brief v3, page 3 (re-read from the PDF on 2026-09-17); the Akida processor uses an encoding scheme called rank coding, in which information is expressed as the time and place it occurs (the sub-label rank coding; no edge is drawn from the rank order coding node, the brief names neither Thorpe nor rank order coding).
+     No BrainChip page read on 2026-09-17 states an address-event lineage (aer-lineage-check.md), so no edge reaches Akida from AER.
      The landmark strip is ordinal: nodes are evenly spaced in year order and the spacing carries no meaning. -->
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1240" role="img" aria-labelledby="f3title f3desc">
     <title id="f3title">Two lineages from the biological neuron meet in the spiking neural network, and hardware enters below the rejoin</title>
-    <desc id="f3desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks, which continue as deep learning and reach the spiking network only by a dashed conversion edge. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
+    <desc id="f3desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks, which continue as deep learning and reach the spiking network only by a dashed conversion edge. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949, rank order coding by Thorpe in 1998) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates, with the basis for each edge stated per platform record in the caption. A sixth box, Akida, the survey's event NPU, stands at the right end of the row with a dashed outline and receives one dashed edge, from the ANN and CNN node by conversion, and none from address-event representation. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
     <defs>
       <marker id="f3arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -1547,15 +1562,16 @@ network, and the hardware branch that rejoins them to silicon.</p>
 
     <!-- cross-cutting coding and learning threads -->
     <g class="f3-hot">
-      <title>Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength precedes Shannon's 1948 theory, and Hebb's 1949 rule makes connection strength depend on activity.</title>
-      <rect x="570" y="262" width="300" height="154" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2" stroke-dasharray="8 5"/>
+      <title>Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength precedes Shannon's 1948 theory, Hebb's 1949 rule makes connection strength depend on activity, and Thorpe and Gautrais's 1998 chapter sets out rank order coding.</title>
+      <rect x="570" y="262" width="300" height="180" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2" stroke-dasharray="8 5"/>
       <text x="720" y="290" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Coding and learning</text>
       <text x="720" y="310" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">cross-cutting threads</text>
       <text x="720" y="346" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Adrian 1926, rate follows stimulus</text>
       <text x="720" y="372" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Shannon 1948, information theory</text>
       <text x="720" y="398" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Hebb 1949, activity-dependent learning</text>
-      <rect class="f3-band" x="570" y="262" width="300" height="154" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="570" y="262" width="300" height="154" fill="#000" opacity="0" pointer-events="all"/>
+      <text x="720" y="424" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Thorpe 1998, rank order coding</text>
+      <rect class="f3-band" x="570" y="262" width="300" height="180" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="570" y="262" width="300" height="180" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- computational-abstraction branch -->
@@ -1593,7 +1609,7 @@ network, and the hardware branch that rejoins them to silicon.</p>
     <line x1="1252" y1="496" x2="1400" y2="496" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <text x="1262" y="480" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">deep learning continues</text>
     <text x="1262" y="514" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">on conventional hardware</text>
-    <line x1="720" y1="416" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="442" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
 
     <!-- sensing entry -->
     <g class="f3-hot">
@@ -1650,27 +1666,41 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <rect x="534" y="714" width="372" height="260" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
-    <!-- platform families -->
-    <line x1="720" y1="968" x2="262" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="491" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="720" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="949" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="1178" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <!-- platform families; five fan out of AER, Akida stands apart at the right end -->
+    <line x1="720" y1="968" x2="245" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="435" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="625" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="815" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="1005" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <g class="f3-hot">
-      <title>The platform families are named without dates because the figure is a dependency picture and not a timeline.</title>
-      <rect x="160" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="260" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">TrueNorth</text>
-      <rect x="390" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="490" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
-      <rect x="620" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="720" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
-      <rect x="850" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="950" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
-      <rect x="1080" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1180" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
+      <title>The platform families are named without dates because the figure is a dependency picture and not a timeline, and the fan-out from address-event representation rests on each platform's own record, which documents address-event packets for SpiNNaker, Speck and BrainScaleS-2, names AER only at Loihi 2's external interfaces, and was not read beyond its metadata for TrueNorth. Akida stands apart at the right end because no page documents an address-event lineage for it.</title>
+      <rect x="160" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="245" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">TrueNorth</text>
+      <rect x="350" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="435" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
+      <rect x="540" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="625" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
+      <rect x="730" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="815" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
+      <rect x="920" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1005" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
       <text x="720" y="1092" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">platform families, named without dates</text>
-      <rect class="f3-band" x="154" y="1004" width="1132" height="98" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="154" y="1004" width="1132" height="98" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f3-band" x="154" y="1004" width="942" height="98" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="154" y="1004" width="942" height="98" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <!-- Akida, at the row's right end as the survey's event NPU (spec amendment 1); dashed outline, one dashed edge (by conversion from ANN and CNN), no edge from AER -->
+    <g class="f3-hot">
+      <title>Akida sits in this row as the survey's event NPU, a deployment target that a trained CNN reaches by conversion, so its one edge is dashed like the conversion edge into the SNN, and its tech brief names rank coding as its encoding. No page documents an address-event lineage, so no edge reaches it from AER and its outline is dashed.</title>
+      <path d="M1230,514 V1006" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
+      <text x="1242" y="560" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">by conversion</text>
+      <rect x="1110" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <text x="1195" y="1029" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Akida</text>
+      <text x="1195" y="1044" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">event NPU, converted CNN</text>
+      <text x="1195" y="1058" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">rank coding</text>
+      <rect class="f3-band" x="1104" y="1004" width="182" height="68" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="1104" y="1004" width="182" height="68" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f3-band" x="1218" y="508" width="26" height="496" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="1218" y="508" width="26" height="496" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- landmark strip, ordinal -->
@@ -1680,58 +1710,61 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <line x1="80" y1="1162" x2="1400" y2="1162" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
       <g stroke="#000" stroke-width="1.5">
         <circle cx="110" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="207" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="304" cy="1162" r="7" fill="#FFDDA6"/>
-        <circle cx="401" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="498" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="595" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="692" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="789" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="886" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="983" cy="1162" r="7" fill="#fff" stroke="#D63A2F" stroke-width="2.4"/>
-        <circle cx="1080" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="1177" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="1274" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="1371" cy="1162" r="7" fill="#CDEBCD"/>
+        <circle cx="200" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="290" cy="1162" r="7" fill="#FFDDA6"/>
+        <circle cx="380" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="470" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="560" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="650" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="740" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="830" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="920" cy="1162" r="7" fill="#fff" stroke="#D63A2F" stroke-width="2.4"/>
+        <circle cx="1010" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="1100" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="1190" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="1280" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="1370" cy="1162" r="7" fill="#CDEBCD"/>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000" text-anchor="middle">
         <text x="110" y="1148">1907</text>
-        <text x="207" y="1148">1926</text>
-        <text x="304" y="1148">1943</text>
-        <text x="401" y="1148">1948</text>
-        <text x="498" y="1148">1949</text>
-        <text x="595" y="1148">1952</text>
-        <text x="692" y="1148">1990</text>
-        <text x="789" y="1148">1991</text>
-        <text x="886" y="1148">1992</text>
-        <text x="983" y="1148">1997</text>
-        <text x="1080" y="1148">2000</text>
-        <text x="1177" y="1148">2003</text>
-        <text x="1274" y="1148">2005</text>
-        <text x="1371" y="1148">2008</text>
+        <text x="200" y="1148">1926</text>
+        <text x="290" y="1148">1943</text>
+        <text x="380" y="1148">1948</text>
+        <text x="470" y="1148">1949</text>
+        <text x="560" y="1148">1952</text>
+        <text x="650" y="1148">1990</text>
+        <text x="740" y="1148">1991</text>
+        <text x="830" y="1148">1992</text>
+        <text x="920" y="1148">1997</text>
+        <text x="1010" y="1148">1998</text>
+        <text x="1100" y="1148">2000</text>
+        <text x="1190" y="1148">2003</text>
+        <text x="1280" y="1148">2005</text>
+        <text x="1370" y="1148">2008</text>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333" text-anchor="middle">
         <text x="110" y="1188">Lapicque</text>
-        <text x="207" y="1210">Adrian</text>
-        <text x="304" y="1188">McCulloch-Pitts</text>
-        <text x="401" y="1210">Shannon</text>
-        <text x="498" y="1188">Hebb</text>
-        <text x="595" y="1210">Hodgkin-Huxley</text>
-        <text x="692" y="1188">Mead</text>
-        <text x="789" y="1210">silicon neuron</text>
-        <text x="886" y="1188">AER, Mahowald</text>
-        <text x="983" y="1210">Maass, SNN</text>
-        <text x="1080" y="1188">AER, Boahen</text>
-        <text x="1177" y="1210">Izhikevich</text>
-        <text x="1274" y="1188">AdEx</text>
-        <text x="1371" y="1210">event sensor</text>
+        <text x="200" y="1210">Adrian</text>
+        <text x="290" y="1188">McCulloch-Pitts</text>
+        <text x="380" y="1210">Shannon</text>
+        <text x="470" y="1188">Hebb</text>
+        <text x="560" y="1210">Hodgkin-Huxley</text>
+        <text x="650" y="1188">Mead</text>
+        <text x="740" y="1210">silicon neuron</text>
+        <text x="830" y="1188">AER, Mahowald</text>
+        <text x="920" y="1210">Maass, SNN</text>
+        <text x="1010" y="1188">rank order coding</text>
+        <text x="1100" y="1210">AER, Boahen</text>
+        <text x="1190" y="1188">Izhikevich</text>
+        <text x="1280" y="1210">AdEx</text>
+        <text x="1370" y="1188">event sensor</text>
       </g>
       <rect class="f3-band" x="60" y="1106" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="60" y="1106" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a branch, box, connector, or landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Three cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, and Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
+  <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Four cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>, and the rank order coding that Thorpe and Gautrais set out in 1998<d-cite key="Thorpe98-RankOrder"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The fan-out to the platform families rests on each platform's own record. The sPyNNaker documentation<d-cite key="spynnaker-v8-docs"></d-cite> records source-addressed spike packets over a multicast fabric, the Speck datasheet<d-cite key="synsense-speck-datasheet"></d-cite> records events that carry address, feature, polarity and timestamp, and the BrainScaleS-2 paper of Pehle et al.<d-cite key="bss"></d-cite> records an event routing network that operates on address event-encoded packets. The Loihi 2 brief<d-cite key="loihi2"></d-cite> names AER only among the chip's external interfaces and describes communication between neuron cores as spike messages. The TrueNorth article<d-cite key="merolla2014-truenorth"></d-cite> was not read beyond its metadata, and the figure states nothing further for it. Akida stands at the right end of the row with a dashed outline as the survey's event NPU. It enters the row by conversion, since the CNN2SNN guide<d-cite key="brainchip-cnn2snn-docs"></d-cite> converts convolutional networks trained by deep learning into a spiking network for the Akida runtime, and no edge reaches it from AER because no BrainChip page read for this survey documents an address-event lineage. Its sub-label says rank coding because BrainChip's tech brief<d-cite key="brainchip-akida-techbrief"></d-cite> names rank coding as the processor's encoding scheme. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
 </figure>
 
 
@@ -1807,10 +1840,13 @@ trained network down to the part.</p>
      2018 Loihi; loihi1; IEEE Micro 2018; DOI 10.1109/mm.2018.112130359.
      BrainScaleS, undated; bss; Front. Neurosci. 2022; DOI 10.3389/fnins.2022.795876.
      SpiNNaker, undated; furber2012-spinnaker; IEEE Trans. Comput. 2012; DOI 10.1109/tc.2012.142.
-     GPU is named without citation. The dashed frames around the three chip-family boxes in each column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow and no arrows inside. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1456" role="img" aria-labelledby="f4title f4desc">
+     Akida, undated, dashed outline, drawn in the left frame as the survey's event NPU (spec amendment 1), added 2026-09-17; brainchip-akida-techbrief, p. 3 (rank coding named as its encoding; not programmed in the traditional sense) and p. 4 (an event domain processor in which events or spikes indicate useful information; the neural network control, the parameter memory and the neuronal mathematics fully integrated), pages re-read from the PDF on 2026-09-17; BrainChip-AKD1000Brief, Key Benefits (an interconnect network for spike transmission; an event-based neural networks processor taking advantage of activation sparsity); brainchip-cnn2snn-docs, Overview (converts CNNs trained by deep learning into a spiking network for the Akida runtime); survey record akida-1 in data/platform-capabilities.json (a converted CNN as a single event-domain pass, events carry low-bit activation information, no exposed multi-timestep LIF, no subtraction reset over T, no global T).
+       No page states an address-event lineage, physical time, or a silicon neuron ancestry, and no page calls the core synchronous or asynchronous, and no page states an instruction stream (the tech brief p. 3 says Akida is not programmed in the traditional sense), so the box is dashed and undated and is not on the strip, and the left frame's arrow to the bottom line leaves the frame's lower edge rather than the Akida box, so that the bottom line is the frame's claim and is not claimed for Akida; absence claims from the whole-document reads recorded as READ in aer-lineage-check.md.
+     The third crossing, Akida into the circuit frame, added 2026-09-17, rests on the tech brief p. 4 (events or spikes indicate useful information; parameter memory and neuronal mathematics integrated); it enters the frame's lower edge at x=1010, left of the right column's exit arrow, and meets no other edge.
+     GPU is named without citation. The dashed frames around the four chip-family boxes in the left column and the three in the right column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow from its column and no arrows inside; the dashed crossings are the only other edges that touch a frame or a box in it. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1564" role="img" aria-labelledby="f4title f4desc">
     <title id="f4title">Two hardware lineages side by side, the conventional machine that simulates an SNN and the neuromorphic circuit that implements it</title>
-    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them, both opening at the same row. The left column is conventional digital hardware, the machine every reader knows. It opens with the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ, drawn level with Mead's 1990 paper on the right, with a small clock box hanging beside it, every step synchronous and gated by a central clock. An arrow leads down to the transistor of 1948, a switch that is on or off, drawn level with the right column's subthreshold transistor, then to logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), then past an empty row to the memory hierarchy, which moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, and GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's. Then, past an empty row, the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching rows, what a program is at the opening row, what the transistor does at the transistor row, how time passes at the silicon neuron row, how units talk at the memory hierarchy and address-event row, and where memory is at the digital cores row. Two dashed crossings run right to left, from SpiNNaker back to the microprocessor level as the first crossing, and from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
+    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them, both opening at the same row. The left column is conventional digital hardware, the machine every reader knows. It opens with the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ, drawn level with Mead's 1990 paper on the right, with a small clock box hanging beside it, every step synchronous and gated by a central clock. An arrow leads down to the transistor of 1948, a switch that is on or off, drawn level with the right column's subthreshold transistor, then to logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), then past an empty row to the memory hierarchy, which moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017, and, drawn with a dashed outline, Akida as the survey's event NPU, a converted CNN run as events with the parameter memory integrated in the processor, which is in the frame as a deployment target the survey audits because its workload is a converted CNN, while no page documents address events, physical time, a silicon-neuron ancestry, or an instruction stream, and the bottom line below is not claimed for it. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's. Then, past an empty row, the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching rows, what a program is at the opening row, what the transistor does at the transistor row, how time passes at the silicon neuron row, how units talk at the memory hierarchy and address-event row, and where memory is at the digital cores row. Three dashed crossings join the columns, from SpiNNaker back to the microprocessor level as the first crossing, from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine, the second crossing, and from Akida in the left frame into the circuit-on-a-chip frame as the third crossing, the parameter memory integrated with the neuronal mathematics and events, which is what the pages give the neuromorphic side. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
     <defs>
       <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -1908,7 +1944,7 @@ trained network down to the part.</p>
     <line x1="290" y1="758" x2="290" y2="810" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- left family group, the machine on a chip -->
-    <rect x="10" y="792" width="560" height="334" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
+    <rect x="10" y="792" width="560" height="442" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
     <text x="40" y="797" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">the machine on a chip</text>
 
     <g class="f4-hot">
@@ -1938,18 +1974,28 @@ trained network down to the part.</p>
       <rect class="f4-band" x="20" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="20" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="290" y1="1108" x2="290" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <!-- Akida, in the machine frame as the survey's event NPU (spec amendment 1); dashed outline as the execution-stacks figure draws it; sub-lines from the tech brief and the CNN2SNN guide, read 2026-09-17 -->
+    <g class="f4-hot">
+      <title>BrainChip's pages describe Akida as an event domain processor in which events or spikes indicate useful information, with the network control, the parameter memory and the neuronal mathematics integrated on the processor, and its CNN2SNN guide converts trained CNNs for the Akida runtime. No page documents address events, physical time, a silicon-neuron ancestry, or an instruction stream, so it sits in this frame with a dashed outline as the survey's event NPU, a deployment target audited later whose workload is a converted CNN, and the bottom line below is not claimed for it.</title>
+      <rect x="20" y="1136" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <text x="290" y="1163" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Event NPU, Akida</text>
+      <text x="290" y="1186" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">a converted CNN run as events,</text>
+      <text x="290" y="1206" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">parameter memory integrated in the processor</text>
+      <rect class="f4-band" x="20" y="1136" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1136" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="1234" x2="290" y2="1272" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- left bottom line -->
     <g class="f4-hot">
       <title>On this machine a trained network is a program, its weights are words fetched from memory, each multiply-accumulate is an instruction, and time advances only when the clock does.</title>
-      <rect x="20" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
-      <text x="290" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An ANN is a program.</text>
-      <text x="290" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is a word in memory.</text>
-      <text x="290" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A multiply-accumulate is an instruction.</text>
-      <text x="290" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is the clock.</text>
-      <rect class="f4-band" x="20" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+      <rect x="20" y="1274" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="290" y="1308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An ANN is a program.</text>
+      <text x="290" y="1337" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is a word in memory.</text>
+      <text x="290" y="1365" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A multiply-accumulate is an instruction.</text>
+      <text x="290" y="1393" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is the clock.</text>
+      <rect class="f4-band" x="20" y="1274" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1274" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- right column, neuromorphic hardware -->
@@ -2026,18 +2072,18 @@ trained network down to the part.</p>
       <rect class="f4-band" x="880" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="880" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="1150" y1="1108" x2="1150" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="1108" x2="1150" y2="1272" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- right bottom line -->
     <g class="f4-hot">
       <title>On this circuit the network is the circuit's own dynamics, a weight is synapse state kept beside the neuron, a spike is an event, and time is either the physics of the circuit or the event itself.</title>
-      <rect x="880" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
-      <text x="1150" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An SNN is the circuit's dynamics.</text>
-      <text x="1150" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is synapse state beside the neuron.</text>
-      <text x="1150" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A spike is an event.</text>
-      <text x="1150" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is physics, or the event itself.</text>
-      <rect class="f4-band" x="880" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+      <rect x="880" y="1274" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="1150" y="1308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An SNN is the circuit's dynamics.</text>
+      <text x="1150" y="1337" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is synapse state beside the neuron.</text>
+      <text x="1150" y="1365" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A spike is an event.</text>
+      <text x="1150" y="1393" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is physics, or the event itself.</text>
+      <rect class="f4-band" x="880" y="1274" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="1274" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- first crossing, SpiNNaker back to the microprocessor level -->
@@ -2053,81 +2099,96 @@ trained network down to the part.</p>
       <rect x="604" y="998" width="272" height="82" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
+    <!-- third crossing, Akida into the circuit frame; enters the frame's lower edge at x=1010, left of the right column's exit arrow, and meets no other edge -->
+    <g class="f4-hot">
+      <title>The pages give the neuromorphic side two things, the parameter memory integrated with the neuronal mathematics on the processor and events or spikes that indicate useful information, so the dashed edge runs from Akida into the circuit-on-a-chip frame, the third crossing between the lineages.</title>
+      <path d="M560,1176 H1010 V1127" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="600" y="1104" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">third crossing,</text>
+      <text x="600" y="1122" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">parameter memory integrated with</text>
+      <text x="600" y="1140" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">the neuronal mathematics, and events</text>
+      <rect class="f4-band" x="580" y="1162" width="440" height="28" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="580" y="1162" width="440" height="28" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="996" y="1120" width="28" height="48" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="996" y="1120" width="28" height="48" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="592" y="1090" width="270" height="60" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="592" y="1090" width="270" height="60" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
     <!-- second crossing, the right bottom line to the left bottom line -->
     <g class="f4-hot">
       <title>A simulator on the left column's machine steps the right column's equations, so an SNN run in software is the left machine computing what the right circuit would be.</title>
-      <line x1="880" y1="1276" x2="562" y2="1276" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
-      <text x="721" y="1194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">second crossing,</text>
-      <text x="721" y="1212" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a simulator runs the right</text>
-      <text x="721" y="1230" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">column's equations on the</text>
-      <text x="721" y="1248" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">left column's machine</text>
-      <rect class="f4-band" x="566" y="1178" width="310" height="112" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="566" y="1178" width="310" height="112" fill="#000" opacity="0" pointer-events="all"/>
+      <line x1="880" y1="1384" x2="562" y2="1384" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="721" y="1302" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">second crossing,</text>
+      <text x="721" y="1320" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a simulator runs the right</text>
+      <text x="721" y="1338" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">column's equations on the</text>
+      <text x="721" y="1356" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">left column's machine</text>
+      <rect class="f4-band" x="566" y="1286" width="310" height="112" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="566" y="1286" width="310" height="112" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- landmark strip, ordinal, both lineages -->
     <g class="f4-hot">
       <title>The strip orders the dated nodes of both lineages by year with even spacing, so distances along it carry no meaning, and the dot color says which column a node belongs to.</title>
-      <text x="80" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
-      <circle cx="1112" cy="1347" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
-      <text x="1126" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">conventional</text>
-      <circle cx="1262" cy="1347" r="7" fill="#d5dbe2" stroke="#000" stroke-width="1.5"/>
-      <text x="1276" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic</text>
-      <line x1="80" y1="1390" x2="1400" y2="1390" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
+      <text x="80" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
+      <circle cx="1112" cy="1455" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+      <text x="1126" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">conventional</text>
+      <circle cx="1262" cy="1455" r="7" fill="#d5dbe2" stroke="#000" stroke-width="1.5"/>
+      <text x="1276" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic</text>
+      <line x1="80" y1="1498" x2="1400" y2="1498" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
       <g stroke="#000" stroke-width="1.5">
-        <circle cx="110" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="207" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="304" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="401" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="498" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="595" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="692" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="789" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="886" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="983" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="1080" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="1177" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="1274" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="1371" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="110" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="207" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="304" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="401" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="498" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="595" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="692" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="789" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="886" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="983" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="1080" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="1177" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="1274" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="1371" cy="1498" r="7" fill="#d5dbe2"/>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000" text-anchor="middle">
-        <text x="110" y="1376">1945</text>
-        <text x="207" y="1376">1948</text>
-        <text x="304" y="1376">1963</text>
-        <text x="401" y="1376">1971</text>
-        <text x="498" y="1376">1980</text>
-        <text x="595" y="1376">1989</text>
-        <text x="692" y="1376">1990</text>
-        <text x="789" y="1376">1991</text>
-        <text x="886" y="1376">1992</text>
-        <text x="983" y="1376">2000</text>
-        <text x="1080" y="1376">2011</text>
-        <text x="1177" y="1376">2014</text>
-        <text x="1274" y="1376">2017</text>
-        <text x="1371" y="1376">2018</text>
+        <text x="110" y="1484">1945</text>
+        <text x="207" y="1484">1948</text>
+        <text x="304" y="1484">1963</text>
+        <text x="401" y="1484">1971</text>
+        <text x="498" y="1484">1980</text>
+        <text x="595" y="1484">1989</text>
+        <text x="692" y="1484">1990</text>
+        <text x="789" y="1484">1991</text>
+        <text x="886" y="1484">1992</text>
+        <text x="983" y="1484">2000</text>
+        <text x="1080" y="1484">2011</text>
+        <text x="1177" y="1484">2014</text>
+        <text x="1274" y="1484">2017</text>
+        <text x="1371" y="1484">2018</text>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333" text-anchor="middle">
-        <text x="110" y="1416">stored program</text>
-        <text x="207" y="1438">transistor</text>
-        <text x="304" y="1416">CMOS</text>
-        <text x="401" y="1438">microprocessor</text>
-        <text x="498" y="1416">RISC</text>
-        <text x="595" y="1438">subthreshold, Mead</text>
-        <text x="692" y="1416">Mead</text>
-        <text x="789" y="1438">silicon neuron</text>
-        <text x="886" y="1416">AER, Mahowald</text>
-        <text x="983" y="1438">AER, Boahen</text>
-        <text x="1080" y="1416">RISC-V</text>
-        <text x="1177" y="1438">TrueNorth</text>
-        <text x="1274" y="1416">TPU</text>
-        <text x="1371" y="1438">Loihi</text>
+        <text x="110" y="1524">stored program</text>
+        <text x="207" y="1546">transistor</text>
+        <text x="304" y="1524">CMOS</text>
+        <text x="401" y="1546">microprocessor</text>
+        <text x="498" y="1524">RISC</text>
+        <text x="595" y="1546">subthreshold, Mead</text>
+        <text x="692" y="1524">Mead</text>
+        <text x="789" y="1546">silicon neuron</text>
+        <text x="886" y="1524">AER, Mahowald</text>
+        <text x="983" y="1546">AER, Boahen</text>
+        <text x="1080" y="1524">RISC-V</text>
+        <text x="1177" y="1546">TrueNorth</text>
+        <text x="1274" y="1524">TPU</text>
+        <text x="1371" y="1546">Loihi</text>
       </g>
-      <rect class="f4-band" x="60" y="1334" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="60" y="1334" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="60" y="1442" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="60" y="1442" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a box, the rail, a dashed crossing, a bottom line, or a landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric and a simulator running the right column's equations on the left. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
+  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. Akida, drawn as the survey's event NPU with a dashed outline inside the same frame, is the event domain processor of BrainChip's tech brief<d-cite key="brainchip-akida-techbrief"></d-cite>, in which events or spikes indicate useful information and the parameter memory is integrated with the neuronal mathematics, the event-based neural network processor of the AKD1000 product brief<d-cite key="BrainChip-AKD1000Brief"></d-cite>, and the target of the CNN2SNN guide<d-cite key="brainchip-cnn2snn-docs"></d-cite> that converts trained CNNs for its runtime, and it sits on the machine side as a deployment target this survey audits because its workload is a converted CNN, while none of those pages documents address events, physical time, a silicon-neuron ancestry, or an instruction stream. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric, a simulator running the right column's equations on the left, and Akida carrying into the circuit frame what the pages give that side, parameter memory integrated with the neuronal mathematics and events. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
 </figure>
 
 <p>Table 2 states the refusal itself, layer by layer, and names the subsection that
@@ -2961,17 +3022,17 @@ somewhere, even when no multiplication is required.</p>
      Communication at level 3 is qualified per platform from data/platform-capabilities.json (contract fields connectivity_routing, neural_code_payload, neuron_dynamics, threshold_reset, time_termination; contract_requirement, support_detail, routing_constraints and source_locator read on 2026-09-17).
        spinnaker-1; spynnaker-v8-docs; multicast AER routing, source-addressed spike packets (address-event documented).
        speck-2f; synsense-speck-datasheet; address events carrying address, feature, polarity and timestamp, asynchronous event-driven compute (address-event documented).
-       loihi-1; loihi2, Table 2; binary spike messages traverse the asynchronous mesh (address not named in the record).
-       brainscales-2; hxtorch; timestamped spike events through the digital event-routing fabric (address not named in the record).
+       loihi-1; loihi2, Table 2; binary spike messages traverse the asynchronous mesh (address not named for the inter-core messages; the brief's External Interfaces section names asynchronous (AER) protocols and its body says all communication between neuron cores is in the form of spike messages, read 2026-09-17).
+       brainscales-2; hxtorch, and bss (Pehle et al., Front. Neurosci. 2022, DOI 10.3389/fnins.2022.795876, Section 2.1, read 2026-09-17); timestamped spike events through the digital event-routing fabric, which the bss paper says operates on address event-encoded packets (address-event documented).
        xylo-audio-2; rockpool-xylo-docs; integer spike counts per synchronous timestep within fixed input, recurrent and output matrices (no inter-core fabric documented).
        akida-1; brainchip-akida-user-guide and brainchip-cnn2snn-docs; converted CNN as a single event-domain pass, events carry low-bit activation information, no exposed multi-timestep LIF recurrence, no subtraction-reset sequence over T, no global simulation length T; no address-event lineage or inter-core address-event fabric is documented.
-       Akida is therefore drawn with a dashed outline in the silicon row, by deployment target only, and the level-3 box claims address-event communication for SpiNNaker and Speck alone.
+       Akida is therefore drawn with a dashed outline in the conventional silicon row as the survey's event NPU (spec amendment 1, moved from the neuromorphic row on 2026-09-17), a converted network run as events with no spiking model exposed, and the level-3 tooltip and caption claim address-event communication for SpiNNaker, Speck and BrainScaleS alone.
      SNN simulated or accelerated on conventional silicon; prior-s36-du-2026 (edge-device benchmark) and prior-s37-farsa-2026 (GPU and RISC-V survey).
-     Platform families; loihi1, furber2012-spinnaker, bss, synsense-speck-datasheet, rockpool-xylo-docs, brainchip-akida-user-guide; named without dates, in the style of the lineage figure.
+     Platform families; loihi1, furber2012-spinnaker, bss, synsense-speck-datasheet, rockpool-xylo-docs in the neuromorphic row, and brainchip-akida-user-guide with brainchip-cnn2snn-docs for Akida in the conventional row; named without dates, in the style of the lineage figure.
      Cortex-M, CPU, GPU and NPU, and the toolchains Lava, sPyNNaker, Sinabs, Rockpool, hxtorch and CNN2SNN, are named without citation, as in the lead-in paragraph. -->
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 868" role="img" aria-labelledby="f8title f8desc">
     <title id="f8title">A trained ANN or CNN on conventional hardware beside an SNN on neuromorphic hardware, level by level, with the two crossings between the paths</title>
-    <desc id="f8desc">Two columns read from top to bottom through four aligned levels, with a gray rail between them naming what differs at each level. The left column is the conventional path. Its network is a trained ANN or CNN made of weighted sums and static activations that keeps no state between inputs. It is quantized and compiled to integer kernels, CMSIS-NN on Cortex-M and vendor libraries on CPU, GPU and NPU. It executes as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through registers, SRAM or cache, and flash or DRAM, so memory sits apart from compute and the accesses cost more energy than the arithmetic. Its silicon row holds a Cortex-M microcontroller, a CPU, a GPU and an NPU. The right column is the neuromorphic path. Its network is a spiking neural network with the same layered weights, where each unit keeps a state, tests it against a threshold and emits events. It is converted or trained and then mapped by Lava, sPyNNaker, Sinabs, Rockpool, hxtorch or CNN2SNN. It executes as event-triggered state updates, with time stepped by the fabric or driven by the events, weights resident beside the neuron in the core, and events carried as messages, by address on the platforms whose records document address-event communication, SpiNNaker and Speck, as spike or event messages over Loihi's asynchronous mesh and BrainScaleS's event-routing fabric, and as integer spike counts per synchronous step inside Xylo's fixed matrices. Its silicon row holds Loihi, SpiNNaker, BrainScaleS, Speck and Xylo, and Akida drawn with a dashed outline and the sub-label converted CNN, single event-domain pass, low-bit event payloads, because its record documents a single feedforward event-domain pass and no address-event lineage, so it sits in the row by deployment target only. A dashed arrow from the left network to the right network is ANN-to-SNN conversion. A dashed path from the right network down to the left silicon row is an SNN simulated or accelerated on conventional silicon. A dotted two-headed line joins the two silicon rows and is labeled compared in deployment claims at a stated measurement boundary.</desc>
+    <desc id="f8desc">Two columns read from top to bottom through four aligned levels, with a gray rail between them naming what differs at each level. The left column is the conventional path. Its network is a trained ANN or CNN made of weighted sums and static activations that keeps no state between inputs. It is quantized and compiled to integer kernels, CMSIS-NN on Cortex-M and vendor libraries on CPU, GPU and NPU. It executes as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through registers, SRAM or cache, and flash or DRAM, so memory sits apart from compute and the accesses cost more energy than the arithmetic. Its silicon row holds a Cortex-M microcontroller, a CPU, a GPU and an NPU, and beside them Akida drawn with a dashed outline as the survey's event NPU, with the sub-label event NPU, converted CNN, single event-domain pass, because its record documents a converted network run as events with no spiking model exposed and no address-event lineage. The right column is the neuromorphic path. Its network is a spiking neural network with the same layered weights, where each unit keeps a state, tests it against a threshold and emits events. It is converted or trained and then mapped by Lava, sPyNNaker, Sinabs, Rockpool, hxtorch or CNN2SNN. It executes as event-triggered state updates, with time stepped by the fabric or driven by the events, weights resident beside the neuron in the core, and events carried as messages, by address on the platforms whose documents state address-event communication, SpiNNaker, Speck and BrainScaleS, as spike messages over Loihi's asynchronous mesh, and as integer spike counts per synchronous step inside Xylo's fixed matrices. Its silicon row holds Loihi, SpiNNaker, BrainScaleS, Speck and Xylo. A dashed arrow from the left network to the right network is ANN-to-SNN conversion. A dashed path from the right network down to the left silicon row is an SNN simulated or accelerated on conventional silicon. A dotted two-headed line joins the two silicon rows and is labeled compared in deployment claims at a stated measurement boundary.</desc>
     <defs>
       <marker id="f8arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -3074,14 +3135,14 @@ somewhere, even when no multiplication is required.</p>
       <rect x="20" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
     </g>
     <g class="f8-hot">
-      <title>A unit updates its state when the fabric steps time or an event arrives and its weights sit beside it, and the events cross as address-event packets on SpiNNaker and Speck, whose records document that, as spike or event messages over Loihi's asynchronous mesh and BrainScaleS's event-routing fabric, whose records name no address, and as integer spike counts per synchronous step inside Xylo's fixed matrices, while Akida's record documents no address-event fabric at all.</title>
+      <title>A unit updates its state when the fabric steps time or an event arrives and its weights sit beside it, and the events cross as address-event packets on SpiNNaker, Speck and BrainScaleS, whose documents state that, as spike messages over Loihi's asynchronous mesh, where the Loihi 2 brief names AER only at the chip's external interfaces, and as integer spike counts per synchronous step inside Xylo's fixed matrices, while Akida's record documents no address-event fabric at all.</title>
       <rect x="880" y="428" width="540" height="190" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
       <text x="1150" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Event-triggered state updates</text>
       <text x="1150" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">time stepped by the fabric</text>
       <text x="1150" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">or driven by the events</text>
       <text x="1150" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights resident beside the neuron in the core</text>
-      <text x="1150" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">events carried as messages, by address on the</text>
-      <text x="1150" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">platforms whose records document AER, SpiNNaker and Speck</text>
+      <text x="1150" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">events carried as messages, by address where the record</text>
+      <text x="1150" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">documents AER, SpiNNaker, Speck and BrainScaleS</text>
       <rect class="f8-band" x="880" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="880" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
     </g>
@@ -3091,23 +3152,33 @@ somewhere, even when no multiplication is required.</p>
 
     <!-- level 4, silicon -->
     <g class="f8-hot">
-      <title>The conventional silicon is clocked and general purpose, and the same trained network can be compiled for any of these parts.</title>
+      <title>The conventional silicon is clocked and general purpose, and the same trained network can be compiled for any of these parts, with Akida dashed because it runs a converted network as events and exposes no spiking model.</title>
       <rect x="20" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-      <rect x="24" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="155" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Cortex-M microcontroller</text>
-      <text x="155" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(for example Cortex-M4)</text>
-      <rect x="294" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="425" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">CPU</text>
-      <text x="425" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(Arm, RISC-V, x86)</text>
-      <rect x="24" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="155" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">GPU</text>
-      <rect x="294" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="425" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">NPU</text>
+      <rect x="27" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="112" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Cortex-M MCU</text>
+      <text x="112" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">for example Cortex-M4</text>
+      <rect x="205" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="290" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">CPU</text>
+      <text x="290" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">Arm, RISC-V, x86</text>
+      <rect x="383" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="468" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">GPU</text>
+      <rect x="27" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="112" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">NPU</text>
       <rect class="f8-band" x="20" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="20" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
     </g>
+    <!-- Akida, the survey's event NPU, in the conventional silicon row with a dashed outline; spans two cells of the grid; sub-label from its platform record -->
     <g class="f8-hot">
-      <title>These six platform families are the ones audited later in this survey, drawn without dates because the figure is not a timeline, and Akida's dashed outline marks that it is here by deployment target only.</title>
+      <title>Akida is the survey's event NPU, in the conventional row with a dashed outline, because its record documents a converted CNN run as a single event-domain pass whose events carry low-bit activation information, with no exposed multi-timestep LIF recurrence, no exposed subtraction-reset sequence over T, no global simulation length T, and no address-event lineage or inter-core address-event fabric.</title>
+      <rect x="205" y="732" width="348" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <text x="379" y="749" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000">Akida</text>
+      <text x="379" y="764" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:13px" fill="#555">event NPU</text>
+      <text x="379" y="778" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">converted CNN, single event-domain pass</text>
+      <rect class="f8-band" x="205" y="732" width="348" height="52" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="205" y="732" width="348" height="52" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f8-hot">
+      <title>These five neuromorphic platform families are audited later in this survey, drawn without dates because the figure is not a timeline.</title>
       <rect x="880" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
       <rect x="887" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
       <text x="972" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
@@ -3115,22 +3186,12 @@ somewhere, even when no multiplication is required.</p>
       <text x="1150" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
       <rect x="1243" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
       <text x="1328" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
-      <rect x="887" y="732" width="130" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="952" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
-      <rect x="1025" y="732" width="130" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1090" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Xylo</text>
+      <rect x="976" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1061" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
+      <rect x="1154" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1239" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Xylo</text>
       <rect class="f8-band" x="880" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="880" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <!-- Akida, in the silicon row by deployment target only; dashed outline, sub-label from its platform record -->
-    <g class="f8-hot">
-      <title>Akida sits in this row by deployment target only, because its record documents a converted CNN run as a single event-domain pass whose events carry low-bit activation information, with no multi-timestep LIF recurrence, no subtraction-reset sequence over T, no global simulation length T, and no address-event lineage or inter-core address-event fabric.</title>
-      <rect x="1163" y="732" width="250" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2" stroke-dasharray="6 4"/>
-      <text x="1288" y="749" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000">Akida</text>
-      <text x="1288" y="764" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">converted CNN, single event-domain pass</text>
-      <text x="1288" y="778" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">low-bit event payloads</text>
-      <rect class="f8-band" x="1163" y="732" width="250" height="52" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="1163" y="732" width="250" height="52" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- crossing 1, conversion, left network to right network -->
@@ -3167,7 +3228,7 @@ somewhere, even when no multiplication is required.</p>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a box, a dashed crossing, the dotted comparison, or the middle rail for the one sentence it carries.</div>
-  <figcaption><b>Figure 8:</b> A trained ANN or CNN runs on conventional hardware as clocked matrix multiplies, an SNN runs on neuromorphic hardware as event-triggered state updates beside resident weights, and the paths cross at conversion and at an SNN run on conventional silicon. At the network level the left keeps no state between inputs and the right keeps a state per unit and emits events. At the compile level the ANN becomes the 8-bit and 16-bit CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> on a Cortex-M microcontroller or vendor libraries elsewhere, while the SNN is converted or trained, then mapped by its toolchain. At the execution level the left fetches operands through a memory hierarchy whose accesses cost more energy than the arithmetic, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated, while the right keeps the weight beside the neuron and carries events as messages. Those messages are address events in the sense of Boahen<d-cite key="boahen2000-aer"></d-cite> only where the platform record documents it, the multicast source-addressed packets of the sPyNNaker documentation<d-cite key="spynnaker-v8-docs"></d-cite> and the address, feature, polarity and timestamp events of the Speck datasheet<d-cite key="synsense-speck-datasheet"></d-cite>. The Loihi 2 comparison table<d-cite key="loihi2"></d-cite> and the hxtorch documentation<d-cite key="hxtorch"></d-cite> record spike messages over an asynchronous mesh and event messages through a digital routing fabric without naming addresses, and the Xylo documentation<d-cite key="rockpool-xylo-docs"></d-cite> records integer spike counts per synchronous timestep inside fixed matrices. At the silicon level the left is clocked general-purpose silicon and the right holds Loihi<d-cite key="loihi1"></d-cite>, SpiNNaker<d-cite key="furber2012-spinnaker"></d-cite>, BrainScaleS<d-cite key="bss"></d-cite>, Speck and Xylo. Akida<d-cite key="brainchip-akida-user-guide"></d-cite> is set apart by a dashed outline because its record documents a converted CNN run as a single event-domain pass whose events carry low-bit activation information, and no address-event lineage, so it is in the row by deployment target only. The dashed crossings are ANN-to-SNN conversion, the route this survey audits, and an SNN simulated or accelerated on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. The figure is a conceptual illustration and no measured quantity is drawn. The picture is not a partition.</figcaption>
+  <figcaption><b>Figure 8:</b> A trained ANN or CNN runs on conventional hardware as clocked matrix multiplies, an SNN runs on neuromorphic hardware as event-triggered state updates beside resident weights, and the paths cross at conversion and at an SNN run on conventional silicon. At the network level the left keeps no state between inputs and the right keeps a state per unit and emits events. At the compile level the ANN becomes the 8-bit and 16-bit CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> on a Cortex-M microcontroller or vendor libraries elsewhere, while the SNN is converted or trained, then mapped by its toolchain. At the execution level the left fetches operands through a memory hierarchy whose accesses cost more energy than the arithmetic, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated, while the right keeps the weight beside the neuron and carries events as messages. Those messages are address events in the sense of Boahen<d-cite key="boahen2000-aer"></d-cite> only where the platform's own documents state it, the multicast source-addressed packets of the sPyNNaker documentation<d-cite key="spynnaker-v8-docs"></d-cite>, the address, feature, polarity and timestamp events of the Speck datasheet<d-cite key="synsense-speck-datasheet"></d-cite>, and the address event-encoded packets that the BrainScaleS-2 event routing network operates on, in the words of Pehle et al.<d-cite key="bss"></d-cite>. The Loihi 2 comparison table<d-cite key="loihi2"></d-cite> records spike messages over an asynchronous mesh between neuron cores, and the same brief names AER only among the chip's external interfaces. The hxtorch documentation<d-cite key="hxtorch"></d-cite> records timestamped event messages through the BrainScaleS routing fabric without itself naming addresses, and the Xylo documentation<d-cite key="rockpool-xylo-docs"></d-cite> records integer spike counts per synchronous timestep inside fixed matrices. At the silicon level the left is clocked general-purpose silicon, a Cortex-M microcontroller, a CPU, a GPU and an NPU, and beside them Akida<d-cite key="brainchip-akida-user-guide"></d-cite>, drawn with a dashed outline as the survey's event NPU because its record documents a CNN converted by CNN2SNN<d-cite key="brainchip-cnn2snn-docs"></d-cite>, run as a single event-domain pass whose events carry low-bit activation information, with no spiking model exposed and no address-event lineage. The right holds the five neuromorphic families audited later, Loihi<d-cite key="loihi1"></d-cite>, SpiNNaker<d-cite key="furber2012-spinnaker"></d-cite>, BrainScaleS<d-cite key="bss"></d-cite>, Speck and Xylo. The dashed crossings are ANN-to-SNN conversion, the route this survey audits, and an SNN simulated or accelerated on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. The figure is a conceptual illustration and no measured quantity is drawn. The picture is not a partition.</figcaption>
 </figure>
 
 <p>The consequence carried forward is only that representation sets the space of

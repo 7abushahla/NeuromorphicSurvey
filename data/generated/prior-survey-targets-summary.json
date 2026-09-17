@@ -1,0 +1,379 @@
+{
+  "schema_version": "1",
+  "view": "prior-survey-targets-summary",
+  "generated_by": "tools/build-data-views.py",
+  "generated_from": [
+    "data/prior-survey-coverage.json",
+    "data/target-kinds.json"
+  ],
+  "survey_total": 37,
+  "kind_survey_counts": {
+    "CPU": 1,
+    "GPU": 5,
+    "MCU": 0,
+    "RISC-V": 1,
+    "NPU": 1,
+    "event NPU": 2,
+    "simulator": 2,
+    "neuromorphic": 25,
+    "FPGA": 3
+  },
+  "bucket_survey_counts": {
+    "conventional": 7,
+    "simulated": 2,
+    "neuromorphic": 25
+  },
+  "surveys_covering_all_three_buckets": 0,
+  "surveys": [
+    {
+      "id": "S01-pedersen-2024-nir",
+      "source_id": "pedersen-2024-nir",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S02-kudithipudi-2025-neuromorphic-scale",
+      "source_id": "kudithipudi-2025-neuromorphic-scale",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S03-deng-2025-edgesnn",
+      "source_id": "deng-2025-edgesnn",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S04-yik-2025-neurobench",
+      "source_id": "yik-2025-neurobench",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S05-davies-2021-loihi",
+      "source_id": "davies-2021-loihi",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S06-huynh-2022-implementing-snns",
+      "source_id": "huynh-2022-implementing-snns",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S07-roy-2019-spike-machine-intelligence",
+      "source_id": "roy-2019-spike-machine-intelligence",
+      "kinds": [
+        "GPU",
+        "neuromorphic"
+      ],
+      "buckets": [
+        "conventional",
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S08-schuman-2017-hardware-survey",
+      "source_id": "schuman-2017-hardware-survey",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S09-schuman-2022-opportunities",
+      "source_id": "schuman-2022-opportunities",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S10-eshraghian-2023-training-snns",
+      "source_id": "eshraghian-2023-training-snns",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S11-rathi-2023-algorithms-hardware",
+      "source_id": "rathi-2023",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S12-yamazaki-2022-applications",
+      "source_id": "yamazaki-2022",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S13-ivanov-2022-neuromorphic-ai",
+      "source_id": "ivanov-2022",
+      "kinds": [
+        "neuromorphic",
+        "event NPU"
+      ],
+      "buckets": [
+        "conventional",
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S14-basu-2022-snn-ics",
+      "source_id": "basu-2022",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S15-nunes-2022-snn-survey",
+      "source_id": "nunes-2022",
+      "kinds": [
+        "GPU",
+        "neuromorphic"
+      ],
+      "buckets": [
+        "conventional",
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S16-khan-2025-comprehensive",
+      "source_id": "khan-2025",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S17-zheng-2022-introductory",
+      "source_id": "zheng-2022",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S18-rashed-2025-edge",
+      "source_id": "anon-edge-survey",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S19-xie-2024-compression",
+      "source_id": "xie-2024",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S20-ferreira-2025-edge-ai-circuits",
+      "source_id": "ferreira-2025-edge-ai-circuits",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S21-manna-2023-frameworks",
+      "source_id": "manna-2023-frameworks",
+      "kinds": [
+        "neuromorphic",
+        "FPGA"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S22-gallego-2022-event-based-vision",
+      "source_id": "gallego-2022-event-based-vision",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S23-gebregiorgis-2025-spike-based-overview",
+      "source_id": "gebregiorgis-2025-spike-based-overview",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S24-bouvier-2019-hardware-implementations",
+      "source_id": "bouvier-2019-hardware-implementations",
+      "kinds": [
+        "neuromorphic",
+        "simulator",
+        "FPGA"
+      ],
+      "buckets": [
+        "neuromorphic",
+        "simulated"
+      ]
+    },
+    {
+      "id": "S25-shrestha-2022-models-hardware",
+      "source_id": "shrestha-2022-models-hardware",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S26-chen-2026-neuromorphic-chips",
+      "source_id": "chen-2026-neuromorphic-chips",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S27-zolfagharinejad-2024-brain-inspired-systems",
+      "source_id": "zolfagharinejad-2024-brain-inspired-systems",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S28-hu-2024-large-scale-snns",
+      "source_id": "hu-2024-large-scale-snns",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S29-ayasi-2025-practical-tutorial",
+      "source_id": "prior-s29-ayasi-2025",
+      "kinds": [
+        "GPU"
+      ],
+      "buckets": [
+        "conventional"
+      ]
+    },
+    {
+      "id": "S30-alabdulwahid-2024-neuromorphic-architectures",
+      "source_id": "prior-s30-alabdulwahid-2024",
+      "kinds": [
+        "neuromorphic",
+        "event NPU"
+      ],
+      "buckets": [
+        "conventional",
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S31-tayaraninajaran-2021-event-based-sensing",
+      "source_id": "prior-s31-tayaraninajaran-2021",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S32-cimarelli-2025-neuromorphic-vision",
+      "source_id": "prior-s32-cimarelli-2025",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S33-hegao-2026-four-stage",
+      "source_id": "prior-s33-hegao-2026",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S34-luu-2026-foundation",
+      "source_id": "prior-s34-luu-2026",
+      "kinds": [
+        "neuromorphic"
+      ],
+      "buckets": [
+        "neuromorphic"
+      ]
+    },
+    {
+      "id": "S35-caviglia-2026-neurotrain",
+      "source_id": "prior-s35-caviglia-2026",
+      "kinds": [],
+      "buckets": []
+    },
+    {
+      "id": "S36-du-2026-edge-modalities",
+      "source_id": "prior-s36-du-2026",
+      "kinds": [
+        "CPU",
+        "GPU",
+        "NPU",
+        "simulator"
+      ],
+      "buckets": [
+        "conventional",
+        "simulated"
+      ]
+    },
+    {
+      "id": "S37-farsa-2026-gpu-riscv",
+      "source_id": "prior-s37-farsa-2026",
+      "kinds": [
+        "GPU",
+        "RISC-V",
+        "neuromorphic",
+        "FPGA"
+      ],
+      "buckets": [
+        "conventional",
+        "neuromorphic"
+      ]
+    }
+  ]
+}

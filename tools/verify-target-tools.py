@@ -60,5 +60,37 @@ class VocabularyTests(unittest.TestCase):
             self.assertEqual(head.count("." + kind["css"] + " {"), 1, kind["css"])
 
 
+class CoverageTargetsTests(unittest.TestCase):
+    def test_every_survey_has_targets(self):
+        surveys = json.loads((ROOT / "data/prior-survey-coverage.json").read_text())["surveys"]
+        self.assertEqual(len(surveys), 37)
+        for survey in surveys:
+            targets = survey.get("targets")
+            self.assertIsInstance(targets, dict, survey["id"])
+            self.assertIsInstance(targets.get("kinds"), list, survey["id"])
+            self.assertTrue(set(targets["kinds"]) <= WORDS, survey["id"])
+            self.assertEqual(len(targets["kinds"]), len(set(targets["kinds"])), survey["id"])
+            self.assertTrue(targets.get("basis", "").strip(), survey["id"])
+            self.assertTrue(targets.get("locator", "").strip(), survey["id"])
+
+    def test_table1_renders_chip_cells(self):
+        sys.path.insert(0, str(ROOT / "tools"))
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("build_table1", ROOT / "tools/build-table1.py")
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        table = module.build_table(ROOT)
+        self.assertIn('<th class="ctr" data-chip="Targets">Targets covered</th>', table)
+        self.assertNotIn('data-chip="Hardware"', table)
+        self.assertIn('<td class="hwcell">', table)
+        self.assertIn('<span class="tk tk-gpu">GPU</span>', table)
+
+    def test_targets_summary_view(self):
+        view = json.loads((ROOT / "data/generated/prior-survey-targets-summary.json").read_text())
+        self.assertEqual(view["view"], "prior-survey-targets-summary")
+        self.assertEqual(view["survey_total"], 37)
+        self.assertEqual(set(view["bucket_survey_counts"]), BUCKETS)
+        self.assertIsInstance(view["surveys_covering_all_three_buckets"], int)
+
+
 if __name__ == "__main__":
     unittest.main()

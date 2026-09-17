@@ -106,7 +106,19 @@ def validate_coverage(
             )
 
 
-def validate(schema: object, registry: object, coverage_document: object) -> list[str]:
+def validate_targets(targets: object, errors: list[str], label: str, kind_words: set[str]) -> None:
+    if not isinstance(targets, dict):
+        errors.append(f"{label}: targets must be an object")
+        return
+    kinds = targets.get("kinds")
+    if not isinstance(kinds, list) or any(k not in kind_words for k in kinds) or len(kinds) != len(set(kinds)):
+        errors.append(f"{label}: targets.kinds must be a list of distinct chip words from data/target-kinds.json")
+    for field in ("basis", "locator"):
+        if not isinstance(targets.get(field), str) or not targets[field].strip():
+            errors.append(f"{label}: targets.{field} must be a nonempty string")
+
+
+def validate(schema: object, registry: object, coverage_document: object, kind_words: set[str] | None = None) -> list[str]:
     errors: list[str] = []
     if not isinstance(schema, dict):
         return ["schema-version.json must contain an object"]
@@ -174,6 +186,8 @@ def validate(schema: object, registry: object, coverage_document: object) -> lis
         validate_coverage(
             survey["coverage"], errors, label, allowed_scores, survey["full_text_status"]
         )
+        if kind_words is not None:
+            validate_targets(survey.get("targets"), errors, label, kind_words)
         verification = survey["verification"]
         if not isinstance(verification, dict):
             errors.append(f"{label}: verification must be an object")
@@ -221,12 +235,19 @@ def main() -> int:
     parser.add_argument("--schema", type=Path, default=ROOT / "data/schema-version.json")
     parser.add_argument("--sources", type=Path, default=ROOT / "data/source-registry.json")
     parser.add_argument("--coverage", type=Path, default=ROOT / "data/prior-survey-coverage.json")
+    parser.add_argument("--target-kinds", type=Path, default=ROOT / "data/target-kinds.json")
     args = parser.parse_args()
     try:
         schema = load_json(args.schema)
         registry = load_json(args.sources)
         coverage_document = load_json(args.coverage)
-        errors = validate(schema, registry, coverage_document)
+        target_kinds_document = load_json(args.target_kinds)
+        if not isinstance(target_kinds_document, dict) or not isinstance(target_kinds_document.get("kinds"), list):
+            raise ValueError("target-kinds.json must contain a kinds array")
+        kind_words = {
+            kind.get("word") for kind in target_kinds_document["kinds"] if isinstance(kind, dict)
+        }
+        errors = validate(schema, registry, coverage_document, kind_words)
     except ValueError as error:
         errors = [str(error)]
     if errors:
