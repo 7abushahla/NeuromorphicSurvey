@@ -892,7 +892,7 @@
       "aliases": [
         "foundations-sources.json:adrian1926"
       ],
-      "notes": "Stimulus strength related to impulse frequency before Shannon. Title, authors, venue, year, volume, and DOI confirmed from web search results and Wiley Online Library. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Stimulus strength related to impulse frequency before Shannon. Title, authors, venue, year, volume, and DOI confirmed from web search results and Wiley Online Library. The record is Part II of the series (the single end-organ paper). A PDF of Part 3 (Touch and Pressure, vol. 61, no. 4, pp. 465-483, DOI 10.1113/jphysiol.1926.sp002308) was read on 2026-09-17; its introduction restates the Part II finding that in a single fibre the impulses recur with a frequency depending on the intensity of the stimulus. Part II itself remains metadata only. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -1184,6 +1184,30 @@
       "purpose": "external"
     },
     {
+      "id": "barbara2025-neurophysiology-ai",
+      "canonical_key": "barbara2025-neurophysiology-ai",
+      "title": "La place de la neurophysiologie dans les débuts de l'intelligence artificielle au cours des années 1950",
+      "authors": "J.-G. Barbara",
+      "year": 2025,
+      "venue": "La Lettre des Neurosciences, no. 68, Société des Neurosciences",
+      "doi": null,
+      "url": null,
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "section on Louis Lapicque, his neuron model and artificial intelligence, pp. 3-4",
+        "section on Hebb's cell assemblies, pp. 5-6",
+        "section on McCulloch, Lorente de No, Grey Walter and Wiener, pp. 1-2"
+      ],
+      "aliases": [
+        "foundations-sources.json:barbara2025-neurophysiology-ai"
+      ],
+      "notes": "History-of-neuroscience article read in full on 2026-09-17 from a PDF the author supplied. A secondary source for the Section 2.1 lineage (Lapicque's model and the beginnings of artificial intelligence, McCulloch and Wiener, Hebb's assemblies). The page does not print a year; 2025 is inferred from the issue number and the PDF's May 2025 creation date, so the record is provisional. Canonicalized from structured inputs: foundations-sources.json.",
+      "purpose": "external"
+    },
+    {
       "id": "basu-2022",
       "canonical_key": "basu-2022",
       "title": "Spiking Neural Network Integrated Circuits: A Review of Trends and Future Directions",
@@ -1354,16 +1378,18 @@
       "doi": "10.1109/82.842110",
       "url": "https://explore.openaire.eu/search/publication?pid=10.1109%2F82.842110",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire article"
+        "p. 418 (the address-event representation defined as the real-time code in which each event carries a neuron's address and time represents itself)",
+        "Sections II and III, pp. 417-425 (neural population activity; tradeoffs in channel design)",
+        "vol. 47, no. 5, pp. 416-434"
       ],
       "aliases": [
         "foundations-sources.json:boahen2000-aer"
       ],
-      "notes": "Foundational paper on AER-based inter-chip communication. OpenAIRE confirmed title, author, year, venue (IEEE Trans. Circuits Syst. II), volume (47), pages (416-434), and DOI. Sections 2.2 and 12: address-event representation. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Foundational paper on AER-based inter-chip communication. OpenAIRE confirmed title, author, year, venue (IEEE Trans. Circuits Syst. II), volume (47), pages (416-434), and DOI. Sections 2.2 and 12: address-event representation. Full text read by the controller on 2026-09-17 from a PDF copy the author supplied; the url stays the publisher or archive page. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -3922,17 +3948,19 @@
       "doi": "10.1109/jssc.2007.914337",
       "url": "https://doi.org/10.1109/jssc.2007.914337",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire article",
+        "p. 566 (abstract: each pixel quantizes local relative intensity change in continuous time and emits address-events with sub-millisecond timing)",
+        "Section II, pp. 568-571 (vision sensor design)",
+        "Section III, pp. 571-575 (characterization)",
         "vol. 43, no. 2, pp. 566-576"
       ],
       "aliases": [
         "foundations-sources.json:lichtsteiner2008-dvs"
       ],
-      "notes": "Section 2.1 lineage figure, the event sensor. The IEEE landing page did not render; the controller confirmed title, authors, venue, year, volume, issue, pages and DOI together from the Crossref record of the DOI (api.crossref.org/works/10.1109/JSSC.2007.914337). The url is the DOI resolver. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Section 2.1 lineage figure, the event sensor. The IEEE landing page did not render; the controller confirmed title, authors, venue, year, volume, issue, pages and DOI together from the Crossref record of the DOI (api.crossref.org/works/10.1109/JSSC.2007.914337). The url is the DOI resolver. Full text read by the controller on 2026-09-17 from a PDF copy the author supplied; the url stays the publisher or archive page. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -4138,16 +4166,19 @@
       "doi": "10.1007/bf02477711",
       "url": "https://link.springer.com/article/10.1007/BF02477711",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire article"
+        "p. 127 (abstract: pulse-interval modulation can transmit several times more information per second through a synaptic link than binary modulation)",
+        "p. 131 (nearly three times as efficiently in a pulse-interval system as in a binary system at the maximum pulse frequency)",
+        "pp. 133-134 (the worked cases, about 6 to 9.3 bits per impulse under the stated timing assumptions)",
+        "vol. 14, no. 2, pp. 127-135"
       ],
       "aliases": [
         "foundations-sources.json:mackay1952-capacity"
       ],
-      "notes": "Foundation paper in information theory applied to neurons. Springer page confirmed DOI and metadata via search, but full text access auth-gated. Section 4.2: origin of capacity question for a neuron. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Foundation paper in information theory applied to neurons. Springer page confirmed DOI and metadata via search, but full text access auth-gated. Section 4.2: origin of capacity question for a neuron. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17. Full text read by the controller on 2026-09-17 from a PDF copy the author supplied; the url stays the publisher or archive page. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -4182,16 +4213,18 @@
       "doi": "10.7907/z9cz35cd",
       "url": "https://authors.library.caltech.edu/records/g2vmh-8fe19",
       "source_type": "secondary_material",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire thesis"
+        "Chapter 3, The Silicon Optic Nerve, pp. 81-127",
+        "Section 3.3, The Address-Event Representation, pp. 84-86 (the protocol defined as asynchronous digital multiplexing of neuron addresses whose timing carries the information)",
+        "Section 3.7, extensions of the address-event representation, p. 127"
       ],
       "aliases": [
         "foundations-sources.json:mahowald1992-aer"
       ],
-      "notes": "PhD thesis describing silicon retina and address-event representation. Caltech authors library verified title, author, year (defended May 12, 1992), institution, and DOI (10.7907/Z9CZ35CD). Sections 2.2 and 12: address-event representation. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "PhD thesis describing silicon retina and address-event representation. Caltech authors library verified title, author, year (defended May 12, 1992), institution, and DOI (10.7907/Z9CZ35CD). Sections 2.2 and 12: address-event representation. Full text read by the controller on 2026-09-17 from a PDF copy the author supplied; the url stays the publisher or archive page. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -4272,16 +4305,18 @@
       "doi": "10.1109/5.58356",
       "url": "https://ieeexplore.ieee.org/document/58356",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire article"
+        "pp. 1629-1630 (the energy argument and the case for computing with physical primitives and analog signals)",
+        "p. 1636 (the closing case for large-scale adaptive analog technology)",
+        "vol. 78, no. 10, pp. 1629-1636"
       ],
       "aliases": [
         "foundations-sources.json:mead1990"
       ],
-      "notes": "Seminal paper introducing neuromorphic engineering as a field, describing advantages of analog systems over digital for ill-conditioned problems. Section 2.1: the hardware turn and the word neuromorphic. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Seminal paper introducing neuromorphic engineering as a field, describing advantages of analog systems over digital for ill-conditioned problems. Section 2.1: the hardware turn and the word neuromorphic. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17. Full text read by the controller on 2026-09-17 from a PDF copy the author supplied; the url stays the publisher or archive page. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
