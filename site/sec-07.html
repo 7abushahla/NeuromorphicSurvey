@@ -47,7 +47,7 @@ which is the trained network's own affine pre-activation, evaluated at the previ
 
 <h3 id="architecture-preparation">7.5 Architecture Preparation</h3>
 
-<p>Three components of a trained convolutional network do not fit the staged update of Section 3.1 as trained, and each must be rewritten before parameter mapping applies. Table 10 collects the three together with the mechanism each preparation step preserves.</p>
+<p>Three components of a trained convolutional network do not fit the staged update of Section 3.1 as trained, and each must be rewritten before parameter mapping applies. Table 8 collects the three together with the mechanism each preparation step preserves.</p>
 
 <p>Batch normalization in evaluation mode is a fixed per-channel affine map built from running statistics, \(\hat y = \gamma(y-\mu)/\sqrt{\sigma^2+\delta}+\beta\), which composes algebraically with the affine map of the convolution or linear layer immediately before it,
 \[
@@ -61,7 +61,7 @@ folding the two layers into one affine layer with weight \(w'\) and bias \(b'\) 
 
 <div class="ptable-wrap" id="table-conversion-preparation">
 <table class="ptable">
-<caption><b>Table 10.</b> Trained-network components that do not fit the Section 3.1 staged update as trained, the preparation each requires before parameter mapping, and the mechanism the preparation preserves.</caption>
+<caption><b>Table 8:</b> Trained-network components that do not fit the Section 3.1 staged update as trained, the preparation each requires before parameter mapping, and the mechanism the preparation preserves.</caption>
 <thead><tr><th>Component</th><th>Trained form</th><th>Required preparation</th><th>Mechanism preserved</th></tr></thead>
 <tbody>
 <tr><td>Batch normalization</td><td>Fixed per-channel affine map from running statistics</td><td>Folded into the preceding convolution or linear layer's weight and bias</td><td>Keeps the layer a single affine map ahead of the ReLU, fitting \(\mathcal{S}^l\) and \(\mathcal{M}^l\) unchanged</td></tr>
@@ -85,10 +85,10 @@ folding the two layers into one affine layer with weight \(w'\) and bias \(b'\) 
 
 <div class="ptable-wrap" id="table-conversion-walkthrough">
 <table class="ptable">
-<caption><b>Table 11.</b> The five pipeline stages of Section 7.6 in execution order, the quantity each stage acts on, and the relation that governs its output.</caption>
+<caption><b>Table 9:</b> The five pipeline stages of Section 7.6 in execution order, the quantity each stage acts on, and the relation that governs its output.</caption>
 <thead><tr><th>Stage</th><th>Acts on</th><th>Action in this walkthrough</th><th>Resulting quantity</th><th>Governing relation</th></tr></thead>
 <tbody>
-<tr><td>Normalization</td><td>The trained network's graph</td><td>Fold batch normalization; replace max pooling with average pooling; rescale residual branches to a shared constant</td><td>A graph of affine layers, ReLUs, and linear pooling</td><td>Table 10</td></tr>
+<tr><td>Normalization</td><td>The trained network's graph</td><td>Fold batch normalization; replace max pooling with average pooling; rescale residual branches to a shared constant</td><td>A graph of affine layers, ReLUs, and linear pooling</td><td>Table 8</td></tr>
 <tr><td>Parameter mapping</td><td>Weights, biases, and per-layer activation statistics</td><td>Estimate \(\lambda^l\) from a calibration batch; set \(\theta_i^l=\lambda^l\) and \(w_{ij}^l=\lambda^{l-1}\tilde w_{ij}^l\)</td><td>Integrate-and-fire thresholds and rescaled weights; biases unchanged</td><td>The identity of Section 7.4</td></tr>
 <tr><td>Encoding</td><td>The network's static input tensor</td><td>Inject each input value as a constant current into the first layer for the whole horizon</td><td>A time-invariant drive \(q_i^1[t]\) equal to the trained network's own input</td><td>Section 7.3</td></tr>
 <tr><td>Temporal execution</td><td>The mapped network</td><td>Run \(T\) steps of the Section 3.1 staged update with reset-by-subtraction</td><td>A firing fraction \(\rho_i^l(T)\) at every hidden unit</td><td>Section 7.2</td></tr>
