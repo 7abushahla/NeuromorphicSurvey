@@ -1,4 +1,428 @@
 {
   "schema_version": 1,
-  "sources": []
+  "sources": [
+    {
+      "id": "lapicque1907",
+      "title": "Recherches quantitatives sur l'excitation électrique des nerfs traitée comme une polarisation",
+      "authors": "L. Lapicque",
+      "year": 1907,
+      "venue": "Journal de physiologie et de pathologie générale",
+      "doi": null,
+      "url": "https://fr.wikisource.org/wiki/Recherches_quantitatives_sur_l'excitation_%C3%A9lectrique_des_nerfs_trait%C3%A9e_comme_une_polarisation",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "pp. 620-635"
+      ],
+      "aliases": [
+        "lapicque1907"
+      ],
+      "notes": "Original integrate-and-fire ancestry. Verified through Wikidata and Wikisource. Venue, volume, and page numbers from Wikidata record; DOI unavailable for 1907 publication.",
+      "purpose": "external"
+    },
+    {
+      "id": "brunel2007-lapicque",
+      "title": "Lapicque's 1907 paper: from frogs to integrate-and-fire",
+      "authors": "N. Brunel, M. C. W. van Rossum",
+      "year": 2007,
+      "venue": "Biological Cybernetics",
+      "doi": "10.1007/s00422-007-0190-0",
+      "url": "https://www.proquest.com/openview/df30c75868299b86469c9206f898fbbd/1.pdf?pq-origsite=gscholar&cbl=54056",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "pp. 337-339"
+      ],
+      "aliases": [
+        "brunel2007-lapicque"
+      ],
+      "notes": "Commentary and translation of Lapicque. Verified through DOI landing redirect via ProQuest PDF; title, authors, year, volume and DOI confirmed.",
+      "purpose": "external"
+    },
+    {
+      "id": "adrian1926",
+      "title": "The impulses produced by sensory nerve-endings. Part II. The response of a single end-organ",
+      "authors": "E. D. Adrian, Y. Zotterman",
+      "year": 1926,
+      "venue": "The Journal of Physiology",
+      "doi": "10.1113/jphysiol.1926.sp002281",
+      "url": "https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1926.sp002281",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "vol. 61, pp. 151-171"
+      ],
+      "aliases": [
+        "adrian1926"
+      ],
+      "notes": "Stimulus strength related to impulse frequency before Shannon. Title, authors, venue, year, volume, and DOI confirmed from web search results and Wiley Online Library.",
+      "purpose": "external"
+    },
+    {
+      "id": "mcculloch1943",
+      "title": "A Logical Calculus of the Ideas Immanent in Nervous Activity",
+      "authors": "W. S. McCulloch, W. Pitts",
+      "year": 1943,
+      "venue": "The Bulletin of Mathematical Biophysics",
+      "doi": "10.1007/BF02478259",
+      "url": "https://en.wikipedia.org/wiki/A_Logical_Calculus_of_the_Ideas_Immanent_in_Nervous_Activity",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "vol. 5, no. 4, pp. 115-133"
+      ],
+      "aliases": [
+        "mcculloch1943"
+      ],
+      "notes": "Computational-abstraction branch. Title, authors, year, venue, volume, issue, page numbers, and DOI verified through Wikipedia article.",
+      "purpose": "external"
+    },
+    {
+      "id": "shannon1948",
+      "title": "A Mathematical Theory of Communication",
+      "authors": "C. E. Shannon",
+      "year": 1948,
+      "venue": "Bell System Technical Journal",
+      "doi": "10.1002/j.1538-7305.1948.tb01338.x",
+      "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "vol. 27, pp. 379-423, 623-656"
+      ],
+      "aliases": [
+        "shannon1948"
+      ],
+      "notes": "Source-encoder-channel-decoder decomposition. Published in two parts (July and October 1948). Title, author, year, venue, volume, and DOI verified through Wikipedia.",
+      "purpose": "external"
+    },
+    {
+      "id": "hebb1949",
+      "title": "The Organization of Behavior: A Neuropsychological Theory",
+      "authors": "D. O. Hebb",
+      "year": 1949,
+      "venue": "Wiley",
+      "doi": null,
+      "url": "https://en.wikipedia.org/wiki/Organization_of_Behavior",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire book"
+      ],
+      "aliases": [
+        "hebb1949"
+      ],
+      "notes": "Activity-dependent learning. Book published by John Wiley and Sons in New York. Title, author, year, publisher, and location verified through multiple sources including Wikipedia.",
+      "purpose": "external"
+    },
+    {
+      "id": "mackay1952-capacity",
+      "title": "The limiting information capacity of a neuronal link",
+      "authors": "D. M. MacKay, W. S. McCulloch",
+      "year": 1952,
+      "venue": "Bulletin of Mathematical Biophysics",
+      "doi": "10.1007/BF02477711",
+      "url": "https://link.springer.com/article/10.1007/BF02477711",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "mackay1952-capacity"
+      ],
+      "notes": "Foundation paper in information theory applied to neurons. Springer page confirmed DOI and metadata via search, but full text access auth-gated. Section 4.2: origin of capacity question for a neuron.",
+      "purpose": "external"
+    },
+    {
+      "id": "mead1990",
+      "title": "Neuromorphic electronic systems",
+      "authors": "C. A. Mead",
+      "year": 1990,
+      "venue": "Proceedings of the IEEE",
+      "doi": "10.1109/5.58356",
+      "url": "https://ieeexplore.ieee.org/document/58356/",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "mead1990"
+      ],
+      "notes": "Seminal paper introducing neuromorphic engineering as a field, describing advantages of analog systems over digital for ill-conditioned problems. Section 2.1: the hardware turn and the word neuromorphic.",
+      "purpose": "external"
+    },
+    {
+      "id": "mahowald1991-silicon-neuron",
+      "title": "A silicon neuron",
+      "authors": "M. Mahowald, R. Douglas",
+      "year": 1991,
+      "venue": "Nature",
+      "doi": "10.1038/354515a0",
+      "url": "https://authors.library.caltech.edu/records/ybc17-zhb49",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "mahowald1991-silicon-neuron"
+      ],
+      "notes": "First implementation of a silicon neuron with functional ion-channel-like dynamics. Caltech institutional repository verified title, authors, year, journal, volume (354), issue (6354), pages (515-518), and DOI. Section 2.1 lineage figure.",
+      "purpose": "external"
+    },
+    {
+      "id": "mahowald1992-aer",
+      "title": "VLSI analogs of neuronal visual processing: a synthesis of form and function",
+      "authors": "M. Mahowald",
+      "year": 1992,
+      "venue": "California Institute of Technology",
+      "doi": "10.7907/Z9CZ35CD",
+      "url": "https://authors.library.caltech.edu/records/g2vmh-8fe19",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire thesis"
+      ],
+      "aliases": [
+        "mahowald1992-aer"
+      ],
+      "notes": "PhD thesis describing silicon retina and address-event representation. Caltech authors library verified title, author, year (defended May 12, 1992), institution, and DOI (10.7907/Z9CZ35CD). Sections 2.2 and 12: address-event representation.",
+      "purpose": "external"
+    },
+    {
+      "id": "boahen2000-aer",
+      "title": "Point-to-point connectivity between neuromorphic chips using address events",
+      "authors": "K. A. Boahen",
+      "year": 2000,
+      "venue": "IEEE Transactions on Circuits and Systems II: Analog and Digital Signal Processing",
+      "doi": "10.1109/82.842110",
+      "url": "https://explore.openaire.eu/search/publication?pid=10.1109/82.842110",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "boahen2000-aer"
+      ],
+      "notes": "Foundational paper on AER-based inter-chip communication. OpenAIRE confirmed title, author, year, venue (IEEE Trans. Circuits Syst. II), volume (47), pages (416-434), and DOI. Sections 2.2 and 12: address-event representation.",
+      "purpose": "external"
+    },
+    {
+      "id": "lichtsteiner2008-dvs",
+      "title": "A 128 x 128 120 dB 15 us Latency Asynchronous Temporal Contrast Vision Sensor",
+      "authors": "P. Lichtsteiner, C. Posch, T. Delbruck",
+      "year": 2008,
+      "venue": "IEEE Journal of Solid-State Circuits",
+      "doi": "10.1109/JSSC.2007.914337",
+      "url": "https://doi.org/10.1109/JSSC.2007.914337",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article",
+        "vol. 43, no. 2, pp. 566-576"
+      ],
+      "aliases": [
+        "lichtsteiner2008-dvs"
+      ],
+      "notes": "Section 2.1 lineage figure, the event sensor. The IEEE landing page did not render; the controller confirmed title, authors, venue, year, volume, issue, pages and DOI together from the Crossref record of the DOI (api.crossref.org/works/10.1109/JSSC.2007.914337). The url is the DOI resolver.",
+      "purpose": "external"
+    },
+    {
+      "id": "izhikevich2004-which-model",
+      "title": "Which model to use for cortical spiking neurons?",
+      "authors": "E. M. Izhikevich",
+      "year": 2004,
+      "venue": "IEEE Transactions on Neural Networks",
+      "doi": "10.1109/TNN.2004.832719",
+      "url": "https://www.izhikevich.org/publications/whichmod.pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Fig. 2, p. 1066 (comparison table and cost-against-features plot)",
+        "Section III, pp. 1066-1069",
+        "vol. 15, no. 5, pp. 1063-1070"
+      ],
+      "aliases": [
+        "izhikevich2004-which-model"
+      ],
+      "notes": "Basis of the Section 3.1 model menu figure: eleven models, their approximate floating-point operations per 1 ms of simulated time, and the neuro-computational features each reproduces (Fig. 2). Text and table read by the controller from the author-hosted PDF after the retrieval agent's fetch tool could not render it.",
+      "purpose": "external"
+    },
+    {
+      "id": "brette2005-adex",
+      "title": "Adaptive exponential integrate-and-fire model as an effective description of neuronal activity",
+      "authors": "R. Brette and W. Gerstner",
+      "year": 2005,
+      "venue": "Journal of Neurophysiology",
+      "doi": "10.1152/jn.00686.2005",
+      "url": "https://journals.physiology.org/doi/full/10.1152/jn.00686.2005",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article, vol. 94, no. 5, pp. 3637-3642"
+      ],
+      "aliases": [
+        "brette2005-adex"
+      ],
+      "notes": "For Section 3.1: the AdEx model. Introduces adaptive exponential integrate-and-fire model. Metadata verified through web searches; full text access restricted.",
+      "purpose": "external"
+    },
+    {
+      "id": "indiveri2011-silicon-neurons",
+      "title": "Neuromorphic Silicon Neuron Circuits",
+      "authors": "G. Indiveri, B. Linares-Barranco, T. J. Hamilton, A. van Schaik, R. Etienne-Cummings, T. Delbruck, S.-C. Liu, P. Dudek, P. Häfliger, S. Renaud, J. Schemmel, G. Cauwenberghs, J. Arthur, K. Hynna, F. Folowosele, S. Saighi, T. Serrano-Gotarredona, J. Wijekoon, Y. Wang, K. Boahen et al.",
+      "year": 2011,
+      "venue": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2011.00073",
+      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2011.00073/full",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article, vol. 5, article 73"
+      ],
+      "aliases": [
+        "indiveri2011-silicon-neurons"
+      ],
+      "notes": "For Section 3.6: analog and digital silicon neurons. Reviews hardware implementations of neuromorphic spiking neuron circuits. Open-access article.",
+      "purpose": "external"
+    },
+    {
+      "id": "gerstner2014-neuronal-dynamics",
+      "title": "Neuronal Dynamics: From Single Neurons to Networks and Models of Cognition",
+      "authors": "W. Gerstner, W. M. Kistler, R. Naud, L. Paninski",
+      "year": 2014,
+      "venue": "Cambridge University Press",
+      "doi": null,
+      "url": "https://neuronaldynamics.epfl.ch",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire book, Sections 2.6, 3.1, 4.2"
+      ],
+      "aliases": [
+        "gerstner2014-neuronal-dynamics"
+      ],
+      "notes": "Book (578 pages, ISBN 9781107635197). For Sections 2.6, 3.1, 4.2 covering membrane biophysics, RC derivation, spike trains as point process. Online edition provides limited content.",
+      "purpose": "external"
+    },
+    {
+      "id": "rieke1997-spikes",
+      "title": "Spikes: Exploring the Neural Code",
+      "authors": "F. Rieke, D. Warland, R. de Ruyter van Steveninck, W. Bialek",
+      "year": 1997,
+      "venue": "MIT Press",
+      "doi": null,
+      "url": "https://www.goodreads.com/book/show/330914.Spikes",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire book"
+      ],
+      "aliases": [
+        "rieke1997-spikes"
+      ],
+      "notes": "Survey uses this for the neural-code and information-theory referral in Section 4.2. Hardcover published December 1996; cited as 1997.",
+      "purpose": "external"
+    },
+    {
+      "id": "dayan2001-theoretical-neuroscience",
+      "title": "Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems",
+      "authors": "P. Dayan, L. F. Abbott",
+      "year": 2001,
+      "venue": "MIT Press",
+      "doi": null,
+      "url": "https://www.abebooks.com/9780262041997/Theoretical-Neuroscience-Computational-Mathematical-Modeling-0262041995/plp",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire book"
+      ],
+      "aliases": [
+        "dayan2001-theoretical-neuroscience"
+      ],
+      "notes": "Survey uses this for mutual information and decoding referral in Section 4.2.",
+      "purpose": "external"
+    },
+    {
+      "id": "borst1999-information",
+      "title": "Information theory and neural coding",
+      "authors": "A. Borst, F. E. Theunissen",
+      "year": 1999,
+      "venue": "Nat. Neurosci.",
+      "doi": "10.1038/14731",
+      "url": "https://www.nature.com/articles/nn1199_947",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "borst1999-information"
+      ],
+      "notes": "Survey uses this for information theory and neural coding in Section 4.2. Nature page required authentication; metadata confirmed via search results.",
+      "purpose": "external"
+    },
+    {
+      "id": "quianquiroga2009-decoding",
+      "title": "Extracting information from neuronal populations: information theory and decoding approaches",
+      "authors": "R. Quian Quiroga, S. Panzeri",
+      "year": 2009,
+      "venue": "Nat. Rev. Neurosci.",
+      "doi": "10.1038/nrn2578",
+      "url": "https://www.nature.com/articles/nrn2578",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article"
+      ],
+      "aliases": [
+        "quianquiroga2009-decoding"
+      ],
+      "notes": "Survey uses this for the information-against-decoding distinction in Section 4.2. Nature page required authentication; metadata confirmed via search results.",
+      "purpose": "external"
+    }
+  ]
 }
