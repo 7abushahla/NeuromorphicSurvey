@@ -217,10 +217,12 @@ readings of them this survey refuses.</p>
 </figure>
 
 <p>From the biological neuron, two questions fork. The question of how the neuron
-physically behaves runs through the Hodgkin-Huxley ionic description
-<d-cite key="hodgkin1952"></d-cite> and the reduced dynamical models built on it to
-integrate-and-fire and leaky integrate-and-fire, an imposed threshold standing in for a
-mechanism that in the biophysical model emerges from the equations themselves. The
+physically behaves runs through Lapicque's 1907 electrical model
+<d-cite key="lapicque1907"></d-cite> to integrate-and-fire and leaky integrate-and-fire,
+and separately through the Hodgkin-Huxley ionic description
+<d-cite key="hodgkin1952"></d-cite> to the reduced dynamical models built on it, an
+imposed threshold on one path standing in for a mechanism that on the other emerges from
+the equations themselves. The
 question of what a neuron-like unit can compute runs through McCulloch and Pitts's
 logical neuron <d-cite key="mcculloch1943"></d-cite> and the perceptron to the artificial
 neural network. The spiking neural network is where these two branches rejoin, an
@@ -533,208 +535,55 @@ network, and the hardware branch that rejoins them to silicon.</p>
   <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Three cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, and Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
 </figure>
 
-<p>The hardware column of Figure 3 is the part of the stack a reader arriving from deep learning has not seen, because the conventional path is already familiar. A trained ANN or CNN is quantized and compiled to integer kernels, on a Cortex-M microcontroller through the CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> and on a CPU, GPU, or NPU through the vendor's libraries, and it then runs as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated. An SNN on neuromorphic hardware runs as event-triggered state updates in cores that hold their synaptic weights beside the neuron, with events carried between cores by address, the AER of the hardware column, and with time either stepped by the fabric or driven by the events themselves. <a href="#figure-4">Figure 4</a> draws the two paths side by side, level by level, from the trained network to the silicon. The picture is not a partition. A trained ANN reaches the neuromorphic path only through conversion, the subject of Sections 7 through 9, and an SNN also runs, simulated or accelerated, on the conventional silicon of the left column, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. What differs between the two columns is where the weight lives, what moves between units, and when a unit computes, and the sections on hardware execution and deployment measurement later turn each of those differences into a stated field of the deployment claim.</p>
 
-<figure class="pfig l-body" id="figure-4">
-<!-- Provenance (conceptual figure; no measured quantity is drawn).
-     Every drawn claim was read from the registered record in data/source-registry.json on 2026-09-17, not from memory. Key, then locator.
-     Integer kernels on Cortex-M; lai2018-cmsis-nn; Sec. 3, kernels for 8-bit and 16-bit data (q7_t, q15_t) on Cortex-M cores with SIMD multiply-accumulate. The paper measures on a Cortex-M7 board and does not name Cortex-M4; the figure names Cortex-M4 only as an example of the family and states no result.
-     Memory accesses cost more energy than arithmetic; horowitz-2014; ISSCC 2014, DOI 10.1109/isscc.2014.6757323.
-     Address-event representation; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, pp. 416-434, DOI 10.1109/82.842110.
-     SNN simulated or accelerated on conventional silicon; prior-s36-du-2026 (edge-device benchmark) and prior-s37-farsa-2026 (GPU and RISC-V survey).
-     Platform families; loihi1, furber2012-spinnaker, bss, synsense-speck-datasheet, rockpool-xylo-docs, brainchip-akida-user-guide; named without dates, in the style of the lineage figure.
-     Cortex-M, CPU, GPU and NPU, and the toolchains Lava, sPyNNaker, Sinabs, Rockpool, hxtorch and CNN2SNN, are named without citation, as in the lead-in paragraph. -->
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 868" role="img" aria-labelledby="f4title f4desc">
-    <title id="f4title">A trained ANN or CNN on conventional hardware beside an SNN on neuromorphic hardware, level by level, with the two crossings between the paths</title>
-    <desc id="f4desc">Two columns read from top to bottom through four aligned levels, with a gray rail between them naming what differs at each level. The left column is the conventional path. Its network is a trained ANN or CNN made of weighted sums and static activations that keeps no state between inputs. It is quantized and compiled to integer kernels, CMSIS-NN on Cortex-M and vendor libraries on CPU, GPU and NPU. It executes as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through registers, SRAM or cache, and flash or DRAM, so memory sits apart from compute and the accesses cost more energy than the arithmetic. Its silicon row holds a Cortex-M microcontroller, a CPU, a GPU and an NPU. The right column is the neuromorphic path. Its network is a spiking neural network with the same layered weights, where each unit keeps a state, tests it against a threshold and emits events. It is converted or trained and then mapped by Lava, sPyNNaker, Sinabs, Rockpool, hxtorch or CNN2SNN. It executes as event-triggered state updates, with time stepped by the fabric or driven by the events, weights resident beside the neuron in the core, and events carried between cores by address. Its silicon row holds Loihi, SpiNNaker, BrainScaleS, Speck, Xylo and Akida. A dashed arrow from the left network to the right network is ANN-to-SNN conversion. A dashed path from the right network down to the left silicon row is an SNN simulated or accelerated on conventional silicon. A dotted two-headed line joins the two silicon rows and is labeled compared in deployment claims at a stated measurement boundary.</desc>
-    <defs>
-      <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
-    </defs>
 
-    <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Two execution paths, from the trained network to the silicon</text>
-    <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Read down each column, then across the rail. The dashed edges are the two crossings between the paths.</text>
+<p>Figure 27 sets the hardware branch of Figure 3 beside the machine the reader already
+knows, as two dated lineages read down each column and then across. The conventional
+column is the physical substrate every ANN and CNN runs on today. The transistor of 1948
+<d-cite key="bardeen1948-transistor"></d-cite> is a switch, on or off. The logic families
+built from that switch, transistor-transistor logic and then the complementary MOS logic
+that Wanlass and Sah reported in 1963 <d-cite key="wanlass1963-cmos"></d-cite>, draw
+power chiefly when a gate switches <d-cite key="horowitz2015-art-of-electronics"></d-cite>.
+The organization those gates were made to realize is older than the transistor. Von
+Neumann's 1945 report on the EDVAC <d-cite key="vonneumann1945-edvac"></d-cite> separates
+an arithmetic organ, a control organ, and a memory, keeps the orders and the numbers in
+that one memory, and gates every element with a central clock, and Backus's 1978 lecture
+<d-cite key="backus1978-von-neumann-style"></d-cite> named the word-at-a-time traffic
+between processor and memory the von Neumann bottleneck. The microprocessor of 1971 put
+the whole machine on one chip <d-cite key="faggin1996-4004"></d-cite>, the reduced
+instruction set computer of 1980 <d-cite key="patterson1980-risc"></d-cite> argued that a
+very simple instruction set can be very fast, RISC-V made such a set open in 2011
+<d-cite key="waterman2011-riscv"></d-cite>, and the GPU and the neural processing unit,
+of which the TPU's systolic array of 2017 is the documented example
+<d-cite key="jouppi2017-tpu"></d-cite>, are arrays of clocked multiply-accumulate units
+fed from that same memory. On this column an ANN is a program, a weight is a word in
+memory, a multiply-accumulate is an instruction, and time is the clock.</p>
 
-    <!-- column headers -->
-    <text x="290" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Conventional path, a trained ANN or CNN</text>
-    <text x="1150" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Neuromorphic path, an SNN</text>
+<p>The neuromorphic column mirrors the hardware branch of Figure 3 level by level. Mead's
+1989 book <d-cite key="mead1989-analog-vlsi"></d-cite> runs the same transistor below
+threshold, as an analog element whose physics mirrors the neuron's, and his 1990 paper
+<d-cite key="mead1990"></d-cite> states the program, implement the computation rather
+than simulate it. The silicon neuron of 1991 <d-cite key="mahowald1991-silicon-neuron"></d-cite>
+is a circuit whose dynamics are the neuron's. The address-event representation, defined
+in Mahowald's 1992 thesis <d-cite key="mahowald1992-aer"></d-cite> and carried between
+chips by Boahen in 2000 <d-cite key="boahen2000-aer"></d-cite>, sends each spike as a
+neuron's address on a shared bus, with time representing itself and no clock. TrueNorth
+in 2014 <d-cite key="merolla2014-truenorth"></d-cite> and Loihi in 2018
+<d-cite key="loihi1"></d-cite> build the same organization from asynchronous digital
+cores with synapse memory beside the neuron, BrainScaleS-2 runs physical neuron circuits
+faster than biology <d-cite key="bss"></d-cite>, and SpiNNaker
+<d-cite key="furber2012-spinnaker"></d-cite> is the first crossing between the columns,
+conventional ARM cores inside a neuromorphic packet router. On this column an SNN is the
+circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, and
+time is physics, or the event itself. The second crossing, drawn dashed, is what a
+simulator does. A simulator runs the right column's equations on the left column's
+machine, so a spiking network stepped on a CPU or a GPU is a program again, its state in
+memory and its time the clock, whatever model it steps. <a href="#representation-execution">
+Section 2.5, Why Representation Constrains Execution,</a> follows both paths from the
+trained network down to the part.</p>
 
-    <!-- middle rail, what differs at each level -->
-    <g class="f4-hot">
-      <title>The rail names what differs between the columns at each level, where the weight lives, what moves between units, and when a unit computes.</title>
-      <text x="745" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#8a94a0">What differs</text>
-
-      <text x="745" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The network</text>
-      <text x="745" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what a unit keeps,</text>
-      <text x="745" y="232" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">nothing against a state</text>
-
-      <text x="745" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The compile step</text>
-      <text x="745" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a compiler against</text>
-      <text x="745" y="358" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a converter and a mapper</text>
-
-      <text x="745" y="458" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Execution</text>
-      <text x="745" y="482" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what moves,</text>
-      <text x="745" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">numbers against events</text>
-      <text x="745" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">where the weight lives,</text>
-      <text x="745" y="542" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">fetched against resident</text>
-      <text x="745" y="566" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">when a unit computes,</text>
-      <text x="745" y="584" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">once per frame against</text>
-      <text x="745" y="602" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">per step or per event</text>
-
-      <text x="745" y="698" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Silicon</text>
-      <text x="745" y="720" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">clocked, general-purpose silicon</text>
-      <text x="745" y="738" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">against event-driven or stepped</text>
-      <text x="745" y="756" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic silicon</text>
-
-      <rect class="f4-band" x="606" y="176" width="270" height="596" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="606" y="176" width="270" height="596" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <!-- level 1, the network -->
-    <g class="f4-hot">
-      <title>A trained ANN or CNN maps each input to an output through weighted sums and fixed activation functions, and it keeps nothing from one input to the next.</title>
-      <rect x="20" y="140" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-      <text x="290" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Trained ANN or CNN</text>
-      <text x="290" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">layers of weighted sums and static activations,</text>
-      <text x="290" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">numbers in, numbers out, no state kept between inputs</text>
-      <rect class="f4-band" x="20" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <g class="f4-hot">
-      <title>A spiking network keeps the same layered weights but gives each unit a state that persists between inputs, and the unit emits an event when that state crosses its threshold.</title>
-      <rect x="880" y="140" width="540" height="96" rx="8" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
-      <text x="1150" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Spiking neural network</text>
-      <text x="1150" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the same layered weights, but each unit keeps a state,</text>
-      <text x="1150" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">tests it against a threshold, and emits events</text>
-      <rect class="f4-band" x="880" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <line x1="290" y1="236" x2="290" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-    <line x1="1150" y1="236" x2="1150" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-
-    <!-- level 2, the compile step -->
-    <g class="f4-hot">
-      <title>The trained network is quantized and compiled to integer kernels, 8-bit and 16-bit through CMSIS-NN on Cortex-M cores and through the vendor's libraries on CPU, GPU and NPU.</title>
-      <rect x="20" y="284" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-      <text x="290" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Quantize and compile</text>
-      <text x="290" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">integer kernels, CMSIS-NN on Cortex-M,</text>
-      <text x="290" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">vendor libraries on CPU, GPU and NPU</text>
-      <rect class="f4-band" x="20" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <g class="f4-hot">
-      <title>The network is converted from a trained ANN or trained as an SNN, then a platform toolchain maps it onto the cores, and the toolchains named here are the ones this survey audits.</title>
-      <rect x="880" y="284" width="540" height="96" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
-      <text x="1150" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Convert or train, then map</text>
-      <text x="1150" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the toolchains this survey audits,</text>
-      <text x="1150" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">Lava, sPyNNaker, hxtorch, Sinabs, Rockpool, CNN2SNN</text>
-      <rect class="f4-band" x="880" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <line x1="290" y1="380" x2="290" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-    <line x1="1150" y1="380" x2="1150" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-
-    <!-- level 3, execution -->
-    <g class="f4-hot">
-      <title>Each input frame costs one full pass of dense matrix multiplies under a global clock, and the operands are fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed.</title>
-      <rect x="20" y="428" width="540" height="190" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-      <text x="290" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Dense matrix multiplies under a global clock</text>
-      <text x="290" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">one pass per input frame</text>
-      <text x="290" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights and activations fetched through registers,</text>
-      <text x="290" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">SRAM or cache, and flash or DRAM</text>
-      <text x="290" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">memory apart from compute, and the accesses</text>
-      <text x="290" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">cost more energy than the arithmetic</text>
-      <rect class="f4-band" x="20" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <g class="f4-hot">
-      <title>A unit updates its state only when the fabric steps time or an event arrives, its weights sit beside it in the core, and events cross between cores as addresses.</title>
-      <rect x="880" y="428" width="540" height="190" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
-      <text x="1150" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Event-triggered state updates</text>
-      <text x="1150" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">time stepped by the fabric</text>
-      <text x="1150" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">or driven by the events</text>
-      <text x="1150" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights resident beside the neuron in the core</text>
-      <text x="1150" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">events carried between cores by address,</text>
-      <text x="1150" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the AER of the lineage figure</text>
-      <rect class="f4-band" x="880" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <line x1="290" y1="618" x2="290" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-    <line x1="1150" y1="618" x2="1150" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-
-    <!-- level 4, silicon -->
-    <g class="f4-hot">
-      <title>The conventional silicon is clocked and general purpose, and the same trained network can be compiled for any of these parts.</title>
-      <rect x="20" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-      <rect x="24" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="155" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Cortex-M microcontroller</text>
-      <text x="155" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(for example Cortex-M4)</text>
-      <rect x="294" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="425" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">CPU</text>
-      <text x="425" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(Arm, RISC-V, x86)</text>
-      <rect x="24" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="155" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">GPU</text>
-      <rect x="294" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="425" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">NPU</text>
-      <rect class="f4-band" x="20" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-    <g class="f4-hot">
-      <title>These six platform families are the ones audited later in this survey, and they are drawn without dates because the figure is not a timeline.</title>
-      <rect x="880" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-      <rect x="887" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="972" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
-      <rect x="1065" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1150" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
-      <rect x="1243" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1328" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
-      <rect x="887" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="972" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
-      <rect x="1065" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1150" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Xylo</text>
-      <rect x="1243" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1328" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Akida</text>
-      <rect class="f4-band" x="880" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <!-- crossing 1, conversion, left network to right network -->
-    <g class="f4-hot">
-      <title>ANN-to-SNN conversion is the route this survey audits, and it is the only way a trained ANN or CNN enters the neuromorphic path.</title>
-      <line x1="560" y1="166" x2="876" y2="166" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
-      <text x="720" y="156" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">ANN-to-SNN conversion</text>
-      <rect class="f4-band" x="562" y="142" width="316" height="34" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="562" y="142" width="316" height="34" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <!-- crossing 2, an SNN on conventional silicon, right network down to left silicon -->
-    <g class="f4-hot">
-      <title>An SNN also runs on conventional silicon, simulated or accelerated, which is the crossing that Du et al. benchmark on edge devices and Farsa et al. survey for GPUs and RISC-V processors.</title>
-      <path d="M900,236 V260 H590 V728 H564" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
-      <text x="602" y="640" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">an SNN simulated or accelerated</text>
-      <text x="602" y="658" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">on conventional silicon</text>
-      <rect class="f4-band" x="576" y="246" width="336" height="26" rx="6" fill="#D63A2F" opacity="0"/>
-      <rect x="576" y="246" width="336" height="26" fill="#000" opacity="0" pointer-events="all"/>
-      <rect class="f4-band" x="576" y="272" width="28" height="470" rx="6" fill="#D63A2F" opacity="0"/>
-      <rect x="576" y="272" width="28" height="470" fill="#000" opacity="0" pointer-events="all"/>
-      <rect class="f4-band" x="598" y="624" width="270" height="42" rx="6" fill="#D63A2F" opacity="0"/>
-      <rect x="598" y="624" width="270" height="42" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-
-    <!-- the two silicon rows compared -->
-    <g class="f4-hot">
-      <title>Deployment claims compare the two silicon rows, and such a comparison holds only at a stated measurement boundary.</title>
-      <path d="M720,826 H290 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
-      <path d="M720,826 H1150 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
-      <text x="720" y="854" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">compared in deployment claims at a stated measurement boundary</text>
-      <rect class="f4-band" x="270" y="794" width="900" height="70" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="270" y="794" width="900" height="70" fill="#000" opacity="0" pointer-events="all"/>
-    </g>
-  </svg></div>
-  <div class="fig-hint">Hover a box, a dashed crossing, the dotted comparison, or the middle rail for the one sentence it carries.</div>
-  <figcaption><b>Figure 4:</b> A trained ANN or CNN runs on conventional hardware as clocked matrix multiplies, an SNN runs on neuromorphic hardware as event-triggered state updates beside resident weights, and the paths cross at conversion and at an SNN run on conventional silicon. At the network level the left keeps no state between inputs and the right keeps a state per unit and emits events. At the compile level the ANN becomes the 8-bit and 16-bit CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> on a Cortex-M microcontroller or vendor libraries elsewhere, while the SNN is converted or trained, then mapped by its toolchain. At the execution level the left fetches operands through a memory hierarchy whose accesses cost more energy than the arithmetic, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated, while the right keeps the weight beside the neuron and carries events between cores by address, the AER of Boahen<d-cite key="boahen2000-aer"></d-cite>. At the silicon level the left is clocked general-purpose silicon and the right holds Loihi<d-cite key="loihi1"></d-cite>, SpiNNaker<d-cite key="furber2012-spinnaker"></d-cite>, BrainScaleS<d-cite key="bss"></d-cite>, Speck<d-cite key="synsense-speck-datasheet"></d-cite>, Xylo<d-cite key="rockpool-xylo-docs"></d-cite>, and Akida<d-cite key="brainchip-akida-user-guide"></d-cite>. The dashed crossings are ANN-to-SNN conversion, the route this survey audits, and an SNN simulated or accelerated on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. The figure is a conceptual illustration and no measured quantity is drawn. The picture is not a partition.</figcaption>
+<figure class="pfig l-body" id="figure-27">
+<figcaption><b>Figure 27:</b> Two hardware lineages, the machine that simulates and the circuit that implements. Placeholder until the fragment is installed.</figcaption>
 </figure>
 
 <p>Table 2 states the refusal itself, layer by layer, and names the subsection that
@@ -1498,11 +1347,11 @@ claim is made here.</p>
 <p>Table 3 separates two axes that the senses above conflate when left unstated,
 whether a platform's signal domain is digital or is analog or mixed-signal, and whether
 its cores advance on a shared clock or on arriving events. Each of the four
-combinations is realized in an audited platform.</p>
+combinations is realized in a named platform.</p>
 
 <div class="ptable-wrap" id="table-execution-axes">
 <table class="ptable">
-<caption><b>Table 3:</b> The signal-domain axis and the event-scheduling axis are independent. Each cell names one audited platform that realizes the combination.</caption>
+<caption><b>Table 3:</b> The signal-domain axis and the event-scheduling axis are independent. Each cell names one named platform that realizes the combination.</caption>
 <thead>
 <tr><th></th><th>Clock-or-timestep-driven</th><th>Event-driven</th></tr>
 </thead>
@@ -1513,8 +1362,8 @@ combinations is realized in an audited platform.</p>
 </table>
 </div>
 
-<p>Neuromorphic is therefore not analog. TrueNorth and Loihi are digital, and only
-BrainScaleS-2 among the platforms in Table 3 is mixed-signal. Asynchronous is not
+<p>Neuromorphic is therefore not analog. TrueNorth and Loihi are digital;
+BrainScaleS-2 and DYNAP-SE2 are mixed-signal. Asynchronous is not
 analog either, and digital is not synchronous. The signal-domain axis and the clocking
 axis are independent design choices, not two names for the same distinction. An event
 camera is a neuromorphic sensor whose output may feed a spiking algorithm or a
@@ -1557,6 +1406,210 @@ pipeline avoids by construction. A representation that relaxes one constraint ty
 introduces another. State must be stored somewhere, and event timing must be tracked
 somewhere, even when no multiplication is required.</p>
 
+<p><a href="#figure-4">Figure 4</a> draws the two strategies as today's silicon realizes them, level by level from the trained network to the part. On the conventional path a trained ANN or CNN is quantized and compiled to integer kernels, on a Cortex-M microcontroller through the CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> and on a CPU, GPU, or NPU through the vendor's libraries, and it runs as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated. On the neuromorphic path an SNN runs as event-triggered state updates in cores that hold their synaptic weights beside the neuron, with events carried between cores by address and with time either stepped by the fabric or driven by the events themselves. The picture is not a partition. A trained ANN reaches the neuromorphic path only through conversion, the subject of Sections 7 through 9, and an SNN also runs, simulated or accelerated, on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. What differs between the two columns is where the weight lives, what moves between units, and when a unit computes, and the sections on hardware execution and deployment measurement turn each of those differences into a stated field of the deployment claim.</p>
+
+<figure class="pfig l-body" id="figure-4">
+<!-- Provenance (conceptual figure; no measured quantity is drawn).
+     Every drawn claim was read from the registered record in data/source-registry.json on 2026-09-17, not from memory. Key, then locator.
+     Integer kernels on Cortex-M; lai2018-cmsis-nn; Sec. 3, kernels for 8-bit and 16-bit data (q7_t, q15_t) on Cortex-M cores with SIMD multiply-accumulate. The paper measures on a Cortex-M7 board and does not name Cortex-M4; the figure names Cortex-M4 only as an example of the family and states no result.
+     Memory accesses cost more energy than arithmetic; horowitz-2014; ISSCC 2014, DOI 10.1109/isscc.2014.6757323.
+     Address-event representation; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, pp. 416-434, DOI 10.1109/82.842110.
+     SNN simulated or accelerated on conventional silicon; prior-s36-du-2026 (edge-device benchmark) and prior-s37-farsa-2026 (GPU and RISC-V survey).
+     Platform families; loihi1, furber2012-spinnaker, bss, synsense-speck-datasheet, rockpool-xylo-docs, brainchip-akida-user-guide; named without dates, in the style of the lineage figure.
+     Cortex-M, CPU, GPU and NPU, and the toolchains Lava, sPyNNaker, Sinabs, Rockpool, hxtorch and CNN2SNN, are named without citation, as in the lead-in paragraph. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 868" role="img" aria-labelledby="f4title f4desc">
+    <title id="f4title">A trained ANN or CNN on conventional hardware beside an SNN on neuromorphic hardware, level by level, with the two crossings between the paths</title>
+    <desc id="f4desc">Two columns read from top to bottom through four aligned levels, with a gray rail between them naming what differs at each level. The left column is the conventional path. Its network is a trained ANN or CNN made of weighted sums and static activations that keeps no state between inputs. It is quantized and compiled to integer kernels, CMSIS-NN on Cortex-M and vendor libraries on CPU, GPU and NPU. It executes as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through registers, SRAM or cache, and flash or DRAM, so memory sits apart from compute and the accesses cost more energy than the arithmetic. Its silicon row holds a Cortex-M microcontroller, a CPU, a GPU and an NPU. The right column is the neuromorphic path. Its network is a spiking neural network with the same layered weights, where each unit keeps a state, tests it against a threshold and emits events. It is converted or trained and then mapped by Lava, sPyNNaker, Sinabs, Rockpool, hxtorch or CNN2SNN. It executes as event-triggered state updates, with time stepped by the fabric or driven by the events, weights resident beside the neuron in the core, and events carried between cores by address. Its silicon row holds Loihi, SpiNNaker, BrainScaleS, Speck, Xylo and Akida. A dashed arrow from the left network to the right network is ANN-to-SNN conversion. A dashed path from the right network down to the left silicon row is an SNN simulated or accelerated on conventional silicon. A dotted two-headed line joins the two silicon rows and is labeled compared in deployment claims at a stated measurement boundary.</desc>
+    <defs>
+      <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+    </defs>
+
+    <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Two execution paths, from the trained network to the silicon</text>
+    <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Read down each column, then across the rail. The dashed edges are the two crossings between the paths.</text>
+
+    <!-- column headers -->
+    <text x="290" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Conventional path, a trained ANN or CNN</text>
+    <text x="1150" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Neuromorphic path, an SNN</text>
+
+    <!-- middle rail, what differs at each level -->
+    <g class="f4-hot">
+      <title>The rail names what differs between the columns at each level, where the weight lives, what moves between units, and when a unit computes.</title>
+      <text x="745" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#8a94a0">What differs</text>
+
+      <text x="745" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The network</text>
+      <text x="745" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what a unit keeps,</text>
+      <text x="745" y="232" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">nothing against a state</text>
+
+      <text x="745" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The compile step</text>
+      <text x="745" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a compiler against</text>
+      <text x="745" y="358" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a converter and a mapper</text>
+
+      <text x="745" y="458" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Execution</text>
+      <text x="745" y="482" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what moves,</text>
+      <text x="745" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">numbers against events</text>
+      <text x="745" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">where the weight lives,</text>
+      <text x="745" y="542" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">fetched against resident</text>
+      <text x="745" y="566" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">when a unit computes,</text>
+      <text x="745" y="584" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">once per frame against</text>
+      <text x="745" y="602" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">per step or per event</text>
+
+      <text x="745" y="698" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Silicon</text>
+      <text x="745" y="720" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">clocked, general-purpose silicon</text>
+      <text x="745" y="738" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">against event-driven or stepped</text>
+      <text x="745" y="756" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic silicon</text>
+
+      <rect class="f4-band" x="606" y="176" width="270" height="596" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="606" y="176" width="270" height="596" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- level 1, the network -->
+    <g class="f4-hot">
+      <title>A trained ANN or CNN maps each input to an output through weighted sums and fixed activation functions, and it keeps nothing from one input to the next.</title>
+      <rect x="20" y="140" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Trained ANN or CNN</text>
+      <text x="290" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">layers of weighted sums and static activations,</text>
+      <text x="290" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">numbers in, numbers out, no state kept between inputs</text>
+      <rect class="f4-band" x="20" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>A spiking network keeps the same layered weights but gives each unit a state that persists between inputs, and the unit emits an event when that state crosses its threshold.</title>
+      <rect x="880" y="140" width="540" height="96" rx="8" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="1150" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Spiking neural network</text>
+      <text x="1150" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the same layered weights, but each unit keeps a state,</text>
+      <text x="1150" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">tests it against a threshold, and emits events</text>
+      <rect class="f4-band" x="880" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="236" x2="290" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="236" x2="1150" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 2, the compile step -->
+    <g class="f4-hot">
+      <title>The trained network is quantized and compiled to integer kernels, 8-bit and 16-bit through CMSIS-NN on Cortex-M cores and through the vendor's libraries on CPU, GPU and NPU.</title>
+      <rect x="20" y="284" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Quantize and compile</text>
+      <text x="290" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">integer kernels, CMSIS-NN on Cortex-M,</text>
+      <text x="290" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">vendor libraries on CPU, GPU and NPU</text>
+      <rect class="f4-band" x="20" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>The network is converted from a trained ANN or trained as an SNN, then a platform toolchain maps it onto the cores, and the toolchains named here are the ones this survey audits.</title>
+      <rect x="880" y="284" width="540" height="96" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Convert or train, then map</text>
+      <text x="1150" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the toolchains this survey audits,</text>
+      <text x="1150" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">Lava, sPyNNaker, hxtorch, Sinabs, Rockpool, CNN2SNN</text>
+      <rect class="f4-band" x="880" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="380" x2="290" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="380" x2="1150" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 3, execution -->
+    <g class="f4-hot">
+      <title>Each input frame costs one full pass of dense matrix multiplies under a global clock, and the operands are fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed.</title>
+      <rect x="20" y="428" width="540" height="190" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Dense matrix multiplies under a global clock</text>
+      <text x="290" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">one pass per input frame</text>
+      <text x="290" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights and activations fetched through registers,</text>
+      <text x="290" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">SRAM or cache, and flash or DRAM</text>
+      <text x="290" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">memory apart from compute, and the accesses</text>
+      <text x="290" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">cost more energy than the arithmetic</text>
+      <rect class="f4-band" x="20" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>A unit updates its state only when the fabric steps time or an event arrives, its weights sit beside it in the core, and events cross between cores as addresses.</title>
+      <rect x="880" y="428" width="540" height="190" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Event-triggered state updates</text>
+      <text x="1150" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">time stepped by the fabric</text>
+      <text x="1150" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">or driven by the events</text>
+      <text x="1150" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights resident beside the neuron in the core</text>
+      <text x="1150" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">events carried between cores by address,</text>
+      <text x="1150" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the AER of the lineage figure</text>
+      <rect class="f4-band" x="880" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="618" x2="290" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="618" x2="1150" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 4, silicon -->
+    <g class="f4-hot">
+      <title>The conventional silicon is clocked and general purpose, and the same trained network can be compiled for any of these parts.</title>
+      <rect x="20" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <rect x="24" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="155" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Cortex-M microcontroller</text>
+      <text x="155" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(for example Cortex-M4)</text>
+      <rect x="294" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="425" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">CPU</text>
+      <text x="425" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(Arm, RISC-V, x86)</text>
+      <rect x="24" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="155" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">GPU</text>
+      <rect x="294" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="425" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">NPU</text>
+      <rect class="f4-band" x="20" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>These six platform families are the ones audited later in this survey, and they are drawn without dates because the figure is not a timeline.</title>
+      <rect x="880" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <rect x="887" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="972" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
+      <rect x="1065" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1150" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
+      <rect x="1243" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1328" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
+      <rect x="887" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="972" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
+      <rect x="1065" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1150" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Xylo</text>
+      <rect x="1243" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1328" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Akida</text>
+      <rect class="f4-band" x="880" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- crossing 1, conversion, left network to right network -->
+    <g class="f4-hot">
+      <title>ANN-to-SNN conversion is the route this survey audits, and it is the only way a trained ANN or CNN enters the neuromorphic path.</title>
+      <line x1="560" y1="166" x2="876" y2="166" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="720" y="156" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">ANN-to-SNN conversion</text>
+      <rect class="f4-band" x="562" y="142" width="316" height="34" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="562" y="142" width="316" height="34" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- crossing 2, an SNN on conventional silicon, right network down to left silicon -->
+    <g class="f4-hot">
+      <title>An SNN also runs on conventional silicon, simulated or accelerated, which is the crossing that Du et al. benchmark on edge devices and Farsa et al. survey for GPUs and RISC-V processors.</title>
+      <path d="M900,236 V260 H590 V728 H564" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="602" y="640" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">an SNN simulated or accelerated</text>
+      <text x="602" y="658" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">on conventional silicon</text>
+      <rect class="f4-band" x="576" y="246" width="336" height="26" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="576" y="246" width="336" height="26" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="576" y="272" width="28" height="470" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="576" y="272" width="28" height="470" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="598" y="624" width="270" height="42" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="598" y="624" width="270" height="42" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- the two silicon rows compared -->
+    <g class="f4-hot">
+      <title>Deployment claims compare the two silicon rows, and such a comparison holds only at a stated measurement boundary.</title>
+      <path d="M720,826 H290 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
+      <path d="M720,826 H1150 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
+      <text x="720" y="854" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">compared in deployment claims at a stated measurement boundary</text>
+      <rect class="f4-band" x="270" y="794" width="900" height="70" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="270" y="794" width="900" height="70" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+  </svg></div>
+  <div class="fig-hint">Hover a box, a dashed crossing, the dotted comparison, or the middle rail for the one sentence it carries.</div>
+  <figcaption><b>Figure 4:</b> A trained ANN or CNN runs on conventional hardware as clocked matrix multiplies, an SNN runs on neuromorphic hardware as event-triggered state updates beside resident weights, and the paths cross at conversion and at an SNN run on conventional silicon. At the network level the left keeps no state between inputs and the right keeps a state per unit and emits events. At the compile level the ANN becomes the 8-bit and 16-bit CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> on a Cortex-M microcontroller or vendor libraries elsewhere, while the SNN is converted or trained, then mapped by its toolchain. At the execution level the left fetches operands through a memory hierarchy whose accesses cost more energy than the arithmetic, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated, while the right keeps the weight beside the neuron and carries events between cores by address, the AER of Boahen<d-cite key="boahen2000-aer"></d-cite>. At the silicon level the left is clocked general-purpose silicon and the right holds Loihi<d-cite key="loihi1"></d-cite>, SpiNNaker<d-cite key="furber2012-spinnaker"></d-cite>, BrainScaleS<d-cite key="bss"></d-cite>, Speck<d-cite key="synsense-speck-datasheet"></d-cite>, Xylo<d-cite key="rockpool-xylo-docs"></d-cite>, and Akida<d-cite key="brainchip-akida-user-guide"></d-cite>. The dashed crossings are ANN-to-SNN conversion, the route this survey audits, and an SNN simulated or accelerated on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. The figure is a conceptual illustration and no measured quantity is drawn. The picture is not a partition.</figcaption>
+</figure>
+
 <p>The consequence carried forward is only that representation sets the space of
 physically consistent execution strategies available to a target. It does not by itself
 select one, and it does not establish that a specific chip, compiler, or runtime exploits
@@ -1594,9 +1647,10 @@ introduced here. Execution families and the mechanisms that realize them are not
 out of this survey in the same way; <a href="#hardware-execution-models">Section 12,
 Hardware Execution Models,</a> compares them platform by platform.</p>
 
-<p>The next subsection turns the persistent state and discrete events introduced here
-into one common, staged state-update rule, in <a href="#membrane-circuit-model">Section
-3.1, From Membrane to Circuit to Model</a>. The integrate-and-fire, leaky
-integrate-and-fire, current-based, adaptive, and multi-compartment models used throughout
-the remaining sections are then derived as variations of that single update rather than
-as an unrelated list of neuron types.</p>
+<p>The next section opens with the membrane equation that vocabulary comes from
+(<a href="#membrane-circuit-model">Section 3.1, From Membrane to Circuit to Model</a>)
+and then turns the persistent state and discrete events introduced here into one
+common, staged state-update rule (<a href="#common-state-update">Section 3.2</a>). The
+integrate-and-fire, leaky integrate-and-fire, current-based, adaptive, and
+multi-compartment models used throughout the remaining sections are then derived as
+variations of that single update rather than as an unrelated list of neuron types.</p>

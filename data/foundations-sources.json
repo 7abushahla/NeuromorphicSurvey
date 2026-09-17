@@ -481,6 +481,243 @@
       ],
       "notes": "Retrieved 2026-09-17 from the arXiv API record (arXiv:1801.06601), which confirmed title, authors and year together; the PDF was read in full. Used by the execution-stacks figure in Section 2.1 for the conventional path, where a quantized CNN runs as 8-bit or 16-bit integer kernels on an Arm Cortex-M microcontroller. The paper's measurements are on a Cortex-M7 platform; the survey names Cortex-M4 only as an example of the Cortex-M family the kernels target, and the paper does not mention Cortex-M4 by name.",
       "purpose": "external"
+    },
+    {
+      "id": "bardeen1948-transistor",
+      "title": "The Transistor, A Semi-Conductor Triode",
+      "authors": "J. Bardeen, W. H. Brattain",
+      "year": 1948,
+      "venue": "Physical Review",
+      "doi": "10.1103/PhysRev.74.230",
+      "url": "https://journals.aps.org/pr/abstract/10.1103/PhysRev.74.230",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article (abstract page read; body not read)"
+      ],
+      "aliases": [
+        "bardeen1948-transistor"
+      ],
+      "notes": "Survey uses as the transistor switching element of conventional digital hardware. All metadata confirmed on APS publisher landing page: vol. 74, p. 230, published 15 July 1948.",
+      "purpose": "external"
+    },
+    {
+      "id": "wanlass1963-cmos",
+      "title": "Nanowatt logic using field-effect metal-oxide semiconductor triodes",
+      "authors": "F. M. Wanlass, C. T. Sah",
+      "year": 1963,
+      "venue": "IEEE International Solid-State Circuits Conference (ISSCC) Digest of Technical Papers",
+      "doi": "10.1109/ISSCC.1963.1157450",
+      "url": "https://doi.org/10.1109/isscc.1963.1157450",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire paper (abstract read; body not read)"
+      ],
+      "aliases": [
+        "wanlass1963-cmos"
+      ],
+      "notes": "Survey uses as origin of complementary MOS (CMOS) logic. DOI landing page verified conference proceedings; Fairchild authors confirmed.",
+      "purpose": "external"
+    },
+    {
+      "id": "vonneumann1945-edvac",
+      "title": "First draft of a report on the EDVAC",
+      "authors": "J. von Neumann",
+      "year": 1945,
+      "venue": "IEEE Annals of the History of Computing, vol. 15, no. 4, pp. 27-75, 1993 reprint",
+      "doi": "10.1109/85.238389",
+      "url": "https://doi.org/10.1109/85.238389",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Sec. 2.2, p. 2 (the central arithmetical part, CA, as the first specific part of the device)",
+        "Sec. 2.3, p. 2 (the central control, CC, as the second specific part)",
+        "Sec. 2.4(b), p. 2 (the instructions which govern a complicated problem constitute a considerable material and must be remembered)",
+        "Sec. 2.5, p. 3 (the total memory, M, as the third specific part)",
+        "Sec. 6.3, pp. 9-10 (the central clock as an electrical oscillator emitting a standard pulse every period; the pulse acts as a gate for every E-element)",
+        "Sec. 14.1, p. 37 (the orders which are received by CC come from M, the same place where the numerical material is stored)"
+      ],
+      "aliases": [
+        "vonneumann1945-edvac"
+      ],
+      "notes": "Original 1945 report; the 1993 IEEE Annals reprint (vol. 15, no. 4, pp. 27-75) confirmed title, author and year. A text-layer copy of the reprint was read; page numbers are the printed page numbers of the 1945 report as carried by the reprint. Used for the stored-program machine (arithmetic organ CA, control organ CC, memory M; orders and numbers held in the same memory, Sec. 14.1) and for the central clock that gates every element (Sec. 6.3). Verbatim passages are in the plan workspace file task-13-passages.md.",
+      "purpose": "external"
+    },
+    {
+      "id": "backus1978-von-neumann-style",
+      "title": "Can Programming Be Liberated from the von Neumann Style? A Functional Style and Its Algebra of Programs",
+      "authors": "J. Backus",
+      "year": 1978,
+      "venue": "Communications of the ACM, vol. 21, no. 8, pp. 613-641",
+      "doi": "10.1145/359576.359579",
+      "url": "https://cacm.acm.org/research/can-programming-be-liberated-from-the-von-neumann-style/",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "introduction describing word-at-a-time style inherited from von Neumann computer"
+      ],
+      "aliases": [
+        "backus1978-von-neumann-style"
+      ],
+      "notes": "Survey uses for naming von Neumann bottleneck. Full text confirms August 1978 publication, vol. 21, no. 8, pp. 613-641. Passage on word-at-a-time traffic between processor and memory.",
+      "purpose": "external"
+    },
+    {
+      "id": "faggin1996-4004",
+      "title": "The history of the 4004",
+      "authors": "F. Faggin, M. E. Hoff, S. Mazor, M. Shima",
+      "year": 1996,
+      "venue": "IEEE Micro, vol. 16, no. 6, pp. 10-20",
+      "doi": "10.1109/40.546561",
+      "url": "https://doi.org/10.1109/40.546561",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "abstract (the 4004 introduced in November 1971)"
+      ],
+      "aliases": [
+        "faggin1996-4004"
+      ],
+      "notes": "Survey cites for first commercial microprocessor 1971 date. DOI landing page abstract confirms November 1971 introduction and vol. 16, no. 6 publication.",
+      "purpose": "external"
+    },
+    {
+      "id": "patterson1980-risc",
+      "title": "The case for the reduced instruction set computer",
+      "authors": "D. A. Patterson, D. R. Ditzel",
+      "year": 1980,
+      "venue": "ACM SIGARCH Computer Architecture News, vol. 8, no. 6, pp. 25-33",
+      "doi": "10.1145/641914.641917",
+      "url": "https://doi.org/10.1145/641914.641917",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "p. 31 (the concept of the Reduced Instruction Set Computer: a very simple instruction set that can be very fast, with a substantial net gain in overall program execution speed)"
+      ],
+      "aliases": [
+        "patterson1980-risc"
+      ],
+      "notes": "RISC as the instruction-set philosophy behind today's embedded processors (dated node RISC 1980). The DOI page confirmed title, authors, venue and year; the ACM page is paywalled, so the body was read from a course-hosted copy of the same article (https://www.cs.utexas.edu/~fussell/courses/cs352h/papers/risc.pdf, SIGARCH CAN vol. 8, no. 6, pp. 25-33, printed page numbers present).",
+      "purpose": "external"
+    },
+    {
+      "id": "waterman2011-riscv",
+      "title": "The RISC-V Instruction Set Manual, Volume I: Base User-Level ISA",
+      "authors": "A. Waterman, Y. Lee, D. A. Patterson, K. Asanović",
+      "year": 2011,
+      "venue": "Technical Report UCB/EECS-2011-62, EECS Department, University of California, Berkeley",
+      "doi": null,
+      "url": "https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.html",
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Sec. 1 (RISC-V as a new instruction set architecture, with the goal of an open ISA suitable for direct hardware implementation)"
+      ],
+      "aliases": [
+        "waterman2011-riscv"
+      ],
+      "notes": "Berkeley EECS technical report page confirmed title, authors, report number and year (May 2011); the PDF was read. Used for the open RISC-V instruction set as the current end of the reduced-instruction-set lineage.",
+      "purpose": "external"
+    },
+    {
+      "id": "jouppi2017-tpu",
+      "title": "In-Datacenter Performance Analysis of a Tensor Processing Unit",
+      "authors": "N. P. Jouppi, C. Young, N. Patil, D. A. Patterson, G. Agrawal, R. Bajwa, et al.",
+      "year": 2017,
+      "venue": "Proceedings of the 44th Annual International Symposium on Computer Architecture (ISCA)",
+      "doi": "10.1145/3079856.3080246",
+      "url": "https://arxiv.org/abs/1704.04760",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Sec. 2, p. 3 (the Matrix Multiply Unit as the heart of the TPU, 256 by 256 MACs performing 8-bit multiply-and-adds on signed or unsigned integers)",
+        "Sec. 2, p. 4 (systolic execution to reduce reads and writes of the Unified Buffer, because reading a large SRAM uses much more power than arithmetic)"
+      ],
+      "aliases": [
+        "jouppi2017-tpu"
+      ],
+      "notes": "DOI landing page confirmed title, authors, venue and year (ISCA 2017); the arXiv copy (1704.04760) was read, and the two passages fall in Section 2, TPU Origin, Architecture, and Implementation, pp. 3-4 of that copy. Used for the neural processing unit as an array of clocked multiply-accumulate units organized as a systolic array.",
+      "purpose": "external"
+    },
+    {
+      "id": "mead1989-analog-vlsi",
+      "title": "Analog VLSI and Neural Systems",
+      "authors": "C. Mead",
+      "year": 1989,
+      "venue": "Addison-Wesley, Reading, MA",
+      "doi": null,
+      "url": "https://search.worldcat.org/title/17954003",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "book (catalog record; not read)"
+      ],
+      "aliases": [
+        "mead1989-analog-vlsi"
+      ],
+      "notes": "Transistors operated in subthreshold as analog elements whose physics mirrors the neuron's, basis of the silicon neuron. WorldCat confirmed title, author, publisher, and year; ISBN 9780201059922.",
+      "purpose": "external"
+    },
+    {
+      "id": "merolla2014-truenorth",
+      "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface",
+      "authors": "P. Merolla, J. V. Arthur, R. Alvarez-Icaza, A. S. Cassidy, J. Sawada, F. Akopyan, et al.",
+      "year": 2014,
+      "venue": "Science, vol. 345, no. 6197, pp. 668-673",
+      "doi": "10.1126/science.1254642",
+      "url": "https://doi.org/10.1126/science.1254642",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "entire article (abstract read; body not read)"
+      ],
+      "aliases": [
+        "merolla2014-truenorth"
+      ],
+      "notes": "TrueNorth as the digital asynchronous neuromorphic chip (dated node TrueNorth 2014). DOI page confirmed title, authors, venue, and year; 5.4-billion-transistor chip with 1 million programmable spiking neurons.",
+      "purpose": "external"
+    },
+    {
+      "id": "horowitz2015-art-of-electronics",
+      "title": "The Art of Electronics",
+      "authors": "P. Horowitz, W. Hill",
+      "year": 2015,
+      "venue": "Cambridge University Press, 3rd edition",
+      "doi": null,
+      "url": "https://www.cambridge.org/us/universitypress/subjects/physics/electronics-physicists/art-electronics-3rd-edition",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "book (catalog record; not read); the digital electronics chapters cover the TTL and CMOS logic families"
+      ],
+      "aliases": [
+        "horowitz2015-art-of-electronics"
+      ],
+      "notes": "Secondary source for logic families TTL and CMOS named in the hardware-lineage figure. Cambridge University Press page confirmed title, authors, edition, publisher, and year; ISBN 9780521809269.",
+      "purpose": "external"
     }
   ]
 }

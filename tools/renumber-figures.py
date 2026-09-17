@@ -35,6 +35,10 @@ print('mapping (old -> new):', {k: v for k, v in mapping.items() if k != v})
 def sub_numbers(text):
     text = re.sub(r'figure-(\d+)(?!\d)', lambda m: f'figure-{mapping.get(int(m.group(1)), int(m.group(1)))}', text)
     text = re.sub(r'\bFigure (\d+)(?!\d)', lambda m: f'Figure {mapping.get(int(m.group(1)), int(m.group(1)))}', text)
+    # plural lists such as "Figures 11 and 12", "Figures 1 to 26", "Figures 3, 4, and 5"
+    def plural(m):
+        return 'Figures ' + re.sub(r'\d+', lambda n: str(mapping.get(int(n.group(0)), int(n.group(0)))), m.group(1))
+    text = re.sub(r'\bFigures (\d+(?:(?:, | and | through | to |, and )\d+)*)', plural, text)
     return text
 
 changed = {}
@@ -53,8 +57,8 @@ for old, rec in records.items():
     frag = ROOT / rec['fragment']; css = ROOT / rec['css']
     if rec['status'] == 'implemented' and not rec['interactive']:
         t = frag.read_text()
-        t = re.sub(rf'figure-{old}(?!\d)', f'figure-{new}', t)
-        t = re.sub(rf'<b>\s*Figure\s+{old}\s*:\s*</b>', f'<b>Figure {new}:</b>', t)
+        t = sub_numbers(t)  # own id, caption label, and any cross-reference to another figure, from the one mapping
+        t = re.sub(rf'<b>\s*Figure\s+{new}\s*\.\s*</b>', f'<b>Figure {new}:</b>', t)
         t = re.sub(rf'(?<![A-Za-z0-9_])f{old}(?=[A-Za-z_-])', f'f{new}', t)  # SVG id prefixes fNname
         c = css.read_text() if css.exists() else ''
         c2 = re.sub(rf'figure-{old}(?!\d)', f'figure-{new}', c)
