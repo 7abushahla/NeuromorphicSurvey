@@ -74,7 +74,7 @@
       "url": "https://en.wikipedia.org/wiki/A_Logical_Calculus_of_the_Ideas_Immanent_in_Nervous_Activity",
       "source_type": "peer_reviewed",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "vol. 5, no. 4, pp. 115-133"
@@ -82,7 +82,7 @@
       "aliases": [
         "mcculloch1943"
       ],
-      "notes": "Computational-abstraction branch. Title, authors, year, venue, volume, issue, page numbers, and DOI verified through Wikipedia article.",
+      "notes": "Computational-abstraction branch. Title, authors, year, venue, volume, issue, page numbers, and DOI verified through Wikipedia article. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17.",
       "purpose": "external"
     },
     {
@@ -95,7 +95,7 @@
       "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication",
       "source_type": "peer_reviewed",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "vol. 27, pp. 379-423, 623-656"
@@ -103,7 +103,7 @@
       "aliases": [
         "shannon1948"
       ],
-      "notes": "Source-encoder-channel-decoder decomposition. Published in two parts (July and October 1948). Title, author, year, venue, volume, and DOI verified through Wikipedia.",
+      "notes": "Source-encoder-channel-decoder decomposition. Published in two parts (July and October 1948). Title, author, year, venue, volume, and DOI verified through Wikipedia. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17.",
       "purpose": "external"
     },
     {
@@ -137,7 +137,7 @@
       "url": "https://link.springer.com/article/10.1007/BF02477711",
       "source_type": "peer_reviewed",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire article"
@@ -145,7 +145,7 @@
       "aliases": [
         "mackay1952-capacity"
       ],
-      "notes": "Foundation paper in information theory applied to neurons. Springer page confirmed DOI and metadata via search, but full text access auth-gated. Section 4.2: origin of capacity question for a neuron.",
+      "notes": "Foundation paper in information theory applied to neurons. Springer page confirmed DOI and metadata via search, but full text access auth-gated. Section 4.2: origin of capacity question for a neuron. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17.",
       "purpose": "external"
     },
     {
@@ -158,7 +158,7 @@
       "url": "https://ieeexplore.ieee.org/document/58356/",
       "source_type": "peer_reviewed",
       "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
+      "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
         "entire article"
@@ -166,7 +166,7 @@
       "aliases": [
         "mead1990"
       ],
-      "notes": "Seminal paper introducing neuromorphic engineering as a field, describing advantages of analog systems over digital for ill-conditioned problems. Section 2.1: the hardware turn and the word neuromorphic.",
+      "notes": "Seminal paper introducing neuromorphic engineering as a field, describing advantages of analog systems over digital for ill-conditioned problems. Section 2.1: the hardware turn and the word neuromorphic. Title, authors, venue, year, volume, issue and pages confirmed together by the controller from the Crossref record of the DOI on 2026-09-17.",
       "purpose": "external"
     },
     {
