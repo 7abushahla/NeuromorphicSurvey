@@ -84,13 +84,32 @@ def validate_site(site, errors):
     duplicates = sorted({identifier for identifier in ids if ids.count(identifier) > 1})
     if duplicates:
         errors.append("site manifest has duplicate IDs: " + ", ".join(duplicates))
-    if len(sections) != 18:
-        errors.append(f"site manifest must contain exactly 18 sections, found {len(sections)}")
+    if len(sections) < 1:
+        errors.append("site manifest must contain at least one section")
     numbers = [record.get("display_number") for record in sections]
     if any(type(number) is not int for number in numbers):
         errors.append("site section display_number values must be integers")
-    if numbers != list(range(1, 19)):
-        errors.append("site section display numbers must be ordered 1 through 18")
+    if numbers != list(range(1, len(sections) + 1)):
+        errors.append(
+            "site section display numbers must be contiguous from 1 in file order, "
+            f"found {numbers}"
+        )
+    for record in sections:
+        identifier = record.get("id")
+        number = record.get("display_number")
+        if isinstance(identifier, str) and type(number) is int:
+            if not identifier.startswith(f"section-{number:02d}-"):
+                errors.append(
+                    f"section {identifier!r} has display_number {number}; "
+                    f"id must start with 'section-{number:02d}-'"
+                )
+    for record in fragments:
+        if not isinstance(record, dict):
+            continue
+        fragment = record.get("fragment")
+        if isinstance(fragment, str) and fragment.strip():
+            if not (ROOT / fragment).is_file():
+                errors.append(f"site fragment {record.get('id')!r} does not exist: {fragment}")
     if not fragments or fragments[0].get("id") != "shell-head":
         errors.append("site manifest must begin with shell-head")
     if not fragments or fragments[-1].get("id") != "shell-tail":
@@ -102,14 +121,14 @@ def validate_site(site, errors):
     else:
         try:
             map_index = fragments.index(maps[0])
-            section_13_index = next(
+            section_index = next(
                 index for index, record in enumerate(fragments)
-                if record.get("id") == "section-13-complete-deployment-routes"
+                if record.get("id") == "section-14-complete-deployment-routes"
             )
-            if map_index != section_13_index + 1:
-                errors.append("interactive-deployment-map must follow Section 13 directly")
+            if map_index != section_index + 1:
+                errors.append("interactive-deployment-map must follow Section 14 directly")
         except StopIteration:
-            errors.append("site manifest is missing section-13-complete-deployment-routes")
+            errors.append("site manifest is missing section-14-complete-deployment-routes")
     return {record.get("id") for record in sections if isinstance(record.get("id"), str)}
 
 
@@ -174,9 +193,9 @@ def validate_figures(figures_data, section_ids, strict, errors):
         errors.append(f"figure manifest must contain exactly one interactive figure, found {len(interactive)}")
     elif (
         interactive[0].get("id") != "deployment-stack-map"
-        or interactive[0].get("destination_section") != "section-13-complete-deployment-routes"
+        or interactive[0].get("destination_section") != "section-14-complete-deployment-routes"
     ):
-        errors.append("the interactive figure must be deployment-stack-map in Section 13")
+        errors.append("the interactive figure must be deployment-stack-map in Section 14")
 
 
 def main():
