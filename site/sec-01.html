@@ -39,9 +39,10 @@ explicit transformation before a mapper or runtime can execute it
 <d-cite key="bouvier-2019-hardware-implementations,shrestha-2022-models-hardware,pedersen-2024-nir"></d-cite>.</p>
 
 <p>Researchers reach SNNs through two principal routes. Direct training optimizes a spiking model,
-usually with local rules, surrogate gradients, or related approximations. ANN-to-SNN conversion
-starts from a trained artificial neural network (ANN) and maps its activations into spiking
-dynamics. The routes differ in optimization, representation, and common failure modes. They meet,
+usually with local rules, surrogate gradients, or related approximations. The second route converts
+a trained artificial neural network (ANN) into spiking dynamics by mapping its activations, a
+process this survey calls ANN-to-SNN conversion. The routes differ in optimization, representation,
+and common failure modes. They meet,
 however, when the resulting SNN must be represented in software and executed on a target
 <d-cite key="nunes-2022,eshraghian-2023-training-snns,rathi-2023"></d-cite>.</p>
 
@@ -119,11 +120,11 @@ signal-representation trade-offs, we refer the reader to Auge et al.
 mapping environments. Manna et al. <d-cite key="manna-2023-frameworks"></d-cite> compare nine SNN
 frameworks from a data-science perspective. Huynh et al.
 <d-cite key="huynh-2022-implementing-snns"></d-cite> review software and mapping support for
-implementing SNNs on neuromorphic architectures. NIR
-<d-cite key="pedersen-2024-nir"></d-cite> defines a common intermediate representation and exposes
-semantic disagreement across simulators and hardware back ends. Farsa et al.
-<d-cite key="prior-s37-farsa-2026"></d-cite> extend the implementation view to GPU and RISC-V
-accelerators and identify incompatible reporting practices. Together, these works clarify the
+implementing SNNs on neuromorphic architectures. The Neuromorphic Intermediate Representation (NIR)
+<d-cite key="pedersen-2024-nir"></d-cite> defines a common cross-framework representation format and
+exposes semantic disagreement across simulators and hardware back ends. Farsa et al.
+<d-cite key="prior-s37-farsa-2026"></d-cite> extend the implementation view to graphics processing unit
+(GPU) and RISC-V accelerators and identify incompatible reporting practices. Together, these works clarify the
 available software landscape, but a framework or graph format does not establish that a published
 model traversed a documented route or retained its reset, delay, payload, and readout semantics.</p>
 
@@ -253,8 +254,8 @@ software, and faithfully executed on a target.</li>
 <li>We introduce a claim-level evidence framework and a typed route vocabulary. These distinguish
 physical measurement, physical fidelity, a documented route, a hardware model, and software
 evidence without assigning one label to an entire paper.</li>
-<li>We synthesize platform capabilities from vendor documentation, SDKs, mapper constraints,
-development kits, release notes, and examples. We then interpret applications by workload and
+<li>We synthesize platform capabilities from vendor documentation, software development kits (SDKs),
+mapper constraints, development kits, release notes, and examples. We then interpret applications by workload and
 measurement boundary rather than by vendor, making the limits of each reported route explicit.</li>
 </ol>
 

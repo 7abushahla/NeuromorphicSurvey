@@ -66,6 +66,10 @@ steps. In this sense \(a^l\) is static and \(u_i^l[t]\) is persistent. A state a
 both carry a temporal index, but a state is read continuously across steps while an event
 is a punctual occurrence at one of them.</p>
 
+<p>Figure 1 sets the ANN unit and the SNN unit side by side against the biological neuron
+both abstractions simplify, so that what each one retains, in what form, and what it
+discards can be compared property by property rather than asserted in prose alone.</p>
+
 <figure class="pfig l-body" id="figure-1">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1270 880" role="img" aria-label="A biological neuron beside two abstractions of it, an ANN unit and an SNN unit, with a property strip stating which of represented value, persistent state, time, and discrete events each abstraction retains and in what form">
 <defs>
@@ -330,7 +334,9 @@ The network therefore communicates a temporally distributed representation, whil
 neuron retains local state between event arrivals or algorithmic steps. The binary case
 shown here is the reference abstraction used for rate-coded conversion. Later sections
 extend it to payload-carrying events, alternative codes, and target-specific execution
-models <d-cite key="cao-2015,zheng-2022"></d-cite>.</p>
+models <d-cite key="cao-2015,zheng-2022"></d-cite>. Figure 2 traces this composition across
+a full layered network, from arriving events through weighted, delayed synapses and local
+state update to a decoder that turns output activity into an application result.</p>
 
 <figure class="pfig l-body" id="figure-2">
   <div style="max-width: 1100px; margin: 0 auto;"><svg viewBox="0 0 1440 820" role="img" aria-label="A network-level spiking neural network. General event packets enter a layered network through weighted, delayed synapses. Each neuron retains state, compares it with a threshold, resets after firing, and emits output events that are decoded at an application boundary.">
