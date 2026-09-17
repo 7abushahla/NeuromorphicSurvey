@@ -1,0 +1,235 @@
+<figure class="pfig l-body" id="figure-7">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <!--
+      Derived chart. Every plotted number is read from E. M. Izhikevich, "Which model to use for cortical spiking
+      neurons?", IEEE Trans. Neural Netw., vol. 15, no. 5, 2004, registry id izhikevich2004-which-model, locator
+      Fig. 2, p. 1066, as transcribed in research/foundations-sources.md (entry izhikevich2004-which-model).
+      x is that figure's "# of FLOPS" column, floating-point operations needed to simulate the model for 1 ms.
+      y is the count of plus cells across the 22 property columns of the same table (biophysically meaningful,
+      twenty firing properties from tonic spiking to inhibition-induced bursting, chaos); minus and blank cells
+      both count as not reproduced. Rows are numbered in the order the table prints them.
+        row 1   integrate-and-fire, labeled LIF               x = 5     y = 3
+        row 5   quadratic integrate-and-fire, labeled QIF     x = 7     y = 6
+        row 2   integrate-and-fire with adapt., labeled ALIF  x = 10    y = 5
+        row 6   Izhikevich (2003)                             x = 13    y = 21
+        row 7   FitzHugh-Nagumo                               x = 72    y = 11
+        row 9   Morris-Lecar                                  x = 600   y = 14
+        row 11  Hodgkin-Huxley                                x = 1200  y = 19
+      Tabulated in the same figure but not plotted because the survey does not name them: row 3
+      integrate-and-fire-or-burst (13, 10), row 4 resonate-and-fire (10, 12), row 8 Hindmarsh-Rose (120, 18),
+      row 10 Wilson (180, 15).
+      AdEx has no row in the source. It is drawn hollow and dashed at x = 11.5, y = 13, a qualitative placement
+      between ALIF (10, 5) and Izhikevich (13, 21), after Brette and Gerstner 2005, registry id brette2005-adex.
+      Platform tags and statuses come from data/platform-capabilities.json, contract_field neuron_dynamics,
+      platform_id brainscales-2, spinnaker-1, loihi-1, loihi-2, speck-2f, xylo-audio-2 and akida-1, every one
+      capability_status native, verification_status provisional. The Loihi 2 record is native (locator
+      "Programmable Neuron Models", CUBA-LIF and specialized dynamics); the LIF-to-Izhikevich extent of its
+      bracket is this figure's construction over the programmable region, not a per-model claim in the source,
+      and the registry records the SpikingJelly route to Loihi 2 as blocked.
+      Mapping: px = 150 + 1000 * log10(x / 3) / log10(2000 / 3); py = 700 - (535 / 23) * y.
+    -->
+    <svg viewBox="0 0 1200 815" role="img" aria-labelledby="f7title f7desc">
+      <title id="f7title">Neuron models by implementation cost and biological repertoire, with the audited platforms tagged onto the models they execute</title>
+      <desc id="f7desc">Derived scatter chart. The horizontal axis is implementation cost in floating-point operations per millisecond of simulated time on a logarithmic scale from 3 to 2000. The vertical axis is the number of neurocomputational features reproduced, counted as the plus cells in the 22 columns of the 2004 Izhikevich comparison table. Seven filled points carry the table's numbers, LIF at 5 operations and 3 features, quadratic integrate-and-fire at 7 and 6, ALIF at 10 and 5, Izhikevich at 13 and 21, FitzHugh-Nagumo at 72 and 11, Morris-Lecar at 600 and 14, Hodgkin-Huxley at 1200 and 19. A hollow dashed AdEx point is placed qualitatively between ALIF and Izhikevich. Bold red tags record the registry's recorded platform statuses, BrainScaleS-2 native analog at AdEx, SpiNNaker 1 native software kernel at Izhikevich and at LIF, Loihi 1 native current-based at LIF, Speck and Xylo native at LIF, and a bracket for the microcode-programmable Loihi 2 neuron engine spanning LIF to Izhikevich. A margin note states that Akida executes no membrane recurrence and is not on the chart.</desc>
+
+      <text x="48" y="45" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Neuron models, priced per update against what they reproduce</text>
+      <text x="48" y="75" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Seven of the eleven models Izhikevich compared in 2004, plotted at the source&#8217;s numbers.</text>
+      <text x="48" y="98" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Bold red tags place each audited platform on the model it executes, with the status the capability registry records.</text>
+
+      <!-- Loihi 2 programmable region, LIF to Izhikevich -->
+      <rect x="228.6" y="150" width="146.9" height="550.0" fill="#d5dbe2" opacity="0.35"/>
+      <g class="f7-hot">
+        <title>The registry records the Loihi 2 neuron engine as native and microcode-programmable, so current-based LIF and specialized dynamics belong to the selected process model rather than to a fixed circuit. The bracket marks the region from LIF to Izhikevich that a programmable engine can reach, drawn by this figure and not measured per model, and the registry records the SpikingJelly route to Loihi 2 as blocked.</title>
+        <rect class="f7-band" x="222.6" y="108" width="410" height="46" fill="#D63A2F" opacity="0"/>
+        <line x1="228.6" y1="142" x2="375.5" y2="142" stroke="#D63A2F" stroke-width="2.2"/>
+        <line x1="228.6" y1="142" x2="228.6" y2="150" stroke="#D63A2F" stroke-width="2.2"/>
+        <line x1="375.5" y1="142" x2="375.5" y2="150" stroke="#D63A2F" stroke-width="2.2"/>
+        <text x="228.6" y="132" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">Loihi 2, microcode-programmable, native</text>
+        <rect x="222.6" y="108" width="410" height="46" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- cost span, 1200 / 5 = 240 by the source's FLOPS column -->
+      <line x1="228.6" y1="178" x2="1071.4" y2="178" stroke="#888" stroke-width="1.6"/>
+      <line x1="228.6" y1="173" x2="228.6" y2="183" stroke="#888" stroke-width="1.6"/>
+      <line x1="1071.4" y1="173" x2="1071.4" y2="183" stroke="#888" stroke-width="1.6"/>
+      <text x="650.0" y="172" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">Hodgkin-Huxley costs 240 times the integrate-and-fire update, by the source&#8217;s count</text>
+
+      <!-- axes -->
+      <line x1="150.0" y1="700.0" x2="1150.0" y2="700.0" stroke="#000" stroke-width="2.2" data-axis="numeric" data-unit="floating-point operations per 1 ms of simulated time, logarithmic scale"/>
+      <line x1="150.0" y1="700.0" x2="150.0" y2="165.0" stroke="#000" stroke-width="2.2" data-axis="numeric" data-unit="neurocomputational features reproduced, count of plus cells of 22 tabulated columns"/>
+      <line x1="150.0" y1="700.0" x2="150.0" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="194.2" y1="700.0" x2="194.2" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="256.6" y1="700.0" x2="256.6" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="280.3" y1="700.0" x2="280.3" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="300.8" y1="700.0" x2="300.8" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="319.0" y1="700.0" x2="319.0" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="504.1" y1="700.0" x2="504.1" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="548.4" y1="700.0" x2="548.4" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="610.7" y1="700.0" x2="610.7" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="634.4" y1="700.0" x2="634.4" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="655.0" y1="700.0" x2="655.0" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="673.1" y1="700.0" x2="673.1" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="858.2" y1="700.0" x2="858.2" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="902.5" y1="700.0" x2="902.5" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="964.8" y1="700.0" x2="964.8" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="988.5" y1="700.0" x2="988.5" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="1009.1" y1="700.0" x2="1009.1" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="1027.2" y1="700.0" x2="1027.2" y2="705.0" stroke="#000" stroke-width="1.4"/>
+      <line x1="228.6" y1="700.0" x2="228.6" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="228.6" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">5</text>
+      <line x1="335.2" y1="700.0" x2="335.2" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="335.2" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">10</text>
+      <line x1="441.8" y1="700.0" x2="441.8" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="441.8" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">20</text>
+      <line x1="582.7" y1="700.0" x2="582.7" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="582.7" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">50</text>
+      <line x1="689.3" y1="700.0" x2="689.3" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="689.3" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">100</text>
+      <line x1="795.9" y1="700.0" x2="795.9" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="795.9" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">200</text>
+      <line x1="936.8" y1="700.0" x2="936.8" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="936.8" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">500</text>
+      <line x1="1043.4" y1="700.0" x2="1043.4" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="1043.4" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">1000</text>
+      <line x1="1150.0" y1="700.0" x2="1150.0" y2="710.0" stroke="#000" stroke-width="2.2"/>
+      <text x="1150.0" y="731" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">2000</text>
+      <line x1="140.0" y1="700.0" x2="150.0" y2="700.0" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="706.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">0</text>
+      <line x1="140.0" y1="583.7" x2="150.0" y2="583.7" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="589.7" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">5</text>
+      <line x1="140.0" y1="467.4" x2="150.0" y2="467.4" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="473.4" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">10</text>
+      <line x1="140.0" y1="351.1" x2="150.0" y2="351.1" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="357.1" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">15</text>
+      <line x1="140.0" y1="234.8" x2="150.0" y2="234.8" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="240.8" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">20</text>
+      <line x1="140.0" y1="188.3" x2="150.0" y2="188.3" stroke="#000" stroke-width="2.2"/>
+      <text x="134.0" y="194.3" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">22</text>
+      <text x="650" y="768" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">implementation cost, efficient to prohibitive (FLOPS, floating-point operations per 1 ms of simulated time, log scale)</text>
+      <text x="0" y="0" transform="translate(62 432) rotate(-90)" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">biological plausibility, poor to good (features reproduced, of 22 tabulated)</text>
+
+      <!-- LIF, the source's integrate-and-fire row, 5 FLOPS, 3 features -->
+      <line x1="240.6" y1="630.2" x2="548.0" y2="630.2" stroke="#888" stroke-width="1.6"/>
+      <g class="f7-hot">
+        <title>The integrate-and-fire row of the source reproduces tonic spiking, class 1 excitability and integration, three of the 22 tabulated properties, at about 5 floating-point operations per millisecond of simulated time. The source treats this model as leaky, so the survey labels it LIF. Setting the leak to zero gives the integrate-and-fire model at the same point, not a separately costed row.</title>
+        <rect class="f7-band" x="176" y="608" width="340" height="76" fill="#D63A2F" opacity="0"/>
+        <circle cx="228.6" cy="630.2" r="9" fill="#000"/>
+        <text x="213.6" y="636.2" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">LIF</text>
+        <text x="192" y="658" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">(the source&#8217;s integrate-and-fire)</text>
+        <text x="192" y="676" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">5 FLOPS, 3 features; IF is its zero-leak limit</text>
+        <rect x="176" y="608" width="340" height="76" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+      <!-- platform tags at LIF, capability registry neuron_dynamics statuses -->
+      <g class="f7-hot">
+        <title>sPyNNaker executes its supported PyNN cells, leaky integrate-and-fire among them, as software kernels on the ARM cores of SpiNNaker 1, with software-defined fixed-point arithmetic. The capability registry records neuron dynamics as native for SpiNNaker 1.</title>
+        <rect class="f7-band" x="550.0" y="619" width="346" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="556.0" y="634" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">SpiNNaker 1, native, software kernel</text>
+        <rect x="550.0" y="619" width="346" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+      <g class="f7-hot">
+        <title>Loihi 1 updates a synaptic current and a compartment voltage in discrete algorithmic timesteps, a current-based LIF whose decay scaling and update order follow the NxSDK compartment model rather than a generic equation. The registry records this as native.</title>
+        <rect class="f7-band" x="550.0" y="641" width="300" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="556.0" y="656" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">Loihi 1, native, current-based</text>
+        <rect x="550.0" y="641" width="300" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+      <g class="f7-hot">
+        <title>The Speck DYNAP-CNN core accumulates each received weight into membrane state, applies the configured leak and reset, and compares against threshold; the Xylo core integrates membrane state with bit-shift decay at every global timestep. Both are recorded as native and execute integrate-and-fire and leaky integrate-and-fire dynamics.</title>
+        <rect class="f7-band" x="550.0" y="663" width="200" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="556.0" y="678" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">Speck, Xylo, native</text>
+        <rect x="550.0" y="663" width="200" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- quadratic integrate-and-fire, 7 FLOPS, 6 features -->
+      <g class="f7-hot">
+        <title>The quadratic integrate-and-fire model replaces the linear leak with a quadratic term, which adds spike latency, threshold variability and bistability to the integrate-and-fire set, six properties at about 7 operations per millisecond.</title>
+        <rect class="f7-band" x="208.3" y="506" width="144" height="62" fill="#D63A2F" opacity="0"/>
+        <circle cx="280.3" cy="560.4" r="9" fill="#000"/>
+        <text x="280.3" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">QIF</text>
+        <text x="280.3" y="540" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">7 FLOPS, 6 features</text>
+        <rect x="208.3" y="506" width="144" height="62" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- integrate-and-fire with adaptation, 10 FLOPS, 5 features -->
+      <g class="f7-hot">
+        <title>Adding an adaptation variable to integrate-and-fire buys spike-frequency adaptation and a depolarizing after-potential, five properties at about 10 operations per millisecond, twice the cost of the plain model.</title>
+        <rect class="f7-band" x="323.2" y="560" width="168" height="46" fill="#D63A2F" opacity="0"/>
+        <circle cx="335.2" cy="583.7" r="9" fill="#000"/>
+        <text x="352.2" y="581.7" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">ALIF</text>
+        <text x="352.2" y="599.7" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">10 FLOPS, 5 features</text>
+        <rect x="323.2" y="560" width="168" height="46" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- AdEx, no tabulated row, hollow point placed qualitatively at (11.5, 13) -->
+      <g class="f7-hot">
+        <title>The adaptive exponential integrate-and-fire model of Brette and Gerstner postdates the 2004 comparison and has no row in it. Two variables, an exponential spike-initiation term and an adaptation current, place it between ALIF and Izhikevich in both cost and repertoire; the position is qualitative and carries no tabulated number.</title>
+        <rect class="f7-band" x="342.7" y="362" width="156" height="52" fill="#D63A2F" opacity="0"/>
+        <circle cx="356.7" cy="397.6" r="9" fill="#fff" stroke="#000" stroke-width="2.2" stroke-dasharray="4 3"/>
+        <text x="373.7" y="380" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">AdEx</text>
+        <text x="373.7" y="398" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">placed qualitatively</text>
+        <rect x="342.7" y="362" width="156" height="52" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+      <g class="f7-hot">
+        <title>BrainScaleS-2 executes AdEx in calibrated analog circuits whose membrane and synaptic state evolve continuously at accelerated physical time. The dynamics are calibrated rather than bit exact, and the registry records them as native.</title>
+        <rect class="f7-band" x="367.7" y="406" width="262" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="373.7" y="421" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">BrainScaleS-2, native, analog</text>
+        <rect x="367.7" y="406" width="262" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- Izhikevich (2003), 13 FLOPS, 21 features -->
+      <g class="f7-hot">
+        <title>The two-variable Izhikevich model, a quadratic membrane equation with a recovery variable and an after-spike reset, reproduces 21 of the 22 tabulated properties at about 13 operations per millisecond; only biophysical meaning is absent.</title>
+        <rect class="f7-band" x="361.5" y="190" width="200" height="44" fill="#D63A2F" opacity="0"/>
+        <circle cx="375.5" cy="211.5" r="9" fill="#000"/>
+        <text x="392.5" y="208" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Izhikevich</text>
+        <text x="392.5" y="226" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">13 FLOPS, 21 features</text>
+        <rect x="361.5" y="190" width="200" height="44" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+      <g class="f7-hot">
+        <title>sPyNNaker ships an Izhikevich cell among its supported PyNN neuron models, executed as a software kernel on the ARM cores of SpiNNaker 1 with software-defined fixed-point arithmetic. The registry records neuron dynamics as native for SpiNNaker 1.</title>
+        <rect class="f7-band" x="386.5" y="234" width="346" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="392.5" y="249" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#D63A2F">SpiNNaker 1, native, software kernel</text>
+        <rect x="386.5" y="234" width="346" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- FitzHugh-Nagumo, 72 FLOPS, 11 features -->
+      <g class="f7-hot">
+        <title>FitzHugh-Nagumo is a two-variable reduction with a cubic nonlinearity. It reproduces 11 properties at about 72 operations per millisecond, more than five times the Izhikevich cost for half the repertoire.</title>
+        <rect class="f7-band" x="624.8" y="424" width="214" height="42" fill="#D63A2F" opacity="0"/>
+        <circle cx="638.8" cy="444.1" r="9" fill="#000"/>
+        <text x="655.8" y="442.1" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">FitzHugh-Nagumo</text>
+        <text x="655.8" y="460.1" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">72 FLOPS, 11 features</text>
+        <rect x="624.8" y="424" width="214" height="42" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- Morris-Lecar, 600 FLOPS, 14 features -->
+      <g class="f7-hot">
+        <title>Morris-Lecar is a two-variable conductance model whose parameters are biophysically meaningful. It reproduces 14 properties at about 600 operations per millisecond.</title>
+        <rect class="f7-band" x="880.8" y="362" width="168" height="66" fill="#D63A2F" opacity="0"/>
+        <circle cx="964.8" cy="374.3" r="9" fill="#000"/>
+        <text x="964.8" y="404" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Morris-Lecar</text>
+        <text x="964.8" y="422" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">600 FLOPS, 14 features</text>
+        <rect x="880.8" y="362" width="168" height="66" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- Hodgkin-Huxley, 1200 FLOPS, 19 features -->
+      <g class="f7-hot">
+        <title>The four-variable Hodgkin-Huxley model with sodium, potassium and leak conductances reproduces 19 properties at about 1200 operations per millisecond, 240 times the integrate-and-fire cost by the source's count. No audited route deploys it.</title>
+        <rect class="f7-band" x="881.4" y="236" width="206" height="44" fill="#D63A2F" opacity="0"/>
+        <circle cx="1071.4" cy="258.0" r="9" fill="#000"/>
+        <text x="1054.4" y="256.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Hodgkin-Huxley</text>
+        <text x="1054.4" y="274.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">1200 FLOPS, 19 features</text>
+        <rect x="881.4" y="236" width="206" height="44" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+
+      <!-- margin note -->
+      <g class="f7-hot">
+        <title>The Akida converted-CNN path accumulates low-bit event-domain activations, applies a thresholded activation and emits sparse quantized events. The registry records it as native for that path and states that it is not an exposed multi-timestep LIF recurrence, so it has no place on a membrane-model chart.</title>
+        <rect class="f7-band" x="676" y="786" width="478" height="22" fill="#D63A2F" opacity="0"/>
+        <text x="1150" y="801" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">Akida executes no membrane recurrence and is not on this chart.</text>
+        <rect x="676" y="786" width="478" height="22" fill="#000" opacity="0" pointer-events="all"/>
+      </g>
+    </svg>
+  </div>
+  <div class="fig-hint">Hover a point or a platform tag to see what the model reproduces and where the status comes from.</div>
+  <figcaption><b>Figure 7:</b> The neuron-model menu, derived from Izhikevich&#8217;s 2004 comparison<d-cite key="izhikevich2004-which-model"></d-cite>. The x axis is implementation cost in floating-point operations per millisecond of simulated time, drawn on a logarithmic scale because the tabulated costs run from 5 to 1200 and a linear axis would stack the cheap models on the left edge. The y axis is biological plausibility as the number of neurocomputational features a model reproduces, counted as the plus cells across the 22 property columns of the source table. Filled points carry the source&#8217;s exact numbers for the seven tabulated models this survey names; the source&#8217;s integrate-and-fire is leaky and is labeled LIF, and the integrate-and-fire model derived later in this section is its zero-leak limit at the same point. The hollow AdEx point postdates the comparison and is placed qualitatively between ALIF and Izhikevich after Brette and Gerstner<d-cite key="brette2005-adex"></d-cite>. Bold red tags carry the capability registry&#8217;s recorded status for the model each audited platform executes, BrainScaleS-2 in calibrated analog circuits at AdEx<d-cite key="bss"></d-cite>, SpiNNaker 1 as software kernels at Izhikevich and at LIF<d-cite key="rhodes2018-spynnaker"></d-cite>, Loihi 1 as current-based LIF<d-cite key="loihi1"></d-cite>, and Speck<d-cite key="synsense-speck-datasheet"></d-cite> and Xylo<d-cite key="rockpool-xylo-docs"></d-cite> at IF and LIF. The registry records Loihi 2&#8217;s neuron engine as native and microcode-programmable<d-cite key="loihi2"></d-cite>, so its tag is a bracket over the span from LIF to Izhikevich rather than a point on one model. Akida executes no membrane recurrence and is not on the chart. The audited platforms cluster at the efficient end; no audited route executes Hodgkin-Huxley, whose update costs 240 times the integrate-and-fire update by the source&#8217;s count.</figcaption>
+</figure>
