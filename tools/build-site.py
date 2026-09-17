@@ -32,6 +32,8 @@ CITE_RUN = re.compile(r'(?:<d-cite key="[^"]+"></d-cite>)(?:\s*,?\s*(?:and\s+)?'
                       r'<d-cite key="[^"]+"></d-cite>)+')
 HEADING = re.compile(r'(<h([2-4])\b[^>]*>)\s*(\d+(?:\.\d+)*)\.?\s+(?=\S)')
 
+FIG_WIDE = re.compile(r'(<figure\b[^>]*\bclass="[^"]*?)\bl-(?:page-outset|page|screen-inset|screen|'
+                      r'middle-outset|middle|body-outset|gutter)\b((?:[^"]*")[^>]*>)', re.S)
 WRAP_OPEN = re.compile(r'<div class="([^"]*\bptable-wrap\b[^"]*)"')
 
 
@@ -121,6 +123,10 @@ def main():
     #    column, a medium one widens to the page with wrapping headers, and only a
     #    genuinely wide one scrolls, inside its own container so the page never does.
     parts = [(f, normalize_tables(text)) for f, text in parts]
+    #    Figures never leave the text column: any distill width class wider than l-body
+    #    on a figure is replaced, so a figure fragment installed with l-page or l-screen
+    #    still renders in line with the prose. Tables keep their own width strategy.
+    parts = [(f, FIG_WIDE.sub(r'\1l-body\2', text)) for f, text in parts]
 
     # 3. Section numbers are separated from their titles by an en space, matching the
     #    template, and the stray full stop some fragments carry is dropped.
