@@ -24,10 +24,13 @@
      2018 Loihi; loihi1; IEEE Micro 2018; DOI 10.1109/mm.2018.112130359.
      BrainScaleS, undated; bss; Front. Neurosci. 2022; DOI 10.3389/fnins.2022.795876.
      SpiNNaker, undated; furber2012-spinnaker; IEEE Trans. Comput. 2012; DOI 10.1109/tc.2012.142.
-     GPU is named without citation. The dashed frames around the three chip-family boxes in each column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow and no arrows inside. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1456" role="img" aria-labelledby="f4title f4desc">
+     Akida, undated, dashed outline, drawn in the left frame as the survey's event NPU (spec amendment 1), added 2026-09-17; brainchip-akida-techbrief, p. 3 (rank coding named as its encoding; not programmed in the traditional sense) and p. 4 (an event domain processor in which events or spikes indicate useful information; the neural network control, the parameter memory and the neuronal mathematics fully integrated), pages re-read from the PDF on 2026-09-17; BrainChip-AKD1000Brief, Key Benefits (an interconnect network for spike transmission; an event-based neural networks processor taking advantage of activation sparsity); brainchip-cnn2snn-docs, Overview (converts CNNs trained by deep learning into a spiking network for the Akida runtime); survey record akida-1 in data/platform-capabilities.json (a converted CNN as a single event-domain pass, events carry low-bit activation information, no exposed multi-timestep LIF, no subtraction reset over T, no global T).
+       No page states an address-event lineage, physical time, or a silicon neuron ancestry, and no page calls the core synchronous or asynchronous, and no page states an instruction stream (the tech brief p. 3 says Akida is not programmed in the traditional sense), so the box is dashed and undated and is not on the strip, and the left frame's arrow to the bottom line leaves the frame's lower edge rather than the Akida box, so that the bottom line is the frame's claim and is not claimed for Akida; absence claims from the whole-document reads recorded as READ in aer-lineage-check.md.
+     The third crossing, Akida into the circuit frame, added 2026-09-17, rests on the tech brief p. 4 (events or spikes indicate useful information; parameter memory and neuronal mathematics integrated); it enters the frame's lower edge at x=1010, left of the right column's exit arrow, and meets no other edge.
+     GPU is named without citation. The dashed frames around the four chip-family boxes in the left column and the three in the right column group boxes that share a level and assert no order or descent among them; each frame has one entering arrow from its column and no arrows inside; the dashed crossings are the only other edges that touch a frame or a box in it. The landmark strip is ordinal, nodes are evenly spaced in year order and the spacing carries no meaning. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1564" role="img" aria-labelledby="f4title f4desc">
     <title id="f4title">Two hardware lineages side by side, the conventional machine that simulates an SNN and the neuromorphic circuit that implements it</title>
-    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them, both opening at the same row. The left column is conventional digital hardware, the machine every reader knows. It opens with the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ, drawn level with Mead's 1990 paper on the right, with a small clock box hanging beside it, every step synchronous and gated by a central clock. An arrow leads down to the transistor of 1948, a switch that is on or off, drawn level with the right column's subthreshold transistor, then to logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), then past an empty row to the memory hierarchy, which moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, and GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's. Then, past an empty row, the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching rows, what a program is at the opening row, what the transistor does at the transistor row, how time passes at the silicon neuron row, how units talk at the memory hierarchy and address-event row, and where memory is at the digital cores row. Two dashed crossings run right to left, from SpiNNaker back to the microprocessor level as the first crossing, and from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
+    <desc id="f4desc">Two dated columns aligned level by level with a gray rail between them, both opening at the same row. The left column is conventional digital hardware, the machine every reader knows. It opens with the stored-program machine of von Neumann's 1945 report, which holds instructions and numbers in one memory apart from the arithmetic organ, drawn level with Mead's 1990 paper on the right, with a small clock box hanging beside it, every step synchronous and gated by a central clock. An arrow leads down to the transistor of 1948, a switch that is on or off, drawn level with the right column's subthreshold transistor, then to logic families (TTL, then CMOS in 1963, which draws power chiefly when it switches), then past an empty row to the memory hierarchy, which moves words one at a time between processor and memory, the von Neumann bottleneck. A dashed group labeled the machine on a chip holds the microprocessor of 1971, RISC of 1980 to RISC-V of 2011, GPU and NPU as arrays of clocked multiply-accumulate units such as the TPU's systolic array of 2017, and, drawn with a dashed outline, Akida as the survey's event NPU, a converted CNN run as events with the parameter memory integrated in the processor, which is in the frame as a deployment target the survey audits because its workload is a converted CNN, while no page documents address events, physical time, a silicon-neuron ancestry, or an instruction stream, and the bottom line below is not claimed for it. A framed bottom line reads, an ANN is a program, a weight is a word in memory, a multiply-accumulate is an instruction, time is the clock. The right column is neuromorphic hardware, the circuit that implements. It opens with Mead in 1990, implement the computation rather than simulate it, then the subthreshold transistor of Mead's 1989 book, the same transistor run as an analog element whose physics mirrors the neuron's. Then, past an empty row, the silicon neuron of 1991, a circuit whose dynamics are the neuron's, then address-event representation of 1992 and 2000, addresses on a shared bus with implicit timing and no clock. A dashed group labeled the circuit on a chip holds the digital neuromorphic cores TrueNorth of 2014 and Loihi of 2018 with synapse memory beside the neuron, the accelerated analog BrainScaleS, and the many-core SpiNNaker with conventional ARM cores inside a neuromorphic packet router. Its framed bottom line reads, an SNN is the circuit's dynamics, a weight is synapse state beside the neuron, a spike is an event, time is physics or the event itself. The rail names five contrasts at the matching rows, what a program is at the opening row, what the transistor does at the transistor row, how time passes at the silicon neuron row, how units talk at the memory hierarchy and address-event row, and where memory is at the digital cores row. Three dashed crossings join the columns, from SpiNNaker back to the microprocessor level as the first crossing, from the right bottom line to the left bottom line as a simulator that runs the right column's equations on the left column's machine, the second crossing, and from Akida in the left frame into the circuit-on-a-chip frame as the third crossing, the parameter memory integrated with the neuronal mathematics and events, which is what the pages give the neuromorphic side. A strip along the bottom lists both lineages' dated nodes in year order with even spacing, colored by column.</desc>
     <defs>
       <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -125,7 +128,7 @@
     <line x1="290" y1="758" x2="290" y2="810" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- left family group, the machine on a chip -->
-    <rect x="10" y="792" width="560" height="334" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
+    <rect x="10" y="792" width="560" height="442" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.8" stroke-dasharray="8 5"/>
     <text x="40" y="797" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">the machine on a chip</text>
 
     <g class="f4-hot">
@@ -155,18 +158,28 @@
       <rect class="f4-band" x="20" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="20" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="290" y1="1108" x2="290" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <!-- Akida, in the machine frame as the survey's event NPU (spec amendment 1); dashed outline as the execution-stacks figure draws it; sub-lines from the tech brief and the CNN2SNN guide, read 2026-09-17 -->
+    <g class="f4-hot">
+      <title>BrainChip's pages describe Akida as an event domain processor in which events or spikes indicate useful information, with the network control, the parameter memory and the neuronal mathematics integrated on the processor, and its CNN2SNN guide converts trained CNNs for the Akida runtime. No page documents address events, physical time, a silicon-neuron ancestry, or an instruction stream, so it sits in this frame with a dashed outline as the survey's event NPU, a deployment target audited later whose workload is a converted CNN, and the bottom line below is not claimed for it.</title>
+      <rect x="20" y="1136" width="540" height="80" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <text x="290" y="1163" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Event NPU, Akida</text>
+      <text x="290" y="1186" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">a converted CNN run as events,</text>
+      <text x="290" y="1206" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">parameter memory integrated in the processor</text>
+      <rect class="f4-band" x="20" y="1136" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1136" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <line x1="290" y1="1234" x2="290" y2="1272" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- left bottom line -->
     <g class="f4-hot">
       <title>On this machine a trained network is a program, its weights are words fetched from memory, each multiply-accumulate is an instruction, and time advances only when the clock does.</title>
-      <rect x="20" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
-      <text x="290" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An ANN is a program.</text>
-      <text x="290" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is a word in memory.</text>
-      <text x="290" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A multiply-accumulate is an instruction.</text>
-      <text x="290" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is the clock.</text>
-      <rect class="f4-band" x="20" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
-      <rect x="20" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+      <rect x="20" y="1274" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="290" y="1308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An ANN is a program.</text>
+      <text x="290" y="1337" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is a word in memory.</text>
+      <text x="290" y="1365" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A multiply-accumulate is an instruction.</text>
+      <text x="290" y="1393" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is the clock.</text>
+      <rect class="f4-band" x="20" y="1274" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="1274" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- right column, neuromorphic hardware -->
@@ -243,18 +256,18 @@
       <rect class="f4-band" x="880" y="1028" width="540" height="80" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="880" y="1028" width="540" height="80" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="1150" y1="1108" x2="1150" y2="1164" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="1108" x2="1150" y2="1272" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
 
     <!-- right bottom line -->
     <g class="f4-hot">
       <title>On this circuit the network is the circuit's own dynamics, a weight is synapse state kept beside the neuron, a spike is an event, and time is either the physics of the circuit or the event itself.</title>
-      <rect x="880" y="1166" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
-      <text x="1150" y="1200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An SNN is the circuit's dynamics.</text>
-      <text x="1150" y="1229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is synapse state beside the neuron.</text>
-      <text x="1150" y="1257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A spike is an event.</text>
-      <text x="1150" y="1285" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is physics, or the event itself.</text>
-      <rect class="f4-band" x="880" y="1166" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
-      <rect x="880" y="1166" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
+      <rect x="880" y="1274" width="540" height="140" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="1150" y="1308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">An SNN is the circuit's dynamics.</text>
+      <text x="1150" y="1337" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A weight is synapse state beside the neuron.</text>
+      <text x="1150" y="1365" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">A spike is an event.</text>
+      <text x="1150" y="1393" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Time is physics, or the event itself.</text>
+      <rect class="f4-band" x="880" y="1274" width="540" height="140" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="1274" width="540" height="140" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- first crossing, SpiNNaker back to the microprocessor level -->
@@ -270,79 +283,94 @@
       <rect x="604" y="998" width="272" height="82" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
+    <!-- third crossing, Akida into the circuit frame; enters the frame's lower edge at x=1010, left of the right column's exit arrow, and meets no other edge -->
+    <g class="f4-hot">
+      <title>The pages give the neuromorphic side two things, the parameter memory integrated with the neuronal mathematics on the processor and events or spikes that indicate useful information, so the dashed edge runs from Akida into the circuit-on-a-chip frame, the third crossing between the lineages.</title>
+      <path d="M560,1176 H1010 V1127" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="600" y="1104" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">third crossing,</text>
+      <text x="600" y="1122" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">parameter memory integrated with</text>
+      <text x="600" y="1140" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">the neuronal mathematics, and events</text>
+      <rect class="f4-band" x="580" y="1162" width="440" height="28" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="580" y="1162" width="440" height="28" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="996" y="1120" width="28" height="48" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="996" y="1120" width="28" height="48" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="592" y="1090" width="270" height="60" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="592" y="1090" width="270" height="60" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
     <!-- second crossing, the right bottom line to the left bottom line -->
     <g class="f4-hot">
       <title>A simulator on the left column's machine steps the right column's equations, so an SNN run in software is the left machine computing what the right circuit would be.</title>
-      <line x1="880" y1="1276" x2="562" y2="1276" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
-      <text x="721" y="1194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">second crossing,</text>
-      <text x="721" y="1212" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a simulator runs the right</text>
-      <text x="721" y="1230" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">column's equations on the</text>
-      <text x="721" y="1248" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">left column's machine</text>
-      <rect class="f4-band" x="566" y="1178" width="310" height="112" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="566" y="1178" width="310" height="112" fill="#000" opacity="0" pointer-events="all"/>
+      <line x1="880" y1="1384" x2="562" y2="1384" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="721" y="1302" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">second crossing,</text>
+      <text x="721" y="1320" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">a simulator runs the right</text>
+      <text x="721" y="1338" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">column's equations on the</text>
+      <text x="721" y="1356" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">left column's machine</text>
+      <rect class="f4-band" x="566" y="1286" width="310" height="112" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="566" y="1286" width="310" height="112" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- landmark strip, ordinal, both lineages -->
     <g class="f4-hot">
       <title>The strip orders the dated nodes of both lineages by year with even spacing, so distances along it carry no meaning, and the dot color says which column a node belongs to.</title>
-      <text x="80" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
-      <circle cx="1112" cy="1347" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
-      <text x="1126" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">conventional</text>
-      <circle cx="1262" cy="1347" r="7" fill="#d5dbe2" stroke="#000" stroke-width="1.5"/>
-      <text x="1276" y="1352" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic</text>
-      <line x1="80" y1="1390" x2="1400" y2="1390" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
+      <text x="80" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
+      <circle cx="1112" cy="1455" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+      <text x="1126" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">conventional</text>
+      <circle cx="1262" cy="1455" r="7" fill="#d5dbe2" stroke="#000" stroke-width="1.5"/>
+      <text x="1276" y="1460" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic</text>
+      <line x1="80" y1="1498" x2="1400" y2="1498" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
       <g stroke="#000" stroke-width="1.5">
-        <circle cx="110" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="207" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="304" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="401" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="498" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="595" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="692" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="789" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="886" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="983" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="1080" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="1177" cy="1390" r="7" fill="#d5dbe2"/>
-        <circle cx="1274" cy="1390" r="7" fill="#FFDDA6"/>
-        <circle cx="1371" cy="1390" r="7" fill="#d5dbe2"/>
+        <circle cx="110" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="207" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="304" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="401" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="498" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="595" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="692" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="789" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="886" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="983" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="1080" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="1177" cy="1498" r="7" fill="#d5dbe2"/>
+        <circle cx="1274" cy="1498" r="7" fill="#FFDDA6"/>
+        <circle cx="1371" cy="1498" r="7" fill="#d5dbe2"/>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000" text-anchor="middle">
-        <text x="110" y="1376">1945</text>
-        <text x="207" y="1376">1948</text>
-        <text x="304" y="1376">1963</text>
-        <text x="401" y="1376">1971</text>
-        <text x="498" y="1376">1980</text>
-        <text x="595" y="1376">1989</text>
-        <text x="692" y="1376">1990</text>
-        <text x="789" y="1376">1991</text>
-        <text x="886" y="1376">1992</text>
-        <text x="983" y="1376">2000</text>
-        <text x="1080" y="1376">2011</text>
-        <text x="1177" y="1376">2014</text>
-        <text x="1274" y="1376">2017</text>
-        <text x="1371" y="1376">2018</text>
+        <text x="110" y="1484">1945</text>
+        <text x="207" y="1484">1948</text>
+        <text x="304" y="1484">1963</text>
+        <text x="401" y="1484">1971</text>
+        <text x="498" y="1484">1980</text>
+        <text x="595" y="1484">1989</text>
+        <text x="692" y="1484">1990</text>
+        <text x="789" y="1484">1991</text>
+        <text x="886" y="1484">1992</text>
+        <text x="983" y="1484">2000</text>
+        <text x="1080" y="1484">2011</text>
+        <text x="1177" y="1484">2014</text>
+        <text x="1274" y="1484">2017</text>
+        <text x="1371" y="1484">2018</text>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333" text-anchor="middle">
-        <text x="110" y="1416">stored program</text>
-        <text x="207" y="1438">transistor</text>
-        <text x="304" y="1416">CMOS</text>
-        <text x="401" y="1438">microprocessor</text>
-        <text x="498" y="1416">RISC</text>
-        <text x="595" y="1438">subthreshold, Mead</text>
-        <text x="692" y="1416">Mead</text>
-        <text x="789" y="1438">silicon neuron</text>
-        <text x="886" y="1416">AER, Mahowald</text>
-        <text x="983" y="1438">AER, Boahen</text>
-        <text x="1080" y="1416">RISC-V</text>
-        <text x="1177" y="1438">TrueNorth</text>
-        <text x="1274" y="1416">TPU</text>
-        <text x="1371" y="1438">Loihi</text>
+        <text x="110" y="1524">stored program</text>
+        <text x="207" y="1546">transistor</text>
+        <text x="304" y="1524">CMOS</text>
+        <text x="401" y="1546">microprocessor</text>
+        <text x="498" y="1524">RISC</text>
+        <text x="595" y="1546">subthreshold, Mead</text>
+        <text x="692" y="1524">Mead</text>
+        <text x="789" y="1546">silicon neuron</text>
+        <text x="886" y="1524">AER, Mahowald</text>
+        <text x="983" y="1546">AER, Boahen</text>
+        <text x="1080" y="1524">RISC-V</text>
+        <text x="1177" y="1546">TrueNorth</text>
+        <text x="1274" y="1524">TPU</text>
+        <text x="1371" y="1546">Loihi</text>
       </g>
-      <rect class="f4-band" x="60" y="1334" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="60" y="1334" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="60" y="1442" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="60" y="1442" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a box, the rail, a dashed crossing, a bottom line, or a landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric and a simulator running the right column's equations on the left. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
+  <figcaption><b>Figure 4:</b> An ANN runs on the clocked stored-program machine, an SNN on a circuit that is the neuron, and the rail names what the circuit changes. The left column opens with von Neumann's 1945 report<d-cite key="vonneumann1945-edvac"></d-cite>, whose stored-program machine predates the transistor it was built from and clocks every step, then runs through the transistor of Bardeen and Brattain<d-cite key="bardeen1948-transistor"></d-cite> and through TTL and CMOS gates, Horowitz and Hill<d-cite key="horowitz2015-art-of-electronics"></d-cite> and Wanlass and Sah<d-cite key="wanlass1963-cmos"></d-cite>, to the memory hierarchy whose bottleneck Backus<d-cite key="backus1978-von-neumann-style"></d-cite> named. The chip frame holds the 4004 of 1971 that Faggin et al.<d-cite key="faggin1996-4004"></d-cite> recount, the small instruction set of Patterson and Ditzel<d-cite key="patterson1980-risc"></d-cite> that Waterman et al.<d-cite key="waterman2011-riscv"></d-cite> opened as RISC-V, and the TPU of Jouppi et al.<d-cite key="jouppi2017-tpu"></d-cite>. Akida, drawn as the survey's event NPU with a dashed outline inside the same frame, is the event domain processor of BrainChip's tech brief<d-cite key="brainchip-akida-techbrief"></d-cite>, in which events or spikes indicate useful information and the parameter memory is integrated with the neuronal mathematics, the event-based neural network processor of the AKD1000 product brief<d-cite key="BrainChip-AKD1000Brief"></d-cite>, and the target of the CNN2SNN guide<d-cite key="brainchip-cnn2snn-docs"></d-cite> that converts trained CNNs for its runtime, and it sits on the machine side as a deployment target this survey audits because its workload is a converted CNN, while none of those pages documents address events, physical time, a silicon-neuron ancestry, or an instruction stream. On that machine an ANN is a program, a weight a word in memory, a multiply-accumulate an instruction, and time the clock. The right column opens with Mead<d-cite key="mead1990"></d-cite>, implement rather than simulate, and rests on the subthreshold transistor of Mead's 1989 book<d-cite key="mead1989-analog-vlsi"></d-cite>, whose physics mirrors the neuron's. Mahowald and Douglas<d-cite key="mahowald1991-silicon-neuron"></d-cite> built a circuit whose dynamics are the neuron's, and address-event representation, Mahowald<d-cite key="mahowald1992-aer"></d-cite> and Boahen<d-cite key="boahen2000-aer"></d-cite>, carries addresses with no clock. TrueNorth of Merolla et al.<d-cite key="merolla2014-truenorth"></d-cite> and Loihi of Davies et al.<d-cite key="loihi1"></d-cite> keep synapse memory beside digital cores, BrainScaleS-2 of Pehle et al.<d-cite key="bss"></d-cite> runs neuron circuits faster than biology, and SpiNNaker of Furber et al.<d-cite key="furber2012-spinnaker"></d-cite> puts ARM cores in a neuromorphic router. On that circuit an SNN is the circuit's dynamics, a weight synapse state beside the neuron, a spike an event, and time physics or the event itself. The dashed crossings are SpiNNaker's cores in a neuromorphic fabric, a simulator running the right column's equations on the left, and Akida carrying into the circuit frame what the pages give that side, parameter memory integrated with the neuronal mathematics and events. The dashed frames group chip families that share a level and assert no order among them. The strip is ordinal, and the figure is a conceptual illustration with dates from the cited sources, each column a dependency picture, not a claim that one work cites another.</figcaption>
 </figure>

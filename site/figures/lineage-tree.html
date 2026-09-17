@@ -12,15 +12,29 @@
      1991 Mahowald and Douglas; mahowald1991-silicon-neuron; Nature vol. 354, no. 6354, pp. 515-518; DOI 10.1038/354515a0.
      1992 Mahowald; mahowald1992-aer; Caltech doctoral dissertation, defended May 12, 1992; DOI 10.7907/z9cz35cd.
      1997 Maass; maass1997; Neural Networks 10(9); legacy bibliography entry, year from the registry record.
+     1998 Thorpe and Gautrais; Thorpe98-RankOrder; Rank Order Coding, in Computational Neuroscience, Trends in Research 1998, Springer, pp. 113-118; DOI 10.1007/978-1-4615-4831-7_19 read from akida-lineage-check.md on 2026-09-17 (the registry record carries no DOI); the chapter is cited by title and DOI only, its text not retrieved, so the tooltip carries no gloss of the code.
      2000 Boahen; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, pp. 416-434; DOI 10.1109/82.842110.
      2003 Izhikevich; izhikevich2003; IEEE Trans. Neural Netw. 14(6); legacy bibliography entry, year from the registry record.
      2005 Brette and Gerstner; brette2005-adex; J. Neurophysiol. vol. 94, no. 5, pp. 3637-3642; DOI 10.1152/jn.00686.2005.
      2008 Lichtsteiner, Posch and Delbruck; lichtsteiner2008-dvs; IEEE J. Solid-State Circuits vol. 43, no. 2, pp. 566-576; DOI 10.1109/jssc.2007.914337.
-     FitzHugh-Nagumo, the perceptron, ANN, CNN and the platform families are drawn without dates and cite nothing.
+     FitzHugh-Nagumo, the perceptron, ANN and CNN are drawn without dates and cite nothing.
+     The platform families are drawn without dates. The fan-out from the AER box to the five families is qualified per record in the caption,
+     read on 2026-09-17 from data/platform-capabilities.json and the pages quoted in
+     .superpowers/sdd/2026-09-17-neuromorphic-foundations-lineage/aer-lineage-check.md. Family, key, then locator and the record's words.
+     SpiNNaker; spynnaker-v8-docs; platform-capabilities record cap-spinnaker-1-neural_code_payload, locator External devices and live-spike I/O guides; the multicast fabric natively carries source-addressed spike packets, multicast AER routing (address-event documented).
+     Speck; synsense-speck-datasheet; platform-capabilities record cap-speck-2f-neural_code_payload, locator Event types and DVS interface; events carry address, feature, polarity, and timestamp information (address-event documented).
+     BrainScaleS-2; bss; Pehle et al., Front. Neurosci. 2022, DOI 10.3389/fnins.2022.795876, Section 2.1; the event routing network operates on address event-encoded packets (address-event documented).
+     Loihi 2; loihi2; Intel technology brief, External Interfaces section names asynchronous (AER) protocols; the body says all communication between neuron cores is in the form of spike messages (AER named at the external interfaces only).
+     TrueNorth; merolla2014-truenorth; Science vol. 345, no. 6197, pp. 668-673, DOI 10.1126/science.1254642; paywalled, not read beyond its metadata (no per-record basis).
+     Akida; the survey's event NPU (spec amendment 1, sub-label reworded 2026-09-17); drawn dashed at the row's right end with one dashed edge, by conversion from ANN and CNN, and no edge from AER, on the pages quoted in
+     .superpowers/sdd/2026-09-17-neuromorphic-foundations-lineage/akida-lineage-check.md, read 2026-09-17. Key, then locator and the page's words.
+     brainchip-cnn2snn-docs; CNN2SNN user guide, Overview; converts Convolutional Neural Networks trained using Deep Learning methods to a Spiking Neural Network for use with the Akida Runtime (the conversion edge, and the sub-label converted CNN).
+     brainchip-akida-techbrief; tech brief v3, page 3 (re-read from the PDF on 2026-09-17); the Akida processor uses an encoding scheme called rank coding, in which information is expressed as the time and place it occurs (the sub-label rank coding; no edge is drawn from the rank order coding node, the brief names neither Thorpe nor rank order coding).
+     No BrainChip page read on 2026-09-17 states an address-event lineage (aer-lineage-check.md), so no edge reaches Akida from AER.
      The landmark strip is ordinal: nodes are evenly spaced in year order and the spacing carries no meaning. -->
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1240" role="img" aria-labelledby="f3title f3desc">
     <title id="f3title">Two lineages from the biological neuron meet in the spiking neural network, and hardware enters below the rejoin</title>
-    <desc id="f3desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks, which continue as deep learning and reach the spiking network only by a dashed conversion edge. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
+    <desc id="f3desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks, which continue as deep learning and reach the spiking network only by a dashed conversion edge. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949, rank order coding by Thorpe in 1998) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates, with the basis for each edge stated per platform record in the caption. A sixth box, Akida, the survey's event NPU, stands at the right end of the row with a dashed outline and receives one dashed edge, from the ANN and CNN node by conversion, and none from address-event representation. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
     <defs>
       <marker id="f3arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
@@ -71,15 +85,16 @@
 
     <!-- cross-cutting coding and learning threads -->
     <g class="f3-hot">
-      <title>Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength precedes Shannon's 1948 theory, and Hebb's 1949 rule makes connection strength depend on activity.</title>
-      <rect x="570" y="262" width="300" height="154" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2" stroke-dasharray="8 5"/>
+      <title>Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength precedes Shannon's 1948 theory, Hebb's 1949 rule makes connection strength depend on activity, and Thorpe and Gautrais's 1998 chapter sets out rank order coding.</title>
+      <rect x="570" y="262" width="300" height="180" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2" stroke-dasharray="8 5"/>
       <text x="720" y="290" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Coding and learning</text>
       <text x="720" y="310" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">cross-cutting threads</text>
       <text x="720" y="346" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Adrian 1926, rate follows stimulus</text>
       <text x="720" y="372" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Shannon 1948, information theory</text>
       <text x="720" y="398" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Hebb 1949, activity-dependent learning</text>
-      <rect class="f3-band" x="570" y="262" width="300" height="154" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="570" y="262" width="300" height="154" fill="#000" opacity="0" pointer-events="all"/>
+      <text x="720" y="424" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Thorpe 1998, rank order coding</text>
+      <rect class="f3-band" x="570" y="262" width="300" height="180" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="570" y="262" width="300" height="180" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- computational-abstraction branch -->
@@ -117,7 +132,7 @@
     <line x1="1252" y1="496" x2="1400" y2="496" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <text x="1262" y="480" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">deep learning continues</text>
     <text x="1262" y="514" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">on conventional hardware</text>
-    <line x1="720" y1="416" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="442" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
 
     <!-- sensing entry -->
     <g class="f3-hot">
@@ -174,27 +189,41 @@
       <rect x="534" y="714" width="372" height="260" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
-    <!-- platform families -->
-    <line x1="720" y1="968" x2="262" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="491" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="720" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="949" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-    <line x1="720" y1="968" x2="1178" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <!-- platform families; five fan out of AER, Akida stands apart at the right end -->
+    <line x1="720" y1="968" x2="245" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="435" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="625" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="815" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="1005" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <g class="f3-hot">
-      <title>The platform families are named without dates because the figure is a dependency picture and not a timeline.</title>
-      <rect x="160" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="260" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">TrueNorth</text>
-      <rect x="390" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="490" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
-      <rect x="620" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="720" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
-      <rect x="850" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="950" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
-      <rect x="1080" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
-      <text x="1180" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
+      <title>The platform families are named without dates because the figure is a dependency picture and not a timeline, and the fan-out from address-event representation rests on each platform's own record, which documents address-event packets for SpiNNaker, Speck and BrainScaleS-2, names AER only at Loihi 2's external interfaces, and was not read beyond its metadata for TrueNorth. Akida stands apart at the right end because no page documents an address-event lineage for it.</title>
+      <rect x="160" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="245" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">TrueNorth</text>
+      <rect x="350" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="435" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
+      <rect x="540" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="625" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
+      <rect x="730" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="815" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
+      <rect x="920" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1005" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
       <text x="720" y="1092" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">platform families, named without dates</text>
-      <rect class="f3-band" x="154" y="1004" width="1132" height="98" rx="8" fill="#D63A2F" opacity="0"/>
-      <rect x="154" y="1004" width="1132" height="98" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f3-band" x="154" y="1004" width="942" height="98" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="154" y="1004" width="942" height="98" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <!-- Akida, at the row's right end as the survey's event NPU (spec amendment 1); dashed outline, one dashed edge (by conversion from ANN and CNN), no edge from AER -->
+    <g class="f3-hot">
+      <title>Akida sits in this row as the survey's event NPU, a deployment target that a trained CNN reaches by conversion, so its one edge is dashed like the conversion edge into the SNN, and its tech brief names rank coding as its encoding. No page documents an address-event lineage, so no edge reaches it from AER and its outline is dashed.</title>
+      <path d="M1230,514 V1006" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
+      <text x="1242" y="560" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">by conversion</text>
+      <rect x="1110" y="1010" width="170" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <text x="1195" y="1029" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Akida</text>
+      <text x="1195" y="1044" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">event NPU, converted CNN</text>
+      <text x="1195" y="1058" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px" fill="#555">rank coding</text>
+      <rect class="f3-band" x="1104" y="1004" width="182" height="68" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="1104" y="1004" width="182" height="68" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f3-band" x="1218" y="508" width="26" height="496" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="1218" y="508" width="26" height="496" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- landmark strip, ordinal -->
@@ -204,56 +233,59 @@
       <line x1="80" y1="1162" x2="1400" y2="1162" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
       <g stroke="#000" stroke-width="1.5">
         <circle cx="110" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="207" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="304" cy="1162" r="7" fill="#FFDDA6"/>
-        <circle cx="401" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="498" cy="1162" r="7" fill="#F9D4EA"/>
-        <circle cx="595" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="692" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="789" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="886" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="983" cy="1162" r="7" fill="#fff" stroke="#D63A2F" stroke-width="2.4"/>
-        <circle cx="1080" cy="1162" r="7" fill="#d5dbe2"/>
-        <circle cx="1177" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="1274" cy="1162" r="7" fill="#CFE2F3"/>
-        <circle cx="1371" cy="1162" r="7" fill="#CDEBCD"/>
+        <circle cx="200" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="290" cy="1162" r="7" fill="#FFDDA6"/>
+        <circle cx="380" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="470" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="560" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="650" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="740" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="830" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="920" cy="1162" r="7" fill="#fff" stroke="#D63A2F" stroke-width="2.4"/>
+        <circle cx="1010" cy="1162" r="7" fill="#F9D4EA"/>
+        <circle cx="1100" cy="1162" r="7" fill="#d5dbe2"/>
+        <circle cx="1190" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="1280" cy="1162" r="7" fill="#CFE2F3"/>
+        <circle cx="1370" cy="1162" r="7" fill="#CDEBCD"/>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#000" text-anchor="middle">
         <text x="110" y="1148">1907</text>
-        <text x="207" y="1148">1926</text>
-        <text x="304" y="1148">1943</text>
-        <text x="401" y="1148">1948</text>
-        <text x="498" y="1148">1949</text>
-        <text x="595" y="1148">1952</text>
-        <text x="692" y="1148">1990</text>
-        <text x="789" y="1148">1991</text>
-        <text x="886" y="1148">1992</text>
-        <text x="983" y="1148">1997</text>
-        <text x="1080" y="1148">2000</text>
-        <text x="1177" y="1148">2003</text>
-        <text x="1274" y="1148">2005</text>
-        <text x="1371" y="1148">2008</text>
+        <text x="200" y="1148">1926</text>
+        <text x="290" y="1148">1943</text>
+        <text x="380" y="1148">1948</text>
+        <text x="470" y="1148">1949</text>
+        <text x="560" y="1148">1952</text>
+        <text x="650" y="1148">1990</text>
+        <text x="740" y="1148">1991</text>
+        <text x="830" y="1148">1992</text>
+        <text x="920" y="1148">1997</text>
+        <text x="1010" y="1148">1998</text>
+        <text x="1100" y="1148">2000</text>
+        <text x="1190" y="1148">2003</text>
+        <text x="1280" y="1148">2005</text>
+        <text x="1370" y="1148">2008</text>
       </g>
       <g style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333" text-anchor="middle">
         <text x="110" y="1188">Lapicque</text>
-        <text x="207" y="1210">Adrian</text>
-        <text x="304" y="1188">McCulloch-Pitts</text>
-        <text x="401" y="1210">Shannon</text>
-        <text x="498" y="1188">Hebb</text>
-        <text x="595" y="1210">Hodgkin-Huxley</text>
-        <text x="692" y="1188">Mead</text>
-        <text x="789" y="1210">silicon neuron</text>
-        <text x="886" y="1188">AER, Mahowald</text>
-        <text x="983" y="1210">Maass, SNN</text>
-        <text x="1080" y="1188">AER, Boahen</text>
-        <text x="1177" y="1210">Izhikevich</text>
-        <text x="1274" y="1188">AdEx</text>
-        <text x="1371" y="1210">event sensor</text>
+        <text x="200" y="1210">Adrian</text>
+        <text x="290" y="1188">McCulloch-Pitts</text>
+        <text x="380" y="1210">Shannon</text>
+        <text x="470" y="1188">Hebb</text>
+        <text x="560" y="1210">Hodgkin-Huxley</text>
+        <text x="650" y="1188">Mead</text>
+        <text x="740" y="1210">silicon neuron</text>
+        <text x="830" y="1188">AER, Mahowald</text>
+        <text x="920" y="1210">Maass, SNN</text>
+        <text x="1010" y="1188">rank order coding</text>
+        <text x="1100" y="1210">AER, Boahen</text>
+        <text x="1190" y="1188">Izhikevich</text>
+        <text x="1280" y="1210">AdEx</text>
+        <text x="1370" y="1188">event sensor</text>
       </g>
       <rect class="f3-band" x="60" y="1106" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="60" y="1106" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a branch, box, connector, or landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Three cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, and Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
+  <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Four cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>, and the rank order coding that Thorpe and Gautrais set out in 1998<d-cite key="Thorpe98-RankOrder"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The fan-out to the platform families rests on each platform's own record. The sPyNNaker documentation<d-cite key="spynnaker-v8-docs"></d-cite> records source-addressed spike packets over a multicast fabric, the Speck datasheet<d-cite key="synsense-speck-datasheet"></d-cite> records events that carry address, feature, polarity and timestamp, and the BrainScaleS-2 paper of Pehle et al.<d-cite key="bss"></d-cite> records an event routing network that operates on address event-encoded packets. The Loihi 2 brief<d-cite key="loihi2"></d-cite> names AER only among the chip's external interfaces and describes communication between neuron cores as spike messages. The TrueNorth article<d-cite key="merolla2014-truenorth"></d-cite> was not read beyond its metadata, and the figure states nothing further for it. Akida stands at the right end of the row with a dashed outline as the survey's event NPU. It enters the row by conversion, since the CNN2SNN guide<d-cite key="brainchip-cnn2snn-docs"></d-cite> converts convolutional networks trained by deep learning into a spiking network for the Akida runtime, and no edge reaches it from AER because no BrainChip page read for this survey documents an address-event lineage. Its sub-label says rank coding because BrainChip's tech brief<d-cite key="brainchip-akida-techbrief"></d-cite> names rank coding as the processor's encoding scheme. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
 </figure>
