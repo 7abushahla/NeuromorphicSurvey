@@ -209,7 +209,7 @@ const RAIL_R = [
   ['R1', 'Measurement', 'A SynOps figure is an operation-count ratio under an unstated hardware model, not joules. Boundary choices alone produce 14x swings for the identical chip and network.'],
   ['R2', 'Toolchain decay', 'SNN Toolbox last released March 2021. Intel archived all Lava repositories on 13 May 2026 with no maintenance and no patches accepted. The only toolchain that reached silicon is dormant.'],
   ['R3', 'Portability', 'NIR reaches nine simulators and five hardware platforms, turning m x n integrations into m + n. Its primitive set still omits the one semantics this literature depends on.'],
-  ['R4', 'Two populations', 'The division of labor that no survey states. Algorithm papers advance accuracy at low T and do not deploy; none of the algorithm-population records reaches physical silicon, and Section 17.1, Population Counts, counts them. Every confirmed instance of a new method reaching silicon abandons rate coding.'],
+  ['R4', 'Two populations', 'The division of labor that no survey states. Algorithm papers advance accuracy at low T and do not deploy; none of the algorithm-population records reaches physical silicon, and Section 13.6, Population Counts, counts them. Every confirmed instance of a new method reaching silicon abandons rate coding.'],
 ];
 
 /* ---------- state ---------- */

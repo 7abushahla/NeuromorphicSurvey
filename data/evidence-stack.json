@@ -5365,7 +5365,7 @@
       "toolchain_version": "GeNN CUDA-generated simulation code",
       "measurement_boundary": "CIFAR-10 inference time and speed relative to BindsNET and TensorFlow across batch sizes on a 12 GB NVIDIA Titan V GPU; the converted VGG-16 is 2.5x faster than BindsNET, and the FewSpike-converted ResNet-20 is only a little over 2x slower than the original TensorFlow ANN, while the fastest rate-based model is over 100x slower than the TensorFlow ANN.",
       "reports_deployment_evidence": true,
-      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 12.1, The Framework Boundary, discusses as evidence about classical correspondence at scale."
+      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 10.1, The Framework Boundary, discusses as evidence about classical correspondence at scale."
     },
     {
       "id": "nest-to-nest-kernel",

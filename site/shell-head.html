@@ -190,7 +190,7 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       .t1-legend .sw-part { background: #D8EBF2; border-color: #b9d7e2; }
       .t1-legend .sw-none { background: transparent; }
       .t1-legend .t1-legend-note { color: #8a94a0; font-style: italic; }
-      /* ---- clause lists inside table cells (Table 7, parked) ---- */
+      /* ---- clause lists inside table cells (Table 9, parked) ---- */
       table.ptable ul.cell-list { margin: 0; padding-left: 1.05em; }
       table.ptable ul.cell-list li { margin: 0 0 0.28rem; padding-left: 0.1em; }
       table.ptable ul.cell-list li:last-child { margin-bottom: 0; }
@@ -251,10 +251,10 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       .ptable-wrap.t1-wide td { padding: 0.34rem 0.3rem; }
       .ptable-wrap.t1-wide td:first-child { white-space: nowrap; }
       table.ptable th[title] { cursor: pointer; }
-      /* Parked with Table 2: four long headers in a text-column-width table needed
+      /* Parked with Table 4: four long headers in a text-column-width table needed
          wrapping, since th is nowrap by default.
-      #table-2 th { white-space: normal; vertical-align: bottom; }
-      #table-2 th, #table-2 td { padding-left: 0.35rem; padding-right: 0.35rem; } */
+      #table-4 th { white-space: normal; vertical-align: bottom; }
+      #table-4 th, #table-4 td { padding-left: 0.35rem; padding-right: 0.35rem; } */
       /* Numbered, clickable references */
       d-cite { cursor: pointer; }
       .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
@@ -516,14 +516,14 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
       .cite-card .cc-entry { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
       .cite-card .cc-entry:last-child { border-bottom: none; }
       .cite-card .cc-num { color: #2698BA; font-weight: 700; margin-right: 5px; }
-      /* ---- Study rows in Tables 3-5 lead to their reference ---- */
-      /* Table 3 lists several boards per study; the device column needs just enough
+      /* ---- Study rows in Tables 5-7 lead to their reference ---- */
+      /* Table 5 lists several boards per study; the device column needs just enough
          room that a name such as "STM32H747XI (M7)," stays on one line. */
-      #table-3 th:nth-child(4), #table-3 td:nth-child(4) { min-width: 160px; }
+      #table-5 th:nth-child(4), #table-5 td:nth-child(4) { min-width: 160px; }
       .ptable-wrap.t-studies tbody tr { transition: background 0.12s; }
       .ptable-wrap.t-studies tbody tr:hover { background: #f3fafc; }
       .ptable-wrap.t-studies tbody td:first-child { cursor: pointer; }
-      /* ---- Table 2 platforms carry a deployment-count hint ---- */
+      /* ---- Table 4 platforms carry a deployment-count hint ---- */
       table.ptable td.t2-plat { cursor: help; }
       /* ---- Keyboard focus: every interactive control shows where it is ---- */
       .tbl-toolbar .chip, .tbl-toolbar .treset {

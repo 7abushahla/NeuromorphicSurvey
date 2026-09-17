@@ -156,6 +156,13 @@ class FigureMapTests(unittest.TestCase):
             self.assertIn("'loihi-2' sits in the 'conventional' row", result.stdout + result.stderr)
 
 
+def fragment_holding(needle: str) -> Path:
+    """The one site fragment whose text contains needle; sections move, the sentence does not."""
+    hits = [p for p in sorted((ROOT / "site").glob("sec-*.html")) if needle in p.read_text()]
+    assert len(hits) == 1, f"expected exactly one fragment holding {needle[:40]!r}, found {[h.name for h in hits]}"
+    return hits[0]
+
+
 class EvidenceMarkerCheckerTests(unittest.TestCase):
     def test_checker_catches_a_stripped_chip_and_passes_on_the_real_tree(self):
         import tempfile, shutil
@@ -164,13 +171,14 @@ class EvidenceMarkerCheckerTests(unittest.TestCase):
             (copy / "site").mkdir(parents=True)
             (copy / "data").mkdir(parents=True)
             (copy / "tools").mkdir(parents=True)
-            shutil.copy(ROOT / "site/sec-09.html", copy / "site/sec-09.html")
+            fragment = fragment_holding("CIFAR-10 EDP uses an estimated placement correction")
+            shutil.copy(fragment, copy / "site" / fragment.name)
             shutil.copy(ROOT / "data/target-kinds.json", copy / "data/target-kinds.json")
             shutil.copy(ROOT / "data/evidence-papers.json", copy / "data/evidence-papers.json")
             shutil.copy(ROOT / "data/source-registry.json", copy / "data/source-registry.json")
             shutil.copy(ROOT / "data/refmap.json", copy / "data/refmap.json")
             shutil.copy(ROOT / "tools/check-evidence-markers.py", copy / "tools/check-evidence-markers.py")
-            broken = (copy / "site/sec-09.html").read_text()
+            broken = (copy / "site" / fragment.name).read_text()
             # Strip the chip from the Quartz row specifically: it sits inside a <tr>, which the
             # checker's BLOCK regex (tr|li|p) scans directly in its first pass.
             quartz_old = '<td>Latency, static/dynamic power, energy per inference, EDP; CIFAR-10 EDP uses an estimated placement correction</td><td><span class="ev ev-e1">E1</span> <span class="tk tk-neuromorphic">neuromorphic</span></td></tr>'
@@ -178,7 +186,7 @@ class EvidenceMarkerCheckerTests(unittest.TestCase):
             self.assertEqual(broken.count(quartz_old), 1, "expected exactly one Quartz row to strip a chip from")
             stripped = broken.replace(quartz_old, quartz_new, 1)
             self.assertNotEqual(broken, stripped)
-            (copy / "site/sec-09.html").write_text(stripped)
+            (copy / "site" / fragment.name).write_text(stripped)
             result = subprocess.run([sys.executable, str(copy / "tools/check-evidence-markers.py")], capture_output=True, text=True, cwd=copy)
             self.assertNotEqual(result.returncode, 0)
 
@@ -192,13 +200,14 @@ class EvidenceMarkerCheckerTests(unittest.TestCase):
             (copy / "site").mkdir(parents=True)
             (copy / "data").mkdir(parents=True)
             (copy / "tools").mkdir(parents=True)
-            shutil.copy(ROOT / "site/sec-09.html", copy / "site/sec-09.html")
+            fragment = fragment_holding("result for a baseline the QCFS paper itself never deployed")
+            shutil.copy(fragment, copy / "site" / fragment.name)
             shutil.copy(ROOT / "data/target-kinds.json", copy / "data/target-kinds.json")
             shutil.copy(ROOT / "data/evidence-papers.json", copy / "data/evidence-papers.json")
             shutil.copy(ROOT / "data/source-registry.json", copy / "data/source-registry.json")
             shutil.copy(ROOT / "data/refmap.json", copy / "data/refmap.json")
             shutil.copy(ROOT / "tools/check-evidence-markers.py", copy / "tools/check-evidence-markers.py")
-            broken = (copy / "site/sec-09.html").read_text()
+            broken = (copy / "site" / fragment.name).read_text()
             # This marker sits inside a bare <div class="caveat">, with no enclosing tr/li/p, the
             # case the checker's second scanning pass exists for.
             self.assertIn('<div class="caveat">', broken)
@@ -207,7 +216,7 @@ class EvidenceMarkerCheckerTests(unittest.TestCase):
             self.assertEqual(broken.count(caveat_old), 1, "expected exactly one caveat-div chip to strip")
             stripped = broken.replace(caveat_old, caveat_new, 1)
             self.assertNotEqual(broken, stripped)
-            (copy / "site/sec-09.html").write_text(stripped)
+            (copy / "site" / fragment.name).write_text(stripped)
             result = subprocess.run([sys.executable, str(copy / "tools/check-evidence-markers.py")], capture_output=True, text=True, cwd=copy)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("E1 marker without a target chip", result.stdout + result.stderr)

@@ -32,6 +32,14 @@ for m in re.finditer(r'<a href="#([^"]+)">\s*Section (\d+(?:\.\d+)*)', page):
         # cross-subsection or cross-section mismatch (e.g. token says Section 3
         # but the anchor's heading is 4.2) still fails.
         errors.append(f'anchor #{anchor} is heading {headings[anchor]} but the token says Section {num}')
+# A bare anchored number, "<a href=\"#anchor\">N.M</a>" or "Sections N</a>", names no heading word for the
+# rule above to key on, so it is checked here against the same headings table.
+for m in re.finditer(r'<a href="#([^"]+)">\s*(?:Sections\s+)?(\d+(?:\.\d+)*)\s*</a>', page):
+    anchor, num = m.group(1), m.group(2)
+    if anchor not in headings:
+        errors.append(f'anchor #{anchor} has no numbered heading (bare token "{num}")')
+    elif headings[anchor] != num and headings[anchor].split('.')[0] != num:
+        errors.append(f'anchor #{anchor} is heading {headings[anchor]} but the bare token says {num}')
 # An anchored token that carries words, "Section N, Words,</a>", must carry the heading's own title.
 # Prose wraps across a line break inside the token text (word-wrapped source), so the
 # comparison collapses whitespace the same way the title text above already does.

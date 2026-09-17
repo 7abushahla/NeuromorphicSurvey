@@ -134,6 +134,17 @@ class SectionRefsTests(unittest.TestCase):
             bad = subprocess.run([sys.executable, "tools/check-section-refs.py"], cwd=tmp, capture_output=True, text=True)
             self.assertNotEqual(bad.returncode, 0); self.assertIn('titled "Routes"', bad.stdout + bad.stderr)
 
+    def test_guard_catches_a_stale_bare_anchored_number(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp = fixture(Path(d))
+            page = "".join((tmp / "site" / f).read_text() for f in ("shell-head.html", "sec-01.html", "sec-02.html", "shell-tail.html"))
+            (tmp / "index.html").write_text(page.replace('<a href="#intro">Section 1</a>', '<a href="#intro">1</a>, <a href="#routes-named">2.1</a>'))
+            ok = subprocess.run([sys.executable, "tools/check-section-refs.py"], cwd=tmp, capture_output=True, text=True)
+            self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+            (tmp / "index.html").write_text(page.replace('<a href="#intro">Section 1</a>', '<a href="#intro">1</a>, <a href="#routes-named">3.1</a>'))
+            bad = subprocess.run([sys.executable, "tools/check-section-refs.py"], cwd=tmp, capture_output=True, text=True)
+            self.assertNotEqual(bad.returncode, 0); self.assertIn('bare token says 3.1', bad.stdout + bad.stderr)
+
 
 class ReorderSectionsTests(unittest.TestCase):
     def reorder_fixture(self, d):

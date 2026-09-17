@@ -13268,7 +13268,7 @@
         "temporal sparsity is not exploited by the GPU kernel"
       ],
       "mechanism": "GeNN's generated CUDA C++ simulation code executes on the physical GPU, with CIFAR-10 inference timed and compared against BindsNET and TensorFlow on a 12 GB NVIDIA Titan V GPU.",
-      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 12.1, The Framework Boundary, discusses as evidence about classical correspondence at scale.",
+      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 10.1, The Framework Boundary, discusses as evidence about classical correspondence at scale.",
       "capability_class": "emulated",
       "route_state": "physical",
       "reports_deployment_evidence": true,
