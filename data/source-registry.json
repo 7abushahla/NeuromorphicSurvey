@@ -2851,16 +2851,18 @@
       "doi": null,
       "url": "https://cambridge.org/core/books/neuronal-dynamics/75375090046733765596191E23B2959D",
       "source_type": "secondary_material",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "entire book, Sections 2.6, 3.1, 4.2"
+        "Ch. 1, Sec. 1.1 (dendrites, soma, axon; chemical synapse; action potential of about 100 mV and 1 to 2 ms; absolute and relative refractory periods)",
+        "Ch. 1, Sec. 1.2 (resting potential of about minus 65 mV; excitatory and inhibitory postsynaptic potentials; threshold)",
+        "Sections 2.6, 3.1, 4.2 (membrane biophysics, RC derivation, spike trains as point process; not read in full)"
       ],
       "aliases": [
         "foundations-sources.json:gerstner2014-neuronal-dynamics"
       ],
-      "notes": "Book (578 pages, ISBN 9781107635197). For Sections 2.6, 3.1, 4.2 covering membrane biophysics, RC derivation, spike trains as point process. Online edition provides limited content. Title, authors, publisher and year confirmed together on 2026-09-17 from the publisher's catalog page found with exa. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Book (578 pages, ISBN 9781107635197). Chapter 1 read in full on 2026-09-17 in the authors' online edition (https://neuronaldynamics.epfl.ch/online/Ch1.S1.html and Ch1.S2.html), which carries the biological neuron description and the numbers the survey's Section 2.1 and its biological-neuron figure use. Sections 2.6, 3.1 and 4.2 are cited for membrane biophysics, the RC derivation and spike trains as a point process from the table of contents; not read in full. Title, authors, publisher and year confirmed together on 2026-09-17 from the publisher's catalog page found with exa. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
@@ -3628,6 +3630,29 @@
         "research/prior-surveys/batch-A.json:kudithipudi-2025-neuromorphic-scale"
       ],
       "notes": "Full text verified by inspection of the complete local PDF at 00-Vault/01-Literature/05-Neuromorphic-Background/03-General-Surveys/s41586-024-08253-8.pdf (pp. 801-812), with publisher HTML, PDF, and DOI URLs also checked. Canonicalized from structured inputs: research/prior-surveys/batch-A.json.",
+      "purpose": "external"
+    },
+    {
+      "id": "lai2018-cmsis-nn",
+      "canonical_key": "lai2018-cmsis-nn",
+      "title": "CMSIS-NN: Efficient Neural Network Kernels for Arm Cortex-M CPUs",
+      "authors": "L. Lai, N. Suda, V. Chandra",
+      "year": 2018,
+      "venue": "arXiv",
+      "doi": "10.48550/arxiv.1801.06601",
+      "url": "https://arxiv.org/abs/1801.06601",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "Sec. 1 (CIFAR-10 CNN on an off-the-shelf Arm Cortex-M7 platform, 10.1 images per second at 79.9 percent accuracy)",
+        "Sec. 3 (kernels for 8-bit and 16-bit data, q7_t as int8 and q15_t as int16, on Cortex-M cores with SIMD multiply-accumulate instructions)"
+      ],
+      "aliases": [
+        "foundations-sources.json:lai2018-cmsis-nn"
+      ],
+      "notes": "Retrieved 2026-09-17 from the arXiv API record (arXiv:1801.06601), which confirmed title, authors and year together; the PDF was read in full. Used by the execution-stacks figure in Section 2.1 for the conventional path, where a quantized CNN runs as 8-bit or 16-bit integer kernels on an Arm Cortex-M microcontroller. The paper's measurements are on a Cortex-M7 platform; the survey names Cortex-M4 only as an example of the Cortex-M family the kernels target, and the paper does not mention Cortex-M4 by name. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {

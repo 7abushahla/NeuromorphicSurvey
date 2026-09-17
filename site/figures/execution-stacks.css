@@ -1,0 +1,6 @@
+#figure-4 { text-align: center; }
+#figure-4 svg { width: 100%; height: auto; }
+#figure-4 .f4-hot { cursor: help; }
+#figure-4 .f4-band { transition: opacity 0.15s; }
+#figure-4 .f4-hot:hover .f4-band { opacity: 0.10; }
+#figure-4 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

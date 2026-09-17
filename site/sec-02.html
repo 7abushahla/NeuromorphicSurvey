@@ -25,6 +25,197 @@ coding by spikes, computation driven by events, and a claim of biological plausi
 principles into the spiking neural network, and the table below states which cross-layer
 readings of them this survey refuses.</p>
 
+<p>The object at the root of every vocabulary is the biological neuron, and it is drawn once here in the neuroscience vocabulary alone, before any lineage renames it. Gerstner et al.<d-cite key="gerstner2014-neuronal-dynamics"></d-cite> divide the cell into three functional parts, dendrites that collect input from other neurons, a soma that integrates it, and an axon that carries the output to other cells. The junction between an axon terminal and a dendrite or soma is the synapse. At a chemical synapse an arriving action potential releases transmitter into the synaptic cleft, receptors on the postsynaptic membrane open ion channels, and the postsynaptic membrane potential moves away from its resting level of about &#8722;65 mV, upward at an excitatory synapse and downward at an inhibitory one. These postsynaptic potentials sum. When the summed potential at the soma crosses a threshold, the cell emits an action potential, a pulse of about 100 mV, typically lasting one to two milliseconds, that travels along the axon without changing shape, and an absolute and then a relative refractory period limit how soon the next one can follow. <a href="#figure-2">Figure 2</a> draws this cell and its membrane potential. Every later stage of the stack keeps some of these parts and discards the rest. The physical-behavior lineage keeps the membrane, its threshold, and its pulse. The computational lineage keeps the many weighted inputs, the summation, the threshold, and the single output fanned out to other units. The table that closes this subsection records where a later vocabulary keeps a word without keeping the part.</p>
+
+<figure class="pfig l-body" id="figure-2">
+<!-- Provenance (conceptual figure; the trace is a schematic and not a recording).
+     Source: W. Gerstner, W. M. Kistler, R. Naud and L. Paninski, Neuronal Dynamics, Cambridge University Press, 2014,
+     registered as gerstner2014-neuronal-dynamics in data/foundations-sources.json, Chapter 1 read in the authors'
+     online edition on 2026-09-17. Locator, then the number drawn.
+     Ch. 1, Sec. 1.1: the three functional parts (dendrites as input, soma as the integrating and thresholding part,
+       axon as output); the chemical synapse (axon terminal, synaptic cleft, transmitter release, receptors, ion
+       channel opening, postsynaptic potential); the action potential amplitude of about 100 mV and duration of
+       1 to 2 ms; the absolute and then the relative refractory period.
+     Ch. 1, Sec. 1.2: the resting potential of about minus 65 mV; excitatory and inhibitory postsynaptic potentials;
+       their approximately linear summation; the firing threshold.
+     Numbers drawn: rest about minus 65 mV (axis tick and label); pulse amplitude about 100 mV (bracket from rest
+       to peak, peak drawn at plus 35 mV); pulse width about 1 to 2 ms (annotation; the drawn pulse is 1.5 ms wide
+       on the time axis). The source puts the threshold about 20 to 30 mV above rest (Sec. 1.2); the line is drawn 20 mV above rest and carries no number.
+       Single EPSPs are about 1 mV in the source; the drawn postsynaptic potentials are about ten times larger so that their
+       summation is visible, a schematic exaggeration stated in the caption. The vesicles in the synapse inset are the standard
+       depiction of a presynaptic terminal and are not described in the cited chapter; the caption follows the source and says
+       transmitter is released from the terminal.
+     Schematic choices that are not measurements: postsynaptic potential kernel exp(-s/5 ms) - exp(-s/0.8 ms)
+       normalized to its peak; input arrivals at 3 ms (+10 mV), 8 ms (-9 mV), 15 ms (+12 mV), 17 ms (+12 mV);
+       sinusoidal rise over 0.45 ms and cosine fall over 1.05 ms to an undershoot of minus 75 mV; recovery with a
+       5 ms time constant; absolute refractory bracket 2.2 ms long, relative refractory bracket the following 10 ms.
+     No myelin and no node of Ranvier are drawn because the cited chapter does not describe them. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1340 1000" role="img" aria-labelledby="f2title f2desc">
+    <title id="f2title">The biological neuron in the neuroscience vocabulary, its membrane potential at the soma, and its chemical synapse</title>
+    <desc id="f2desc">Three panels. The top panel draws one neuron with branching dendrites receiving three presynaptic axon terminals, two excitatory and one inhibitory, a soma, an axon leaving the soma, and axon terminals contacting the dendrite of a second, partly drawn cell, with the direction of signal flow marked from left to right. The lower left panel draws a schematic trace of membrane potential in millivolts against time in milliseconds. The trace rests at about minus 65 millivolts, rises with one excitatory postsynaptic potential, dips with one inhibitory postsynaptic potential, climbs to the threshold when two excitatory potentials sum, fires an action potential of about 100 millivolts lasting about one to two milliseconds, undershoots briefly, and returns to rest. Brackets mark the absolute and relative refractory periods, and one red tick above the trace marks the spike as the axon carries it. The lower right panel enlarges a chemical synapse with a presynaptic terminal holding vesicles, the synaptic cleft, a postsynaptic membrane with receptors and an ion channel, arrows for transmitter release and ion flow, and the words excitatory (depolarizing) and inhibitory (hyperpolarizing) beside the postsynaptic side.</desc>
+    <defs>
+      <marker id="f2arr" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+      <marker id="f2arrs" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#000"/></marker>
+      <clipPath id="f2cut"><rect x="1150" y="380" width="180" height="120"/></clipPath>
+    </defs>
+<text x="670" y="42" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">The biological neuron, in the neuroscience vocabulary</text>
+<text x="670" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">dendrites receive, the soma integrates and thresholds, the axon carries the pulse to the next cell</text>
+<line x1="30" y1="548" x2="1310" y2="548" stroke="#d5dbe2" stroke-width="2"/>
+<line x1="838" y1="560" x2="838" y2="985" stroke="#d5dbe2" stroke-width="2"/>
+<!-- panel A, the cell -->
+<text x="40" y="112" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">The cell</text>
+<line x1="900" y1="104" x2="1120" y2="104" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<text x="888" y="110" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#333">direction of signal flow</text>
+<path d="M70,150 C 160,150 240,156 303,160" fill="none" stroke="#6B8CBE" stroke-width="3.4"/>
+<path d="M70,292 C 160,292 230,280 283,276" fill="none" stroke="#6B8CBE" stroke-width="3.4"/>
+<path d="M70,440 C 160,440 240,426 307,420" fill="none" stroke="#6B8CBE" stroke-width="3.4"/>
+<line x1="190" y1="150" x2="222" y2="152" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="190" y1="290" x2="222" y2="286" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="190" y1="438" x2="222" y2="434" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<ellipse cx="314" cy="160" rx="11" ry="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<ellipse cx="294" cy="276" rx="11" ry="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<ellipse cx="318" cy="420" rx="11" ry="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<text x="72" y="136" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">presynaptic terminal, excitatory</text>
+<text x="72" y="318" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">presynaptic terminal, excitatory</text>
+<text x="72" y="466" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">presynaptic terminal, inhibitory</text>
+<path d="M545,262 C 500,232 470,205 430,188 M538,300 C 495,298 460,296 420,294 M545,338 C 500,368 470,395 430,412 M590,250 C 585,225 575,205 560,180" fill="none" stroke="#6AA168" stroke-width="5" stroke-linecap="round"/>
+<path d="M430,188 C 405,180 380,172 350,170 M430,188 C 420,170 410,152 395,132 M420,294 C 390,284 360,276 330,270 M420,294 C 392,306 364,318 336,332 M430,412 C 405,420 380,428 350,432 M430,412 C 420,428 412,444 400,460 M560,180 C 545,168 530,160 512,156 M560,180 C 562,162 566,148 572,134" fill="none" stroke="#6AA168" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M350,170 L328,162 M350,170 L332,182 M395,132 L380,118 M395,132 L404,116 M330,270 L310,262 M330,270 L308,276 M336,332 L316,330 M336,332 L318,344 M350,432 L328,438 M350,432 L332,422 M400,460 L388,474 M400,460 L412,474 M512,156 L494,150 M512,156 L500,142 M572,134 L562,120 M572,134 L584,122" fill="none" stroke="#6AA168" stroke-width="2.2" stroke-linecap="round"/>
+<text x="455" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">dendrites (input)</text>
+<ellipse cx="600" cy="300" rx="62" ry="52" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="3"/>
+<circle cx="600" cy="308" r="13" fill="#6B8CBE" opacity="0.45"/>
+<text x="640" y="382" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">soma</text>
+<text x="640" y="402" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">(integration and threshold)</text>
+<path d="M662,300 C 720,300 760,272 830,272 C 900,272 940,300 1010,300 L1060,300" fill="none" stroke="#6B8CBE" stroke-width="4"/>
+<line x1="741" y1="286" x2="774" y2="278" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<line x1="920" y1="286" x2="953" y2="294" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<text x="835" y="250" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">axon (output)</text>
+<path d="M1060,300 L1120,262 M1060,300 L1130,300 M1060,300 L1120,338" fill="none" stroke="#6B8CBE" stroke-width="3.4"/>
+<ellipse cx="1132" cy="262" rx="12" ry="9" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<ellipse cx="1142" cy="300" rx="12" ry="9" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<ellipse cx="1132" cy="338" rx="12" ry="9" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
+<text x="1095" y="372" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">axon terminals</text>
+<path d="M1180,170 C 1168,230 1164,290 1170,350 C 1176,392 1196,420 1218,448" fill="none" stroke="#6AA168" stroke-width="5" stroke-linecap="round"/>
+<path d="M1168,262 L1147,262 M1166,300 L1157,300 M1168,338 L1147,338 M1171,362 C 1205,352 1235,346 1270,336" fill="none" stroke="#6AA168" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M1270,336 L1288,326 M1270,336 L1290,344 M1180,170 L1170,152 M1180,170 L1192,154" fill="none" stroke="#6AA168" stroke-width="2.2" stroke-linecap="round"/>
+<ellipse cx="1262" cy="476" rx="60" ry="50" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="3" clip-path="url(#f2cut)"/>
+<text x="1200" y="138" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">postsynaptic cell (partly drawn)</text>
+<rect x="1122" y="284" width="50" height="32" rx="6" fill="none" stroke="#555" stroke-width="1.6" stroke-dasharray="5 4"/>
+<line x1="1172" y1="286" x2="1186" y2="248" stroke="#555" stroke-width="1.4"/>
+<text x="1190" y="244" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">synapse</text>
+<text x="1190" y="262" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">(enlarged below)</text>
+<g class="f2-hot"><title>Three presynaptic terminals from other neurons contact the dendrites. Each arriving action potential produces a postsynaptic potential, upward at an excitatory synapse and downward at an inhibitory one.</title>
+<rect class="f2-hl" x="60" y="120" width="240" height="372" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="60" y="120" width="240" height="372" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The dendrites collect input from many upstream cells and carry it toward the soma.</title>
+<rect class="f2-hl" x="304" y="112" width="236" height="376" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="304" y="112" width="236" height="376" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The soma sums the postsynaptic potentials. When the sum crosses the threshold, the cell fires an action potential.</title>
+<rect class="f2-hl" x="534" y="244" width="132" height="166" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="534" y="244" width="132" height="166" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The axon carries every action potential to the terminals at full size. Since all pulses of a cell look alike, their number and timing carry the information and their shape does not.</title>
+<rect class="f2-hl" x="668" y="232" width="392" height="90" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="668" y="232" width="392" height="90" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The axon terminals contact the dendrite of the next cell. The contact is the synapse, and the lower right panel enlarges it.</title>
+<rect class="f2-hl" x="1064" y="160" width="262" height="330" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="1064" y="160" width="262" height="330" fill="#000" opacity="0" pointer-events="all"/></g>
+<!-- panel B, membrane potential at the soma (schematic, computed from the kernel in the provenance comment) -->
+<text x="40" y="578" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Membrane potential at the soma</text>
+<text x="150" y="600" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">spike, as the axon carries it</text>
+<line x1="150" y1="614" x2="810" y2="614" stroke="#8a8a8a" stroke-width="1.4"/>
+<line x1="487.5" y1="605" x2="487.5" y2="623" stroke="#D63A2F" stroke-width="3.4"/>
+<path d="M479.3,658 V650 H519.6 V658" fill="none" stroke="#000" stroke-width="1.8"/>
+<path d="M522.6,658 V650 H702.9 V658" fill="none" stroke="#000" stroke-width="1.8"/>
+<text x="473.3" y="642" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">absolute refractory period</text>
+<text x="611.3" y="642" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">relative refractory period</text>
+<line x1="150" y1="656" x2="150" y2="920" stroke="#000" stroke-width="2.2" data-axis="numeric" data-unit="mV"/>
+<line x1="150" y1="920" x2="810" y2="920" stroke="#000" stroke-width="2.2" data-axis="numeric" data-unit="ms"/>
+<line x1="143" y1="866" x2="150" y2="866" stroke="#000" stroke-width="2"/>
+<text x="137" y="871" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">&#8722;65</text>
+<line x1="143" y1="736" x2="150" y2="736" stroke="#000" stroke-width="2"/>
+<text x="137" y="741" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">0</text>
+<line x1="143" y1="826" x2="150" y2="826" stroke="#000" stroke-width="2"/>
+<line x1="150.0" y1="920" x2="150.0" y2="927" stroke="#000" stroke-width="2"/>
+<text x="150.0" y="946" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">0</text>
+<line x1="333.3" y1="920" x2="333.3" y2="927" stroke="#000" stroke-width="2"/>
+<text x="333.3" y="946" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">10</text>
+<line x1="516.7" y1="920" x2="516.7" y2="927" stroke="#000" stroke-width="2"/>
+<text x="516.7" y="946" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">20</text>
+<line x1="700.0" y1="920" x2="700.0" y2="927" stroke="#000" stroke-width="2"/>
+<text x="700.0" y="946" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">30</text>
+<text x="480" y="970" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">time, ms</text>
+<text x="92" y="790" text-anchor="middle" transform="rotate(-90 92 790)" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#000">membrane potential, mV</text>
+<line x1="150" y1="866" x2="810" y2="866" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="7 7"/>
+<line x1="150" y1="826" x2="810" y2="826" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
+<text x="806" y="820" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">threshold</text>
+<text x="156" y="888" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">rest, about &#8722;65 mV</text>
+<path d="M150.0,866.0 L150.7,866.0 L151.5,866.0 L152.2,866.0 L152.9,866.0 L153.7,866.0 L154.4,866.0 L155.1,866.0 L155.9,866.0 L156.6,866.0 L157.3,866.0 L158.1,866.0 L158.8,866.0 L159.5,866.0 L160.3,866.0 L161.0,866.0 L161.7,866.0 L162.5,866.0 L163.2,866.0 L163.9,866.0 L164.7,866.0 L165.4,866.0 L166.1,866.0 L166.9,866.0 L167.6,866.0 L168.3,866.0 L169.1,866.0 L169.8,866.0 L170.5,866.0 L171.3,866.0 L172.0,866.0 L172.7,866.0 L173.5,866.0 L174.2,866.0 L174.9,866.0 L175.7,866.0 L176.4,866.0 L177.1,866.0 L177.9,866.0 L178.6,866.0 L179.3,866.0 L180.1,866.0 L180.8,866.0 L181.5,866.0 L182.3,866.0 L183.0,866.0 L183.7,866.0 L184.5,866.0 L185.2,866.0 L185.9,866.0 L186.7,866.0 L187.4,866.0 L188.1,866.0 L188.9,866.0 L189.6,866.0 L190.3,866.0 L191.1,866.0 L191.8,866.0 L192.5,866.0 L193.3,866.0 L194.0,866.0 L194.7,866.0 L195.5,866.0 L196.2,866.0 L196.9,866.0 L197.7,866.0 L198.4,866.0 L199.1,866.0 L199.9,866.0 L200.6,866.0 L201.3,866.0 L202.1,866.0 L202.8,866.0 L203.5,866.0 L204.3,866.0 L205.0,866.0 L205.7,864.6 L206.5,863.3 L207.2,862.1 L207.9,860.9 L208.7,859.9 L209.4,858.8 L210.1,857.9 L210.9,857.0 L211.6,856.1 L212.3,855.3 L213.1,854.6 L213.8,853.9 L214.5,853.2 L215.3,852.6 L216.0,852.0 L216.7,851.5 L217.5,851.0 L218.2,850.5 L218.9,850.1 L219.7,849.7 L220.4,849.3 L221.1,848.9 L221.9,848.6 L222.6,848.3 L223.3,848.0 L224.1,847.8 L224.8,847.6 L225.5,847.3 L226.3,847.2 L227.0,847.0 L227.7,846.8 L228.5,846.7 L229.2,846.6 L229.9,846.4 L230.7,846.4 L231.4,846.3 L232.1,846.2 L232.9,846.1 L233.6,846.1 L234.3,846.1 L235.1,846.0 L235.8,846.0 L236.5,846.0 L237.3,846.0 L238.0,846.0 L238.7,846.0 L239.5,846.0 L240.2,846.1 L240.9,846.1 L241.7,846.1 L242.4,846.2 L243.1,846.2 L243.9,846.3 L244.6,846.4 L245.3,846.4 L246.1,846.5 L246.8,846.6 L247.5,846.6 L248.3,846.7 L249.0,846.8 L249.7,846.9 L250.5,847.0 L251.2,847.1 L251.9,847.1 L252.7,847.2 L253.4,847.3 L254.1,847.4 L254.9,847.5 L255.6,847.6 L256.3,847.7 L257.1,847.8 L257.8,847.9 L258.5,848.1 L259.3,848.2 L260.0,848.3 L260.7,848.4 L261.5,848.5 L262.2,848.6 L262.9,848.7 L263.7,848.8 L264.4,848.9 L265.1,849.0 L265.9,849.2 L266.6,849.3 L267.3,849.4 L268.1,849.5 L268.8,849.6 L269.5,849.7 L270.3,849.8 L271.0,849.9 L271.7,850.1 L272.5,850.2 L273.2,850.3 L273.9,850.4 L274.7,850.5 L275.4,850.6 L276.1,850.7 L276.9,850.8 L277.6,850.9 L278.3,851.1 L279.1,851.2 L279.8,851.3 L280.5,851.4 L281.3,851.5 L282.0,851.6 L282.7,851.7 L283.5,851.8 L284.2,851.9 L284.9,852.0 L285.7,852.1 L286.4,852.2 L287.1,852.3 L287.9,852.4 L288.6,852.6 L289.3,852.7 L290.1,852.8 L290.8,852.9 L291.5,853.0 L292.3,853.1 L293.0,853.2 L293.7,853.3 L294.5,853.4 L295.2,853.5 L295.9,853.6 L296.7,853.6 L297.4,855.0 L298.1,856.2 L298.9,857.4 L299.6,858.6 L300.3,859.6 L301.1,860.7 L301.8,861.6 L302.5,862.5 L303.3,863.4 L304.0,864.2 L304.7,865.0 L305.5,865.7 L306.2,866.4 L306.9,867.0 L307.7,867.6 L308.4,868.2 L309.1,868.7 L309.9,869.2 L310.6,869.7 L311.3,870.2 L312.1,870.6 L312.8,871.0 L313.5,871.3 L314.3,871.7 L315.0,872.0 L315.7,872.3 L316.5,872.6 L317.2,872.9 L317.9,873.1 L318.7,873.4 L319.4,873.6 L320.1,873.8 L320.9,874.0 L321.6,874.1 L322.3,874.3 L323.1,874.5 L323.8,874.6 L324.5,874.7 L325.3,874.8 L326.0,874.9 L326.7,875.0 L327.5,875.1 L328.2,875.2 L328.9,875.3 L329.7,875.3 L330.4,875.4 L331.1,875.4 L331.9,875.5 L332.6,875.5 L333.3,875.6 L334.1,875.6 L334.8,875.6 L335.5,875.6 L336.3,875.6 L337.0,875.6 L337.7,875.6 L338.5,875.6 L339.2,875.6 L339.9,875.6 L340.7,875.6 L341.4,875.6 L342.1,875.6 L342.9,875.6 L343.6,875.5 L344.3,875.5 L345.1,875.5 L345.8,875.4 L346.5,875.4 L347.3,875.4 L348.0,875.3 L348.7,875.3 L349.5,875.3 L350.2,875.2 L350.9,875.2 L351.7,875.1 L352.4,875.1 L353.1,875.1 L353.9,875.0 L354.6,875.0 L355.3,874.9 L356.1,874.9 L356.8,874.8 L357.5,874.8 L358.3,874.7 L359.0,874.7 L359.7,874.6 L360.5,874.6 L361.2,874.5 L361.9,874.5 L362.7,874.4 L363.4,874.4 L364.1,874.3 L364.9,874.2 L365.6,874.2 L366.3,874.1 L367.1,874.1 L367.8,874.0 L368.5,874.0 L369.3,873.9 L370.0,873.9 L370.7,873.8 L371.5,873.8 L372.2,873.7 L372.9,873.6 L373.7,873.6 L374.4,873.5 L375.1,873.5 L375.9,873.4 L376.6,873.4 L377.3,873.3 L378.1,873.3 L378.8,873.2 L379.5,873.2 L380.3,873.1 L381.0,873.1 L381.7,873.0 L382.5,873.0 L383.2,872.9 L383.9,872.9 L384.7,872.8 L385.4,872.8 L386.1,872.7 L386.9,872.6 L387.6,872.6 L388.3,872.5 L389.1,872.5 L389.8,872.5 L390.5,872.4 L391.3,872.4 L392.0,872.3 L392.7,872.3 L393.5,872.2 L394.2,872.2 L394.9,872.1 L395.7,872.1 L396.4,872.0 L397.1,872.0 L397.9,871.9 L398.6,871.9 L399.3,871.8 L400.1,871.8 L400.8,871.7 L401.5,871.7 L402.3,871.7 L403.0,871.6 L403.7,871.6 L404.5,871.5 L405.2,871.5 L405.9,871.4 L406.7,871.4 L407.4,871.4 L408.1,871.3 L408.9,871.3 L409.6,871.2 L410.3,871.2 L411.1,871.1 L411.8,871.1 L412.5,871.1 L413.3,871.0 L414.0,871.0 L414.7,870.9 L415.5,870.9 L416.2,870.9 L416.9,870.8 L417.7,870.8 L418.4,870.8 L419.1,870.7 L419.9,870.7 L420.6,870.6 L421.3,870.6 L422.1,870.6 L422.8,870.5 L423.5,870.5 L424.3,870.5 L425.0,870.4 L425.7,868.7 L426.5,867.1 L427.2,865.6 L427.9,864.2 L428.7,862.9 L429.4,861.6 L430.1,860.4 L430.9,859.3 L431.6,858.3 L432.3,857.3 L433.1,856.3 L433.8,855.5 L434.5,854.6 L435.3,853.9 L436.0,853.1 L436.7,852.5 L437.5,851.8 L438.2,851.2 L438.9,850.7 L439.7,850.2 L440.4,849.7 L441.1,849.2 L441.9,848.8 L442.6,848.4 L443.3,848.1 L444.1,847.7 L444.8,847.4 L445.5,847.2 L446.3,846.9 L447.0,846.7 L447.7,846.4 L448.5,846.2 L449.2,846.1 L449.9,845.9 L450.7,845.8 L451.4,845.6 L452.1,845.5 L452.9,845.4 L453.6,845.4 L454.3,845.3 L455.1,845.2 L455.8,845.2 L456.5,845.1 L457.3,845.1 L458.0,845.1 L458.7,845.1 L459.5,845.1 L460.2,845.1 L460.9,845.1 L461.7,845.1 L462.4,843.5 L463.1,842.0 L463.9,840.6 L464.6,839.2 L465.3,838.0 L466.1,836.8 L466.8,835.7 L467.5,834.7 L468.3,833.8 L469.0,832.9 L469.7,832.0 L470.5,831.3 L471.2,830.6 L471.9,829.9 L472.7,829.3 L473.4,828.8 L474.1,828.3 L474.9,827.8 L475.6,827.4 L476.3,827.0 L477.1,826.7 L477.8,826.3 L478.5,826.1 L479.3,826.0 L480.0,803.7 L480.7,781.9 L481.5,760.9 L482.2,741.2 L482.9,723.2 L483.7,707.1 L484.4,693.4 L485.1,682.2 L485.9,673.8 L486.6,668.4 L487.3,666.1 L488.1,666.4 L488.8,668.4 L489.5,671.9 L490.3,676.9 L491.0,683.3 L491.7,691.0 L492.5,700.0 L493.2,710.0 L493.9,721.0 L494.7,732.8 L495.4,745.2 L496.1,758.0 L496.9,771.1 L497.6,784.2 L498.3,797.3 L499.1,810.0 L499.8,822.2 L500.5,833.8 L501.3,844.6 L502.0,854.4 L502.7,863.0 L503.5,870.4 L504.2,876.5 L504.9,881.1 L505.7,884.2 L506.4,885.8 L507.1,885.9 L507.9,885.8 L508.6,885.6 L509.3,885.4 L510.1,885.3 L510.8,885.1 L511.5,885.0 L512.3,884.8 L513.0,884.7 L513.7,884.5 L514.5,884.4 L515.2,884.2 L515.9,884.1 L516.7,884.0 L517.4,883.8 L518.1,883.7 L518.9,883.5 L519.6,883.4 L520.3,883.2 L521.1,883.1 L521.8,883.0 L522.5,882.8 L523.3,882.7 L524.0,882.6 L524.7,882.4 L525.5,882.3 L526.2,882.2 L526.9,882.1 L527.7,881.9 L528.4,881.8 L529.1,881.7 L529.9,881.5 L530.6,881.4 L531.3,881.3 L532.1,881.2 L532.8,881.1 L533.5,880.9 L534.3,880.8 L535.0,880.7 L535.7,880.6 L536.5,880.5 L537.2,880.3 L537.9,880.2 L538.7,880.1 L539.4,880.0 L540.1,879.9 L540.9,879.8 L541.6,879.7 L542.3,879.6 L543.1,879.5 L543.8,879.4 L544.5,879.2 L545.3,879.1 L546.0,879.0 L546.7,878.9 L547.5,878.8 L548.2,878.7 L548.9,878.6 L549.7,878.5 L550.4,878.4 L551.1,878.3 L551.9,878.2 L552.6,878.1 L553.3,878.0 L554.1,877.9 L554.8,877.8 L555.5,877.7 L556.3,877.7 L557.0,877.6 L557.7,877.5 L558.5,877.4 L559.2,877.3 L559.9,877.2 L560.7,877.1 L561.4,877.0 L562.1,876.9 L562.9,876.8 L563.6,876.8 L564.3,876.7 L565.1,876.6 L565.8,876.5 L566.5,876.4 L567.3,876.3 L568.0,876.3 L568.7,876.2 L569.5,876.1 L570.2,876.0 L570.9,875.9 L571.7,875.9 L572.4,875.8 L573.1,875.7 L573.9,875.6 L574.6,875.5 L575.3,875.5 L576.1,875.4 L576.8,875.3 L577.5,875.2 L578.3,875.2 L579.0,875.1 L579.7,875.0 L580.5,875.0 L581.2,874.9 L581.9,874.8 L582.7,874.7 L583.4,874.7 L584.1,874.6 L584.9,874.5 L585.6,874.5 L586.3,874.4 L587.1,874.3 L587.8,874.3 L588.5,874.2 L589.3,874.1 L590.0,874.1 L590.7,874.0 L591.5,873.9 L592.2,873.9 L592.9,873.8 L593.7,873.8 L594.4,873.7 L595.1,873.6 L595.9,873.6 L596.6,873.5 L597.3,873.4 L598.1,873.4 L598.8,873.3 L599.5,873.3 L600.3,873.2 L601.0,873.2 L601.7,873.1 L602.5,873.0 L603.2,873.0 L603.9,872.9 L604.7,872.9 L605.4,872.8 L606.1,872.8 L606.9,872.7 L607.6,872.7 L608.3,872.6 L609.1,872.6 L609.8,872.5 L610.5,872.4 L611.3,872.4 L612.0,872.3 L612.7,872.3 L613.5,872.2 L614.2,872.2 L614.9,872.1 L615.7,872.1 L616.4,872.0 L617.1,872.0 L617.9,872.0 L618.6,871.9 L619.3,871.9 L620.1,871.8 L620.8,871.8 L621.5,871.7 L622.3,871.7 L623.0,871.6 L623.7,871.6 L624.5,871.5 L625.2,871.5 L625.9,871.5 L626.7,871.4 L627.4,871.4 L628.1,871.3 L628.9,871.3 L629.6,871.2 L630.3,871.2 L631.1,871.2 L631.8,871.1 L632.5,871.1 L633.3,871.0 L634.0,871.0 L634.7,871.0 L635.5,870.9 L636.2,870.9 L636.9,870.8 L637.7,870.8 L638.4,870.8 L639.1,870.7 L639.9,870.7 L640.6,870.6 L641.3,870.6 L642.1,870.6 L642.8,870.5 L643.5,870.5 L644.3,870.5 L645.0,870.4 L645.7,870.4 L646.5,870.4 L647.2,870.3 L647.9,870.3 L648.7,870.3 L649.4,870.2 L650.1,870.2 L650.9,870.2 L651.6,870.1 L652.3,870.1 L653.1,870.1 L653.8,870.0 L654.5,870.0 L655.3,870.0 L656.0,869.9 L656.7,869.9 L657.5,869.9 L658.2,869.8 L658.9,869.8 L659.7,869.8 L660.4,869.7 L661.1,869.7 L661.9,869.7 L662.6,869.7 L663.3,869.6 L664.1,869.6 L664.8,869.6 L665.5,869.5 L666.3,869.5 L667.0,869.5 L667.7,869.5 L668.5,869.4 L669.2,869.4 L669.9,869.4 L670.7,869.3 L671.4,869.3 L672.1,869.3 L672.9,869.3 L673.6,869.2 L674.3,869.2 L675.1,869.2 L675.8,869.2 L676.5,869.1 L677.3,869.1 L678.0,869.1 L678.7,869.1 L679.5,869.0 L680.2,869.0 L680.9,869.0 L681.7,869.0 L682.4,868.9 L683.1,868.9 L683.9,868.9 L684.6,868.9 L685.3,868.9 L686.1,868.8 L686.8,868.8 L687.5,868.8 L688.3,868.8 L689.0,868.7 L689.7,868.7 L690.5,868.7 L691.2,868.7 L691.9,868.7 L692.7,868.6 L693.4,868.6 L694.1,868.6 L694.9,868.6 L695.6,868.5 L696.3,868.5 L697.1,868.5 L697.8,868.5 L698.5,868.5 L699.3,868.4 L700.0,868.4 L700.7,868.4 L701.5,868.4 L702.2,868.4 L702.9,868.4 L703.7,868.3 L704.4,868.3 L705.1,868.3 L705.9,868.3 L706.6,868.3 L707.3,868.2 L708.1,868.2 L708.8,868.2 L709.5,868.2 L710.3,868.2 L711.0,868.2 L711.7,868.1 L712.5,868.1 L713.2,868.1 L713.9,868.1 L714.7,868.1 L715.4,868.1 L716.1,868.0 L716.9,868.0 L717.6,868.0 L718.3,868.0 L719.1,868.0 L719.8,868.0 L720.5,867.9 L721.3,867.9 L722.0,867.9 L722.7,867.9 L723.5,867.9 L724.2,867.9 L724.9,867.9 L725.7,867.8 L726.4,867.8 L727.1,867.8 L727.9,867.8 L728.6,867.8 L729.3,867.8 L730.1,867.8 L730.8,867.7 L731.5,867.7 L732.3,867.7 L733.0,867.7 L733.7,867.7 L734.5,867.7 L735.2,867.7 L735.9,867.6 L736.7,867.6 L737.4,867.6 L738.1,867.6 L738.9,867.6 L739.6,867.6 L740.3,867.6 L741.1,867.6 L741.8,867.5 L742.5,867.5 L743.3,867.5 L744.0,867.5 L744.7,867.5 L745.5,867.5 L746.2,867.5 L746.9,867.5 L747.7,867.4 L748.4,867.4 L749.1,867.4 L749.9,867.4 L750.6,867.4 L751.3,867.4 L752.1,867.4 L752.8,867.4 L753.5,867.4 L754.3,867.3 L755.0,867.3 L755.7,867.3 L756.5,867.3 L757.2,867.3 L757.9,867.3 L758.7,867.3 L759.4,867.3 L760.1,867.3 L760.9,867.3 L761.6,867.2 L762.3,867.2 L763.1,867.2 L763.8,867.2 L764.5,867.2 L765.3,867.2 L766.0,867.2 L766.7,867.2 L767.5,867.2 L768.2,867.2 L768.9,867.1 L769.7,867.1 L770.4,867.1 L771.1,867.1 L771.9,867.1 L772.6,867.1 L773.3,867.1 L774.1,867.1 L774.8,867.1 L775.5,867.1 L776.3,867.1 L777.0,867.0 L777.7,867.0 L778.5,867.0 L779.2,867.0 L779.9,867.0 L780.7,867.0 L781.4,867.0 L782.1,867.0 L782.9,867.0 L783.6,867.0 L784.3,867.0 L785.1,867.0 L785.8,867.0 L786.5,866.9 L787.3,866.9 L788.0,866.9 L788.7,866.9 L789.5,866.9 L790.2,866.9 L790.9,866.9 L791.7,866.9 L792.4,866.9 L793.1,866.9 L793.9,866.9 L794.6,866.9 L795.3,866.9 L796.1,866.9 L796.8,866.8 L797.5,866.8 L798.3,866.8 L799.0,866.8 L799.7,866.8 L800.5,866.8 L801.2,866.8 L801.9,866.8 L802.7,866.8 L803.4,866.8 L804.1,866.8 L804.9,866.8 L805.6,866.8 L806.3,866.8 L807.1,866.8 L807.8,866.7 L808.5,866.7 L809.3,866.7 L810.0,866.7" fill="none" stroke="#6B8CBE" stroke-width="3.8" stroke-linejoin="round"/>
+<text x="158" y="766" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">one excitatory postsynaptic potential</text>
+<line x1="237.3" y1="772" x2="237.3" y2="839.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<text x="465.3" y="798" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">summed inputs reach the threshold</text>
+<line x1="448.8" y1="804" x2="448.8" y2="839.2" stroke="#8a8a8a" stroke-width="1.6"/>
+<text x="337.7" y="907" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">inhibitory postsynaptic potential</text>
+<text x="518.8" y="907" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">brief undershoot, then return to rest</text>
+<path d="M522.8,666 H528.8 V866 H522.8" fill="none" stroke="#000" stroke-width="1.8"/>
+<text x="538.8" y="746" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">action potential</text>
+<text x="538.8" y="768" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">amplitude about 100 mV</text>
+<text x="538.8" y="790" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">width about 1 to 2 ms</text>
+<g class="f2-hot"><title>Below the threshold, postsynaptic potentials add approximately linearly, so several excitatory inputs arriving close together can reach a threshold that one alone cannot.</title>
+<rect class="f2-hl" x="156" y="700" width="303.2666666666629" height="190" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="156" y="700" width="303.2666666666629" height="190" fill="#000" opacity="0" pointer-events="all"/></g>
+<g class="f2-hot"><title>The action potential is a stereotyped pulse. Its timing carries the information, and during the absolute refractory period no second pulse can be fired.</title>
+<rect class="f2-hl" x="465.2666666666629" y="656" width="150" height="260" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="465.2666666666629" y="656" width="150" height="260" fill="#000" opacity="0" pointer-events="all"/></g>
+<!-- panel C, the chemical synapse -->
+<text x="860" y="578" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">The chemical synapse</text>
+<path d="M1053,596 V638 C 1053,654 1005,652 1005,672 V716 H1125 V672 C 1125,652 1077,654 1077,638 V596 Z" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="3" stroke-linejoin="round"/>
+<line x1="1065" y1="600" x2="1065" y2="632" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+<text x="1086" y="618" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">action potential arrives</text>
+<text x="1142" y="680" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">presynaptic terminal</text>
+<circle cx="1030" cy="680" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1052" cy="694" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1075" cy="678" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1098" cy="694" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1114" cy="680" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1065" cy="707" r="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
+<circle cx="1062" cy="705" r="2.4" fill="#000"/>
+<circle cx="1068" cy="709" r="2.4" fill="#000"/>
+<circle cx="1050" cy="724" r="2.4" fill="#000"/>
+<circle cx="1058" cy="731" r="2.4" fill="#000"/>
+<circle cx="1072" cy="723" r="2.4" fill="#000"/>
+<circle cx="1080" cy="730" r="2.4" fill="#000"/>
+<text x="992" y="684" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">vesicles with</text>
+<text x="992" y="702" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">transmitter</text>
+<line x1="996" y1="690" x2="1021" y2="682" stroke="#8a8a8a" stroke-width="1.6"/>
+<line x1="1057" y1="720" x2="1037" y2="736" stroke="#000" stroke-width="2" marker-end="url(#f2arrs)"/>
+<line x1="1073" y1="720" x2="1093" y2="736" stroke="#000" stroke-width="2" marker-end="url(#f2arrs)"/>
+<text x="992" y="726" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">transmitter release</text>
+<rect x="985" y="749" width="143" height="86" fill="#CDEBCD" opacity="0.55"/>
+<path d="M985,746 H1047 M1083,746 H1128" stroke="#6AA168" stroke-width="6"/>
+<rect x="1047" y="735" width="10" height="22" rx="2" fill="#6AA168"/>
+<rect x="1073" y="735" width="10" height="22" rx="2" fill="#6AA168"/>
+<path d="M1024,732 V742 H1036 V732 M1094,732 V742 H1106 V732" fill="#fff" stroke="#000" stroke-width="2"/>
+<circle cx="1030" cy="738" r="2.4" fill="#000"/><circle cx="1100" cy="738" r="2.4" fill="#000"/>
+<text x="992" y="745" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">receptors</text>
+<line x1="996" y1="739" x2="1021" y2="734" stroke="#8a8a8a" stroke-width="1.6"/>
+<line x1="1065" y1="726" x2="1065" y2="786" stroke="#000" stroke-width="2.4" marker-end="url(#f2arr)"/>
+<text x="1074" y="784" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">ion flow</text>
+<text x="990" y="828" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">postsynaptic side</text>
+<path d="M1131,716 H1136 V746 H1131" fill="none" stroke="#555" stroke-width="1.6"/>
+<text x="1142" y="735" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">synaptic cleft</text>
+<text x="1142" y="758" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">postsynaptic membrane</text>
+<text x="1142" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">ion channel</text>
+<line x1="1138" y1="776" x2="1085" y2="754" stroke="#8a8a8a" stroke-width="1.6"/>
+<text x="1142" y="806" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">excitatory (depolarizing)</text>
+<text x="1142" y="828" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">inhibitory (hyperpolarizing)</text>
+<g class="f2-hot"><title>An action potential reaching the terminal releases transmitter into the cleft. Receptors on the postsynaptic membrane open ion channels, and the resulting ion flow moves the postsynaptic potential up or down.</title>
+<rect class="f2-hl" x="984" y="594" width="344" height="246" rx="8" fill="#D63A2F" opacity="0"/>
+<rect x="984" y="594" width="344" height="246" fill="#000" opacity="0" pointer-events="all"/></g>
+  </svg></div>
+  <div class="fig-hint">Hover a part of the cell, the trace, or the synapse for the one sentence it carries.</div>
+<figcaption><b>Figure 2:</b> The biological neuron in the neuroscience vocabulary, the object that every later vocabulary renames, receives input on its dendrites, integrates it at the soma, and sends a pulse down its axon to other cells. The top panel draws one cell with two excitatory and one inhibitory presynaptic terminal on its dendrites and its axon terminals on the dendrite of a second cell; each contact is a synapse. In the membrane potential panel, following Gerstner et al.<d-cite key="gerstner2014-neuronal-dynamics"></d-cite>, the potential rests at about &#8722;65 mV, excitatory and inhibitory postsynaptic potentials move it up and down and sum, and when the sum crosses the threshold, about 20 to 30 mV above rest, the cell fires an action potential of about 100 mV that typically lasts one to two milliseconds and ends in a brief undershoot. Single postsynaptic potentials are near one millivolt in the source and are drawn larger so that their summation can be seen. An absolute refractory period, during which no second pulse can fire, precedes a relative one, during which firing is harder. The synapse panel enlarges the chemical synapse, where transmitter released from the presynaptic terminal crosses the cleft, binds receptors, and opens an ion channel. The trace is a schematic, not a recording, and the figure is a conceptual illustration whose numbers come from the cited source.</figcaption>
+</figure>
+
 <p>From the biological neuron, two questions fork. The question of how the neuron
 physically behaves runs through the Hodgkin-Huxley ionic description
 <d-cite key="hodgkin1952"></d-cite> and the reduced dynamical models built on it to
@@ -79,10 +270,10 @@ exporter against an exercised deployment route, is enforced separately in
 <a href="#measurement-boundaries">Section 14.2, Measurement Boundaries,</a> and is not
 repeated here.</p>
 
-<p>Figure 2 draws the two branches from the biological neuron to the spiking neural
+<p>Figure 3 draws the two branches from the biological neuron to the spiking neural
 network, and the hardware branch that rejoins them to silicon.</p>
 
-<figure class="pfig l-body" id="figure-2">
+<figure class="pfig l-body" id="figure-3">
 <!-- Provenance of every dated node (conceptual figure; no measured quantity is drawn).
      Each year below was read from the registered record in data/source-registry.json and
      research/foundations-sources.md on 2026-09-17, not from memory. Key, then locator.
@@ -102,11 +293,11 @@ network, and the hardware branch that rejoins them to silicon.</p>
      2008 Lichtsteiner, Posch and Delbruck; lichtsteiner2008-dvs; IEEE J. Solid-State Circuits vol. 43, no. 2, pp. 566-576; DOI 10.1109/jssc.2007.914337.
      FitzHugh-Nagumo, the perceptron, ANN, CNN and the platform families are drawn without dates and cite nothing.
      The landmark strip is ordinal: nodes are evenly spaced in year order and the spacing carries no meaning. -->
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1240" role="img" aria-labelledby="f2title f2desc">
-    <title id="f2title">Two lineages from the biological neuron meet in the spiking neural network, and hardware enters below the rejoin</title>
-    <desc id="f2desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 1240" role="img" aria-labelledby="f3title f3desc">
+    <title id="f3title">Two lineages from the biological neuron meet in the spiking neural network, and hardware enters below the rejoin</title>
+    <desc id="f3desc">Conceptual lineage tree. From a biological neuron root, a physical-behavior branch runs through Lapicque's 1907 model to integrate-and-fire and leaky integrate-and-fire, and through the Hodgkin-Huxley description of 1952 to reduced dynamical models (FitzHugh-Nagumo, Izhikevich 2003, AdEx 2005). A computational-abstraction branch runs from McCulloch and Pitts in 1943 through the perceptron to artificial and convolutional networks, which continue as deep learning and reach the spiking network only by a dashed conversion edge. Cross-cutting threads for coding and learning (Adrian 1926, Shannon 1948, Hebb 1949) also feed the rejoin. The branches rejoin at the spiking neural network, named the third generation by Maass in 1997, and a dynamic vision sensor of 2008 enters from the side. Below the rejoin a hardware column runs Mead 1990, the silicon neuron of 1991, and address-event representation (Mahowald 1992, Boahen 2000), then fans out to five platform families named without dates. A strip along the bottom lists the dated nodes in year order with even spacing.</desc>
     <defs>
-      <marker id="f2arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+      <marker id="f3arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
     </defs>
 
     <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Two lineages meet in the spiking neural network, then hardware enters</text>
@@ -118,12 +309,12 @@ network, and the hardware branch that rejoins them to silicon.</p>
 
     <!-- bus from the root to the two branches -->
     <path d="M720,154 V186 M160,186 H1100" fill="none" stroke="#000" stroke-width="2.2"/>
-    <line x1="160" y1="186" x2="160" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="420" y1="186" x2="420" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="1100" y1="186" x2="1100" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+    <line x1="160" y1="186" x2="160" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="420" y1="186" x2="420" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="1100" y1="186" x2="1100" y2="260" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
     <!-- physical-behavior branch -->
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>The physical-behavior branch asks how the neuron behaves as an electrical system, and integrate-and-fire descends from Lapicque's 1907 model rather than being a later simplification of the Hodgkin-Huxley description of 1952.</title>
       <text x="290" y="224" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#000">Physical behavior</text>
       <text x="290" y="246" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">how does it physically behave?</text>
@@ -136,8 +327,8 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="420" y="287" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Hodgkin-Huxley 1952</text>
       <text x="420" y="308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">membrane current description</text>
 
-      <line x1="160" y1="318" x2="160" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-      <line x1="420" y1="318" x2="420" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+      <line x1="160" y1="318" x2="160" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+      <line x1="420" y1="318" x2="420" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
       <rect x="40" y="360" width="240" height="56" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
       <text x="160" y="385" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">IF and LIF</text>
@@ -149,12 +340,12 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="420" y="432" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">Izhikevich 2003</text>
       <text x="420" y="454" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#333">AdEx, Brette and Gerstner 2005</text>
 
-      <rect class="f2-band" x="30" y="204" width="520" height="276" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="30" y="204" width="520" height="276" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="30" y="204" width="520" height="276" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- cross-cutting coding and learning threads -->
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength precedes Shannon's 1948 theory, and Hebb's 1949 rule makes connection strength depend on activity.</title>
       <rect x="570" y="262" width="300" height="154" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2" stroke-dasharray="8 5"/>
       <text x="720" y="290" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Coding and learning</text>
@@ -162,13 +353,13 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="720" y="346" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Adrian 1926, rate follows stimulus</text>
       <text x="720" y="372" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Shannon 1948, information theory</text>
       <text x="720" y="398" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">Hebb 1949, activity-dependent learning</text>
-      <rect class="f2-band" x="570" y="262" width="300" height="154" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="570" y="262" width="300" height="154" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="570" y="262" width="300" height="154" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- computational-abstraction branch -->
-    <g class="f2-hot">
-      <title>The computational-abstraction branch asks what a neuron-like unit can compute, from the McCulloch-Pitts logical unit through the perceptron to layered and convolutional networks.</title>
+    <g class="f3-hot">
+      <title>The computational-abstraction branch asks what a neuron-like unit can compute, from the McCulloch-Pitts logical unit through the perceptron to layered and convolutional networks, which continue as deep learning in their own literature and enter the spiking network only by conversion.</title>
       <rect x="950" y="206" width="300" height="48" fill="#fff"/>
       <text x="1100" y="224" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#000">Computational abstraction</text>
       <text x="1100" y="246" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round" fill="#555">what can a neuron-like unit compute?</text>
@@ -177,57 +368,61 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="1100" y="287" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">McCulloch-Pitts 1943</text>
       <text x="1100" y="308" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">logical calculus of neural activity</text>
 
-      <line x1="1100" y1="318" x2="1100" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+      <line x1="1100" y1="318" x2="1100" y2="358" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
       <rect x="950" y="360" width="300" height="56" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="1100" y="385" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Perceptron</text>
       <text x="1100" y="406" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weighted threshold unit, trained</text>
 
-      <line x1="1100" y1="416" x2="1100" y2="456" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+      <line x1="1100" y1="416" x2="1100" y2="456" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
       <rect x="950" y="458" width="300" height="56" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="1100" y="483" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">ANN and CNN</text>
       <text x="1100" y="504" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">layered and convolutional networks</text>
 
-      <rect class="f2-band" x="940" y="204" width="320" height="320" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="940" y="204" width="320" height="320" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="940" y="204" width="320" height="320" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- rejoin connectors -->
-    <path d="M160,416 V545 H640 V598" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+    <path d="M160,416 V545 H640 V598" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <line x1="420" y1="470" x2="420" y2="545" stroke="#000" stroke-width="2.2"/>
-    <path d="M1100,514 V545 H800 V598" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="720" y1="416" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f2arr)"/>
+    <path d="M1100,514 V545 H800 V598" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
+    <text x="950" y="538" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">by conversion</text>
+    <line x1="1252" y1="496" x2="1400" y2="496" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <text x="1262" y="480" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">deep learning continues</text>
+    <text x="1262" y="514" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">on conventional hardware</text>
+    <line x1="720" y1="416" x2="720" y2="598" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arr)"/>
 
     <!-- sensing entry -->
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>The dynamic vision sensor of 2008 emits events directly, so it enters the spiking network from the side rather than through either branch.</title>
       <text x="170" y="590" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Sensing</text>
       <rect x="40" y="600" width="260" height="64" rx="8" fill="#CDEBCD" stroke="#000" stroke-width="2.2"/>
       <text x="170" y="627" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Dynamic vision sensor</text>
       <text x="170" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">event camera, 2008</text>
-      <rect class="f2-band" x="34" y="574" width="272" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="34" y="574" width="272" height="96" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="34" y="574" width="272" height="96" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="300" y1="632" x2="536" y2="632" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+    <line x1="300" y1="632" x2="536" y2="632" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
     <path d="M360,620 V644 M400,620 V644 M440,620 V644" stroke="#D63A2F" stroke-width="4.6"/>
     <text x="418" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">events</text>
 
     <!-- SNN hub -->
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>The spiking neural network is where the two branches rejoin, and Maass's 1997 paper names such networks the third generation of neural network models.</title>
       <rect x="540" y="600" width="360" height="64" rx="10" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
       <text x="720" y="628" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Spiking neural network (SNN)</text>
       <text x="720" y="652" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">the branches rejoin</text>
       <text x="918" y="626" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Maass 1997</text>
       <text x="918" y="648" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">third generation of neural network models</text>
-      <rect class="f2-band" x="534" y="594" width="686" height="76" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="534" y="594" width="686" height="76" rx="10" fill="#D63A2F" opacity="0"/>
       <rect x="534" y="594" width="686" height="76" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- hardware column -->
     <line x1="720" y1="664" x2="720" y2="716" stroke="#000" stroke-width="2.2"/>
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>Mead's 1990 paper asks whether hardware can implement the computation rather than simulate it, the silicon neuron of 1991 answers for one neuron, and address-event representation carries events between chips.</title>
       <text x="520" y="752" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#555">Hardware</text>
       <rect x="540" y="720" width="360" height="56" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
@@ -236,13 +431,13 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="920" y="741" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the question changes</text>
       <text x="920" y="762" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">implement the computation, not simulate it</text>
 
-      <line x1="720" y1="776" x2="720" y2="812" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+      <line x1="720" y1="776" x2="720" y2="812" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
       <rect x="540" y="816" width="360" height="56" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
       <text x="720" y="841" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Silicon neuron 1991</text>
       <text x="720" y="862" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">Mahowald and Douglas</text>
 
-      <line x1="720" y1="872" x2="720" y2="908" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
+      <line x1="720" y1="872" x2="720" y2="908" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
 
       <rect x="540" y="912" width="360" height="56" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
       <text x="720" y="937" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Address-event representation (AER)</text>
@@ -250,17 +445,17 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <text x="520" y="933" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">communication is part of</text>
       <text x="520" y="953" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">the neuromorphic problem</text>
 
-      <rect class="f2-band" x="534" y="714" width="372" height="260" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="534" y="714" width="372" height="260" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="534" y="714" width="372" height="260" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- platform families -->
-    <line x1="720" y1="968" x2="262" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="720" y1="968" x2="491" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="720" y1="968" x2="720" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="720" y1="968" x2="949" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <line x1="720" y1="968" x2="1178" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f2arr)"/>
-    <g class="f2-hot">
+    <line x1="720" y1="968" x2="262" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="491" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="720" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="949" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <line x1="720" y1="968" x2="1178" y2="1006" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+    <g class="f3-hot">
       <title>The platform families are named without dates because the figure is a dependency picture and not a timeline.</title>
       <rect x="160" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
       <text x="260" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">TrueNorth</text>
@@ -273,12 +468,12 @@ network, and the hardware branch that rejoins them to silicon.</p>
       <rect x="1080" y="1010" width="200" height="56" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
       <text x="1180" y="1045" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
       <text x="720" y="1092" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">platform families, named without dates</text>
-      <rect class="f2-band" x="154" y="1004" width="1132" height="98" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="154" y="1004" width="1132" height="98" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="154" y="1004" width="1132" height="98" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
     <!-- landmark strip, ordinal -->
-    <g class="f2-hot">
+    <g class="f3-hot">
       <title>The strip orders the dated nodes by year with even spacing, so distances along it carry no meaning.</title>
       <text x="80" y="1124" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700" fill="#555">Landmarks in order of year, spacing not to scale</text>
       <line x1="80" y1="1162" x2="1400" y2="1162" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
@@ -330,12 +525,216 @@ network, and the hardware branch that rejoins them to silicon.</p>
         <text x="1274" y="1188">AdEx</text>
         <text x="1371" y="1210">event sensor</text>
       </g>
-      <rect class="f2-band" x="60" y="1106" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f3-band" x="60" y="1106" width="1360" height="116" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="60" y="1106" width="1360" height="116" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a branch, box, connector, or landmark for the one sentence it carries.</div>
-  <figcaption><b>Figure 2:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). Three cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, and Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
+  <figcaption><b>Figure 3:</b> The lineages that meet in a spiking neural network, and where hardware enters. From the biological neuron, the physical-behavior branch asks how the neuron behaves as an electrical system and runs through Lapicque's 1907 model<d-cite key="lapicque1907"></d-cite> to integrate-and-fire (IF) and leaky integrate-and-fire (LIF). Separately it runs through the Hodgkin-Huxley description of 1952<d-cite key="hodgkin1952"></d-cite> to reduced dynamical models such as the Izhikevich model of 2003<d-cite key="izhikevich2003"></d-cite> and the adaptive exponential (AdEx) model that Brette and Gerstner proposed in 2005<d-cite key="brette2005-adex"></d-cite>, both of which reduce the subthreshold dynamics of the 1952 description while keeping the imposed threshold and reset of the integrate-and-fire family. IF itself descends from the 1907 model and is not a later simplification of the 1952 description. The computational-abstraction branch asks what a neuron-like unit can compute and runs from the McCulloch-Pitts logical unit of 1943<d-cite key="mcculloch1943"></d-cite> through the perceptron to the artificial neural network (ANN) and the convolutional neural network (CNN). That branch continues as deep learning in its own literature, and a trained ANN or CNN enters the SNN only through conversion, so its edge into the rejoin is dashed; what the SNN keeps directly from the branch is the layered, weighted network architecture. Three cross-cutting threads also feed the rejoin, Adrian and Zotterman's 1926 observation that impulse rate follows stimulus strength<d-cite key="adrian1926"></d-cite>, which precedes Shannon's 1948 theory of communication<d-cite key="shannon1948"></d-cite>, and Hebb's 1949 rule that makes connection strength depend on activity<d-cite key="hebb1949"></d-cite>. The branches rejoin at the SNN, which Maass's 1997 paper<d-cite key="maass1997"></d-cite> names the third generation of neural network models, and the dynamic vision sensor of 2008<d-cite key="lichtsteiner2008-dvs"></d-cite> enters from the side because it emits events directly rather than through either branch. Hardware enters below the rejoin with Mead's 1990 paper<d-cite key="mead1990"></d-cite>, which asks whether hardware can implement the computation rather than simulate it. The silicon neuron that Mahowald and Douglas reported in 1991<d-cite key="mahowald1991-silicon-neuron"></d-cite> answers for one neuron, and address-event representation (AER), set out by Mahowald in 1992<d-cite key="mahowald1992-aer"></d-cite> and by Boahen in 2000<d-cite key="boahen2000-aer"></d-cite>, carries events between chips. The platform families carry no dates because the tree is not a timeline. The strip along the bottom orders the dated nodes by year with even spacing, so distances along it carry no meaning. The figure is a conceptual illustration whose dates come from the cited primary sources, and the tree is a dependency picture and not a claim that any later work cites an earlier one.</figcaption>
+</figure>
+
+<p>The hardware column of Figure 3 is the part of the stack a reader arriving from deep learning has not seen, because the conventional path is already familiar. A trained ANN or CNN is quantized and compiled to integer kernels, on a Cortex-M microcontroller through the CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> and on a CPU, GPU, or NPU through the vendor's libraries, and it then runs as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated. An SNN on neuromorphic hardware runs as event-triggered state updates in cores that hold their synaptic weights beside the neuron, with events carried between cores by address, the AER of the hardware column, and with time either stepped by the fabric or driven by the events themselves. <a href="#figure-4">Figure 4</a> draws the two paths side by side, level by level, from the trained network to the silicon. The picture is not a partition. A trained ANN reaches the neuromorphic path only through conversion, the subject of Sections 7 through 9, and an SNN also runs, simulated or accelerated, on the conventional silicon of the left column, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. What differs between the two columns is where the weight lives, what moves between units, and when a unit computes, and the sections on hardware execution and deployment measurement later turn each of those differences into a stated field of the deployment claim.</p>
+
+<figure class="pfig l-body" id="figure-4">
+<!-- Provenance (conceptual figure; no measured quantity is drawn).
+     Every drawn claim was read from the registered record in data/source-registry.json on 2026-09-17, not from memory. Key, then locator.
+     Integer kernels on Cortex-M; lai2018-cmsis-nn; Sec. 3, kernels for 8-bit and 16-bit data (q7_t, q15_t) on Cortex-M cores with SIMD multiply-accumulate. The paper measures on a Cortex-M7 board and does not name Cortex-M4; the figure names Cortex-M4 only as an example of the family and states no result.
+     Memory accesses cost more energy than arithmetic; horowitz-2014; ISSCC 2014, DOI 10.1109/isscc.2014.6757323.
+     Address-event representation; boahen2000-aer; IEEE Trans. Circuits Syst. II vol. 47, pp. 416-434, DOI 10.1109/82.842110.
+     SNN simulated or accelerated on conventional silicon; prior-s36-du-2026 (edge-device benchmark) and prior-s37-farsa-2026 (GPU and RISC-V survey).
+     Platform families; loihi1, furber2012-spinnaker, bss, synsense-speck-datasheet, rockpool-xylo-docs, brainchip-akida-user-guide; named without dates, in the style of the lineage figure.
+     Cortex-M, CPU, GPU and NPU, and the toolchains Lava, sPyNNaker, Sinabs, Rockpool, hxtorch and CNN2SNN, are named without citation, as in the lead-in paragraph. -->
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 868" role="img" aria-labelledby="f4title f4desc">
+    <title id="f4title">A trained ANN or CNN on conventional hardware beside an SNN on neuromorphic hardware, level by level, with the two crossings between the paths</title>
+    <desc id="f4desc">Two columns read from top to bottom through four aligned levels, with a gray rail between them naming what differs at each level. The left column is the conventional path. Its network is a trained ANN or CNN made of weighted sums and static activations that keeps no state between inputs. It is quantized and compiled to integer kernels, CMSIS-NN on Cortex-M and vendor libraries on CPU, GPU and NPU. It executes as dense matrix multiplies under a global clock, one pass per input frame, with weights and activations fetched through registers, SRAM or cache, and flash or DRAM, so memory sits apart from compute and the accesses cost more energy than the arithmetic. Its silicon row holds a Cortex-M microcontroller, a CPU, a GPU and an NPU. The right column is the neuromorphic path. Its network is a spiking neural network with the same layered weights, where each unit keeps a state, tests it against a threshold and emits events. It is converted or trained and then mapped by Lava, sPyNNaker, Sinabs, Rockpool, hxtorch or CNN2SNN. It executes as event-triggered state updates, with time stepped by the fabric or driven by the events, weights resident beside the neuron in the core, and events carried between cores by address. Its silicon row holds Loihi, SpiNNaker, BrainScaleS, Speck, Xylo and Akida. A dashed arrow from the left network to the right network is ANN-to-SNN conversion. A dashed path from the right network down to the left silicon row is an SNN simulated or accelerated on conventional silicon. A dotted two-headed line joins the two silicon rows and is labeled compared in deployment claims at a stated measurement boundary.</desc>
+    <defs>
+      <marker id="f4arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+    </defs>
+
+    <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Two execution paths, from the trained network to the silicon</text>
+    <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Read down each column, then across the rail. The dashed edges are the two crossings between the paths.</text>
+
+    <!-- column headers -->
+    <text x="290" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Conventional path, a trained ANN or CNN</text>
+    <text x="1150" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Neuromorphic path, an SNN</text>
+
+    <!-- middle rail, what differs at each level -->
+    <g class="f4-hot">
+      <title>The rail names what differs between the columns at each level, where the weight lives, what moves between units, and when a unit computes.</title>
+      <text x="745" y="118" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#8a94a0">What differs</text>
+
+      <text x="745" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The network</text>
+      <text x="745" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what a unit keeps,</text>
+      <text x="745" y="232" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">nothing against a state</text>
+
+      <text x="745" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">The compile step</text>
+      <text x="745" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a compiler against</text>
+      <text x="745" y="358" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">a converter and a mapper</text>
+
+      <text x="745" y="458" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Execution</text>
+      <text x="745" y="482" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">what moves,</text>
+      <text x="745" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">numbers against events</text>
+      <text x="745" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">where the weight lives,</text>
+      <text x="745" y="542" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">fetched against resident</text>
+      <text x="745" y="566" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">when a unit computes,</text>
+      <text x="745" y="584" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">once per frame against</text>
+      <text x="745" y="602" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">per step or per event</text>
+
+      <text x="745" y="698" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700" fill="#555">Silicon</text>
+      <text x="745" y="720" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">clocked, general-purpose silicon</text>
+      <text x="745" y="738" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">against event-driven or stepped</text>
+      <text x="745" y="756" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">neuromorphic silicon</text>
+
+      <rect class="f4-band" x="606" y="176" width="270" height="596" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="606" y="176" width="270" height="596" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- level 1, the network -->
+    <g class="f4-hot">
+      <title>A trained ANN or CNN maps each input to an output through weighted sums and fixed activation functions, and it keeps nothing from one input to the next.</title>
+      <rect x="20" y="140" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Trained ANN or CNN</text>
+      <text x="290" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">layers of weighted sums and static activations,</text>
+      <text x="290" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">numbers in, numbers out, no state kept between inputs</text>
+      <rect class="f4-band" x="20" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>A spiking network keeps the same layered weights but gives each unit a state that persists between inputs, and the unit emits an event when that state crosses its threshold.</title>
+      <rect x="880" y="140" width="540" height="96" rx="8" fill="#fff" stroke="#D63A2F" stroke-width="3"/>
+      <text x="1150" y="170" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Spiking neural network</text>
+      <text x="1150" y="196" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the same layered weights, but each unit keeps a state,</text>
+      <text x="1150" y="218" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">tests it against a threshold, and emits events</text>
+      <rect class="f4-band" x="880" y="140" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="140" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="236" x2="290" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="236" x2="1150" y2="282" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 2, the compile step -->
+    <g class="f4-hot">
+      <title>The trained network is quantized and compiled to integer kernels, 8-bit and 16-bit through CMSIS-NN on Cortex-M cores and through the vendor's libraries on CPU, GPU and NPU.</title>
+      <rect x="20" y="284" width="540" height="96" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Quantize and compile</text>
+      <text x="290" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">integer kernels, CMSIS-NN on Cortex-M,</text>
+      <text x="290" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">vendor libraries on CPU, GPU and NPU</text>
+      <rect class="f4-band" x="20" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>The network is converted from a trained ANN or trained as an SNN, then a platform toolchain maps it onto the cores, and the toolchains named here are the ones this survey audits.</title>
+      <rect x="880" y="284" width="540" height="96" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="314" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700" fill="#000">Convert or train, then map</text>
+      <text x="1150" y="340" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the toolchains this survey audits,</text>
+      <text x="1150" y="362" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">Lava, sPyNNaker, hxtorch, Sinabs, Rockpool, CNN2SNN</text>
+      <rect class="f4-band" x="880" y="284" width="540" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="284" width="540" height="96" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="380" x2="290" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="380" x2="1150" y2="426" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 3, execution -->
+    <g class="f4-hot">
+      <title>Each input frame costs one full pass of dense matrix multiplies under a global clock, and the operands are fetched through a memory hierarchy whose accesses cost more energy than the arithmetic they feed.</title>
+      <rect x="20" y="428" width="540" height="190" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
+      <text x="290" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Dense matrix multiplies under a global clock</text>
+      <text x="290" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">one pass per input frame</text>
+      <text x="290" y="524" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights and activations fetched through registers,</text>
+      <text x="290" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">SRAM or cache, and flash or DRAM</text>
+      <text x="290" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">memory apart from compute, and the accesses</text>
+      <text x="290" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">cost more energy than the arithmetic</text>
+      <rect class="f4-band" x="20" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>A unit updates its state only when the fabric steps time or an event arrives, its weights sit beside it in the core, and events cross between cores as addresses.</title>
+      <rect x="880" y="428" width="540" height="190" rx="8" fill="#CFE2F3" stroke="#000" stroke-width="2.2"/>
+      <text x="1150" y="464" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Event-triggered state updates</text>
+      <text x="1150" y="494" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">time stepped by the fabric</text>
+      <text x="1150" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">or driven by the events</text>
+      <text x="1150" y="546" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">weights resident beside the neuron in the core</text>
+      <text x="1150" y="576" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">events carried between cores by address,</text>
+      <text x="1150" y="598" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#333">the AER of the lineage figure</text>
+      <rect class="f4-band" x="880" y="428" width="540" height="190" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="428" width="540" height="190" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <line x1="290" y1="618" x2="290" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+    <line x1="1150" y1="618" x2="1150" y2="664" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+
+    <!-- level 4, silicon -->
+    <g class="f4-hot">
+      <title>The conventional silicon is clocked and general purpose, and the same trained network can be compiled for any of these parts.</title>
+      <rect x="20" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <rect x="24" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="155" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Cortex-M microcontroller</text>
+      <text x="155" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(for example Cortex-M4)</text>
+      <rect x="294" y="674" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="425" y="695" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">CPU</text>
+      <text x="425" y="715" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">(Arm, RISC-V, x86)</text>
+      <rect x="24" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="155" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">GPU</text>
+      <rect x="294" y="732" width="262" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="425" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">NPU</text>
+      <rect class="f4-band" x="20" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="20" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g class="f4-hot">
+      <title>These six platform families are the ones audited later in this survey, and they are drawn without dates because the figure is not a timeline.</title>
+      <rect x="880" y="666" width="540" height="124" rx="8" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
+      <rect x="887" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="972" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Loihi</text>
+      <rect x="1065" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1150" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">SpiNNaker</text>
+      <rect x="1243" y="674" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1328" y="707" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">BrainScaleS</text>
+      <rect x="887" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="972" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Speck</text>
+      <rect x="1065" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1150" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Xylo</text>
+      <rect x="1243" y="732" width="170" height="52" rx="8" fill="#fff" stroke="#8a94a0" stroke-width="2.2"/>
+      <text x="1328" y="765" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Akida</text>
+      <rect class="f4-band" x="880" y="666" width="540" height="124" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="880" y="666" width="540" height="124" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- crossing 1, conversion, left network to right network -->
+    <g class="f4-hot">
+      <title>ANN-to-SNN conversion is the route this survey audits, and it is the only way a trained ANN or CNN enters the neuromorphic path.</title>
+      <line x1="560" y1="166" x2="876" y2="166" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="720" y="156" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">ANN-to-SNN conversion</text>
+      <rect class="f4-band" x="562" y="142" width="316" height="34" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="562" y="142" width="316" height="34" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- crossing 2, an SNN on conventional silicon, right network down to left silicon -->
+    <g class="f4-hot">
+      <title>An SNN also runs on conventional silicon, simulated or accelerated, which is the crossing that Du et al. benchmark on edge devices and Farsa et al. survey for GPUs and RISC-V processors.</title>
+      <path d="M900,236 V260 H590 V728 H564" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f4arr)"/>
+      <text x="602" y="640" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">an SNN simulated or accelerated</text>
+      <text x="602" y="658" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#000">on conventional silicon</text>
+      <rect class="f4-band" x="576" y="246" width="336" height="26" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="576" y="246" width="336" height="26" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="576" y="272" width="28" height="470" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="576" y="272" width="28" height="470" fill="#000" opacity="0" pointer-events="all"/>
+      <rect class="f4-band" x="598" y="624" width="270" height="42" rx="6" fill="#D63A2F" opacity="0"/>
+      <rect x="598" y="624" width="270" height="42" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+
+    <!-- the two silicon rows compared -->
+    <g class="f4-hot">
+      <title>Deployment claims compare the two silicon rows, and such a comparison holds only at a stated measurement boundary.</title>
+      <path d="M720,826 H290 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
+      <path d="M720,826 H1150 V794" fill="none" stroke="#000" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round" marker-end="url(#f4arr)"/>
+      <text x="720" y="854" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">compared in deployment claims at a stated measurement boundary</text>
+      <rect class="f4-band" x="270" y="794" width="900" height="70" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect x="270" y="794" width="900" height="70" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+  </svg></div>
+  <div class="fig-hint">Hover a box, a dashed crossing, the dotted comparison, or the middle rail for the one sentence it carries.</div>
+  <figcaption><b>Figure 4:</b> A trained ANN or CNN runs on conventional hardware as clocked matrix multiplies, an SNN runs on neuromorphic hardware as event-triggered state updates beside resident weights, and the paths cross at conversion and at an SNN run on conventional silicon. At the network level the left keeps no state between inputs and the right keeps a state per unit and emits events. At the compile level the ANN becomes the 8-bit and 16-bit CMSIS-NN kernels of Lai et al.<d-cite key="lai2018-cmsis-nn"></d-cite> on a Cortex-M microcontroller or vendor libraries elsewhere, while the SNN is converted or trained, then mapped by its toolchain. At the execution level the left fetches operands through a memory hierarchy whose accesses cost more energy than the arithmetic, as Horowitz<d-cite key="horowitz-2014"></d-cite> tabulated, while the right keeps the weight beside the neuron and carries events between cores by address, the AER of Boahen<d-cite key="boahen2000-aer"></d-cite>. At the silicon level the left is clocked general-purpose silicon and the right holds Loihi<d-cite key="loihi1"></d-cite>, SpiNNaker<d-cite key="furber2012-spinnaker"></d-cite>, BrainScaleS<d-cite key="bss"></d-cite>, Speck<d-cite key="synsense-speck-datasheet"></d-cite>, Xylo<d-cite key="rockpool-xylo-docs"></d-cite>, and Akida<d-cite key="brainchip-akida-user-guide"></d-cite>. The dashed crossings are ANN-to-SNN conversion, the route this survey audits, and an SNN simulated or accelerated on conventional silicon, which Du et al.<d-cite key="prior-s36-du-2026"></d-cite> benchmark on edge devices and Farsa et al.<d-cite key="prior-s37-farsa-2026"></d-cite> survey for GPUs and RISC-V processors. The figure is a conceptual illustration and no measured quantity is drawn. The picture is not a partition.</figcaption>
 </figure>
 
 <p>Table 2 states the refusal itself, layer by layer, and names the subsection that
@@ -352,7 +751,7 @@ enforces it.</p>
 <tr><td>Voltage and current are engineering metaphors</td><td>The membrane has capacitance and conductance; the governing equation is biophysical and electrical at once</td><td><a href="#membrane-circuit-model">3.1</a></td></tr>
 <tr><td>Rate coding is an information-theoretic claim</td><td>Adrian's 1926 observation precedes Shannon's 1948 theory by more than two decades</td><td><a href="#encoder-channel-decoder">4.2</a></td></tr>
 <tr><td>Neural coding is coding theory</td><td>A neural code names what a response represents, not a designed codebook with error correction</td><td><a href="#encoder-channel-decoder">4.2</a></td></tr>
-<tr><td>A spike is one bit, so an SNN is binary</td><td>Weights, state, thresholds, and payloads carry their own precision</td><td><a href="#dense-sparse-conditional">2.3</a>, <a href="#deployable-snn-contract">10</a></td></tr>
+<tr><td>A spike is one bit, so an SNN is binary</td><td>Weights, state, thresholds, and payloads carry their own precision</td><td><a href="#values-state-events">2.2</a>, <a href="#continuous-discrete-hardware">3.6</a>, <a href="#deployable-snn-contract">10</a></td></tr>
 <tr><td>SNN equals neuromorphic computing</td><td>One is a computational model; the other is a systems and hardware engineering discipline</td><td><a href="#neuromorphic-event-driven">2.4</a></td></tr>
 <tr><td>Neuromorphic equals analog</td><td>TrueNorth and Loihi are digital; BrainScaleS is mixed-signal</td><td><a href="#neuromorphic-event-driven">2.4</a>, <a href="#hardware-execution-models">12</a></td></tr>
 <tr><td>Asynchronous equals analog; digital equals synchronous</td><td>The clocking axis and the signal-domain axis are independent design choices</td><td><a href="#neuromorphic-event-driven">2.4</a>, <a href="#time-vocabulary">4.1</a>, <a href="#hardware-execution-models">12</a></td></tr>
@@ -426,17 +825,17 @@ steps. In this sense \(a^l\) is static and \(u_i^l[t]\) is persistent. A state a
 both carry a temporal index, but a state is read continuously across steps while an event
 is a punctual occurrence at one of them.</p>
 
-<p>Figure 3 sets the ANN unit and the SNN unit side by side against the biological neuron
+<p>Figure 5 sets the ANN unit and the SNN unit side by side against the biological neuron
 both abstractions simplify, so that what each one retains, in what form, and what it
 discards can be compared property by property rather than asserted in prose alone.</p>
 
-<figure class="pfig l-body" id="figure-3">
+<figure class="pfig l-body" id="figure-5">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1270 880" role="img" aria-label="A biological neuron beside two abstractions of it, an ANN unit and an SNN unit, with a property strip stating which of represented value, persistent state, time, and discrete events each abstraction retains and in what form">
 <defs>
-<marker id="f3arr" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
-<marker id="f3arrblue" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6B8CBE"/></marker>
-<marker id="f3arrgold" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#C9A34E"/></marker>
-<clipPath id="f3somaclip"><ellipse cx="140" cy="185" rx="46" ry="38"/></clipPath>
+<marker id="f5arr" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+<marker id="f5arrblue" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6B8CBE"/></marker>
+<marker id="f5arrgold" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#C9A34E"/></marker>
+<clipPath id="f5somaclip"><ellipse cx="140" cy="185" rx="46" ry="38"/></clipPath>
 </defs>
 
 <!-- panel separators -->
@@ -459,32 +858,32 @@ discards can be compared property by property rather than asserted in prose alon
 <circle cx="36" cy="83" r="5" fill="#D63A2F"/>
 <circle cx="16" cy="164" r="5" fill="#D63A2F"/>
 <circle cx="30" cy="272" r="5" fill="#D63A2F"/>
-<line x1="62" y1="126" x2="80" y2="136" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<line x1="50" y1="182" x2="70" y2="184" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<line x1="66" y1="240" x2="84" y2="230" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<rect x="94" y="185" width="92" height="38" fill="#8fbfef" clip-path="url(#f3somaclip)"/>
+<line x1="62" y1="126" x2="80" y2="136" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<line x1="50" y1="182" x2="70" y2="184" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<line x1="66" y1="240" x2="84" y2="230" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<rect x="94" y="185" width="92" height="38" fill="#8fbfef" clip-path="url(#f5somaclip)"/>
 <ellipse cx="140" cy="185" rx="46" ry="38" fill="none" stroke="#6B8CBE" stroke-width="3"/>
 <circle cx="140" cy="196" r="11" fill="#6B8CBE" opacity="0.45"/>
 <text x="140" y="174" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan>)</text>
 <path d="M186,185 C 226,185 236,166 282,166 C 330,166 338,204 384,204 C 414,204 428,196 446,190" fill="none" stroke="#6B8CBE" stroke-width="4"/>
-<line x1="250" y1="167" x2="278" y2="166" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<line x1="398" y1="201" x2="424" y2="197" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+<line x1="250" y1="167" x2="278" y2="166" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<line x1="398" y1="201" x2="424" y2="197" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
 <path d="M446,190 L476,168 M446,190 L482,190 M446,190 L476,212" fill="none" stroke="#6B8CBE" stroke-width="3.4"/>
 <circle cx="482" cy="165" r="9" fill="#D63A2F"/>
 <circle cx="488" cy="190" r="9" fill="#D63A2F"/>
 <circle cx="482" cy="215" r="9" fill="#D63A2F"/>
 <path d="M512,146 C 532,170 532,210 512,234" fill="none" stroke="#6AA168" stroke-width="3.4"/>
-<g class="f3-hot"><title>Dendrites collect input from many upstream cells. Each arriving spike nudges the potential held in the soma.</title>
-<rect class="f3-hl" x="6" y="64" width="112" height="230" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>Dendrites collect input from many upstream cells. Each arriving spike nudges the potential held in the soma.</title>
+<rect class="f5-hl" x="6" y="64" width="112" height="230" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="6" y="64" width="112" height="230" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The soma holds the membrane potential, a state that persists between inputs and evolves continuously in physical time.</title>
-<rect class="f3-hl" x="94" y="144" width="96" height="84" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The soma holds the membrane potential, a state that persists between inputs and evolves continuously in physical time.</title>
+<rect class="f5-hl" x="94" y="144" width="96" height="84" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="94" y="144" width="96" height="84" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>Once the threshold is crossed, the action potential travels down the axon at full amplitude. Its size carries no information, only its timing does.</title>
-<rect class="f3-hl" x="200" y="150" width="236" height="80" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>Once the threshold is crossed, the action potential travels down the axon at full amplitude. Its size carries no information, only its timing does.</title>
+<rect class="f5-hl" x="200" y="150" width="236" height="80" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="200" y="150" width="236" height="80" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>At the synapse the arriving spike acts on the next cell. Communication between neurons is an event, not a continuous number.</title>
-<rect class="f3-hl" x="440" y="144" width="110" height="96" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>At the synapse the arriving spike acts on the next cell. Communication between neurons is an event, not a continuous number.</title>
+<rect class="f5-hl" x="440" y="144" width="110" height="96" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="440" y="144" width="110" height="96" fill="#000" opacity="0" pointer-events="all"/></g>
 </g>
 <text x="65" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Dendrites</text>
@@ -507,12 +906,12 @@ discards can be compared property by property rather than asserted in prose alon
 <text x="536" y="264" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i3</tspan></text>
 <circle cx="612" cy="200" r="34" fill="#DBE6F6" stroke="#6B8CBE" stroke-width="2.6"/>
 <text x="612" y="213" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:34px" fill="#000">&#931;</text>
-<line x1="646" y1="200" x2="674" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f3arr)"/>
+<line x1="646" y1="200" x2="674" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f5arr)"/>
 <rect x="678" y="160" width="84" height="80" rx="10" fill="#D8EFD3" stroke="#6AA168" stroke-width="2.6"/>
 <line x1="688" y1="222" x2="752" y2="222" stroke="#555" stroke-width="1.8"/>
 <line x1="712" y1="232" x2="712" y2="170" stroke="#555" stroke-width="1.8"/>
 <path d="M688,222 H712 L750,178" fill="none" stroke="#6AA168" stroke-width="3.4"/>
-<line x1="762" y1="200" x2="790" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f3arr)"/>
+<line x1="762" y1="200" x2="790" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f5arr)"/>
 <text x="798" y="209" style="font-family:Arial,Helvetica,sans-serif;font-size:24px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-9" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:16px">l</tspan></text>
 <text x="478" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Inputs</text>
 <text x="600" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Weighted sum</text>
@@ -532,17 +931,17 @@ discards can be compared property by property rather than asserted in prose alon
 <text x="972" y="264" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">i3</tspan></text>
 <circle cx="1036" cy="200" r="34" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
 <text x="1036" y="208" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>]</text>
-<path d="M1050,168 C 1066,132 1006,132 1024,166" fill="none" stroke="#6B8CBE" stroke-width="2.2" marker-end="url(#f3arrblue)"/>
+<path d="M1050,168 C 1066,132 1006,132 1024,166" fill="none" stroke="#6B8CBE" stroke-width="2.2" marker-end="url(#f5arrblue)"/>
 <text x="1036" y="126" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>&#8722;1]</text>
-<line x1="1070" y1="200" x2="1096" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f3arr)"/>
+<line x1="1070" y1="200" x2="1096" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f5arr)"/>
 <rect x="1100" y="160" width="84" height="80" rx="10" fill="#FFDDA6" stroke="#C9A34E" stroke-width="2.6"/>
 <line x1="1110" y1="224" x2="1174" y2="224" stroke="#555" stroke-width="1.8"/>
 <line x1="1142" y1="232" x2="1142" y2="170" stroke="#555" stroke-width="1.8"/>
 <path d="M1110,224 H1142 V180 H1174" fill="none" stroke="#D63A2F" stroke-width="3.4"/>
 <text x="1142" y="150" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:22px" fill="#000">&#952;</text>
-<line x1="1184" y1="200" x2="1208" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f3arr)"/>
+<line x1="1184" y1="200" x2="1208" y2="200" stroke="#000" stroke-width="2.8" marker-end="url(#f5arr)"/>
 <text x="1214" y="208" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>]</text>
-<path d="M1142,240 V264 H1036 V240" fill="none" stroke="#C9A34E" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f3arrgold)"/>
+<path d="M1142,240 V264 H1036 V240" fill="none" stroke="#C9A34E" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#f5arrgold)"/>
 <text x="1089" y="280" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset</text>
 <text x="914" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">Event inputs</text>
 <text x="1036" y="300" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000">State</text>
@@ -551,8 +950,8 @@ discards can be compared property by property rather than asserted in prose alon
 
 <!-- panel 1, row B: continuous potential and action potentials -->
 <text x="34" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Membrane potential <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">V</tspan>(<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#964;</tspan>), continuous</text>
-<line x1="44" y1="494" x2="44" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<line x1="44" y1="490" x2="402" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+<line x1="44" y1="494" x2="44" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<line x1="44" y1="490" x2="402" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
 <text x="408" y="498" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#964;</text>
 <line x1="44" y1="396" x2="378" y2="396" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
 <text x="386" y="404" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">&#952;</text>
@@ -563,7 +962,7 @@ discards can be compared property by property rather than asserted in prose alon
 
 <!-- panel 2, row B: one static value -->
 <text x="454" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Activation value <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-7" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:13px">l</tspan><tspan dy="7">, static</tspan></text>
-<line x1="470" y1="494" x2="470" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+<line x1="470" y1="494" x2="470" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
 <line x1="462" y1="490" x2="566" y2="490" stroke="#000" stroke-width="2.2"/>
 <rect x="500" y="416" width="44" height="74" fill="#6AA168"/>
 <text x="522" y="404" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-8" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:14px">l</tspan></text>
@@ -574,8 +973,8 @@ discards can be compared property by property rather than asserted in prose alon
 
 <!-- panel 3, row B: discrete state trajectory and events -->
 <text x="874" y="344" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">Membrane state <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>], one value per step</text>
-<line x1="884" y1="494" x2="884" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
-<line x1="884" y1="490" x2="1238" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f3arr)"/>
+<line x1="884" y1="494" x2="884" y2="356" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+<line x1="884" y1="490" x2="1238" y2="490" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
 <text x="1246" y="498" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:24px" fill="#000">t</text>
 <path d="M920,487 V493 M948,487 V493 M976,487 V493 M1004,487 V493 M1032,487 V493 M1060,487 V493 M1088,487 V493 M1116,487 V493 M1144,487 V493 M1172,487 V493 M1200,487 V493 M1228,487 V493" stroke="#000" stroke-width="1.6"/>
 <line x1="884" y1="396" x2="1214" y2="396" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
@@ -590,9 +989,9 @@ discards can be compared property by property rather than asserted in prose alon
 <!-- property strip: what each abstraction retains -->
 <text x="635" y="604" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">What each abstraction retains, property by property</text>
 
-<g class="f3-hot"><title>The biological cell carries all four properties at once. Its potential evolves continuously, its output is an all or nothing event, and both are indexed by physical time.</title>
+<g class="f5-hot"><title>The biological cell carries all four properties at once. Its potential evolves continuously, its output is an all or nothing event, and both are indexed by physical time.</title>
 <rect x="20" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
-<rect class="f3-hl" x="20" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect class="f5-hl" x="20" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
 <rect x="36" y="641" width="14" height="14" fill="#6AA168"/>
 <text x="60" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
 <text x="132" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">encoded in spike rate or timing</text>
@@ -607,9 +1006,9 @@ discards can be compared property by property rather than asserted in prose alon
 <text x="132" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">action potentials</text>
 <rect x="20" y="620" width="390" height="196" fill="#000" opacity="0" pointer-events="all"/></g>
 
-<g class="f3-hot"><title>The ANN unit retains the weighted aggregation and a represented value. Within one inference evaluation nothing persists and nothing is scheduled, so the value is complete as it stands.</title>
+<g class="f5-hot"><title>The ANN unit retains the weighted aggregation and a represented value. Within one inference evaluation nothing persists and nothing is scheduled, so the value is complete as it stands.</title>
 <rect x="440" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
-<rect class="f3-hl" x="440" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect class="f5-hl" x="440" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
 <rect x="456" y="641" width="14" height="14" fill="#6AA168"/>
 <text x="480" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
 <text x="552" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">real number <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="-7" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:12px">l</tspan><tspan dy="7">, one per evaluation</tspan></text>
@@ -624,9 +1023,9 @@ discards can be compared property by property rather than asserted in prose alon
 <text x="552" y="780" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">none, the output is a value</text>
 <rect x="440" y="620" width="390" height="196" fill="#000" opacity="0" pointer-events="all"/></g>
 
-<g class="f3-hot"><title>The SNN unit retains a simplified state, an algorithmic step index, and a binary event. The state is a one-variable summary of the membrane, not a biophysical model.</title>
+<g class="f5-hot"><title>The SNN unit retains a simplified state, an algorithmic step index, and a binary event. The state is a one-variable summary of the membrane, not a biophysical model.</title>
 <rect x="860" y="620" width="390" height="196" rx="10" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/>
-<rect class="f3-hl" x="860" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
+<rect class="f5-hl" x="860" y="620" width="390" height="196" rx="10" fill="#D63A2F" opacity="0"/>
 <rect x="876" y="641" width="14" height="14" fill="#6AA168"/>
 <text x="900" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Value</text>
 <text x="972" y="654" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">decoded from <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] over steps</text>
@@ -649,42 +1048,42 @@ discards can be compared property by property rather than asserted in prose alon
 <text x="1250" y="853" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-style:italic" fill="#555">Conceptual sketch. No axis carries a measured quantity.</text>
 
 <!-- hover regions over the drawings and traces -->
-<g class="f3-hot"><title>The cell fires only once the potential reaches the threshold. Below it the neuron integrates silently and emits nothing at all.</title>
-<rect class="f3-hl" x="44" y="382" width="336" height="28" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The cell fires only once the potential reaches the threshold. Below it the neuron integrates silently and emits nothing at all.</title>
+<rect class="f5-hl" x="44" y="382" width="336" height="28" fill="#D63A2F" opacity="0"/>
 <rect x="44" y="382" width="336" height="28" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>Every tick is one identical spike. The information sits in when the ticks occur and how many of them there are, never in how large they are.</title>
-<rect class="f3-hl" x="120" y="498" width="200" height="36" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>Every tick is one identical spike. The information sits in when the ticks occur and how many of them there are, never in how large they are.</title>
+<rect class="f5-hl" x="120" y="498" width="200" height="36" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="120" y="498" width="200" height="36" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The weighted sum is the aggregation step that both abstractions retain. In the ANN unit every input is consumed at once within a single evaluation.</title>
-<rect class="f3-hl" x="576" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The weighted sum is the aggregation step that both abstractions retain. In the ANN unit every input is consumed at once within a single evaluation.</title>
+<rect class="f5-hl" x="576" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
 <rect x="576" y="164" width="72" height="72" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The nonlinearity is a static map. The same sum always produces the same output within one evaluation, because no state is read from a previous one.</title>
-<rect class="f3-hl" x="678" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The nonlinearity is a static map. The same sum always produces the same output within one evaluation, because no state is read from a previous one.</title>
+<rect class="f5-hl" x="678" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
 <rect x="678" y="160" width="84" height="80" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The output is one real number. It is a complete description of the unit's output for this input, and it carries no step index.</title>
-<rect class="f3-hl" x="792" y="180" width="44" height="40" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The output is one real number. It is a complete description of the unit's output for this input, and it carries no step index.</title>
+<rect class="f5-hl" x="792" y="180" width="44" height="40" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="792" y="180" width="44" height="40" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>One evaluation yields one value. No time axis is drawn here because the value is static within the evaluation, not because anything is missing from it.</title>
-<rect class="f3-hl" x="462" y="360" width="368" height="134" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>One evaluation yields one value. No time axis is drawn here because the value is static within the evaluation, not because anything is missing from it.</title>
+<rect class="f5-hl" x="462" y="360" width="368" height="134" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="462" y="360" width="368" height="134" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>Inputs arrive as events from upstream units, each weighted by w_ij, rather than as a real-valued vector consumed at once.</title>
-<rect class="f3-hl" x="884" y="136" width="62" height="128" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>Inputs arrive as events from upstream units, each weighted by w_ij, rather than as a real-valued vector consumed at once.</title>
+<rect class="f5-hl" x="884" y="136" width="62" height="128" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="884" y="136" width="62" height="128" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The state u[t] is written at one step and read at the next. It is a single-variable abstraction of the membrane potential.</title>
-<rect class="f3-hl" x="1000" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The state u[t] is written at one step and read at the next. It is a single-variable abstraction of the membrane potential.</title>
+<rect class="f5-hl" x="1000" y="164" width="72" height="72" rx="36" fill="#D63A2F" opacity="0"/>
 <rect x="1000" y="164" width="72" height="72" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The unit emits an event when u[t] reaches the threshold and then applies a reset. Section 3 gives the update rule and the reset variants.</title>
-<rect class="f3-hl" x="1100" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The unit emits an event when u[t] reaches the threshold and then applies a reset. Section 3 gives the update rule and the reset variants.</title>
+<rect class="f5-hl" x="1100" y="160" width="84" height="80" rx="10" fill="#D63A2F" opacity="0"/>
 <rect x="1100" y="160" width="84" height="80" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>The state advances in discrete algorithmic steps t. A step is not a physical duration until a hardware mapping says how long it lasts.</title>
-<rect class="f3-hl" x="884" y="382" width="330" height="28" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>The state advances in discrete algorithmic steps t. A step is not a physical duration until a hardware mapping says how long it lasts.</title>
+<rect class="f5-hl" x="884" y="382" width="330" height="28" fill="#D63A2F" opacity="0"/>
 <rect x="884" y="382" width="330" height="28" fill="#000" opacity="0" pointer-events="all"/></g>
-<g class="f3-hot"><title>Each event z[t] is binary. Information sits in which steps carry an event and in how many of them do.</title>
-<rect class="f3-hl" x="980" y="498" width="170" height="36" rx="8" fill="#D63A2F" opacity="0"/>
+<g class="f5-hot"><title>Each event z[t] is binary. Information sits in which steps carry an event and in how many of them do.</title>
+<rect class="f5-hl" x="980" y="498" width="170" height="36" rx="8" fill="#D63A2F" opacity="0"/>
 <rect x="980" y="498" width="170" height="36" fill="#000" opacity="0" pointer-events="all"/></g>
 </svg></div>
   <div class="fig-hint">Hover any part of a panel for what it represents, and any property box for how that abstraction retains it.</div>
-  <figcaption><b>Figure 3:</b> A biological neuron and two abstractions of it, side by side. The cell integrates dendritic input as a continuous membrane potential over physical time \(\tau\) and emits action potentials. The ANN unit retains the weighted aggregation and a represented value \(a^l\), computed once per inference evaluation. That value is static within the evaluation, and it is a complete description of the unit's output at that input rather than a reduced one. The SNN unit retains a simplified persistent state \(u[t]\), an algorithmic step index \(t\), a threshold \(\theta\) with a reset, and a binary event \(z[t]\). The property strip records, for each abstraction, which of the four properties it retains and in what form. Section 3 (neuron and synapse dynamics) gives the update rule for the SNN unit.</figcaption>
+  <figcaption><b>Figure 5:</b> A biological neuron and two abstractions of it, side by side. The cell integrates dendritic input as a continuous membrane potential over physical time \(\tau\) and emits action potentials. The ANN unit retains the weighted aggregation and a represented value \(a^l\), computed once per inference evaluation. That value is static within the evaluation, and it is a complete description of the unit's output at that input rather than a reduced one. The SNN unit retains a simplified persistent state \(u[t]\), an algorithmic step index \(t\), a threshold \(\theta\) with a reset, and a binary event \(z[t]\). The property strip records, for each abstraction, which of the four properties it retains and in what form. Section 3 (neuron and synapse dynamics) gives the update rule for the SNN unit.</figcaption>
 </figure>
 
 <p>A network becomes spiking when this stateful event transformation is composed across
@@ -694,26 +1093,26 @@ The network therefore communicates a temporally distributed representation, whil
 neuron retains local state between event arrivals or algorithmic steps. The binary case
 shown here is the reference abstraction used for rate-coded conversion. Later sections
 extend it to payload-carrying events, alternative codes, and target-specific execution
-models <d-cite key="cao-2015,zheng-2022"></d-cite>. Figure 4 traces this composition across
+models <d-cite key="cao-2015,zheng-2022"></d-cite>. Figure 6 traces this composition across
 a full layered network, from arriving events through weighted, delayed synapses and local
 state update to a decoder that turns output activity into an application result.</p>
 
-<figure class="pfig l-body" id="figure-4">
+<figure class="pfig l-body" id="figure-6">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 820" role="img" aria-label="A network-level spiking neural network. General event packets, of which the binary spike is one case, enter a layered network through weighted and delayed synapses. Each neuron carries a state across algorithmic steps, compares it with a threshold, resets after firing, and emits output events that remain events until a decoder reads them at the SNN boundary. A lower strip shows one neuron in one algorithmic step. Conceptual illustration.">
 <title>From input events to decoded output in a spiking neural network</title>
 <desc>A general event can carry an address, timestamp, polarity or type, and an optional payload. Binary spikes are one special case. Events traverse weighted and delayed synapses into stateful neurons, which threshold and reset before emitting new events. Output remains an event stream until a decoder turns it into an application result. A neuron below threshold sends nothing, which does not by itself show that hardware skipped work.</desc>
 <defs>
-  <marker id="f4arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
-  <marker id="f4arrred" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
+  <marker id="f6arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+  <marker id="f6arrred" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
 </defs>
 
 <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">A spiking neural network carries events and retains state</text>
 <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Communication is event based. Computation remains stateful between events.</text>
 
 <!-- input event panel -->
-<g class="f4-hot"><title>An event is a packet, not necessarily a one bit spike. Its fields depend on the sensor, software representation, and target hardware.</title>
+<g class="f6-hot"><title>An event is a packet, not necessarily a one bit spike. Its fields depend on the sensor, software representation, and target hardware.</title>
   <rect x="34" y="112" width="252" height="342" rx="12" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-  <rect class="f4-hl" x="34" y="112" width="252" height="342" rx="12" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="34" y="112" width="252" height="342" rx="12" fill="#D63A2F" opacity="0"/>
   <text x="160" y="150" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Input events</text>
   <text x="160" y="179" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">one packet at a time</text>
   <rect x="58" y="198" width="204" height="92" rx="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
@@ -729,7 +1128,7 @@ state update to a decoder that turns output activity into an application result.
   <rect x="34" y="112" width="252" height="342" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
-<line x1="286" y1="283" x2="330" y2="283" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
+<line x1="286" y1="283" x2="330" y2="283" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
 <text x="308" y="263" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">route</text>
 
 <!-- network enclosure -->
@@ -742,31 +1141,31 @@ state update to a decoder that turns output activity into an application result.
 <text x="971" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Output layer</text>
 
 <!-- synapses input to hidden -->
-<g class="f4-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping applies a weight and, where the model specifies one, a delay.</title>
-  <line x1="439" y1="253" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="253" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="331" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="331" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="409" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+<g class="f6-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping applies a weight and, where the model specifies one, a delay.</title>
+  <line x1="439" y1="253" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="253" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="331" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="331" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="409" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
   <text x="540" y="260" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:12px">ij</tspan><tspan dy="-6">, </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">d</tspan><tspan dy="6" style="font-size:12px">ij</tspan></text>
-  <rect class="f4-hl" x="450" y="225" width="178" height="205" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="450" y="225" width="178" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="450" y="225" width="178" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- synapses hidden to output -->
-<g class="f4-hot"><title>The same event semantics must remain meaningful across every edge. A model may specify a delay or payload that a particular route cannot represent directly.</title>
-  <line x1="748" y1="248" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="248" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="326" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="326" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+<g class="f6-hot"><title>The same event semantics must remain meaningful across every edge. A model may specify a delay or payload that a particular route cannot represent directly.</title>
+  <line x1="748" y1="248" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="248" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="326" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="326" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
   <text x="844" y="286" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">weighted, delayed</text>
   <text x="844" y="309" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">event routing</text>
-  <rect class="f4-hl" x="763" y="225" width="160" height="205" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="763" y="225" width="160" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="763" y="225" width="160" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- neuron glyphs -->
-<g class="f4-hot"><title>A neuron is not merely a relay. It retains a state variable between arrivals, then applies its threshold and reset semantics when deciding whether to emit an event.</title>
+<g class="f6-hot"><title>A neuron is not merely a relay. It retains a state variable between arrivals, then applies its threshold and reset semantics when deciding whether to emit an event.</title>
   <g fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6">
     <circle cx="415" cy="253" r="25"/><circle cx="415" cy="331" r="25"/><circle cx="415" cy="409" r="25"/>
     <circle cx="696" cy="248" r="25"/><circle cx="696" cy="326" r="25"/>
@@ -777,22 +1176,22 @@ state update to a decoder that turns output activity into an application result.
     <text x="696" y="255" text-anchor="middle">u</text><text x="696" y="333" text-anchor="middle">u</text>
     <text x="971" y="260" text-anchor="middle">u</text><text x="971" y="338" text-anchor="middle">u</text>
   </g>
-  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f4arr)" stroke-dasharray="7 5"/>
+  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f6arr)" stroke-dasharray="7 5"/>
   <text x="723" y="389" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset after an event</text>
-  <rect class="f4-hl" x="382" y="218" width="622" height="218" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="382" y="218" width="622" height="218" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="382" y="218" width="622" height="218" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- output route and decoder -->
 <text x="696" y="480" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">A neuron below threshold sends nothing on its edges. Whether a target skips that work is a separate question.</text>
-<line x1="996" y1="292" x2="1088" y2="292" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
+<line x1="996" y1="292" x2="1088" y2="292" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
 <path d="M1018,277 V307 M1040,277 V307 M1062,277 V307" stroke="#D63A2F" stroke-width="4.6"/>
 <line x1="1076" y1="102" x2="1076" y2="464" stroke="#8a94a0" stroke-width="2.4"/>
 <text x="1076" y="91" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">SNN boundary</text>
 
-<g class="f4-hot"><title>A decoder makes the network output usable by the application. It can count events, use their first time, combine populations, or apply another platform-specific rule.</title>
+<g class="f6-hot"><title>A decoder makes the network output usable by the application. It can count events, use their first time, combine populations, or apply another platform-specific rule.</title>
   <rect x="1110" y="185" width="286" height="215" rx="12" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-  <rect class="f4-hl" x="1110" y="185" width="286" height="215" rx="12" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="1110" y="185" width="286" height="215" rx="12" fill="#D63A2F" opacity="0"/>
   <text x="1253" y="227" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Decoder</text>
   <text x="1253" y="256" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">events over a time window</text>
   <line x1="1140" y1="286" x2="1364" y2="286" stroke="#000" stroke-width="2.2"/>
@@ -807,7 +1206,7 @@ state update to a decoder that turns output activity into an application result.
 <circle cx="404" cy="532" r="16" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.4"/><text x="404" y="539" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:18px" fill="#000">u</text>
 <text x="432" y="540" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">One network node, one algorithmic step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan></text>
 
-<g class="f4-hot"><title>An SNN alternates event communication and local state updates. The precise order, reset, delay, and payload rules must be specified before a software result can be compared with hardware execution.</title>
+<g class="f6-hot"><title>An SNN alternates event communication and local state updates. The precise order, reset, delay, and payload rules must be specified before a software result can be compared with hardware execution.</title>
   <rect x="79" y="583" width="217" height="112" rx="10" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
   <text x="187" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">1. Arriving events</text>
   <text x="187" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">address, time, payload</text>
@@ -824,17 +1223,17 @@ state update to a decoder that turns output activity into an application result.
   <text x="1031" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">4. Emit and reset</text>
   <text x="1031" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">produce an output event</text>
   <text x="1031" y="678" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">apply the reset rule</text>
-  <line x1="296" y1="639" x2="349" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <line x1="577" y1="639" x2="630" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <line x1="858" y1="639" x2="911" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <path d="M1031,710 C1031,764 187,764 187,710" fill="none" stroke="#6B8CBE" stroke-width="2.8" marker-end="url(#f4arr)"/>
+  <line x1="296" y1="639" x2="349" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <line x1="577" y1="639" x2="630" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <line x1="858" y1="639" x2="911" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <path d="M1031,710 C1031,764 187,764 187,710" fill="none" stroke="#6B8CBE" stroke-width="2.8" marker-end="url(#f6arr)"/>
   <text x="609" y="789" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">the state persists to step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>+1. Output events become input events for downstream neurons.</text>
-  <rect class="f4-hl" x="60" y="560" width="1100" height="240" rx="10" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="60" y="560" width="1100" height="240" rx="10" fill="#D63A2F" opacity="0"/>
   <rect x="60" y="560" width="1100" height="240" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 </svg></div>
   <div class="fig-hint">Hover the event, synapse, neuron, decoder, or operating cycle for the semantic distinction it carries.</div>
-  <figcaption><b>Figure 4:</b> Conceptual illustration of an SNN as a network rather than an isolated spiking unit. Edges transmit events and apply a synaptic weight \(w_{ij}\) and, where a model specifies one, a delay \(d_{ij}\). Each neuron carries a state \(u[t]\) across algorithmic steps, tests it against a threshold, and resets after emitting, and the output remains an event stream until a stated decoder reads it into a label, an estimate, or an action. A general event can carry an address, a time, a polarity or type, and an optional payload \(p\), and the bare binary spike \(z[t]\in\{0,1\}\) is one important special case. A neuron that stays below threshold sends nothing on its edges, which makes communication of only the events that occur possible, but that absence does not by itself establish that a given execution substrate skipped the corresponding work.</figcaption>
+  <figcaption><b>Figure 6:</b> Conceptual illustration of an SNN as a network rather than an isolated spiking unit. Edges transmit events and apply a synaptic weight \(w_{ij}\) and, where a model specifies one, a delay \(d_{ij}\). Each neuron carries a state \(u[t]\) across algorithmic steps, tests it against a threshold, and resets after emitting, and the output remains an event stream until a stated decoder reads it into a label, an estimate, or an action. A general event can carry an address, a time, a polarity or type, and an optional payload \(p\), and the bare binary spike \(z[t]\in\{0,1\}\) is one important special case. A neuron that stays below threshold sends nothing on its edges, which makes communication of only the events that occur possible, but that absence does not by itself establish that a given execution substrate skipped the corresponding work.</figcaption>
 </figure>
 
 <h3 id="dense-sparse-conditional">2.3 Dense Computation, Sparse Activity, and Conditional Execution</h3>
@@ -851,7 +1250,7 @@ compatible with either choice, a fixed schedule that performs the operation ever
 a compiler and hardware combination that inspects the tensor and conditionally skips a
 known zero.</p>
 
-<p>Figure 5 compares the communicated object in the restricted feedforward-inference
+<p>Figure 7 compares the communicated object in the restricted feedforward-inference
 setting used throughout this survey. An ANN layer receives a real-valued activation vector
 and computes a weighted aggregation followed by a static nonlinearity once for an input
 presentation. A binary-event SNN layer receives event occurrences over steps, conditionally
@@ -860,19 +1259,19 @@ postsynaptic state, and emits events after thresholding and reset. This is a com
 computational representations. It is not yet a claim about the physical operations,
 scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d-cite>.</p>
 
-<figure class="pfig l-body" id="figure-5">
-  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1180 760" role="img" aria-labelledby="f5title f5desc">
-    <title id="f5title">Parallel layer computations in an artificial neural network and a spiking neural network</title>
-    <desc id="f5desc">Conceptual illustration. The upper path represents values through a weighted aggregation and static nonlinearity. The lower path represents discrete events, accumulates arriving events into persistent state, applies a threshold and reset, then emits events. A bottom strip separates activity sparsity from conditional execution and states that either representation can be executed densely or conditionally.</desc>
+<figure class="pfig l-body" id="figure-7">
+  <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1180 760" role="img" aria-labelledby="f7title f7desc">
+    <title id="f7title">Parallel layer computations in an artificial neural network and a spiking neural network</title>
+    <desc id="f7desc">Conceptual illustration. The upper path represents values through a weighted aggregation and static nonlinearity. The lower path represents discrete events, accumulates arriving events into persistent state, applies a threshold and reset, then emits events. A bottom strip separates activity sparsity from conditional execution and states that either representation can be executed densely or conditionally.</desc>
     <defs>
-      <marker id="f5arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
-      <marker id="f5arrred" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#D63A2F"/></marker>
+      <marker id="f7arr" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#000"/></marker>
+      <marker id="f7arrred" markerWidth="11" markerHeight="8" refX="10" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#D63A2F"/></marker>
     </defs>
 
     <text x="46" y="44" style="font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700" fill="#000">One layer, two representations</text>
     <text x="46" y="72" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">The representation fixes what is carried between units. The execution schedule is a separate implementation choice.</text>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>An ANN layer carries a real-valued activation. Its value is complete for the current evaluation, even if that value happens to be zero.</title>
       <rect x="42" y="102" width="1096" height="212" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
       <rect x="42" y="102" width="184" height="212" rx="10" fill="#D8EFD3"/>
@@ -883,46 +1282,46 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
       <text x="134" y="200" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000">real-valued</text>
       <text x="134" y="224" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000">activation</text>
       <text x="134" y="258" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:16px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> ∈ ℝ</tspan></text>
-      <rect class="f5-band" x="42" y="102" width="184" height="212" rx="10" fill="#6AA168" opacity="0"/>
+      <rect class="f7-band" x="42" y="102" width="184" height="212" rx="10" fill="#6AA168" opacity="0"/>
       <rect x="42" y="102" width="184" height="212" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>Weighted aggregation combines every input value with its associated weight. This diagram is a computation model, not a promise that every implementation performs a dense MAC for every zero.</title>
       <rect x="260" y="164" width="190" height="102" rx="8" fill="#CDEBCD" stroke="#000" stroke-width="2.2"/>
       <text x="355" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Weighted</text>
       <text x="355" y="220" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">aggregation</text>
       <text x="355" y="247" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000">Σ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:14px">ij</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:14px">j</tspan></text>
-      <rect class="f5-band" x="260" y="164" width="190" height="102" rx="8" fill="#CDEBCD" opacity="0"/>
+      <rect class="f7-band" x="260" y="164" width="190" height="102" rx="8" fill="#CDEBCD" opacity="0"/>
       <rect x="260" y="164" width="190" height="102" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="226" y1="215" x2="260" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+    <line x1="226" y1="215" x2="260" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f7arr)"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>A static nonlinearity maps the aggregated value to the layer output. It does not preserve a state from the preceding algorithmic step.</title>
       <rect x="492" y="164" width="190" height="102" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="587" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Static</text>
       <text x="587" y="220" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">nonlinearity</text>
       <text x="587" y="247" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan> = <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">φ</tspan>(Σ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">wa</tspan>)</text>
-      <rect class="f5-band" x="492" y="164" width="190" height="102" rx="8" fill="#FFDDA6" opacity="0"/>
+      <rect class="f7-band" x="492" y="164" width="190" height="102" rx="8" fill="#FFDDA6" opacity="0"/>
       <rect x="492" y="164" width="190" height="102" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="450" y1="215" x2="492" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+    <line x1="450" y1="215" x2="492" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f7arr)"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>The output is another real-valued activation, available to the next layer during this evaluation.</title>
       <rect x="726" y="164" width="190" height="102" rx="8" fill="#D8EFD3" stroke="#000" stroke-width="2.2"/>
       <text x="821" y="194" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Output value</text>
       <text x="821" y="229" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:26px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">a</tspan><tspan dy="6" style="font-size:16px">i</tspan></text>
-      <rect class="f5-band" x="726" y="164" width="190" height="102" rx="8" fill="#6AA168" opacity="0"/>
+      <rect class="f7-band" x="726" y="164" width="190" height="102" rx="8" fill="#6AA168" opacity="0"/>
       <rect x="726" y="164" width="190" height="102" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="682" y1="215" x2="726" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+    <line x1="682" y1="215" x2="726" y2="215" stroke="#000" stroke-width="2.2" marker-end="url(#f7arr)"/>
     <text x="944" y="202" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">No persistent state</text>
     <text x="944" y="228" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">between steps</text>
     <line x1="916" y1="215" x2="936" y2="215" stroke="#000" stroke-width="2.2"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>An SNN layer carries discrete events. A binary event can signal activity without carrying a real-valued activation on that edge.</title>
       <rect x="42" y="364" width="1096" height="264" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
       <rect x="42" y="364" width="184" height="264" rx="10" fill="#F9D4EA"/>
@@ -937,62 +1336,62 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
       <line x1="132" y1="540" x2="132" y2="522" stroke="#D63A2F" stroke-width="4.6"/>
       <line x1="172" y1="540" x2="172" y2="506" stroke="#D63A2F" stroke-width="4.6"/>
       <text x="134" y="575" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">events across time</text>
-      <rect class="f5-band" x="42" y="364" width="184" height="264" rx="10" fill="#D63A2F" opacity="0"/>
+      <rect class="f7-band" x="42" y="364" width="184" height="264" rx="10" fill="#D63A2F" opacity="0"/>
       <rect x="42" y="364" width="184" height="264" fill="#000" opacity="0" pointer-events="all"/>
     </g>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>For fixed-weight binary or unit-payload events, an arriving event selects a known weight and can be accumulated without a runtime multiplication. This is not true for every event representation.</title>
       <rect x="260" y="438" width="202" height="118" rx="8" fill="#CDEBCD" stroke="#000" stroke-width="2.2"/>
       <text x="361" y="462" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Weighted</text>
       <text x="361" y="486" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">accumulation</text>
       <text x="361" y="516" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#000">Σ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:13px">ij</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif"> </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">z</tspan><tspan dy="6" style="font-size:13px">j</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif">[</tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan><tspan style="font-family:Arial,Helvetica,sans-serif">]</tspan></text>
       <text x="361" y="543" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:15px" fill="#555">arriving events select weights</text>
-      <rect class="f5-band" x="260" y="438" width="202" height="118" rx="8" fill="#CDEBCD" opacity="0"/>
+      <rect class="f7-band" x="260" y="438" width="202" height="118" rx="8" fill="#CDEBCD" opacity="0"/>
       <rect x="260" y="438" width="202" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="226" y1="497" x2="260" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f5arrred)"/>
+    <line x1="226" y1="497" x2="260" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f7arrred)"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>The membrane state persists. At the next timestep it starts from its previous value, rather than recomputing only from the current input events.</title>
       <rect x="502" y="438" width="196" height="118" rx="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6"/>
       <text x="600" y="468" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">Persistent state</text>
       <text x="600" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan><tspan dy="6" style="font-size:14px">i</tspan><tspan dy="-6" style="font-family:Arial,Helvetica,sans-serif">[</tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan><tspan style="font-family:Arial,Helvetica,sans-serif">−1] + current</tspan></text>
-      <path d="M552,536 C538,590 661,590 648,536" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f5arr)"/>
+      <path d="M552,536 C538,590 661,590 648,536" fill="none" stroke="#000" stroke-width="2.2" marker-end="url(#f7arr)"/>
       <text x="600" y="606" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">retained to the next step</text>
-      <rect class="f5-band" x="502" y="438" width="196" height="118" rx="8" fill="#6B8CBE" opacity="0"/>
+      <rect class="f7-band" x="502" y="438" width="196" height="118" rx="8" fill="#6B8CBE" opacity="0"/>
       <rect x="502" y="438" width="196" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="462" y1="497" x2="502" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f5arrred)"/>
+    <line x1="462" y1="497" x2="502" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f7arrred)"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>Thresholding converts state into an output event. The comparison is made on the pre-reset state at this step, and only then is the reset rule applied.</title>
       <rect x="738" y="438" width="156" height="118" rx="8" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
       <text x="816" y="476" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Threshold</text>
       <text x="816" y="510" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">&#361;</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>] ≥ <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">θ</tspan> ?</text>
       <text x="816" y="538" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">on the pre-reset state</text>
-      <rect class="f5-band" x="738" y="438" width="156" height="118" rx="8" fill="#FFDDA6" opacity="0"/>
+      <rect class="f7-band" x="738" y="438" width="156" height="118" rx="8" fill="#FFDDA6" opacity="0"/>
       <rect x="738" y="438" width="156" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="698" y1="497" x2="738" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f5arrred)"/>
+    <line x1="698" y1="497" x2="738" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f7arrred)"/>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>Reset modifies the state after an emitted event. Whether it resets to a value or subtracts threshold is a semantic choice that must survive the software and hardware route.</title>
       <rect x="932" y="438" width="166" height="118" rx="8" fill="#F9D4EA" stroke="#000" stroke-width="2.2"/>
       <text x="1015" y="476" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700" fill="#000">Reset</text>
       <text x="1015" y="510" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">u</tspan> ← reset rule</text>
       <text x="1015" y="535" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">after an event</text>
-      <rect class="f5-band" x="932" y="438" width="166" height="118" rx="8" fill="#F9D4EA" opacity="0"/>
+      <rect class="f7-band" x="932" y="438" width="166" height="118" rx="8" fill="#F9D4EA" opacity="0"/>
       <rect x="932" y="438" width="166" height="118" fill="#000" opacity="0" pointer-events="all"/>
     </g>
-    <line x1="894" y1="497" x2="932" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f5arrred)"/>
-    <line x1="816" y1="556" x2="816" y2="584" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f5arrred)"/>
+    <line x1="894" y1="497" x2="932" y2="497" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f7arrred)"/>
+    <line x1="816" y1="556" x2="816" y2="584" stroke="#D63A2F" stroke-width="2.6" marker-end="url(#f7arrred)"/>
     <line x1="802" y1="592" x2="830" y2="592" stroke="#000" stroke-width="1.8"/>
     <line x1="808" y1="592" x2="808" y2="572" stroke="#D63A2F" stroke-width="4.6"/>
     <line x1="824" y1="592" x2="824" y2="563" stroke="#D63A2F" stroke-width="4.6"/>
     <text x="850" y="598" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">emitted events</text>
 
-    <g class="f5-hot">
+    <g class="f7-hot">
       <title>Activity sparsity is a property of the event stream. Conditional execution is a property of a particular accelerator, runtime, and mapping. One does not establish the other, and a dense tensor can also be executed with zero skipping while an event representation can be simulated densely.</title>
       <rect x="42" y="666" width="1096" height="58" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
       <rect x="42" y="666" width="250" height="58" rx="8" fill="#F9D4EA"/>
@@ -1008,12 +1407,12 @@ scheduling policy, or energy of a particular target <d-cite key="zheng-2022"></d
       <rect x="870" y="666" width="268" height="58" rx="8" fill="#d5dbe2"/>
       <text x="888" y="690" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">Deployment check</text>
       <text x="888" y="713" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">verify the route that ran</text>
-      <rect class="f5-band" x="42" y="666" width="1096" height="58" rx="8" fill="#D63A2F" opacity="0"/>
+      <rect class="f7-band" x="42" y="666" width="1096" height="58" rx="8" fill="#D63A2F" opacity="0"/>
       <rect x="42" y="666" width="1096" height="58" fill="#000" opacity="0" pointer-events="all"/>
     </g>
   </svg></div>
   <div class="fig-hint">Hover a block for the represented quantity, state transition, or execution claim it separates.</div>
-  <figcaption><b>Figure 5:</b> Conceptual illustration of one layer under the two representations of Section 2.1. In the ANN path, values enter a weighted aggregation, a static nonlinearity is evaluated once for the input presentation, and values leave the layer with no state carried to a later step. In the SNN path, events trigger weighted accumulation into a persistent state \(u_i[t]\), the state is tested against the threshold \(\theta\), the reset rule is applied after an emission, and events leave the layer. For a binary or unit-payload event with a fixed synaptic weight, an arriving event selects and accumulates a known weight without a runtime multiplication; a graded payload may instead require a multiplication or another transformed operation. The bottom strip keeps representation, activity sparsity, and conditional execution apart. A dense tensor can be executed with zero skipping and an event representation can be simulated densely, so few events at a step neither prove nor require that a substrate skipped work, and only a measurement on that substrate establishes it.</figcaption>
+  <figcaption><b>Figure 7:</b> Conceptual illustration of one layer under the two representations of Section 2.2. In the ANN path, values enter a weighted aggregation, a static nonlinearity is evaluated once for the input presentation, and values leave the layer with no state carried to a later step. In the SNN path, events trigger weighted accumulation into a persistent state \(u_i[t]\), the state is tested against the threshold \(\theta\), the reset rule is applied after an emission, and events leave the layer. For a binary or unit-payload event with a fixed synaptic weight, an arriving event selects and accumulates a known weight without a runtime multiplication; a graded payload may instead require a multiplication or another transformed operation. The bottom strip keeps representation, activity sparsity, and conditional execution apart. A dense tensor can be executed with zero skipping and an event representation can be simulated densely, so few events at a step neither prove nor require that a substrate skipped work, and only a measurement on that substrate establishes it.</figcaption>
 </figure>
 
 <p>The absence of an event and the numerical value zero are different representational

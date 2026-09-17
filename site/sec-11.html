@@ -44,10 +44,10 @@
 </table>
 </div>
 
-<p>Figure 22 renders Table 20's edges as a single process-ordered chain, from a training recipe through serialization, NIR, and a runtime to two hardware endpoints, so that a reader can see where a native or physical edge sits next to a blocked or undocumented one rather than reading each edge's status in isolation.</p>
+<p>Figure 24 renders Table 20's edges as a single process-ordered chain, from a training recipe through serialization, NIR, and a runtime to two hardware endpoints, so that a reader can see where a native or physical edge sits next to a blocked or undocumented one rather than reading each edge's status in isolation.</p>
 
-<figure class="pfig l-body" id="figure-22">
-<figcaption><b>Figure 22:</b> Eleven typed software and compilation edges, all evaluated against the same threshold-and-reset field, arranged in process order from a training recipe through serialization, NIR, and a runtime to two physical or intended hardware endpoints. Each arrow carries its own capability class and route state rather than one inherited from the framework or chip it touches; an edge can be native while the chain around it remains blocked, and an edge can be physical while a neighboring edge to the same chip stays undocumented.</figcaption>
+<figure class="pfig l-body" id="figure-24">
+<figcaption><b>Figure 24:</b> Eleven typed software and compilation edges, all evaluated against the same threshold-and-reset field, arranged in process order from a training recipe through serialization, NIR, and a runtime to two physical or intended hardware endpoints. Each arrow carries its own capability class and route state rather than one inherited from the framework or chip it touches; an edge can be native while the chain around it remains blocked, and an edge can be physical while a neighboring edge to the same chip stays undocumented.</figcaption>
 </figure>
 
 <p>Table 20's two Sinabs and NIR edges are not a symmetric round trip. The Sinabs-to-NIR exporter turns a subtractive reset into NIR's fixed-zero default because it does not record the Sinabs <code>reset_fn</code>, and the NIR-to-Sinabs importer turns that same fixed-zero field back into Sinabs's subtractive default because it does not pass the node's \(v_{\mathrm{reset}}\); a network that leaves through NIR and returns lands on its native subtractive reset by coincidence of two silent conversions in opposite directions, not by either edge preserving the field. The official NIR-to-Speck notebook's physical accuracy result on a Speck 2F module proves that this route runs on physical hardware, not that it preserves reset semantics <d-cite key="sinabs-nir-to-speck-tutorial"></d-cite>.</p>

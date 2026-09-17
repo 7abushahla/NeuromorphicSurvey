@@ -1,3 +1,3 @@
-#figure-6 .f6-hot { cursor: help; }
-#figure-6 .f6-band { transition: opacity 0.15s; }
-#figure-6 .f6-hot:hover .f6-band { opacity: 0.08; }
+#figure-8 .f8-hot { cursor: help; }
+#figure-8 .f8-band { transition: opacity 0.15s; }
+#figure-8 .f8-hot:hover .f8-band { opacity: 0.08; }

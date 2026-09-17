@@ -1,6 +1,6 @@
-#figure-2 { text-align: center; }
-#figure-2 svg { width: 100%; height: auto; }
-#figure-2 .f2-hot { cursor: help; }
-#figure-2 .f2-band { transition: opacity 0.15s; }
-#figure-2 .f2-hot:hover .f2-band { opacity: 0.10; }
-#figure-2 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+#figure-3 { text-align: center; }
+#figure-3 svg { width: 100%; height: auto; }
+#figure-3 .f3-hot { cursor: help; }
+#figure-3 .f3-band { transition: opacity 0.15s; }
+#figure-3 .f3-hot:hover .f3-band { opacity: 0.10; }
+#figure-3 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

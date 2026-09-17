@@ -1,19 +1,19 @@
-<figure class="pfig l-body" id="figure-4">
+<figure class="pfig l-body" id="figure-6">
   <div style="max-width: 720px; margin: 0 auto;"><svg viewBox="0 0 1440 820" role="img" aria-label="A network-level spiking neural network. General event packets, of which the binary spike is one case, enter a layered network through weighted and delayed synapses. Each neuron carries a state across algorithmic steps, compares it with a threshold, resets after firing, and emits output events that remain events until a decoder reads them at the SNN boundary. A lower strip shows one neuron in one algorithmic step. Conceptual illustration.">
 <title>From input events to decoded output in a spiking neural network</title>
 <desc>A general event can carry an address, timestamp, polarity or type, and an optional payload. Binary spikes are one special case. Events traverse weighted and delayed synapses into stateful neurons, which threshold and reset before emitting new events. Output remains an event stream until a decoder turns it into an application result. A neuron below threshold sends nothing, which does not by itself show that hardware skipped work.</desc>
 <defs>
-  <marker id="f4arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
-  <marker id="f4arrred" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
+  <marker id="f6arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+  <marker id="f6arrred" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
 </defs>
 
 <text x="720" y="40" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">A spiking neural network carries events and retains state</text>
 <text x="720" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px" fill="#555">Communication is event based. Computation remains stateful between events.</text>
 
 <!-- input event panel -->
-<g class="f4-hot"><title>An event is a packet, not necessarily a one bit spike. Its fields depend on the sensor, software representation, and target hardware.</title>
+<g class="f6-hot"><title>An event is a packet, not necessarily a one bit spike. Its fields depend on the sensor, software representation, and target hardware.</title>
   <rect x="34" y="112" width="252" height="342" rx="12" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
-  <rect class="f4-hl" x="34" y="112" width="252" height="342" rx="12" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="34" y="112" width="252" height="342" rx="12" fill="#D63A2F" opacity="0"/>
   <text x="160" y="150" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Input events</text>
   <text x="160" y="179" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">one packet at a time</text>
   <rect x="58" y="198" width="204" height="92" rx="8" fill="#fff" stroke="#6B8CBE" stroke-width="2.2"/>
@@ -29,7 +29,7 @@
   <rect x="34" y="112" width="252" height="342" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
-<line x1="286" y1="283" x2="330" y2="283" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
+<line x1="286" y1="283" x2="330" y2="283" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
 <text x="308" y="263" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">route</text>
 
 <!-- network enclosure -->
@@ -42,31 +42,31 @@
 <text x="971" y="214" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700" fill="#000">Output layer</text>
 
 <!-- synapses input to hidden -->
-<g class="f4-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping applies a weight and, where the model specifies one, a delay.</title>
-  <line x1="439" y1="253" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="253" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="331" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="331" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="439" y1="409" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+<g class="f6-hot"><title>A synapse maps an arriving event to an effect on a destination neuron. The mapping applies a weight and, where the model specifies one, a delay.</title>
+  <line x1="439" y1="253" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="253" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="331" x2="644" y2="248" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="331" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="439" y1="409" x2="644" y2="326" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
   <text x="540" y="260" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">w</tspan><tspan dy="6" style="font-size:12px">ij</tspan><tspan dy="-6">, </tspan><tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">d</tspan><tspan dy="6" style="font-size:12px">ij</tspan></text>
-  <rect class="f4-hl" x="450" y="225" width="178" height="205" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="450" y="225" width="178" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="450" y="225" width="178" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- synapses hidden to output -->
-<g class="f4-hot"><title>The same event semantics must remain meaningful across every edge. A model may specify a delay or payload that a particular route cannot represent directly.</title>
-  <line x1="748" y1="248" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="248" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="326" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
-  <line x1="748" y1="326" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f4arr)"/>
+<g class="f6-hot"><title>The same event semantics must remain meaningful across every edge. A model may specify a delay or payload that a particular route cannot represent directly.</title>
+  <line x1="748" y1="248" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="248" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="326" x2="939" y2="253" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
+  <line x1="748" y1="326" x2="939" y2="331" stroke="#000" stroke-width="2.2" marker-end="url(#f6arr)"/>
   <text x="844" y="286" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">weighted, delayed</text>
   <text x="844" y="309" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round" fill="#000">event routing</text>
-  <rect class="f4-hl" x="763" y="225" width="160" height="205" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="763" y="225" width="160" height="205" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="763" y="225" width="160" height="205" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- neuron glyphs -->
-<g class="f4-hot"><title>A neuron is not merely a relay. It retains a state variable between arrivals, then applies its threshold and reset semantics when deciding whether to emit an event.</title>
+<g class="f6-hot"><title>A neuron is not merely a relay. It retains a state variable between arrivals, then applies its threshold and reset semantics when deciding whether to emit an event.</title>
   <g fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.6">
     <circle cx="415" cy="253" r="25"/><circle cx="415" cy="331" r="25"/><circle cx="415" cy="409" r="25"/>
     <circle cx="696" cy="248" r="25"/><circle cx="696" cy="326" r="25"/>
@@ -77,22 +77,22 @@
     <text x="696" y="255" text-anchor="middle">u</text><text x="696" y="333" text-anchor="middle">u</text>
     <text x="971" y="260" text-anchor="middle">u</text><text x="971" y="338" text-anchor="middle">u</text>
   </g>
-  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f4arr)" stroke-dasharray="7 5"/>
+  <path d="M679,358 C663,380 725,380 711,358" fill="none" stroke="#C9A34E" stroke-width="2.2" marker-end="url(#f6arr)" stroke-dasharray="7 5"/>
   <text x="723" y="389" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">reset after an event</text>
-  <rect class="f4-hl" x="382" y="218" width="622" height="218" rx="8" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="382" y="218" width="622" height="218" rx="8" fill="#D63A2F" opacity="0"/>
   <rect x="382" y="218" width="622" height="218" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 
 <!-- output route and decoder -->
 <text x="696" y="480" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">A neuron below threshold sends nothing on its edges. Whether a target skips that work is a separate question.</text>
-<line x1="996" y1="292" x2="1088" y2="292" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
+<line x1="996" y1="292" x2="1088" y2="292" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
 <path d="M1018,277 V307 M1040,277 V307 M1062,277 V307" stroke="#D63A2F" stroke-width="4.6"/>
 <line x1="1076" y1="102" x2="1076" y2="464" stroke="#8a94a0" stroke-width="2.4"/>
 <text x="1076" y="91" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">SNN boundary</text>
 
-<g class="f4-hot"><title>A decoder makes the network output usable by the application. It can count events, use their first time, combine populations, or apply another platform-specific rule.</title>
+<g class="f6-hot"><title>A decoder makes the network output usable by the application. It can count events, use their first time, combine populations, or apply another platform-specific rule.</title>
   <rect x="1110" y="185" width="286" height="215" rx="12" fill="#FFDDA6" stroke="#000" stroke-width="2.2"/>
-  <rect class="f4-hl" x="1110" y="185" width="286" height="215" rx="12" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="1110" y="185" width="286" height="215" rx="12" fill="#D63A2F" opacity="0"/>
   <text x="1253" y="227" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700" fill="#000">Decoder</text>
   <text x="1253" y="256" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">events over a time window</text>
   <line x1="1140" y1="286" x2="1364" y2="286" stroke="#000" stroke-width="2.2"/>
@@ -107,7 +107,7 @@
 <circle cx="404" cy="532" r="16" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.4"/><text x="404" y="539" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic;font-size:18px" fill="#000">u</text>
 <text x="432" y="540" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">One network node, one algorithmic step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan></text>
 
-<g class="f4-hot"><title>An SNN alternates event communication and local state updates. The precise order, reset, delay, and payload rules must be specified before a software result can be compared with hardware execution.</title>
+<g class="f6-hot"><title>An SNN alternates event communication and local state updates. The precise order, reset, delay, and payload rules must be specified before a software result can be compared with hardware execution.</title>
   <rect x="79" y="583" width="217" height="112" rx="10" fill="#d5dbe2" stroke="#000" stroke-width="2.2"/>
   <text x="187" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">1. Arriving events</text>
   <text x="187" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">address, time, payload</text>
@@ -124,15 +124,15 @@
   <text x="1031" y="620" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700" fill="#000">4. Emit and reset</text>
   <text x="1031" y="650" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">produce an output event</text>
   <text x="1031" y="678" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#333">apply the reset rule</text>
-  <line x1="296" y1="639" x2="349" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <line x1="577" y1="639" x2="630" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <line x1="858" y1="639" x2="911" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f4arr)"/>
-  <path d="M1031,710 C1031,764 187,764 187,710" fill="none" stroke="#6B8CBE" stroke-width="2.8" marker-end="url(#f4arr)"/>
+  <line x1="296" y1="639" x2="349" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <line x1="577" y1="639" x2="630" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <line x1="858" y1="639" x2="911" y2="639" stroke="#000" stroke-width="2.8" marker-end="url(#f6arr)"/>
+  <path d="M1031,710 C1031,764 187,764 187,710" fill="none" stroke="#6B8CBE" stroke-width="2.8" marker-end="url(#f6arr)"/>
   <text x="609" y="789" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">the state persists to step <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">t</tspan>+1. Output events become input events for downstream neurons.</text>
-  <rect class="f4-hl" x="60" y="560" width="1100" height="240" rx="10" fill="#D63A2F" opacity="0"/>
+  <rect class="f6-hl" x="60" y="560" width="1100" height="240" rx="10" fill="#D63A2F" opacity="0"/>
   <rect x="60" y="560" width="1100" height="240" fill="#000" opacity="0" pointer-events="all"/>
 </g>
 </svg></div>
   <div class="fig-hint">Hover the event, synapse, neuron, decoder, or operating cycle for the semantic distinction it carries.</div>
-  <figcaption><b>Figure 4:</b> Conceptual illustration of an SNN as a network rather than an isolated spiking unit. Edges transmit events and apply a synaptic weight \(w_{ij}\) and, where a model specifies one, a delay \(d_{ij}\). Each neuron carries a state \(u[t]\) across algorithmic steps, tests it against a threshold, and resets after emitting, and the output remains an event stream until a stated decoder reads it into a label, an estimate, or an action. A general event can carry an address, a time, a polarity or type, and an optional payload \(p\), and the bare binary spike \(z[t]\in\{0,1\}\) is one important special case. A neuron that stays below threshold sends nothing on its edges, which makes communication of only the events that occur possible, but that absence does not by itself establish that a given execution substrate skipped the corresponding work.</figcaption>
+  <figcaption><b>Figure 6:</b> Conceptual illustration of an SNN as a network rather than an isolated spiking unit. Edges transmit events and apply a synaptic weight \(w_{ij}\) and, where a model specifies one, a delay \(d_{ij}\). Each neuron carries a state \(u[t]\) across algorithmic steps, tests it against a threshold, and resets after emitting, and the output remains an event stream until a stated decoder reads it into a label, an estimate, or an action. A general event can carry an address, a time, a polarity or type, and an optional payload \(p\), and the bare binary spike \(z[t]\in\{0,1\}\) is one important special case. A neuron that stays below threshold sends nothing on its edges, which makes communication of only the events that occur possible, but that absence does not by itself establish that a given execution substrate skipped the corresponding work.</figcaption>
 </figure>

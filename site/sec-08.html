@@ -18,8 +18,8 @@ The approximate sign is deliberate. This is an organizational device for exposit
 
 <p>Where in this pipeline finite-time error visibly enters, and how it can grow, shrink, or interact as a signal passes through the stages a real converted network uses, batch normalization folding, average or max pooling, a residual summation, and a non-spiking readout, is a structural question rather than a numeric one; no single measured trace generalizes across architectures, reset rules, and horizons. The following figure gives a conceptual answer.</p>
 
-<figure class="pfig l-body" id="figure-20">
-<figcaption><b>Figure 20:</b> Conceptual map of where the four finite-time error terms named in Section 8.1 enter a converted network's pipeline, and how the mix of terms present at a given layer changes as the signal crosses batch normalization folding, pooling, a residual summation, and the readout stage. The diagram is conceptual, built from the mechanism descriptions in Sections 8.2 through 8.6, not a measured error trace from any single reported experiment. It does not assert that the four terms add linearly, that every architecture accumulates them in the same order, or that the diagram's relative term sizes hold for any specific network, reset rule, or dataset.</figcaption>
+<figure class="pfig l-body" id="figure-22">
+<figcaption><b>Figure 22:</b> Conceptual map of where the four finite-time error terms named in Section 8.1 enter a converted network's pipeline, and how the mix of terms present at a given layer changes as the signal crosses batch normalization folding, pooling, a residual summation, and the readout stage. The diagram is conceptual, built from the mechanism descriptions in Sections 8.2 through 8.6, not a measured error trace from any single reported experiment. It does not assert that the four terms add linearly, that every architecture accumulates them in the same order, or that the diagram's relative term sizes hold for any specific network, reset rule, or dataset.</figcaption>
 </figure>
 
 <h3 id="clipping-discretization">8.2 Clipping and Discretization Error</h3>
