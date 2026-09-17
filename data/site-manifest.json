@@ -77,25 +77,32 @@
       "fragment": "site/sec-10.html"
     },
     {
-      "id": "section-11-software-interchange-and-compilation",
+      "id": "section-11-where-an-snn-runs",
       "kind": "section",
       "display_number": 11,
-      "title": "Software, Interchange, and Compilation",
+      "title": "Where an SNN Runs",
       "fragment": "site/sec-11.html"
     },
     {
-      "id": "section-12-hardware-execution-models",
+      "id": "section-12-software-interchange-and-compilation",
       "kind": "section",
       "display_number": 12,
-      "title": "Hardware Execution Models",
+      "title": "Software, Interchange, and Compilation",
       "fragment": "site/sec-12.html"
     },
     {
-      "id": "section-13-complete-deployment-routes",
+      "id": "section-13-hardware-execution-models",
       "kind": "section",
       "display_number": 13,
-      "title": "Complete Deployment Routes",
+      "title": "Hardware Execution Models",
       "fragment": "site/sec-13.html"
+    },
+    {
+      "id": "section-14-complete-deployment-routes",
+      "kind": "section",
+      "display_number": 14,
+      "title": "Complete Deployment Routes",
+      "fragment": "site/sec-14.html"
     },
     {
       "id": "interactive-deployment-map",
@@ -103,39 +110,39 @@
       "fragment": "site/shell-figure.html"
     },
     {
-      "id": "section-14-deployment-measurement",
-      "kind": "section",
-      "display_number": 14,
-      "title": "Deployment Measurement",
-      "fragment": "site/sec-14.html"
-    },
-    {
-      "id": "section-15-applications-and-deployment-evidence",
+      "id": "section-15-deployment-measurement",
       "kind": "section",
       "display_number": 15,
-      "title": "Applications and Deployment Evidence",
+      "title": "Deployment Measurement",
       "fragment": "site/sec-15.html"
     },
     {
-      "id": "section-16-what-the-evidence-shows",
+      "id": "section-16-applications-and-deployment-evidence",
       "kind": "section",
       "display_number": 16,
-      "title": "What the Evidence Shows",
+      "title": "Applications and Deployment Evidence",
       "fragment": "site/sec-16.html"
     },
     {
-      "id": "section-17-open-problems-and-research-agenda",
+      "id": "section-17-what-the-evidence-shows",
       "kind": "section",
       "display_number": 17,
-      "title": "Open Problems and Research Agenda",
+      "title": "What the Evidence Shows",
       "fragment": "site/sec-17.html"
     },
     {
-      "id": "section-18-researcher-entry-guide-and-conclusion",
+      "id": "section-18-open-problems-and-research-agenda",
       "kind": "section",
       "display_number": 18,
-      "title": "Researcher Entry Guide and Conclusion",
+      "title": "Open Problems and Research Agenda",
       "fragment": "site/sec-18.html"
+    },
+    {
+      "id": "section-19-researcher-entry-guide-and-conclusion",
+      "kind": "section",
+      "display_number": 19,
+      "title": "Researcher Entry Guide and Conclusion",
+      "fragment": "site/sec-19.html"
     },
     {
       "id": "shell-tail",

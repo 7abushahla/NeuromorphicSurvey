@@ -264,16 +264,19 @@ measurement boundary rather than by vendor, making the limits of each reported r
 <p>Sections 2 through 4 define computation, state, neuron and synapse dynamics, temporal semantics,
 codes, and decoding. Sections 5 and 6 introduce the learning fork and bound direct-training detail.
 Sections 7 through 9 derive classical ANN-to-SNN conversion, locate its finite-time errors, and
-organize remedies by intervention. Section 10 defines the deployable SNN contract. Sections 11
-through 13 follow that contract through software, hardware execution models, and complete routes.
-Sections 14 and 15 define measurement before organizing deployment evidence by workload. Sections
-16 through 18 state what the evidence shows, derive open problems from failed contract edges, and
+organize remedies by intervention. Section 10 defines the deployable SNN contract.
+<a href="#where-an-snn-runs">Section 11, Where an SNN Runs,</a> names the three places a spiking
+network executes, a conventional processor, a model of a neuromorphic chip, and neuromorphic
+silicon, and catalogs the software that reaches each. Sections 12
+through 14 follow that contract through software, hardware execution models, and complete routes.
+Sections 15 and 16 define measurement before organizing deployment evidence by workload. Sections
+17 through 19 state what the evidence shows, derive open problems from failed contract edges, and
 provide a researcher entry guide. Figure 1 draws this organization as one path, from the shared
 foundations through the two learning branches to the contract they must both satisfy and the
 common deployment path beyond it.</p>
 
 <figure class="pfig l-body" id="figure-1">
-  <figcaption><b>Figure 1:</b> The survey's architecture. Shared foundations (Sections 2 through 4) feed two learning branches, direct training (Section 6) and ANN-to-SNN conversion (Sections 7 through 9), which converge at the deployable SNN contract (Section 10) and continue along one common path through software and compilation (Section 11), hardware execution (Section 12), complete routes (Section 13), measurement (Section 14), and workload evidence (Section 15) to the findings and open problems of Sections 16 and 17. Conversion receives the greater depth because its correspondence is where most finite-time and reset semantics enter; direct training is drawn as a full branch, not a footnote. <a href="#figure-3">Figure 3</a> draws the field's history as the lineages that meet in the spiking neural network; this figure draws the survey's own path through that history.</figcaption>
+  <figcaption><b>Figure 1:</b> The survey's architecture. Shared foundations (Sections 2 through 4) feed two learning branches, direct training (Section 6) and ANN-to-SNN conversion (Sections 7 through 9), which converge at the deployable SNN contract (Section 10) and continue along one common path through software and compilation (Section 12), hardware execution (Section 13), complete routes (Section 14), measurement (Section 15), and workload evidence (Section 16) to the findings and open problems of Sections 17 and 18. Conversion receives the greater depth because its correspondence is where most finite-time and reset semantics enter; direct training is drawn as a full branch, not a footnote. <a href="#figure-3">Figure 3</a> draws the field's history as the lineages that meet in the spiking neural network; this figure draws the survey's own path through that history.</figcaption>
 </figure>
 
 <p>The next three sections establish the vocabulary that every later deployment claim requires.
