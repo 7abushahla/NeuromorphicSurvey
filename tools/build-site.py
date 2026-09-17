@@ -126,7 +126,9 @@ def main():
     #    Figures never leave the text column: any distill width class wider than l-body
     #    on a figure is replaced, so a figure fragment installed with l-page or l-screen
     #    still renders in line with the prose. Tables keep their own width strategy.
-    parts = [(f, FIG_WIDE.sub(r'\1l-body\2', text)) for f, text in parts]
+    #    The interactive route map (shell-figure.html) is exempt and keeps its page width.
+    parts = [(f, text if f == 'shell-figure.html' else FIG_WIDE.sub(r'\1l-body\2', text))
+             for f, text in parts]
 
     # 3. Section numbers are separated from their titles by an en space, matching the
     #    template, and the stray full stop some fragments carry is dropped.
