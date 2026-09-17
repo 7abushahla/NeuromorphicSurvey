@@ -249,6 +249,110 @@ def check_section_17_population_prose(
     return summary, errors
 
 
+NUMBER_WORDS = {
+    "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+    "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12,
+}
+
+
+def check_section_1_gap_prose(
+    html_text: str, view: dict[str, Any] | None
+) -> tuple[str, list[str]]:
+    """Guard Section 1's gap paragraph against the prior-survey-targets-summary
+    view: 'None of the 37 surveys covers all three targets' must agree with
+    surveys_covering_all_three_buckets (0 renders as 'None'), and 'Seven cover at
+    least one conventional target and two cover at least one chip model' with
+    bucket_survey_counts.conventional and .simulated through a words-to-number
+    map for zero to twelve.
+    """
+    errors: list[str] = []
+    if not isinstance(view, dict):
+        return "", ["prior-survey-targets-summary.json is missing; cannot guard Section 1 prose"]
+    all_three = view.get("surveys_covering_all_three_buckets")
+    survey_total = view.get("survey_total")
+    buckets = view.get("bucket_survey_counts") or {}
+    conventional = buckets.get("conventional")
+    simulated = buckets.get("simulated")
+
+    all_three_match = re.search(
+        r"(\w+) of the (\d+) surveys covers all three targets", html_text
+    )
+    all_three_word: str | None = None
+    all_three_total: int | None = None
+    if all_three_match is None:
+        errors.append(
+            "site/sec-01.html: the gap paragraph's 'None of the N surveys covers all "
+            "three targets' sentence not found"
+        )
+    else:
+        all_three_word = all_three_match.group(1)
+        all_three_total = int(all_three_match.group(2))
+        if all_three_total != survey_total:
+            errors.append(
+                f"site/sec-01.html: 'of the {all_three_total} surveys' does not match "
+                f"the view's survey_total {survey_total}"
+            )
+        if all_three == 0 and all_three_word != "None":
+            errors.append(
+                f"site/sec-01.html: the view counts 0 surveys covering all three "
+                f"buckets but the sentence reads '{all_three_word} of the ...'"
+            )
+        elif all_three != 0 and all_three_word == "None":
+            errors.append(
+                f"site/sec-01.html: the sentence says 'None' but the view counts "
+                f"{all_three} survey(s) covering all three buckets"
+            )
+        elif all_three != 0 and NUMBER_WORDS.get(all_three_word.lower()) != all_three:
+            errors.append(
+                f"site/sec-01.html: '{all_three_word} of the ...' does not match the "
+                f"view's surveys_covering_all_three_buckets {all_three}"
+            )
+
+    bucket_match = re.search(
+        r"(\w+) cover at least one conventional target and (\w+) cover\s+at least "
+        r"one (?:simulated )?chip model",
+        html_text,
+    )
+    prose_conventional: int | None = None
+    prose_simulated: int | None = None
+    if bucket_match is None:
+        errors.append(
+            "site/sec-01.html: the gap paragraph's 'N cover at least one conventional "
+            "target and M cover at least one chip model' sentence not found"
+        )
+    else:
+        prose_conventional = NUMBER_WORDS.get(bucket_match.group(1).lower())
+        prose_simulated = NUMBER_WORDS.get(bucket_match.group(2).lower())
+        if prose_conventional is None or prose_simulated is None:
+            errors.append(
+                "site/sec-01.html: the gap paragraph's bucket counts are not words "
+                f"from zero to twelve: {bucket_match.group(1)!r}, {bucket_match.group(2)!r}"
+            )
+        else:
+            if prose_conventional != conventional:
+                errors.append(
+                    f"site/sec-01.html: '{bucket_match.group(1)} cover at least one "
+                    f"conventional target' does not match the view's "
+                    f"bucket_survey_counts.conventional {conventional}"
+                )
+            if prose_simulated != simulated:
+                errors.append(
+                    f"site/sec-01.html: '{bucket_match.group(2)} cover at least one chip "
+                    f"model' does not match the view's bucket_survey_counts.simulated "
+                    f"{simulated}"
+                )
+
+    summary = (
+        "check-counts: sec-01.html gap paragraph "
+        f"'{all_three_word} of the {all_three_total} surveys covers all three targets' "
+        f"and bucket words conventional={prose_conventional} simulated={prose_simulated} "
+        f"compared against prior-survey-targets-summary "
+        f"surveys_covering_all_three_buckets={all_three} survey_total={survey_total} "
+        f"bucket_survey_counts conventional={conventional} simulated={simulated}"
+    )
+    return summary, errors
+
+
 def validate_counts(
     papers_document: object,
     surveys_document: object,
@@ -282,8 +386,12 @@ def main() -> int:
     parser.add_argument(
         "--section-17", type=Path, default=ROOT / "site/sec-17.html"
     )
+    parser.add_argument(
+        "--section-1", type=Path, default=ROOT / "site/sec-01.html"
+    )
     args = parser.parse_args()
     prose_summary = ""
+    gap_summary = ""
     try:
         papers = load_json(args.papers)
         surveys = load_json(args.surveys)
@@ -296,11 +404,15 @@ def main() -> int:
             args.section_17.read_text(), generated.get("evidence-population-summary.json")
         )
         errors.extend(prose_errors)
+        gap_summary, gap_errors = check_section_1_gap_prose(
+            args.section_1.read_text(), generated.get("prior-survey-targets-summary.json")
+        )
+        errors.extend(gap_errors)
     except ValueError as error:
         errors = [str(error)]
         summary = {}
     except OSError as error:
-        errors = [f"cannot read {args.section_17}: {error}"]
+        errors = [f"cannot read {args.section_17} or {args.section_1}: {error}"]
         summary = {}
     if errors:
         print("check-counts: FAILED", file=sys.stderr)
@@ -329,6 +441,7 @@ def main() -> int:
         f"{len(generated)} generated artifact(s), no stale unqualified population headlines"
     )
     print(prose_summary)
+    print(gap_summary)
     return 0
 
 

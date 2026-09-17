@@ -121,6 +121,87 @@ def main() -> int:
         raise AssertionError("canonicalization depends on structured-input row order")
     checks += 1
 
+    best_read_fixture = [
+        {
+            "id": "shared-read",
+            "title": "One Work Read Twice",
+            "authors": "C. Reader",
+            "year": 2022,
+            "doi": "10.1000/shared.read",
+            "url": "https://doi.org/10.1000/shared.read",
+            "retrieval_status": "metadata_only",
+            "verification_status": "provisional",
+            "retrieved_on": "2026-09-16",
+            "locators": ["assets/bibliography/references.bib entry shared-read"],
+            "_origin": "bibliography-migration-sources.json",
+            "_rank": 4,
+            "_index": 0,
+        },
+        {
+            "id": "shared-read",
+            "title": "One Work Read Twice",
+            "authors": "C. Reader",
+            "year": 2022,
+            "doi": "10.1000/shared.read",
+            "url": "https://doi.org/10.1000/shared.read",
+            "retrieval_status": "full_text",
+            "verification_status": "verified",
+            "retrieved_on": "2026-09-17",
+            "locators": ["Abstract", "Table 2"],
+            "_origin": "targets-sources.json",
+            "_rank": 6,
+            "_index": 0,
+        },
+    ]
+    best_read_records = canonicalize_fixture(best_read_fixture)
+    if len(best_read_records) != 1:
+        raise AssertionError("a rank-4 and a rank-6 row sharing an id must merge")
+    best_read = best_read_records[0]
+    if (
+        best_read["retrieval_status"] != "full_text"
+        or best_read["verification_status"] != "verified"
+        or best_read["retrieved_on"] != "2026-09-17"
+    ):
+        raise AssertionError(
+            "the best-read input must supply status, not the highest-ranked one: "
+            f"{best_read['retrieval_status']}/{best_read['verification_status']}"
+        )
+    if best_read["locators"] != [
+        "Abstract",
+        "Table 2",
+        "assets/bibliography/references.bib entry shared-read",
+    ]:
+        raise AssertionError(
+            "locators must be the union of both inputs, best-read first: "
+            f"{best_read['locators']}"
+        )
+    reviewed_fixture = deepcopy(best_read_fixture)
+    reviewed_fixture[0]["retrieval_status"] = "partial_text"
+    reviewed_fixture[0]["verification_status"] = "provisional"
+    reviewed_fixture[0]["retrieved_on"] = "2026-09-15"
+    reviewed_fixture[0]["locators"] = ["Reviewed abstract, PDF p. 1"]
+    reviewed_fixture[0]["_origin"] = "research/claim-audits"
+    reviewed_fixture[0]["_rank"] = 0
+    reviewed_records = canonicalize_fixture(reviewed_fixture)
+    if len(reviewed_records) != 1:
+        raise AssertionError("a reviewed row and a rank-6 row sharing an id must merge")
+    reviewed_record = reviewed_records[0]
+    if (
+        reviewed_record["retrieval_status"] != "partial_text"
+        or reviewed_record["verification_status"] != "provisional"
+        or reviewed_record["retrieved_on"] != "2026-09-15"
+    ):
+        raise AssertionError(
+            "a reviewed record must keep its own statuses over a better-read input: "
+            f"{reviewed_record['retrieval_status']}/{reviewed_record['verification_status']}"
+        )
+    if reviewed_record["locators"] != ["Reviewed abstract, PDF p. 1"]:
+        raise AssertionError(
+            "a reviewed record must keep exactly its own locators: "
+            f"{reviewed_record['locators']}"
+        )
+    checks += 1
+
     with tempfile.TemporaryDirectory() as temp_directory:
         isolated_root = Path(temp_directory) / "NeuromorphicSurvey"
         shutil.copytree(ROOT, isolated_root)

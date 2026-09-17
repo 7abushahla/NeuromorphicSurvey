@@ -41,8 +41,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -81,8 +81,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -201,8 +201,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -241,8 +241,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -281,8 +281,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -321,8 +321,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -361,8 +361,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -441,8 +441,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -521,8 +521,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -561,8 +561,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -641,8 +641,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -681,8 +681,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -761,8 +761,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -801,8 +801,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -881,8 +881,8 @@
       "source_statuses": [
         {
           "source_id": "brainchip-akida-user-guide",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -921,8 +921,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -961,8 +961,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1001,8 +1001,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1041,8 +1041,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1081,8 +1081,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1121,8 +1121,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1161,8 +1161,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1201,8 +1201,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1241,8 +1241,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1281,8 +1281,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -1321,8 +1321,8 @@
       "source_statuses": [
         {
           "source_id": "hxtorch",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3561,8 +3561,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3601,8 +3601,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3641,8 +3641,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3681,8 +3681,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3721,8 +3721,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3761,8 +3761,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3801,8 +3801,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3841,8 +3841,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3881,8 +3881,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3921,8 +3921,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -3961,8 +3961,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "canonical_verification_status": "provisional",
@@ -6475,15 +6475,17 @@
         {
           "source_id": "apex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
+            "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",
@@ -7700,6 +7702,10 @@
         {
           "source_id": "Turner22-mlGeNN",
           "locators": [
+            "Abstract",
+            "Figures 4-5 and captions",
+            "Section 2.1 GPU architecture",
+            "Table 2 (ImageNet comparison)",
             "assets/bibliography/references.bib entry Turner22-mlGeNN",
             "site/sec-06.html reference Turner22-mlGeNN"
           ]
@@ -7708,12 +7714,12 @@
       "source_statuses": [
         {
           "source_id": "Turner22-mlGeNN",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
-      "verification_status": "provisional",
-      "eligible_for_substantive_use": false
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true
     },
     {
       "id": "paper:morphic",
@@ -7932,15 +7938,16 @@
         {
           "source_id": "neuroflex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
+            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "neuroflex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",
@@ -12692,6 +12699,10 @@
         {
           "source_id": "Turner22-mlGeNN",
           "locators": [
+            "Abstract",
+            "Figures 4-5 and captions",
+            "Section 2.1 GPU architecture",
+            "Table 2 (ImageNet comparison)",
             "assets/bibliography/references.bib entry Turner22-mlGeNN",
             "site/sec-06.html reference Turner22-mlGeNN"
           ]
@@ -12707,8 +12718,8 @@
       "source_statuses": [
         {
           "source_id": "Turner22-mlGeNN",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "genn-docs",
@@ -12716,8 +12727,8 @@
           "verification_status": "verified"
         }
       ],
-      "verification_status": "provisional",
-      "eligible_for_substantive_use": false,
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
       "route_state": "physical",
       "capability_class": "emulated"
     },
@@ -13748,7 +13759,8 @@
         {
           "source_id": "lava-nc-homepage",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "https://lava-nc.org/: \"LIF (Leaky-Integrate-and-Fire) neurons\"",
+            "https://lava-nc.org/: \"platform-agnostic so that applications can be prototyped on conventional CPUs/GPUs and deployed to heterogeneous system architectures spanning both conventional processors as well as a range of neuromorphic chips\""
           ]
         }
       ],
@@ -13760,8 +13772,8 @@
         },
         {
           "source_id": "lava-nc-homepage",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",
@@ -13811,7 +13823,8 @@
         {
           "source_id": "lava-nc-homepage",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "https://lava-nc.org/: \"LIF (Leaky-Integrate-and-Fire) neurons\"",
+            "https://lava-nc.org/: \"platform-agnostic so that applications can be prototyped on conventional CPUs/GPUs and deployed to heterogeneous system architectures spanning both conventional processors as well as a range of neuromorphic chips\""
           ]
         }
       ],
@@ -13828,8 +13841,8 @@
         },
         {
           "source_id": "lava-nc-homepage",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",
@@ -13926,7 +13939,8 @@
         {
           "source_id": "rockpool-xylo-docs",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "https://rockpool.ai/devices/xylo-overview.html: \"Training a spiking network to deploy to the Xylo digital SNN\"",
+            "https://rockpool.ai/devices/xylo-overview.html: \"spiking leaky integrate-and-fire neurons with exponential input synapses in a synchronous, time-stepped architecture\""
           ]
         },
         {
@@ -13939,8 +13953,8 @@
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "xylo-kws",
@@ -13973,6 +13987,10 @@
         {
           "source_id": "Turner22-mlGeNN",
           "locators": [
+            "Abstract",
+            "Figures 4-5 and captions",
+            "Section 2.1 GPU architecture",
+            "Table 2 (ImageNet comparison)",
             "assets/bibliography/references.bib entry Turner22-mlGeNN",
             "site/sec-06.html reference Turner22-mlGeNN"
           ]
@@ -13988,8 +14006,8 @@
       "source_statuses": [
         {
           "source_id": "Turner22-mlGeNN",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "genn-docs",
@@ -13997,8 +14015,8 @@
           "verification_status": "verified"
         }
       ],
-      "verification_status": "provisional",
-      "eligible_for_substantive_use": false,
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
       "route_state": "physical",
       "capability_class": "transformed"
     },
@@ -14986,7 +15004,9 @@
         {
           "source_id": "apex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
+            "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
           ]
         },
         {
@@ -15010,8 +15030,8 @@
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "pascal",
@@ -15044,7 +15064,8 @@
         {
           "source_id": "neuroflex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
+            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
           ]
         },
         {
@@ -15068,8 +15089,8 @@
       "source_statuses": [
         {
           "source_id": "neuroflex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "pascal",
@@ -15718,7 +15739,8 @@
         {
           "source_id": "rockpool-xylo-docs",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "https://rockpool.ai/devices/xylo-overview.html: \"Training a spiking network to deploy to the Xylo digital SNN\"",
+            "https://rockpool.ai/devices/xylo-overview.html: \"spiking leaky integrate-and-fire neurons with exponential input synapses in a synchronous, time-stepped architecture\""
           ]
         }
       ],
@@ -15730,8 +15752,8 @@
         },
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",
@@ -17084,15 +17106,16 @@
         {
           "source_id": "rockpool-xylo-docs",
           "locators": [
-            "Structured metadata from evidence-stack.json"
+            "https://rockpool.ai/devices/xylo-overview.html: \"Training a spiking network to deploy to the Xylo digital SNN\"",
+            "https://rockpool.ai/devices/xylo-overview.html: \"spiking leaky integrate-and-fire neurons with exponential input synapses in a synchronous, time-stepped architecture\""
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "rockpool-xylo-docs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",

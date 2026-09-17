@@ -251,7 +251,7 @@ def render_table(
     )
     return f'''<div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
-<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, a chip model, or neuromorphic silicon.</caption>
+<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, simulated (a chip model), or neuromorphic silicon.</caption>
 <thead><tr>
 <th>Survey</th>
 <th class="ctr yr" data-sort="num">Year</th>
@@ -262,7 +262,7 @@ def render_table(
 {ours}
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>simulated (a chip model)</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>'''
 
 

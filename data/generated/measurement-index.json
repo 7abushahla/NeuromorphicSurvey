@@ -273,15 +273,17 @@
         {
           "source_id": "apex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
+            "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional"
@@ -1750,6 +1752,10 @@
         {
           "source_id": "Turner22-mlGeNN",
           "locators": [
+            "Abstract",
+            "Figures 4-5 and captions",
+            "Section 2.1 GPU architecture",
+            "Table 2 (ImageNet comparison)",
             "assets/bibliography/references.bib entry Turner22-mlGeNN",
             "site/sec-06.html reference Turner22-mlGeNN"
           ]
@@ -1758,11 +1764,11 @@
       "source_statuses": [
         {
           "source_id": "Turner22-mlGeNN",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
-      "verification_status": "provisional"
+      "verification_status": "verified"
     },
     {
       "id": "morphic",
@@ -2027,15 +2033,16 @@
         {
           "source_id": "neuroflex",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json"
+            "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
+            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "neuroflex",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional"

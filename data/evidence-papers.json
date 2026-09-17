@@ -2785,7 +2785,7 @@
       "toolchain": "TensorFlow -> Coral Edge TPU Dev Board (8-bit fixed-point)",
       "target_hardware": "Google Coral Edge TPU Dev Board (8-bit fixed-point NPU); comparator: Intel Compute Stick (64-bit floating-point), measured in the same paper",
       "target_kind": "NPU",
-      "target_qualifier": "Google Coral Edge TPU Dev Board (commercial NPU); comparator Intel Compute Stick measured in the same paper",
+      "target_qualifier": "Google Coral Edge TPU Dev Board (commercial NPU); comparator Intel Compute Stick measured in the same paper. The network's spiking neuron model is not stated (neuron and reset recorded as not found), and the title's \"spike-based\" refers to the DAVIS240C sensor's address-event input rather than to a stated spiking neuron model, so the record's standing as an SNN deployment on an NPU is qualified.",
       "what_was_measured": "power, model size, latency, and computational efficiency measured on both platforms: Edge TPU 1.72 W / 0.5 MB / 4 ms / 1.057 GOPS/mW versus Intel Compute Stick 5.48 W / 1.8 MB / 27 ms / 0.052 GOPS/mW",
       "evidence": "E1",
       "evidence_notes": "Table I ('Performance Comparison') reports measured power, model size, latency, and computational efficiency for the Google Edge TPU versus the Intel Compute Stick on the same tracking/prediction task. Full short paper read directly.",

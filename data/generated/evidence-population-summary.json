@@ -140,7 +140,7 @@
       "family": "application",
       "population": "deployment",
       "target_kind": "NPU",
-      "target_qualifier": "Google Coral Edge TPU Dev Board (commercial NPU); comparator Intel Compute Stick measured in the same paper",
+      "target_qualifier": "Google Coral Edge TPU Dev Board (commercial NPU); comparator Intel Compute Stick measured in the same paper. The network's spiking neuron model is not stated (neuron and reset recorded as not found), and the title's \"spike-based\" refers to the DAVIS240C sensor's address-event input rather than to a stated spiking neuron model, so the record's standing as an SNN deployment on an NPU is qualified.",
       "bucket": "conventional"
     },
     {

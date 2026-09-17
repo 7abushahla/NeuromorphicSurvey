@@ -333,17 +333,21 @@
       "doi": null,
       "url": "https://nengo.ai/nengo-loihi/overview.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://nengo.ai/nengo-loihi/overview.html: \"emulator backend: pure Python implementation using NumPy\"",
+        "https://nengo.ai/nengo-loihi/overview.html: \"hardware backend uses Intel's NxSDK API to execute models directly on Loihi boards\"",
+        "https://nengo.ai/nengo-loihi/overview.html: \"degraded performance due to the discretization process\"",
         "assets/bibliography/references.bib entry NengoLoihi-Docs",
         "site/sec-06.html reference NengoLoihi-Docs"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:NengoLoihi-Docs"
+        "bibliography-migration-sources.json:NengoLoihi-Docs",
+        "targets-sources.json:NengoLoihi-Docs"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the NengoLoihi entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -356,17 +360,19 @@
       "doi": null,
       "url": "https://norse.github.io/norse/auto_api/norse.torch.functional.lif.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://norse.github.io/norse/auto_api/norse.torch.functional.lif.html: \"A library to do deep learning with spiking neural networks\"",
         "assets/bibliography/references.bib entry Norse-Docs",
         "site/sec-06.html reference Norse-Docs"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:Norse-Docs"
+        "bibliography-migration-sources.json:Norse-Docs",
+        "targets-sources.json:Norse-Docs"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the Norse entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -517,17 +523,19 @@
       "doi": null,
       "url": "https://sinabs.readthedocs.io/main/api/from_torch.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://sinabs.readthedocs.io/main/api/from_torch.html: \"analyzes the modules in the model and returns a copy, with all ReLUs and NeuromorphicReLUs turned into SpikingLayers\"",
         "assets/bibliography/references.bib entry Sinabs-FromTorch",
         "site/sec-06.html reference Sinabs-FromTorch"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:Sinabs-FromTorch"
+        "bibliography-migration-sources.json:Sinabs-FromTorch",
+        "targets-sources.json:Sinabs-FromTorch"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the Sinabs entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -678,10 +686,14 @@
       "doi": "10.1088/2634-4386/ac5ac5",
       "url": "https://doi.org/10.1088/2634-4386/ac5ac5",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "Abstract",
+        "Section 2.1 GPU architecture",
+        "Figures 4-5 and captions",
+        "Table 2 (ImageNet comparison)",
         "assets/bibliography/references.bib entry Turner22-mlGeNN",
         "site/sec-06.html reference Turner22-mlGeNN"
       ],
@@ -690,7 +702,7 @@
         "mlgenn",
         "targets-sources.json:mlgenn"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"peer-reviewed\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
+      "notes": "Full open-access PDF retrieved and read directly. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -952,17 +964,20 @@
       "doi": null,
       "url": "https://doc.brainchipinc.com/user_guide/hardware/1.0.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://doc.brainchipinc.com/user_guide/hardware/1.0.html: \"CNN2SNN conversion tools that transform standard CNN architectures into SNN-compatible formats\"",
+        "https://doc.brainchipinc.com/user_guide/hardware/1.0.html: \"Akida 1.0 IP-based solutions, such as the AKD1000 and AKD1500 reference SoCs\"",
         "assets/bibliography/references.bib entry akida-hw-constraints",
         "site/sec-08.html reference akida-hw-constraints"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:akida-hw-constraints"
+        "bibliography-migration-sources.json:akida-hw-constraints",
+        "targets-sources.json:akida-hw-constraints"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the Akida (MetaTF) entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -1096,18 +1111,21 @@
       "doi": "10.48550/arxiv.2608.19046",
       "url": "https://arxiv.org/abs/2608.19046",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from evidence-papers.json, evidence-stack.json"
+        "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\"",
+        "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
+        "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\""
       ],
       "aliases": [
         "apex2026",
         "evidence-papers.json:apex",
-        "evidence-stack.json:apex2026"
+        "evidence-stack.json:apex2026",
+        "targets-sources.json:apex"
       ],
-      "notes": "Canonicalized from structured inputs: evidence-papers.json, evidence-stack.json. Title and authors resolved from the official arXiv record for arXiv:2608.19046. Author variants resolved through an explicit primary-source metadata override.",
+      "notes": "Page read for the APEX entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: evidence-papers.json, evidence-stack.json, targets-sources.json. Title and authors resolved from the official arXiv record for arXiv:2608.19046. Author variants resolved through an explicit primary-source metadata override.",
       "purpose": "external"
     },
     {
@@ -1607,16 +1625,21 @@
       "doi": null,
       "url": "https://doc.brainchipinc.com/user_guide/akida.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from evidence-stack.json"
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"By default, Akida models are implicitly mapped on a software backend: in other words, their inference is computed on the host CPU.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"Once the model has been mapped, the inference happens only on the device, and not on the host CPU except for passing inputs and fetching outputs.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"Enabling power measurement is simply done by: `device.soc.power_measurement_enabled = True`\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"After sending data for inference, performance measurements can be retrieved from the model statistics.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: the statistics example shows \"Last inference power range (mW)\" and \"Last inference energy consumed (mJ/frame)\""
       ],
       "aliases": [
-        "evidence-stack.json:brainchip-akida-user-guide"
+        "evidence-stack.json:brainchip-akida-user-guide",
+        "targets-sources.json:brainchip-akida-user-guide"
       ],
-      "notes": "Canonicalized from structured inputs: evidence-stack.json.",
+      "notes": "Read for the power-meter question of Section 11.3 on 2026-09-17; sentences quoted from the Model Hardware Mapping section. Canonicalized from structured inputs: evidence-stack.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -1917,13 +1940,13 @@
     {
       "id": "carlsim",
       "canonical_key": "carlsim",
-      "title": "CARLsim: An Efficient, Easy-to-Use, GPU-Accelerated Library for Simulating Large-Scale Spiking Neural Network Models",
-      "authors": "T.-S. Chou, H. J. Kashyap, J. Xing, S. Listopad, E. L. Rounds, M. Beyeler, N. Dutt, J. L. Krichmar",
-      "year": 2013,
-      "venue": "GitHub/CARLsim5 Documentation",
+      "title": "CARLsim 5 repository README",
+      "authors": null,
+      "year": null,
+      "venue": "GitHub repository",
       "doi": null,
       "url": "https://github.com/UCI-CARL/CARLsim5",
-      "source_type": "secondary_material",
+      "source_type": "official_repository",
       "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
@@ -1936,7 +1959,7 @@
       "aliases": [
         "targets-sources.json:carlsim"
       ],
-      "notes": "Simulator providing GPU acceleration for SNN simulation. Implements Izhikevich neuron model with programmable parameters at synapse, neuron, and network levels. No neuromorphic hardware backends; simulation-only. Supports Linux and macOS with CMake build system. Author list corrected in fix round 2 to the full citation the GitHub README itself gives (\"If you use CARLsim or PyCARL in your research, please cite our papers CARLsim and PyCARL\", followed by the CARLsim 4 citation), replacing the earlier informal \"Carrillo, S., Ros, E., and others\" form, which is not the list the README gives. Canonicalized from structured inputs: targets-sources.json.",
+      "notes": "Simulator providing GPU acceleration for SNN simulation. Implements Izhikevich neuron model with programmable parameters at synapse, neuron, and network levels. No neuromorphic hardware backends; simulation-only. Supports Linux and macOS with CMake build system. 2026-09-17, fix round 1 of the whole-branch review: the record is documentation, the CARLsim 5 repository README; the earlier title (the README's tagline), author list (the CARLsim 4 citation the README gives) and year (2013) were not stated on the page as the README's own bibliographic fields and are now null or replaced. Canonicalized from structured inputs: targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -3369,16 +3392,20 @@
       "doi": null,
       "url": "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from sources.json"
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"spiking leak-integrate and fire (LIF)\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"non-spiking leak-integrator (LI) output neuron\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"Network layers in `hxtorch` are derived from a parent class `HXModule` (similar to `torch.nn.Module` in PyTorch)\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"Weights on hardware are between -63 to 63\""
       ],
       "aliases": [
-        "sources.json:hxtorch"
+        "sources.json:hxtorch",
+        "targets-sources.json:hxtorch"
       ],
-      "notes": "Canonicalized from structured inputs: sources.json. The exact current BrainScaleS-2 demo source was last changed in commit 7821187 on 2026-09-11.",
+      "notes": "Page read for the hxtorch entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: sources.json, targets-sources.json. The exact current BrainScaleS-2 demo source was last changed in commit 7821187 on 2026-09-11.",
       "purpose": "external"
     },
     {
@@ -4215,16 +4242,18 @@
       "doi": null,
       "url": "https://lava-nc.org/",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from evidence-stack.json"
+        "https://lava-nc.org/: \"LIF (Leaky-Integrate-and-Fire) neurons\"",
+        "https://lava-nc.org/: \"platform-agnostic so that applications can be prototyped on conventional CPUs/GPUs and deployed to heterogeneous system architectures spanning both conventional processors as well as a range of neuromorphic chips\""
       ],
       "aliases": [
-        "evidence-stack.json:lava-nc-homepage"
+        "evidence-stack.json:lava-nc-homepage",
+        "targets-sources.json:lava-nc-homepage"
       ],
-      "notes": "Canonicalized from structured inputs: evidence-stack.json.",
+      "notes": "Page read for the Lava entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: evidence-stack.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -4999,18 +5028,20 @@
       "doi": "10.48550/arxiv.2511.05215",
       "url": "https://arxiv.org/abs/2511.05215",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from evidence-papers.json, evidence-stack.json"
+        "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
+        "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
       ],
       "aliases": [
         "evidence-papers.json:neuroflex",
         "evidence-stack.json:neuroflex2025",
-        "neuroflex2025"
+        "neuroflex2025",
+        "targets-sources.json:neuroflex"
       ],
-      "notes": "Canonicalized from structured inputs: evidence-papers.json, evidence-stack.json. Title and authors resolved from the official arXiv record for arXiv:2511.05215. Title variants resolved through an explicit primary-source metadata override. Author variants resolved through an explicit primary-source metadata override.",
+      "notes": "Page read for the NeuroFlex entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: evidence-papers.json, evidence-stack.json, targets-sources.json. Title and authors resolved from the official arXiv record for arXiv:2511.05215. Title variants resolved through an explicit primary-source metadata override. Author variants resolved through an explicit primary-source metadata override.",
       "purpose": "external"
     },
     {
@@ -5325,10 +5356,10 @@
     {
       "id": "nxsdk",
       "canonical_key": "nxsdk",
-      "title": "NxSDK: Intel Loihi Neuromorphic Processor Software",
-      "authors": "Intel Neuromorphic Research Community",
-      "year": 2019,
-      "venue": "Intel Labs",
+      "title": "NxSDK, Intel's Loihi software development kit (no readable page)",
+      "authors": null,
+      "year": null,
+      "venue": null,
       "doi": null,
       "url": "https://github.com/IntelLabs/nxsdk",
       "source_type": "official_vendor_documentation",
@@ -5336,13 +5367,12 @@
       "verification_status": "provisional",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "Hardware backend uses Intel's NxSDK API to execute models directly on Loihi boards",
-        "Referenced in NengoLoihi as pathway for Loihi hardware execution"
+        "No readable page; NengoLoihi's documentation names NxSDK as the API through which its hardware backend executes on Loihi boards (nengo-loihi)"
       ],
       "aliases": [
         "targets-sources.json:nxsdk"
       ],
-      "notes": "Software development kit for Intel Loihi neuromorphic processor. Primary interface for low-level hardware execution. Mentioned in NengoLoihi documentation as the API enabling direct Loihi hardware execution from high-level frameworks. No standalone documentation page with full technical specifications located. Canonicalized from structured inputs: targets-sources.json.",
+      "notes": "Software development kit for Intel Loihi neuromorphic processor. Primary interface for low-level hardware execution. Mentioned in NengoLoihi documentation as the API enabling direct Loihi hardware execution from high-level frameworks. No standalone documentation page with full technical specifications located. 2026-09-17: the url https://github.com/IntelLabs/nxsdk returned 404 on 2026-09-17; no page of NxSDK's own was read, so title, authors, year and venue are not stated and the single locator is the secondhand NengoLoihi statement. Canonicalized from structured inputs: targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -6523,18 +6553,20 @@
       "doi": null,
       "url": "https://rockpool.ai/devices/xylo-overview.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
-        "Structured metadata from evidence-stack.json"
+        "https://rockpool.ai/devices/xylo-overview.html: \"spiking leaky integrate-and-fire neurons with exponential input synapses in a synchronous, time-stepped architecture\"",
+        "https://rockpool.ai/devices/xylo-overview.html: \"Training a spiking network to deploy to the Xylo digital SNN\""
       ],
       "aliases": [
         "Rockpool-XyloOverview",
         "evidence-stack.json:rockpool-xylo-docs",
-        "rockpool-xylo-overview"
+        "rockpool-xylo-overview",
+        "targets-sources.json:rockpool-xylo-docs"
       ],
-      "notes": "Canonicalized from structured inputs: evidence-stack.json.",
+      "notes": "Page read for the Xylo Simulator entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: evidence-stack.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -7465,17 +7497,20 @@
       "doi": null,
       "url": "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html: \"First-order leaky integrate-and-fire neuron model\"",
+        "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html: \"membrane potential decays exponentially with rate beta\"",
         "assets/bibliography/references.bib entry snnTorch-Docs",
         "site/sec-06.html reference snnTorch-Docs"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:snnTorch-Docs"
+        "bibliography-migration-sources.json:snnTorch-Docs",
+        "targets-sources.json:snnTorch-Docs"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the snnTorch entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {
@@ -7488,17 +7523,20 @@
       "doi": null,
       "url": "https://snntoolbox.readthedocs.io/en/latest",
       "source_type": "official_sdk_documentation",
-      "retrieval_status": "metadata_only",
-      "verification_status": "provisional",
-      "retrieved_on": "2026-09-16",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
       "locators": [
+        "https://snntoolbox.readthedocs.io/en/latest: \"transform[s] rate-based artificial neural networks into spiking neural networks\"",
+        "https://snntoolbox.readthedocs.io/en/latest: \"runs them using various spike encodings\"",
         "assets/bibliography/references.bib entry snntoolbox-docs",
         "site/sec-08.html reference snntoolbox-docs"
       ],
       "aliases": [
-        "bibliography-migration-sources.json:snntoolbox-docs"
+        "bibliography-migration-sources.json:snntoolbox-docs",
+        "targets-sources.json:snntoolbox-docs"
       ],
-      "notes": "Frozen from legacy reference metadata labeled \"Official documentation\". The external source was not independently inspected during migration; unknown metadata remains null. Canonicalized from structured inputs: bibliography-migration-sources.json.",
+      "notes": "Page read for the SNN Toolbox entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences. Canonicalized from structured inputs: bibliography-migration-sources.json, targets-sources.json.",
       "purpose": "external"
     },
     {

@@ -182,7 +182,7 @@ results.</p>
 
 <div class="ptable-wrap l-page t1-wide cov-table" id="table-1" data-table-toolbar>
 <table class="ptable">
-<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, a chip model, or neuromorphic silicon.</caption>
+<caption><b>Table 1:</b> Scope comparison of surveys on spiking neural networks, neuromorphic hardware, and ANN-to-SNN deployment. All 37 screened works are listed, ordered by year. The targets column names the hardware kinds each survey covers; a chip's color says whether the kind is conventional, simulated (a chip model), or neuromorphic silicon.</caption>
 <thead><tr>
 <th>Survey</th>
 <th class="ctr yr" data-sort="num">Year</th>
@@ -236,10 +236,10 @@ results.</p>
 <tr class="ours"><td><strong>Ours</strong></td><td class="ctr yr">2026</td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="hwcell"><span class="tk tk-cpu">CPU</span> <span class="tk tk-gpu">GPU</span> <span class="tk tk-mcu">MCU</span> <span class="tk tk-risc-v">RISC-V</span> <span class="tk tk-npu">NPU</span> <span class="tk tk-event-npu">event NPU</span> <span class="tk tk-simulator">simulator</span> <span class="tk tk-neuromorphic">neuromorphic</span> <span class="tk tk-fpga">FPGA</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td><td class="cov-full"><span>Full</span></td></tr>
 </tbody>
 </table>
-<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>chip model</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
+<div class="t1-legend"><span><i class="sw sw-full"></i>surveyed</span><span><i class="sw sw-part"></i>partially surveyed</span><span><i class="sw sw-ment"></i>mentioned only</span><span><i class="sw sw-none"></i>not covered</span><span><i class="tk tk-gpu">GPU</i>conventional</span><span><i class="tk tk-simulator">simulator</i>simulated (a chip model)</span><span><i class="tk tk-neuromorphic">neuromorphic</i>neuromorphic silicon</span></div>
 </div>
 
-<p>None of the 37 surveys covers all three targets, a conventional processor, a chip model, and
+<p>None of the 37 surveys covers all three targets, a conventional processor, a simulated chip model, and
 neuromorphic silicon, within one work. Seven cover at least one conventional target and two cover
 at least one chip model, while most name neuromorphic silicon alone.
 <a href="#where-an-snn-runs">Section 11, Where an SNN Runs,</a> takes up all three targets together
@@ -284,7 +284,7 @@ foundations through the two learning branches to the contract they must both sat
 common deployment path beyond it.</p>
 
 <figure class="pfig l-body" id="figure-1">
-  <figcaption><b>Figure 1:</b> The survey's architecture. Shared foundations (Sections 2 through 4) feed two learning branches, direct training (Section 6) and ANN-to-SNN conversion (Sections 7 through 9), which converge at the deployable SNN contract (Section 10) and continue along one common path through software and compilation (Section 12), hardware execution (Section 13), complete routes (Section 14), measurement (Section 15), and workload evidence (Section 16) to the findings and open problems of Sections 17 and 18. Conversion receives the greater depth because its correspondence is where most finite-time and reset semantics enter; direct training is drawn as a full branch, not a footnote. <a href="#figure-3">Figure 3</a> draws the field's history as the lineages that meet in the spiking neural network; this figure draws the survey's own path through that history.</figcaption>
+  <figcaption><b>Figure 1:</b> The survey's architecture. Shared foundations (Sections 2 through 4) feed two learning branches, direct training (Section 6) and ANN-to-SNN conversion (Sections 7 through 9), which converge at the deployable SNN contract (Section 10) and continue along one common path through the three targets an SNN runs on (Section 11), software and compilation (Section 12), hardware execution (Section 13), complete routes (Section 14), measurement (Section 15), and workload evidence (Section 16) to the findings and open problems of Sections 17 and 18. Conversion receives the greater depth because its correspondence is where most finite-time and reset semantics enter; direct training is drawn as a full branch, not a footnote. <a href="#figure-3">Figure 3</a> draws the field's history as the lineages that meet in the spiking neural network; this figure draws the survey's own path through that history.</figcaption>
 </figure>
 
 <p>The next three sections establish the vocabulary that every later deployment claim requires.

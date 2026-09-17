@@ -347,13 +347,13 @@
     },
     {
       "id": "carlsim",
-      "title": "CARLsim: An Efficient, Easy-to-Use, GPU-Accelerated Library for Simulating Large-Scale Spiking Neural Network Models",
-      "authors": "T.-S. Chou, H. J. Kashyap, J. Xing, S. Listopad, E. L. Rounds, M. Beyeler, N. Dutt, J. L. Krichmar",
-      "year": 2013,
-      "venue": "GitHub/CARLsim5 Documentation",
+      "title": "CARLsim 5 repository README",
+      "authors": null,
+      "year": null,
+      "venue": "GitHub repository",
       "doi": null,
       "url": "https://github.com/UCI-CARL/CARLsim5",
-      "source_type": "secondary_material",
+      "source_type": "official_repository",
       "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-17",
@@ -366,15 +366,15 @@
       "aliases": [
         "carlsim"
       ],
-      "notes": "Simulator providing GPU acceleration for SNN simulation. Implements Izhikevich neuron model with programmable parameters at synapse, neuron, and network levels. No neuromorphic hardware backends; simulation-only. Supports Linux and macOS with CMake build system. Author list corrected in fix round 2 to the full citation the GitHub README itself gives (\"If you use CARLsim or PyCARL in your research, please cite our papers CARLsim and PyCARL\", followed by the CARLsim 4 citation), replacing the earlier informal \"Carrillo, S., Ros, E., and others\" form, which is not the list the README gives.",
+      "notes": "Simulator providing GPU acceleration for SNN simulation. Implements Izhikevich neuron model with programmable parameters at synapse, neuron, and network levels. No neuromorphic hardware backends; simulation-only. Supports Linux and macOS with CMake build system. 2026-09-17, fix round 1 of the whole-branch review: the record is documentation, the CARLsim 5 repository README; the earlier title (the README's tagline), author list (the CARLsim 4 citation the README gives) and year (2013) were not stated on the page as the README's own bibliographic fields and are now null or replaced.",
       "purpose": "external"
     },
     {
       "id": "nxsdk",
-      "title": "NxSDK: Intel Loihi Neuromorphic Processor Software",
-      "authors": "Intel Neuromorphic Research Community",
-      "year": 2019,
-      "venue": "Intel Labs",
+      "title": "NxSDK, Intel's Loihi software development kit (no readable page)",
+      "authors": null,
+      "year": null,
+      "venue": null,
       "doi": null,
       "url": "https://github.com/IntelLabs/nxsdk",
       "source_type": "official_vendor_documentation",
@@ -382,13 +382,12 @@
       "verification_status": "provisional",
       "retrieved_on": "2026-09-17",
       "locators": [
-        "Hardware backend uses Intel's NxSDK API to execute models directly on Loihi boards",
-        "Referenced in NengoLoihi as pathway for Loihi hardware execution"
+        "No readable page; NengoLoihi's documentation names NxSDK as the API through which its hardware backend executes on Loihi boards (nengo-loihi)"
       ],
       "aliases": [
         "nxsdk"
       ],
-      "notes": "Software development kit for Intel Loihi neuromorphic processor. Primary interface for low-level hardware execution. Mentioned in NengoLoihi documentation as the API enabling direct Loihi hardware execution from high-level frameworks. No standalone documentation page with full technical specifications located.",
+      "notes": "Software development kit for Intel Loihi neuromorphic processor. Primary interface for low-level hardware execution. Mentioned in NengoLoihi documentation as the API enabling direct Loihi hardware execution from high-level frameworks. No standalone documentation page with full technical specifications located. 2026-09-17: the url https://github.com/IntelLabs/nxsdk returned 404 on 2026-09-17; no page of NxSDK's own was read, so title, authors, year and venue are not stated and the single locator is the secondhand NengoLoihi statement.",
       "purpose": "external"
     },
     {
@@ -411,6 +410,251 @@
       ],
       "aliases": [],
       "notes": "Added in fix round 2, finding 2, to fill the \"Hardware Emulation\" catalog group's missing \"FPGA emulation of a named chip\" entry. Read via the arXiv mirror (ar5iv.labs.arxiv.org/html/2004.06061); the published IEEE Xplore version carries the doi above. The paper reimplements IBM TrueNorth's five per-core components (neuron block, core SRAM, router, scheduler, token controller) as a reference design realized on a Xilinx Zynq UltraScale+ MPSoC ZCU102 development board (XCZU9EG FPGA), then validates it against IBM's own Compass simulator on MNIST and vector-matrix-multiplication case studies.",
+      "purpose": "external"
+    },
+    {
+      "id": "brainchip-akida-user-guide",
+      "title": "Akida user guide",
+      "authors": "BrainChip",
+      "year": 2026,
+      "venue": "MetaTF documentation",
+      "doi": null,
+      "url": "https://doc.brainchipinc.com/user_guide/akida.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"By default, Akida models are implicitly mapped on a software backend: in other words, their inference is computed on the host CPU.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"Once the model has been mapped, the inference happens only on the device, and not on the host CPU except for passing inputs and fetching outputs.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"Enabling power measurement is simply done by: `device.soc.power_measurement_enabled = True`\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: \"After sending data for inference, performance measurements can be retrieved from the model statistics.\"",
+        "https://doc.brainchipinc.com/user_guide/akida.html: the statistics example shows \"Last inference power range (mW)\" and \"Last inference energy consumed (mJ/frame)\""
+      ],
+      "aliases": [],
+      "notes": "Read for the power-meter question of Section 11.3 on 2026-09-17; sentences quoted from the Model Hardware Mapping section.",
+      "purpose": "external"
+    },
+    {
+      "id": "hxtorch",
+      "title": "Introduction to hxtorch.snn",
+      "authors": "Electronic Vision(s) contributors",
+      "year": 2026,
+      "venue": "Official documentation",
+      "doi": null,
+      "url": "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"spiking leak-integrate and fire (LIF)\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"non-spiking leak-integrator (LI) output neuron\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"Network layers in `hxtorch` are derived from a parent class `HXModule` (similar to `torch.nn.Module` in PyTorch)\"",
+        "https://electronicvisions.github.io/documentation-brainscales2/latest/brainscales2-demos/ts_12-hxtorch_snn_intro.html: \"Weights on hardware are between -63 to 63\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the hxtorch entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "snnTorch-Docs",
+      "title": "snnTorch docs, snn.Leaky API reference and Tutorial 2",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html: \"First-order leaky integrate-and-fire neuron model\"",
+        "https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html: \"membrane potential decays exponentially with rate beta\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the snnTorch entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "Norse-Docs",
+      "title": "Norse docs, norse.torch.functional.lif and norse.torch.module.lif",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://norse.github.io/norse/auto_api/norse.torch.functional.lif.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://norse.github.io/norse/auto_api/norse.torch.functional.lif.html: \"A library to do deep learning with spiking neural networks\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the Norse entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "Sinabs-FromTorch",
+      "title": "Sinabs API reference, sinabs.from_torch.from_model",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://sinabs.readthedocs.io/main/api/from_torch.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://sinabs.readthedocs.io/main/api/from_torch.html: \"analyzes the modules in the model and returns a copy, with all ReLUs and NeuromorphicReLUs turned into SpikingLayers\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the Sinabs entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "rockpool-xylo-docs",
+      "title": "Overview of the Xylo family",
+      "authors": "SynSense / Rockpool",
+      "year": 2026,
+      "venue": "rockpool.ai",
+      "doi": null,
+      "url": "https://rockpool.ai/devices/xylo-overview.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://rockpool.ai/devices/xylo-overview.html: \"spiking leaky integrate-and-fire neurons with exponential input synapses in a synchronous, time-stepped architecture\"",
+        "https://rockpool.ai/devices/xylo-overview.html: \"Training a spiking network to deploy to the Xylo digital SNN\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the Xylo Simulator entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "snntoolbox-docs",
+      "title": "SNN Toolbox documentation, introduction and simulation API (operator coverage, output coding schemes)",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://snntoolbox.readthedocs.io/en/latest",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://snntoolbox.readthedocs.io/en/latest: \"transform[s] rate-based artificial neural networks into spiking neural networks\"",
+        "https://snntoolbox.readthedocs.io/en/latest: \"runs them using various spike encodings\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the SNN Toolbox entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "NengoLoihi-Docs",
+      "title": "NengoLoihi documentation, overview and hardware/installation guides",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://nengo.ai/nengo-loihi/overview.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://nengo.ai/nengo-loihi/overview.html: \"emulator backend: pure Python implementation using NumPy\"",
+        "https://nengo.ai/nengo-loihi/overview.html: \"hardware backend uses Intel's NxSDK API to execute models directly on Loihi boards\"",
+        "https://nengo.ai/nengo-loihi/overview.html: \"degraded performance due to the discretization process\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the NengoLoihi entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "lava-nc-homepage",
+      "title": "Lava Software Framework homepage (incl. reference PyLifModel)",
+      "authors": "Intel Lava-nc",
+      "year": 2025,
+      "venue": "lava-nc.org",
+      "doi": null,
+      "url": "https://lava-nc.org/",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://lava-nc.org/: \"LIF (Leaky-Integrate-and-Fire) neurons\"",
+        "https://lava-nc.org/: \"platform-agnostic so that applications can be prototyped on conventional CPUs/GPUs and deployed to heterogeneous system architectures spanning both conventional processors as well as a range of neuromorphic chips\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the Lava entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "akida-hw-constraints",
+      "title": "BrainChip Akida hardware constraints documentation",
+      "authors": null,
+      "year": null,
+      "venue": null,
+      "doi": null,
+      "url": "https://doc.brainchipinc.com/user_guide/hardware/1.0.html",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://doc.brainchipinc.com/user_guide/hardware/1.0.html: \"CNN2SNN conversion tools that transform standard CNN architectures into SNN-compatible formats\"",
+        "https://doc.brainchipinc.com/user_guide/hardware/1.0.html: \"Akida 1.0 IP-based solutions, such as the AKD1000 and AKD1500 reference SoCs\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the Akida (MetaTF) entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "apex",
+      "title": "APEX: A Dual-Sparsity Accelerator for Precise and Efficient SNN Inference",
+      "authors": "Devgokul Bawa Venkatesh, Sreeram Radhakrishnan, Rajshekhar Rakshit, Gopalakrishnan Srinivasan",
+      "year": 2026,
+      "venue": "arXiv:2608.19046",
+      "doi": "10.48550/arxiv.2608.19046",
+      "url": "https://arxiv.org/abs/2608.19046",
+      "source_type": "preprint",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\"",
+        "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
+        "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the APEX entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
+      "purpose": "external"
+    },
+    {
+      "id": "neuroflex",
+      "title": "NeuroFlex: Column-Exact ANN-SNN Co-Execution Accelerator with Cost-Guided Scheduling",
+      "authors": "Varun Manjunath, Pranav Ramesh, Gopalakrishnan Srinivasan",
+      "year": 2025,
+      "venue": "arXiv:2511.05215",
+      "doi": "10.48550/arxiv.2511.05215",
+      "url": "https://arxiv.org/abs/2511.05215",
+      "source_type": "preprint",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-17",
+      "locators": [
+        "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
+        "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
+      ],
+      "aliases": [],
+      "notes": "Page read for the NeuroFlex entry of research/targets-sources.md, the catalog fact sheet of Section 11.4; the locators are that entry's quoted sentences.",
       "purpose": "external"
     }
   ]

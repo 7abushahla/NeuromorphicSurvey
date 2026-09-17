@@ -943,10 +943,10 @@
       "type": "framework",
       "name": "mlGeNN",
       "layer": "Develop & simulate",
-      "summary": "GPU code-generation-based conversion library adding explicit deep-CNN support atop GeNN; demonstrated VGG-16 and ResNet-34/20 converted and evaluated at real CIFAR-10 and ImageNet scale (VGG-16: 70.2% vs. 70.3% ANN baseline on ImageNet) -- but this is software/GPU simulation only (E5), not a neuromorphic ASIC target.",
+      "summary": "GPU code-generation-based conversion library adding explicit deep-CNN support atop GeNN; demonstrated VGG-16 and ResNet-34/20 converted and evaluated at real CIFAR-10 and ImageNet scale (VGG-16: 70.2% vs. 70.3% ANN baseline on ImageNet). The ImageNet result is E1 on a GPU, a measured run on a conventional target, and E5 for any neuromorphic claim; no route to a neuromorphic ASIC target is documented.",
       "attributes": {},
       "sources": [
-        "dewolf2020-nengo-hw"
+        "Turner22-mlGeNN"
       ]
     },
     {
@@ -2192,7 +2192,7 @@
       "type": "hardware",
       "name": "Conventional GPU",
       "layer": "Hardware",
-      "summary": "A general-purpose graphics processor running an SNN as a program of ordinary PyTorch or GeNN-generated CUDA kernels rather than any dedicated spiking substrate. This survey's Task 2 evidence measures an NVIDIA A100-SXM-80GB GPU (SpikingJelly's own PyTorch-CUDA training and ANN2SNN inference benchmark) and an NVIDIA Titan V GPU (mlGeNN's GeNN-generated CUDA simulation of a converted VGG-16 and ResNet-20).",
+      "summary": "A general-purpose graphics processor running an SNN as a program of ordinary PyTorch or GeNN-generated CUDA kernels rather than any dedicated spiking substrate. The survey's evidence records measure an NVIDIA A100-SXM-80GB GPU (SpikingJelly's own PyTorch-CUDA training and ANN2SNN inference benchmark) and an NVIDIA Titan V GPU (mlGeNN's GeNN-generated CUDA simulation of a converted VGG-16 and ResNet-20).",
       "attributes": {
         "target_kind": "GPU",
         "time_model": "Software-scheduled CUDA kernel launches; wall-clock time is set by the host program's own timestep loop, not by a hardware clock intrinsic to the chip.",
@@ -2209,7 +2209,7 @@
       "type": "hardware",
       "name": "Conventional CPU",
       "layer": "Hardware",
-      "summary": "A general-purpose CPU, single or clustered, running an SNN as a program of NEST's own C++ simulation kernel rather than any dedicated spiking substrate. This survey's Task 2 evidence measures NEST on a 32-node Intel Xeon E5-2680v3 HPC cluster (comparator SpiNNaker measured in the same paper) and NEST-5g on up to 82,944 Fujitsu SPARC64 VIIIfx compute nodes of the K computer.",
+      "summary": "A general-purpose CPU, single or clustered, running an SNN as a program of NEST's own C++ simulation kernel rather than any dedicated spiking substrate. The survey's evidence records measure NEST on a 32-node Intel Xeon E5-2680v3 HPC cluster (comparator SpiNNaker measured in the same paper) and NEST-5g on up to 82,944 Fujitsu SPARC64 VIIIfx compute nodes of the K computer.",
       "attributes": {
         "target_kind": "CPU",
         "time_model": "Software-scheduled, MPI/OpenMP-parallelized simulation loop; wall-clock time is a function of thread count and network size, not a fixed per-spike hardware cost.",
@@ -2226,7 +2226,7 @@
       "type": "hardware",
       "name": "ARM Cortex-M MCU",
       "layer": "Hardware",
-      "summary": "An ARM Cortex-M-family microcontroller executing a converted SNN as compiled embedded firmware. This survey's Task 2 evidence measures a CNN-to-SNN, time-to-first-spike-converted digital SNN on a Cortex-M4 MCU (exact part not named in the retrieved text), read with an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
+      "summary": "An ARM Cortex-M-family microcontroller executing a converted SNN as compiled embedded firmware. The survey's evidence records measure a CNN-to-SNN, time-to-first-spike-converted digital SNN on a Cortex-M4 MCU (exact part not named in the retrieved text), read with an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
       "attributes": {
         "target_kind": "MCU",
         "time_model": "Single-core, interrupt-driven firmware execution; latency is the compiled program's own instruction count on the core's clock, not a chip-level spiking clock.",
@@ -2242,7 +2242,7 @@
       "type": "hardware",
       "name": "RISC-V SNN Accelerator",
       "layer": "Hardware",
-      "summary": "A RISC-V-based soft vector processor tailored to simulating SNNs, realized as a soft core on an AMD/Xilinx Kria KV260 FPGA board. This survey's Task 2 evidence measures FeNN's single-core recurrent spoken-digit classifier against an embedded GPU and Loihi, and FeNN-DMA's balanced-random-network simulation throughput, classification accuracy, and post-implementation operating frequency and power on the same board family.",
+      "summary": "A RISC-V-based soft vector processor tailored to simulating SNNs, realized as a soft core on an AMD/Xilinx Kria KV260 FPGA board. The survey's evidence records measure FeNN's single-core recurrent spoken-digit classifier against an embedded GPU and Loihi, and FeNN-DMA's balanced-random-network simulation throughput, classification accuracy, and post-implementation operating frequency and power on the same board family.",
       "attributes": {
         "target_kind": "RISC-V",
         "time_model": "Vector-instruction-stepped simulation loop on a synthesized soft core; wall-clock time is set by the core's clock frequency (175 MHz single-core, 143 MHz dual-core for FeNN-DMA) and the compiled program's instruction count.",
@@ -2363,7 +2363,7 @@
       "type": "runtime",
       "name": "NEST Simulation Kernel",
       "layer": "Runtime",
-      "summary": "NEST's own C++ simulation kernel, which executes a PyNN-described point-neuron network directly as a software program. This survey's Task 2 evidence measures the kernel's MPI+multithreaded runtime and per-synaptic-event energy against physical SpiNNaker hardware on an Intel Xeon HPC cluster, and its weak-scaling connect, prepare, and run wall-clock time up to 82,944 K-computer SPARC64 nodes.",
+      "summary": "NEST's own C++ simulation kernel, which executes a PyNN-described point-neuron network directly as a software program. The survey's evidence records measure the kernel's MPI+multithreaded runtime and per-synaptic-event energy against physical SpiNNaker hardware on an Intel Xeon HPC cluster, and its weak-scaling connect, prepare, and run wall-clock time up to 82,944 K-computer SPARC64 nodes.",
       "attributes": {},
       "sources": [
         "van-albada-nest-spinnaker",
@@ -5365,7 +5365,7 @@
       "toolchain_version": "GeNN CUDA-generated simulation code",
       "measurement_boundary": "CIFAR-10 inference time and speed relative to BindsNET and TensorFlow across batch sizes on a 12 GB NVIDIA Titan V GPU; the converted VGG-16 is 2.5x faster than BindsNET, and the FewSpike-converted ResNet-20 is only a little over 2x slower than the original TensorFlow ANN, while the fastest rate-based model is over 100x slower than the TensorFlow ANN.",
       "reports_deployment_evidence": true,
-      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 13.6 discusses as evidence about classical correspondence at scale."
+      "notes": "E1 establishes GPU-simulated conversion throughput, not evidence about any neuromorphic target; this is the same GPU-only mlGeNN result Section 12.1, The Framework Boundary, discusses as evidence about classical correspondence at scale."
     },
     {
       "id": "nest-to-nest-kernel",

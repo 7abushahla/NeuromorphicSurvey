@@ -364,7 +364,7 @@ Read on 2026-09-17
 
 **Registry key** Existing records: akida-benchmarks2025, akida-hw-constraints, brainchip-akida-techbrief, brainchip-akida-user-guide
 
-**Page read** https://doc.brainchipinc.com/user_guide/hardware/1.0.html (excerpt)
+**Page read** https://doc.brainchipinc.com/user_guide/hardware/1.0.html (excerpt). Fix round 1 of the whole-branch review (2026-09-17) read a second page, https://doc.brainchipinc.com/user_guide/akida.html ("Akida user guide," the `brainchip-akida-user-guide` registry record's own url), Model Hardware Mapping section, for the power-meter question of Section 11.3: the software backend runs on the host CPU by default, a mapped model runs on the device, and power and energy per inference are read from the device's own statistics after mapping.
 
 **Executes** Spiking neural networks converted from convolutional neural networks (CNN2SNN conversion); neuron models not explicitly specified in page read
 
@@ -372,9 +372,9 @@ Read on 2026-09-17
 
 **Reaches** BrainChip Akida neuromorphic processors (AKD1000, AKD1500)
 
-**A run can claim** Power-efficient inference execution on Akida neuromorphic hardware; energy per inference tracking via PowerMeter
+**A run can claim** Power-efficient inference execution on Akida hardware; power and energy per inference read from the device after mapping (Akida user guide page, fix round 1)
 
-**Quoted** "CNN2SNN conversion tools that transform standard CNN architectures into SNN-compatible formats"; "Akida 1.0 IP-based solutions, such as the AKD1000 and AKD1500 reference SoCs"
+**Quoted** "CNN2SNN conversion tools that transform standard CNN architectures into SNN-compatible formats"; "Akida 1.0 IP-based solutions, such as the AKD1000 and AKD1500 reference SoCs". From the Akida user guide page (fix round 1, 2026-09-17): "By default, Akida models are implicitly mapped on a software backend: in other words, their inference is computed on the host CPU."; "Once the model has been mapped, the inference happens only on the device, and not on the host CPU except for passing inputs and fetching outputs."; "Enabling power measurement is simply done by: `device.soc.power_measurement_enabled = True`"; "After sending data for inference, performance measurements can be retrieved from the model statistics."; the statistics example shows "Last inference power range (mW)" and "Last inference energy consumed (mJ/frame)"
 
 ### Xylo Simulator
 
@@ -422,7 +422,7 @@ Read on 2026-09-17
 
 **Reaches** No external neuromorphic backends; APEX itself is a hardware emulation device
 
-**A run can claim** Bit-accurate ANN-to-SNN conversion with mathematical equivalence; energy reduction up to 40%, accuracy within 3% of source ANN
+**A run can claim** Bit-accurate ANN-to-SNN conversion with mathematical equivalence; energy reduction up to 40%, up to 3% higher accuracy than the standard IF neuron (corrected in fix round 1 of the whole-branch review to match the quoted sentence; the earlier "accuracy within 3% of source ANN" contradicted it)
 
 **Quoted** "integrates the PASC-IF neuron into the LoAS hardware framework"; "Up to 3% higher accuracy than the standard IF neuron"; "40% energy reduction for best accuracy configurations"
 

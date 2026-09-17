@@ -162,7 +162,7 @@ const ROUTES = [
   { id: 'mlgenn-gpu', name: 'mlGeNN to GeNN to a GPU', ev: 'E1', tk: 'GPU', pc: '#5C7A99',
     story: 'A converted VGG-16 and ResNet-20 simulated as GeNN-generated CUDA code on a 12 GB Titan V. Rate-based and few-spike conversion were evaluated separately at CIFAR-10 and ImageNet scale.',
     note: 'A conventional target. On CIFAR-10 the converted VGG-16 ran 2.5x faster than BindsNET, the few-spike ResNet-20 a little over 2x slower than the original TensorFlow ANN, and the fastest rate-based model over 100x slower than that ANN. Rate-based conversion used T = 2500 for VGG-16 and T = 1000 for ResNet-20; few-spike conversion used K = 10 and K = 8. The record names no reset rule.',
-    line: ['image-classification-static','frame-camera','static-frames','classical-conversion','rate-coding','if-neuron','sync-tick','mlgenn','genn-cuda','gpu-generic'] },
+    line: ['image-classification-static','frame-camera','static-frames','classical-conversion','rate-coding','sync-tick','mlgenn','genn-cuda','gpu-generic'] },
 
   { id: 'nest-cpu', name: 'PyNN and NEST to a CPU cluster', ev: 'E1', tk: 'CPU', pc: '#2F6F5E',
     story: 'A full-scale cortical microcircuit of about 80,000 LIF neurons and 0.3 billion synapses, simulated by NEST on a 32-node Intel Xeon cluster and compared head to head with SpiNNaker in the same paper.',
@@ -191,11 +191,11 @@ const BUCKETS = [
 
 /* Seams sit between layers and name what is lost crossing them. */
 const SEAMS = {
-  code:    [['8.3', 'Input encoding and readout', 'Nearly all modern low-T conversion feeds the real-valued image as constant current, which makes layer one effectively an ANN layer. Readout cost and the decision window are rarely inside the reported measurement.']],
-  compute: [['8.4', 'Time model', 'T means a different thing under a synchronous tick, an asynchronous event stream, and analog continuous time. Software timesteps do not map one to one onto hardware steps.'],
-            ['8.5', 'Per-layer horizons', 'No framework expresses a per-layer timestep horizon in one forward pass. TrueNorth, Loihi, Loihi 2 and Tianjic all advance through a single global barrier.']],
-  sw:      [['8.1', 'Operator coverage', 'lava_exchange dispatches only Linear, Conv2d, AvgPool2d and Flatten. Sinabs has no built-in BatchNorm folding. Akida caps Dense input at 57,334 features and requires bounded ReLU.'],
-            ['8.2', 'Reset semantics', 'The sharpest seam. Conversion requires reset by subtraction, worth roughly twenty accuracy points. NIR cannot express it. SpikingJelly rejects it at both export paths. Loihi needs a two-compartment workaround that doubles neuron count.']],
+  code:    [['S3', 'Input encoding and readout', 'Nearly all modern low-T conversion feeds the real-valued image as constant current, which makes layer one effectively an ANN layer. Readout cost and the decision window are rarely inside the reported measurement.']],
+  compute: [['S4', 'Time model', 'T means a different thing under a synchronous tick, an asynchronous event stream, and analog continuous time. Software timesteps do not map one to one onto hardware steps.'],
+            ['S5', 'Per-layer horizons', 'No framework expresses a per-layer timestep horizon in one forward pass. TrueNorth, Loihi, Loihi 2 and Tianjic all advance through a single global barrier.']],
+  sw:      [['S1', 'Operator coverage', 'lava_exchange dispatches only Linear, Conv2d, AvgPool2d and Flatten. Sinabs has no built-in BatchNorm folding. Akida caps Dense input at 57,334 features and requires bounded ReLU.'],
+            ['S2', 'Reset semantics', 'The sharpest seam. Conversion requires reset by subtraction, worth roughly twenty accuracy points. NIR cannot express it. SpikingJelly rejects it at both export paths. Loihi needs a two-compartment workaround that doubles neuron count.']],
 };
 
 const RAIL_L = [
@@ -206,10 +206,10 @@ const RAIL_L = [
 ];
 
 const RAIL_R = [
-  ['8.6', 'Measurement', 'A SynOps figure is an operation-count ratio under an unstated hardware model, not joules. Boundary choices alone produce 14x swings for the identical chip and network.'],
-  ['8.7', 'Toolchain decay', 'SNN Toolbox last released March 2021. Intel archived all Lava repositories on 13 May 2026 with no maintenance and no patches accepted. The only toolchain that reached silicon is dormant.'],
-  ['8.8', 'Portability', 'NIR reaches nine simulators and five hardware platforms, turning m x n integrations into m + n. Its primitive set still omits the one semantics this literature depends on.'],
-  ['8.9', 'Two populations', 'The division of labor that no survey states. Algorithm papers advance accuracy at low T and do not deploy. Of 39 algorithm-population papers, zero reach physical silicon. Every confirmed instance of a new method reaching silicon abandons rate coding.'],
+  ['R1', 'Measurement', 'A SynOps figure is an operation-count ratio under an unstated hardware model, not joules. Boundary choices alone produce 14x swings for the identical chip and network.'],
+  ['R2', 'Toolchain decay', 'SNN Toolbox last released March 2021. Intel archived all Lava repositories on 13 May 2026 with no maintenance and no patches accepted. The only toolchain that reached silicon is dormant.'],
+  ['R3', 'Portability', 'NIR reaches nine simulators and five hardware platforms, turning m x n integrations into m + n. Its primitive set still omits the one semantics this literature depends on.'],
+  ['R4', 'Two populations', 'The division of labor that no survey states. Algorithm papers advance accuracy at low T and do not deploy; none of the algorithm-population records reaches physical silicon, and Section 17.1, Population Counts, counts them. Every confirmed instance of a new method reaching silicon abandons rate coding.'],
 ];
 
 /* ---------- state ---------- */

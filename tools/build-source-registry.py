@@ -507,6 +507,25 @@ def stable_record_key(record: dict[str, object]) -> tuple[object, ...]:
     )
 
 
+RETRIEVAL_READ_ORDER = {"full_text": 0, "partial_text": 1, "metadata_only": 2}
+VERIFICATION_READ_ORDER = {"verified": 0, "provisional": 1}
+
+
+def best_read_key(record: dict[str, object]) -> tuple[object, ...]:
+    """Order status candidates by how much of the source was read, not by input rank.
+
+    A full-text read outranks a partial one, which outranks metadata alone, and a
+    verified read outranks a provisional one; rank and the stable key break ties.
+    """
+    retrieval = str(record.get("retrieval_status") or "")
+    verification = str(record.get("verification_status") or "")
+    return (
+        RETRIEVAL_READ_ORDER.get(retrieval, len(RETRIEVAL_READ_ORDER)),
+        VERIFICATION_READ_ORDER.get(verification, len(VERIFICATION_READ_ORDER)),
+        *stable_record_key(record),
+    )
+
+
 def source_type(record: dict[str, object]) -> str:
     existing = record.get("source_type")
     if isinstance(existing, str) and existing in VALID_SOURCE_TYPES:
@@ -1124,15 +1143,22 @@ def resolve_cluster(
         (record for record in records if int(record["_rank"]) == 0),
         key=stable_record_key,
     )
-    status_records = reviewed or sorted(
+    # Status comes from the best-read candidate, not the highest-ranked one, so a
+    # full-text read recorded by a later input is not hidden behind an earlier
+    # metadata-only row. Reviewed (rank-zero) records keep precedence over everything.
+    read_candidates = sorted(
         (
             record for record in records
-            if record.get("retrieval_status")
-            or record.get("verification_status")
-            or record.get("locators")
+            if int(record["_rank"]) != 0
+            and (
+                record.get("retrieval_status")
+                or record.get("verification_status")
+                or record.get("locators")
+            )
         ),
-        key=stable_record_key,
+        key=best_read_key,
     )
+    status_records = reviewed or read_candidates
     if status_records:
         status_record = status_records[0]
         retrieval_status = str(status_record.get("retrieval_status") or "metadata_only")
@@ -1142,7 +1168,18 @@ def resolve_cluster(
             or "provisional"
         )
         retrieved_on = str(status_record.get("retrieved_on") or AUDIT_DATE)
-        locators = list(status_record.get("locators") or [])
+        # A reviewed record's locators are its own. Where no reviewed record exists,
+        # locators are the union over every read candidate that has any, best-read
+        # first, without duplicates, so a read locator survives beside a pointer one.
+        if reviewed:
+            locators = list(status_record.get("locators") or [])
+        else:
+            locators = list(dict.fromkeys(
+                str(locator)
+                for record in read_candidates
+                for locator in (record.get("locators") or [])
+                if isinstance(locator, str) and locator
+            ))
         existing_notes = str(status_record.get("notes") or "").strip()
     else:
         retrieval_status = "metadata_only"
