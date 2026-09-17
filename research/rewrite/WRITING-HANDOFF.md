@@ -204,32 +204,35 @@ Use the local QuantizationSurvey as a writing model, not as a factual source.
 
 ## Figure and table instructions
 
-The manifest at `data/figure-manifest.json` is authoritative. It contains 12 figures.
-Figures 1 through 6 exist. Figures 7 through 12 are planned and must be created before
-they are placed. Preserve a figure only when it answers the manifest question.
+The manifest at `data/figure-manifest.json` is authoritative. It contains 22 figures, 16
+implemented (15 static plus the interactive route map) and 6 planned. Display numbers
+follow article order and are regenerated from the manifest whenever a figure is added or
+moved; a display number is never hand-coded in prose, fragments, CSS, or tools. Static
+fragments are named by semantic id under `site/figures/` (for example
+`rc-if-lif-origin.html`), not by number. The per-figure state, provenance, and policy
+are recorded in `research/figure-inventory.md`.
 
-| Figure | Writing or placement requirement |
+The figure set is additive. The original survey figures (`original-neuron-model-comparison`,
+`original-reset-rule-comparison`, `original-hardware-time-model-comparison`,
+`original-neural-code-comparison`) stay beside their revised successors. Their drawings
+are preserved; their captions are scoped to what the drawing shows.
+
+| Rule | Requirement |
 | --- | --- |
-| 1 | Interactive route map. Place in Section 13 after route prose. Do not infer edges. |
-| 2 | Representation comparison. Revise and place in Section 2 after the representation distinction. |
-| 3 and 4 | Neuron model and reset comparison. Revise and place in Section 3 beside the common update and reset derivation. |
-| 5 and 6 | Code comparison and hardware time model. Substantially revise and place in Section 4 after definitions. Do not imply shared values, equal precision, or latency from steps. |
-| 7 | Survey architecture. Create for Section 1. |
-| 8 | Classical conversion pipeline. Create for Section 7. |
-| 9 | Finite-time error propagation. Create for Section 8. |
-| 10 | Deployable contract. Create for Section 10. |
-| 11 | Software boundary. Create for Section 11. |
-| 12 | Measurement boundary. Create for Section 14. |
+| Question | A figure answers its manifest question and nothing else, after the prose has defined every term it uses. |
+| Lead-in | Every figure and table is introduced by a sentence that names it and says what it adds. Prose interprets, it does not read the figure aloud. |
+| Provenance | The caption states whether the visual is a conceptual illustration, derived from stated equations or a stated input, or carries documented or measured platform values; a measured value cites its source beside the platform. |
+| Notation | Survey symbols from `notation.md`; a figure that keeps original symbols maps them in its caption. |
+| Placement | Planned figures carry a caption-only placeholder `<figure id="figure-N">` in their destination section so the installer can place them. |
 
-Figure tooling is intentionally strict. It currently validates the five existing static
-figures and identifies six planned figures. `install-figures.py --check` must fail, with
-no write, until prose anchors exist for Figures 3 through 6. Do not bypass that behavior.
-Create the relevant section anchors and revise the figures, then rerun the installer.
-
-Use generated `figure-inputs.json` to label a figure element as conceptual or measured.
-An unqualified axis, decorative number, or unrelated unit text is not acceptable evidence
-of a measured plot. The figure validators reject escaped CSS selectors and unsafe resource
-references.
+Figure tooling is manifest-driven and strict. `tools/check-figures.py` validates every
+implemented static fragment (one figure, one caption opening with its display number,
+one inline SVG scaled by viewBox, ids prefixed `fN`, no external assets, no dark mode).
+`tools/install-figures.py` places fragments by display number and regenerates
+`assets/figures.css`; `tools/validate-manifests.py` checks the manifest itself. Use
+generated `figure-inputs.json` to label a figure element as conceptual or measured. An
+unqualified axis, decorative number, or unrelated unit text is not acceptable evidence of
+a measured plot.
 
 ## Suggested execution sequence
 
