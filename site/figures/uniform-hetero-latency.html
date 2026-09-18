@@ -1,208 +1,208 @@
-<figure class="pfig l-body" id="figure-29">
-<!-- Conceptual figure; no measured quantity is drawn. Layout after PseudoSNN's Figure 1 (record pseudosnn-2026-heterolatency, page 28555, Figure 1 caption, a uniform-latency SNN uses a fixed global timestep T for all layers, a hetero-latency SNN employs learnable, layer-specific timesteps T_l), whose two panels, three-layer stack, spike streams in the gaps, one T node with a fan of arrows on the left, and four per-gap nodes on the right this figure keeps; no phrase of that caption is drawn and its drawing is not reproduced. Panel titles (Uniform latency, one global T; Heterogeneous latency, per-layer T_l) and the layer labels (spiking layer l, convolutional layer, spiking layer l + 1) are the first paragraph of Section 8.3.4 Mixed and Heterogeneous Timesteps in site/sec-08.html (a uniform-latency SNN gives every layer the same simulation horizon T and a hetero-latency SNN gives layer l its own T_l) and its Figure 29 lead paragraph (a three-layer stack of spiking, convolutional, and spiking layers connected by spike streams). The left gloss (one horizon, set once and shared by every layer) is the 8.3 lead and 8.3.4 (one global T shared by every layer) with PseudoSNN's introduction, page 28555 (T treated as a manually selected global hyperparameter). The right gloss (a horizon per layer, set or learned; under T_l = 2^b_l - 1 each is an activation bit-width b_l) is 8.3.4's second paragraph (a per-layer horizon is a per-layer activation bit-width, T_l = 2^b_l - 1) and PseudoSNN's related-work sorting of a static heterogeneous latency designed or learned per layer, page 28556. The node labels T_(l-1), T_l, T_l, T_(l+1) bottom to top, the convolutional layer carrying its input horizon through unchanged, and the horizon changing only at a spiking layer are the Figure 29 lead paragraph of 8.3.4. The stream label (spikes over the horizon) is Section 4's horizon vocabulary as the 8.3.4 lead uses it. The boundary label (the horizon changes here, average-and-broadcast or count-and-regenerate) is 8.3.4's boundary paragraph, whose first mechanism is PseudoSNN page 28558, Temporal Reshaping for Heterogeneous Latency and Eq. 13 (when T_l differs from T_(l-1) the layer's input is the temporal average of the previous layer's output broadcast across T_l steps) and whose second is the count-then-regenerate alternative that keeps the interface binary. Spikes are drawn as the upward strokes Figures 11 and 18 use, here as small arrows alternating an ink one and a light one; the amber of the horizon nodes and their arrows is Figure 28's encoding lever, the spiking-layer blue is Figure 28's neuron lever with the light fill and stroke Figure 23 gives it, the convolutional layer is Figure 28's neutral parameter-mapping gray; box style, arrow marker, text sizes, and the hover pattern are Figure 28's. No paper name, chip name, or number other than the symbols is drawn. -->
-<svg viewBox="0 0 1200 492" role="img" aria-labelledby="f29-title f29-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
-  <title id="f29-title">Uniform latency against heterogeneous latency in a converted network, two panels after PseudoSNN's Figure 1, each a stack of a spiking layer, a convolutional layer, and a second spiking layer joined by spike streams, with one global horizon T fanned from a single node to every layer on the left and a per-layer horizon held by a node beside each layer gap on the right</title>
-  <desc id="f29-desc">Two panels side by side. Left panel, Uniform latency, one global T. A vertical stack of three wide rounded boxes read bottom to top, spiking layer l in light blue, convolutional layer in gray, spiking layer l plus 1 in light blue. In the four gaps, below the bottom box, between the boxes, and above the top box, a row of eight small upward arrows alternating dark and light stands for spikes flowing through the stack over the horizon, labeled once, spikes over the horizon. To the right of the stack one amber disc labeled T sends four amber arrows, one to each gap. Under the panel a line reads, one horizon, set once and shared by every layer. Right panel, Heterogeneous latency, per-layer T with subscript l. The same stack and the same spike streams, but no single node. Beside each gap sits its own amber disc, labeled from bottom to top T with subscript l minus 1, T with subscript l, T with subscript l, and T with subscript l plus 1, each joined to its stream by a pair of short amber arrows, one toward the stream and one back, for a horizon that is set or learned. The two discs around the convolutional layer carry the same label because that layer carries its input horizon through unchanged. On the left edge of the top spiking layer a small amber ring marks where the horizon changes, with the label, the horizon changes here, average-and-broadcast or count-and-regenerate. Under the panel two lines read, a horizon per layer, set or learned; under T with subscript l equals two to the power b with subscript l, minus one, each is an activation bit-width b with subscript l. Conceptual figure; no measured quantity is drawn.</desc>
+<figure class="pfig l-body" id="figure-30">
+<!-- Conceptual figure; no measured quantity is drawn. Layout after PseudoSNN's Figure 1 (record pseudosnn-2026-heterolatency, page 28555, Figure 1 caption, a uniform-latency SNN uses a fixed global timestep T for all layers, a hetero-latency SNN employs learnable, layer-specific timesteps T_l), whose two panels, three-layer stack, spike streams in the gaps, one T node with a fan of arrows on the left, and four per-gap nodes on the right this figure keeps; no phrase of that caption is drawn and its drawing is not reproduced. Panel titles (Uniform latency, one global T; Heterogeneous latency, per-layer T_l) and the layer labels (spiking layer l, convolutional layer, spiking layer l + 1) are the first paragraph of Section 8.3.4 Mixed and Heterogeneous Timesteps in site/sec-08.html (a uniform-latency SNN gives every layer the same simulation horizon T and a hetero-latency SNN gives layer l its own T_l) and its Figure 30 lead paragraph (a three-layer stack of spiking, convolutional, and spiking layers connected by spike streams). The left gloss (one horizon, set once and shared by every layer) is the 8.3 lead and 8.3.4 (one global T shared by every layer) with PseudoSNN's introduction, page 28555 (T treated as a manually selected global hyperparameter). The right gloss (a horizon per layer, set or learned; under T_l = 2^b_l - 1 each is an activation bit-width b_l) is 8.3.4's second paragraph (a per-layer horizon is a per-layer activation bit-width, T_l = 2^b_l - 1) and PseudoSNN's related-work sorting of a static heterogeneous latency designed or learned per layer, page 28556. The node labels T_(l-1), T_l, T_l, T_(l+1) bottom to top, the convolutional layer carrying its input horizon through unchanged, and the horizon changing only at a spiking layer are the Figure 30 lead paragraph of 8.3.4. The stream label (spikes over the horizon) is Section 4's horizon vocabulary as the 8.3.4 lead uses it. The boundary label (the horizon changes here, average-and-broadcast or count-and-regenerate) is 8.3.4's boundary paragraph, whose first mechanism is PseudoSNN page 28558, Temporal Reshaping for Heterogeneous Latency and Eq. 13 (when T_l differs from T_(l-1) the layer's input is the temporal average of the previous layer's output broadcast across T_l steps) and whose second is the count-then-regenerate alternative that keeps the interface binary. Spikes are drawn as the upward strokes Figures 11 and 18 use, here as small arrows alternating an ink one and a light one; the amber of the horizon nodes and their arrows is Figure 29's encoding lever, the spiking-layer blue is Figure 29's neuron lever with the light fill and stroke Figure 23 gives it, the convolutional layer is Figure 29's neutral parameter-mapping gray; box style, arrow marker, text sizes, and the hover pattern are Figure 29's. No paper name, chip name, or number other than the symbols is drawn. -->
+<svg viewBox="0 0 1200 492" role="img" aria-labelledby="f30-title f30-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f30-title">Uniform latency against heterogeneous latency in a converted network, two panels after PseudoSNN's Figure 1, each a stack of a spiking layer, a convolutional layer, and a second spiking layer joined by spike streams, with one global horizon T fanned from a single node to every layer on the left and a per-layer horizon held by a node beside each layer gap on the right</title>
+  <desc id="f30-desc">Two panels side by side. Left panel, Uniform latency, one global T. A vertical stack of three wide rounded boxes read bottom to top, spiking layer l in light blue, convolutional layer in gray, spiking layer l plus 1 in light blue. In the four gaps, below the bottom box, between the boxes, and above the top box, a row of eight small upward arrows alternating dark and light stands for spikes flowing through the stack over the horizon, labeled once, spikes over the horizon. To the right of the stack one amber disc labeled T sends four amber arrows, one to each gap. Under the panel a line reads, one horizon, set once and shared by every layer. Right panel, Heterogeneous latency, per-layer T with subscript l. The same stack and the same spike streams, but no single node. Beside each gap sits its own amber disc, labeled from bottom to top T with subscript l minus 1, T with subscript l, T with subscript l, and T with subscript l plus 1, each joined to its stream by a pair of short amber arrows, one toward the stream and one back, for a horizon that is set or learned. The two discs around the convolutional layer carry the same label because that layer carries its input horizon through unchanged. On the left edge of the top spiking layer a small amber ring marks where the horizon changes, with the label, the horizon changes here, average-and-broadcast or count-and-regenerate. Under the panel two lines read, a horizon per layer, set or learned; under T with subscript l equals two to the power b with subscript l, minus one, each is an activation bit-width b with subscript l. Conceptual figure; no measured quantity is drawn.</desc>
   <defs>
-    <marker id="f29-arrow-enc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D9760C"/></marker>
-    <marker id="f29-spike-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
-    <marker id="f29-spike-light" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b8c0c9"/></marker>
+    <marker id="f30-arrow-enc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D9760C"/></marker>
+    <marker id="f30-spike-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <marker id="f30-spike-light" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b8c0c9"/></marker>
   </defs>
-  <g id="f29-panel-uniform" class="f29-hot">
+  <g id="f30-panel-uniform" class="f30-hot">
     <title>One global horizon is set once for the whole network and imposed on every layer, so every spike stream in the stack runs for the same number of steps whether or not that layer needs the resolution it buys.</title>
     <path d="M26,14 H572 A10,10 0 0 1 582,24 V414 A10,10 0 0 1 572,424 H26 A10,10 0 0 1 16,414 V24 A10,10 0 0 1 26,14 Z" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="299.0" y="46" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Uniform latency, one global <tspan font-style="italic">T</tspan></text>
     <text x="204" y="394.0" text-anchor="end" fill="#6b7580" font-size="15">spikes over the horizon</text>
-    <rect class="f29-band" x="16" y="14" width="566" height="410" rx="10" fill="#8a94a0" opacity="0"/>
+    <rect class="f30-band" x="16" y="14" width="566" height="410" rx="10" fill="#8a94a0" opacity="0"/>
     <rect x="16" y="14" width="566" height="410" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g class="f29-stream">
-    <line x1="234" y1="106" x2="234" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="264" y1="106" x2="264" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="294" y1="106" x2="294" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="324" y1="106" x2="324" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="354" y1="106" x2="354" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="384" y1="106" x2="384" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="414" y1="106" x2="414" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="444" y1="106" x2="444" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="234" y1="106" x2="234" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="264" y1="106" x2="264" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="294" y1="106" x2="294" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="324" y1="106" x2="324" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="354" y1="106" x2="354" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="384" y1="106" x2="384" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="414" y1="106" x2="414" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="444" y1="106" x2="444" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="234" y1="206" x2="234" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="264" y1="206" x2="264" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="294" y1="206" x2="294" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="324" y1="206" x2="324" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="354" y1="206" x2="354" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="384" y1="206" x2="384" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="414" y1="206" x2="414" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="444" y1="206" x2="444" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="234" y1="206" x2="234" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="264" y1="206" x2="264" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="294" y1="206" x2="294" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="324" y1="206" x2="324" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="354" y1="206" x2="354" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="384" y1="206" x2="384" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="414" y1="206" x2="414" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="444" y1="206" x2="444" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="234" y1="306" x2="234" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="264" y1="306" x2="264" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="294" y1="306" x2="294" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="324" y1="306" x2="324" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="354" y1="306" x2="354" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="384" y1="306" x2="384" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="414" y1="306" x2="414" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="444" y1="306" x2="444" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="234" y1="306" x2="234" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="264" y1="306" x2="264" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="294" y1="306" x2="294" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="324" y1="306" x2="324" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="354" y1="306" x2="354" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="384" y1="306" x2="384" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="414" y1="306" x2="414" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="444" y1="306" x2="444" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="234" y1="406" x2="234" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="264" y1="406" x2="264" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="294" y1="406" x2="294" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="324" y1="406" x2="324" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="354" y1="406" x2="354" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="384" y1="406" x2="384" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="414" y1="406" x2="414" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="444" y1="406" x2="444" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="234" y1="406" x2="234" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="264" y1="406" x2="264" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="294" y1="406" x2="294" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="324" y1="406" x2="324" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="354" y1="406" x2="354" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="384" y1="406" x2="384" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="414" y1="406" x2="414" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="444" y1="406" x2="444" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g id="f29-a-top" class="f29-hot">
+  <g id="f30-a-top" class="f30-hot">
     <title>The next spiking layer emits the stream above it. In the right panel the horizon changes here, at a spiking layer, so the stream it receives and the stream it emits can run for different numbers of steps.</title>
     <rect x="218" y="112" width="240" height="54" rx="7" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
     <text x="338.0" y="145.0" text-anchor="middle" fill="#155F8F" font-size="17" font-weight="700">spiking layer <tspan font-style="italic">l</tspan> + 1</text>
-    <rect class="f29-band" x="218" y="112" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
+    <rect class="f30-band" x="218" y="112" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
     <rect x="218" y="112" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-a-mid" class="f29-hot">
+  <g id="f30-a-mid" class="f30-hot">
     <title>The convolutional layer has no horizon of its own. It carries its input horizon through unchanged, so in the right panel the two gaps around it share the same per-layer horizon.</title>
     <rect x="218" y="212" width="240" height="54" rx="7" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="338.0" y="245.0" text-anchor="middle" fill="#4a5560" font-size="17" font-weight="700">convolutional layer</text>
-    <rect class="f29-band" x="218" y="212" width="240" height="54" rx="7" fill="#8a94a0" opacity="0"/>
+    <rect class="f30-band" x="218" y="212" width="240" height="54" rx="7" fill="#8a94a0" opacity="0"/>
     <rect x="218" y="212" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-a-bot" class="f29-hot">
+  <g id="f30-a-bot" class="f30-hot">
     <title>A spiking layer emits the spike stream above it over a horizon. In the left panel that horizon is the one global value; in the right panel it is this layer's own, and a horizon can change only at a spiking layer.</title>
     <rect x="218" y="312" width="240" height="54" rx="7" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
     <text x="338.0" y="345.0" text-anchor="middle" fill="#155F8F" font-size="17" font-weight="700">spiking layer <tspan font-style="italic">l</tspan></text>
-    <rect class="f29-band" x="218" y="312" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
+    <rect class="f30-band" x="218" y="312" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
     <rect x="218" y="312" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-node-T" class="f29-hot">
+  <g id="f30-node-T" class="f30-hot">
     <title>A single node stands for the one horizon, a global hyperparameter chosen once by hand for the whole network; the fan of arrows carries the same value to every layer.</title>
-    <path d="M522.6,212.3 L470,89.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M511.1,221.1 L470,189.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M511.1,256.9 L470,289.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M522.6,265.7 L470,389.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
+    <path d="M522.6,212.3 L470,89.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M511.1,221.1 L470,189.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M511.1,256.9 L470,289.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M522.6,265.7 L470,389.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
     <circle cx="534" cy="239.0" r="27" fill="#D9760C"/>
     <text x="534" y="247.0" text-anchor="middle" fill="#ffffff" font-size="23" font-weight="700" font-style="italic">T</text>
-    <circle class="f29-band" cx="534" cy="239.0" r="35" fill="#D9760C" opacity="0"/>
+    <circle class="f30-band" cx="534" cy="239.0" r="35" fill="#D9760C" opacity="0"/>
     <circle cx="534" cy="239.0" r="35" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <text id="f29-gloss-uniform" x="299.0" y="452" text-anchor="middle" fill="#4a5560" font-size="15">one horizon, set once and shared by every layer</text>
-  <g id="f29-panel-hetero" class="f29-hot">
+  <text id="f30-gloss-uniform" x="299.0" y="452" text-anchor="middle" fill="#4a5560" font-size="15">one horizon, set once and shared by every layer</text>
+  <g id="f30-panel-hetero" class="f30-hot">
     <title>Each layer gap carries its own horizon. The convolutional layer carries its input horizon through unchanged, so the two gaps around it share one value, and the horizon changes only at a spiking layer.</title>
     <path d="M628,14 H1174 A10,10 0 0 1 1184,24 V414 A10,10 0 0 1 1174,424 H628 A10,10 0 0 1 618,414 V24 A10,10 0 0 1 628,14 Z" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="901.0" y="46" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Heterogeneous latency, per-layer <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="12" font-style="italic">l</tspan></text>
     <text x="806" y="394.0" text-anchor="end" fill="#6b7580" font-size="15">spikes over the horizon</text>
-    <rect class="f29-band" x="618" y="14" width="566" height="410" rx="10" fill="#D9760C" opacity="0"/>
+    <rect class="f30-band" x="618" y="14" width="566" height="410" rx="10" fill="#D9760C" opacity="0"/>
     <rect x="618" y="14" width="566" height="410" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g class="f29-stream">
-    <line x1="836" y1="106" x2="836" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="866" y1="106" x2="866" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="896" y1="106" x2="896" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="926" y1="106" x2="926" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="956" y1="106" x2="956" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="986" y1="106" x2="986" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="1016" y1="106" x2="1016" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="1046" y1="106" x2="1046" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="836" y1="106" x2="836" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="866" y1="106" x2="866" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="896" y1="106" x2="896" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="926" y1="106" x2="926" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="956" y1="106" x2="956" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="986" y1="106" x2="986" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="1016" y1="106" x2="1016" y2="72" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="1046" y1="106" x2="1046" y2="72" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="836" y1="206" x2="836" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="866" y1="206" x2="866" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="896" y1="206" x2="896" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="926" y1="206" x2="926" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="956" y1="206" x2="956" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="986" y1="206" x2="986" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="1016" y1="206" x2="1016" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="1046" y1="206" x2="1046" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="836" y1="206" x2="836" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="866" y1="206" x2="866" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="896" y1="206" x2="896" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="926" y1="206" x2="926" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="956" y1="206" x2="956" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="986" y1="206" x2="986" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="1016" y1="206" x2="1016" y2="172" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="1046" y1="206" x2="1046" y2="172" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="836" y1="306" x2="836" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="866" y1="306" x2="866" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="896" y1="306" x2="896" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="926" y1="306" x2="926" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="956" y1="306" x2="956" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="986" y1="306" x2="986" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="1016" y1="306" x2="1016" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="1046" y1="306" x2="1046" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="836" y1="306" x2="836" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="866" y1="306" x2="866" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="896" y1="306" x2="896" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="926" y1="306" x2="926" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="956" y1="306" x2="956" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="986" y1="306" x2="986" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="1016" y1="306" x2="1016" y2="272" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="1046" y1="306" x2="1046" y2="272" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g class="f29-stream">
-    <line x1="836" y1="406" x2="836" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="866" y1="406" x2="866" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="896" y1="406" x2="896" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="926" y1="406" x2="926" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="956" y1="406" x2="956" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="986" y1="406" x2="986" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
-    <line x1="1016" y1="406" x2="1016" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f29-spike-ink)"/>
-    <line x1="1046" y1="406" x2="1046" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f29-spike-light)"/>
+  <g class="f30-stream">
+    <line x1="836" y1="406" x2="836" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="866" y1="406" x2="866" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="896" y1="406" x2="896" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="926" y1="406" x2="926" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="956" y1="406" x2="956" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="986" y1="406" x2="986" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
+    <line x1="1016" y1="406" x2="1016" y2="372" stroke="#2b3440" stroke-width="2.6" marker-end="url(#f30-spike-ink)"/>
+    <line x1="1046" y1="406" x2="1046" y2="372" stroke="#b8c0c9" stroke-width="2.6" marker-end="url(#f30-spike-light)"/>
   </g>
-  <g id="f29-b-top" class="f29-hot">
+  <g id="f30-b-top" class="f30-hot">
     <title>The next spiking layer emits the stream above it. In the right panel the horizon changes here, at a spiking layer, so the stream it receives and the stream it emits can run for different numbers of steps.</title>
     <rect x="820" y="112" width="240" height="54" rx="7" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
     <text x="940.0" y="145.0" text-anchor="middle" fill="#155F8F" font-size="17" font-weight="700">spiking layer <tspan font-style="italic">l</tspan> + 1</text>
-    <rect class="f29-band" x="820" y="112" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
+    <rect class="f30-band" x="820" y="112" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
     <rect x="820" y="112" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-b-mid" class="f29-hot">
+  <g id="f30-b-mid" class="f30-hot">
     <title>The convolutional layer has no horizon of its own. It carries its input horizon through unchanged, so in the right panel the two gaps around it share the same per-layer horizon.</title>
     <rect x="820" y="212" width="240" height="54" rx="7" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="940.0" y="245.0" text-anchor="middle" fill="#4a5560" font-size="17" font-weight="700">convolutional layer</text>
-    <rect class="f29-band" x="820" y="212" width="240" height="54" rx="7" fill="#8a94a0" opacity="0"/>
+    <rect class="f30-band" x="820" y="212" width="240" height="54" rx="7" fill="#8a94a0" opacity="0"/>
     <rect x="820" y="212" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-b-bot" class="f29-hot">
+  <g id="f30-b-bot" class="f30-hot">
     <title>A spiking layer emits the spike stream above it over a horizon. In the left panel that horizon is the one global value; in the right panel it is this layer's own, and a horizon can change only at a spiking layer.</title>
     <rect x="820" y="312" width="240" height="54" rx="7" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
     <text x="940.0" y="345.0" text-anchor="middle" fill="#155F8F" font-size="17" font-weight="700">spiking layer <tspan font-style="italic">l</tspan></text>
-    <rect class="f29-band" x="820" y="312" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
+    <rect class="f30-band" x="820" y="312" width="240" height="54" rx="7" fill="#1F77B4" opacity="0"/>
     <rect x="820" y="312" width="240" height="54" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-node-l-plus-1" class="f29-hot">
+  <g id="f30-node-l-plus-1" class="f30-hot">
     <title>The horizon over which the upper spiking layer emits its spikes. Where it differs from the horizon of the stream it receives, the horizon changes here, at a spiking layer.</title>
-    <path d="M1108,80.0 L1072,80.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M1072,98.0 L1108,98.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
+    <path d="M1108,80.0 L1072,80.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M1072,98.0 L1108,98.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
     <circle cx="1136" cy="89.0" r="26" fill="#D9760C"/>
     <text x="1136" y="96.0" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700" font-style="italic">T<tspan baseline-shift="sub" font-size="13" font-style="italic">l</tspan><tspan baseline-shift="sub" font-size="13" font-style="normal">+1</tspan></text>
-    <circle class="f29-band" cx="1136" cy="89.0" r="34" fill="#D9760C" opacity="0"/>
+    <circle class="f30-band" cx="1136" cy="89.0" r="34" fill="#D9760C" opacity="0"/>
     <circle cx="1136" cy="89.0" r="34" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-node-l-upper" class="f29-hot">
+  <g id="f30-node-l-upper" class="f30-hot">
     <title>The stream leaving the convolutional layer runs over the same horizon as the stream entering it, because a convolutional layer carries its input horizon through unchanged.</title>
-    <path d="M1108,180.0 L1072,180.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M1072,198.0 L1108,198.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
+    <path d="M1108,180.0 L1072,180.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M1072,198.0 L1108,198.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
     <circle cx="1136" cy="189.0" r="26" fill="#D9760C"/>
     <text x="1136" y="196.0" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700" font-style="italic">T<tspan baseline-shift="sub" font-size="13" font-style="italic">l</tspan></text>
-    <circle class="f29-band" cx="1136" cy="189.0" r="34" fill="#D9760C" opacity="0"/>
+    <circle class="f30-band" cx="1136" cy="189.0" r="34" fill="#D9760C" opacity="0"/>
     <circle cx="1136" cy="189.0" r="34" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-node-l-lower" class="f29-hot">
+  <g id="f30-node-l-lower" class="f30-hot">
     <title>The horizon over which spiking layer l emits its spikes, set per layer or learned; when it is one less than a power of two it is that layer's activation bit-width.</title>
-    <path d="M1108,280.0 L1072,280.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M1072,298.0 L1108,298.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
+    <path d="M1108,280.0 L1072,280.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M1072,298.0 L1108,298.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
     <circle cx="1136" cy="289.0" r="26" fill="#D9760C"/>
     <text x="1136" y="296.0" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700" font-style="italic">T<tspan baseline-shift="sub" font-size="13" font-style="italic">l</tspan></text>
-    <circle class="f29-band" cx="1136" cy="289.0" r="34" fill="#D9760C" opacity="0"/>
+    <circle class="f30-band" cx="1136" cy="289.0" r="34" fill="#D9760C" opacity="0"/>
     <circle cx="1136" cy="289.0" r="34" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-node-l-minus-1" class="f29-hot">
+  <g id="f30-node-l-minus-1" class="f30-hot">
     <title>The horizon of the spike stream entering spiking layer l, set by the layer below it.</title>
-    <path d="M1108,380.0 L1072,380.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
-    <path d="M1072,398.0 L1108,398.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f29-arrow-enc)"/>
+    <path d="M1108,380.0 L1072,380.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
+    <path d="M1072,398.0 L1108,398.0" fill="none" stroke="#D9760C" stroke-width="2" marker-end="url(#f30-arrow-enc)"/>
     <circle cx="1136" cy="389.0" r="26" fill="#D9760C"/>
     <text x="1136" y="396.0" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700" font-style="italic">T<tspan baseline-shift="sub" font-size="13" font-style="italic">l</tspan><tspan baseline-shift="sub" font-size="13" font-style="normal">&#8722;1</tspan></text>
-    <circle class="f29-band" cx="1136" cy="389.0" r="34" fill="#D9760C" opacity="0"/>
+    <circle class="f30-band" cx="1136" cy="389.0" r="34" fill="#D9760C" opacity="0"/>
     <circle cx="1136" cy="389.0" r="34" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <g id="f29-boundary" class="f29-hot">
+  <g id="f30-boundary" class="f30-hot">
     <title>Where two horizons differ, either a real-valued average of the previous layer's output over its own horizon is broadcast across the next horizon, or the spike count is regenerated as a spike train over the next horizon.</title>
     <path d="M812,139.0 L804,139.0" fill="none" stroke="#D9760C" stroke-width="1.5"/>
     <circle cx="820" cy="139.0" r="6" fill="#ffffff" stroke="#D9760C" stroke-width="2.2"/>
     <text x="798" y="117.0" text-anchor="end" fill="#8F4A06" font-size="15">the horizon<tspan x="798" dy="18">changes here,</tspan><tspan x="798" dy="18">average-and-broadcast</tspan><tspan x="798" dy="18">or count-and-regenerate</tspan></text>
-    <rect class="f29-band" x="630" y="92" width="198" height="94" rx="6" fill="#D9760C" opacity="0"/>
+    <rect class="f30-band" x="630" y="92" width="198" height="94" rx="6" fill="#D9760C" opacity="0"/>
     <rect x="630" y="92" width="198" height="94" fill="#000" opacity="0" pointer-events="all"/>
   </g>
-  <text id="f29-gloss-hetero" x="901.0" y="452" text-anchor="middle" fill="#4a5560" font-size="15">a horizon per layer, set or learned;<tspan x="901.0" dy="20">under <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="11" font-style="italic">l</tspan> = 2<tspan baseline-shift="super" font-size="11" font-style="italic">b<tspan baseline-shift="sub" font-size="8">l</tspan></tspan> &#8722; 1 each is an activation bit-width <tspan font-style="italic">b</tspan><tspan baseline-shift="sub" font-size="11" font-style="italic">l</tspan></tspan></text>
+  <text id="f30-gloss-hetero" x="901.0" y="452" text-anchor="middle" fill="#4a5560" font-size="15">a horizon per layer, set or learned;<tspan x="901.0" dy="20">under <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="11" font-style="italic">l</tspan> = 2<tspan baseline-shift="super" font-size="11" font-style="italic">b<tspan baseline-shift="sub" font-size="8">l</tspan></tspan> &#8722; 1 each is an activation bit-width <tspan font-style="italic">b</tspan><tspan baseline-shift="sub" font-size="11" font-style="italic">l</tspan></tspan></text>
 </svg>
-<figcaption><b>Figure 29:</b> Uniform and heterogeneous latency in a converted network, each panel a stack of a spiking layer, a convolutional layer, and a second spiking layer joined by spike streams; on the left a single node holds one global horizon <i>T</i> and a fan of arrows imposes it on every layer, while on the right a node beside each layer gap holds that gap's own horizon, the convolutional layer carries its input horizon through unchanged so the two gaps around it share <i>T</i><sub><i>l</i></sub>, and the horizon changes only at a spiking layer. Where it changes, either a real-valued average of the previous layer's output over its own horizon is broadcast across the next horizon or its spike count is regenerated as a spike train over the next horizon. Under <i>T</i><sub><i>l</i></sub> = 2<sup><i>b</i><sub><i>l</i></sub></sup> &#8722; 1 each per-layer horizon is an activation bit-width <i>b</i><sub><i>l</i></sub>, so the right panel is an activation mixed-precision network read in time, and a mean of the <i>T</i><sub><i>l</i></sub> is a statistic of the allocation, not a latency (Section 4.1). Layout after PseudoSNN's Figure 1. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 30:</b> Uniform and heterogeneous latency in a converted network, each panel a stack of a spiking layer, a convolutional layer, and a second spiking layer joined by spike streams; on the left a single node holds one global horizon <i>T</i> and a fan of arrows imposes it on every layer, while on the right a node beside each layer gap holds that gap's own horizon, the convolutional layer carries its input horizon through unchanged so the two gaps around it share <i>T</i><sub><i>l</i></sub>, and the horizon changes only at a spiking layer. Where it changes, either a real-valued average of the previous layer's output over its own horizon is broadcast across the next horizon or its spike count is regenerated as a spike train over the next horizon. Under <i>T</i><sub><i>l</i></sub> = 2<sup><i>b</i><sub><i>l</i></sub></sup> &#8722; 1 each per-layer horizon is an activation bit-width <i>b</i><sub><i>l</i></sub>, so the right panel is an activation mixed-precision network read in time, and a mean of the <i>T</i><sub><i>l</i></sub> is a statistic of the allocation, not a latency (Section 4.1). Layout after PseudoSNN's Figure 1. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>

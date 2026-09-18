@@ -1,8 +1,8 @@
-#figure-24 { text-align: center; }
-#figure-24 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-24 .sym { font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: 1.08em; }
-#figure-24 .sub { font-size: 0.85em; }
-#figure-24 .f24-hot { cursor: help; }
-#figure-24 .f24-band { transition: opacity 0.15s; }
-#figure-24 .f24-hot:hover .f24-band { opacity: 0.10; }
-#figure-24 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+#figure-25 { text-align: center; }
+#figure-25 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-25 .sym { font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: 1.08em; }
+#figure-25 .sub { font-size: 0.85em; }
+#figure-25 .f25-hot { cursor: help; }
+#figure-25 .f25-band { transition: opacity 0.15s; }
+#figure-25 .f25-hot:hover .f25-band { opacity: 0.10; }
+#figure-25 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }

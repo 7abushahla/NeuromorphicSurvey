@@ -1,0 +1,280 @@
+<figure class="pfig l-body" id="figure-24">
+<!-- Conceptual figure; no measured quantity is drawn. Provenance of every drawn phrase, symbol and landmark. Band A (the shared idea): Section 8.1 opening paragraph of site/sec-08.html (Cao et al. 2015, ReLU-based ANNs converted to SNNs of IF neurons under rate coding; for nonnegative activations an IF neuron's spike count over a time window approximates the ANN activation); Section 8.1.1 (a trained network whose weights are kept, nothing retrained); Section 8.1.2 (the firing fraction rho(T) = N(T)/T and its correspondence with the activation over the scale, a/lambda); Section 8.1.4 (the per-layer scale lambda and the threshold set to it, theta = lambda); Section 8.1 second paragraph and Section 8.2.3 (reset by subtraction as the reset rule the framework needs); Section 8.3 opener and Section 8.3.1 to 8.3.5 (every classical and low-latency method changes something inside the conversion step). Symbols follow the staged notation of Section 3.2: theta threshold, lambda scale, rho(T) firing fraction, N(T) spike count, T horizon, W weights, a activation. Band B (the landmark rail), in the visual language of the strip of Figure 3 (lineage-tree.html) and Figure 4 (hardware-lineages.html); ring fills are Figure 3's own, classical #CFE2F3 for Section 8.1, low-latency #F9D4EA for Sections 8.2 and 8.3, toward hardware #FFDDA6 for Section 8.4. Labels and hover sentences by registry key and the Section 8 sentence they come from: perez-carrasco-2013, 8.1 opening paragraph (first framework, sigmoid ANNs to LIF SNNs by scaling synaptic weights); cao-2015, 8.1 opening paragraph (ReLU-based ANNs to SNNs of IF neurons under rate coding, the framework this part derives); diehl, 8.1 second paragraph (data-based weight and threshold normalization from a network's own activation statistics); rueckauer, 8.1 second paragraph (reset-by-subtraction fixed as the reset rule the framework needs, keeping the residual charge a hard reset discards); sengupta, 8.1 second paragraph (SPIKE-NORM extended to VGG and residual architectures, calibration constant estimated online from a short simulation); rmp, 8.2.3 (residual membrane potential problem formalized for deep and residual architectures under uniform hard reset); ding-2021-optimalconv, 8.1.7 (layer-by-layer firing-rate correspondence stated and proved for general feedforward and residual architectures); snn-calibration, 8.4.2 (Li et al.'s calibration of bias, weight and initial-membrane-potential statistics on a network already converted); qcfs, 8.3 opener and 8.3.1 (QCFS activation, a few steps with one shared budget for every layer); srp, 8.3 opener and 8.3.2 (SRP, residual membrane potential, four steps with one shared budget); fast-snn, 8.2.4 and 8.3.1 (a quantized ANN converted, signed spike representation with a learned clipping range); quartz, 8.3.6 and 8.4.1 (time-to-first-spike conversion, each neuron fires at most once, measured on a Nahuku 32 Loihi 1 board); pascal, 8.3.1 and 8.3.4 (spike accumulation, per-layer quantization step from each layer's activation histogram); mt-snn-frontiers-2026, 8.3.4 (mixed timesteps, the conversion route to a per-layer horizon). Drawing conventions: panel boxes, header band, arrow markers, hover bands and the palette from Figure 25 (relu-firing-fraction-correspondence.html); rail line, rings, year and label rows from the strips of Figures 3 and 4. Years are publication years; spacing along the rail is even and carries no meaning. -->
+<svg viewBox="0 0 1200 488" role="img" aria-labelledby="f24-title f24-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f24-title">ANN-to-SNN conversion at a glance, the idea every method of this section shares above and the fourteen works that fixed it on one rail below</title>
+  <desc id="f24-desc">Two bands. The upper band reads left to right through three boxes joined by arrows. Trained ANN, a small three-layer network glyph with a ReLU curve beside it and the lines weights W, trained once, and ReLU activations a ≥ 0. Conversion, the middle box drawn with a heavier outline, showing a ReLU curve turned into an IF unit with θ = λ that emits spikes, and the lines keep the weights W; replace each ReLU by an IF unit, threshold θ set to the activation scale λ, reset by subtraction; choose a horizon T; nothing is retrained. SNN run for T steps, the same network glyph with three spike rasters beside it and the lines the same W, spikes in place of activations, and firing fraction ρ(T) = N(T)/T ≈ a/λ. A bracket under the middle box reads that every classical and low-latency method of this section changes what enters this box or what happens inside it. The lower band is a landmark rail headed Landmarks in order of year, spacing not to scale, with a key of three ring fills, classical for Section 8.1, low-latency for Sections 8.2 and 8.3, toward hardware for Section 8.4. Fourteen rings sit evenly along the rail with the year above and the label below, in order, 2013 Pérez-Carrasco, 2015 Cao ReLU to IF, 2015 Diehl normalization, 2017 Rueckauer soft reset, 2019 Sengupta SPIKE-NORM, 2020 Han RMP-SNN, 2021 Ding correspondence, 2021 Li calibration, 2022 Bu QCFS, 2023 Hao SRP, 2023 Fast-SNN, 2024 Quartz TTFS on Loihi, 2025 PASCAL, 2026 MT-SNN. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs>
+    <marker id="f24-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <marker id="f24-arrow-small" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+  </defs>
+  <g id="f24-box-ann" class="f24-hot">
+    <title>The trained network as conversion receives it, its weights W fixed by training and its ReLU units producing nonnegative activations a.</title>
+    <rect x="13" y="24" width="330" height="250" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <path d="M13,56 V30 A6,6 0 0 1 19,24 H337 A6,6 0 0 1 343,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="13" y1="56" x2="343" y2="56" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="178" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">Trained ANN</text>
+    <line x1="58" y1="92" x2="120" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="92" x2="120" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="92" x2="120" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="92" x2="120" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="122" x2="120" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="122" x2="120" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="122" x2="120" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="122" x2="120" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="152" x2="120" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="152" x2="120" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="152" x2="120" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="58" y1="152" x2="120" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="77" x2="182" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="77" x2="182" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="77" x2="182" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="107" x2="182" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="107" x2="182" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="107" x2="182" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="137" x2="182" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="137" x2="182" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="137" x2="182" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="167" x2="182" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="167" x2="182" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="120" y1="167" x2="182" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <circle cx="58" cy="92" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="58" cy="122" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="58" cy="152" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="120" cy="77" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="120" cy="107" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="120" cy="137" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="120" cy="167" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="182" cy="92" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="182" cy="122" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="182" cy="152" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <line x1="240" y1="162" x2="324" y2="162" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="240" y1="162" x2="240" y2="88" stroke="#8a94a0" stroke-width="1.2"/>
+    <path d="M243,161 H275.28 L320,94" fill="none" stroke="#2b3440" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="282" y="182" fill="#6b7580" font-size="14" text-anchor="middle">ReLU</text>
+    <text x="178" y="222" fill="#2b3440" font-size="15" text-anchor="middle">weights <tspan class="sym">W</tspan>, trained once</text>
+    <text x="178" y="248" fill="#2b3440" font-size="15" text-anchor="middle">ReLU activations <tspan class="sym">a</tspan> ≥ 0</text>
+    <rect class="f24-band" x="13" y="24" width="330" height="250" rx="6" fill="#6B8CBE" opacity="0"/>
+    <rect x="13" y="24" width="330" height="250" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-box-conv" class="f24-hot">
+    <title>The conversion step, the weights kept as they are, every ReLU unit replaced by an integrate-and-fire unit whose threshold θ is set to the activation scale λ and which resets by subtraction, and a horizon T chosen; nothing is retrained, and every classical and low-latency method of this section changes what enters this box or what happens inside it.</title>
+    <rect x="385" y="24" width="430" height="250" rx="6" fill="#f6f7f9" stroke="#2b3440" stroke-width="3"/>
+    <path d="M385,56 V30 A6,6 0 0 1 391,24 H809 A6,6 0 0 1 815,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="385" y1="56" x2="815" y2="56" stroke="#2b3440" stroke-width="1.2"/>
+    <text x="600" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">Conversion</text>
+    <line x1="440" y1="134" x2="504" y2="134" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="440" y1="134" x2="440" y2="78" stroke="#8a94a0" stroke-width="1.2"/>
+    <path d="M443,133 H466.88 L500,84" fill="none" stroke="#2b3440" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="472" y="150" fill="#6b7580" font-size="14" text-anchor="middle">ReLU</text>
+    <line x1="512" y1="106" x2="548" y2="106" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <rect x="550" y="86" width="132" height="40" rx="4" fill="#fff" stroke="#6B8CBE" stroke-width="2.4"/>
+    <text x="616" y="102" fill="#2b3440" font-size="14" text-anchor="middle">IF unit, θ = λ</text>
+    <text x="616" y="120" fill="#2b3440" font-size="14" text-anchor="middle">reset by subtraction</text>
+    <line x1="684" y1="106" x2="720" y2="106" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <line x1="724" y1="106" x2="790" y2="106" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="732" y1="99" x2="732" y2="113" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="750" y1="99" x2="750" y2="113" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="762" y1="99" x2="762" y2="113" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="782" y1="99" x2="782" y2="113" stroke="#D63A2F" stroke-width="2.6"/>
+    <text x="757" y="150" fill="#6b7580" font-size="14" text-anchor="middle">spikes</text>
+    <text x="600" y="168" fill="#2b3440" font-size="15" text-anchor="middle">keep the weights <tspan class="sym">W</tspan></text>
+    <text x="600" y="191" fill="#2b3440" font-size="15" text-anchor="middle">replace each ReLU by an IF unit,</text>
+    <text x="600" y="214" fill="#2b3440" font-size="15" text-anchor="middle">threshold θ set to the activation scale λ,</text>
+    <text x="600" y="237" fill="#2b3440" font-size="15" text-anchor="middle">reset by subtraction</text>
+    <text x="600" y="260" fill="#2b3440" font-size="15" text-anchor="middle">choose a horizon <tspan class="sym">T</tspan>; nothing is retrained</text>
+    <rect class="f24-band" x="385" y="24" width="430" height="250" rx="6" fill="#6B8CBE" opacity="0"/>
+    <rect x="385" y="24" width="430" height="250" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-box-snn" class="f24-hot">
+    <title>The converted network run for T steps, the same weights W now driven by spikes, each unit's firing fraction ρ(T) = N(T)/T standing in for its activation a in units of the scale λ.</title>
+    <rect x="857" y="24" width="330" height="250" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <path d="M857,56 V30 A6,6 0 0 1 863,24 H1181 A6,6 0 0 1 1187,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="857" y1="56" x2="1187" y2="56" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="1022" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">SNN run for <tspan class="sym">T</tspan> steps</text>
+    <line x1="893" y1="92" x2="955" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="92" x2="955" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="92" x2="955" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="92" x2="955" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="122" x2="955" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="122" x2="955" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="122" x2="955" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="122" x2="955" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="152" x2="955" y2="77" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="152" x2="955" y2="107" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="152" x2="955" y2="137" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="893" y1="152" x2="955" y2="167" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="77" x2="1017" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="77" x2="1017" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="77" x2="1017" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="107" x2="1017" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="107" x2="1017" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="107" x2="1017" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="137" x2="1017" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="137" x2="1017" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="137" x2="1017" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="167" x2="1017" y2="92" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="167" x2="1017" y2="122" stroke="#8a94a0" stroke-width="0.8"/>
+    <line x1="955" y1="167" x2="1017" y2="152" stroke="#8a94a0" stroke-width="0.8"/>
+    <circle cx="893" cy="92" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="893" cy="122" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="893" cy="152" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="955" cy="77" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="955" cy="107" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="955" cy="137" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="955" cy="167" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="1017" cy="92" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="1017" cy="122" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <circle cx="1017" cy="152" r="7" fill="#fff" stroke="#2b3440" stroke-width="1.5"/>
+    <line x1="1082" y1="96" x2="1166" y2="96" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="1090" y1="89" x2="1090" y2="103" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1108" y1="89" x2="1108" y2="103" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1132" y1="89" x2="1132" y2="103" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1152" y1="89" x2="1152" y2="103" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1082" y1="122" x2="1166" y2="122" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="1098" y1="115" x2="1098" y2="129" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1121" y1="115" x2="1121" y2="129" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1146" y1="115" x2="1146" y2="129" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1082" y1="148" x2="1166" y2="148" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="1086" y1="141" x2="1086" y2="155" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1102" y1="141" x2="1102" y2="155" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1119" y1="141" x2="1119" y2="155" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1140" y1="141" x2="1140" y2="155" stroke="#D63A2F" stroke-width="2.6"/>
+    <line x1="1160" y1="141" x2="1160" y2="155" stroke="#D63A2F" stroke-width="2.6"/>
+    <text x="1124" y="182" fill="#6b7580" font-size="14" text-anchor="middle">steps 1 to <tspan class="sym">T</tspan></text>
+    <text x="1022" y="222" fill="#2b3440" font-size="15" text-anchor="middle">the same <tspan class="sym">W</tspan>, spikes in place of activations</text>
+    <text x="1022" y="248" fill="#2b3440" font-size="15" text-anchor="middle">firing fraction ρ(<tspan class="sym">T</tspan>) = <tspan class="sym">N</tspan>(<tspan class="sym">T</tspan>)/<tspan class="sym">T</tspan> ≈ <tspan class="sym">a</tspan>/λ</text>
+    <rect class="f24-band" x="857" y="24" width="330" height="250" rx="6" fill="#6B8CBE" opacity="0"/>
+    <rect x="857" y="24" width="330" height="250" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <path id="f24-arrow-1" d="M346,149 L382,149" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-2" d="M818,149 L854,149" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-bracket">
+    <path d="M385,284 V294 H815 V284 M600,294 V304" fill="none" stroke="#2b3440" stroke-width="1.4"/>
+    <text x="600" y="324" fill="#2b3440" font-size="15" text-anchor="middle">every classical and low-latency method of this section changes what enters this box or what happens inside it</text>
+  </g>
+  <g id="f24-rail">
+    <text x="40" y="384" font-size="15" font-weight="700" fill="#555">Landmarks in order of year, spacing not to scale</text>
+    <circle cx="519" cy="379" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+    <text x="534" y="384" font-size="15" fill="#555">classical, Section 8.1</text>
+    <circle cx="705" cy="379" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+    <text x="720" y="384" font-size="15" fill="#555">low-latency, Sections 8.2 and 8.3</text>
+    <circle cx="970" cy="379" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+    <text x="985" y="384" font-size="15" fill="#555">toward hardware, Section 8.4</text>
+    <line x1="40" y1="424" x2="1180" y2="424" stroke="#8a94a0" stroke-width="2.2" data-axis="numeric" data-unit="year"/>
+    <g id="f24-lm-1" class="f24-hot">
+      <title>The first ANN-to-SNN conversion framework, mapping ANNs with sigmoid activations to SNNs of LIF neurons by scaling synaptic weights.</title>
+      <circle cx="62" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="62" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2013</text>
+      <text x="62" y="450" font-size="15" fill="#333" text-anchor="middle">Pérez-Carrasco</text>
+      <rect class="f24-band" x="24" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="24" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-2" class="f24-hot">
+      <title>ReLU-based ANNs converted to SNNs of IF neurons under rate coding, the framework this section derives.</title>
+      <circle cx="146" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="146" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2015</text>
+      <text x="146" y="472" font-size="15" fill="#333" text-anchor="middle">Cao, ReLU to IF</text>
+      <rect class="f24-band" x="108" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="108" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-3" class="f24-hot">
+      <title>Data-based weight and threshold normalization, the calibration constant read from the network's own activation statistics.</title>
+      <circle cx="230" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="230" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2015</text>
+      <text x="226" y="450" font-size="15" fill="#333" text-anchor="middle">Diehl, normalization</text>
+      <rect class="f24-band" x="192" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="192" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-4" class="f24-hot">
+      <title>Reset by subtraction fixed as the reset rule the framework needs, keeping the residual charge a hard reset discards.</title>
+      <circle cx="314" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="314" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2017</text>
+      <text x="314" y="472" font-size="15" fill="#333" text-anchor="middle">Rueckauer, soft reset</text>
+      <rect class="f24-band" x="276" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="276" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-5" class="f24-hot">
+      <title>The normalization extended to VGG and residual architectures, the calibration constant estimated online from a short simulation.</title>
+      <circle cx="398" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="398" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2019</text>
+      <text x="396" y="450" font-size="15" fill="#333" text-anchor="middle">Sengupta, SPIKE-NORM</text>
+      <rect class="f24-band" x="360" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="360" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-6" class="f24-hot">
+      <title>The residual membrane potential problem named for deep and residual architectures under a hard reset.</title>
+      <circle cx="482" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="482" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2020</text>
+      <text x="482" y="472" font-size="15" fill="#333" text-anchor="middle">Han, RMP-SNN</text>
+      <rect class="f24-band" x="444" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="444" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-7" class="f24-hot">
+      <title>The layer-by-layer firing-rate correspondence stated and proved for general feedforward and residual architectures.</title>
+      <circle cx="566" cy="424" r="7" fill="#CFE2F3" stroke="#000" stroke-width="1.5"/>
+      <text x="566" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2021</text>
+      <text x="572" y="450" font-size="15" fill="#333" text-anchor="middle">Ding, correspondence</text>
+      <rect class="f24-band" x="528" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="528" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-8" class="f24-hot">
+      <title>Bias, weight and initial-membrane-potential statistics calibrated on a network already converted.</title>
+      <circle cx="650" cy="424" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+      <text x="650" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2021</text>
+      <text x="650" y="472" font-size="15" fill="#333" text-anchor="middle">Li, calibration</text>
+      <rect class="f24-band" x="612" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="612" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-9" class="f24-hot">
+      <title>The quantization-clip-floor-shift activation, the shaped activation that reaches a few steps with one shared budget for every layer.</title>
+      <circle cx="734" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="734" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2022</text>
+      <text x="734" y="450" font-size="15" fill="#333" text-anchor="middle">Bu, QCFS</text>
+      <rect class="f24-band" x="696" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="696" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-10" class="f24-hot">
+      <title>Conversion error reduced through the residual membrane potential, four steps with one shared budget.</title>
+      <circle cx="818" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="818" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2023</text>
+      <text x="818" y="472" font-size="15" fill="#333" text-anchor="middle">Hao, SRP</text>
+      <rect class="f24-band" x="780" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="780" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-11" class="f24-hot">
+      <title>A quantized ANN converted, pairing a signed spike representation with a learned clipping range.</title>
+      <circle cx="902" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="902" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2023</text>
+      <text x="902" y="450" font-size="15" fill="#333" text-anchor="middle">Fast-SNN</text>
+      <rect class="f24-band" x="864" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="864" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-12" class="f24-hot">
+      <title>Conversion to a time-to-first-spike code, each neuron firing at most once, measured on a Loihi 1 board.</title>
+      <circle cx="986" cy="424" r="7" fill="#FFDDA6" stroke="#000" stroke-width="1.5"/>
+      <text x="986" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2024</text>
+      <text x="986" y="472" font-size="15" fill="#333" text-anchor="middle">Quartz, TTFS on Loihi</text>
+      <rect class="f24-band" x="948" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="948" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-13" class="f24-hot">
+      <title>Spike accumulation with a per-layer quantization step set from each layer's own activation histogram.</title>
+      <circle cx="1070" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="1070" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2025</text>
+      <text x="1070" y="450" font-size="15" fill="#333" text-anchor="middle">PASCAL</text>
+      <rect class="f24-band" x="1032" y="394" width="76" height="64" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="1032" y="394" width="76" height="64" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+    <g id="f24-lm-14" class="f24-hot">
+      <title>Mixed timesteps, the conversion route to a per-layer horizon.</title>
+      <circle cx="1154" cy="424" r="7" fill="#F9D4EA" stroke="#000" stroke-width="1.5"/>
+      <text x="1154" y="410" font-size="16" font-weight="700" fill="#000" text-anchor="middle">2026</text>
+      <text x="1154" y="472" font-size="15" fill="#333" text-anchor="middle">MT-SNN</text>
+      <rect class="f24-band" x="1116" y="394" width="76" height="86" rx="6" fill="#6B8CBE" opacity="0"/>
+      <rect x="1116" y="394" width="76" height="86" fill="#000" opacity="0" pointer-events="all"/>
+    </g>
+  </g>
+</svg>
+<div class="fig-hint">Hover a box or a landmark for the one sentence it carries.</div>
+<figcaption><b>Figure 24:</b> ANN-to-SNN conversion at a glance, and the works that fixed it. Above, the idea every method of this section shares, a trained network whose weights are kept, whose ReLU units are replaced by integrate-and-fire units with the threshold set to the activation scale, and which then runs for \(T\) steps so that each unit's firing fraction stands in for its activation; every classical and low-latency method changes what enters the conversion box or what happens inside it. Below, the landmarks of this section on one rail in order of year, spacing not to scale, Pérez-Carrasco et al.'s first framework<d-cite key="perez-carrasco-2013"></d-cite>, Cao et al.'s ReLU-to-IF conversion under rate coding<d-cite key="cao-2015"></d-cite>, Diehl et al.'s weight and threshold normalization<d-cite key="diehl"></d-cite>, Rueckauer et al.'s reset by subtraction<d-cite key="rueckauer"></d-cite>, Sengupta et al.'s SPIKE-NORM<d-cite key="sengupta"></d-cite>, Han et al.'s residual membrane potential neuron<d-cite key="rmp"></d-cite>, Ding et al.'s layer-by-layer correspondence<d-cite key="ding-2021-optimalconv"></d-cite>, Li et al.'s calibration of a converted network<d-cite key="snn-calibration"></d-cite>, Bu et al.'s QCFS<d-cite key="qcfs"></d-cite>, Hao et al.'s SRP<d-cite key="srp"></d-cite>, Fast-SNN's conversion of a quantized network<d-cite key="fast-snn"></d-cite>, Quartz's time-to-first-spike conversion measured on Loihi<d-cite key="quartz"></d-cite>, PASCAL's spike accumulation<d-cite key="pascal"></d-cite>, and MT-SNN's mixed timesteps<d-cite key="mt-snn-frontiers-2026"></d-cite>. Ring fills name the part of this section that takes each work up, classical conversion, low-latency conversion, or conversion toward hardware. Conceptual figure; no measured quantity is drawn.</figcaption>
+</figure>
