@@ -4,3 +4,4 @@ __pycache__/
 
 # Quarantined first attempt, kept locally for reference only.
 _scaffold-old/
+.superpowers/

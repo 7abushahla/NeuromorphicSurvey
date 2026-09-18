@@ -101,56 +101,55 @@ class FigureMapTests(unittest.TestCase):
         self.assertIn("check-figure-map:", result.stdout)
 
     def test_five_conventional_routes_carry_a_chip_word(self):
-        import re
-        js = (ROOT / "assets/figure.js").read_text()
-        routes = js[js.index("const ROUTES"):js.index("const BUCKETS")]
-        tks = dict(re.findall(r"\{ id: '([a-z0-9-]+)'[^\n]*? tk: '([^']+)'", routes))
+        guide = json.loads((ROOT / "data/figure-guide.json").read_text())
         new = {"spikingjelly-gpu": "GPU", "mlgenn-gpu": "GPU", "nest-cpu": "CPU", "ttfs-cortex-m4": "MCU", "fenn-riscv": "RISC-V"}
-        for route_id, word in new.items():
-            self.assertEqual(tks.get(route_id), word, route_id)
-        self.assertGreaterEqual(len(tks), 5)
-        for route_id, word in tks.items():
-            self.assertIn(word, WORDS, route_id)
+        for tid, word in new.items():
+            self.assertEqual(guide["toolchains"][tid]["tk"], word, tid)
+        for tid, t in guide["toolchains"].items():
+            self.assertIn(t["tk"], WORDS, tid)
 
     def test_hardware_rows_carry_the_three_buckets(self):
-        import re
-        js = (ROOT / "assets/figure.js").read_text()
-        hw = js[js.index("id: 'hw'"):js.index("const ROUTES")]
-        self.assertEqual(set(re.findall(r"bucket: '([a-z]+)'", hw)), BUCKETS)
+        guide = json.loads((ROOT / "data/figure-guide.json").read_text())
+        hw = [L for L in guide["layers"] if L["id"] == "hw"][0]
+        self.assertEqual({r["bucket"] for r in hw["rows"]}, BUCKETS)
         css = (ROOT / "assets/figure.css").read_text()
         for bucket in KINDS["buckets"]:
             self.assertIn(f'[data-bucket="{bucket["name"]}"]', css)
             self.assertIn(bucket["line"], css)
 
     def test_physical_routes_draw_through_their_runtime(self):
-        import re
-        js = (ROOT / "assets/figure.js").read_text()
-        routes = js[js.index("const ROUTES"):js.index("const BUCKETS")]
-        lines = {rid: re.findall(r"'([a-z0-9-]+)'", line) for rid, line in re.findall(r"\{ id: '([a-z0-9-]+)'.*?line: \[(.*?)\]", routes, re.S)}
+        guide = json.loads((ROOT / "data/figure-guide.json").read_text())
         expected = {
-            "snntoolbox-spinnaker": ["snn-toolbox", "spynnaker", "spinnaker-runtime", "spinnaker-1"],
-            "quantizeml-akida": ["quantizeml", "cnn2snn", "akida-runtime", "akida"],
-            "rockpool-xylo": ["rockpool", "xylo-mapper", "samna", "xylo"],
-            "quartz-loihi": ["quartz", "nxsdk", "loihi-1"],
+            "snntoolbox-spinnaker": (["snn-toolbox", "spynnaker", "spinnaker-runtime"], "spinnaker-1"),
+            "quantizeml-akida": (["quantizeml", "cnn2snn", "akida-runtime"], "akida"),
+            "rockpool-xylo": (["rockpool", "xylo-mapper", "samna"], "xylo"),
+            "quartz-loihi": (["quartz", "nxsdk"], "loihi-1"),
         }
-        for rid, tail in expected.items():
-            self.assertEqual(lines[rid][-len(tail):], tail, rid)
-            self.assertNotIn("backend-graph", lines[rid], rid)
         edges = {(e["from"], e["to"]) for e in json.loads((ROOT / "data/evidence-stack.json").read_text())["edges"]}
-        for rid, tail in expected.items():
-            for a, b in zip(tail, tail[1:]):
-                self.assertIn((a, b), edges, f"{rid}: {a} -> {b}")
+        for tid, (sw, target) in expected.items():
+            steps = guide["toolchains"][tid]["steps"]
+            drawn = []
+            for s in ("dev", "export", "compile", "run"):
+                v = steps.get(s)
+                drawn += v if isinstance(v, list) else ([v] if v else [])
+            self.assertEqual(drawn, sw, tid)
+            self.assertIn(target, guide["toolchains"][tid]["targets"], tid)
+            for a, b in zip(drawn + [target], (drawn + [target])[1:]):
+                self.assertIn((a, b), edges, f"{tid}: {a} -> {b}")
 
     def test_check_figure_map_rejects_a_chip_in_the_wrong_bucket(self):
         import tempfile, shutil
         with tempfile.TemporaryDirectory() as tmp:
             copy = Path(tmp) / "survey"
-            shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns("index.html", "__pycache__", "research", "site", ".git", "raw"))
-            path = copy / "assets/figure.js"
-            js = path.read_text()
-            self.assertIn("['loihi-2', 'Loihi 2'], ", js)
-            js = js.replace("['loihi-2', 'Loihi 2'], ", "", 1).replace("['cpu-generic', 'CPU'], ", "['cpu-generic', 'CPU'], ['loihi-2', 'Loihi 2'], ", 1)
-            path.write_text(js)
+            shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns("index.html", "__pycache__", "research", ".git", "raw"))
+            path = copy / "data/figure-guide.json"
+            guide = json.loads(path.read_text())
+            hw = [L for L in guide["layers"] if L["id"] == "hw"][0]
+            rows = {r["bucket"] + "::" + r["label"]: r for r in hw["rows"]}
+            sync = rows["neuromorphic::Synchronous digital"]; conv = rows["conventional::Conventional processors"]
+            chip = [c for c in sync["chips"] if c["id"] == "loihi-2"][0]
+            sync["chips"].remove(chip); conv["chips"].append(chip)
+            path.write_text(json.dumps(guide))
             result = subprocess.run([sys.executable, str(copy / "tools/check-figure-map.py")], capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("'loihi-2' sits in the 'conventional' row", result.stdout + result.stderr)

@@ -1,130 +1,229 @@
 #!/usr/bin/env python3
-"""Every chip and every drawn route on the stack map exists in the route data.
+"""Every chip, toolchain, paper and application of the route map exists in the data.
 
-The map (assets/figure.js) is hand-written; the route data (data/generated/route-index.json)
-is built from data/evidence-stack.json. This checker holds the map to the data:
+The map's data is data/figure-guide.json (hand-maintained); the route data is
+data/generated/route-index.json (built from data/evidence-stack.json); the surveyed runs
+are data/evidence-papers.json. Rules, numbered as in the design spec of 2026-09-19:
+  1. every chip is a node; every hardware chip sits in its bucket row; bucket colors
+     in assets/figure.css equal data/target-kinds.json;
+  2. targets are hardware chips whose target_kind equals the toolchain's tk; tk is a
+     known word; vendorFor is a subset of targets;
+  3. every chip named in steps, can, implies, via and unreached exists in the slot it is
+     named under; steps[slot] is in can[slot];
+  4. consecutive software steps on the default line, and the step from the last
+     software chip to each target, are edges; the step into breakAt is not exercised on
+     silicon; seam names a pin;
+  5. papers are E1 or E2 records with the toolchain's target kind; via chips are
+     carriable; 5b (with --require-all-papers) every E1/E2 record is placed;
+  6. applications key task chips, prefer toolchains, via existing chips;
+  7. every non-task chip is reachable or listed under unreached, never both;
+  8. every read anchor is an id in site/*.html;
+  9. no em dash, en dash or prose colon in any string.
 
-  1. every chip on the map is a node, and every id on a route's `line` is a node and a chip;
-  2. every hardware chip sits in the bucket row that data/target-kinds.json assigns to the
-     target kind its node records;
-  3. every software-to-hardware step a route draws is an edge in the data. The one step
-     into a route's `breakAt` chip is the documented refusal, so there the data must record
-     either no edge at all or an edge not recorded as exercised on silicon (route_state
-     physical, or E1/E2 evidence on a legacy edge without a route_state);
-  4. every route names its target's chip word (`tk`), which equals the target kind of the
-     hardware node its line ends on;
-  5. the bucket names and meanings in figure.js, and the bucket colors in figure.css, are
-     those of data/target-kinds.json.
+steps[slot] may be a single chip id or an ordered list of chip ids, when a route passes
+through two chips of the same row (see step_chips below).
 """
 import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-js = (ROOT / 'assets/figure.js').read_text()
-css = (ROOT / 'assets/figure.css').read_text()
+guide = json.loads((ROOT / 'data/figure-guide.json').read_text())
 index = json.loads((ROOT / 'data/generated/route-index.json').read_text())
+papers = json.loads((ROOT / 'data/evidence-papers.json').read_text())['papers']
 kinds = json.loads((ROOT / 'data/target-kinds.json').read_text())
-node_ids = {n['id'] for n in index['nodes']}
+css = (ROOT / 'assets/figure.css').read_text()
+require_all = '--require-all-papers' in sys.argv
+
 node_type = {n['id']: n.get('type') for n in index['nodes']}
 node_kind = {n['id']: (n.get('attributes') or {}).get('target_kind') for n in index['nodes']}
-# The software layer holds framework, exchange, compiler, runtime and method nodes; the
-# hardware layer holds hardware nodes. Application, learning-path, code and neuron chips
-# are selections, not steps the data chains.
-STACK_TYPES = {'framework', 'exchange', 'compiler', 'runtime', 'method', 'hardware'}
 edge_state = {(e['from'], e['to']): e.get('route_state') for e in index['routes']}
 edge_evidence = {(e['from'], e['to']): e.get('evidence_class') or e.get('evidence') for e in index['routes']}
-edge_pairs = set(edge_state)
-# An edge the data records as exercised on silicon: route_state physical, or E1/E2 evidence
-# on the legacy edges that carry no route_state.
-physical = lambda pair: edge_state.get(pair) == 'physical' or edge_evidence.get(pair) in {'E1', 'E2'}
+physical = lambda p: edge_state.get(p) == 'physical' or edge_evidence.get(p) in {'E1', 'E2'}
 bucket_of_kind = {k['word']: k['bucket'] for k in kinds['kinds']}
 buckets = {b['name']: b for b in kinds['buckets']}
-words = set(bucket_of_kind)
+paper_by_id = {p['id']: p for p in papers}
+deploying = {p['id'] for p in papers if p.get('evidence') in {'E1', 'E2'}}
+pins = {s['pin'] for group in guide['seams'].values() for s in group}
+anchors = set()
+for f in (ROOT / 'site').glob('*.html'):
+    anchors.update(re.findall(r'\sid="([^"]+)"', f.read_text()))
 
-layers_src = js[js.index('const LAYERS'):js.index('const ROUTES')]
-chip_ids = set(re.findall(r"\['([a-z0-9-]+)', '", layers_src))
-routes_src = js[js.index('const ROUTES'):js.index('];', js.index('const ROUTES')) + 2]
+slots = guide['slots']
+slot_of, label_of, bucket_row = {}, {}, {}
+for L in guide['layers']:
+    for row in L['rows']:
+        for c in row['chips']:
+            slot_of[c['id']] = row['slot']; label_of[c['id']] = c['label']
+            if row.get('bucket'): bucket_row[c['id']] = row['bucket']
 errors = []
+err = errors.append
 
-# 1. Chips are nodes.
-for chip in sorted(chip_ids):
-    if chip not in node_ids:
-        errors.append(f'map chip {chip!r} is not a node in route-index.json')
 
-# 2. Hardware rows carry a bucket, and each chip's node belongs to that bucket.
-hw_src = layers_src[layers_src.index("id: 'hw'"):]
-hw_rows = re.findall(r"\{ label: '([^']+)',(?: bucket: '([a-z]+)',)? chips: \[(.*?)\] \}", hw_src, re.S)
-if not hw_rows:
-    errors.append('no hardware rows found in figure.js')
-gathered = sum(len(re.findall(r"\['([a-z0-9-]+)', '", chips)) for _, _, chips in hw_rows)
-in_source = len(re.findall(r"\['([a-z0-9-]+)', '", hw_src))
-if gathered != in_source:
-    errors.append(f'hardware rows gathered {gathered} chips but the hardware layer source holds {in_source} chip tuples; a row the parser did not match')
-for label, bucket, chips in hw_rows:
-    if bucket not in buckets:
-        errors.append(f'hardware row {label!r} has no bucket from data/target-kinds.json (found {bucket!r})')
-    for chip in re.findall(r"\['([a-z0-9-]+)', '", chips):
-        if chip not in node_ids:
-            errors.append(f'hardware chip {chip!r} is not a node in route-index.json')
-            continue
-        if node_type.get(chip) != 'hardware':
-            errors.append(f'hardware chip {chip!r} is a {node_type.get(chip)!r} node, not a hardware node')
-        kind = node_kind.get(chip)
-        if bucket_of_kind.get(kind) != bucket:
-            errors.append(f'hardware chip {chip!r} sits in the {bucket!r} row but its node records target_kind {kind!r} ({bucket_of_kind.get(kind)!r})')
+def step_chips(t, slots_wanted=None):
+    """The chips a toolchain draws, in slot order; steps[slot] may be one id or an ordered list."""
+    out = []
+    for slot in (slots_wanted or [s for s in t['steps']]):
+        v = t['steps'].get(slot)
+        if v is None: continue
+        out.extend(v if isinstance(v, list) else [v])
+    return out
 
-# 3 and 4. Routes: every line id is a chip, the software-to-hardware steps are edges, the
-# break step is a recorded refusal or absence, and `tk` is the terminal node's target kind.
-route_count = 0
-for m in re.finditer(r"\{ id: '([a-z0-9-]+)'(.*?)line: \[(.*?)\]", routes_src, re.S):
-    route_count += 1
-    rid, head, line = m.group(1), m.group(2), re.findall(r"'([a-z0-9-]+)'", m.group(3))
-    break_at = (re.search(r"breakAt: '([a-z0-9-]+)'", head) or [None, None])[1]
-    tk = (re.search(r"tk: '([^']+)'", head) or [None, None])[1]
-    for k in line:
-        if k not in node_ids:
-            errors.append(f'route {rid}: line id {k!r} is not a node in route-index.json')
-        if k not in chip_ids:
-            errors.append(f'route {rid}: line id {k!r} is not a chip on the map')
-    if break_at and break_at not in line:
-        errors.append(f'route {rid}: breakAt {break_at!r} is not on its line')
-    sw_and_hw = [c for c in line if node_type.get(c) in STACK_TYPES]
-    for a, b in zip(sw_and_hw, sw_and_hw[1:]):
-        if (a, b) in edge_pairs:
-            if b == break_at and physical((a, b)):
-                errors.append(f'route {rid}: drawn as breaking at {b!r}, but the data records {a} -> {b} as exercised on silicon')
-        elif b != break_at:
-            errors.append(f'route {rid}: no edge {a} -> {b} in route-index.json')
-    last = line[-1] if line else None
-    if node_type.get(last) != 'hardware':
-        errors.append(f'route {rid}: line does not end on a hardware node (ends on {last!r})')
-    elif tk is None:
-        errors.append(f'route {rid}: no tk (chip word) for its target {last!r}')
-    elif tk not in words:
-        errors.append(f'route {rid}: tk {tk!r} is not a word in data/target-kinds.json')
-    elif tk != node_kind.get(last):
-        errors.append(f'route {rid}: tk {tk!r} but its target {last!r} records target_kind {node_kind.get(last)!r}')
-if route_count == 0:
-    errors.append('no routes found in figure.js')
 
-# 5. Bucket names, meanings and colors follow data/target-kinds.json.
-bucket_src = js[js.index('const BUCKETS'):js.index('];', js.index('const BUCKETS'))]
-js_buckets = {n: mn.replace("\\'", "'") for n, mn in re.findall(r"\['([a-z]+)', '((?:[^'\\]|\\.)*)'\]", bucket_src)}
-if set(js_buckets) != set(buckets):
-    errors.append(f'figure.js BUCKETS names {sorted(js_buckets)} differ from data/target-kinds.json {sorted(buckets)}')
-for name, meaning in js_buckets.items():
-    if name in buckets and meaning != buckets[name]['meaning']:
-        errors.append(f'figure.js BUCKETS meaning for {name!r} differs from data/target-kinds.json')
+# 1
+for chip, slot in slot_of.items():
+    if chip not in node_type:
+        err(f"rule 1: chip {chip!r} is not a node in route-index.json"); continue
+    if slot == 'hw':
+        if node_type[chip] != 'hardware':
+            err(f"rule 1: hardware chip {chip!r} is a {node_type[chip]!r} node, not a hardware node")
+        b = bucket_row.get(chip)
+        if b not in buckets:
+            err(f"rule 1: hardware chip {chip!r} sits in a row with no bucket from data/target-kinds.json ({b!r})")
+        elif bucket_of_kind.get(node_kind.get(chip)) != b:
+            err(f"rule 1: hardware chip {chip!r} sits in the {b!r} row but its node records target_kind {node_kind.get(chip)!r} ({bucket_of_kind.get(node_kind.get(chip))!r})")
+if {b['name'] for b in guide['buckets']} != set(buckets):
+    err(f"rule 1: guide buckets {sorted(b['name'] for b in guide['buckets'])} differ from data/target-kinds.json {sorted(buckets)}")
+for b in guide['buckets']:
+    if b['name'] in buckets and b['meaning'] != buckets[b['name']]['meaning']:
+        err(f"rule 1: guide bucket meaning for {b['name']!r} differs from data/target-kinds.json")
 for name, b in buckets.items():
     rules = ''.join(body for sel, body in re.findall(r'([^{}]+)\{([^{}]*)\}', css) if f'[data-bucket="{name}"]' in sel)
     if not rules:
-        errors.append(f'figure.css has no rule for [data-bucket="{name}"]')
-        continue
+        err(f'rule 1: figure.css has no rule for [data-bucket="{name}"]'); continue
     for key in ('line', 'fill', 'ink'):
         if b[key].lower() not in rules.lower():
-            errors.append(f'figure.css rule for [data-bucket="{name}"] lacks the bucket {key} color {b[key]}')
+            err(f'rule 1: figure.css rule for [data-bucket="{name}"] lacks the bucket {key} color {b[key]}')
+
+def chip_in_slot(owner, chip, slot, where):
+    if chip not in slot_of:
+        err(f"rule 3: {owner} names {chip!r} under {where} but it is not a chip on the map"); return False
+    if slot_of[chip] != slot:
+        err(f"rule 3: {owner} names {chip!r} under slot {slot} but it sits in slot {slot_of[chip]}"); return False
+    return True
+
+reached = {}
+for tid, t in guide['toolchains'].items():
+    owner = f"toolchain {tid!r}"
+    # 2
+    if t['tk'] not in bucket_of_kind:
+        err(f"rule 2: {owner} has tk {t['tk']!r} which is not a word in data/target-kinds.json")
+    if not t.get('targets'):
+        err(f"rule 2: {owner} has no targets")
+    for h in t.get('targets', []):
+        if slot_of.get(h) != 'hw':
+            err(f"rule 2: {owner} target {h!r} is not a hardware chip"); continue
+        if node_kind.get(h) != t['tk']:
+            err(f"rule 2: {owner} has tk {t['tk']!r} but its target {h!r} records target_kind {node_kind.get(h)!r}")
+        reached.setdefault(h, tid)
+    for h in t.get('vendorFor', []):
+        if h not in t.get('targets', []):
+            err(f"rule 2: {owner} names vendorFor {h!r} outside its targets")
+    # 3
+    for slot, v in t['steps'].items():
+        if slot not in slots or slot == 'hw':
+            err(f"rule 3: {owner} steps names {slot!r} which is not a non-hardware slot")
+        if v is None: continue
+        for chip in (v if isinstance(v, list) else [v]):
+            if chip_in_slot(owner, chip, slot, f"steps.{slot}") and chip not in t['can'].get(slot, []):
+                err(f"rule 3: {owner} step {slot} {chip!r} is not in can.{slot}")
+    for slot, chips in t['can'].items():
+        if slot not in slots or slot in ('task', 'hw'):
+            err(f"rule 3: {owner} can names {slot!r} which is not a restricting slot")
+        for chip in chips:
+            if chip_in_slot(owner, chip, slot, f"can.{slot}"): reached.setdefault(chip, tid)
+    for chip in t.get('implies', []):
+        if chip not in slot_of:
+            err(f"rule 3: {owner} implies {chip!r} which is not a chip on the map")
+        elif slot_of[chip] in ('task', 'hw'):
+            err(f"rule 3: {owner} implies {chip!r} which sits in slot {slot_of[chip]}")
+        else:
+            reached.setdefault(chip, tid)
+    for chip in t.get('after', []):
+        if chip not in slot_of:
+            err(f"rule 3: {owner} after names {chip!r} which is not a chip on the map")
+        elif slot_of[chip] in ('task', 'hw'):
+            err(f"rule 3: {owner} after names {chip!r} which sits in slot {slot_of[chip]}")
+    # 4
+    sw = step_chips(t, ('dev', 'export', 'compile', 'run'))
+    break_at = t.get('breakAt')
+    pairs = list(zip(sw, sw[1:]))
+    if sw:
+        pairs += [(sw[-1], h) for h in t.get('targets', [])]
+    for a, b in pairs:
+        if b == break_at:
+            if (a, b) in edge_state and physical((a, b)):
+                err(f"rule 4: {owner} breaks at {b!r} but the data records {a} -> {b} as exercised on silicon")
+            break
+        if (a, b) not in edge_state:
+            err(f"rule 4: {owner} draws {a} -> {b} but no edge records it")
+    if break_at:
+        if break_at not in step_chips(t) + t.get('targets', []):
+            err(f"rule 4: {owner} breakAt {break_at!r} is not on its line")
+        if not t.get('breakWhy'):
+            err(f"rule 4: {owner} breaks without a breakWhy")
+        if t.get('seam') and t['seam'] not in pins:
+            err(f"rule 4: {owner} names seam {t['seam']!r} which is not a pin")
+    # 5
+    for p in t.get('papers', []):
+        pid = p.get('id')
+        if pid not in deploying:
+            err(f"rule 5: {owner} lists paper {pid!r} which is not an E1 or E2 record"); continue
+        if paper_by_id[pid].get('target_kind') != t['tk']:
+            err(f"rule 5: {owner} lists paper {pid!r} of target kind {paper_by_id[pid].get('target_kind')!r} under tk {t['tk']!r}")
+        for slot, chip in (p.get('via') or {}).items():
+            if slot not in slots:
+                err(f"rule 5: {owner} paper {pid!r} via names slot {slot!r}"); continue
+            if slot == 'task':
+                if slot_of.get(chip) != 'task': err(f"rule 5: {owner} paper {pid!r} via task {chip!r} is not a task chip")
+            elif slot == 'hw':
+                if chip not in t.get('targets', []): err(f"rule 5: {owner} paper {pid!r} via hw {chip!r} is not a target")
+            elif chip not in t['can'].get(slot, []) and chip not in t.get('implies', []):
+                err(f"rule 5: {owner} paper {pid!r} via {slot} {chip!r} is not in can.{slot} or implies")
+placed = {p['id'] for t in guide['toolchains'].values() for p in t.get('papers', [])}
+if require_all:
+    for pid in sorted(deploying - placed):
+        err(f"rule 5b: {paper_by_id[pid]['evidence']} record {pid!r} appears under no toolchain")
+# 6
+for task, a in guide['applications'].items():
+    if slot_of.get(task) != 'task':
+        err(f"rule 6: application {task!r} is not a task chip")
+    for tid in a.get('prefer', []):
+        if tid not in guide['toolchains']:
+            err(f"rule 6: application {task!r} prefers {tid!r} which is not a toolchain")
+    for slot, chip in (a.get('via') or {}).items():
+        if chip not in slot_of or slot_of[chip] != slot:
+            err(f"rule 6: application {task!r} via {slot} {chip!r} is not a chip in that slot")
+# 7
+for chip, slot in slot_of.items():
+    if slot == 'task': continue
+    if chip in reached and chip in guide['unreached']:
+        err(f"rule 7: chip {chip!r} is listed under unreached but toolchain {reached[chip]!r} reaches it")
+    if chip not in reached and chip not in guide['unreached']:
+        err(f"rule 7: chip {chip!r} is reached by no toolchain and is not listed under unreached")
+for chip in guide['unreached']:
+    if chip not in slot_of:
+        err(f"rule 3: unreached names {chip!r} which is not a chip on the map")
+# 8
+for group, entries in (('notes', guide['notes']), ('unreached', guide['unreached'])):
+    for chip, e in entries.items():
+        read = e.get('read')
+        if read and read.lstrip('#') not in anchors:
+            err(f"rule 8: read anchor {read!r} ({group} {chip}) is not an id in site/*.html")
+# 9
+PROSE_COLON = re.compile(r'(?<![A-Za-z0-9_=]):(?![A-Za-z0-9_=/])|: ')
+def walk(value, path):
+    if isinstance(value, dict):
+        for k, v in value.items(): walk(v, f"{path}.{k}" if path else k)
+    elif isinstance(value, list):
+        for i, v in enumerate(value): walk(v, f"{path}[{i}]")
+    elif isinstance(value, str):
+        if '—' in value: err(f"rule 9: {path} contains an em dash")
+        if '–' in value: err(f"rule 9: {path} contains an en dash")
+        if not path.endswith('.read') and not path.endswith('.color') and PROSE_COLON.search(value):
+            err(f"rule 9: {path} contains a prose colon")
+walk({k: v for k, v in guide.items() if k in ('toolchains', 'applications', 'notes', 'unreached', 'seams', 'rails', 'buckets', 'layers')}, '')
 
 if errors:
     print('\n'.join(errors)); sys.exit(1)
-print(f'check-figure-map: {len(chip_ids)} chips and {route_count} routes on the map agree with the route data; '
-      'every hardware chip sits in its bucket, every drawn software-to-hardware step is an edge, and every route names its target kind')
+print(f"check-figure-map: {len(slot_of)} chips, {len(guide['toolchains'])} toolchains, {len(placed)} placed papers and "
+      f"{len(guide['unreached'])} unreached chips agree with the route data" + (" (every E1 and E2 record placed)" if require_all else ""))

@@ -1,0 +1,1898 @@
+{
+  "schema_version": 1,
+  "layers": [
+    {
+      "id": "app",
+      "n": 1,
+      "name": "Application",
+      "sub": "the task, the sensor that feeds it, and the form the input takes",
+      "rows": [
+        {
+          "label": "Task",
+          "slot": "task",
+          "chips": [
+            {
+              "id": "image-classification-static",
+              "label": "Image classification"
+            },
+            {
+              "id": "object-detection",
+              "label": "Object detection"
+            },
+            {
+              "id": "gesture-recognition",
+              "label": "Gesture recognition"
+            },
+            {
+              "id": "tracking-motion",
+              "label": "Tracking and motion"
+            },
+            {
+              "id": "keyword-spotting-audio",
+              "label": "Keyword spotting"
+            },
+            {
+              "id": "biosignal-decoding",
+              "label": "Biosignal decoding"
+            },
+            {
+              "id": "olfaction",
+              "label": "Olfaction"
+            },
+            {
+              "id": "robotics-closed-loop-control",
+              "label": "Robotics and control"
+            },
+            {
+              "id": "slam",
+              "label": "SLAM"
+            },
+            {
+              "id": "optimization-constraint-satisfaction",
+              "label": "Optimization and SAT"
+            }
+          ]
+        },
+        {
+          "label": "Sensor",
+          "slot": "sensor",
+          "chips": [
+            {
+              "id": "event-camera",
+              "label": "Event camera (DVS)"
+            },
+            {
+              "id": "frame-camera",
+              "label": "Frame camera"
+            },
+            {
+              "id": "silicon-cochlea",
+              "label": "Silicon cochlea"
+            },
+            {
+              "id": "microphone",
+              "label": "Microphone"
+            },
+            {
+              "id": "tactile-sensor",
+              "label": "Tactile sensor"
+            },
+            {
+              "id": "chemical-sensor-array",
+              "label": "Chemical sensor array"
+            },
+            {
+              "id": "imu-analog-sensor",
+              "label": "IMU and analog sensors"
+            },
+            {
+              "id": "no-physical-sensor",
+              "label": "No sensor (dataset or solver)"
+            }
+          ]
+        },
+        {
+          "label": "Input representation",
+          "slot": "input",
+          "chips": [
+            {
+              "id": "native-events",
+              "label": "Native event stream"
+            },
+            {
+              "id": "frames-from-events",
+              "label": "Frames reconstructed from events"
+            },
+            {
+              "id": "static-frames",
+              "label": "Static frames"
+            },
+            {
+              "id": "time-series",
+              "label": "Sampled time series"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "learn",
+      "n": 2,
+      "name": "Learning path",
+      "sub": "how the weights are obtained",
+      "rows": [
+        {
+          "label": "ANN-to-SNN",
+          "slot": "learning",
+          "chips": [
+            {
+              "id": "classical-conversion",
+              "label": "Classical conversion"
+            },
+            {
+              "id": "low-latency-conversion",
+              "label": "Low-latency conversion"
+            },
+            {
+              "id": "quant-aware-conversion",
+              "label": "Quantization-aware conversion"
+            },
+            {
+              "id": "codesigned-conversion",
+              "label": "Hardware co-designed conversion"
+            }
+          ]
+        },
+        {
+          "label": "Direct and hybrid",
+          "slot": "learning",
+          "chips": [
+            {
+              "id": "direct-training-surrogate-gradient",
+              "label": "Surrogate gradients"
+            },
+            {
+              "id": "spike-time-gradient-methods",
+              "label": "Spike-time gradients"
+            },
+            {
+              "id": "local-learning-plasticity",
+              "label": "Local learning and plasticity"
+            },
+            {
+              "id": "hand-designed-hybrid-finetuning",
+              "label": "Hand-designed circuits"
+            },
+            {
+              "id": "hardware-in-the-loop-training",
+              "label": "Hardware-in-the-loop"
+            },
+            {
+              "id": "hybrid-finetuning",
+              "label": "Hybrid fine-tuning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code",
+      "n": 3,
+      "name": "Representation",
+      "sub": "what the spike train means",
+      "rows": [
+        {
+          "label": "Neural code",
+          "slot": "code",
+          "chips": [
+            {
+              "id": "rate-coding",
+              "label": "Rate coding"
+            },
+            {
+              "id": "ttfs",
+              "label": "Time-to-first-spike (TTFS)"
+            },
+            {
+              "id": "phase-coding",
+              "label": "Phase coding"
+            },
+            {
+              "id": "burst-coding",
+              "label": "Burst coding"
+            },
+            {
+              "id": "population-coding",
+              "label": "Population coding"
+            },
+            {
+              "id": "sigma-delta",
+              "label": "Sigma-delta coding"
+            },
+            {
+              "id": "rank-order-coding",
+              "label": "Rank order coding"
+            },
+            {
+              "id": "direct-input-encoding",
+              "label": "Direct (constant-current) input"
+            }
+          ]
+        },
+        {
+          "label": "Event payload",
+          "slot": "payload",
+          "chips": [
+            {
+              "id": "binary-spikes",
+              "label": "Binary spikes"
+            },
+            {
+              "id": "signed-spikes",
+              "label": "Signed spikes"
+            },
+            {
+              "id": "graded-spikes",
+              "label": "Graded spikes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compute",
+      "n": 4,
+      "name": "Computation",
+      "sub": "the neuron and its execution contract",
+      "rows": [
+        {
+          "label": "Neuron model",
+          "slot": "neuron",
+          "chips": [
+            {
+              "id": "if-neuron",
+              "label": "Integrate-and-fire (IF)"
+            },
+            {
+              "id": "lif-neuron",
+              "label": "Leaky IF (LIF)"
+            },
+            {
+              "id": "cuba-lif",
+              "label": "Current-based LIF (CUBA)"
+            },
+            {
+              "id": "adaptive-neuron",
+              "label": "Adaptive LIF (ALIF)"
+            },
+            {
+              "id": "multi-compartment",
+              "label": "Multi-compartment"
+            },
+            {
+              "id": "pasc-if",
+              "label": "PASC-IF"
+            }
+          ]
+        },
+        {
+          "label": "Reset rule",
+          "slot": "reset",
+          "chips": [
+            {
+              "id": "reset-by-subtraction",
+              "label": "Reset by subtraction (soft)"
+            },
+            {
+              "id": "reset-to-zero",
+              "label": "Reset to zero (hard)"
+            }
+          ]
+        },
+        {
+          "label": "Execution contract",
+          "slot": "contract",
+          "chips": [
+            {
+              "id": "sync-tick",
+              "label": "Synchronous global tick"
+            },
+            {
+              "id": "async-events",
+              "label": "Asynchronous event-driven"
+            },
+            {
+              "id": "analog-time",
+              "label": "Analog continuous time"
+            },
+            {
+              "id": "single-pass",
+              "label": "Single pass, T collapsed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sw",
+      "n": 5,
+      "name": "Software stack",
+      "sub": "train, then export, compile, and run, in process order",
+      "rows": [
+        {
+          "label": "Develop and train",
+          "slot": "dev",
+          "chips": [
+            {
+              "id": "spikingjelly",
+              "label": "SpikingJelly"
+            },
+            {
+              "id": "snn-toolbox",
+              "label": "SNN Toolbox"
+            },
+            {
+              "id": "snntorch",
+              "label": "snnTorch"
+            },
+            {
+              "id": "norse",
+              "label": "Norse"
+            },
+            {
+              "id": "sinabs",
+              "label": "Sinabs"
+            },
+            {
+              "id": "rockpool",
+              "label": "Rockpool"
+            },
+            {
+              "id": "lava",
+              "label": "Lava"
+            },
+            {
+              "id": "lava-dl",
+              "label": "Lava-DL"
+            },
+            {
+              "id": "hxtorch",
+              "label": "hxtorch"
+            },
+            {
+              "id": "nengo",
+              "label": "Nengo"
+            },
+            {
+              "id": "pynn",
+              "label": "PyNN"
+            },
+            {
+              "id": "brian2",
+              "label": "Brian2"
+            },
+            {
+              "id": "nest",
+              "label": "NEST"
+            },
+            {
+              "id": "mlgenn",
+              "label": "mlGeNN"
+            },
+            {
+              "id": "bidl",
+              "label": "BIDL"
+            },
+            {
+              "id": "quantizeml",
+              "label": "QuantizeML"
+            },
+            {
+              "id": "quartz",
+              "label": "Quartz"
+            }
+          ]
+        },
+        {
+          "label": "Export and interchange",
+          "slot": "export",
+          "chips": [
+            {
+              "id": "nir",
+              "label": "NIR"
+            },
+            {
+              "id": "lava-exchange",
+              "label": "lava_exchange"
+            },
+            {
+              "id": "nir-exchange",
+              "label": "nir_exchange"
+            },
+            {
+              "id": "backend-graph",
+              "label": "Backend-specific graph"
+            }
+          ]
+        },
+        {
+          "label": "Compile and map",
+          "slot": "compile",
+          "chips": [
+            {
+              "id": "nxtf",
+              "label": "NxTF"
+            },
+            {
+              "id": "netx",
+              "label": "NetX"
+            },
+            {
+              "id": "dynapcnn-mapper",
+              "label": "DynapCNN mapper"
+            },
+            {
+              "id": "xylo-mapper",
+              "label": "Xylo mapper"
+            },
+            {
+              "id": "spynnaker",
+              "label": "sPyNNaker"
+            },
+            {
+              "id": "nengo-loihi",
+              "label": "NengoLoihi"
+            },
+            {
+              "id": "cnn2snn",
+              "label": "CNN2SNN"
+            },
+            {
+              "id": "ann2snn",
+              "label": "ann2snn"
+            },
+            {
+              "id": "ttfs-cnn-to-snn-conversion",
+              "label": "Custom TTFS conversion"
+            },
+            {
+              "id": "fenn-vector-program",
+              "label": "FeNN vector program"
+            }
+          ]
+        },
+        {
+          "label": "Run on device",
+          "slot": "run",
+          "chips": [
+            {
+              "id": "nxsdk",
+              "label": "NxSDK"
+            },
+            {
+              "id": "lava-runtime",
+              "label": "Lava ProcessModels"
+            },
+            {
+              "id": "samna",
+              "label": "samna"
+            },
+            {
+              "id": "spinnaker-runtime",
+              "label": "SpiNNaker runtime"
+            },
+            {
+              "id": "akida-runtime",
+              "label": "Akida runtime"
+            },
+            {
+              "id": "host-io",
+              "label": "Host encoding and readout"
+            },
+            {
+              "id": "pytorch-cuda",
+              "label": "PyTorch CUDA backend"
+            },
+            {
+              "id": "genn-cuda",
+              "label": "GeNN generated CUDA"
+            },
+            {
+              "id": "nest-kernel",
+              "label": "NEST kernel"
+            },
+            {
+              "id": "ttfs-mcu-firmware",
+              "label": "Cortex-M deployment (TTFS)"
+            },
+            {
+              "id": "fenn-vivado-toolchain",
+              "label": "FeNN soft core (Vivado)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hw",
+      "n": 6,
+      "name": "Hardware",
+      "sub": "where it actually runs",
+      "rows": [
+        {
+          "label": "Conventional processors",
+          "slot": "hw",
+          "chips": [
+            {
+              "id": "cpu-generic",
+              "label": "CPU"
+            },
+            {
+              "id": "gpu-generic",
+              "label": "GPU"
+            },
+            {
+              "id": "cortex-m-mcu",
+              "label": "Cortex-M MCU"
+            },
+            {
+              "id": "riscv-accelerator",
+              "label": "RISC-V accelerator"
+            },
+            {
+              "id": "northpole",
+              "label": "NorthPole (NPU)"
+            },
+            {
+              "id": "akida",
+              "label": "Akida (event NPU)"
+            }
+          ],
+          "bucket": "conventional"
+        },
+        {
+          "label": "Chip models and emulation",
+          "slot": "hw",
+          "chips": [
+            {
+              "id": "lava-loihi-sim",
+              "label": "Lava Loihi simulator"
+            },
+            {
+              "id": "xylo-sim",
+              "label": "Xylo simulator"
+            },
+            {
+              "id": "akida-sim",
+              "label": "Akida software backend"
+            },
+            {
+              "id": "hxtorch-sim",
+              "label": "hxtorch simulation"
+            },
+            {
+              "id": "fpga-truenorth-emulation",
+              "label": "TrueNorth FPGA emulation"
+            },
+            {
+              "id": "apex",
+              "label": "APEX (RTL)"
+            },
+            {
+              "id": "neuroflex",
+              "label": "NeuroFlex (RTL)"
+            }
+          ],
+          "bucket": "simulated"
+        },
+        {
+          "label": "Synchronous digital",
+          "slot": "hw",
+          "chips": [
+            {
+              "id": "loihi-1",
+              "label": "Loihi 1"
+            },
+            {
+              "id": "loihi-2",
+              "label": "Loihi 2"
+            },
+            {
+              "id": "spinnaker-1",
+              "label": "SpiNNaker 1"
+            },
+            {
+              "id": "spinnaker-2",
+              "label": "SpiNNaker 2"
+            },
+            {
+              "id": "truenorth",
+              "label": "TrueNorth"
+            },
+            {
+              "id": "tianjic",
+              "label": "Tianjic"
+            },
+            {
+              "id": "lynxi-ka200",
+              "label": "Lynxi KA200"
+            },
+            {
+              "id": "xylo",
+              "label": "Xylo"
+            }
+          ],
+          "bucket": "neuromorphic"
+        },
+        {
+          "label": "Event-driven and analog",
+          "slot": "hw",
+          "chips": [
+            {
+              "id": "speck",
+              "label": "Speck"
+            },
+            {
+              "id": "dynapcnn",
+              "label": "DYNAP-CNN"
+            },
+            {
+              "id": "brainscales-1",
+              "label": "BrainScaleS-1"
+            },
+            {
+              "id": "brainscales-2",
+              "label": "BrainScaleS-2"
+            },
+            {
+              "id": "dynap-se2",
+              "label": "DYNAP-SE2"
+            },
+            {
+              "id": "innatera-pulsar",
+              "label": "Innatera Pulsar"
+            },
+            {
+              "id": "morphic",
+              "label": "MorphIC"
+            }
+          ],
+          "bucket": "neuromorphic"
+        },
+        {
+          "label": "FPGA accelerators",
+          "slot": "hw",
+          "chips": [
+            {
+              "id": "fpga",
+              "label": "FPGA designs"
+            },
+            {
+              "id": "syncnn",
+              "label": "SyncNN (FPGA)"
+            },
+            {
+              "id": "cerebron",
+              "label": "Cerebron (FPGA)"
+            }
+          ],
+          "bucket": "neuromorphic"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    "task",
+    "sensor",
+    "input",
+    "learning",
+    "code",
+    "payload",
+    "neuron",
+    "reset",
+    "contract",
+    "dev",
+    "export",
+    "compile",
+    "run",
+    "hw"
+  ],
+  "buckets": [
+    {
+      "name": "conventional",
+      "meaning": "The claim's target is a conventional processor, whatever software steps the network."
+    },
+    {
+      "name": "simulated",
+      "meaning": "The claim's target is a model of neuromorphic hardware that is not the silicon."
+    },
+    {
+      "name": "neuromorphic",
+      "meaning": "The claim's target is fabricated neuromorphic silicon, or a custom spiking accelerator on an FPGA measured as its own target."
+    }
+  ],
+  "seams": {
+    "code": [
+      {
+        "pin": "S3",
+        "title": "Input encoding and readout",
+        "text": "Nearly all modern low-T conversion feeds the real-valued image as constant current, which makes layer one effectively an ANN layer. Readout cost and the decision window are rarely inside the reported measurement."
+      }
+    ],
+    "compute": [
+      {
+        "pin": "S4",
+        "title": "Time model",
+        "text": "T means a different thing under a synchronous tick, an asynchronous event stream, and analog continuous time. Software timesteps do not map one to one onto hardware steps."
+      },
+      {
+        "pin": "S5",
+        "title": "Per-layer horizons",
+        "text": "No framework expresses a per-layer timestep horizon in one forward pass. TrueNorth, Loihi, Loihi 2 and Tianjic all advance through a single global barrier."
+      }
+    ],
+    "sw": [
+      {
+        "pin": "S1",
+        "title": "Operator coverage",
+        "text": "lava_exchange dispatches only Linear, Conv2d, AvgPool2d and Flatten. Speck has no BatchNorm operator, so the DynapCNN mapper folds it into the preceding layer. Akida caps Dense input at 57,334 features and requires bounded ReLU."
+      },
+      {
+        "pin": "S2",
+        "title": "Reset semantics",
+        "text": "The sharpest seam. Conversion requires reset by subtraction, worth roughly twenty accuracy points. NIR does not distinguish it from reset to a value. SpikingJelly rejects it at both export paths. Loihi needs a two-compartment workaround that doubles neuron count."
+      }
+    ]
+  },
+  "rails": {
+    "left": [
+      {
+        "title": "Accuracy",
+        "text": "What every reduction below trades against, and the reason the conversion literature exists."
+      },
+      {
+        "title": "Latency",
+        "text": "Set by the time model, the horizon T, and how much spike traffic the fabric carries per inference."
+      },
+      {
+        "title": "Energy",
+        "text": "Static and leakage power dominate measured energy on synchronous chips, so cutting T does not cut energy proportionally."
+      },
+      {
+        "title": "Availability",
+        "text": "A chip you cannot obtain is a different answer from a chip that does not suit. Access gates and dormant toolchains belong on this axis."
+      }
+    ],
+    "right": [
+      {
+        "pin": "R1",
+        "title": "Measurement",
+        "text": "A SynOps figure is an operation-count ratio under an unstated hardware model, not joules. Boundary choices alone produce 14x swings for the identical chip and network."
+      },
+      {
+        "pin": "R2",
+        "title": "Toolchain decay",
+        "text": "SNN Toolbox last released March 2021. Intel archived all Lava repositories on 13 May 2026 with no maintenance and no patches accepted. The only toolchain that reached silicon is dormant."
+      },
+      {
+        "pin": "R3",
+        "title": "Portability",
+        "text": "NIR reaches nine simulators and five hardware platforms, turning m x n integrations into m + n. Its primitive set still does not distinguish the one semantics this literature depends on from reset to a value."
+      },
+      {
+        "pin": "R4",
+        "title": "Two populations",
+        "text": "The division of labor that no survey states. Algorithm papers advance accuracy at low T and do not deploy; none of the algorithm-population records reaches physical silicon, and Section 13.6, Population Counts, counts them. Every confirmed instance of a new method reaching silicon abandons rate coding."
+      }
+    ]
+  },
+  "quick": [
+    "Image classification",
+    "Gesture recognition",
+    "Keyword spotting",
+    "Robotics and control",
+    "Event camera (DVS)",
+    "Frame camera",
+    "Rate coding",
+    "Reset by subtraction (soft)",
+    "SpikingJelly",
+    "Loihi 2",
+    "Speck",
+    "Akida"
+  ],
+  "toolchains": {
+    "snntoolbox-loihi1": {
+      "name": "SNN Toolbox to Loihi 1",
+      "rank": 1,
+      "tk": "neuromorphic",
+      "color": "#2A8A7A",
+      "ev": "E1",
+      "story": "A rate-coded converted MobileNet measured on physical Loihi 1 silicon at CIFAR-10 scale, reaching 8.52% error on 861 cores across 7 chips.",
+      "note": "Historical. SNN Toolbox was last released on PyPI (0.6.0) in March 2021, its last GitHub release tag is v0.5.0 of June 2020, and its last code commit was in August 2022; the repository is not archived and took README-only commits in January 2023. Soft reset is an optional mode in the Intel bridge, not its default (reset_mode falls back to 'hard'), it doubles the compartments per neuron, and the paper does not state which mode the 8.52% run used, so the line draws the hard reset. NxTF is Keras-native and its host repository carries a discontinuation notice. Loihi 1 is superseded.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-to-zero",
+        "contract": "sync-tick",
+        "dev": "snn-toolbox",
+        "export": null,
+        "compile": "nxtf",
+        "run": "nxsdk"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-to-zero"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "snn-toolbox"
+        ],
+        "compile": [
+          "nxtf"
+        ],
+        "run": [
+          "nxsdk"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-1"
+      ],
+      "papers": []
+    },
+    "snntoolbox-spinnaker": {
+      "name": "SNN Toolbox to SpiNNaker 1",
+      "rank": 2,
+      "tk": "neuromorphic",
+      "color": "#42647B",
+      "ev": "E1",
+      "story": "A converted Keras LeNet on a physical 48-chip machine, 98.20% on MNIST at roughly 0.4 s wall-clock per sample with 15 ms of simulated activity.",
+      "note": "Nothing at CIFAR-10 scale or above was found on physical SpiNNaker silicon. The route runs the PyNN IF_curr_exp cell with a hard reset to zero and a 1000 ms membrane time constant, a current-based LIF that is effectively non-leaky over the 15 ms window. A timestep here is a timer interrupt, conventionally 1 ms, by default matched to real time.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "cuba-lif",
+        "reset": "reset-to-zero",
+        "contract": "sync-tick",
+        "dev": "snn-toolbox",
+        "export": null,
+        "compile": "spynnaker",
+        "run": "spinnaker-runtime"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "cuba-lif"
+        ],
+        "reset": [
+          "reset-to-zero"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "snn-toolbox"
+        ],
+        "compile": [
+          "spynnaker"
+        ],
+        "run": [
+          "spinnaker-runtime"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "spinnaker-1"
+      ],
+      "papers": []
+    },
+    "sinabs-speck": {
+      "name": "Sinabs to Speck",
+      "rank": 3,
+      "tk": "neuromorphic",
+      "color": "#237985",
+      "ev": "E1",
+      "live": true,
+      "story": "The live conversion route that preserves reset by subtraction end to end, on hardware anyone can buy, measured at 3.36 us on Speck1 for a single event through nine 3x3 conv-and-pool layers at stride 1 and padding 1, pad to pad.",
+      "note": "Sinabs from_model() defaults to MembraneSubtract(). Speck supports subtractive reset natively via return_to_zero=False. The IF label is the default; the optional leak is linear and driven by a slow clock. Speck has no BatchNorm operator, and DynapcnnNetwork folds BatchNorm into the preceding conv or linear layer automatically (merge_bn). A Demo Kit presold at $199, a price that comes from a June 2023 trade-press reprint of the SynSense release; no research-membership requirement is stated. Speck has no global clock, so T exists only at the raster-to-events boundary. The measured runs streamed external events and bypassed the on-die sensor, and the only classical-conversion run measured on Speck is N-MNIST at 86.17 percent; the gesture result on Speck was surrogate-gradient trained.",
+      "steps": {
+        "task": null,
+        "sensor": "event-camera",
+        "input": "native-events",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "async-events",
+        "dev": "sinabs",
+        "export": null,
+        "compile": "dynapcnn-mapper",
+        "run": "samna"
+      },
+      "can": {
+        "sensor": [
+          "event-camera"
+        ],
+        "input": [
+          "native-events"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "async-events"
+        ],
+        "dev": [
+          "sinabs"
+        ],
+        "compile": [
+          "dynapcnn-mapper"
+        ],
+        "run": [
+          "samna"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "speck"
+      ],
+      "papers": []
+    },
+    "rockpool-xylo": {
+      "name": "Rockpool to Xylo",
+      "rank": 4,
+      "tk": "neuromorphic",
+      "color": "#3F5FBF",
+      "ev": "E1",
+      "story": "Deployed quantized accuracy of 95.31 percent, with power measured on the HDK at 216 to 217 uW idle, 468 to 514 uW active and 251 to 298 uW dynamic, on audio and low-dimensional signals rather than vision.",
+      "note": "Xylo documents a synchronous time-stepped architecture with a global dt, so T here is a genuine hardware tick. Reset is by subtraction as a fixed hardware property. The measured run used a simulated audio encoder with events streamed from the host in accelerated time, so the microphone chip is documented, not exercised. The readout is the membrane potential in training and any-spike detection at test, and only the input encoder is rate-like, so no neural-code chip is drawn. Same vendor as Speck, opposite time model.",
+      "steps": {
+        "task": null,
+        "sensor": "microphone",
+        "input": "time-series",
+        "learning": "direct-training-surrogate-gradient",
+        "code": null,
+        "payload": "binary-spikes",
+        "neuron": "lif-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "sync-tick",
+        "dev": "rockpool",
+        "export": null,
+        "compile": "xylo-mapper",
+        "run": "samna"
+      },
+      "can": {
+        "sensor": [
+          "microphone"
+        ],
+        "input": [
+          "time-series"
+        ],
+        "learning": [
+          "direct-training-surrogate-gradient"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "lif-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "rockpool"
+        ],
+        "compile": [
+          "xylo-mapper"
+        ],
+        "run": [
+          "samna"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "xylo"
+      ],
+      "papers": []
+    },
+    "spikingjelly-lava": {
+      "name": "SpikingJelly to Lava to Loihi 2",
+      "rank": 5,
+      "tk": "neuromorphic",
+      "color": "#C0392B",
+      "ev": "BLOCKED",
+      "story": "The obvious modern route, and it does not complete.",
+      "note": "The recipe drawn is SpikingJelly's rate-coding ReLU-to-IF conversion with max or percentile threshold calibration; the QCFS-based recipe's ActivationAwareIFNode is rejected by lava_exchange with NotImplementedError instead. Three independent blockers. The first is structural, since to_lava_blocks accepts a flat list, tuple or nn.Sequential while the recipe returns an FX GraphModule with VoltageScaler modules, so the converted network fails on shape before any neuron is inspected. Then lava_exchange raises ValueError(\"lava only supports for v_reset == 0!\") at four call sites, plus an assertion in CubaLIFNode.__init__, rejecting the soft-reset neurons the rate-coding recipe produces by default. Then layer dispatch covers only Linear, Conv2d, AvgPool2d and Flatten, so a VGG MaxPool fails there; a ResNet skip connection fails for the structural reason, not in dispatch. Intel archived all Lava repositories on 13 May 2026.",
+      "breakAt": "lava-exchange",
+      "breakWhy": "The converted network fails on shape before any neuron is inspected, then its soft reset is rejected, then its layers are not dispatched. The conversion produced a network the framework’s own exporter will not accept.",
+      "after": [
+        "netx",
+        "lava-runtime"
+      ],
+      "seam": "S1",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "sync-tick",
+        "dev": "spikingjelly",
+        "export": "lava-exchange",
+        "compile": null,
+        "run": null
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "spikingjelly"
+        ],
+        "export": [
+          "lava-exchange"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-2"
+      ],
+      "papers": []
+    },
+    "spikingjelly-nxtf": {
+      "name": "SpikingJelly to NxTF to Loihi 1",
+      "rank": 6,
+      "tk": "neuromorphic",
+      "color": "#C0392B",
+      "ev": "BLOCKED",
+      "story": "Substituting the maintained framework into the route that actually reached silicon, and it does not connect.",
+      "note": "The recipe drawn is SpikingJelly's rate-coding ReLU-to-IF conversion with max or percentile threshold calibration; the QCFS-based recipe's ActivationAwareIFNode is rejected by lava_exchange with NotImplementedError. NxTF inherits from the Keras Model and Layer interface. No bridge from a PyTorch SNN framework exists; SNN Toolbox ingests PyTorch ANNs through ONNX, and the only automated bridge into NxTF was specific to SNN Toolbox. The host repository carries a discontinuation notice, and INRC has redirected users to Lava since 2022. NxTF on Loihi 2 was not found.",
+      "breakAt": "nxtf",
+      "breakWhy": "NxTF is Keras-native and SpikingJelly is PyTorch. The framework boundary was only ever crossed automatically by an SNN-Toolbox-specific bridge that no longer has a maintained counterpart.",
+      "after": [
+        "nxsdk"
+      ],
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "sync-tick",
+        "dev": "spikingjelly",
+        "export": null,
+        "compile": "nxtf",
+        "run": null
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "spikingjelly"
+        ],
+        "compile": [
+          "nxtf"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-1"
+      ],
+      "papers": []
+    },
+    "spikingjelly-nir": {
+      "name": "SpikingJelly to NIR",
+      "rank": 7,
+      "tk": "neuromorphic",
+      "color": "#C0392B",
+      "ev": "BLOCKED",
+      "story": "The portability route, blocked by an exporter that refuses to export what the specification does not distinguish.",
+      "note": "The recipe drawn is SpikingJelly's rate-coding ReLU-to-IF conversion with max or percentile threshold calibration; the QCFS-based recipe's ActivationAwareIFNode is rejected by lava_exchange with NotImplementedError. NIR defines seventeen primitives, six of them neuron models (I, IF, LI, LIF, CubaLI, CubaLIF). All three spiking ones (IF, LIF, CubaLIF) document reset as v = v_reset when a spike fires, and no NIR field distinguishes reset by subtraction from reset to a value, so which one a backend applies is left to the backend. SpikingJelly nir_exchange raises NotImplementedError(\"NIR does not distinguish soft reset.\") whenever v_reset is None, a deliberate and conservative refusal; other exporters (snnTorch, Sinabs) export the same neurons with v_reset = 0 and leave the discretization to the importer, so the block is SpikingJelly's exporter policy.",
+      "breakAt": "nir",
+      "breakWhy": "The broadest interchange format in the ecosystem does not distinguish reset by subtraction from reset to a value, and SpikingJelly’s exporter refuses rather than guess.",
+      "after": [
+        "lava-dl",
+        "netx",
+        "lava-runtime"
+      ],
+      "seam": "S2",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "sync-tick",
+        "dev": "spikingjelly",
+        "export": [
+          "nir-exchange",
+          "nir"
+        ],
+        "compile": null,
+        "run": null
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "spikingjelly"
+        ],
+        "export": [
+          "nir-exchange",
+          "nir"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-2"
+      ],
+      "papers": []
+    },
+    "quantizeml-akida": {
+      "name": "QuantizeML to CNN2SNN to Akida",
+      "rank": 8,
+      "tk": "event NPU",
+      "color": "#6D4C9F",
+      "ev": "E1",
+      "story": "A shipping commercial processor, where the conversion folds to a static threshold and the temporal dimension disappears.",
+      "note": "CNN2SNN computes y = x / act_step for Akida 1.0 layers, with a static threshold absorbing BatchNorm scale and shift, folded once at conversion time. No membrane potential carries across timesteps and no T is exposed. One paper (Ziegler et al.) describes it as squashing the rate-code approximation of ReLU into one time step, and a second (Lunghi et al.) says the converted model reduces the computation to a single time step. BrainChip states 4-bit or 8-bit quantized inputs to its layers, so the events are graded rather than binary, and no BrainChip source names a reset rule; the threshold is a static comparator applied in a single pass. The rank-order-coding heritage is genuine as input-stage heritage, but no source shows order sensitivity operating in converted hidden layers, so no neural-code chip is drawn.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "quant-aware-conversion",
+        "code": null,
+        "payload": "graded-spikes",
+        "neuron": "if-neuron",
+        "reset": null,
+        "contract": "single-pass",
+        "dev": "quantizeml",
+        "export": null,
+        "compile": "cnn2snn",
+        "run": "akida-runtime"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "quant-aware-conversion"
+        ],
+        "payload": [
+          "graded-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "contract": [
+          "single-pass"
+        ],
+        "dev": [
+          "quantizeml"
+        ],
+        "compile": [
+          "cnn2snn"
+        ],
+        "run": [
+          "akida-runtime"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "akida"
+      ],
+      "papers": []
+    },
+    "quartz-loihi": {
+      "name": "Quartz to Loihi 1",
+      "rank": 9,
+      "tk": "neuromorphic",
+      "color": "#A97818",
+      "ev": "E1",
+      "story": "A new method that reached silicon, by abandoning rate coding for TTFS.",
+      "note": "Measured static, dynamic and total power, latency and energy per inference on a physical Nahuku 32 board, compared against the published NxTF numbers on the same platform (a different board, SDK version and network). The authors’ released implementation uses nxSDK 0.9.8 directly, as its code README states, while the paper's measurements were taken with NxSDK 1.0.0. The CIFAR-10 preferred energy-delay product uses an estimated static power, and the paper's 564 uJ energy label is a unit error for about 563 mJ.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "codesigned-conversion",
+        "code": "ttfs",
+        "payload": "binary-spikes",
+        "neuron": "if-neuron",
+        "reset": "reset-to-zero",
+        "contract": "sync-tick",
+        "dev": "quartz",
+        "export": null,
+        "compile": null,
+        "run": "nxsdk"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "codesigned-conversion"
+        ],
+        "code": [
+          "ttfs"
+        ],
+        "payload": [
+          "binary-spikes"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-to-zero"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "quartz"
+        ],
+        "run": [
+          "nxsdk"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-1"
+      ],
+      "papers": []
+    },
+    "slayer-loihi2": {
+      "name": "Lava-DL SLAYER to Loihi 2",
+      "rank": 10,
+      "tk": "neuromorphic",
+      "color": "#98622C",
+      "ev": "E1",
+      "story": "Direct training with a vendor toolchain, reaching silicon where rate-coded conversion did not.",
+      "note": "The workload drawn is the PilotNet sigma-delta network of Shrestha et al., Table 1, a steering regression from dashboard-camera frames measured on an Oheo Gulch single-chip Loihi 2 system with Lava-DL 0.4.0 and Lava 0.8.0; the int8 network ran at 0.09 mJ per inference without I/O, 1.21 ms latency and 7403.80 samples per second. A sigma-delta ReLU unit has no membrane or reset, so no neuron or reset chip is drawn, and steering regression has no task chip. The PilotNet LIF result is a vendor tutorial notebook, not a peer-reviewed measurement. Intel moved Loihi 2 toward graded sigma-delta payloads, citing Loihi 1 experience that rate-coded converted models suffer long latencies and inter-chip congestion. An ANN-to-sigma-delta conversion (Brehove et al.) was separately measured on a 16-chip Loihi 2 board. Intel archived the Lava repositories on 13 May 2026.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "direct-training-surrogate-gradient",
+        "code": "sigma-delta",
+        "payload": "graded-spikes",
+        "neuron": null,
+        "reset": null,
+        "contract": "sync-tick",
+        "dev": "lava-dl",
+        "export": null,
+        "compile": "netx",
+        "run": "lava-runtime"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "direct-training-surrogate-gradient"
+        ],
+        "code": [
+          "sigma-delta"
+        ],
+        "payload": [
+          "graded-spikes"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "lava-dl"
+        ],
+        "compile": [
+          "netx"
+        ],
+        "run": [
+          "lava-runtime"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "loihi-2"
+      ],
+      "papers": []
+    },
+    "spikingjelly-gpu": {
+      "name": "SpikingJelly to a GPU",
+      "rank": 11,
+      "tk": "GPU",
+      "color": "#2F5F9E",
+      "ev": "E1",
+      "story": "The framework's own benchmark, timed end to end on an NVIDIA A100, where training a Spiking ResNet-18 with surrogate gradients reached up to 11x the speed of Norse (8x over snnTorch) at T = 32 and inference at ANN2SNN-scale T up to 2x.",
+      "note": "A conventional target. The paper states LIF neurons at SpikingJelly defaults with hard reset to zero, fed random 3x224x224 tensors at batch size 16 with mixed precision and no dataset. The training benchmark ran SpikingJelly's CuPy-compiled LIF kernels alongside PyTorch CUDA tensor operations, so nothing about a spiking substrate is measured. Training-iteration time was taken at T = 2, 4, 8, 16 and 32, and the ANN2SNN inference run is the same LIF network timed at T = 128 to 1024 with only T = 128 reported, on an Ubuntu 18.04 server with an Intel Xeon Silver 4210R host and 256 GB of memory.",
+      "steps": {
+        "task": null,
+        "sensor": null,
+        "input": null,
+        "learning": "direct-training-surrogate-gradient",
+        "code": null,
+        "payload": null,
+        "neuron": "lif-neuron",
+        "reset": "reset-to-zero",
+        "contract": "sync-tick",
+        "dev": "spikingjelly",
+        "export": null,
+        "compile": null,
+        "run": "pytorch-cuda"
+      },
+      "can": {
+        "learning": [
+          "direct-training-surrogate-gradient"
+        ],
+        "neuron": [
+          "lif-neuron"
+        ],
+        "reset": [
+          "reset-to-zero"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "spikingjelly"
+        ],
+        "run": [
+          "pytorch-cuda"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "gpu-generic"
+      ],
+      "papers": []
+    },
+    "mlgenn-gpu": {
+      "name": "mlGeNN to GeNN to a GPU",
+      "rank": 12,
+      "tk": "GPU",
+      "color": "#5C7A99",
+      "ev": "E1",
+      "story": "A converted VGG-16 and ResNet-20 simulated as GeNN-generated CUDA code on a 12 GB Titan V, with rate-based and few-spike conversion both evaluated on CIFAR-10 and only few-spike conversion run at ImageNet scale, on VGG-16 and ResNet-34.",
+      "note": "A conventional target. On CIFAR-10 the converted VGG-16 ran 2.5x faster than BindsNET, the few-spike ResNet-20 a little over 2x slower than the original TensorFlow ANN at large batch sizes (at batch size 1 the same network is 3.5x faster than the ANN), and the fastest rate-based model over 100x slower than that ANN. Rate-based conversion used T = 2500 for VGG-16 and T = 1000 for ResNet-20; few-spike conversion used K = 10 and K = 8. The IF neurons use a hard reset to zero, stated in the paper and in ml_genn 1.0's if_neurons.py.",
+      "steps": {
+        "task": null,
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding",
+        "payload": null,
+        "neuron": "if-neuron",
+        "reset": "reset-to-zero",
+        "contract": "sync-tick",
+        "dev": "mlgenn",
+        "export": null,
+        "compile": null,
+        "run": "genn-cuda"
+      },
+      "can": {
+        "sensor": [
+          "frame-camera"
+        ],
+        "input": [
+          "static-frames"
+        ],
+        "learning": [
+          "classical-conversion"
+        ],
+        "code": [
+          "rate-coding"
+        ],
+        "neuron": [
+          "if-neuron"
+        ],
+        "reset": [
+          "reset-to-zero"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "mlgenn"
+        ],
+        "run": [
+          "genn-cuda"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "gpu-generic"
+      ],
+      "papers": []
+    },
+    "nest-cpu": {
+      "name": "PyNN and NEST to a CPU cluster",
+      "rank": 13,
+      "tk": "CPU",
+      "color": "#2F6F5E",
+      "ev": "E1",
+      "story": "A full-scale cortical microcircuit of about 80,000 LIF neurons and 0.3 billion synapses, simulated by NEST on a 32-node Intel Xeon cluster and compared head to head with SpiNNaker in the same paper.",
+      "note": "A conventional target. NEST runtime saturated around 3x real time with hybrid MPI and multithreading, and its lowest total energy came at about 144 threads and a 4.6x slowdown, where NEST and SpiNNaker had comparable energy per synaptic event. NEST used a 0.1 ms integration step. A separate performance report scales a later NEST-5g development build (a May 2017 snapshot) running the hpc_benchmark balanced random network from an SLI script under weak scaling to 82,944 nodes of the K computer, not the NEST 2.8 PyNN microcircuit run; there the connect phase stays near 80 seconds while prepare and run grow with node count. Not a classification workload; the record names no dataset, neural code or learning rule.",
+      "steps": {
+        "task": null,
+        "sensor": "no-physical-sensor",
+        "input": null,
+        "learning": null,
+        "code": null,
+        "payload": null,
+        "neuron": "lif-neuron",
+        "reset": null,
+        "contract": "sync-tick",
+        "dev": [
+          "pynn",
+          "nest"
+        ],
+        "export": null,
+        "compile": null,
+        "run": "nest-kernel"
+      },
+      "can": {
+        "sensor": [
+          "no-physical-sensor"
+        ],
+        "neuron": [
+          "lif-neuron"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "dev": [
+          "pynn",
+          "nest"
+        ],
+        "run": [
+          "nest-kernel"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "cpu-generic"
+      ],
+      "papers": []
+    },
+    "ttfs-cortex-m4": {
+      "name": "TTFS conversion to a Cortex-M4 MCU",
+      "rank": 14,
+      "tk": "MCU",
+      "color": "#B5651D",
+      "ev": "E1",
+      "story": "A quantized 8-bit CNN converted with time-to-first-spike encoding among others and deployed on the ARM Cortex-M4 MCU, where Table 1 reports 48 microjoules and about 6 ms per inference at 87.9%, with the task unstated, against an analog Innatera chip in the same paper.",
+      "note": "A conventional target. Energy, latency and accuracy were read with an external power analyzer under the MLPerf Tiny windowed protocol. The 8-bit CNN on the same MCU took 60 microjoules at 89.5%, and the same network on the Innatera SNP analog chip 24 microjoules and about 0.8 ms at 88.2%, so the energy reduction is 20 percent by the paper's own numbers, where the paper writes 23. The paper names TTFS among other encodings and also firing-rate control, and never states which encoding the measured digital SNN used. The pipeline is the paper's own, with layer-wise normalization and threshold calibration; CMSIS-NN is named only as a comparator framework, SNN Toolbox is not mentioned, and the part number is not named. The paper names CIFAR-10 and Google Speech Commands as example benchmarks and an 8-bit MobileNetV2 as its example architecture, but Table 1 is attributed to none of them, so no task chip is drawn. The source is weak in stated ways, a proposed evaluation framework whose Table 1 holds round values without the promised confidence intervals, gives latency as 6.00 ms and 6.1 ms in different sections, and states no neuron model or timestep count.",
+      "steps": {
+        "task": null,
+        "sensor": null,
+        "input": null,
+        "learning": null,
+        "code": "ttfs",
+        "payload": null,
+        "neuron": null,
+        "reset": null,
+        "contract": null,
+        "dev": null,
+        "export": null,
+        "compile": "ttfs-cnn-to-snn-conversion",
+        "run": "ttfs-mcu-firmware"
+      },
+      "can": {
+        "code": [
+          "ttfs"
+        ],
+        "compile": [
+          "ttfs-cnn-to-snn-conversion"
+        ],
+        "run": [
+          "ttfs-mcu-firmware"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "cortex-m-mcu"
+      ],
+      "papers": []
+    },
+    "fenn-riscv": {
+      "name": "FeNN vector program to a RISC-V soft core",
+      "rank": 15,
+      "tk": "RISC-V",
+      "color": "#8C4A6B",
+      "ev": "E1",
+      "story": "A recurrent spiking spoken-digit classifier stepped by a custom RISC-V vector instruction set on a soft core synthesized onto a Kria KV260 FPGA, reported significantly faster than a similar model on Loihi and twice as fast as an embedded GPU at half the energy.",
+      "note": "A conventional target in this survey's vocabulary, a programmable RISC-V processor rather than a fixed-function spiking accelerator, even though it is realized on an FPGA. FeNN uses adaptive LIF neurons with subtractive reset and 16-bit fixed-point arithmetic with stochastic rounding. The SNN itself is RISC-V assembly emitted by a host-side C++ JIT assembler on the Kria's Cortex-A53; Vivado synthesizes the soft core once. The Loihi comparison is against the time Rao et al. report for a similar ALIF RSNN on Loihi, not a measurement in the FeNN paper, and the energy comparison is whole-board mains energy of the KV260 against a Jetson Orin Nano, both under desktop Linux. The SHD input is cochlea-model spike trains. FeNN-DMA, the follow-on system-on-chip, measured simulation throughput of a balanced random network of up to 16,000 neurons from on-chip performance counters and accuracy on Spiking Heidelberg Digits, N-MNIST and Braille; only its 0.53 W figure is a vectorless Vivado estimate rather than a board reading, while the 175 MHz clock and the LUT and FF counts are implementation results. The route is drawn under keyword spotting, the nearest task chip, while the record's task is spoken-digit classification.",
+      "steps": {
+        "task": null,
+        "sensor": null,
+        "input": null,
+        "learning": null,
+        "code": null,
+        "payload": null,
+        "neuron": "adaptive-neuron",
+        "reset": "reset-by-subtraction",
+        "contract": "sync-tick",
+        "dev": null,
+        "export": null,
+        "compile": "fenn-vector-program",
+        "run": "fenn-vivado-toolchain"
+      },
+      "can": {
+        "neuron": [
+          "adaptive-neuron"
+        ],
+        "reset": [
+          "reset-by-subtraction"
+        ],
+        "contract": [
+          "sync-tick"
+        ],
+        "compile": [
+          "fenn-vector-program"
+        ],
+        "run": [
+          "fenn-vivado-toolchain"
+        ]
+      },
+      "implies": [],
+      "targets": [
+        "riscv-accelerator"
+      ],
+      "papers": []
+    }
+  },
+  "applications": {},
+  "notes": {},
+  "unreached": {
+    "silicon-cochlea": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "tactile-sensor": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "chemical-sensor-array": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "imu-analog-sensor": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "frames-from-events": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "low-latency-conversion": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "spike-time-gradient-methods": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "local-learning-plasticity": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "hand-designed-hybrid-finetuning": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "hardware-in-the-loop-training": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "hybrid-finetuning": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "phase-coding": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "burst-coding": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "population-coding": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "rank-order-coding": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "direct-input-encoding": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "signed-spikes": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "multi-compartment": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "pasc-if": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "analog-time": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "snntorch": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "norse": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "lava": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "hxtorch": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "nengo": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "brian2": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "bidl": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "backend-graph": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "nengo-loihi": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "ann2snn": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "host-io": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "northpole": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "lava-loihi-sim": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "xylo-sim": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "akida-sim": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "hxtorch-sim": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "fpga-truenorth-emulation": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "apex": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "neuroflex": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "spinnaker-2": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "truenorth": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "tianjic": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "lynxi-ka200": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "dynapcnn": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "brainscales-1": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "brainscales-2": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "dynap-se2": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "innatera-pulsar": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "morphic": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "fpga": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "syncnn": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    },
+    "cerebron": {
+      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
+      "read": "#complete-deployment-routes"
+    }
+  }
+}

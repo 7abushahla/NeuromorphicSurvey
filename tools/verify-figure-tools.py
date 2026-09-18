@@ -550,5 +550,217 @@ class FigureToolTests(unittest.TestCase):
         self.assertFalse(fragment_path.exists(), "a refused build must write nothing")
 
 
+GUIDE_FIXTURE = {
+    "schema_version": 1,
+    "layers": [
+        {"id": "app", "n": 1, "name": "Application", "sub": "s", "rows": [
+            {"label": "Task", "slot": "task", "chips": [{"id": "task-a", "label": "Task A"}]},
+            {"label": "Input representation", "slot": "input", "chips": [{"id": "in-a", "label": "In A"}]}]},
+        {"id": "sw", "n": 5, "name": "Software stack", "sub": "s", "rows": [
+            {"label": "Develop and train", "slot": "dev", "chips": [
+                {"id": "fw-a", "label": "FW A"}, {"id": "fw-b", "label": "FW B"}, {"id": "fw-c", "label": "FW C"}]},
+            {"label": "Run on device", "slot": "run", "chips": [{"id": "rt-a", "label": "RT A"}]}]},
+        {"id": "hw", "n": 6, "name": "Hardware", "sub": "s", "rows": [
+            {"label": "Conventional processors", "slot": "hw", "bucket": "conventional", "chips": [{"id": "cpu-a", "label": "CPU A"}]},
+            {"label": "Synchronous digital", "slot": "hw", "bucket": "neuromorphic", "chips": [
+                {"id": "chip-a", "label": "Chip A"}, {"id": "chip-lonely", "label": "Lonely"}, {"id": "chip-b", "label": "Chip B"}]}]}],
+    "slots": ["task", "input", "dev", "run", "hw"],
+    "buckets": [{"name": "conventional", "meaning": "c"}, {"name": "simulated", "meaning": "s"}, {"name": "neuromorphic", "meaning": "n"}],
+    "seams": {"sw": [{"pin": "S1", "title": "Operator coverage", "text": "t"}]},
+    "rails": {"left": [], "right": []},
+    "quick": ["Task A"],
+    "toolchains": {
+        "fw-a-chip-a": {"name": "FW A to Chip A", "rank": 1, "tk": "neuromorphic", "color": "#111111", "ev": "E1",
+                        "story": "s", "note": "n",
+                        "steps": {"task": None, "input": "in-a", "dev": "fw-a", "run": "rt-a"},
+                        "can": {"input": ["in-a"], "dev": ["fw-a"], "run": ["rt-a"]},
+                        "implies": [], "targets": ["chip-a"], "vendorFor": ["chip-a"],
+                        "papers": [{"id": "paper-a", "via": {"input": "in-a", "hw": "chip-a"}}]},
+        "multi-dev-chip-a": {"name": "Multi Dev to Chip A", "rank": 2, "tk": "neuromorphic", "color": "#222222", "ev": "E1",
+                              "story": "s", "note": "n",
+                              "steps": {"task": None, "input": "in-a", "dev": ["fw-b", "fw-c"], "run": "rt-a"},
+                              "can": {"input": ["in-a"], "dev": ["fw-b", "fw-c"], "run": ["rt-a"]},
+                              "implies": [], "targets": ["chip-b"], "papers": []}},
+    "applications": {"task-a": {"prefer": ["fw-a-chip-a"], "via": {"input": "in-a"}, "note": "n"}},
+    "notes": {"in-a": {"text": "t", "read": "#anchor-a"}},
+    "unreached": {"chip-lonely": {"why": "No audited toolchain reaches it.", "read": "#anchor-a"}, "cpu-a": {"why": "w", "read": "#anchor-a"}},
+}
+ROUTE_INDEX_FIXTURE = {
+    "nodes": [
+        {"id": "task-a", "type": "application", "layer": "Applications", "name": "Task A"},
+        {"id": "in-a", "type": "application", "layer": "Applications", "name": "In A"},
+        {"id": "fw-a", "type": "framework", "layer": "Develop & simulate", "name": "FW A"},
+        {"id": "fw-b", "type": "framework", "layer": "Develop & simulate", "name": "FW B"},
+        {"id": "fw-c", "type": "framework", "layer": "Develop & simulate", "name": "FW C"},
+        {"id": "rt-a", "type": "runtime", "layer": "Runtime", "name": "RT A"},
+        {"id": "cpu-a", "type": "hardware", "layer": "Hardware", "name": "CPU A", "attributes": {"target_kind": "CPU"}},
+        {"id": "chip-a", "type": "hardware", "layer": "Hardware", "name": "Chip A", "attributes": {"target_kind": "neuromorphic"}},
+        {"id": "chip-lonely", "type": "hardware", "layer": "Hardware", "name": "Lonely", "attributes": {"target_kind": "neuromorphic"}},
+        {"id": "chip-b", "type": "hardware", "layer": "Hardware", "name": "Chip B", "attributes": {"target_kind": "neuromorphic"}}],
+    "routes": [
+        {"id": "fw-a-to-rt-a", "from": "fw-a", "to": "rt-a", "route_state": "physical", "evidence_class": "E1", "source_ids": ["src-a"]},
+        {"id": "fw-b-to-fw-c", "from": "fw-b", "to": "fw-c", "route_state": "physical", "evidence_class": "E1", "source_ids": ["src-a"]},
+        {"id": "fw-c-to-rt-a", "from": "fw-c", "to": "rt-a", "route_state": "physical", "evidence_class": "E1", "source_ids": ["src-a"]},
+        {"id": "rt-a-to-chip-a", "from": "rt-a", "to": "chip-a", "route_state": "physical", "evidence_class": "E1", "source_ids": ["src-a"]},
+        {"id": "rt-a-to-chip-b", "from": "rt-a", "to": "chip-b", "route_state": "physical", "evidence_class": "E1", "source_ids": ["src-a"]}]}
+PAPERS_FIXTURE = {"papers": [
+    {"id": "paper-a", "title": "Paper A", "authors": "A", "year": 2025, "venue": "V", "url": "https://example.org/a",
+     "evidence": "E1", "target_kind": "neuromorphic", "target_hardware": "Chip A", "sources": ["paper-a"]},
+    {"id": "paper-b", "title": "Paper B", "authors": "B", "year": 2025, "venue": "V", "url": "https://example.org/b",
+     "evidence": "E2", "target_kind": "neuromorphic", "target_hardware": "Chip A", "sources": ["paper-b"]}]}
+KINDS_FIXTURE = {"kinds": [{"word": "CPU", "bucket": "conventional"}, {"word": "neuromorphic", "bucket": "neuromorphic"}, {"word": "simulator", "bucket": "simulated"}],
+                 "buckets": [{"name": "conventional", "meaning": "c", "line": "#1F77B4", "fill": "#E4F0F9", "ink": "#123456"},
+                             {"name": "simulated", "meaning": "s", "line": "#7F7F7F", "fill": "#EEEEEE", "ink": "#222222"},
+                             {"name": "neuromorphic", "meaning": "n", "line": "#D9760C", "fill": "#FBEBDA", "ink": "#654321"}]}
+CSS_FIXTURE = "".join(
+    f'.nstk-bucket[data-bucket="{b["name"]}"] {{ --line: {b["line"]}; --fill: {b["fill"]}; --ink: {b["ink"]}; }}\n'
+    for b in KINDS_FIXTURE["buckets"])
+
+
+class FigureMapCheckerTests(unittest.TestCase):
+    """tools/check-figure-map.py holds data/figure-guide.json to the route data."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name) / "survey"
+        for rel in ("tools", "data/generated", "assets", "site"):
+            (self.root / rel).mkdir(parents=True)
+        shutil.copy2(SOURCE_ROOT / "tools/check-figure-map.py", self.root / "tools/check-figure-map.py")
+        self.guide = json.loads(json.dumps(GUIDE_FIXTURE))
+        (self.root / "data/generated/route-index.json").write_text(json.dumps(ROUTE_INDEX_FIXTURE))
+        (self.root / "data/evidence-papers.json").write_text(json.dumps(PAPERS_FIXTURE))
+        (self.root / "data/target-kinds.json").write_text(json.dumps(KINDS_FIXTURE))
+        (self.root / "assets/figure.css").write_text(CSS_FIXTURE)
+        (self.root / "site/sec-x.html").write_text('<h3 id="anchor-a">A</h3>')
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def run_checker(self, *args):
+        (self.root / "data/figure-guide.json").write_text(json.dumps(self.guide))
+        return subprocess.run([sys.executable, str(self.root / "tools/check-figure-map.py"), *args],
+                              cwd=self.root, text=True, capture_output=True, check=False)
+
+    def assert_fails_with(self, fragment, *args):
+        result = self.run_checker(*args)
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn(fragment, result.stdout + result.stderr)
+
+    def test_fixture_passes(self):
+        result = self.run_checker()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("check-figure-map:", result.stdout)
+
+    def test_rule_1_chip_must_be_a_node(self):
+        self.guide["layers"][0]["rows"][1]["chips"].append({"id": "ghost", "label": "Ghost"})
+        self.assert_fails_with("rule 1: chip 'ghost' is not a node")
+
+    def test_rule_1_hardware_chip_in_wrong_bucket(self):
+        rows = self.guide["layers"][2]["rows"]
+        rows[0]["chips"].append(rows[1]["chips"].pop(0))
+        self.assert_fails_with("rule 1: hardware chip 'chip-a' sits in the 'conventional' row")
+
+    def test_rule_1_css_bucket_color(self):
+        (self.root / "assets/figure.css").write_text(CSS_FIXTURE.replace("#D9760C", "#000000"))
+        self.assert_fails_with("rule 1: figure.css rule for [data-bucket=\"neuromorphic\"] lacks the bucket line color #D9760C")
+
+    def test_rule_2_target_kind_matches_tk(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["tk"] = "CPU"
+        self.assert_fails_with("rule 2: toolchain 'fw-a-chip-a' has tk 'CPU' but its target 'chip-a' records target_kind 'neuromorphic'")
+
+    def test_rule_2_vendor_for_subset_of_targets(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["vendorFor"] = ["cpu-a"]
+        self.assert_fails_with("rule 2: toolchain 'fw-a-chip-a' names vendorFor 'cpu-a' outside its targets")
+
+    def test_rule_3_step_must_be_in_can(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["can"]["dev"] = []
+        self.assert_fails_with("rule 3: toolchain 'fw-a-chip-a' step dev 'fw-a' is not in can.dev")
+
+    def test_rule_3_chip_in_wrong_slot(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["can"]["dev"].append("rt-a")
+        self.assert_fails_with("rule 3: toolchain 'fw-a-chip-a' names 'rt-a' under slot dev but it sits in slot run")
+
+    def test_rule_3_list_valued_step_accepted_when_all_members_are_in_can(self):
+        result = self.run_checker()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_rule_3_list_valued_step_member_must_be_in_can(self):
+        self.guide["toolchains"]["multi-dev-chip-a"]["can"]["dev"] = ["fw-b"]
+        self.assert_fails_with("rule 3: toolchain 'multi-dev-chip-a' step dev 'fw-c' is not in can.dev")
+
+    def test_rule_3_after_chip_valid_passes(self):
+        self.guide["toolchains"]["multi-dev-chip-a"]["after"] = ["fw-a"]
+        result = self.run_checker()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_rule_3_after_chip_must_exist(self):
+        self.guide["toolchains"]["multi-dev-chip-a"]["after"] = ["not-a-chip"]
+        self.assert_fails_with("rule 3: toolchain 'multi-dev-chip-a' after names 'not-a-chip' which is not a chip on the map")
+
+    def test_rule_3_after_chip_must_not_be_task_or_hw(self):
+        self.guide["toolchains"]["multi-dev-chip-a"]["after"] = ["task-a"]
+        self.assert_fails_with("rule 3: toolchain 'multi-dev-chip-a' after names 'task-a' which sits in slot task")
+
+    def test_rule_4_missing_edge(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["targets"] = ["chip-lonely"]
+        self.guide["toolchains"]["fw-a-chip-a"]["vendorFor"] = ["chip-lonely"]
+        del self.guide["unreached"]["chip-lonely"]
+        self.guide["unreached"]["chip-a"] = {"why": "w", "read": "#anchor-a"}
+        self.guide["toolchains"]["fw-a-chip-a"]["papers"] = []
+        self.assert_fails_with("rule 4: toolchain 'fw-a-chip-a' draws rt-a -> chip-lonely but no edge records it")
+
+    def test_rule_4_missing_edge_between_list_valued_steps(self):
+        ROUTE = json.loads(json.dumps(ROUTE_INDEX_FIXTURE))
+        ROUTE["routes"] = [r for r in ROUTE["routes"] if not (r["from"] == "fw-b" and r["to"] == "fw-c")]
+        (self.root / "data/generated/route-index.json").write_text(json.dumps(ROUTE))
+        self.assert_fails_with("rule 4: toolchain 'multi-dev-chip-a' draws fw-b -> fw-c but no edge records it")
+
+    def test_rule_4_break_must_not_be_physical(self):
+        t = self.guide["toolchains"]["fw-a-chip-a"]
+        t["breakAt"] = "rt-a"; t["breakWhy"] = "w"; t["seam"] = "S1"; t["ev"] = "BLOCKED"
+        self.assert_fails_with("rule 4: toolchain 'fw-a-chip-a' breaks at 'rt-a' but the data records fw-a -> rt-a as exercised on silicon")
+
+    def test_rule_4_seam_must_exist(self):
+        t = self.guide["toolchains"]["fw-a-chip-a"]
+        t["breakAt"] = "rt-a"; t["breakWhy"] = "w"; t["seam"] = "S9"; t["ev"] = "BLOCKED"
+        ROUTE = json.loads(json.dumps(ROUTE_INDEX_FIXTURE)); ROUTE["routes"][0]["route_state"] = "documented"; ROUTE["routes"][0]["evidence_class"] = "E3"
+        (self.root / "data/generated/route-index.json").write_text(json.dumps(ROUTE))
+        self.assert_fails_with("rule 4: toolchain 'fw-a-chip-a' names seam 'S9' which is not a pin")
+
+    def test_rule_5_paper_must_exist_with_matching_kind(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["papers"].append({"id": "paper-x", "via": {}})
+        self.assert_fails_with("rule 5: toolchain 'fw-a-chip-a' lists paper 'paper-x' which is not an E1 or E2 record")
+
+    def test_rule_5_via_must_be_carriable(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["papers"][0]["via"]["dev"] = "rt-a"
+        self.assert_fails_with("rule 5: toolchain 'fw-a-chip-a' paper 'paper-a' via dev 'rt-a' is not in can.dev or implies")
+
+    def test_rule_5b_every_deploying_record_is_placed_only_when_required(self):
+        self.assertEqual(self.run_checker().returncode, 0)
+        self.assert_fails_with("rule 5b: E2 record 'paper-b' appears under no toolchain", "--require-all-papers")
+
+    def test_rule_6_application_prefer_and_via(self):
+        self.guide["applications"]["task-a"]["prefer"].append("nope")
+        self.assert_fails_with("rule 6: application 'task-a' prefers 'nope' which is not a toolchain")
+
+    def test_rule_7_unreached_or_reachable(self):
+        del self.guide["unreached"]["chip-lonely"]
+        self.assert_fails_with("rule 7: chip 'chip-lonely' is reached by no toolchain and is not listed under unreached")
+
+    def test_rule_7_reachable_chip_must_not_be_unreached(self):
+        self.guide["unreached"]["chip-a"] = {"why": "w", "read": "#anchor-a"}
+        self.assert_fails_with("rule 7: chip 'chip-a' is listed under unreached but toolchain 'fw-a-chip-a' reaches it")
+
+    def test_rule_8_read_anchor_exists(self):
+        self.guide["notes"]["in-a"]["read"] = "#nowhere"
+        self.assert_fails_with("rule 8: read anchor '#nowhere' (notes in-a) is not an id in site/*.html")
+
+    def test_rule_9_house_rules(self):
+        self.guide["toolchains"]["fw-a-chip-a"]["story"] = "A story — with a dash"
+        self.assert_fails_with("rule 9: toolchains.fw-a-chip-a.story contains an em dash")
+        self.guide["toolchains"]["fw-a-chip-a"]["story"] = "A story: with a colon"
+        self.assert_fails_with("rule 9: toolchains.fw-a-chip-a.story contains a prose colon")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
