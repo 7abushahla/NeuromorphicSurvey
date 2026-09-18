@@ -1,0 +1,5 @@
+#figure-24 { text-align: center; }
+#figure-24 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-24 .f24-hot { cursor: help; }
+#figure-24 .f24-band { transition: opacity 0.15s; }
+#figure-24 .f24-hot:hover .f24-band { opacity: 0.10; }

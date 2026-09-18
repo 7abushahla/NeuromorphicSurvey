@@ -37,16 +37,19 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 | 18 | processor-architectures | 5 Where an SNN Runs | implemented | conceptual; three architectures on one axis from von Neumann to non-von Neumann, a general processor, a neural processing unit and a neuromorphic chip drawn by where the memory sits; no measured quantity drawn; installed in 5.2 after Table 10 |
 | 19 | akida-soc | 5 | implemented | conceptual; the Akida AKD1000 system on chip and one neural processing unit opened in the memory-and-circuit vocabulary of Figure 18, blocks only where a registered BrainChip page names them; no measured quantity drawn; installed in 5.5 |
 | 20 | execution-map | 5 | implemented | conceptual; the targets of Section 5 on two axes, where the memory sits (the axis of Figure 18) against what the silicon computes, one cell per subsection, the event NPU one cell short of neuromorphic hardware; no measured quantity drawn; installed in 5.5 |
-| 21 | classical-conversion-pipeline | 8 ANN-to-SNN Conversion | implemented | conceptual; the trained network and the five stages of the classical pipeline with the assumption each rests on and the contract field each fixes; no measured quantity drawn; installed in 8.4 |
-| 22 | finite-time-error-propagation | 8 | implemented | conceptual; where each finite-time error term enters a layered converted network and how the inherited error widens with depth; no measured quantity drawn; installed in 8.6 |
-| 23 | deployable-snn-contract | 9 The Deployable SNN Contract | implemented | conceptual; the eleven contract fields against three independent questions; no measured quantity drawn; installed in 9.2 |
-| 24 | software-boundary | 10 Software, Interchange, and Compilation | implemented | conceptual; the four software handoff boundaries with three audited edges of Table 26; no measured quantity drawn; installed in 10.4 |
-| 25 | deployment-stack-map | 11 Complete Deployment Routes | implemented | interactive; `site/shell-figure.html`, generated from `data/generated/route-index.json` |
-| 26 | measurement-boundary | 12 Deployment Measurement | implemented | conceptual; the measurement boundaries as four nested regions with modeled and physical beside them; no measured quantity drawn; installed in 12.2 |
+| 21 | classical-conversion-pipeline | 8 ANN-to-SNN Conversion | implemented | conceptual; the trained network and the five stages of the classical pipeline with the assumption each rests on and the contract field each fixes; no measured quantity drawn; installed in 8.1.6 |
+| 22 | rate-code-quantizer | 8 | implemented | conceptual; rate coding read as a uniform quantizer, the continuous ReLU, a soft-reset IF neuron's spike train over T steps, the staircase of T + 1 levels with the quantization and clipping regions the quantizer alone creates, and the error terms the ideal average leaves out; no measured quantity drawn; installed in the 8.2 lead |
+| 23 | finite-time-error-propagation | 8 | implemented | conceptual; where each finite-time error term enters a layered converted network and how the inherited error widens with depth; no measured quantity drawn; installed in 8.2.1 |
+| 24 | intervention-levers | 8 | implemented | conceptual; the three levers of Section 8.3 (activation, neuron, encoding) drawn on the classical pipeline with the subsection that pulls each and the finite-time error it targets; no measured quantity drawn; installed in the 8.3 lead |
+| 25 | uniform-hetero-latency | 8 | implemented | conceptual; uniform versus heterogeneous latency, one global horizon T fanned to every layer against a node with its own T_l beside each layer gap, layout after PseudoSNN's Figure 1; no measured quantity drawn; installed in 8.3.4 |
+| 26 | deployable-snn-contract | 9 The Deployable SNN Contract | implemented | conceptual; the eleven contract fields against three independent questions; no measured quantity drawn; installed in 9.2 |
+| 27 | software-boundary | 10 Software, Interchange, and Compilation | implemented | conceptual; the four software handoff boundaries with three audited edges of Table 26; no measured quantity drawn; installed in 10.4 |
+| 28 | deployment-stack-map | 11 Complete Deployment Routes | implemented | interactive; `site/shell-figure.html`, generated from `data/generated/route-index.json` |
+| 29 | measurement-boundary | 12 Deployment Measurement | implemented | conceptual; the measurement boundaries as four nested regions with modeled and physical beside them; no measured quantity drawn; installed in 12.2 |
 
 ## Pending
 
-- None. Every record in the manifest is implemented; the five conceptual figures of Sections 8 to 12 and the two Section 5 figures were drawn in the hardware-first reorder plan (2026-09-18).
+- None. Every record in the manifest is implemented; the five conceptual figures of Sections 8 to 12 and the two Section 5 figures were drawn in the hardware-first reorder plan (2026-09-18), and the three Section 8 figures of the conversion rewrite (the intervention levers, rate coding as a quantizer, uniform versus heterogeneous latency) on the same day.
 
 ## Renumbering procedure
 

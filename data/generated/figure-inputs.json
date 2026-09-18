@@ -8547,7 +8547,8 @@
         {
           "source_id": "qffs",
           "locators": [
-            "Structured metadata from evidence-papers.json"
+            "Crossref record for 10.3389/fnins.2022.918793 (title Quantization Framework for Fast Spiking Neural Networks, authors Chen Li, Lei Ma, Steve Furber, journal Frontiers in Neuroscience, volume 16, article 918793, published 2022-07-19)",
+            "Semantic Scholar record, abstract: establishes a direct link between the activation bit precision of an ANN and the timestep count its converted SNN needs to represent the same precision, proposing a quantization framework that reaches 70.18 percent top-1 accuracy on ImageNet within 8 timesteps"
           ]
         }
       ],
@@ -8555,7 +8556,7 @@
         {
           "source_id": "qffs",
           "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "verification_status": "verified"
         }
       ],
       "verification_status": "provisional",

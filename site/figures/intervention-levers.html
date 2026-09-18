@@ -1,0 +1,144 @@
+<figure class="pfig l-body" id="figure-24">
+<!-- Conceptual figure; no measured quantity is drawn. Every drawn phrase is read from Section 8.3 of site/sec-08.html. The three lever names, the sentence under each (acts before conversion, on the ANN's own training objective; acts on the spiking neuron itself; acts on how the network's values are carried in time), the sentence in the 8.4 box (the three families start from the target), and the pairing of each subsection with its lever are the 8.3 lead paragraph and the first paragraph of 8.4. The strip vocabulary (Trained ANN, Parameter mapping, thresholds and weights, Readout, the horizon T) is Figure 21's. The activation column is the first paragraph of 8.3.1 (training the ANN's own activation function to anticipate the grid before conversion happens; Section 8.2.2's clipping and discretization error). The two neuron columns are the first paragraphs of 8.3.2 (changes what happens to membrane potential at the start of inference and at reset, keeping the classical IF neuron; the residual-and-reset error Section 8.2.3 attributes to reset-by-subtraction) and 8.3.3 (redesigns the IF neuron itself, changing what a single step's spike budget can represent; Section 8.2.2's clipping and discretization error). The three encoding columns are the first paragraphs of 8.3.4 Mixed and Heterogeneous Timesteps (one global T shared by every layer replaced by a layer-specific horizon; Section 8.2.4's unevenness and timing error), 8.3.5 (a single, whole-network terminal horizon per input, stopping every layer together; the same finite-window error as 8.3.4), and 8.3.6 (replacing the encoder, channel, and decoder with a different code entirely; Section 8.2.6's encoding and readout error). The red markers reuse Figure 23's convention for a finite-time error term. -->
+<svg viewBox="0 0 1200 520" role="img" aria-labelledby="f24-title f24-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f24-title">The three levers of low-latency conversion, the activation lever, the neuron lever, and the encoding lever, drawn on the classical pipeline at the element each one acts on, with the subsections that pull each lever and the finite-time error each one targets</title>
+  <desc id="f24-desc">A row of boxes read left to right and joined by arrows, the classical pipeline reduced to what a lever can touch. Trained ANN, its activation function. Parameter mapping, thresholds and weights, drawn small because no lever pulls on it. Spiking neuron, integrate, threshold, reset. Time, the horizon T and the code. A small terminal Readout. To the far right, apart from the row, a muted dashed box reads 8.4 Conversion toward hardware, methods that start from the target. Above the row three colored brackets reach down onto three boxes. The green activation lever reaches the trained ANN and acts before conversion, on the ANN's own training objective. The blue neuron lever reaches the spiking neuron and acts on the spiking neuron itself. The amber encoding lever reaches the time box and acts on how the network's values are carried in time. Below the row, under each lever, the subsections that pull it. Under the activation lever, Section 8.3.1 Activation shaping, train the activation to anticipate the grid before conversion, against clipping and discretization error, Section 8.2.2. Under the neuron lever, Section 8.3.2 Potential and reset calibration, calibrate the initial potential and the reset of the IF neuron, against residual and reset error, Section 8.2.3, and Section 8.3.3 Neuron interventions, redesign the IF neuron itself, changing what one step's spike budget can represent, against clipping and discretization error, Section 8.2.2. Under the encoding lever, Section 8.3.4 Mixed and heterogeneous timesteps, a horizon that varies by layer, not one global T shared by every layer, against unevenness and timing error, Section 8.2.4; Section 8.3.5 Adaptive inference, a single whole-network horizon that varies by input, stopping every layer together, against the same finite-window error, Section 8.2.4; and Section 8.3.6 Alternative-code conversion, replace the rate code itself with a different code for the encoder, channel, and decoder, against encoding and readout error, Section 8.2.6. Each targeted error is marked with a red dot. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs>
+    <marker id="f24-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <marker id="f24-arrow-act" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6AA168"/></marker>
+    <marker id="f24-arrow-neu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F77B4"/></marker>
+    <marker id="f24-arrow-enc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D9760C"/></marker>
+  </defs>
+  <g id="f24-lever-act" class="f24-hot">
+    <title>Activation shaping trains the ANN's own activation function to anticipate the grid before conversion happens, an ordinary quantization-aware training step applied to the ANN, not a hardware intervention.</title>
+    <text x="119" y="42" text-anchor="middle" fill="#2a7f62" font-size="20" font-weight="700">Activation lever</text>
+    <text x="119" y="66" text-anchor="middle" fill="#2a7f62" font-size="15">acts before conversion,<tspan x="119" dy="18">on the ANN's own</tspan><tspan x="119" dy="18">training objective</tspan></text>
+    <path d="M24,126 L24,118 L214,118 L214,126" fill="none" stroke="#6AA168" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M119,118 L119,149" fill="none" stroke="#6AA168" stroke-width="2.5" marker-end="url(#f24-arrow-act)"/>
+    <rect class="f24-band" x="18" y="20" width="202" height="126" rx="6" fill="#6AA168" opacity="0"/>
+    <rect x="18" y="20" width="202" height="126" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-lever-neu" class="f24-hot">
+    <title>Potential and reset calibration keeps the classical IF neuron and the rate code intact and changes what happens to membrane potential at the start of inference and at reset; neuron interventions redesign the IF neuron itself, changing what a single step's spike budget can represent.</title>
+    <text x="469" y="60" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">Neuron lever</text>
+    <text x="469" y="84" text-anchor="middle" fill="#155F8F" font-size="15">acts on the spiking<tspan x="469" dy="18">neuron itself</tspan></text>
+    <path d="M374,126 L374,118 L564,118 L564,126" fill="none" stroke="#1F77B4" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M469,118 L469,149" fill="none" stroke="#1F77B4" stroke-width="2.5" marker-end="url(#f24-arrow-neu)"/>
+    <rect class="f24-band" x="368" y="38" width="202" height="108" rx="6" fill="#1F77B4" opacity="0"/>
+    <rect x="368" y="38" width="202" height="108" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-lever-enc" class="f24-hot">
+    <title>Mixed and heterogeneous timesteps discard the assumption of one global T shared by every layer; adaptive inference varies a single, whole-network terminal horizon per input; alternative-code conversion replaces the encoder, channel, and decoder with a different code entirely.</title>
+    <text x="685" y="60" text-anchor="middle" fill="#8F4A06" font-size="20" font-weight="700">Encoding lever</text>
+    <text x="685" y="84" text-anchor="middle" fill="#8F4A06" font-size="15">acts on how the network's<tspan x="685" dy="18">values are carried in time</tspan></text>
+    <path d="M590,126 L590,118 L780,118 L780,126" fill="none" stroke="#D9760C" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M685,118 L685,149" fill="none" stroke="#D9760C" stroke-width="2.5" marker-end="url(#f24-arrow-enc)"/>
+    <rect class="f24-band" x="584" y="38" width="202" height="108" rx="6" fill="#D9760C" opacity="0"/>
+    <rect x="584" y="38" width="202" height="108" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-trained" class="f24-box f24-hot">
+    <title>The activation lever acts here, before conversion, on the ANN's own training objective, so that the trained activations already sit on the levels a finite horizon can represent.</title>
+    <rect x="24" y="150" width="190" height="112" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="119" y="186" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Trained ANN</text>
+    <text x="119" y="214" text-anchor="middle" fill="#4a5560" font-size="16">its activation<tspan x="119" dy="19">function</tspan></text>
+    <rect class="f24-band" x="24" y="150" width="190" height="112" rx="6" fill="#6AA168" opacity="0"/>
+    <rect x="24" y="150" width="190" height="112" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-map" class="f24-box f24-hot">
+    <title>Conversion itself, the stage that sets thresholds and rescaled weights from the trained network. None of the three levers of Section 8.3 acts on it.</title>
+    <rect x="240" y="156" width="108" height="100" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="294" y="184" text-anchor="middle" fill="#4a5560" font-size="16" font-weight="700">Parameter<tspan x="294" dy="20">mapping</tspan></text>
+    <text x="294" y="230" text-anchor="middle" fill="#6b7580" font-size="14">thresholds<tspan x="294" dy="17">and weights</tspan></text>
+    <rect class="f24-band" x="240" y="156" width="108" height="100" rx="6" fill="#2b3440" opacity="0"/>
+    <rect x="240" y="156" width="108" height="100" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-neuron" class="f24-box f24-hot">
+    <title>The neuron lever acts on the spiking neuron itself, either by calibrating its initial potential and reset against the residual error or by redesigning the neuron model that Section 3 holds fixed.</title>
+    <rect x="374" y="150" width="190" height="112" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="469" y="186" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Spiking neuron</text>
+    <text x="469" y="214" text-anchor="middle" fill="#4a5560" font-size="16">integrate,<tspan x="469" dy="19">threshold, reset</tspan></text>
+    <rect class="f24-band" x="374" y="150" width="190" height="112" rx="6" fill="#1F77B4" opacity="0"/>
+    <rect x="374" y="150" width="190" height="112" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-time" class="f24-box f24-hot">
+    <title>The encoding lever acts on how the network's values are carried in time, replacing the single global horizon with one that varies by layer or by input, or replacing the rate code itself with a different code.</title>
+    <rect x="590" y="150" width="190" height="112" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="685" y="186" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Time</text>
+    <text x="685" y="214" text-anchor="middle" fill="#4a5560" font-size="16">the horizon <tspan font-style="italic">T</tspan><tspan x="685" dy="19">and the code</tspan></text>
+    <rect class="f24-band" x="590" y="150" width="190" height="112" rx="6" fill="#D9760C" opacity="0"/>
+    <rect x="590" y="150" width="190" height="112" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-readout" class="f24-box f24-hot">
+    <title>The decoder at the end of the horizon. Alternative-code conversion changes the code the encoder and decoder use rather than the statistics carried through a fixed rate code.</title>
+    <rect x="806" y="178" width="88" height="56" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="850" y="212" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Readout</text>
+    <rect class="f24-band" x="806" y="178" width="88" height="56" rx="6" fill="#2b3440" opacity="0"/>
+    <rect x="806" y="178" width="88" height="56" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-stage-toward" class="f24-box f24-hot">
+    <title>The methods of Section 8.3 change what a conversion produces without naming where it will run. The three families of Section 8.4, hardware-aware conversion, hybrid fine-tuning, and the emerging architectures, start from the target.</title>
+    <rect x="940" y="156" width="236" height="100" rx="6" fill="#fbfbfc" stroke="#b9c2cc" stroke-width="1.8" stroke-dasharray="5 4"/>
+    <text x="1058" y="184" text-anchor="middle" fill="#6b7580" font-size="16" font-weight="700">8.4 Conversion<tspan x="1058" dy="20">toward hardware</tspan></text>
+    <text x="1058" y="231" text-anchor="middle" fill="#6b7580" font-size="15">methods that start<tspan x="1058" dy="18">from the target</tspan></text>
+    <rect class="f24-band" x="940" y="156" width="236" height="100" rx="6" fill="#8a94a0" opacity="0"/>
+    <rect x="940" y="156" width="236" height="100" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <path id="f24-arrow-1" class="f24-arrow" d="M215,206 L239,206" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-2" class="f24-arrow" d="M349,206 L373,206" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-3" class="f24-arrow" d="M565,206 L589,206" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-4" class="f24-arrow" d="M781,206 L805,206" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-stem-act" d="M119,263 L119,292" fill="none" stroke="#6AA168" stroke-width="2.5"/>
+  <path id="f24-rule-act" d="M24,292 L206,292" fill="none" stroke="#6AA168" stroke-width="3" stroke-linecap="round"/>
+  <path id="f24-stem-neu" d="M469,263 L469,292" fill="none" stroke="#1F77B4" stroke-width="2.5"/>
+  <path id="f24-rule-neu" d="M218,292 L594,292" fill="none" stroke="#1F77B4" stroke-width="3" stroke-linecap="round"/>
+  <path id="f24-stem-enc" d="M685,263 L685,292" fill="none" stroke="#D9760C" stroke-width="2.5"/>
+  <path id="f24-rule-enc" d="M606,292 L1176,292" fill="none" stroke="#D9760C" stroke-width="3" stroke-linecap="round"/>
+  <g id="f24-col-8-3-1">
+    <text x="24" y="318" fill="#2a7f62" font-size="15">Section 8.3.1</text>
+    <text x="24" y="339" fill="#2a7f62" font-size="16" font-weight="700">Activation shaping</text>
+    <text x="24" y="360" fill="#4a5560" font-size="16">train the activation<tspan x="24" dy="19">to anticipate the grid</tspan><tspan x="24" dy="19">before conversion</tspan></text>
+    <circle cx="29" cy="415" r="4" fill="#D63A2F"/>
+    <text x="38" y="420" fill="#D63A2F" font-size="15">clipping and<tspan x="38" dy="18">discretization</tspan><tspan x="38" dy="18">error (8.2.2)</tspan></text>
+  </g>
+  <g id="f24-col-8-3-2">
+    <text x="218" y="318" fill="#155F8F" font-size="15">Section 8.3.2</text>
+    <text x="218" y="339" fill="#155F8F" font-size="16" font-weight="700">Potential and reset<tspan x="218" dy="19">calibration</tspan></text>
+    <text x="218" y="379" fill="#4a5560" font-size="16">calibrate the initial<tspan x="218" dy="19">potential and the reset</tspan><tspan x="218" dy="19">of the IF neuron</tspan></text>
+    <circle cx="223" cy="434" r="4" fill="#D63A2F"/>
+    <text x="232" y="439" fill="#D63A2F" font-size="15">residual and reset<tspan x="232" dy="18">error (8.2.3)</tspan></text>
+  </g>
+  <g id="f24-col-8-3-3">
+    <text x="412" y="318" fill="#155F8F" font-size="15">Section 8.3.3</text>
+    <text x="412" y="339" fill="#155F8F" font-size="16" font-weight="700">Neuron interventions</text>
+    <text x="412" y="360" fill="#4a5560" font-size="16">redesign the IF neuron<tspan x="412" dy="19">itself, changing what</tspan><tspan x="412" dy="19">one step's spike budget</tspan><tspan x="412" dy="19">can represent</tspan></text>
+    <circle cx="417" cy="434" r="4" fill="#D63A2F"/>
+    <text x="426" y="439" fill="#D63A2F" font-size="15">clipping and<tspan x="426" dy="18">discretization</tspan><tspan x="426" dy="18">error (8.2.2)</tspan></text>
+  </g>
+  <g id="f24-col-8-3-4">
+    <text x="606" y="318" fill="#8F4A06" font-size="15">Section 8.3.4</text>
+    <text x="606" y="339" fill="#8F4A06" font-size="16" font-weight="700">Mixed timesteps</text>
+    <text x="606" y="360" fill="#4a5560" font-size="16">a horizon that varies by<tspan x="606" dy="19">layer, not one global <tspan font-style="italic">T</tspan></tspan><tspan x="606" dy="19">shared by every layer</tspan></text>
+    <circle cx="611" cy="415" r="4" fill="#D63A2F"/>
+    <text x="620" y="420" fill="#D63A2F" font-size="15">unevenness and timing<tspan x="620" dy="18">error (8.2.4)</tspan></text>
+  </g>
+  <g id="f24-col-8-3-5">
+    <text x="800" y="318" fill="#8F4A06" font-size="15">Section 8.3.5</text>
+    <text x="800" y="339" fill="#8F4A06" font-size="16" font-weight="700">Adaptive inference</text>
+    <text x="800" y="360" fill="#4a5560" font-size="16">a single whole-network<tspan x="800" dy="19">horizon that varies by</tspan><tspan x="800" dy="19">input, stopping every</tspan><tspan x="800" dy="19">layer together</tspan></text>
+    <circle cx="805" cy="434" r="4" fill="#D63A2F"/>
+    <text x="814" y="439" fill="#D63A2F" font-size="15">the same finite-window<tspan x="814" dy="18">error (8.2.4)</tspan></text>
+  </g>
+  <g id="f24-col-8-3-6">
+    <text x="994" y="318" fill="#8F4A06" font-size="15">Section 8.3.6</text>
+    <text x="994" y="339" fill="#8F4A06" font-size="16" font-weight="700">Alternative-code<tspan x="994" dy="19">conversion</tspan></text>
+    <text x="994" y="379" fill="#4a5560" font-size="16">replace the rate code<tspan x="994" dy="19">itself with a different</tspan><tspan x="994" dy="19">code for the encoder,</tspan><tspan x="994" dy="19">channel, and decoder</tspan></text>
+    <circle cx="999" cy="453" r="4" fill="#D63A2F"/>
+    <text x="1008" y="458" fill="#D63A2F" font-size="15">encoding and readout<tspan x="1008" dy="18">error (8.2.6)</tspan></text>
+  </g>
+  <g id="f24-key">
+    <circle cx="29" cy="503" r="4" fill="#D63A2F"/>
+    <text x="40" y="508" fill="#4a5560" font-size="15">the finite-time error each subsection intervenes against, named in Section 8.2</text>
+  </g>
+</svg>
+<figcaption><b>Figure 24:</b> The three levers by which Section 8.3 organizes low-latency conversion, drawn on the classical pipeline reduced to what a lever can touch, the trained ANN and its activation function, the spiking neuron, the time over which values are carried, and the readout, with parameter mapping between them drawn plain because none of the three levers acts on conversion itself. The activation lever acts before conversion, on the ANN's own training objective (Section 8.3.1); the neuron lever acts on the spiking neuron itself, by calibrating its initial potential and reset (Section 8.3.2) or by redesigning the neuron model (Section 8.3.3); the encoding lever acts on how the network's values are carried in time, with a horizon that varies by layer (Section 8.3.4) or by input (Section 8.3.5), or with a different code in place of rate (Section 8.3.6). Activation shaping and neuron interventions target the clipping and discretization error of Section 8.2.2, potential and reset calibration the residual and reset error of Section 8.2.3, mixed timesteps and adaptive inference the unevenness and timing error of Section 8.2.4, and alternative-code conversion the encoding and readout error of Section 8.2.6. The methods of Section 8.4 start from the target rather than from an error term, so they sit past the pipeline instead of on it. Conceptual figure; no measured quantity is drawn.</figcaption>
+</figure>

@@ -125,16 +125,37 @@
 #figure-21 { text-align: center; }
 #figure-21 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 
-/* ---- finite-time-error-propagation (Figure 22) ---- */
+/* ---- rate-code-quantizer (Figure 22) ---- */
 #figure-22 { text-align: center; }
 #figure-22 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-22 .f22-hot { cursor: help; }
+#figure-22 .f22-band { transition: opacity 0.15s; }
+#figure-22 .f22-hot:hover .f22-band { opacity: 0.10; }
 
-/* ---- deployable-snn-contract (Figure 23) ---- */
+/* ---- finite-time-error-propagation (Figure 23) ---- */
+#figure-23 { text-align: center; }
 #figure-23 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 
-/* ---- software-boundary (Figure 24) ---- */
+/* ---- intervention-levers (Figure 24) ---- */
+#figure-24 { text-align: center; }
 #figure-24 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-24 .f24-hot { cursor: help; }
+#figure-24 .f24-band { transition: opacity 0.15s; }
+#figure-24 .f24-hot:hover .f24-band { opacity: 0.10; }
 
-/* ---- measurement-boundary (Figure 26) ---- */
-/* Figure 23, deployment measurement boundaries. Scoped to #figure-26. */
+/* ---- uniform-hetero-latency (Figure 25) ---- */
+#figure-25 { text-align: center; }
+#figure-25 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-25 .f25-hot { cursor: help; }
+#figure-25 .f25-band { transition: opacity 0.15s; }
+#figure-25 .f25-hot:hover .f25-band { opacity: 0.10; }
+
+/* ---- deployable-snn-contract (Figure 26) ---- */
 #figure-26 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+
+/* ---- software-boundary (Figure 27) ---- */
+#figure-27 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+
+/* ---- measurement-boundary (Figure 29) ---- */
+/* Figure 23, deployment measurement boundaries. Scoped to #figure-29. */
+#figure-29 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
