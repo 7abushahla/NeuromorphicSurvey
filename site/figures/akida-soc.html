@@ -14,7 +14,7 @@
        BrainChip-AKD1000Brief, Key Benefits (interconnect network for spike transmission). The grid carries no count; the
        product brief and a 2019 BrainChip slide state different counts (20 neural processing cores; 80 NPUs), so none is drawn.
      Input encoding, rank coding, events by their time and place: brainchip-akida-techbrief p. 3 (an encoding scheme called
-       rank coding, in which information is expressed as the time and place it occurs); Table 23's rank-order input stage. No
+       rank coding, in which information is expressed as the time and place it occurs); Table 24's rank-order input stage. No
        recorded BrainChip page names a data-to-spike or pixel-to-spike converter block, so the stage is drawn with the tech
        brief's words and not as a converter.
      Input packet: brainchip-akida-user-guide, learning section (when an input packet is sent with a label included), the
@@ -33,15 +33,23 @@
        (events or spikes indicate useful information); cap-akida-1-neural_code_payload (events carry low-bit activation
        information).
      Bottom line: 5.2's Akida sentence (a converted, quantized CNN as a single pass of sparse events, no spiking neuron model
-       integrated over T) and Table 23's Akida row (single event-domain pass, no global simulation length T exposed).
+       integrated over T) and Table 24's Akida row (single event-domain pass, no global simulation length T exposed).
      Not drawn, no recorded BrainChip page names them: DSP, DMA engine, power management unit, SPI (AKD1500 only), on-chip SRAM
        size. Layout after the author's own proposal drawing, not reproduced. Hues from data/target-kinds.json, conventional;
-       the system-on-chip frame is dashed as the event NPU chip word is drawn elsewhere on the page. -->
+       the system-on-chip frame is dashed as the event NPU chip word is drawn elsewhere on the page.
+     Right panel vocabulary: the opened unit is redrawn in the memory-and-circuit vocabulary of Figure 18
+       (site/figures/processor-architectures.html), itself after deng-2025-edgesnn's architecture comparison, so a reader can
+       read the unit against that figure's panel (c) near-memory cell. A hatched fill marks memory and a plain rounded box
+       marks a circuit, exactly as there, and the weights block is placed beside the neuron and synapse circuits rather than
+       across the top of them. Nothing is added by the restyling. The blocks, their labels and their sources are the ones
+       listed above; the two circuit blocks drawn before are now one block with the same ellipsis convention, and the key and
+       the panel-(c) footer line name the vocabulary rather than any BrainChip claim. -->
 <svg viewBox="0 0 1200 580" role="img" aria-labelledby="f19-title f19-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
-  <title id="f19-title">The Akida system on chip, a host processor beside a mesh of neural processing units with an input encoding stage, and one neural processing unit opened to show weights held beside its circuits, a threshold, and an event out</title>
-  <desc id="f19-desc">Two panels. On the left, a dashed frame in the conventional bucket's blue tint labeled Akida AKD1000 system on chip. Along its top sit interface blocks USB 3.0, PCIe 2.1, I2S, I3C and UART; down its right side JTAG, LPDDR4 memory, and multi-chip expansion up to 32 devices over PCIe. In the middle a host processor block, an Arm Cortex-M4 CPU on the die, sits above a large block holding a grid of small squares labeled mesh of neural processing units, an interconnect network for spike transmission, grid not to count; the grid carries no count. On the left an input encoding block, rank coding, events by their time and place, points an arrow into the mesh. One square of the mesh is outlined and a dashed arrow leads from it to the right panel. The right panel, one neural processing unit opened, holds a tall input packet box on the left, a weights box across the top labeled parameter memory integrated with the neuronal mathematics, and two neuron and synapse circuit boxes that accumulate low-bit event-domain activations, each followed by a threshold box set at conversion and an arrow down to the word Event, to the next layer, with a vertical ellipsis between the two. Under both panels the chip word event NPU and one line, converted network in, sparse events between layers, no spiking neuron model over T. Conceptual figure; no measured quantity is drawn.</desc>
+  <title id="f19-title">The Akida system on chip, a host processor beside a mesh of neural processing units with an input encoding stage, and one neural processing unit opened in Figure 18&#8217;s vocabulary to show a hatched weight memory beside the plain neuron and synapse circuits, a threshold set at conversion, and an event out</title>
+  <desc id="f19-desc">Two panels. On the left, a dashed frame in the conventional bucket&#8217;s blue tint labeled Akida AKD1000 system on chip. Along its top sit interface blocks USB 3.0, PCIe 2.1, I2S, I3C and UART; down its right side JTAG, LPDDR4 memory, and multi-chip expansion up to 32 devices over PCIe. In the middle a host processor block, an Arm Cortex-M4 CPU on the die, sits above a large block holding a grid of small squares labeled mesh of neural processing units, an interconnect network for spike transmission, grid not to count; the grid carries no count. On the left an input encoding block, rank coding, events by their time and place, points an arrow into the mesh. One square of the mesh is outlined and a dashed arrow leads from it to the right panel. The right panel, one neural processing unit opened, is drawn in the memory-and-circuit vocabulary of the preceding architecture figure. An input packet block sits at the top and an arrow leads down from it into a plain rounded box of neuron and synapse circuits that accumulate low-bit event-domain activations. A hatched block labeled Weights stands immediately beside that box, not above it or apart from it, and a bracket under the pair reads parameter memory integrated with the neuronal mathematics. A vertical ellipsis under the pair marks the circuits not drawn. An arrow leaves the circuits to the right into a threshold box, set at conversion, and from the threshold an arrow points down to the word Event, to the next layer. A key marks hatched as memory and plain as a neuron and synapse circuit, and a footer line reads that on the preceding figure&#8217;s axis this unit is the near-memory cell of panel (c). Under both panels the chip word event NPU and one line, memory beside the neuron, and a converted network run as one pass, no state over T. Conceptual figure; no measured quantity is drawn.</desc>
   <defs>
     <marker id="f19-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <pattern id="f19-mem" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect x="0" y="0" width="7" height="7" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#c5cbd3" stroke-width="1.6"/></pattern>
   </defs>
 
   <!-- left, the system on chip, conventional hue, dashed outline as the event NPU chip word is drawn -->
@@ -92,49 +100,44 @@
   </g>
   <path id="f19-open-arrow" d="M495,270 L658,270" fill="none" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f19-arrow)"/>
 
-  <!-- right, one neural processing unit opened -->
+  <!-- right, one neural processing unit opened, in Figure 18's memory-and-circuit vocabulary -->
   <g id="f19-npu">
     <rect x="660" y="20" width="520" height="466" rx="10" fill="#ffffff" stroke="#1F77B4" stroke-width="1.8"/>
     <text x="920" y="48" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">One neural processing unit, opened</text>
-    <rect id="f19-packet" x="676" y="80" width="44" height="380" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-    <text x="698" y="270" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700" transform="rotate(-90 698 270)">Input packet</text>
-    <rect id="f19-weights" x="750" y="80" width="410" height="46" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-    <text x="955" y="99" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">Weights</text>
-    <text x="955" y="118" text-anchor="middle" fill="#4a5560" font-size="14">parameter memory integrated with the neuronal mathematics</text>
-    <g id="f19-circuit-1">
-      <line x1="721" y1="196" x2="748" y2="196" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <rect x="750" y="150" width="210" height="92" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-      <text x="855" y="176" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Neuron and synapse<tspan x="855" dy="19">circuits</tspan></text>
-      <text x="855" y="216" text-anchor="middle" fill="#4a5560" font-size="14">accumulate low-bit<tspan x="855" dy="17">event-domain activations</tspan></text>
-      <line x1="961" y1="196" x2="988" y2="196" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <rect x="990" y="170" width="130" height="52" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-      <text x="1055" y="191" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Threshold</text>
-      <text x="1055" y="211" text-anchor="middle" fill="#4a5560" font-size="14">set at conversion</text>
-      <line x1="1055" y1="223" x2="1055" y2="248" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <text x="1055" y="268" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700" font-style="italic">Event</text>
-      <text x="1055" y="286" text-anchor="middle" fill="#4a5560" font-size="14">to the next layer</text>
+    <rect id="f19-packet" x="796" y="72" width="180" height="42" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="886" y="98" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">Input packet</text>
+    <line id="f19-packet-arrow" x1="886" y1="116" x2="886" y2="136" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+    <g id="f19-cell">
+      <rect id="f19-weights" x="696" y="140" width="84" height="140" rx="5" fill="url(#f19-mem)" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="738" y="215" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Weights</text>
+      <rect id="f19-circuit" x="786" y="140" width="200" height="140" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="886" y="186" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Neuron and synapse<tspan x="886" dy="19">circuits</tspan></text>
+      <text x="886" y="232" text-anchor="middle" fill="#4a5560" font-size="14">accumulate low-bit<tspan x="886" dy="17">event-domain activations</tspan></text>
     </g>
     <g id="f19-ellipsis" fill="#2b3440">
-      <circle cx="855" cy="300" r="2.5"/><circle cx="855" cy="312" r="2.5"/><circle cx="855" cy="324" r="2.5"/>
+      <circle cx="886" cy="298" r="2.5"/><circle cx="886" cy="312" r="2.5"/><circle cx="886" cy="326" r="2.5"/>
     </g>
-    <g id="f19-circuit-2">
-      <line x1="721" y1="384" x2="748" y2="384" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <rect x="750" y="338" width="210" height="92" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-      <text x="855" y="364" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Neuron and synapse<tspan x="855" dy="19">circuits</tspan></text>
-      <text x="855" y="404" text-anchor="middle" fill="#4a5560" font-size="14">accumulate low-bit<tspan x="855" dy="17">event-domain activations</tspan></text>
-      <line x1="961" y1="384" x2="988" y2="384" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <rect x="990" y="358" width="130" height="52" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
-      <text x="1055" y="379" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Threshold</text>
-      <text x="1055" y="399" text-anchor="middle" fill="#4a5560" font-size="14">set at conversion</text>
-      <line x1="1055" y1="411" x2="1055" y2="436" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
-      <text x="1055" y="456" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700" font-style="italic">Event</text>
-      <text x="1055" y="474" text-anchor="middle" fill="#4a5560" font-size="14">to the next layer</text>
+    <path id="f19-cell-bracket" d="M696,342 L696,348 L986,348 L986,342" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
+    <text id="f19-cell-note" x="841" y="370" text-anchor="middle" fill="#4a5560" font-size="14">parameter memory integrated<tspan x="841" dy="17">with the neuronal mathematics</tspan></text>
+    <line id="f19-threshold-arrow" x1="988" y1="210" x2="1004" y2="210" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+    <rect id="f19-threshold" x="1006" y="182" width="158" height="56" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="1085" y="205" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Threshold</text>
+    <text x="1085" y="226" text-anchor="middle" fill="#4a5560" font-size="14">set at conversion</text>
+    <line id="f19-event-arrow" x1="1085" y1="240" x2="1085" y2="264" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+    <text x="1085" y="284" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700" font-style="italic">Event</text>
+    <text x="1085" y="302" text-anchor="middle" fill="#4a5560" font-size="14">to the next layer</text>
+    <g id="f19-key">
+      <rect x="696" y="416" width="24" height="15" rx="3" fill="url(#f19-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="728" y="428" fill="#4a5560" font-size="14">memory</text>
+      <rect x="830" y="416" width="24" height="15" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="862" y="428" fill="#4a5560" font-size="14">neuron and synapse circuit</text>
     </g>
+    <text id="f19-panel-c-note" x="920" y="468" text-anchor="middle" fill="#2b3440" font-size="14" font-style="italic">on Figure 18&#8217;s axis this unit is the near-memory cell of panel (c)</text>
   </g>
 
   <!-- under both, the chip word and the one line the page gives it -->
   <text id="f19-chipword" x="600" y="522" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">event NPU</text>
-  <text id="f19-bottomline" x="600" y="548" text-anchor="middle" fill="#4a5560" font-size="14">converted network in, sparse events between layers, no spiking neuron model over <tspan font-style="italic">T</tspan></text>
+  <text id="f19-bottomline" x="600" y="548" text-anchor="middle" fill="#4a5560" font-size="14">memory beside the neuron, and a converted network run as one pass, no state over <tspan font-style="italic">T</tspan></text>
 </svg>
-<figcaption><b>Figure 19:</b> BrainChip's Akida as its own pages describe it. A host processor, an input encoding stage that expresses data as events by their time and place, and a mesh of neural processing units share one chip; inside each unit the weights sit beside the neuron and synapse circuits that use them, a circuit's accumulation meets a threshold, and what leaves is an event. The network arrives converted and quantized and runs as one pass of sparse events, and no spiking neuron model over T is exposed, which is why the chip carries the event NPU word of the conventional bucket rather than a place among the neuromorphic families that follow. Conceptual figure drawn from BrainChip's documentation<d-cite key="brainchip-akida-techbrief"></d-cite>; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 19:</b> BrainChip&#8217;s Akida as its own pages describe it. A host processor, an input encoding stage that expresses data as events by their time and place, and a mesh of neural processing units share one chip. The opened unit holds its parameter memory beside the neuron and synapse circuits that use it and draws power only when a neuron&#8217;s inputs cross its threshold<d-cite key="brainchip-akida-techbrief"></d-cite>, which is the memory placement of the neuromorphic panel of Figure 18 rather than that of a processor or a dense accelerator. What runs on the unit is a converted quantized CNN as one pass of sparse events, its threshold fixed once at conversion from the quantization step<d-cite key="brainchip-cnn2snn-docs"></d-cite> and no spiking neuron model integrated over T, which is why the chip carries the event NPU word of the conventional bucket rather than a place among the neuromorphic families that follow. The right panel is drawn in the memory-and-circuit vocabulary of the preceding figure, after the EdgeSNN survey&#8217;s architecture comparison<d-cite key="deng-2025-edgesnn"></d-cite>. Conceptual figure drawn from BrainChip&#8217;s documentation; no measured quantity is drawn.</figcaption>
 </figure>

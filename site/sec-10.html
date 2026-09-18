@@ -1,6 +1,6 @@
 <h2 id="software-interchange-compilation">10 Software, Interchange, and Compilation</h2>
 
-<p><a href="#contract-conformance">Section 9.4</a> established that a contract field's representability must be checked before its execution is asked about at all. This section checks it, following the software path a network travels in the order it is actually traveled, a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime, and the host input and output work that surrounds every stage. Every edge in that path is typed using the schema Table 25 fixes below, input, output, preserved, transformed, rejected, and evidence, so that a claim about one boundary is never confused with a claim about a different one.</p>
+<p><a href="#contract-conformance">Section 9.4</a> established that a contract field's representability must be checked before its execution is asked about at all. This section checks it, following the software path a network travels in the order it is actually traveled, a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime, and the host input and output work that surrounds every stage. Every edge in that path is typed using the schema Table 26 fixes below, input, output, preserved, transformed, rejected, and evidence, so that a claim about one boundary is never confused with a claim about a different one.</p>
 
 <h3 id="framework-boundary">10.1 The Framework Boundary</h3>
 
@@ -20,7 +20,7 @@
 
 <div class="ptable-wrap l-page" id="table-simulator-catalog">
 <table class="ptable">
-<caption><b>Table 24:</b> Simulators, libraries, chip backends, and hardware-emulation designs for spiking-network execution, grouped by what each targets. The last column states what a run can claim on the tool's own page read for this catalog, not the strongest route the survey traces through the tool; <a href="#physical-routes">Section 11.2, Physical Routes,</a> carries the exercised routes.</caption>
+<caption><b>Table 25:</b> Simulators, libraries, chip backends, and hardware-emulation designs for spiking-network execution, grouped by what each targets. The last column states what a run can claim on the tool's own page read for this catalog, not the strongest route the survey traces through the tool; <a href="#physical-routes">Section 11.2, Physical Routes,</a> carries the exercised routes.</caption>
 <thead><tr><th>Tool</th><th>Group</th><th>What it executes</th><th>Runs on</th><th>Reaches through backends</th><th>What a run on it can claim, on the tool's own page read for this catalog</th><th>Source</th></tr></thead>
 <tbody>
 <tr class="group"><td colspan="7">Brain Simulators</td></tr>
@@ -78,11 +78,11 @@
 
 <h3 id="export-compile-map">10.4 Export, Compilation, and Mapping</h3>
 
-<p>Compilation and mapping are where a network's graph is lowered toward a specific target's operator set, partitioned across cores or processing elements, and placed and routed within that target's physical resource budget. This is also where this survey's audited evidence is richest and most precisely typed, because the same reset-semantics question <a href="#reset-and-refractory">Section 3.5</a> raises for one platform recurs, with a different answer each time, across eleven separately audited edges spanning SpikingJelly, Sinabs, NIR, Lava, Lava-DL, NxTF, and two physical targets. Table 25 applies the input, output, preserved, transformed, rejected, and evidence schema to every one of them. The route-state column uses the same six states, exact, approximate, blocked, obsolete, unexercised, and physical, that <a href="#route-definition">Section 11.1</a> fixes for a complete route; here each state is scoped to one edge rather than to an entire chain.</p>
+<p>Compilation and mapping are where a network's graph is lowered toward a specific target's operator set, partitioned across cores or processing elements, and placed and routed within that target's physical resource budget. This is also where this survey's audited evidence is richest and most precisely typed, because the same reset-semantics question <a href="#reset-and-refractory">Section 3.5</a> raises for one platform recurs, with a different answer each time, across eleven separately audited edges spanning SpikingJelly, Sinabs, NIR, Lava, Lava-DL, NxTF, and two physical targets. Table 26 applies the input, output, preserved, transformed, rejected, and evidence schema to every one of them. The route-state column uses the same six states, exact, approximate, blocked, obsolete, unexercised, and physical, that <a href="#route-definition">Section 11.1</a> fixes for a complete route; here each state is scoped to one edge rather than to an entire chain.</p>
 
 <div class="ptable-wrap l-page t1-wide" id="table-software-edges">
 <table class="ptable">
-<caption><b>Table 25:</b> The input, output, preservation, transformation, rejection, capability, route-state, and evidence schema applied to eleven audited software and compilation edges, all centered on the threshold-and-reset field of the deployable contract. Capability class and route state describe the named edge only, not the platform or framework in general.</caption>
+<caption><b>Table 26:</b> The input, output, preservation, transformation, rejection, capability, route-state, and evidence schema applied to eleven audited software and compilation edges, all centered on the threshold-and-reset field of the deployable contract. Capability class and route state describe the named edge only, not the platform or framework in general.</caption>
 <thead><tr><th>Edge</th><th>Typed input</th><th>Typed output</th><th>Preserved</th><th>Transformed</th><th>Rejected</th><th>Capability</th><th>Route state</th><th>Evidence</th></tr></thead>
 <tbody>
 <tr><td>SpikingJelly rate-coding recipe &#8594; SpikingJelly <code>lava_exchange</code></td><td>Subtractive reset, \(v_{\mathrm{reset}}=\mathrm{None}\)</td><td>Rejected before output</td><td>None</td><td>None</td><td>Subtractive reset; nonzero fixed reset (explicit error at five call sites <d-cite key="a18-sourcecode-comparison,spj-lava"></d-cite>)</td><td>Unsupported</td><td>Blocked</td><td>Not applicable</td></tr>
@@ -100,48 +100,48 @@
 </table>
 </div>
 
-<p>Figure 23 draws that software path as four handoff boundaries, and at each boundary the four things that can happen to a field crossing it, preserved, transformed, rejected, or unexercised. Three callouts copy audited rows of Table 25, the SpikingJelly exporter that rejects the reset field outright, the NIR schema with no field to carry it into Sinabs, and the Loihi 1 mapping that preserves it by doubling one neuron into two compartments.</p>
+<p>Figure 24 draws that software path as four handoff boundaries, and at each boundary the four things that can happen to a field crossing it, preserved, transformed, rejected, or unexercised. Three callouts copy audited rows of Table 26, the SpikingJelly exporter that rejects the reset field outright, the NIR schema with no field to carry it into Sinabs, and the Loihi 1 mapping that preserves it by doubling one neuron into two compartments.</p>
 
-<figure class="pfig l-body" id="figure-23">
-<!-- Conceptual figure; no measured quantity is drawn. The chain of five stages is Section 10's opening sentence (a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime). The three named cases are read from Table 25 (Section 10.4, read as a whole in Section 10.6), rows SpikingJelly rate-coding recipe to SpikingJelly lava_exchange, NIR 1.0.8 to Sinabs 3.1.3, and NxTF logical soft-reset neuron to Loihi 1 compartment graph, cells Preserved, Transformed, Rejected, Capability, and Route state; the only d-cite keys those three rows carry are a18-sourcecode-comparison and spj-lava (first row, Rejected cell); the other two rows carry the evidence markers E2 and E1 and no key. The fourth outcome, unexercised, is Table 9's E3 class, a documented but unexercised deployment route. The gloss under the NIR case is Section 10.3's phrase, a schema that has no field for reset by subtraction. -->
-<svg viewBox="0 0 1000 626" role="img" aria-labelledby="f23-title f23-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
-  <title id="f23-title">The four boundaries between a framework and a device, and at each what is preserved, transformed, rejected, or unexercised, with one audited case at three of them</title>
-  <desc id="f23-desc">Five boxes run left to right, Framework, Serialization or IR, Compiler or mapper, Runtime, and Device, joined by arrows. A vertical dashed line marks each of the four boundaries between neighboring boxes. Under every boundary four outlined pills read preserved, transformed, rejected, and unexercised, the four things that can happen to a contract field when it crosses that boundary. Three callouts hang from the first three boundaries and each copies one row of Table 25. At the framework boundary, SpikingJelly rate-coding recipe to SpikingJelly lava_exchange preserves nothing and transforms nothing, rejects subtractive reset and nonzero fixed reset with an explicit error at five call sites, and is unsupported with route state blocked, so the rejected pill is filled. At the intermediate representation boundary, NIR 1.0.8 to Sinabs 3.1.3, read from the intermediate representation back into a framework, turns a fixed reset into a subtractive reset because the importer does not pass the node&#8217;s reset value, a schema with no field for reset by subtraction, and is transformed with route state physical, so the transformed pill is filled. At the mapper boundary, NxTF logical soft-reset neuron to Loihi 1 compartment graph preserves the logical subtractive-reset behavior within fixed-point limits by turning one logical neuron into two hardware compartments, an emulated capability with route state physical, so both the preserved and the transformed pills are filled. The fourth boundary, runtime to device, carries no callout. Conceptual figure; no measured quantity is drawn.</desc>
-  <defs><marker id="f23-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
-  <line id="f23-boundary-1" class="f23-boundary" x1="191" y1="14" x2="191" y2="246" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <line id="f23-boundary-2" class="f23-boundary" x1="397" y1="14" x2="397" y2="438" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <line id="f23-boundary-3" class="f23-boundary" x1="603" y1="14" x2="603" y2="246" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <line id="f23-boundary-4" class="f23-boundary" x1="809" y1="14" x2="809" y2="239" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <g id="f23-stage-framework" class="f23-box">
+<figure class="pfig l-body" id="figure-24">
+<!-- Conceptual figure; no measured quantity is drawn. The chain of five stages is Section 10's opening sentence (a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime). The three named cases are read from Table 26 (Section 10.4, read as a whole in Section 10.6), rows SpikingJelly rate-coding recipe to SpikingJelly lava_exchange, NIR 1.0.8 to Sinabs 3.1.3, and NxTF logical soft-reset neuron to Loihi 1 compartment graph, cells Preserved, Transformed, Rejected, Capability, and Route state; the only d-cite keys those three rows carry are a18-sourcecode-comparison and spj-lava (first row, Rejected cell); the other two rows carry the evidence markers E2 and E1 and no key. The fourth outcome, unexercised, is Table 9's E3 class, a documented but unexercised deployment route. The gloss under the NIR case is Section 10.3's phrase, a schema that has no field for reset by subtraction. -->
+<svg viewBox="0 0 1000 626" role="img" aria-labelledby="f24-title f24-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <title id="f24-title">The four boundaries between a framework and a device, and at each what is preserved, transformed, rejected, or unexercised, with one audited case at three of them</title>
+  <desc id="f24-desc">Five boxes run left to right, Framework, Serialization or IR, Compiler or mapper, Runtime, and Device, joined by arrows. A vertical dashed line marks each of the four boundaries between neighboring boxes. Under every boundary four outlined pills read preserved, transformed, rejected, and unexercised, the four things that can happen to a contract field when it crosses that boundary. Three callouts hang from the first three boundaries and each copies one row of Table 26. At the framework boundary, SpikingJelly rate-coding recipe to SpikingJelly lava_exchange preserves nothing and transforms nothing, rejects subtractive reset and nonzero fixed reset with an explicit error at five call sites, and is unsupported with route state blocked, so the rejected pill is filled. At the intermediate representation boundary, NIR 1.0.8 to Sinabs 3.1.3, read from the intermediate representation back into a framework, turns a fixed reset into a subtractive reset because the importer does not pass the node&#8217;s reset value, a schema with no field for reset by subtraction, and is transformed with route state physical, so the transformed pill is filled. At the mapper boundary, NxTF logical soft-reset neuron to Loihi 1 compartment graph preserves the logical subtractive-reset behavior within fixed-point limits by turning one logical neuron into two hardware compartments, an emulated capability with route state physical, so both the preserved and the transformed pills are filled. The fourth boundary, runtime to device, carries no callout. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs><marker id="f24-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
+  <line id="f24-boundary-1" class="f24-boundary" x1="191" y1="14" x2="191" y2="246" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line id="f24-boundary-2" class="f24-boundary" x1="397" y1="14" x2="397" y2="438" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line id="f24-boundary-3" class="f24-boundary" x1="603" y1="14" x2="603" y2="246" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line id="f24-boundary-4" class="f24-boundary" x1="809" y1="14" x2="809" y2="239" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g id="f24-stage-framework" class="f24-box">
     <rect x="13" y="22" width="150" height="84" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="88" y="63" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Framework</text>
     <text x="88" y="96" text-anchor="middle" fill="#4a5560" font-size="14">training or simulation</text>
   </g>
-  <path id="f23-arrow-1" class="f23-arrow" d="M166,64 L217,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
-  <g id="f23-stage-serialization" class="f23-box">
+  <path id="f24-arrow-1" class="f24-arrow" d="M166,64 L217,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-stage-serialization" class="f24-box">
     <rect x="219" y="22" width="150" height="84" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="294" y="52" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Serialization<tspan x="294" dy="20">or IR</tspan></text>
     <text x="294" y="96" text-anchor="middle" fill="#4a5560" font-size="14">NIR where used</text>
   </g>
-  <path id="f23-arrow-2" class="f23-arrow" d="M372,64 L423,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
-  <g id="f23-stage-compiler" class="f23-box">
+  <path id="f24-arrow-2" class="f24-arrow" d="M372,64 L423,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-stage-compiler" class="f24-box">
     <rect x="425" y="22" width="150" height="84" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="500" y="52" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Compiler<tspan x="500" dy="20">or mapper</tspan></text>
     <text x="500" y="96" text-anchor="middle" fill="#4a5560" font-size="14">lowering and mapping</text>
   </g>
-  <path id="f23-arrow-3" class="f23-arrow" d="M578,64 L629,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
-  <g id="f23-stage-runtime" class="f23-box">
+  <path id="f24-arrow-3" class="f24-arrow" d="M578,64 L629,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-stage-runtime" class="f24-box">
     <rect x="631" y="22" width="150" height="84" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="706" y="63" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Runtime</text>
     <text x="706" y="96" text-anchor="middle" fill="#4a5560" font-size="14">executes the graph</text>
   </g>
-  <path id="f23-arrow-4" class="f23-arrow" d="M784,64 L835,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
-  <g id="f23-stage-device" class="f23-box">
+  <path id="f24-arrow-4" class="f24-arrow" d="M784,64 L835,64" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-stage-device" class="f24-box">
     <rect x="837" y="22" width="150" height="84" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="912" y="63" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Device</text>
     <text x="912" y="96" text-anchor="middle" fill="#4a5560" font-size="14">the target</text>
   </g>
-  <g id="f23-outcomes-1" class="f23-outcomes">
+  <g id="f24-outcomes-1" class="f24-outcomes">
     <rect x="121" y="122" width="140" height="22" rx="11" fill="#fff" stroke="#2a7f62" stroke-width="1.4"/>
     <text x="191" y="137.5" text-anchor="middle" fill="#2b3440" font-size="14">preserved</text>
     <rect x="121" y="149" width="140" height="22" rx="11" fill="#fff" stroke="#c9a227" stroke-width="1.4"/>
@@ -151,7 +151,7 @@
     <rect x="121" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
     <text x="191" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
-  <g id="f23-outcomes-2" class="f23-outcomes">
+  <g id="f24-outcomes-2" class="f24-outcomes">
     <rect x="327" y="122" width="140" height="22" rx="11" fill="#fff" stroke="#2a7f62" stroke-width="1.4"/>
     <text x="397" y="137.5" text-anchor="middle" fill="#2b3440" font-size="14">preserved</text>
     <rect x="327" y="149" width="140" height="22" rx="11" fill="#fff8e6" stroke="#c9a227" stroke-width="2.2"/>
@@ -161,7 +161,7 @@
     <rect x="327" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
     <text x="397" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
-  <g id="f23-outcomes-3" class="f23-outcomes">
+  <g id="f24-outcomes-3" class="f24-outcomes">
     <rect x="533" y="122" width="140" height="22" rx="11" fill="#d8efd3" stroke="#2a7f62" stroke-width="2.2"/>
     <text x="603" y="137.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">preserved</text>
     <rect x="533" y="149" width="140" height="22" rx="11" fill="#fff8e6" stroke="#c9a227" stroke-width="2.2"/>
@@ -171,7 +171,7 @@
     <rect x="533" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
     <text x="603" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
-  <g id="f23-outcomes-4" class="f23-outcomes">
+  <g id="f24-outcomes-4" class="f24-outcomes">
     <rect x="739" y="122" width="140" height="22" rx="11" fill="#fff" stroke="#2a7f62" stroke-width="1.4"/>
     <text x="809" y="137.5" text-anchor="middle" fill="#2b3440" font-size="14">preserved</text>
     <rect x="739" y="149" width="140" height="22" rx="11" fill="#fff" stroke="#c9a227" stroke-width="1.4"/>
@@ -181,7 +181,7 @@
     <rect x="739" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
     <text x="809" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
-  <g id="f23-case-a" class="f23-case">
+  <g id="f24-case-a" class="f24-case">
     <rect x="46" y="246" width="290" height="176" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="56" y="268" fill="#2b3440" font-size="15" font-weight="700">SpikingJelly rate-coding recipe</text>
     <text x="56" y="286" fill="#2b3440" font-size="15" font-weight="700">&#8594; SpikingJelly lava_exchange</text>
@@ -192,7 +192,7 @@
     <text x="56" y="374" fill="#2b3440" font-size="14"><tspan font-weight="700" fill="#2b3440">capability</tspan><tspan dx="8">Unsupported</tspan></text>
     <text x="56" y="391" fill="#2b3440" font-size="14"><tspan font-weight="700" fill="#2b3440">route state</tspan><tspan dx="8">Blocked</tspan></text>
   </g>
-  <g id="f23-case-b" class="f23-case">
+  <g id="f24-case-b" class="f24-case">
     <rect x="252" y="438" width="290" height="176" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="262" y="460" fill="#2b3440" font-size="15" font-weight="700">NIR 1.0.8 &#8594; Sinabs 3.1.3</text>
     <text x="262" y="480" fill="#4a5560" font-size="14" font-style="italic">no field for reset by subtraction</text>
@@ -204,7 +204,7 @@
     <text x="262" y="585" fill="#2b3440" font-size="14"><tspan font-weight="700" fill="#2b3440">capability</tspan><tspan dx="8">Transformed</tspan></text>
     <text x="262" y="602" fill="#2b3440" font-size="14"><tspan font-weight="700" fill="#2b3440">route state</tspan><tspan dx="8">Physical</tspan></text>
   </g>
-  <g id="f23-case-c" class="f23-case">
+  <g id="f24-case-c" class="f24-case">
     <rect x="458" y="246" width="290" height="176" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="468" y="268" fill="#2b3440" font-size="15" font-weight="700">NxTF logical soft-reset neuron</text>
     <text x="468" y="286" fill="#2b3440" font-size="15" font-weight="700">&#8594; Loihi 1 compartment graph</text>
@@ -217,12 +217,12 @@
     <text x="468" y="408" fill="#2b3440" font-size="14"><tspan font-weight="700" fill="#2b3440">route state</tspan><tspan dx="8">Physical</tspan></text>
   </g>
 </svg>
-<figcaption><b>Figure 23:</b> The four handoff boundaries of Section 10 and the four things that can happen to a contract field at each, drawn with three of the eleven edges Table 25 audits, the reset field that the intermediate representation cannot express, the compartment doubling that emulates it on Loihi 1, and the exporter that rejects it before any output exists. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 24:</b> The four handoff boundaries of Section 10 and the four things that can happen to a contract field at each, drawn with three of the eleven edges Table 26 audits, the reset field that the intermediate representation cannot express, the compartment doubling that emulates it on Loihi 1, and the exporter that rejects it before any output exists. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>
 
-<p>Table 25's two Sinabs and NIR edges are not a symmetric round trip. The Sinabs-to-NIR exporter turns a subtractive reset into NIR's fixed-zero default because it does not record the Sinabs <code>reset_fn</code>, and the NIR-to-Sinabs importer turns that same fixed-zero field back into Sinabs's subtractive default because it does not pass the node's \(v_{\mathrm{reset}}\); a network that leaves through NIR and returns lands on its native subtractive reset by coincidence of two silent conversions in opposite directions, not by either edge preserving the field. The official NIR-to-Speck notebook's physical accuracy result on a Speck 2F module proves that this route runs on physical hardware, not that it preserves reset semantics <d-cite key="sinabs-nir-to-speck-tutorial"></d-cite>.</p>
+<p>Table 26's two Sinabs and NIR edges are not a symmetric round trip. The Sinabs-to-NIR exporter turns a subtractive reset into NIR's fixed-zero default because it does not record the Sinabs <code>reset_fn</code>, and the NIR-to-Sinabs importer turns that same fixed-zero field back into Sinabs's subtractive default because it does not pass the node's \(v_{\mathrm{reset}}\); a network that leaves through NIR and returns lands on its native subtractive reset by coincidence of two silent conversions in opposite directions, not by either edge preserving the field. The official NIR-to-Speck notebook's physical accuracy result on a Speck 2F module proves that this route runs on physical hardware, not that it preserves reset semantics <d-cite key="sinabs-nir-to-speck-tutorial"></d-cite>.</p>
 
-<p>Two edges are absent from every row of Table 25, and their absence is itself informative rather than an omission. No audited source in this survey documents a route from Lava or NetX's own soft-reset intent to a custom Loihi 2 neuron process outside the public Lava and NetX artifacts; Loihi 2's neuron engine is documented as fully microcode-programmable, which makes an inference of impossibility unwarranted, and this survey records the edge as undocumented for exactly that reason rather than omitting it <d-cite key="loihi2"></d-cite>. Compilation and mapping edges outside the reset-semantics chain follow the same schema with different subject matter. SNN Toolbox's bridge into NxTF folds batch normalization, applies percentile-based weight and threshold normalization, and preserves the reset-by-subtraction default at the point of compilation, but its own boundary notes state plainly that NxTF is Keras-native, so a PyTorch-trained SpikingJelly model has no generic bridge into this specific compiler regardless of what its own reset rule is <d-cite key="toolbox,nxtf"></d-cite>. QuantizeML's uniform, symmetric integer quantization is consumed directly by CNN2SNN's mapper, which folds batch normalization and activation quantization into a per-neuron static threshold computed once at conversion time, a transformation this survey records in full in <a href="#adaptive-inference">Section 8.11</a> and revisits as a named route in <a href="#approximate-transformed-routes">Section 11.4</a> <d-cite key="brainchip-cnn2snn-docs"></d-cite>.</p>
+<p>Two edges are absent from every row of Table 26, and their absence is itself informative rather than an omission. No audited source in this survey documents a route from Lava or NetX's own soft-reset intent to a custom Loihi 2 neuron process outside the public Lava and NetX artifacts; Loihi 2's neuron engine is documented as fully microcode-programmable, which makes an inference of impossibility unwarranted, and this survey records the edge as undocumented for exactly that reason rather than omitting it <d-cite key="loihi2"></d-cite>. Compilation and mapping edges outside the reset-semantics chain follow the same schema with different subject matter. SNN Toolbox's bridge into NxTF folds batch normalization, applies percentile-based weight and threshold normalization, and preserves the reset-by-subtraction default at the point of compilation, but its own boundary notes state plainly that NxTF is Keras-native, so a PyTorch-trained SpikingJelly model has no generic bridge into this specific compiler regardless of what its own reset rule is <d-cite key="toolbox,nxtf"></d-cite>. QuantizeML's uniform, symmetric integer quantization is consumed directly by CNN2SNN's mapper, which folds batch normalization and activation quantization into a per-neuron static threshold computed once at conversion time, a transformation this survey records in full in <a href="#adaptive-inference">Section 8.11</a> and revisits as a named route in <a href="#approximate-transformed-routes">Section 11.4</a> <d-cite key="brainchip-cnn2snn-docs"></d-cite>.</p>
 
 <h3 id="runtime-host-io">10.5 Runtime Scheduling and Host Input and Output</h3>
 
@@ -232,13 +232,13 @@
 
 <h3 id="semantic-transformations">10.6 What Transforms, What Is Rejected</h3>
 
-<p>Reading Table 25 as a whole rather than edge by edge surfaces three patterns that recur across the software stack independent of which vendor built which piece of it.</p>
+<p>Reading Table 26 as a whole rather than edge by edge surfaces three patterns that recur across the software stack independent of which vendor built which piece of it.</p>
 
-<p>The first pattern is that reset semantics are transformed or rejected far more often than they are preserved natively. Of the eleven typed edges in Table 25, two reject the source model outright, four transform the reset rule into a different one, one is undocumented, one concerns the sample boundary rather than the reset rule, and only two preserve subtractive reset, NxTF's route to Loihi 1 only through an emulation that doubles compartment allocation, and Sinabs's route to Speck natively. A third preserving row, Lava-DL NetX HDF5 to the Lava LIF process, preserves the opposite case, a hard-zero reset, not a subtractive one. No audited edge in this survey's evidence base preserves subtractive reset through a native, unmodified, single-compartment hardware primitive on a chip whose own default reset behavior is reset-to-zero. Norse's own documented reset-to-zero default and its separately documented round-trip NIR re-import discrepancy extend this same pattern one layer further back, into a framework's export and import of its own graphs rather than only its export toward a different framework <d-cite key="norse-docs,norse-nir-thirdparty"></d-cite>.</p>
+<p>The first pattern is that reset semantics are transformed or rejected far more often than they are preserved natively. Of the eleven typed edges in Table 26, two reject the source model outright, four transform the reset rule into a different one, one is undocumented, one concerns the sample boundary rather than the reset rule, and only two preserve subtractive reset, NxTF's route to Loihi 1 only through an emulation that doubles compartment allocation, and Sinabs's route to Speck natively. A third preserving row, Lava-DL NetX HDF5 to the Lava LIF process, preserves the opposite case, a hard-zero reset, not a subtractive one. No audited edge in this survey's evidence base preserves subtractive reset through a native, unmodified, single-compartment hardware primitive on a chip whose own default reset behavior is reset-to-zero. Norse's own documented reset-to-zero default and its separately documented round-trip NIR re-import discrepancy extend this same pattern one layer further back, into a framework's export and import of its own graphs rather than only its export toward a different framework <d-cite key="norse-docs,norse-nir-thirdparty"></d-cite>.</p>
 
 <p>The second pattern is that numeric precision is quantized at nearly every boundary this survey's audited evidence documents, and the specific bit widths chosen differ from edge to edge rather than converging on one industry default. NxTF's soft-reset workaround preserves 9-bit weight precision on Loihi 1. Sinabs's mapper quantizes to 8-bit weights and 16-bit membrane state for Speck. SpiNNaker2's NIR importer preserves 8-bit weights alongside 32-bit floating-point state. QuantizeML's uniform symmetric integer quantization for Akida commonly uses one, two, four, or eight bits depending on the layer and the configured precision <d-cite key="nxtf,sinabs-docs,brainchip-cnn2snn-docs"></d-cite>. A precision field stated as bits alone, without naming which of weights, thresholds, or state that count applies to, is therefore an incomplete report against the contract fixed in <a href="#contract-fields">Section 9.2</a>.</p>
 
-<p>The third pattern is that maintenance status and access conditions are themselves facts about a software boundary, not a footnote outside the contract. Intel archived the entire Lava, Lava-DL, and NetX stack in 2026, stating that all Lava repositories are archived with no successor SDK yet announced, which freezes every edge in Table 25 that terminates at Loihi 2 through that stack at whatever state it held at the point of archival <d-cite key="lava-github-archived"></d-cite>. Loihi access more generally remains gated to members of Intel's Neuromorphic Research Community rather than openly available <d-cite key="intel-inrc-confluence"></d-cite>. Lynxi's BIDL, Lyngor, and LynSDK toolchain is documented in the sources this survey reviewed as effectively unavailable outside mainland China <d-cite key="bidl,bidl-pmc-paper"></d-cite>. A route that is otherwise exact or physical by every other test in this section can still fail a practitioner who cannot obtain the access it requires, a distinction <a href="#open-problems-research-agenda">Section 14</a> returns to as an open problem rather than resolving it here.</p>
+<p>The third pattern is that maintenance status and access conditions are themselves facts about a software boundary, not a footnote outside the contract. Intel archived the entire Lava, Lava-DL, and NetX stack in 2026, stating that all Lava repositories are archived with no successor SDK yet announced, which freezes every edge in Table 26 that terminates at Loihi 2 through that stack at whatever state it held at the point of archival <d-cite key="lava-github-archived"></d-cite>. Loihi access more generally remains gated to members of Intel's Neuromorphic Research Community rather than openly available <d-cite key="intel-inrc-confluence"></d-cite>. Lynxi's BIDL, Lyngor, and LynSDK toolchain is documented in the sources this survey reviewed as effectively unavailable outside mainland China <d-cite key="bidl,bidl-pmc-paper"></d-cite>. A route that is otherwise exact or physical by every other test in this section can still fail a practitioner who cannot obtain the access it requires, a distinction <a href="#open-problems-research-agenda">Section 14</a> returns to as an open problem rather than resolving it here.</p>
 
 <h3 id="software-referrals">10.7 Referrals to Software and Interoperability Surveys</h3>
 

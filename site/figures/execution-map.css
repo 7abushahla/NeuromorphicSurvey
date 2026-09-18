@@ -1,0 +1,5 @@
+#figure-20 { text-align: center; }
+#figure-20 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-20 .f20-hot { cursor: help; }
+#figure-20 .f20-band { transition: opacity 0.15s; }
+#figure-20 .f20-hot:hover .f20-band { opacity: 0.10; }
