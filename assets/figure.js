@@ -351,7 +351,7 @@ function render() {
 
   // Highlighting route chips changes their font weight and can reflow rows.
   // Measure the settled layout before drawing the SVG path.
-  requestAnimationFrame(() => drawPath(active));
+  requestAnimationFrame(() => drawPath(active, true));
   panel(rs, tracing, constrained);
 }
 
@@ -361,7 +361,16 @@ function keyFor(text) {
 }
 
 /* ---------- overlay ---------- */
-function drawPath(route) {
+const reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+const svgEl = (tag, attrs) => {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+};
+/* The route is traced from the first chip downward when the reader chooses
+   something, the way the QuantizationSurvey's map traces its route. A redraw
+   after a resize repaints the finished line without replaying the trace. */
+function drawPath(route, animate) {
   const svg = $('#nstk-overlay');
   svg.innerHTML = '';
   if (!route) return;
@@ -382,16 +391,39 @@ function drawPath(route) {
   });
   if (pts.length < 2) return;
 
-  const d = pts.map((p, i) => (i ? `L ${p[0].toFixed(1)} ${p[1].toFixed(1)}` : `M ${p[0].toFixed(1)} ${p[1].toFixed(1)}`)).join(' ');
-  svg.insertAdjacentHTML('beforeend', `<path class="nstk-path-halo" d="${d}"/>`);
-  svg.insertAdjacentHTML('beforeend', `<path class="nstk-path" style="stroke:${route.pc}" d="${d}"/>`);
+  // An S-curve between rows keeps the line vertical where it leaves and enters a chip.
+  const f = n => n.toFixed(1);
+  const d = pts.map((p, i) => {
+    if (!i) return `M ${f(p[0])} ${f(p[1])}`;
+    const [ax, ay] = pts[i - 1];
+    const my = f((ay + p[1]) / 2);
+    return `C ${f(ax)} ${my} ${f(p[0])} ${my} ${f(p[0])} ${f(p[1])}`;
+  }).join(' ');
+  const halo = svgEl('path', { class: 'nstk-path-halo', d });
+  const path = svgEl('path', { class: 'nstk-path', style: `stroke:${route.pc}`, d });
+  svg.appendChild(halo); svg.appendChild(path);
 
+  const tail = [];
   if (route.breakAt) {
     const [x, y] = pts[pts.length - 1];
-    svg.insertAdjacentHTML('beforeend', `<path class="nstk-path-broken" d="M ${x.toFixed(1)} ${y.toFixed(1)} L ${x.toFixed(1)} ${(y + 42).toFixed(1)}"/>`);
+    tail.push(svgEl('path', { class: 'nstk-path-broken', d: `M ${f(x)} ${f(y)} L ${f(x)} ${f(y + 42)}` }));
     const cx = x, cy = y + 52;
-    svg.insertAdjacentHTML('beforeend',
-      `<path class="nstk-breakmark" d="M ${(cx - 7).toFixed(1)} ${(cy - 7).toFixed(1)} L ${(cx + 7).toFixed(1)} ${(cy + 7).toFixed(1)} M ${(cx + 7).toFixed(1)} ${(cy - 7).toFixed(1)} L ${(cx - 7).toFixed(1)} ${(cy + 7).toFixed(1)}"/>`);
+    tail.push(svgEl('path', { class: 'nstk-breakmark',
+      d: `M ${f(cx - 7)} ${f(cy - 7)} L ${f(cx + 7)} ${f(cy + 7)} M ${f(cx + 7)} ${f(cy - 7)} L ${f(cx - 7)} ${f(cy + 7)}` }));
+    tail.forEach(e => svg.appendChild(e));
+  }
+
+  if (animate && !reducedMotion) {
+    const len = path.getTotalLength();
+    const dur = Math.min(1.5, 0.35 + len / 1100);
+    [halo, path].forEach(e => { e.style.transition = 'none'; e.style.strokeDasharray = len; e.style.strokeDashoffset = len; });
+    tail.forEach(e => { e.style.transition = 'none'; e.style.opacity = '0'; });
+    // The nodes were inserted this tick; their start state settles on the next
+    // frame, and setting the target before then makes the value snap.
+    requestAnimationFrame(() => {
+      [halo, path].forEach(e => { e.style.transition = `stroke-dashoffset ${dur}s ease-out`; e.style.strokeDashoffset = '0'; });
+      tail.forEach(e => { e.style.transition = `opacity 0.25s ease-out ${(dur * 0.7).toFixed(2)}s`; e.style.opacity = '1'; });
+    });
   }
 }
 
@@ -507,12 +539,12 @@ function wire() {
     if (e.key === 'Escape') { sel.clear(); $('#nstk-q').value = ''; render(); }
     if ((e.key === 'Enter' || e.key === ' ') && e.target.classList?.contains('nstk-chip')) { e.preventDefault(); e.target.click(); }
   });
-  window.addEventListener('resize', () => drawPath(active && $('#nstk-fig').classList.contains('nstk-tracing') ? active : null));
+  window.addEventListener('resize', () => drawPath(active && $('#nstk-fig').classList.contains('nstk-tracing') ? active : null, false));
 }
 
 $('#nstk-q').value = '';
 build(); wire(); render();
-window.addEventListener('load', () => drawPath(active));
+window.addEventListener('load', () => drawPath(active, false));
 fetch('data/evidence-stack.json')
   .then(response => { if (!response.ok) throw new Error('evidence registry unavailable'); return response.json(); })
   .then(data => { evidence = data; render(); })
