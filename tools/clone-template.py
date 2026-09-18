@@ -25,8 +25,8 @@ Q_SUB = ('This survey provides a hardware-oriented perspective on neural network
          'quantization, systematically reviewing the quantization methods most relevant '
          'to MCUs and extreme-edge devices.')
 
-TITLE = ('From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey '
-         'of ANN-to-SNN Conversion, Software Stacks, and Silicon')
+TITLE = ('From Neural Networks to Neuromorphic Execution: A Comprehensive Survey '
+         'of Methods, Platforms, and Deployment')
 
 SUB = ('This survey traces the handoffs a converted spiking network must survive to reach '
        'a physical neuromorphic chip, recording at each one what is preserved, what is '
@@ -34,28 +34,26 @@ SUB = ('This survey traces the handoffs a converted spiking network must survive
 
 ABSTRACT = (
     'Spiking neural networks promise inference at a fraction of the energy cost of '
-    'conventional accelerators, and ANN-to-SNN conversion is the most accessible route to '
-    'a trained spiking model. A line of work anchored by quantization-clip-floor-shift '
-    'conversion has driven the timestep count needed to match ANN accuracy from the '
-    'hundreds into the single digits. Whether those gains reach silicon is a separate '
-    'question, and it is the question this survey answers. A trained network that reaches '
-    'a chip passes through a sequence of handoffs, each governed by a different toolchain, '
-    'reset rule, spike payload, and time model, and each able to break the '
-    'activation-to-spike-count correspondence the algorithm paper established. This survey '
-    'records those handoffs. It presents the preliminaries a reader needs, namely neuron '
-    'models, neural codes, and the execution contracts that hardware imposes, then reviews '
-    'the primary training paths, advanced conversion techniques, and the alternative codes '
-    'that abandon rate entirely. It then maps the deployment stack itself, covering '
-    'neuromorphic platforms, training and simulation frameworks, export and interchange '
+    'conventional accelerators, and the methods that produce them, direct training and '
+    'ANN-to-SNN conversion alike, have driven the timesteps needed to match ANN accuracy '
+    'from the hundreds into the single digits. Whether those gains reach silicon is a '
+    'separate question, and it is the one this survey answers. A trained network that '
+    'reaches a chip passes through a sequence of handoffs, each governed by a different '
+    'toolchain, reset rule, spike payload, and time model, and each able to break the '
+    'correspondence the algorithm paper established. This survey records those handoffs. It '
+    'defines the targets first, conventional processors, chip simulators, and neuromorphic '
+    'silicon, and grades every deployment claim on a five-level evidence scale that '
+    'separates measured hardware from software simulation. It then reviews the methods, '
+    'neuron models and neural codes, direct training, conversion, and the codes that '
+    'abandon rate, and the platforms, the training and simulation frameworks, interchange '
     'formats, compilers, and runtimes, and traces every documented route from a trained '
-    'model to a named chip. Deployment claims are classified on a five-level evidence '
-    'scale separating measured silicon from software simulation. Applying that scale to '
-    'the literature exposes a division of labor that no prior survey states: algorithm '
-    'papers advance accuracy at low timestep counts and do not deploy, while deployment '
-    'papers reach silicon and do not adopt the new algorithms. Every confirmed case of a '
-    'new conversion method reaching measured silicon abandons rate coding. The survey '
-    'closes with the open challenges that division creates, from reset-semantics mismatch '
-    'and operator coverage to toolchain decay and incomparable efficiency reporting.')
+    'model to a named chip. Applying the scale to the literature exposes a division of '
+    'labor that no prior survey states. Algorithm papers advance accuracy at low timestep '
+    'counts and do not deploy, deployment papers reach silicon and do not adopt the new '
+    'algorithms, and every confirmed case of a new conversion method reaching measured '
+    'silicon abandons rate coding. The survey closes with the open challenges that division '
+    'creates, from reset-semantics mismatch and operator coverage to toolchain decay and '
+    'incomparable efficiency reporting.')
 
 KEYWORDS = ('spiking-neural-networks, neuromorphic-computing, ANN-to-SNN-conversion, '
             'Loihi, SpiNNaker, Speck, Akida, event-based-vision, deployment, TMLR')
