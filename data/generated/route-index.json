@@ -5799,11 +5799,18 @@
       "summary": "Information is carried entirely by the relative order in which a population's neurons fire (each firing at most once), not by rate or absolute timing; contrast-invariant and decoded via feedforward shunting inhibition. No published ANN-to-SNN conversion method targets ROC, because the rate/count-matching correspondence theorems underlying QCFS-style conversion are cardinal (magnitude-matching) while ROC's content is purely ordinal (a permutation).",
       "attributes": {},
       "source_ids": [
+        "brainchip-akida-techbrief",
         "morphic",
         "open-neuromorphic-akida",
         "thorpe1996-rankorder"
       ],
       "source_refs": [
+        {
+          "source_id": "brainchip-akida-techbrief",
+          "locators": [
+            "Structured metadata from evidence-stack.json"
+          ]
+        },
         {
           "source_id": "morphic",
           "locators": [
@@ -5824,6 +5831,11 @@
         }
       ],
       "source_statuses": [
+        {
+          "source_id": "brainchip-akida-techbrief",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
         {
           "source_id": "morphic",
           "retrieval_status": "metadata_only",

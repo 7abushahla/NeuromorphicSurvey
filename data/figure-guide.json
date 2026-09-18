@@ -826,10 +826,12 @@
       },
       "can": {
         "sensor": [
-          "frame-camera"
+          "frame-camera",
+          "event-camera"
         ],
         "input": [
-          "static-frames"
+          "static-frames",
+          "frames-from-events"
         ],
         "learning": [
           "classical-conversion"
@@ -841,10 +843,13 @@
           "binary-spikes"
         ],
         "neuron": [
-          "if-neuron"
+          "if-neuron",
+          "cuba-lif",
+          "multi-compartment"
         ],
         "reset": [
-          "reset-to-zero"
+          "reset-to-zero",
+          "reset-by-subtraction"
         ],
         "contract": [
           "sync-tick"
@@ -863,7 +868,29 @@
       "targets": [
         "loihi-1"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "nxtf",
+          "via": {
+            "code": "rate-coding",
+            "neuron": "if-neuron",
+            "reset": "reset-by-subtraction",
+            "hw": "loihi-1"
+          }
+        },
+        {
+          "id": "massa-2020",
+          "via": {
+            "task": "gesture-recognition",
+            "sensor": "event-camera",
+            "input": "frames-from-events",
+            "code": "rate-coding",
+            "neuron": "if-neuron",
+            "reset": "reset-by-subtraction",
+            "hw": "loihi-1"
+          }
+        }
+      ]
     },
     "snntoolbox-spinnaker": {
       "name": "SNN Toolbox to SpiNNaker 1",
@@ -927,7 +954,19 @@
       "targets": [
         "spinnaker-1"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "patino-saucedo-2020",
+          "via": {
+            "task": "image-classification-static",
+            "sensor": "frame-camera",
+            "input": "static-frames",
+            "learning": "classical-conversion",
+            "code": "rate-coding",
+            "hw": "spinnaker-1"
+          }
+        }
+      ]
     },
     "sinabs-speck": {
       "name": "Sinabs to Speck",
@@ -955,13 +994,15 @@
       },
       "can": {
         "sensor": [
-          "event-camera"
+          "event-camera",
+          "tactile-sensor"
         ],
         "input": [
           "native-events"
         ],
         "learning": [
-          "classical-conversion"
+          "classical-conversion",
+          "direct-training-surrogate-gradient"
         ],
         "code": [
           "rate-coding"
@@ -970,10 +1011,12 @@
           "binary-spikes"
         ],
         "neuron": [
-          "if-neuron"
+          "if-neuron",
+          "lif-neuron"
         ],
         "reset": [
-          "reset-by-subtraction"
+          "reset-by-subtraction",
+          "reset-to-zero"
         ],
         "contract": [
           "async-events"
@@ -992,7 +1035,43 @@
       "targets": [
         "speck"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "speck1",
+          "via": {
+            "task": "image-classification-static",
+            "learning": "direct-training-surrogate-gradient",
+            "neuron": "if-neuron",
+            "hw": "speck"
+          }
+        },
+        {
+          "id": "speck-dynamic-snn",
+          "via": {
+            "learning": "direct-training-surrogate-gradient",
+            "neuron": "if-neuron",
+            "hw": "speck"
+          }
+        },
+        {
+          "id": "gelneuro",
+          "via": {
+            "sensor": "tactile-sensor",
+            "input": "native-events",
+            "hw": "speck"
+          }
+        },
+        {
+          "id": "temporal-flexibility",
+          "via": {
+            "task": "image-classification-static",
+            "sensor": "event-camera",
+            "input": "native-events",
+            "learning": "direct-training-surrogate-gradient",
+            "hw": "speck"
+          }
+        }
+      ]
     },
     "rockpool-xylo": {
       "name": "Rockpool to Xylo",
@@ -1028,10 +1107,12 @@
           "direct-training-surrogate-gradient"
         ],
         "payload": [
-          "binary-spikes"
+          "binary-spikes",
+          "graded-spikes"
         ],
         "neuron": [
-          "lif-neuron"
+          "lif-neuron",
+          "cuba-lif"
         ],
         "reset": [
           "reset-by-subtraction"
@@ -1053,7 +1134,19 @@
       "targets": [
         "xylo"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "xylo-kws",
+          "via": {
+            "task": "keyword-spotting-audio",
+            "sensor": "microphone",
+            "input": "time-series",
+            "learning": "direct-training-surrogate-gradient",
+            "neuron": "lif-neuron",
+            "hw": "xylo"
+          }
+        }
+      ]
     },
     "spikingjelly-lava": {
       "name": "SpikingJelly to Lava to Loihi 2",
@@ -1064,7 +1157,7 @@
       "story": "The obvious modern route, and it does not complete.",
       "note": "The recipe drawn is SpikingJelly's rate-coding ReLU-to-IF conversion with max or percentile threshold calibration; the QCFS-based recipe's ActivationAwareIFNode is rejected by lava_exchange with NotImplementedError instead. Three independent blockers. The first is structural, since to_lava_blocks accepts a flat list, tuple or nn.Sequential while the recipe returns an FX GraphModule with VoltageScaler modules, so the converted network fails on shape before any neuron is inspected. Then lava_exchange raises ValueError(\"lava only supports for v_reset == 0!\") at four call sites, plus an assertion in CubaLIFNode.__init__, rejecting the soft-reset neurons the rate-coding recipe produces by default. Then layer dispatch covers only Linear, Conv2d, AvgPool2d and Flatten, so a VGG MaxPool fails there; a ResNet skip connection fails for the structural reason, not in dispatch. Intel archived all Lava repositories on 13 May 2026.",
       "breakAt": "lava-exchange",
-      "breakWhy": "The converted network fails on shape before any neuron is inspected, then its soft reset is rejected, then its layers are not dispatched. The conversion produced a network the framework’s own exporter will not accept.",
+      "breakWhy": "The converted network fails on shape before any neuron is inspected, then its soft reset is rejected, then its layers are not dispatched. The conversion produced a network the framework\u2019s own exporter will not accept.",
       "after": [
         "netx",
         "lava-runtime"
@@ -1198,7 +1291,7 @@
       "story": "The portability route, blocked by an exporter that refuses to export what the specification does not distinguish.",
       "note": "The recipe drawn is SpikingJelly's rate-coding ReLU-to-IF conversion with max or percentile threshold calibration; the QCFS-based recipe's ActivationAwareIFNode is rejected by lava_exchange with NotImplementedError. NIR defines seventeen primitives, six of them neuron models (I, IF, LI, LIF, CubaLI, CubaLIF). All three spiking ones (IF, LIF, CubaLIF) document reset as v = v_reset when a spike fires, and no NIR field distinguishes reset by subtraction from reset to a value, so which one a backend applies is left to the backend. SpikingJelly nir_exchange raises NotImplementedError(\"NIR does not distinguish soft reset.\") whenever v_reset is None, a deliberate and conservative refusal; other exporters (snnTorch, Sinabs) export the same neurons with v_reset = 0 and leave the discretization to the importer, so the block is SpikingJelly's exporter policy.",
       "breakAt": "nir",
-      "breakWhy": "The broadest interchange format in the ecosystem does not distinguish reset by subtraction from reset to a value, and SpikingJelly’s exporter refuses rather than guess.",
+      "breakWhy": "The broadest interchange format in the ecosystem does not distinguish reset by subtraction from reset to a value, and SpikingJelly\u2019s exporter refuses rather than guess.",
       "after": [
         "lava-dl",
         "netx",
@@ -1269,13 +1362,13 @@
       "color": "#6D4C9F",
       "ev": "E1",
       "story": "A shipping commercial processor, where the conversion folds to a static threshold and the temporal dimension disappears.",
-      "note": "CNN2SNN computes y = x / act_step for Akida 1.0 layers, with a static threshold absorbing BatchNorm scale and shift, folded once at conversion time. No membrane potential carries across timesteps and no T is exposed. One paper (Ziegler et al.) describes it as squashing the rate-code approximation of ReLU into one time step, and a second (Lunghi et al.) says the converted model reduces the computation to a single time step. BrainChip states 4-bit or 8-bit quantized inputs to its layers, so the events are graded rather than binary, and no BrainChip source names a reset rule; the threshold is a static comparator applied in a single pass. The rank-order-coding heritage is genuine as input-stage heritage, but no source shows order sensitivity operating in converted hidden layers, so no neural-code chip is drawn.",
+      "note": "CNN2SNN computes y = x / act_step for Akida 1.0 layers, with a static threshold absorbing BatchNorm scale and shift, folded once at conversion time. No membrane potential carries across timesteps and no T is exposed. One paper (Ziegler et al.) describes it as squashing the rate-code approximation of ReLU into one time step, and a second (Lunghi et al.) says the converted model reduces the computation to a single time step. BrainChip states 4-bit or 8-bit quantized inputs to its layers, so the events are graded rather than binary, and no BrainChip source names a reset rule; the threshold is a static comparator applied in a single pass. Akida carries a genuine rank-order-coding lineage at its input-encoding stage, per BrainChip's own tech brief description of rank coding as an encoding scheme in which information is expressed as the time and place it occurs, but the standard QuantizeML-to-CNN2SNN route nearly all published Akida results use collapses inside hidden layers to a single-pass, order-agnostic threshold comparison, so the rank-order-coding chip drawn here names only that input stage, not order-sensitive computation carried through the converted network.",
       "steps": {
         "task": null,
         "sensor": "frame-camera",
         "input": "static-frames",
         "learning": "quant-aware-conversion",
-        "code": null,
+        "code": "rank-order-coding",
         "payload": "graded-spikes",
         "neuron": "if-neuron",
         "reset": null,
@@ -1312,6 +1405,9 @@
         ],
         "run": [
           "akida-runtime"
+        ],
+        "code": [
+          "rank-order-coding"
         ]
       },
       "implies": [],
@@ -1327,7 +1423,7 @@
       "color": "#A97818",
       "ev": "E1",
       "story": "A new method that reached silicon, by abandoning rate coding for TTFS.",
-      "note": "Measured static, dynamic and total power, latency and energy per inference on a physical Nahuku 32 board, compared against the published NxTF numbers on the same platform (a different board, SDK version and network). The authors’ released implementation uses nxSDK 0.9.8 directly, as its code README states, while the paper's measurements were taken with NxSDK 1.0.0. The CIFAR-10 preferred energy-delay product uses an estimated static power, and the paper's 564 uJ energy label is a unit error for about 563 mJ.",
+      "note": "Measured static, dynamic and total power, latency and energy per inference on a physical Nahuku 32 board, compared against the published NxTF numbers on the same platform (a different board, SDK version and network). The authors\u2019 released implementation uses nxSDK 0.9.8 directly, as its code README states, while the paper's measurements were taken with NxSDK 1.0.0. The CIFAR-10 preferred energy-delay product uses an estimated static power, and the paper's 564 uJ energy label is a unit error for about 563 mJ.",
       "steps": {
         "task": null,
         "sensor": "frame-camera",
@@ -1351,7 +1447,8 @@
           "static-frames"
         ],
         "learning": [
-          "codesigned-conversion"
+          "codesigned-conversion",
+          "low-latency-conversion"
         ],
         "code": [
           "ttfs"
@@ -1379,7 +1476,20 @@
       "targets": [
         "loihi-1"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "quartz",
+          "via": {
+            "task": "image-classification-static",
+            "sensor": "frame-camera",
+            "input": "static-frames",
+            "learning": "low-latency-conversion",
+            "code": "ttfs",
+            "neuron": "if-neuron",
+            "hw": "loihi-1"
+          }
+        }
+      ]
     },
     "slayer-loihi2": {
       "name": "Lava-DL SLAYER to Loihi 2",
@@ -1424,20 +1534,33 @@
           "sync-tick"
         ],
         "dev": [
-          "lava-dl"
+          "lava-dl",
+          "lava"
         ],
         "compile": [
           "netx"
         ],
         "run": [
           "lava-runtime"
+        ],
+        "neuron": [
+          "cuba-lif",
+          "adaptive-neuron"
         ]
       },
       "implies": [],
       "targets": [
         "loihi-2"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "clp-snn",
+          "via": {
+            "learning": "direct-training-surrogate-gradient",
+            "hw": "loihi-2"
+          }
+        }
+      ]
     },
     "spikingjelly-gpu": {
       "name": "SpikingJelly to a GPU",
@@ -1464,7 +1587,8 @@
       },
       "can": {
         "learning": [
-          "direct-training-surrogate-gradient"
+          "direct-training-surrogate-gradient",
+          "classical-conversion"
         ],
         "neuron": [
           "lif-neuron"
@@ -1486,7 +1610,14 @@
       "targets": [
         "gpu-generic"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "spikingjelly",
+          "via": {
+            "hw": "gpu-generic"
+          }
+        }
+      ]
     },
     "mlgenn-gpu": {
       "name": "mlGeNN to GeNN to a GPU",
@@ -1544,7 +1675,16 @@
       "targets": [
         "gpu-generic"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "mlgenn",
+          "via": {
+            "task": "image-classification-static",
+            "learning": "classical-conversion",
+            "hw": "gpu-generic"
+          }
+        }
+      ]
     },
     "nest-cpu": {
       "name": "PyNN and NEST to a CPU cluster",
@@ -1594,7 +1734,21 @@
       "targets": [
         "cpu-generic"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "van-albada-nest-spinnaker",
+          "via": {
+            "neuron": "lif-neuron",
+            "hw": "cpu-generic"
+          }
+        },
+        {
+          "id": "nest5g-k-computer",
+          "via": {
+            "hw": "cpu-generic"
+          }
+        }
+      ]
     },
     "ttfs-cortex-m4": {
       "name": "TTFS conversion to a Cortex-M4 MCU",
@@ -1628,13 +1782,25 @@
         ],
         "run": [
           "ttfs-mcu-firmware"
+        ],
+        "learning": [
+          "low-latency-conversion"
         ]
       },
       "implies": [],
       "targets": [
         "cortex-m-mcu"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "anglo-mixed-snn-mcu",
+          "via": {
+            "learning": "low-latency-conversion",
+            "code": "ttfs",
+            "hw": "cortex-m-mcu"
+          }
+        }
+      ]
     },
     "fenn-riscv": {
       "name": "FeNN vector program to a RISC-V soft core",
@@ -1661,7 +1827,8 @@
       },
       "can": {
         "neuron": [
-          "adaptive-neuron"
+          "adaptive-neuron",
+          "lif-neuron"
         ],
         "reset": [
           "reset-by-subtraction"
@@ -1680,219 +1847,419 @@
       "targets": [
         "riscv-accelerator"
       ],
-      "papers": []
+      "papers": [
+        {
+          "id": "fenn-riscv",
+          "via": {
+            "task": "keyword-spotting-audio",
+            "neuron": "adaptive-neuron",
+            "reset": "reset-by-subtraction",
+            "hw": "riscv-accelerator"
+          }
+        },
+        {
+          "id": "fenn-dma-riscv",
+          "via": {
+            "neuron": "lif-neuron",
+            "hw": "riscv-accelerator"
+          }
+        }
+      ]
     }
   },
-  "applications": {},
-  "notes": {},
-  "unreached": {
-    "silicon-cochlea": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+  "applications": {
+    "image-classification-static": {
+      "prefer": [
+        "snntoolbox-spinnaker",
+        "sinabs-speck",
+        "quartz-loihi",
+        "mlgenn-gpu"
+      ],
+      "via": {
+        "sensor": "frame-camera",
+        "input": "static-frames",
+        "learning": "classical-conversion",
+        "code": "rate-coding"
+      },
+      "note": "Image classification is the most physically confirmed task on this map. SNN Toolbox's threshold-balancing conversion reaches 98.20 percent MNIST accuracy on physical SpiNNaker 1, Sinabs's direct BPTT training reaches 98.50 percent on N-MNIST on physical Speck1, Quartz's time-to-first-spike conversion is measured for static power, dynamic power, latency, energy, and energy-delay product on physical Loihi 1, and mlGeNN's rate-based and few-spike conversion of VGG-16 and ResNet-20 runs as GeNN-generated CUDA on a physical GPU."
     },
-    "tactile-sensor": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+    "object-detection": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. Object-detection conversions such as Spiking-YOLO's channel-wise normalization and signed neuron with an imbalanced threshold report GPU simulation accuracy only, at evidence class E5, not a measurement on any of this map's carried targets."
     },
-    "chemical-sensor-array": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+    "gesture-recognition": {
+      "prefer": [
+        "snntoolbox-loihi1"
+      ],
+      "via": {
+        "sensor": "event-camera",
+        "input": "frames-from-events",
+        "code": "rate-coding"
+      },
+      "note": "The surveyed gesture-recognition deployment converts a DVS-camera network with SNN Toolbox and measures it on physical Loihi 1 at 89.64 percent accuracy and 11.43 milliseconds of per-frame latency, with events pre-accumulated into frames before conversion rather than processed natively."
     },
-    "imu-analog-sensor": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+    "tracking-motion": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's route index carries tracking and motion only as an E5 edge into frames reconstructed from events, not a measured deployment on any of this map's carried targets."
     },
-    "frames-from-events": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+    "keyword-spotting-audio": {
+      "prefer": [
+        "rockpool-xylo",
+        "fenn-riscv"
+      ],
+      "via": {
+        "sensor": "microphone",
+        "input": "time-series",
+        "learning": "direct-training-surrogate-gradient"
+      },
+      "note": "Both surveyed keyword-spotting-adjacent deployments are directly trained rather than converted. Rockpool's mapping to Xylo Audio 2 reaches 95.31 percent deployed accuracy at 216 to 298 microwatts, and FeNN's RISC-V vector processor runs an adaptive-LIF spoken-digit classifier faster than a similar model on Loihi and twice as fast as an embedded GPU at half the energy, though the FeNN record's own task is spoken-digit classification rather than keyword spotting proper."
+    },
+    "biosignal-decoding": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's audited electromyography and electroencephalography deployments on physical Loihi and Loihi 2 are not among this map's fifteen carried routes."
+    },
+    "olfaction": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. Imam and Cleland's one-shot olfactory-bulb-model circuit reaches physical Loihi silicon through hand-designed microcode, a software route this map does not carry."
+    },
+    "robotics-closed-loop-control": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. The audited mapless-navigation and industrial force-control policies reach physical Loihi 1 and Loihi 2 through custom STBP and bare PyTorch training pipelines, not through any of this map's fifteen carried software routes."
+    },
+    "slam": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. Tang et al.'s head-direction SLAM circuit reaches physical Loihi silicon through hand-designed microcode, a software route this map does not carry."
+    },
+    "optimization-constraint-satisfaction": {
+      "prefer": [],
+      "via": {},
+      "note": "No surveyed run with physical evidence on this task is on the map yet. The audited constraint-satisfaction and sparse-coding circuits reach physical Loihi silicon through hand-designed microcode, a software route this map does not carry."
+    }
+  },
+  "notes": {
+    "classical-conversion": {
+      "text": "ANN-to-SNN conversion trains a conventional ANN by ordinary backpropagation and only afterward re-expresses each unit's activation as an integrate-and-fire neuron's spike count under a stated correspondence, so the non-differentiable spiking threshold is never encountered by the optimizer.",
+      "read": "#classical-ann-to-snn-conversion"
     },
     "low-latency-conversion": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Low-latency conversion targets the finite-time error a short simulation horizon creates by pulling one of three levers, reshaping the ANN's own activation function, calibrating or redesigning the spiking neuron, or changing the spike encoding, rather than by simply lengthening the horizon.",
+      "read": "#advanced-conversion-methods"
+    },
+    "quant-aware-conversion": {
+      "text": "Quantization-aware conversion trains the ANN's own activation function to anticipate the discretization grid before conversion happens, an ordinary quantization-aware training step applied to the ANN rather than a hardware intervention.",
+      "read": "#activation-shaping"
+    },
+    "codesigned-conversion": {
+      "text": "Hardware-aware conversion maps a network onto a specific platform, and every confirmed instance in the audited corpus of a paper that both proposes a conversion method and reports its own physical-silicon measurement abandons rate coding for a code native to the target platform.",
+      "read": "#hardware-aware-conversion"
+    },
+    "direct-training-surrogate-gradient": {
+      "text": "A surrogate-gradient method keeps the exact binary spiking forward pass fixed and substitutes a smooth surrogate derivative for the Heaviside derivative on the backward pass, so that automatic differentiation has a nonzero local sensitivity to propagate at every step.",
+      "read": "#surrogate-gradients"
     },
     "spike-time-gradient-methods": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Exact spike-time gradient methods, including EXODUS and EventProp, differentiate analytically through the timing of the spike-generation event itself rather than substituting a surrogate slope for the same crossing.",
+      "read": "#online-learning"
     },
     "local-learning-plasticity": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "A local learning rule updates a synaptic weight from quantities already available at that synapse, typically the relative timing or recent history of the presynaptic and postsynaptic events, rather than from a loss gradient propagated backward through every later layer and step.",
+      "read": "#local-learning"
     },
     "hand-designed-hybrid-finetuning": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "A hand-designed hybrid method applies a hand-designed correction before deployment rather than during training, as when a mapless-navigation policy trained end to end by gradient descent is passed through a Loihi-specific eight-bit integer weight-rescaling step before its corrected weights are measured on physical Loihi.",
+      "read": "#direct-conversion-hybrid"
     },
     "hardware-in-the-loop-training": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Hardware-in-the-loop training is the most literal sense of online learning in the audited evidence, because the forward pass executes on the physical target device at every training iteration rather than on a simulator standing in for it.",
+      "read": "#online-learning"
     },
     "hybrid-finetuning": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Hybrid fine-tuning corrects a converted network's activation statistics after conversion, calibrating bias, weight, and initial membrane potential statistics against residual, reset, clipping, and discretization error without altering the underlying rate-matching correspondence.",
+      "read": "#hybrid-fine-tuning"
+    },
+    "rate-coding": {
+      "text": "Rate coding represents a scalar as a sequence of binary events whose spike count or firing fraction over the window the decoder reads back, with quantization error that scales as one over T for deterministic counting and one over the square root of T for stochastic Poisson coding.",
+      "read": "#code-families"
+    },
+    "ttfs": {
+      "text": "Time-to-first-spike coding maps a scalar to the latency of a single spike relative to a reference onset, with each neuron firing at most once and larger values producing earlier spikes.",
+      "read": "#code-families"
     },
     "phase-coding": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Phase coding assigns each spike a weight given by its position within a repeating cycle of K timesteps, typically the powers of two, so the decoder sums the weights of the phases at which a spike occurred.",
+      "read": "#code-families"
     },
     "burst-coding": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Burst coding uses the same spike-count mechanism as rate coding but permits a neuron to emit more than one spike within a single timestep when its residual post-threshold membrane potential remains large.",
+      "read": "#code-families"
     },
     "population-coding": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Population coding distributes a represented value across the activity pattern of a population of neurons rather than through any single neuron's rate or timing, paying its cost in neurons rather than in steps.",
+      "read": "#code-families"
+    },
+    "sigma-delta": {
+      "text": "Sigma-delta coding emits a spike only when the change in activation since the last transmission exceeds a threshold, and that spike carries the size of the change as its payload rather than a count of unit events.",
+      "read": "#code-families"
     },
     "rank-order-coding": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Rank order coding discards magnitude entirely and encodes only the relative order in which a population's neurons fire during one feedforward wave, decoded by a shunting-inhibition mechanism in which each arriving spike desensitizes the postsynaptic neuron by its arrival rank.",
+      "read": "#code-families"
     },
     "direct-input-encoding": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "Direct coding is strictly an input convention rather than a spike code, applying a real-valued input as a constant analog current to a layer's neurons at every step rather than producing a spike train.",
+      "read": "#code-families"
+    },
+    "binary-spikes": {
+      "text": "A general event can carry an address, a timestamp, a polarity or type, and an optional payload, and the bare binary spike is one important special case of that general event.",
+      "read": "#values-state-events"
     },
     "signed-spikes": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "A signed spike lets a neuron fire a positive or a negative spike on crossing a threshold in either direction, expanding the representable range beyond a single nonnegative spike count.",
+      "read": "#neuron-interventions"
+    },
+    "graded-spikes": {
+      "text": "A graded spike payload exists only on Loihi 2, up to 32 bits per event, while every other audited platform carries a binary event whatever its native neuron model.",
+      "read": "#table-platform-contract-matrix"
+    },
+    "if-neuron": {
+      "text": "Integrate-and-fire is the baseline neuron model, its synaptic stage has no memory, its membrane stage adds the current to the previous state with no decay, and its threshold is fixed, the target the classical ANN-to-SNN conversion literature relies on when it equates a spike count with a rectified linear unit activation.",
+      "read": "#neuron-model-family"
+    },
+    "lif-neuron": {
+      "text": "Leaky integrate-and-fire keeps the trivial synaptic stage of IF but introduces a per-layer leak factor so the membrane relaxes toward its resting value between inputs instead of holding charge indefinitely.",
+      "read": "#neuron-model-family"
+    },
+    "cuba-lif": {
+      "text": "Current-based LIF gives the synaptic stage genuine memory by making it a leaky integrator of the incoming weighted events rather than an instantaneous sum, and it is documented as Loihi's native default neuron dynamics and as sPyNNaker's documented default cell type.",
+      "read": "#neuron-model-family"
+    },
+    "adaptive-neuron": {
+      "text": "Adaptive LIF couples the threshold itself to the neuron's own recent spiking, raising it after every spike and letting it relax back toward a baseline between spikes, so a constant input no longer produces a constant firing rate.",
+      "read": "#neuron-model-family"
     },
     "multi-compartment": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "A multi-compartment neuron generalizes the single state triple into several coupled instances, and on Loihi a second compartment is documented as the way both a subtractive reset and spike-frequency adaptation are recovered from a hardware primitive whose native single-compartment behavior does neither.",
+      "read": "#neuron-model-family"
     },
     "pasc-if": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "PASC-IF is the precise ANN-SNN conversion integrate-and-fire formulation PASCAL builds its sensitivity-assigned per-layer resolution onto, which APEX and NeuroFlex synthesize in RTL simulation rather than fabricate as measured silicon.",
+      "read": "#temporal-allocation"
+    },
+    "reset-by-subtraction": {
+      "text": "Reset-by-subtraction removes only the threshold that was just crossed and carries the residual charge forward into the next step, removing the systematic input-dependent bias that reset-to-zero introduces.",
+      "read": "#reset-and-refractory"
+    },
+    "reset-to-zero": {
+      "text": "Reset-to-zero clamps the post-reset state to a fixed baseline, usually zero, whenever an event is emitted, discarding the residual charge by which the pre-reset candidate exceeded threshold.",
+      "read": "#reset-and-refractory"
+    },
+    "sync-tick": {
+      "text": "A synchronization barrier holds every part of a system at the same algorithmic step until all parts have finished it, the mechanism Loihi, TrueNorth, and Tianjic each use to advance a single global algorithmic timestep across an entire chip despite asynchronous computation inside a core.",
+      "read": "#time-vocabulary"
+    },
+    "async-events": {
+      "text": "Asynchronous event time is the absence of any synchronization barrier, so that a component acts as soon as its own input arrives, the timestep-free execution style of a substrate such as Speck2e where state updates occur strictly on event arrival.",
+      "read": "#time-vocabulary"
     },
     "analog-time": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "text": "An analog or mixed-signal system realizes neuron and synapse dynamics as physical circuit behavior evolving in continuous time, typically at a fixed acceleration factor relative to biological or wall-clock time, rather than as a discrete-time numerical recurrence.",
+      "read": "#analog-mixed-signal"
+    },
+    "single-pass": {
+      "text": "On Akida's standard QuantizeML-to-CNN2SNN route there is no user-exposed multi-timestep simulation horizon, so the mapped network evaluates in a single feedforward pass with no membrane potential carried across timesteps.",
+      "read": "#alternative-code-conversion"
+    }
+  },
+  "unreached": {
+    "silicon-cochlea": {
+      "why": "No carried toolchain's sensor field or route-index edge names a silicon cochlea; the FeNN spoken-digit classifier this map draws under keyword spotting consumes cochlea-model spike trains rather than a silicon cochlea sensor.",
+      "read": "#routes-conventional-targets"
+    },
+    "imu-analog-sensor": {
+      "why": "No carried toolchain's sensor field or route-index edge names an IMU or other analog sensor; the audited robotics and SLAM records reach Loihi through hand-designed microcode or custom training pipelines outside this map's fifteen named routes.",
+      "read": "#local-learning"
+    },
+    "hand-designed-hybrid-finetuning": {
+      "why": "No attached record draws this chip as its learning value; Tang et al.'s mapless-navigation policy, attached to Quartz to Loihi 1 under surrogate-gradient training, also applies a hand-designed, Loihi-specific eight-bit weight-rescaling correction step that this map does not separately draw.",
+      "read": "#direct-conversion-hybrid"
+    },
+    "hardware-in-the-loop-training": {
+      "why": "No carried toolchain reaches BrainScaleS-1 or BrainScaleS-2, the only audited hardware-in-the-loop deployments, so the mechanism has no route on this map.",
+      "read": "#online-learning"
+    },
+    "hybrid-finetuning": {
+      "why": "No carried toolchain attaches a hybrid ANN-plus-SNN deployment; NengoLoihi's hybrid model reaching physical Loihi 1 is not one of this map's fifteen carried routes.",
+      "read": "#direct-conversion-hybrid"
+    },
+    "phase-coding": {
+      "why": "No carried toolchain's code field or attached record uses phase coding; the survey documents it as a software or training-time convention layered on an ordinary binary-spike substrate rather than as an exercised hardware route.",
+      "read": "#code-families"
+    },
+    "burst-coding": {
+      "why": "No carried toolchain's code field or attached record uses burst coding; Speck documents a multi-spike-per-step mode, but the deployment cited alongside it used a plain single-spike neuron instead.",
+      "read": "#code-families"
+    },
+    "population-coding": {
+      "why": "No carried toolchain attaches a population-coding record; Adaptive Fission's population-coding transformation is measured on a Lynxi HP201 accelerator, a target this map does not carry.",
+      "read": "#code-families"
+    },
+    "direct-input-encoding": {
+      "why": "No carried toolchain's code field uses direct constant-current input as its neural code; the robotics policies that use it feed continuous sensor state directly through pipelines outside this map's fifteen named software routes.",
+      "read": "#code-families"
+    },
+    "signed-spikes": {
+      "why": "No carried toolchain's payload field or attached record uses a signed spike; Fast-SNN cites Loihi's documented support for signed spikes only as design justification and reports no execution on that or any other chip.",
+      "read": "#neuron-interventions"
+    },
+    "pasc-if": {
+      "why": "No carried toolchain attaches a PASC-IF record; PASCAL and APEX synthesize the PASC-IF neuron in RTL simulation rather than on any of this map's fifteen named hardware targets.",
+      "read": "#temporal-allocation"
+    },
+    "analog-time": {
+      "why": "No carried toolchain targets BrainScaleS-1, BrainScaleS-2, DYNAP-SE2, or Innatera Pulsar, the only audited analog or mixed-signal execution family, so continuous analog time has no route on this map.",
+      "read": "#analog-mixed-signal"
     },
     "snntorch": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names snnTorch; it appears in the audited evidence only as a comparator framework benchmarked against SpikingJelly's training speed, not as a route this map draws.",
+      "read": "#routes-conventional-targets"
     },
     "norse": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
-    },
-    "lava": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names Norse; it appears in the audited evidence only as a comparator framework benchmarked against SpikingJelly's training speed, not as a route this map draws.",
+      "read": "#routes-conventional-targets"
     },
     "hxtorch": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names hxtorch; its physical route targets BrainScaleS-2's non-spiking hagen mode, and hxtorch.snn's hardware-in-the-loop route is separately evidenced, neither of which is one of this map's fifteen carried routes.",
+      "read": "#analog-mixed-signal"
     },
     "nengo": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names Nengo; NengoLoihi's hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's fifteen carried routes.",
+      "read": "#direct-conversion-hybrid"
     },
     "brian2": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names Brian2; SNN Toolbox can export to it as an internal simulator backend, evidenced only at E5 in software, not as a route this map draws to physical silicon.",
+      "read": "#routes-conventional-targets"
     },
     "bidl": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's dev field names BIDL; this survey's audited evidence does not attach a deployment record to it.",
+      "read": "#where-an-snn-runs"
     },
     "backend-graph": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "backend-graph is a generic intermediate node in the route index that several toolchains pass through internally, but none of this map's fifteen carried toolchains names it as its own drawn export stage.",
+      "read": "#definition-representation-execution"
     },
     "nengo-loihi": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's compile field names NengoLoihi; its hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's fifteen carried routes.",
+      "read": "#direct-conversion-hybrid"
     },
     "ann2snn": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain's compile field names ann2snn; this survey's audited evidence does not attach a deployment record to it.",
+      "read": "#classical-ann-to-snn-conversion"
     },
     "host-io": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "Host encoding and readout is a universal, implicit stage this survey's contract names for every audited platform, but none of this map's fifteen carried toolchains draws it as its own explicit run step.",
+      "read": "#contract-fields"
     },
     "northpole": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets NorthPole; this survey's audited deployment reaches it through a custom digital NPU compiler outside this map's fifteen named software routes.",
+      "read": "#routes-conventional-targets"
     },
     "lava-loihi-sim": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets the Lava Loihi simulator; the Loihi routes this map carries target physical Loihi 1 or Loihi 2 silicon, not the simulator.",
+      "read": "#physical-routes"
     },
     "xylo-sim": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets the Xylo simulator; Rockpool to Xylo on this map targets physical Xylo Audio 2 silicon, not the simulator.",
+      "read": "#physical-routes"
     },
     "akida-sim": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets the Akida software backend; QuantizeML to CNN2SNN to Akida on this map targets physical AKD1000, AKD1500, or Akida Pico silicon, not the simulator.",
+      "read": "#approximate-transformed-routes"
     },
     "hxtorch-sim": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets hxtorch simulation; the audited hxtorch route targets physical BrainScaleS-2 silicon in its non-spiking hagen mode, and is not one of this map's fifteen carried routes.",
+      "read": "#physical-routes"
     },
     "fpga-truenorth-emulation": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets TrueNorth FPGA emulation; the audited Eedn plus Corelet route reaches physical TrueNorth silicon directly, a target this map does not carry.",
+      "read": "#routes-conventional-targets"
     },
     "apex": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets APEX; APEX synthesizes the PASC-IF neuron in RTL simulation rather than reaching a target this map carries.",
+      "read": "#temporal-allocation"
     },
     "neuroflex": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets NeuroFlex; NeuroFlex synthesizes its column-level PASC-IF scheduler in RTL simulation rather than reaching a target this map carries.",
+      "read": "#temporal-allocation"
     },
     "spinnaker-2": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets SpiNNaker 2; SNN Toolbox to SpiNNaker 1 on this map targets the first-generation chip, and the audited SpiNNaker 2 routes, hardware-aware Q-learning and deep unrolling, use software stacks this map does not carry.",
+      "read": "#hardware-aware-learning"
     },
     "truenorth": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets TrueNorth; the audited Eedn plus Corelet route is not one of this map's fifteen carried routes.",
+      "read": "#routes-conventional-targets"
     },
     "tianjic": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets Tianjic; the audited deployment uses Tianjic's own native toolchain, a software stack this map does not carry.",
+      "read": "#routes-conventional-targets"
     },
     "lynxi-ka200": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets Lynxi KA200; the audited SpikingJelly-to-Lynxi edge is evidenced at E3, and Adaptive Fission's own physical measurement targets the Lynxi HP201 successor chip, neither of which is one of this map's fifteen carried routes.",
+      "read": "#code-families"
     },
     "dynapcnn": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets DYNAP-CNN as its own endpoint; Sinabs to Speck on this map compiles through the DynapCNN mapper but targets the Speck chip itself.",
+      "read": "#physical-routes"
     },
     "brainscales-1": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets BrainScaleS-1; its audited hardware-in-the-loop MNIST result is not one of this map's fifteen carried routes.",
+      "read": "#online-learning"
     },
     "brainscales-2": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets BrainScaleS-2; the audited hxtorch and hxtorch.snn routes are not among this map's fifteen carried routes.",
+      "read": "#analog-mixed-signal"
     },
     "dynap-se2": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets DYNAP-SE2; this survey's audited evidence locates no rate-coded ANN-to-SNN conversion pipeline for it.",
+      "read": "#analog-mixed-signal"
     },
     "innatera-pulsar": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets Innatera Pulsar; every quantitative figure this survey located for it is vendor-sourced without an independent peer-reviewed benchmark.",
+      "read": "#analog-mixed-signal"
     },
     "morphic": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets MorphIC; its measured rate-versus-rank-order-coding comparison is not one of this map's fifteen carried routes.",
+      "read": "#code-families"
     },
     "fpga": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets a generic FPGA design as its own endpoint; the audited FPGA deployments either target a named chip elsewhere on this map or are not one of its fifteen carried routes.",
+      "read": "#routes-conventional-targets"
     },
     "syncnn": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets SyncNN; its Vitis HLS route to Xilinx ARM-FPGA boards is not one of this map's fifteen carried routes.",
+      "read": "#routes-conventional-targets"
     },
     "cerebron": {
-      "why": "TRANSCRIPTION PLACEHOLDER, replaced in Tasks 5 to 7",
-      "read": "#complete-deployment-routes"
+      "why": "No carried toolchain targets Cerebron; SNN Toolbox reaches it through custom RTL rather than through the NxTF or sPyNNaker compile stages this map carries for SNN Toolbox.",
+      "read": "#routes-conventional-targets"
+    },
+    "chemical-sensor-array": {
+      "why": "No carried toolchain reaches a chemical sensor array; the olfaction record this survey audits, Imam and Cleland's hand-designed olfactory-bulb circuit, runs on Loihi through hand-designed microcode, a software route this map does not carry as one of its fifteen toolchains.",
+      "read": "#local-learning"
+    },
+    "spike-time-gradient-methods": {
+      "why": "No carried toolchain attaches an exact spike-time-gradient record; EventProp's own deployment runs through mlGeNN and NetX to Loihi 2, a software stack this map does not carry as one of its fifteen toolchains.",
+      "read": "#online-learning"
+    },
+    "local-learning-plasticity": {
+      "why": "No carried toolchain attaches a local-learning record; the audited local-learning deployments, olfaction, sparse coding, constraint satisfaction, and the robotics head-pose and SLAM circuits, all reach hardware through hand-designed microcode or custom training pipelines this map does not carry as one of its fifteen toolchains.",
+      "read": "#local-learning"
     }
   }
 }

@@ -673,7 +673,8 @@
       "sources": [
         "thorpe1996-rankorder",
         "frenkel2019-morphic",
-        "open-neuromorphic-akida"
+        "open-neuromorphic-akida",
+        "brainchip-akida-techbrief"
       ]
     },
     {
