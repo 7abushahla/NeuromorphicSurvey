@@ -201,8 +201,8 @@ Use the local QuantizationSurvey as a writing model, not as a factual source.
 
 ## Figure and table instructions
 
-The manifest at `data/figure-manifest.json` is authoritative. It contains 23 figures, 18
-implemented (17 static plus the interactive route map, Figure 22) and 5 planned. Display numbers
+The manifest at `data/figure-manifest.json` is authoritative. It contains 25 figures, all
+implemented (24 static plus the interactive route map, Figure 24), none planned. Display numbers
 follow article order and are regenerated from the manifest whenever a figure is added or
 moved; a display number is never hand-coded in prose, fragments, CSS, or tools. Static
 fragments are named by semantic id under `site/figures/` (for example

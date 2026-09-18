@@ -1,0 +1,140 @@
+<figure class="pfig l-body" id="figure-19">
+<!-- Conceptual figure drawn from BrainChip's registered pages as recorded on 2026-09-17; no measured quantity is drawn.
+     Blocks and their sources, one line per block.
+     Host processor, Arm Cortex-M4 CPU on the die: BrainChip-AKD1000Brief, the AKD1000 SoC Product Brief V2.3 feature list as
+       recorded in research/raw/a16-akida.md Sec. 1.1 (Arm Cortex-M4 host CPU on-die); the embedded processor of
+       cap-akida-1-encoder_decoder (brainchip-akida-user-guide, Runtime and device workflow: preprocessing and decoding remain on
+       the host or embedded processor). No recorded page names a DSP, so none is drawn.
+     Interfaces USB 3.0, PCIe 2.1, I2S, I3C, UART, JTAG, LPDDR4: BrainChip-AKD1000Brief, the same feature list (PCIe 2.1 x2
+       endpoint, USB 3.0 slave, I3C, I2S, UART, JTAG, LPDDR4 memory).
+     Multi-chip expansion, up to 32 devices over PCIe: BrainChip-AKD1000Brief, High-Speed Serial Chip-to-Chip Interconnect
+       (PCIe PHY 2-lane, enables expansion up to 32 devices), as read for aer-lineage-check.md.
+     Mesh of neural processing units: brainchip-akida-user-guide, Devices (the hardware topology of the mesh, its mesh of
+       processing nodes); cap-akida-1-connectivity_routing (layers map sequentially across neural processing cores);
+       BrainChip-AKD1000Brief, Key Benefits (interconnect network for spike transmission). The grid carries no count; the
+       product brief and a 2019 BrainChip slide state different counts (20 neural processing cores; 80 NPUs), so none is drawn.
+     Input encoding, rank coding, events by their time and place: brainchip-akida-techbrief p. 3 (an encoding scheme called
+       rank coding, in which information is expressed as the time and place it occurs); Table 23's rank-order input stage. No
+       recorded BrainChip page names a data-to-spike or pixel-to-spike converter block, so the stage is drawn with the tech
+       brief's words and not as a converter.
+     Input packet: brainchip-akida-user-guide, learning section (when an input packet is sent with a label included), the
+       guide's term for an input sent to the model, drawn here at the unit as the shape reference places it.
+     Weights, parameter memory integrated with the neuronal mathematics: brainchip-akida-techbrief p. 4 (by fully integrating
+       the neural network control, the parameter memory and the neuronal mathematics).
+     Neuron and synapse circuits, accumulate low-bit event-domain activations: brainchip-akida-techbrief p. 3 (physical neuron
+       and synapse circuits configured for a specific task); cap-akida-1-neuron_dynamics (brainchip-akida-user-guide, Akida 1.0
+       hardware model: accumulates low-bit event-domain activations, applies the configured thresholded activation, emits sparse
+       quantized events). No recorded page names a neural processing engine, so the circuits carry the tech brief's words.
+     Threshold, set at conversion: brainchip-akida-techbrief p. 3 (power is consumed only when inputs to a neuron exceed the
+       predetermined threshold and generate an action potential to be processed by subsequent layers); cap-akida-1-threshold_reset
+       (brainchip-cnn2snn-docs, conversion principles: scaling, batch normalization, quantization and activation folded into
+       thresholds); Section 11's route paragraph (a per-neuron static threshold computed once at conversion time).
+     Event, to the next layer: brainchip-akida-techbrief p. 3 (an action potential processed by subsequent layers) and p. 4
+       (events or spikes indicate useful information); cap-akida-1-neural_code_payload (events carry low-bit activation
+       information).
+     Bottom line: 5.2's Akida sentence (a converted, quantized CNN as a single pass of sparse events, no spiking neuron model
+       integrated over T) and Table 23's Akida row (single event-domain pass, no global simulation length T exposed).
+     Not drawn, no recorded BrainChip page names them: DSP, DMA engine, power management unit, SPI (AKD1500 only), on-chip SRAM
+       size. Layout after the author's own proposal drawing, not reproduced. Hues from data/target-kinds.json, conventional;
+       the system-on-chip frame is dashed as the event NPU chip word is drawn elsewhere on the page. -->
+<svg viewBox="0 0 1200 580" role="img" aria-labelledby="f19-title f19-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f19-title">The Akida system on chip, a host processor beside a mesh of neural processing units with an input encoding stage, and one neural processing unit opened to show weights held beside its circuits, a threshold, and an event out</title>
+  <desc id="f19-desc">Two panels. On the left, a dashed frame in the conventional bucket's blue tint labeled Akida AKD1000 system on chip. Along its top sit interface blocks USB 3.0, PCIe 2.1, I2S, I3C and UART; down its right side JTAG, LPDDR4 memory, and multi-chip expansion up to 32 devices over PCIe. In the middle a host processor block, an Arm Cortex-M4 CPU on the die, sits above a large block holding a grid of small squares labeled mesh of neural processing units, an interconnect network for spike transmission, grid not to count; the grid carries no count. On the left an input encoding block, rank coding, events by their time and place, points an arrow into the mesh. One square of the mesh is outlined and a dashed arrow leads from it to the right panel. The right panel, one neural processing unit opened, holds a tall input packet box on the left, a weights box across the top labeled parameter memory integrated with the neuronal mathematics, and two neuron and synapse circuit boxes that accumulate low-bit event-domain activations, each followed by a threshold box set at conversion and an arrow down to the word Event, to the next layer, with a vertical ellipsis between the two. Under both panels the chip word event NPU and one line, converted network in, sparse events between layers, no spiking neuron model over T. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs>
+    <marker id="f19-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+  </defs>
+
+  <!-- left, the system on chip, conventional hue, dashed outline as the event NPU chip word is drawn -->
+  <g id="f19-soc">
+    <rect x="20" y="20" width="620" height="466" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8" stroke-dasharray="7 5"/>
+    <text x="330" y="48" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">Akida AKD1000 system on chip</text>
+    <g id="f19-soc-top" class="f19-io">
+      <rect x="40" y="64" width="96" height="34" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="88" y="86" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">USB 3.0</text>
+      <rect x="144" y="64" width="96" height="34" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="192" y="86" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">PCIe 2.1</text>
+      <rect x="248" y="64" width="78" height="34" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="287" y="86" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">I2S</text>
+      <rect x="334" y="64" width="78" height="34" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="373" y="86" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">I3C</text>
+      <rect x="420" y="64" width="80" height="34" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="460" y="86" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">UART</text>
+    </g>
+    <g id="f19-soc-right" class="f19-io">
+      <rect x="512" y="110" width="114" height="46" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="569" y="138" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">JTAG</text>
+      <rect x="512" y="168" width="114" height="60" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="569" y="193" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">LPDDR4</text>
+      <text x="569" y="213" text-anchor="middle" fill="#4a5560" font-size="14">memory</text>
+      <rect x="512" y="356" width="114" height="100" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="569" y="382" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Multi-chip<tspan x="569" dy="19">expansion</tspan></text>
+      <text x="569" y="424" text-anchor="middle" fill="#4a5560" font-size="14">up to 32 devices<tspan x="569" dy="17">over PCIe</tspan></text>
+    </g>
+    <rect id="f19-host" x="168" y="110" width="332" height="46" rx="5" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="334" y="129" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">Host processor</text>
+    <text x="334" y="148" text-anchor="middle" fill="#4a5560" font-size="14">Arm Cortex-M4 CPU on the die</text>
+    <rect id="f19-mesh" x="168" y="168" width="332" height="302" rx="6" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
+    <g id="f19-mesh-cells" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2">
+      <rect x="174" y="184" width="33" height="28" rx="3"/><rect x="215" y="184" width="33" height="28" rx="3"/><rect x="256" y="184" width="33" height="28" rx="3"/><rect x="297" y="184" width="33" height="28" rx="3"/><rect x="338" y="184" width="33" height="28" rx="3"/><rect x="379" y="184" width="33" height="28" rx="3"/><rect x="420" y="184" width="33" height="28" rx="3"/><rect x="461" y="184" width="33" height="28" rx="3"/>
+      <rect x="174" y="220" width="33" height="28" rx="3"/><rect x="215" y="220" width="33" height="28" rx="3"/><rect x="256" y="220" width="33" height="28" rx="3"/><rect x="297" y="220" width="33" height="28" rx="3"/><rect x="338" y="220" width="33" height="28" rx="3"/><rect x="379" y="220" width="33" height="28" rx="3"/><rect x="420" y="220" width="33" height="28" rx="3"/><rect x="461" y="220" width="33" height="28" rx="3"/>
+      <rect x="174" y="256" width="33" height="28" rx="3"/><rect x="215" y="256" width="33" height="28" rx="3"/><rect x="256" y="256" width="33" height="28" rx="3"/><rect x="297" y="256" width="33" height="28" rx="3"/><rect x="338" y="256" width="33" height="28" rx="3"/><rect x="379" y="256" width="33" height="28" rx="3"/><rect x="420" y="256" width="33" height="28" rx="3"/>
+      <rect x="174" y="292" width="33" height="28" rx="3"/><rect x="215" y="292" width="33" height="28" rx="3"/><rect x="256" y="292" width="33" height="28" rx="3"/><rect x="297" y="292" width="33" height="28" rx="3"/><rect x="338" y="292" width="33" height="28" rx="3"/><rect x="379" y="292" width="33" height="28" rx="3"/><rect x="420" y="292" width="33" height="28" rx="3"/><rect x="461" y="292" width="33" height="28" rx="3"/>
+      <rect x="174" y="328" width="33" height="28" rx="3"/><rect x="215" y="328" width="33" height="28" rx="3"/><rect x="256" y="328" width="33" height="28" rx="3"/><rect x="297" y="328" width="33" height="28" rx="3"/><rect x="338" y="328" width="33" height="28" rx="3"/><rect x="379" y="328" width="33" height="28" rx="3"/><rect x="420" y="328" width="33" height="28" rx="3"/><rect x="461" y="328" width="33" height="28" rx="3"/>
+      <rect x="174" y="364" width="33" height="28" rx="3"/><rect x="215" y="364" width="33" height="28" rx="3"/><rect x="256" y="364" width="33" height="28" rx="3"/><rect x="297" y="364" width="33" height="28" rx="3"/><rect x="338" y="364" width="33" height="28" rx="3"/><rect x="379" y="364" width="33" height="28" rx="3"/><rect x="420" y="364" width="33" height="28" rx="3"/><rect x="461" y="364" width="33" height="28" rx="3"/>
+    </g>
+    <rect id="f19-mesh-cell-opened" x="461" y="256" width="33" height="28" rx="3" fill="#ffffff" stroke="#1F77B4" stroke-width="2"/>
+    <text x="334" y="424" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">mesh of neural processing units</text>
+    <text x="334" y="442" text-anchor="middle" fill="#4a5560" font-size="14">an interconnect network for spike transmission;<tspan x="334" dy="17">grid not to count</tspan></text>
+    <rect id="f19-encoding" x="36" y="250" width="106" height="110" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="89" y="276" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Input<tspan x="89" dy="18">encoding</tspan></text>
+    <text x="89" y="316" text-anchor="middle" fill="#4a5560" font-size="14">rank coding,<tspan x="89" dy="17">events by their</tspan><tspan x="89" dy="17">time and place</tspan></text>
+    <line id="f19-encoding-arrow" x1="143" y1="305" x2="166" y2="305" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+  </g>
+  <path id="f19-open-arrow" d="M495,270 L658,270" fill="none" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f19-arrow)"/>
+
+  <!-- right, one neural processing unit opened -->
+  <g id="f19-npu">
+    <rect x="660" y="20" width="520" height="466" rx="10" fill="#ffffff" stroke="#1F77B4" stroke-width="1.8"/>
+    <text x="920" y="48" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">One neural processing unit, opened</text>
+    <rect id="f19-packet" x="676" y="80" width="44" height="380" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="698" y="270" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700" transform="rotate(-90 698 270)">Input packet</text>
+    <rect id="f19-weights" x="750" y="80" width="410" height="46" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="955" y="99" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">Weights</text>
+    <text x="955" y="118" text-anchor="middle" fill="#4a5560" font-size="14">parameter memory integrated with the neuronal mathematics</text>
+    <g id="f19-circuit-1">
+      <line x1="721" y1="196" x2="748" y2="196" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <rect x="750" y="150" width="210" height="92" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="855" y="176" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Neuron and synapse<tspan x="855" dy="19">circuits</tspan></text>
+      <text x="855" y="216" text-anchor="middle" fill="#4a5560" font-size="14">accumulate low-bit<tspan x="855" dy="17">event-domain activations</tspan></text>
+      <line x1="961" y1="196" x2="988" y2="196" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <rect x="990" y="170" width="130" height="52" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="1055" y="191" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Threshold</text>
+      <text x="1055" y="211" text-anchor="middle" fill="#4a5560" font-size="14">set at conversion</text>
+      <line x1="1055" y1="223" x2="1055" y2="248" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <text x="1055" y="268" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700" font-style="italic">Event</text>
+      <text x="1055" y="286" text-anchor="middle" fill="#4a5560" font-size="14">to the next layer</text>
+    </g>
+    <g id="f19-ellipsis" fill="#2b3440">
+      <circle cx="855" cy="300" r="2.5"/><circle cx="855" cy="312" r="2.5"/><circle cx="855" cy="324" r="2.5"/>
+    </g>
+    <g id="f19-circuit-2">
+      <line x1="721" y1="384" x2="748" y2="384" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <rect x="750" y="338" width="210" height="92" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="855" y="364" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Neuron and synapse<tspan x="855" dy="19">circuits</tspan></text>
+      <text x="855" y="404" text-anchor="middle" fill="#4a5560" font-size="14">accumulate low-bit<tspan x="855" dy="17">event-domain activations</tspan></text>
+      <line x1="961" y1="384" x2="988" y2="384" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <rect x="990" y="358" width="130" height="52" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+      <text x="1055" y="379" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Threshold</text>
+      <text x="1055" y="399" text-anchor="middle" fill="#4a5560" font-size="14">set at conversion</text>
+      <line x1="1055" y1="411" x2="1055" y2="436" stroke="#2b3440" stroke-width="2" marker-end="url(#f19-arrow)"/>
+      <text x="1055" y="456" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700" font-style="italic">Event</text>
+      <text x="1055" y="474" text-anchor="middle" fill="#4a5560" font-size="14">to the next layer</text>
+    </g>
+  </g>
+
+  <!-- under both, the chip word and the one line the page gives it -->
+  <text id="f19-chipword" x="600" y="522" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">event NPU</text>
+  <text id="f19-bottomline" x="600" y="548" text-anchor="middle" fill="#4a5560" font-size="14">converted network in, sparse events between layers, no spiking neuron model over <tspan font-style="italic">T</tspan></text>
+</svg>
+<figcaption><b>Figure 19:</b> BrainChip's Akida as its own pages describe it. A host processor, an input encoding stage that expresses data as events by their time and place, and a mesh of neural processing units share one chip; inside each unit the weights sit beside the neuron and synapse circuits that use them, a circuit's accumulation meets a threshold, and what leaves is an event. The network arrives converted and quantized and runs as one pass of sparse events, and no spiking neuron model over T is exposed, which is why the chip carries the event NPU word of the conventional bucket rather than a place among the neuromorphic families that follow. Conceptual figure drawn from BrainChip's documentation<d-cite key="brainchip-akida-techbrief"></d-cite>; no measured quantity is drawn.</figcaption>
+</figure>

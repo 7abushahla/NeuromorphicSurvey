@@ -34,16 +34,18 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 | 15 | input-encoding-modes | 4 | implemented | conceptual |
 | 16 | neural-code-comparison | 4 | implemented | conceptual template |
 | 17 | hardware-time-model-comparison | 4, end of 4.4 | implemented | conceptual lanes; no measured quantity drawn |
-| 18 | classical-conversion-pipeline | 8 ANN-to-SNN Conversion | planned | placeholder caption in 8.4 |
-| 19 | finite-time-error-propagation | 8 | planned | placeholder caption in 8.6 |
-| 20 | deployable-snn-contract | 9 The Deployable SNN Contract | planned | placeholder caption in 9.2 |
-| 21 | software-boundary | 10 Software, Interchange, and Compilation | planned | placeholder caption in 10.4 |
-| 22 | deployment-stack-map | 11 Complete Deployment Routes | implemented | interactive; `site/shell-figure.html`, generated from `data/generated/route-index.json` |
-| 23 | measurement-boundary | 12 Deployment Measurement | planned | placeholder caption in 12.2 |
+| 18 | processor-architectures | 5 Where an SNN Runs | implemented | conceptual; three architectures on one axis from von Neumann to non-von Neumann, a general processor, a neural processing unit and a neuromorphic chip drawn by where the memory sits; no measured quantity drawn; installed in 5.1 after Table 10 |
+| 19 | akida-soc | 5 | implemented | conceptual; the Akida AKD1000 system on chip and one neural processing unit opened, blocks only where a registered BrainChip page names them; no measured quantity drawn; installed in 5.2 |
+| 20 | classical-conversion-pipeline | 8 ANN-to-SNN Conversion | implemented | conceptual; the trained network and the five stages of the classical pipeline with the assumption each rests on and the contract field each fixes; no measured quantity drawn; installed in 8.4 |
+| 21 | finite-time-error-propagation | 8 | implemented | conceptual; where each finite-time error term enters a layered converted network and how the inherited error widens with depth; no measured quantity drawn; installed in 8.6 |
+| 22 | deployable-snn-contract | 9 The Deployable SNN Contract | implemented | conceptual; the eleven contract fields against three independent questions; no measured quantity drawn; installed in 9.2 |
+| 23 | software-boundary | 10 Software, Interchange, and Compilation | implemented | conceptual; the four software handoff boundaries with three audited edges of Table 25; no measured quantity drawn; installed in 10.4 |
+| 24 | deployment-stack-map | 11 Complete Deployment Routes | implemented | interactive; `site/shell-figure.html`, generated from `data/generated/route-index.json` |
+| 25 | measurement-boundary | 12 Deployment Measurement | implemented | conceptual; the measurement boundaries as four nested regions with modeled and physical beside them; no measured quantity drawn; installed in 12.2 |
 
 ## Pending
 
-- The five planned figures belong to the figures-site plan and are not drawn.
+- None. Every record in the manifest is implemented; the five conceptual figures of Sections 8 to 12 and the two Section 5 figures were drawn in the hardware-first reorder plan (2026-09-18).
 
 ## Renumbering procedure
 
@@ -55,4 +57,4 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 
 ## Verification result
 
-`check-figures.py` passes for all 17 implemented static figures (the interactive route map, Figure 22, is checked separately); `validate-manifests.py` passes; the built page carries captions 1 to 23 in order with zero dangling anchors. The foundations lineage pass of 2026-09-17 added `lineage-tree` (Section 2.1) and `model-menu` (Section 3.1) and moved the two hardware-time figures to the end of 4.4; a user-directed amendment the same day added `biological-neuron` (Figure 2) before the lineage tree (Figure 3) and `execution-stacks` after it, which a second amendment moved to 2.5 (Figure 8) and replaced in 2.1 by `hardware-lineages` (Figure 4), the two dated hardware lineages side by side, so the two model figures are now Figures 3 and 10 and the hardware-time figures 20 and 21; both new figures were rendered at 720 px and 400 px and reviewed for overlap, clipping, registry fidelity and source fidelity before commit. Each implemented figure was rendered at 720 px and 400 px column width during the 2026-09-17 audit and inspected for overlap and clipping. This verifies markup, numbering and layout; the derived values were recomputed by the figure worker from the equations recorded in each fragment.
+`check-figures.py` passes for all 24 implemented static figures (the interactive route map, Figure 24, is checked separately); `validate-manifests.py` passes; the built page carries captions 1 to 25 in order with zero dangling anchors. The foundations lineage pass of 2026-09-17 added `lineage-tree` (Section 2.1) and `model-menu` (Section 3.1) and moved the two hardware-time figures to the end of 4.4; a user-directed amendment the same day added `biological-neuron` (Figure 2) before the lineage tree (Figure 3) and `execution-stacks` after it, which a second amendment moved to 2.5 (Figure 8) and replaced in 2.1 by `hardware-lineages` (Figure 4), the two dated hardware lineages side by side, so the two model figures are now Figures 3 and 10 and the hardware-time figures 20 and 21; both new figures were rendered at 720 px and 400 px and reviewed for overlap, clipping, registry fidelity and source fidelity before commit. Each implemented figure was rendered at 720 px and 400 px column width during the 2026-09-17 audit and inspected for overlap and clipping. This verifies markup, numbering and layout; the derived values were recomputed by the figure worker from the equations recorded in each fragment.

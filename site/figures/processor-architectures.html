@@ -1,0 +1,132 @@
+<figure class="pfig l-body" id="figure-18">
+<!-- Conceptual figure; no measured quantity is drawn. Panel layout after the architecture comparison of
+     deng-2025-edgesnn (its Fig. 8 in Sec. III-C, Hardware Support, captioned as a comparison of general processors,
+     ANN accelerators, and neuromorphic chips with near-memory or in-memory computing, "Adapted from [258]"); the
+     EdgeSNN reference list's entry [258] names a Proceedings of the IEEE article by Shin and Yoo with no DOI and no
+     arXiv id, so the caption credits the EdgeSNN survey alone and says it adapted an earlier figure.
+     Panel (a): the memory, the control and the arithmetic organ from vonneumann1945-edvac (Sec. 2.2, p. 2, the
+     central arithmetical part CA; Sec. 2.3, p. 2, the central control CC; Sec. 2.5, p. 3, the memory M; Sec. 14.1,
+     p. 37, the orders received by CC come from M, the same place where the numerical material is stored); the
+     word-at-a-time traffic and the bottleneck name from backus1978-von-neumann-style (introduction, the
+     word-at-a-time style inherited from the von Neumann computer); "a weight is a word in memory" is the bottom
+     line of Figure 4's conventional column.
+     Panel (b): the buffer and the array of multiply-accumulate units, with systolic execution so that fewer
+     operands are read from the buffer, from jouppi2017-tpu (Sec. 2, pp. 3-4 of the arXiv copy); processing
+     elements, multi-level on-chip buffers and off-chip DRAM with a memory hierarchy resembling CPUs and GPUs from
+     deng-2025-edgesnn (Sec. III-C); the NPU chip word from Table 10.
+     Panel (c): decentralized many-core architectures with tightly coupled computation and memory, near-memory and
+     in-memory computing, from deng-2025-edgesnn (Sec. III-C and the Fig. 8 caption); "a weight is synapse state
+     beside the neuron" is the bottom line of Figure 4's neuromorphic column; the neuromorphic and FPGA chip words
+     from Table 10.
+     Bucket hues from data/target-kinds.json, conventional for (a) and (b), neuromorphic for (c). -->
+<svg viewBox="0 0 1200 600" role="img" aria-labelledby="f18-title f18-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f18-title">Three architectures on one axis from von Neumann to non-von Neumann, a general processor, a neural processing unit, and a neuromorphic chip, drawn by where the memory sits relative to the arithmetic</title>
+  <desc id="f18-desc">Three panels side by side above one axis that runs left to right from von Neumann to non-von Neumann. Panel (a), a general processor, in the conventional bucket's blue tint, holds a hatched memory box labeled instructions and numbers above a processor frame that holds a control box and an arithmetic box side by side; a double-headed arrow between the memory and the frame is labeled one word at a time, the von Neumann bottleneck, and the frame notes that the control reads its orders from the same memory. Panel (b), a neural processing unit, in the same blue tint, holds a hatched memory box labeled off-chip, as a processor's, with an arrow from the memory into a frame labeled NPU, where it lands on a hatched on-chip buffer feeding a two by two array of processing elements, noted as a multiply-accumulate array with fewer reads from the buffer; a footer reads the memory stays outside the array. Panel (c), a neuromorphic chip, in the neuromorphic bucket's warm tint, has no memory box; its left half, labeled near-memory, is a three by three array of processing elements each with a separate hatched memory box beside it, and its right half, labeled in-memory, is a three by three array of hatched memory boxes each enclosing a small white processing-element pill; a note reads decentralized many-core, computation and memory tightly coupled, and the footer reads a weight is synapse state beside the neuron. Under the axis the chip words of Table 10 sit beneath the panel that carries them, CPU, GPU, MCU and RISC-V under (a), NPU under (b), neuromorphic and FPGA under (c). A key marks hatched as memory and plain as control, arithmetic, or a processing element. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs>
+    <marker id="f18-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <pattern id="f18-mem" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect x="0" y="0" width="7" height="7" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#c5cbd3" stroke-width="1.6"/></pattern>
+  </defs>
+
+  <!-- panel (a), general processor, conventional hue -->
+  <g id="f18-panel-a" class="f18-panel">
+    <rect x="20" y="20" width="330" height="420" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
+    <text x="185" y="52" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">(a) General processor</text>
+    <rect id="f18-a-memory" x="85" y="78" width="200" height="60" rx="6" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="185" y="104" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Memory</text>
+    <text x="185" y="126" text-anchor="middle" fill="#4a5560" font-size="14">instructions and numbers</text>
+    <line id="f18-a-bus" x1="185" y1="146" x2="185" y2="224" stroke="#2b3440" stroke-width="2" marker-start="url(#f18-arrow)" marker-end="url(#f18-arrow)"/>
+    <text id="f18-a-bottleneck" x="200" y="172" fill="#2b3440" font-size="15">one word at a time,<tspan x="200" dy="19">the von Neumann</tspan><tspan x="200" dy="19">bottleneck</tspan></text>
+    <rect id="f18-a-frame" x="85" y="232" width="200" height="156" rx="6" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="185" y="256" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">Processor</text>
+    <rect id="f18-a-control" x="95" y="272" width="88" height="70" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="139" y="303" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Control</text>
+    <text x="139" y="324" text-anchor="middle" fill="#4a5560" font-size="14">CC</text>
+    <rect id="f18-a-arithmetic" x="187" y="272" width="88" height="70" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="231" y="303" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Arithmetic</text>
+    <text x="231" y="324" text-anchor="middle" fill="#4a5560" font-size="14">CA</text>
+    <text x="185" y="362" text-anchor="middle" fill="#4a5560" font-size="14">the control reads its orders<tspan x="185" dy="17">from the same memory</tspan></text>
+    <text x="185" y="418" text-anchor="middle" fill="#2b3440" font-size="14" font-style="italic">a weight is a word in memory</text>
+  </g>
+
+  <!-- panel (b), neural processing unit, conventional hue -->
+  <g id="f18-panel-b" class="f18-panel">
+    <rect x="375" y="20" width="330" height="420" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
+    <text x="540" y="52" text-anchor="middle" fill="#155F8F" font-size="20" font-weight="700">(b) Neural processing unit</text>
+    <rect id="f18-b-memory" x="440" y="78" width="200" height="60" rx="6" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="540" y="104" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">Memory</text>
+    <text x="540" y="126" text-anchor="middle" fill="#4a5560" font-size="14">off-chip, as a processor&#8217;s</text>
+    <rect id="f18-b-frame" x="440" y="232" width="200" height="156" rx="6" fill="#ffffff" stroke="#8a94a0" stroke-width="1.8"/>
+    <path id="f18-b-bus" d="M540,140 L540,200 L488,200 L488,270" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f18-arrow)"/>
+    <text x="540" y="256" text-anchor="middle" fill="#2b3440" font-size="16" font-weight="700">NPU</text>
+    <rect id="f18-b-buffer" x="452" y="272" width="72" height="70" rx="5" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.8"/>
+    <text x="488" y="303" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">Buffer</text>
+    <text x="488" y="324" text-anchor="middle" fill="#4a5560" font-size="14">on chip</text>
+    <line id="f18-b-feed" x1="526" y1="307" x2="550" y2="307" stroke="#2b3440" stroke-width="2" marker-end="url(#f18-arrow)"/>
+    <g id="f18-b-array">
+      <rect x="553" y="272" width="35" height="31" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="570.5" y="292.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="593" y="272" width="35" height="31" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="610.5" y="292.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="553" y="311" width="35" height="31" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="570.5" y="331.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="593" y="311" width="35" height="31" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+      <text x="610.5" y="331.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+    </g>
+    <text x="540" y="362" text-anchor="middle" fill="#4a5560" font-size="14">multiply-accumulate array,<tspan x="540" dy="17">fewer reads from the buffer</tspan></text>
+    <text x="540" y="418" text-anchor="middle" fill="#2b3440" font-size="14" font-style="italic">the memory stays outside the array</text>
+  </g>
+
+  <!-- panel (c), neuromorphic chip, neuromorphic hue, no memory box -->
+  <g id="f18-panel-c" class="f18-panel">
+    <rect x="730" y="20" width="450" height="420" rx="10" fill="#FBEBDA" stroke="#D9760C" stroke-width="1.8"/>
+    <text x="955" y="52" text-anchor="middle" fill="#8F4A06" font-size="20" font-weight="700">(c) Neuromorphic chip</text>
+    <text x="842" y="100" text-anchor="middle" fill="#8F4A06" font-size="16" font-weight="700">near-memory</text>
+    <text x="842" y="120" text-anchor="middle" fill="#4a5560" font-size="14">memory beside each core</text>
+    <text x="1067" y="100" text-anchor="middle" fill="#8F4A06" font-size="16" font-weight="700">in-memory</text>
+    <text x="1067" y="120" text-anchor="middle" fill="#4a5560" font-size="14">memory inside each core</text>
+    <g id="f18-c-near">
+      <rect x="746" y="140" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="764" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="791" y="140" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="813" y="140" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="831" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="858" y="140" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="880" y="140" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="898" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="925" y="140" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="746" y="192" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="764" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="791" y="192" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="813" y="192" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="831" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="858" y="192" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="880" y="192" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="898" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="925" y="192" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="746" y="244" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="764" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="791" y="244" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="813" y="244" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="831" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="858" y="244" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <rect x="880" y="244" width="36" height="42" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/><text x="898" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="925" y="244" width="14" height="42" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+    </g>
+    <g id="f18-c-in">
+      <rect x="975" y="140" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="989" y="151" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1002.5" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1040" y="140" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1054" y="151" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1067.5" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1105" y="140" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1119" y="151" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1132.5" y="166" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="975" y="192" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="989" y="203" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1002.5" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1040" y="192" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1054" y="203" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1067.5" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1105" y="192" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1119" y="203" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1132.5" y="218" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="975" y="244" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="989" y="255" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1002.5" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1040" y="244" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1054" y="255" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1067.5" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+      <rect x="1105" y="244" width="55" height="42" rx="4" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/><rect x="1119" y="255" width="27" height="20" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1"/><text x="1132.5" y="270" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text>
+    </g>
+    <path id="f18-c-bracket" d="M746,296 L746,302 L1160,302 L1160,296" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
+    <text x="955" y="326" text-anchor="middle" fill="#4a5560" font-size="14">decentralized many-core, computation and memory<tspan x="955" dy="17">tightly coupled, no memory shared between cores</tspan></text>
+    <text x="955" y="418" text-anchor="middle" fill="#2b3440" font-size="14" font-style="italic">a weight is synapse state beside the neuron</text>
+  </g>
+
+  <!-- the axis and the chip words of Table 10 -->
+  <line id="f18-axis" x1="40" y1="478" x2="1160" y2="478" stroke="#2b3440" stroke-width="2" marker-end="url(#f18-arrow)"/>
+  <text id="f18-axis-left" x="40" y="503" fill="#2b3440" font-size="16" font-weight="700">von Neumann</text>
+  <text id="f18-axis-right" x="1160" y="503" text-anchor="end" fill="#2b3440" font-size="16" font-weight="700">non-von Neumann</text>
+  <text id="f18-chipwords-label" x="600" y="503" text-anchor="middle" fill="#4a5560" font-size="14">the chip words of Table 10, under the panel that carries them</text>
+  <g id="f18-chipwords" fill="#2b3440" font-size="16" font-weight="700" text-anchor="middle">
+    <text x="105" y="540">CPU</text><text x="160" y="540">GPU</text><text x="215" y="540">MCU</text><text x="280" y="540">RISC-V</text>
+    <text x="540" y="540">NPU</text>
+    <text x="905" y="540">neuromorphic</text><text x="1015" y="540">FPGA</text>
+  </g>
+  <g id="f18-key">
+    <rect x="40" y="565" width="24" height="15" rx="3" fill="url(#f18-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+    <text x="72" y="577" fill="#4a5560" font-size="14">memory</text>
+    <rect x="150" y="565" width="24" height="15" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
+    <text x="182" y="577" fill="#4a5560" font-size="14">control, arithmetic, or processing element</text>
+  </g>
+</svg>
+<figcaption><b>Figure 18:</b> Three architectures on one axis. A general processor holds its memory apart from its control and arithmetic and moves one word at a time across the gap Backus named the von Neumann bottleneck; a neural processing unit narrows the traffic with a buffer and an array of processing elements but keeps the memory outside; a neuromorphic chip places memory beside each processing element or inside it, so no shared memory sits between a weight and the arithmetic that uses it. The simulated bucket has no panel because a simulator runs the right panel's equations on the left panel's machine, the crossing Figure 4 draws. The event NPU word has no panel either; Figure 19 draws the chip that carries it. Panel layout after the EdgeSNN survey's comparison<d-cite key="deng-2025-edgesnn"></d-cite>, which adapted an earlier figure. Conceptual figure; no measured quantity is drawn.</figcaption>
+</figure>
