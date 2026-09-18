@@ -1,10 +1,10 @@
 <figure class="pfig l-body" id="figure-22">
-<!-- Conceptual figure; no measured quantity is drawn. Every drawn phrase is read from Section 8.6, 8.7 or 8.8 of site/sec-08.html or from Table 17 there.
+<!-- Conceptual figure; no measured quantity is drawn. Every drawn phrase is read from Section 8.2 of site/sec-08.html or from Table 17 there.
      Entry points, from Table 17 (pipeline stage of entry) and the 8.7 paragraphs that define each term. Clipping at parameter mapping (the chosen scale).
      Discretization at the counting operation (grid spacing 1/T). Residual membrane potential at the reset stage at window cutoff. Unevenness at the reset stage, per unit,
      as the dispersion of the reset term across the units of one layer (the 8.7 caveat separates it from timing). Timing at temporal execution across depth, at least
      one step per layer, drawn on the arrows between layers. Encoding at the source (8.7, deterministic under direct encoding, a random variable under Poisson).
-     Readout inherits what the deepest layer has accumulated, and a count or rate readout adds one more instance of the discretization term (8.7 and 8.8).
+     Readout inherits what the deepest layer has accumulated, and a count or rate readout adds one more instance of the discretization term (8.2.2 and 8.2.5).
      Band, from 8.6 (no source proves the four terms additive or governed by one growth law across architectures and reset rules), Table 17 (compounds with depth)
      and the 8.8 key point (compounded further by normalization, pooling, residual paths, and depth). -->
 <svg viewBox="0 0 1200 704" role="img" aria-labelledby="f22-title f22-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
@@ -88,8 +88,8 @@
   <g id="f22-band">
     <polygon points="208,358 1170,358 1170,404 208,364" fill="#dfe3e8" stroke="#c5ccd4" stroke-width="1"/>
     <text x="689" y="428" fill="#2b3440" font-size="17" font-weight="700" text-anchor="middle">accumulated error, inherited layer by layer, compounds with depth</text>
-    <text x="689" y="450" fill="#4A5560" font-size="14" text-anchor="middle">not proven additive or governed by one growth law across architectures and reset rules (Section 8.6)</text>
-    <text x="689" y="470" fill="#4A5560" font-size="14" text-anchor="middle">compounded further by normalization, pooling, residual paths, and depth (Section 8.8)</text>
+    <text x="689" y="450" fill="#4A5560" font-size="14" text-anchor="middle">not proven additive or governed by one growth law across architectures and reset rules (Section 8.2.1)</text>
+    <text x="689" y="470" fill="#4A5560" font-size="14" text-anchor="middle">compounded further by normalization, pooling, residual paths, and depth (Section 8.2.5)</text>
   </g>
   <g id="f22-key">
     <line x1="30" y1="492" x2="1170" y2="492" stroke="#d5dbe2" stroke-width="1"/>
@@ -103,5 +103,5 @@
     <g id="f22-key-6"><circle cx="35" cy="675" r="5" fill="#D63A2F"/><text x="46" y="680" fill="#D63A2F" font-size="16">readout</text><text x="150" y="680" fill="#2b3440" font-size="16">inherits what the deepest layer has accumulated; a count or rate readout adds one more instance of ε<tspan dy="4" font-size="12">disc</tspan></text></g>
   </g>
 </svg>
-<figcaption><b>Figure 22:</b> The finite-time error terms Section 8.7 names, drawn where each enters a layered converted network. Clipping enters at parameter mapping, where the activation scale of each layer is fixed, and discretization at the counting operation, so both sit on the activation half of every layer; residual membrane potential and its unevenness dispersion enter at the reset stage of every layer's neuron; timing enters on every hop between layers, at least one step per layer. The encoder decides at the input whether every term is deterministic or, under Poisson encoding, a random variable, and a count or rate readout applies one more instance of discretization at the output. The band widens because Section 8.8 states that each added layer contributes its own instance of all four mechanisms plus its own minimum propagation delay, and Section 8.6 states that no reviewed source proves the terms additive or governed by one growth law across architectures and reset rules. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 22:</b> The finite-time error terms Section 8.2 names, drawn where each enters a layered converted network. Clipping enters at parameter mapping, where the activation scale of each layer is fixed, and discretization at the counting operation, so both sit on the activation half of every layer; residual membrane potential and its unevenness dispersion enter at the reset stage of every layer's neuron; timing enters on every hop between layers, at least one step per layer. The encoder decides at the input whether every term is deterministic or, under Poisson encoding, a random variable, and a count or rate readout applies one more instance of discretization at the output. The band widens because Section 8.2.5 states that each added layer contributes its own instance of all four mechanisms plus its own minimum propagation delay, and Section 8.2.1 states that no reviewed source proves the terms additive or governed by one growth law across architectures and reset rules. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>
