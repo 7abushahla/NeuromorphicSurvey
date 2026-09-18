@@ -610,8 +610,8 @@
   {
     "id": "pseudo",
     "number": 56,
-    "title": "PseudoSNN",
-    "authors": "Zhang et al.",
+    "title": "Pseudo-Spiking Neurons: A Noise-Based Training Framework for Heterogeneous-Latency Spiking Neural Networks",
+    "authors": "Yuxuan Zhang, Yuhang Sun, Hongjue Li, Yue Deng, Wen Yao",
     "year": 2026,
     "venue": "AAAI",
     "category": "Direct training",
@@ -633,8 +633,8 @@
   {
     "id": "ssnn",
     "number": 58,
-    "title": "SSNN",
-    "authors": "Ding et al.",
+    "title": "Shrinking Your TimeStep: Towards Low-Latency Neuromorphic Object Recognition with Spiking Neural Networks",
+    "authors": "Yongqi Ding, Lin Zuo, Mengmeng Jing, Pei He, Yongjun Xiao",
     "year": 2024,
     "venue": "AAAI",
     "category": "Direct training",
@@ -644,8 +644,8 @@
   {
     "id": "diff",
     "number": 59,
-    "title": "Differential coding for ANN-to-SNN conversion",
-    "authors": "Huang et al.",
+    "title": "Differential Coding for Training-Free ANN-to-SNN Conversion",
+    "authors": "Z. Huang, W. Fang, T. Bu, P. Xue, Z. Hao, W. Liu, Y. Tang, Z. Yu, T. Huang",
     "year": 2025,
     "venue": "ICML",
     "category": "Encoding",

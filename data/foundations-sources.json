@@ -718,6 +718,1217 @@
       ],
       "notes": "Secondary source for logic families TTL and CMOS named in the hardware-lineage figure. Cambridge University Press page confirmed title, authors, edition, publisher, and year; ISBN 9780521809269.",
       "purpose": "external"
+    },
+    {
+      "id": "perez-carrasco-2013",
+      "title": "Mapping from Frame-Driven to Frame-Free Event-Driven Vision Systems by Low-Rate Rate Coding and Coincidence Processing, Application to Feedforward ConvNets",
+      "authors": "J. A. Pérez-Carrasco, B. Zhao, C. Serrano, B. Acha, T. Serrano-Gotarredona, S. Chen, B. Linares-Barranco",
+      "year": 2013,
+      "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence 35(11):2706-2719",
+      "doi": "10.1109/TPAMI.2013.71",
+      "url": "https://doi.org/10.1109/TPAMI.2013.71",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/TPAMI.2013.71 (title, authors, journal, volume 35, issue 11, pages 2706-2719, year 2013)",
+        "Semantic Scholar record, abstract: a methodology for mapping from a properly trained neural network in a conventional frame-driven representation to an event-driven representation, illustrated on event-driven ConvNets fed with DVS recordings and simulated with a dedicated event-driven simulator whose module characteristics come from individually manufactured hardware modules"
+      ],
+      "aliases": [
+        "perez-carrasco-2013",
+        "perez2013mapping"
+      ],
+      "notes": "The earliest frame-driven to event-driven mapping of a trained ConvNet cited in Section 8.1's opener; the abstract does not name the source activation or the neuron model, so the survey states only the mapping, the rate code the title names, and the DVS-fed event-driven simulation.",
+      "purpose": "external"
+    },
+    {
+      "id": "kasabov-2019-timespace",
+      "title": "Time-Space, Spiking Neural Networks and Brain-Inspired Artificial Intelligence",
+      "authors": "N. K. Kasabov",
+      "year": 2019,
+      "venue": "Springer Berlin Heidelberg (Springer Series on Bio- and Neurosystems)",
+      "doi": "10.1007/978-3-662-57715-8",
+      "url": "https://doi.org/10.1007/978-3-662-57715-8",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1007/978-3-662-57715-8 (type book, title, sole author Kasabov, publisher Springer Berlin Heidelberg, ISBNs 9783662577134/9783662577158, year 2019)"
+      ],
+      "aliases": [
+        "kasabov-2019-timespace",
+        "kasabov2019time"
+      ],
+      "notes": "Cited by the thesis as a general reference for time-space computation in spiking neural networks and brain-inspired artificial intelligence architectures.",
+      "purpose": "external"
+    },
+    {
+      "id": "gerstner-2002-spikingmodels",
+      "title": "Spiking Neuron Models: Single Neurons, Populations, Plasticity",
+      "authors": "W. Gerstner, W. M. Kistler",
+      "year": 2002,
+      "venue": "Cambridge University Press",
+      "doi": "10.1017/cbo9780511815706",
+      "url": "https://doi.org/10.1017/cbo9780511815706",
+      "source_type": "secondary_material",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1017/cbo9780511815706 (type monograph, title Spiking Neuron Models, authors Gerstner and Kistler, publisher Cambridge University Press, published 2002-08-15)",
+        "Cambridge Core landing page for the DOI (page title Spiking Neuron Models, subtitle Single Neurons, Populations, Plasticity, confirming the full title the thesis cites)"
+      ],
+      "aliases": [
+        "gerstner-2002-spikingmodels",
+        "gerstner2002spiking"
+      ],
+      "notes": "Cited by the thesis alongside Gerstner's later Neuronal Dynamics text as the foundational reference for single-neuron spiking models, population dynamics, and synaptic plasticity.",
+      "purpose": "external"
+    },
+    {
+      "id": "capra-2020-hardware",
+      "title": "Hardware and Software Optimizations for Accelerating Deep Neural Networks: Survey of Current Trends, Challenges, and the Road Ahead",
+      "authors": "M. Capra, B. Bussolino, A. Marchisio, G. Masera, M. Martina",
+      "year": 2020,
+      "venue": "IEEE Access 8:225134-225180",
+      "doi": "10.1109/access.2020.3039858",
+      "url": "https://doi.org/10.1109/access.2020.3039858",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/access.2020.3039858 (title, five authors, journal IEEE Access, volume 8, pages 225134-225180, year 2020)"
+      ],
+      "aliases": [
+        "capra-2020-hardware",
+        "capra2020hardware"
+      ],
+      "notes": "Cited by the thesis for its survey of hardware and software optimization trends for accelerating deep neural networks, motivating the case for quantization and mixed-precision deployment.",
+      "purpose": "external"
+    },
+    {
+      "id": "putra-2020-fspinn",
+      "title": "FSpiNN: An Optimization Framework for Memory-Efficient and Energy-Efficient Spiking Neural Networks",
+      "authors": "R. V. W. Putra, M. Shafique",
+      "year": 2020,
+      "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems 39(11):3601-3613",
+      "doi": "10.1109/tcad.2020.3013049",
+      "url": "https://doi.org/10.1109/tcad.2020.3013049",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/tcad.2020.3013049 (title, authors Putra and Shafique, journal IEEE TCAD, volume 39, issue 11, pages 3601-3613, published 2020-11)"
+      ],
+      "aliases": [
+        "putra-2020-fspinn",
+        "putra2020fspinn"
+      ],
+      "notes": "Cited by the thesis for its FSpiNN optimization framework targeting memory- and energy-efficient spiking neural network inference.",
+      "purpose": "external"
+    },
+    {
+      "id": "oh-2024-signgradient",
+      "title": "Sign Gradient Descent-based Neuronal Dynamics: ANN-to-SNN Conversion Beyond ReLU Network",
+      "authors": "H. Oh, Y. Lee",
+      "year": 2024,
+      "venue": "Proceedings of the 41st International Conference on Machine Learning, PMLR 235:38562-38598",
+      "doi": null,
+      "url": "https://proceedings.mlr.press/v235/oh24b.html",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "PMLR volume-235 proceedings listing page (title, authors Hyunseok Oh and Youngki Lee, pages 38562-38598)",
+        "PMLR abstract page citation metadata for oh24b.html (publication date 2024-07-08, ISSN 2640-3498, first/last page 38562/38598, OpenReview id kfpe7Dg23G); no DOI is assigned by PMLR"
+      ],
+      "aliases": [
+        "oh-2024-signgradient",
+        "oh2024sign"
+      ],
+      "notes": "Cited by the thesis for its ANN-to-SNN conversion method that extends beyond ReLU-based activation functions using sign-gradient-descent-based neuronal dynamics.",
+      "purpose": "external"
+    },
+    {
+      "id": "bi-1998-synaptic",
+      "title": "Synaptic Modifications in Cultured Hippocampal Neurons: Dependence on Spike Timing, Synaptic Strength, and Postsynaptic Cell Type",
+      "authors": "G.-Q. Bi, M.-M. Poo",
+      "year": 1998,
+      "venue": "The Journal of Neuroscience 18(24):10464-10472",
+      "doi": "10.1523/jneurosci.18-24-10464.1998",
+      "url": "https://doi.org/10.1523/jneurosci.18-24-10464.1998",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1523/jneurosci.18-24-10464.1998 (title, authors Bi and Poo, journal The Journal of Neuroscience, volume 18, issue 24, pages 10464-10472, published 1998-12-15)",
+        "Crossref abstract: persistent potentiation and depression of glutamatergic synapses were induced in cultured hippocampal neurons by correlated pre- and postsynaptic spiking, with the relative spike timing determining the direction and extent of the synaptic change"
+      ],
+      "aliases": [
+        "bi-1998-synaptic",
+        "bi1998synaptic"
+      ],
+      "notes": "Cited by the thesis as the original experimental demonstration of spike-timing-dependent plasticity in cultured hippocampal neurons, foundational to biologically inspired learning rules.",
+      "purpose": "external"
+    },
+    {
+      "id": "song-2000-hebbian",
+      "title": "Competitive Hebbian Learning Through Spike-Timing-Dependent Synaptic Plasticity",
+      "authors": "S. Song, K. D. Miller, L. F. Abbott",
+      "year": 2000,
+      "venue": "Nature Neuroscience 3(9):919-926",
+      "doi": "10.1038/78829",
+      "url": "https://doi.org/10.1038/78829",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1038/78829 (title, authors Song, Miller and Abbott, journal Nature Neuroscience, volume 3, issue 9, pages 919-926, published 2000-09)"
+      ],
+      "aliases": [
+        "song-2000-hebbian",
+        "song2000competitive"
+      ],
+      "notes": "Cited by the thesis for its theoretical account of competitive Hebbian learning driven by spike-timing-dependent synaptic plasticity.",
+      "purpose": "external"
+    },
+    {
+      "id": "neftci-2014-contrastive",
+      "title": "Event-Driven Contrastive Divergence for Spiking Neuromorphic Systems",
+      "authors": "E. Neftci, S. Das, B. Pedroni, K. Kreutz-Delgado, G. Cauwenberghs",
+      "year": 2014,
+      "venue": "Frontiers in Neuroscience 7:272",
+      "doi": "10.3389/fnins.2013.00272",
+      "url": "https://doi.org/10.3389/fnins.2013.00272",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.3389/fnins.2013.00272 (title, five authors, journal Frontiers in Neuroscience, volume 7, published/issued 2014, article number 272 taken from the DOI suffix; the record carries no separate published-print date)"
+      ],
+      "aliases": [
+        "neftci-2014-contrastive",
+        "neftci2013event"
+      ],
+      "notes": "Cited by the thesis for its event-driven formulation of contrastive divergence learning on spiking neuromorphic hardware.",
+      "purpose": "external"
+    },
+    {
+      "id": "rumelhart-1986-backprop",
+      "title": "Learning Representations by Back-Propagating Errors",
+      "authors": "D. E. Rumelhart, G. E. Hinton, R. J. Williams",
+      "year": 1986,
+      "venue": "Nature 323(6088):533-536",
+      "doi": "10.1038/323533a0",
+      "url": "https://doi.org/10.1038/323533a0",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1038/323533a0 (title, authors Rumelhart, Hinton and Williams, journal Nature, volume 323, issue 6088, pages 533-536, published 1986-10); a later 2002 MIT Press book-chapter reprint of the same title exists under a different DOI and was not used"
+      ],
+      "aliases": [
+        "rumelhart-1986-backprop",
+        "rumelhart1986learning"
+      ],
+      "notes": "Cited by the thesis as the canonical reference for the backpropagation algorithm underlying gradient-based training of the ANN backbones that are later converted to SNNs.",
+      "purpose": "external"
+    },
+    {
+      "id": "neftci-2019-surrogate",
+      "title": "Surrogate Gradient Learning in Spiking Neural Networks: Bringing the Power of Gradient-Based Optimization to Spiking Neural Networks",
+      "authors": "E. O. Neftci, H. Mostafa, F. Zenke",
+      "year": 2019,
+      "venue": "IEEE Signal Processing Magazine 36(6):51-63",
+      "doi": "10.1109/msp.2019.2931595",
+      "url": "https://doi.org/10.1109/msp.2019.2931595",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/msp.2019.2931595 (title, authors Neftci, Mostafa and Zenke, journal IEEE Signal Processing Magazine, volume 36, issue 6, pages 51-63, published 2019-11)"
+      ],
+      "aliases": [
+        "neftci-2019-surrogate",
+        "neftci2019surrogate"
+      ],
+      "notes": "Cited by the thesis for its tutorial treatment of surrogate gradient learning as an alternative to ANN-to-SNN conversion for training spiking neural networks.",
+      "purpose": "external"
+    },
+    {
+      "id": "zhang-2024-adaptivethreshold",
+      "title": "Low Latency and Sparse Computing Spiking Neural Networks With Self-Driven Adaptive Threshold Plasticity",
+      "authors": "A. Zhang, J. Shi, J. Wu, Y. Zhou, W. Yu",
+      "year": 2024,
+      "venue": "IEEE Transactions on Neural Networks and Learning Systems 35(12):17177-17188",
+      "doi": "10.1109/tnnls.2023.3300514",
+      "url": "https://doi.org/10.1109/tnnls.2023.3300514",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/tnnls.2023.3300514 (title, authors Zhang, Shi, Wu, Zhou and Yu, journal IEEE TNNLS, volume 35, issue 12, pages 17177-17188, final print issue dated 2024-12; the DOI was created 2023-08-15 when the article first appeared as IEEE Early Access, which is the year the thesis bibliography entry uses)"
+      ],
+      "aliases": [
+        "zhang-2024-adaptivethreshold",
+        "zhang2023low"
+      ],
+      "notes": "Cited by the thesis for its self-driven adaptive threshold plasticity mechanism for low-latency, sparse spiking neural network computation.",
+      "purpose": "external"
+    },
+    {
+      "id": "yang-2025-neubridge",
+      "title": "NeuBridge: Bridging Quantized Activations and Spiking Neurons for ANN-SNN Conversion",
+      "authors": "Y. Yang, J. Liu, C. Yu, C. Yang, G. Wang, A. Wang",
+      "year": 2025,
+      "venue": "Neuromorphic Computing and Engineering 5(2):024018",
+      "doi": "10.1088/2634-4386/ade183",
+      "url": "https://doi.org/10.1088/2634-4386/ade183",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1088/2634-4386/ade183 (title, six authors, journal Neuromorphic Computing and Engineering, volume 5, issue 2, article 024018, published 2025-06-01)",
+        "Crossref abstract: spiking neural networks lag behind ANNs mainly because of the difficulty of translating ANN activation values into time-domain spikes, owing to quantization and unevenness errors in mapping continuous activations"
+      ],
+      "aliases": [
+        "yang-2025-neubridge",
+        "yang2025neubridge"
+      ],
+      "notes": "Cited by the thesis as a directly related quantization-aware ANN-to-SNN conversion method that bridges quantized ANN activations and spiking neuron dynamics.",
+      "purpose": "external"
+    },
+    {
+      "id": "yousefzadeh-2019-sigmadelta",
+      "title": "Conversion of Synchronous Artificial Neural Network to Asynchronous Spiking Neural Network Using Sigma-Delta Quantization",
+      "authors": "A. Yousefzadeh, S. Hosseini, P. Holanda, S. Leroux, T. Werner, T. Serrano-Gotarredona, B. Linares Barranco, B. Dhoedt",
+      "year": 2019,
+      "venue": "2019 IEEE International Conference on Artificial Intelligence Circuits and Systems (AICAS), pp. 81-85",
+      "doi": "10.1109/aicas.2019.8771624",
+      "url": "https://doi.org/10.1109/aicas.2019.8771624",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/aicas.2019.8771624 (title, eight authors, conference 2019 IEEE AICAS, pages 81-85, published 2019-03)"
+      ],
+      "aliases": [
+        "yousefzadeh-2019-sigmadelta",
+        "yousefzadeh2019conversion"
+      ],
+      "notes": "Cited by the thesis for its sigma-delta quantization approach to converting synchronous ANNs into asynchronous spiking neural networks.",
+      "purpose": "external"
+    },
+    {
+      "id": "yu-2020-lowbit",
+      "title": "Low-Bit Quantization Needs Good Distribution",
+      "authors": "H. Yu, T. Wen, G. Cheng, J. Sun, Q. Han, J. Shi",
+      "year": 2020,
+      "venue": "2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), pp. 2909-2918",
+      "doi": "10.1109/cvprw50498.2020.00348",
+      "url": "https://doi.org/10.1109/cvprw50498.2020.00348",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/cvprw50498.2020.00348 (title, six authors led by Haibao Yu, conference 2020 CVPRW, pages 2909-2918, published 2020-06)"
+      ],
+      "aliases": [
+        "yu-2020-lowbit",
+        "yu2020low"
+      ],
+      "notes": "Cited by the thesis for its analysis of activation distribution shaping as a requirement for effective low-bit quantization.",
+      "purpose": "external"
+    },
+    {
+      "id": "wang-2023-annsnn",
+      "title": "A New ANN-SNN Conversion Method with High Accuracy, Low Latency and Good Robustness",
+      "authors": "B. Wang, J. Cao, J. Chen, S. Feng, Y. Wang",
+      "year": 2023,
+      "venue": "Proceedings of the Thirty-Second International Joint Conference on Artificial Intelligence (IJCAI-23), pp. 3067-3075",
+      "doi": "10.24963/ijcai.2023/342",
+      "url": "https://doi.org/10.24963/ijcai.2023/342",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.24963/ijcai.2023/342 (title, five authors led by Bingsen Wang, conference IJCAI-23, pages 3067-3075, published 2023-08)",
+        "Crossref abstract: SNNs are regarded as a third generation of neural networks for their low energy consumption, robustness, and speed, but training is difficult because spike signals are non-differentiable, which motivates ANN-SNN conversion as an alternative"
+      ],
+      "aliases": [
+        "wang-2023-annsnn",
+        "wang2023new"
+      ],
+      "notes": "Cited by the thesis as a comparison point among ANN-to-SNN conversion methods that jointly target accuracy, latency, and robustness.",
+      "purpose": "external"
+    },
+    {
+      "id": "chen-2025-scaleandfire",
+      "title": "One-Timestep is Enough: Achieving High-performance ANN-to-SNN Conversion via Scale-and-Fire Neurons",
+      "authors": "Q. Chen, H. Yang, Q. Meng, Z. Ma",
+      "year": 2025,
+      "venue": "arXiv:2510.23383",
+      "doi": "10.48550/arXiv.2510.23383",
+      "url": "https://arxiv.org/abs/2510.23383",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2510.23383 (title, authors Chen, Yang, Meng and Ma, published 2025-10-27)",
+        "arXiv abstract: proposes a Temporal-to-Spatial Equivalence Theory showing multi-timestep IF neurons can be replaced by single-timestep multi-threshold neurons, and introduces the Scale-and-Fire Neuron for single-timestep (T=1) spiking, reporting 88.8% top-1 accuracy on ImageNet-1K at T=1"
+      ],
+      "aliases": [
+        "chen-2025-scaleandfire",
+        "chen2025one"
+      ],
+      "notes": "Cited by the thesis for its single-timestep ANN-to-SNN conversion approach using Scale-and-Fire neurons, an alternative route to the latency reduction the thesis targets.",
+      "purpose": "external"
+    },
+    {
+      "id": "shen-2025-spikepack",
+      "title": "SpikePack: Enhanced Information Flow in Spiking Neural Networks with High Hardware Compatibility",
+      "authors": "G. Shen, J. Li, T. Li, D. Zhao, Y. Zeng",
+      "year": 2025,
+      "venue": "arXiv:2501.14484",
+      "doi": "10.48550/arXiv.2501.14484",
+      "url": "https://arxiv.org/abs/2501.14484",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2501.14484 (title rendered with LaTeX dollar signs as $SpikePack$, authors Shen, Li, Li, Zhao and Zeng, published 2025-01-24, current version v2)",
+        "arXiv abstract: identifies substantial information loss during spike transmission tied to temporal dependencies in the Leaky Integrate-and-Fire neuron, and notes existing SNN architectures underutilize GPUs owing to single-bit spike storage"
+      ],
+      "aliases": [
+        "shen-2025-spikepack",
+        "shen2025spikepack"
+      ],
+      "notes": "Cited by the thesis for its SpikePack mechanism addressing information loss during spike transmission in leaky integrate-and-fire neurons.",
+      "purpose": "external"
+    },
+    {
+      "id": "chen-2025-losslessllm",
+      "title": "LAS: Loss-less ANN-SNN Conversion for Fully Spike-Driven Large Language Models",
+      "authors": "L. Chen, X. Song, Y. Sun",
+      "year": 2025,
+      "venue": "arXiv:2505.09659",
+      "doi": "10.48550/arXiv.2505.09659",
+      "url": "https://arxiv.org/abs/2505.09659",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2505.09659 (title, authors Chen, Song and Sun, published 2025-05-14)",
+        "arXiv abstract: spiking LLMs are proposed as an energy-efficient alternative to conventional LLMs, and existing ANN-to-SNN conversion methods for them struggle with extreme activation ranges"
+      ],
+      "aliases": [
+        "chen-2025-losslessllm",
+        "chen2025loss"
+      ],
+      "notes": "Cited by the thesis for its loss-less ANN-to-SNN conversion method aimed at fully spike-driven large language models.",
+      "purpose": "external"
+    },
+    {
+      "id": "huang-2025-differentialcoding",
+      "title": "Differential Coding for Training-Free ANN-to-SNN Conversion",
+      "authors": "Z. Huang, W. Fang, T. Bu, P. Xue, Z. Hao, W. Liu, Y. Tang, Z. Yu, T. Huang",
+      "year": 2025,
+      "venue": "arXiv:2503.00301",
+      "doi": "10.48550/arXiv.2503.00301",
+      "url": "https://arxiv.org/abs/2503.00301",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2503.00301 (title, nine authors led by Zihan Huang, published 2025-03-01, current version v3)",
+        "arXiv abstract: most ANN-to-SNN conversion methods rely on rate coding, which needs more spikes and longer timesteps than directly trained SNNs, raising energy consumption and latency"
+      ],
+      "aliases": [
+        "huang-2025-differentialcoding",
+        "huang2025differential"
+      ],
+      "notes": "Cited by the thesis for its differential coding scheme that reduces the timestep requirement of training-free ANN-to-SNN conversion.",
+      "purpose": "external"
+    },
+    {
+      "id": "zou-2020-medianquant",
+      "title": "A Novel Conversion Method for Spiking Neural Network Using Median Quantization",
+      "authors": "C. Zou, X. Cui, J. Ge, H. Ma, X. Wang",
+      "year": 2020,
+      "venue": "2020 IEEE International Symposium on Circuits and Systems (ISCAS), pp. 1-5",
+      "doi": "10.1109/iscas45731.2020.9180918",
+      "url": "https://doi.org/10.1109/iscas45731.2020.9180918",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/iscas45731.2020.9180918 (title, five authors led by Chenglong Zou, conference 2020 ISCAS, pages 1-5, published 2020-10)"
+      ],
+      "aliases": [
+        "zou-2020-medianquant",
+        "zou2020novel"
+      ],
+      "notes": "Cited by the thesis as a precedent for median-based quantization in ANN-to-SNN conversion, directly relevant to the QCFS-style activation quantization the thesis builds on.",
+      "purpose": "external"
+    },
+    {
+      "id": "zhang-2025-polarityspike",
+      "title": "Quantization Meets Spikes: Nearly Lossless Conversion at the First Timestep via Polarity Multi-Spike Mapping",
+      "authors": "H. Zhang, Z. Li, C. Ma, H. Tang, L. Cheng, K. C. Tan, Q. Yu",
+      "year": 2025,
+      "venue": "arXiv:2508.14520",
+      "doi": "10.48550/arXiv.2508.14520",
+      "url": "https://arxiv.org/abs/2508.14520",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2508.14520 (title reads Nearly Lossless, not Lossless as in the thesis bibliography row; seven authors led by Hangming Zhang, published 2025-08-20, current version v2)"
+      ],
+      "aliases": [
+        "zhang-2025-polarityspike",
+        "zhang2025quantization"
+      ],
+      "notes": "Cited by the thesis for its polarity multi-spike mapping scheme achieving near-lossless ANN-to-SNN conversion at a single timestep.",
+      "purpose": "external"
+    },
+    {
+      "id": "gao-2023-calciumgated",
+      "title": "High-Accuracy Deep ANN-to-SNN Conversion Using Quantization-Aware Training Framework and Calcium-Gated Bipolar Leaky Integrate and Fire Neuron",
+      "authors": "H. Gao, J. He, H. Wang, T. Wang, Z. Zhong, J. Yu, Y. Wang, M. Tian",
+      "year": 2023,
+      "venue": "Frontiers in Neuroscience 17, article 1141701",
+      "doi": "10.3389/fnins.2023.1141701",
+      "url": "https://doi.org/10.3389/fnins.2023.1141701",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.3389/fnins.2023.1141701 (title, eight authors led by Haoran Gao, journal Frontiers in Neuroscience, volume 17, article-number 1141701, published 2023-03-08)",
+        "Crossref abstract: many ANN-to-SNN techniques impose lengthy post-conversion steps such as threshold balancing and weight renormalization to compensate for the behavioral gap between artificial and spiking neurons"
+      ],
+      "aliases": [
+        "gao-2023-calciumgated",
+        "gao2023high"
+      ],
+      "notes": "Cited by the thesis for combining a quantization-aware training framework with a calcium-gated bipolar leaky integrate-and-fire neuron for high-accuracy ANN-to-SNN conversion.",
+      "purpose": "external"
+    },
+    {
+      "id": "chmiel-2020-robustquant",
+      "title": "Robust Quantization: One Model to Rule Them All",
+      "authors": "M. Shkolnik, B. Chmiel, R. Banner, G. Shomron, Y. Nahshan, A. Bronstein, U. Weiser",
+      "year": 2020,
+      "venue": "Advances in Neural Information Processing Systems 33 (NeurIPS 2020)",
+      "doi": null,
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/hash/3948ead63a9f2944218de038d8934305-Abstract.html",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "NeurIPS 2020 proceedings listing page (title, author order moran shkolnik, Brian Chmiel, Ron Banner, Gil Shomron, Yury Nahshan, Alex Bronstein, Uri Weiser; the thesis bibliography key names the second author, Chmiel, rather than the first, Shkolnik)",
+        "arXiv API record for 2002.07686 (same title and author list, submitted 2020-02-18)",
+        "arXiv abstract: quantization-aware training makes a trained model highly dependent on its target bit-width and quantization scheme, and robust quantization is proposed as an alternative with improved tolerance across data types and quantization policies"
+      ],
+      "aliases": [
+        "chmiel-2020-robustquant",
+        "chmiel2020robust"
+      ],
+      "notes": "Cited by the thesis for its robust quantization method producing a single quantized model that tolerates different bit-widths and quantization policies.",
+      "purpose": "external"
+    },
+    {
+      "id": "abushahla-2025-mcusurvey",
+      "title": "Neural Network Quantization for Microcontrollers: A Comprehensive Survey of Methods, Platforms, and Applications",
+      "authors": "H. A. Abushahla, D. Varam, A. J. N. Panopio, M. I. AlHajri",
+      "year": 2025,
+      "venue": "arXiv:2508.15008",
+      "doi": "10.48550/arXiv.2508.15008",
+      "url": "https://arxiv.org/abs/2508.15008",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2508.15008 (title, authors Abushahla, Varam, Panopio and AlHajri, published 2025-08-20, current version v4)",
+        "arXiv abstract: deploying quantized neural networks on resource-constrained microcontrollers requires balancing model performance, computational complexity, and memory constraints, which TinyML addresses by jointly advancing algorithms, hardware, and software"
+      ],
+      "aliases": [
+        "abushahla-2025-mcusurvey",
+        "abushahla2025quantized"
+      ],
+      "notes": "The thesis author's own survey of neural network quantization methods, platforms, and applications for microcontrollers, cited for its taxonomy of quantization-aware training and post-training quantization techniques.",
+      "purpose": "external"
+    },
+    {
+      "id": "garofalo-2020-pulpnn",
+      "title": "PULP-NN: Accelerating Quantized Neural Networks on Parallel Ultra-Low-Power RISC-V Processors",
+      "authors": "A. Garofalo, M. Rusci, F. Conti, D. Rossi, L. Benini",
+      "year": 2020,
+      "venue": "Philosophical Transactions of the Royal Society A 378(2164):20190155",
+      "doi": "10.1098/rsta.2019.0155",
+      "url": "https://doi.org/10.1098/rsta.2019.0155",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1098/rsta.2019.0155 (title, five authors led by Angelo Garofalo, journal Philosophical Transactions of the Royal Society A, volume 378, issue 2164, article 20190155; published online 2019-12-23, print issue dated 2020-02-07, which is the year the thesis bibliography entry uses)",
+        "Crossref abstract: presents an optimized computing library for a parallel ultra-low-power tightly coupled cluster of RISC-V processors, with kernels for quantized inference down to INT-1"
+      ],
+      "aliases": [
+        "garofalo-2020-pulpnn",
+        "pulpNN"
+      ],
+      "notes": "Cited by the thesis for its PULP-NN kernel library demonstrating aggressive sub-byte quantized inference on RISC-V microcontroller clusters.",
+      "purpose": "external"
+    },
+    {
+      "id": "capotondi-2020-cmixnn",
+      "title": "CMix-NN: Mixed Low-Precision CNN Library for Memory-Constrained Edge Devices",
+      "authors": "A. Capotondi, M. Rusci, M. Fariselli, L. Benini",
+      "year": 2020,
+      "venue": "IEEE Transactions on Circuits and Systems II: Express Briefs 67(5):871-875",
+      "doi": "10.1109/tcsii.2020.2983648",
+      "url": "https://doi.org/10.1109/tcsii.2020.2983648",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/tcsii.2020.2983648 (title, four authors led by Alessandro Capotondi, journal IEEE TCAS-II, volume 67, issue 5, pages 871-875, published 2020-05)"
+      ],
+      "aliases": [
+        "capotondi-2020-cmixnn",
+        "capotondi2020cmix"
+      ],
+      "notes": "Cited by the thesis for its CMix-NN library supporting mixed low-precision CNN inference on memory-constrained edge devices, directly relevant to the thesis's mixed-precision deployment contribution.",
+      "purpose": "external"
+    },
+    {
+      "id": "garofalo-2020-xpulpnn",
+      "title": "XpulpNN: Accelerating Quantized Neural Networks on RISC-V Processors Through ISA Extensions",
+      "authors": "A. Garofalo, G. Tagliavini, F. Conti, D. Rossi, L. Benini",
+      "year": 2020,
+      "venue": "2020 Design, Automation & Test in Europe Conference & Exhibition (DATE), pp. 186-191",
+      "doi": "10.23919/date48585.2020.9116529",
+      "url": "https://doi.org/10.23919/date48585.2020.9116529",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.23919/date48585.2020.9116529 (title, five authors led by Angelo Garofalo, conference 2020 DATE, pages 186-191, published 2020-03)"
+      ],
+      "aliases": [
+        "garofalo-2020-xpulpnn",
+        "xpulpnn20"
+      ],
+      "notes": "Cited by the thesis for its RISC-V instruction-set extensions accelerating quantized neural network inference, evidence for the hardware side of mixed-precision deployment.",
+      "purpose": "external"
+    },
+    {
+      "id": "millar-2025-munpus",
+      "title": "Benchmarking Ultra-Low-Power $\\mu$NPUs",
+      "authors": "J. Millar, Y. Huang, S. Sethi, H. Haddadi, A. Madhavapeddy",
+      "year": 2025,
+      "venue": "arXiv:2503.22567",
+      "doi": "10.48550/arXiv.2503.22567",
+      "url": "https://arxiv.org/abs/2503.22567",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv API record for 2503.22567 (title rendered with LaTeX as $\\mu$NPUs, authors Millar, Huang, Sethi, Haddadi and Madhavapeddy, published 2025-03-28, current version v3)",
+        "arXiv abstract: presents a comparative evaluation of microcontroller-scale neural processing units (mu NPUs) built for ultra-low-power on-device inference"
+      ],
+      "aliases": [
+        "millar-2025-munpus",
+        "millar2025benchmarking"
+      ],
+      "notes": "Cited by the thesis for its comparative benchmarking of ultra-low-power microcontroller-scale neural processing units.",
+      "purpose": "external"
+    },
+    {
+      "id": "balbi-2025-max78000",
+      "title": "Embedded Artificial Intelligence for IoT Applications Using the MAX78000",
+      "authors": "M. Balbi, L. Doherty, T. Watteyne",
+      "year": 2025,
+      "venue": "IEEE Access 13:38979-39005",
+      "doi": "10.1109/access.2025.3546557",
+      "url": "https://doi.org/10.1109/access.2025.3546557",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/access.2025.3546557 (title omits the thesis bibliography row's colon and 'a Tutorial' wording; authors Balbi, Doherty and Watteyne, journal IEEE Access, volume 13, pages 38979-39005, published 2025)"
+      ],
+      "aliases": [
+        "balbi-2025-max78000",
+        "balbi2025embedded"
+      ],
+      "notes": "Cited by the thesis as a tutorial reference for deploying embedded AI applications on the MAX78000 edge AI accelerator.",
+      "purpose": "external"
+    },
+    {
+      "id": "rajendran-2019-neuromorphichw",
+      "title": "Low-Power Neuromorphic Hardware for Signal Processing Applications: A Review of Architectural and System-Level Design Approaches",
+      "authors": "B. Rajendran, A. Sebastian, M. Schmuker, N. Srinivasa, E. Eleftheriou",
+      "year": 2019,
+      "venue": "IEEE Signal Processing Magazine 36(6):97-110",
+      "doi": "10.1109/msp.2019.2933719",
+      "url": "https://doi.org/10.1109/msp.2019.2933719",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/msp.2019.2933719 (title, five authors led by Bipin Rajendran, journal IEEE Signal Processing Magazine, volume 36, issue 6, pages 97-110, published 2019-11)"
+      ],
+      "aliases": [
+        "rajendran-2019-neuromorphichw",
+        "rajendran2019low"
+      ],
+      "notes": "Cited by the thesis for its architectural and system-level review of low-power neuromorphic hardware for signal processing.",
+      "purpose": "external"
+    },
+    {
+      "id": "ray-2025-platformsreview",
+      "title": "A Review on Large-Scale Hardware and Software Platforms for Neuromorphic Computing",
+      "authors": "P. P. Ray",
+      "year": 2025,
+      "venue": "TechRxiv preprint (Authorea-hosted preprint server), posted 2025-11-27",
+      "doi": "10.36227/techrxiv.176422348.88271815/v1",
+      "url": "https://doi.org/10.36227/techrxiv.176422348.88271815/v1",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.36227/techrxiv.176422348.88271815/v1 (title, sole author Partha Pratim Ray, posted-content type, publisher IEEE via the TechRxiv/Authorea preprint platform the thesis bibliography row labels 'Authorea Preprints', posted 2025-11-27)",
+        "Crossref abstract: a comprehensive review of the neuromorphic hardware landscape (BrainScaleS-2, Loihi-2, SpiNNaker-2, Akida, Innatera T1, Xylo, NorthPole) and the associated software ecosystem of simulators, differentiable SNN frameworks, and cross-platform representations such as NIR",
+        "A peer-reviewed version of the same title later appeared in Expert Systems, vol. 43, no. 9, DOI 10.1111/exsy.70385, published 2026-07-30; the thesis bibliography row cites the Authorea/TechRxiv preprint specifically, so that is the version registered here"
+      ],
+      "aliases": [
+        "ray-2025-platformsreview",
+        "ray2025review"
+      ],
+      "notes": "Cited by the thesis for its review of large-scale hardware and software platforms for neuromorphic computing, situating the thesis's SNN deployment work within the broader platform landscape.",
+      "purpose": "external"
+    },
+    {
+      "id": "brainchip-2026-akidaproducts",
+      "title": "BrainChip Products – AI Processor, Tools & Models Store",
+      "authors": "BrainChip",
+      "year": 2026,
+      "venue": "BrainChip corporate website",
+      "doi": null,
+      "url": "https://brainchip.com/akida-neural-processor-soc/",
+      "source_type": "vendor_documentation",
+      "retrieval_status": "full_text",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://brainchip.com/akida-neural-processor-soc/ returns an HTTP 301 redirect to https://brainchip.com/product/, BrainChip's current general product hub, rather than a standalone Akida SoC page; the read page's title tag is 'BrainChip Products – AI Processor, Tools & Models Store' and its JSON-LD dateModified is 2026-07-07",
+        "Page text read in full: 'Using a brain-inspired architecture that minimizes computation and data movement through event-based processing, Akida delivers a complete edge AI ecosystem, including IP cores, development tools, neural models, chips, and reference platforms.'"
+      ],
+      "aliases": [
+        "brainchip-2026-akidaproducts",
+        "Ref_BrainChip_Akida"
+      ],
+      "notes": "Cited by the thesis as the vendor reference for BrainChip's Akida neuromorphic processor, an example commercial target for block-wise SNN deployment; the specific 'Akida Neural Processor SoC' page named in the bibliography now redirects to BrainChip's general product catalog, so verification is provisional.",
+      "purpose": "external"
+    },
+    {
+      "id": "synsense-dynapcnn",
+      "title": "DYNAP-CNN: The world's first fully scalable, event-driven neuromorphic processor with up to 1M configurable spiking neurons and direct interface with external DVS",
+      "authors": "SynSense",
+      "year": null,
+      "venue": "SynSense corporate website",
+      "doi": null,
+      "url": "https://www.synsense.ai/products/dynap-cnn/",
+      "source_type": "vendor_documentation",
+      "retrieval_status": "not_retrieved",
+      "verification_status": "provisional",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://www.synsense.ai/products/dynap-cnn/ returned HTTP 404 (page title 'Page not found – SynSense'); the current SynSense products listing (synsense.ai, root page) no longer lists a DYNAP-CNN product page and instead lists 'Speck' (speck/ and speck-2/) as the successor event-driven vision processor line"
+      ],
+      "aliases": [
+        "synsense-dynapcnn",
+        "Ref_SynSense_DYNAP"
+      ],
+      "notes": "Cited by the thesis as the vendor reference for SynSense's DYNAP-CNN event-driven neuromorphic processor; the cited page no longer resolves on the vendor's current site, so title, year, and specification claims are carried over from the thesis bibliography row unverified.",
+      "purpose": "external"
+    },
+    {
+      "id": "ssnn-2024-shrinking",
+      "title": "Shrinking Your TimeStep: Towards Low-Latency Neuromorphic Object Recognition with Spiking Neural Networks",
+      "authors": "Y. Ding, L. Zuo, M. Jing, P. He, Y. Xiao",
+      "year": 2024,
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence 38(10):11811-11819",
+      "doi": "10.1609/aaai.v38i10.29066",
+      "url": "https://doi.org/10.1609/aaai.v38i10.29066",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1609/aaai.v38i10.29066 (title, authors Yongqi Ding, Lin Zuo, Mengmeng Jing, Pei He, Yongjun Xiao, container Proceedings of the AAAI Conference on Artificial Intelligence, volume 38, issue 10, pages 11811-11819, issued 2024-03-24)",
+        "arXiv record for 2401.01912 (same title and an abstract describing a stage-wise decreasing timestep schedule, dividing the SNN into stages of progressively shrinking timesteps with a temporal transformer smoothing the scale change between stages)",
+        "This DOI is already registered in data/source-registry.json under id ssnn, a thin record titled SSNN with authors Ding et al.; build-source-registry.py clusters records that share a DOI, so this record is expected to merge with ssnn into one canonical record carrying both ids as aliases"
+      ],
+      "aliases": [
+        "ssnn-2024-shrinking",
+        "ssnn2024shrinking"
+      ],
+      "notes": "Holds the stage-wise decreasing timestep schedule with a learned temporal transformer between stages, a direct-training precedent for mixed timesteps.",
+      "purpose": "external"
+    },
+    {
+      "id": "yao-2026-adaptivebit",
+      "title": "Towards efficient and accurate spiking neural networks via adaptive bit allocation",
+      "authors": "X. Yao, Q. Hu, F. Zhou, T. Liu, G. Li, P. Wang, J. Cheng",
+      "year": 2026,
+      "venue": "Neural Networks 196, article 108350",
+      "doi": "10.1016/j.neunet.2025.108350",
+      "url": "https://doi.org/10.1016/j.neunet.2025.108350",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1016/j.neunet.2025.108350 (title, authors Xingting Yao, Qinghao Hu, Fei Zhou, Tielong Liu, Gang Li, Peisong Wang, Jian Cheng, container Neural Networks, volume 196, article 108350, issued 2026-04)",
+        "arXiv record for 2506.23717 (same title and authors, first submitted 2025-06-30 through current version v4; the journal issue date of 2026 postdates the 2025 preprint date the thesis bibliography row used)",
+        "Semantic Scholar record, abstract: proposes an adaptive bit allocation strategy that parametrizes and learns per-layer temporal length and weight and spike bit widths through gradients for direct-trained spiking neural networks"
+      ],
+      "aliases": [
+        "yao-2026-adaptivebit",
+        "yao2025adaptivebit"
+      ],
+      "notes": "Holds an adaptive bit allocation method that jointly learns per-layer bit width and timestep length for direct-trained spiking neural networks, a mixed-precision comparison point for the thesis's own resolution search.",
+      "purpose": "external"
+    },
+    {
+      "id": "nallathambi-2022-layerdisagg",
+      "title": "Layerwise Disaggregated Evaluation of Spiking Neural Networks",
+      "authors": "A. Nallathambi, S. Sen, A. Raghunathan, N. Chandrachoodan",
+      "year": 2022,
+      "venue": "Proceedings of the ACM/IEEE International Symposium on Low Power Electronics and Design, pp. 1-6",
+      "doi": "10.1145/3531437.3539708",
+      "url": "https://doi.org/10.1145/3531437.3539708",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1145/3531437.3539708 (title Layerwise Disaggregated Evaluation of Spiking Neural Networks, authors Abinand Nallathambi, Sanchari Sen, Anand Raghunathan, Nitin Chandrachoodan, container Proceedings of the ACM/IEEE International Symposium on Low Power Electronics and Design, pages 1-6, issued 2022-08)",
+        "Semantic Scholar record, abstract: proposes LD-SNN, which independently optimizes the number of timesteps for each layer of a spiking neural network, reporting 1.67 to 3.84 times fewer synaptic updates and 1.25 to 3.45 times faster inference across four hardware platforms"
+      ],
+      "aliases": [
+        "nallathambi-2022-layerdisagg",
+        "ldsnn2022"
+      ],
+      "notes": "Holds LD-SNN, which independently optimizes the timestep count per layer of a spiking neural network, a per-layer timestep allocation precedent for the thesis's mixed-timestep deployment strategy.",
+      "purpose": "external"
+    },
+    {
+      "id": "xu-2026-spikemllm",
+      "title": "SpikeMLLM: Spike-based Multimodal Large Language Models via Modality-Specific Temporal Scales and Temporal Compression",
+      "authors": "H. Xu, Z. Qin, D. Shang, J. Zhang, X. Qiu, B. Lei, T. Huang, B. Xu, G. Li",
+      "year": 2026,
+      "venue": "arXiv:2604.18610",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2604.18610",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv record for 2604.18610 (title SpikeMLLM: Spike-based Multimodal Large Language Models via Modality-Specific Temporal Scales and Temporal Compression, authors Han Xu, Zhiyong Qin, Di Shang, Jiahong Zhang, Xuerui Qiu, Bo Lei, Tiejun Huang, Bo Xu, Guoqi Li, published 2026-04-13)",
+        "arXiv abstract: compresses per-modality timesteps from T=L-1 to T=log2(L)-1 using Modality-Specific Temporal Scales guided by Modality Evolution Discrepancy and a Temporally Compressed LIF neuron, reporting near-lossless accuracy at a three-quarter timestep reduction"
+      ],
+      "aliases": [
+        "xu-2026-spikemllm",
+        "xu2026spikemllm"
+      ],
+      "notes": "Holds SpikeMLLM, which compresses per-modality timesteps logarithmically via a temporally compressed LIF neuron, a mixed-timestep precedent for multimodal spiking large language models.",
+      "purpose": "external"
+    },
+    {
+      "id": "xu-2025-nsllm",
+      "title": "Neuromorphic spike-based large language model",
+      "authors": "H. Xu, X. Qiu, Y. Xu, M. E. Elbtity, P. Zhou, Y. Tian, R.-J. Zhu, J. Zhang, S. Gu, Y. Pan, Y. Chou, Q. Wen, M. Yao, J. Qian, Y. Tian, L. Ma, T. Huang, J. K. Eshraghian, B. Xu, G. Li",
+      "year": 2025,
+      "venue": "National Science Review 13(4), article nwaf551",
+      "doi": "10.1093/nsr/nwaf551",
+      "url": "https://doi.org/10.1093/nsr/nwaf551",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1093/nsr/nwaf551 (title Neuromorphic spike-based large language model, 20 authors led by Han Xu, container National Science Review, volume 13, issue 4, article nwaf551, issued online 2025-12-04; the print issue is dated 2026-02-05, later than the year the thesis bibliography row used)",
+        "Semantic Scholar record, abstract: proposes a unified neuromorphic spike-based large language model framework converting LLM behaviors into neural dynamics to reduce energy consumption and improve interpretability"
+      ],
+      "aliases": [
+        "xu-2025-nsllm",
+        "xu2026nsllm"
+      ],
+      "notes": "Holds NSLLM, a spike-based large language model framework, cited by the thesis as a large-scale precedent for spike-driven language model deployment.",
+      "purpose": "external"
+    },
+    {
+      "id": "kim-2024-metamix",
+      "title": "MetaMix: Meta-State Precision Searcher for Mixed-Precision Activation Quantization",
+      "authors": "H.-B. Kim, J. H. Lee, S. Yoo, H.-S. Kim",
+      "year": 2024,
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence 38(12):13132-13141",
+      "doi": "10.1609/aaai.v38i12.29212",
+      "url": "https://doi.org/10.1609/aaai.v38i12.29212",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1609/aaai.v38i12.29212 (title MetaMix: Meta-State Precision Searcher for Mixed-Precision Activation Quantization, authors Han-Byul Kim, Joo Hyung Lee, Sungjoo Yoo, Hong-Seok Kim, container Proceedings of the AAAI Conference on Artificial Intelligence, volume 38, issue 12, pages 13132-13141, issued 2024-03-24)",
+        "Semantic Scholar record, abstract: proposes a bit-selection and weight-training method that searches mixed-precision activation bit widths while addressing the activation instability encountered during bit-width exploration"
+      ],
+      "aliases": [
+        "kim-2024-metamix",
+        "kim2024metamix"
+      ],
+      "notes": "Holds MetaMix, a mixed-precision activation bit-width search method, a comparison point for the thesis's own discrete search over global quantization resolution.",
+      "purpose": "external"
+    },
+    {
+      "id": "akbulut-2026-infoq",
+      "title": "InfoQ: Mixed-Precision Quantization via Global Information Flow",
+      "authors": "M. E. Akbulut, H. H. Y. Shalby, F. Pittorino, M. Roveri",
+      "year": 2026,
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence 40(24):19598-19606",
+      "doi": "10.1609/aaai.v40i24.39039",
+      "url": "https://doi.org/10.1609/aaai.v40i24.39039",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1609/aaai.v40i24.39039 (title InfoQ: Mixed-Precision Quantization via Global Information Flow, authors Mehmet Emre Akbulut, Hazem Hesham Yousef Shalby, Fabrizio Pittorino, Manuel Roveri, container Proceedings of the AAAI Conference on Artificial Intelligence, volume 40, issue 24, pages 19598-19606, issued 2026-03-14)",
+        "Semantic Scholar record, abstract: assigns per-layer mixed-precision bit widths from a global information-flow criterion rather than an expensive combinatorial search"
+      ],
+      "aliases": [
+        "akbulut-2026-infoq",
+        "akbulut2026infoq"
+      ],
+      "notes": "Holds InfoQ, a global-information-flow criterion for per-layer mixed-precision bit-width assignment, a comparison point for the thesis's mixed-precision resolution search.",
+      "purpose": "external"
+    },
+    {
+      "id": "dong-2019-hawq",
+      "title": "HAWQ: Hessian AWare Quantization of Neural Networks With Mixed-Precision",
+      "authors": "Z. Dong, Z. Yao, A. Gholami, M. Mahoney, K. Keutzer",
+      "year": 2019,
+      "venue": "2019 IEEE/CVF International Conference on Computer Vision (ICCV), pp. 293-302",
+      "doi": "10.1109/ICCV.2019.00038",
+      "url": "https://doi.org/10.1109/ICCV.2019.00038",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1109/ICCV.2019.00038 (title HAWQ: Hessian AWare Quantization of Neural Networks With Mixed-Precision, authors Zhen Dong, Zhewei Yao, Amir Gholami, Michael Mahoney, Kurt Keutzer, container 2019 IEEE/CVF International Conference on Computer Vision (ICCV), pages 293-302, issued 2019-10)",
+        "Semantic Scholar record, abstract: uses the Hessian spectrum of each layer to automatically assign per-layer bit precision for mixed-precision quantization"
+      ],
+      "aliases": [
+        "dong-2019-hawq",
+        "dong2019hawq"
+      ],
+      "notes": "Holds HAWQ, a Hessian-based per-layer mixed-precision quantization method, an established baseline the thesis situates its own mixed-precision resolution search against.",
+      "purpose": "external"
+    },
+    {
+      "id": "liu-2025-errorcompensation",
+      "title": "Efficient ANN-SNN Conversion with Error Compensation Learning",
+      "authors": "C. Liu, J. Shen, X. Ran, M. Xu, Q. Xu, Y. Xu, G. Pan",
+      "year": 2025,
+      "venue": "Proceedings of the 42nd International Conference on Machine Learning, PMLR 267:39482-39495",
+      "doi": null,
+      "url": "https://proceedings.mlr.press/v267/liu25bl.html",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "PMLR proceedings page for v267/liu25bl (title Efficient ANN-SNN Conversion with Error Compensation Learning, authors Chang Liu, Jiangrong Shen, Xuming Ran, Mingkun Xu, Qi Xu, Yi Xu, Gang Pan, Proceedings of the 42nd International Conference on Machine Learning, volume 267, pages 39482-39495, dated 2025-10-06)",
+        "PMLR page abstract: introduces a learnable threshold clipping function, dual-threshold neurons, and an optimized membrane potential initialization to compensate ANN-to-SNN conversion error, reaching 94.75 percent CIFAR-10 accuracy with ResNet-18 at two timesteps"
+      ],
+      "aliases": [
+        "liu-2025-errorcompensation",
+        "liu2025errorcompensation"
+      ],
+      "notes": "Holds an ANN-to-SNN conversion method using dual-threshold neurons and membrane potential initialization to compensate conversion error at very low timestep counts, a direct comparison point for the thesis's own low-latency conversion approach.",
+      "purpose": "external"
+    },
+    {
+      "id": "chen-2026-rmpalignment",
+      "title": "Reducing ANN-SNN Conversion Error via Residual Membrane Potential Alignment",
+      "authors": "Z. Chen, Z. Huang, T. Bu, J. Ding, Y. Dong, Z. Yu",
+      "year": 2026,
+      "venue": "arXiv:2608.13952",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2608.13952",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv record for 2608.13952 (title Reducing ANN-SNN Conversion Error via Residual Membrane Potential Alignment, authors Zirui Chen, Zihan Huang, Tong Bu, Jianhao Ding, Yiting Dong, Zhaofei Yu, published 2026-08-14)",
+        "arXiv abstract: proposes a regularization loss adapting the initial membrane potential of IF neurons plus a grouped-convolution refinement layer, integrated with the QCFS baseline, to improve low-timestep ANN-SNN conversion accuracy at T=2,4,8"
+      ],
+      "aliases": [
+        "chen-2026-rmpalignment",
+        "chen2026rmpalignment"
+      ],
+      "notes": "Holds a residual membrane potential alignment method built on the QCFS baseline, a direct comparison point for the thesis's own QCFS-based conversion contributions at low timesteps.",
+      "purpose": "external"
+    },
+    {
+      "id": "timcheck-2026-loihi2runtime",
+      "title": "A Compute and Communication Runtime Model for Loihi 2",
+      "authors": "J. Timcheck, A. Pierro, S. B. Shrestha",
+      "year": 2026,
+      "venue": "arXiv:2601.10035",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2601.10035",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv record for 2601.10035 (title A Compute and Communication Runtime Model for Loihi 2, authors Jonathan Timcheck, Alessandro Pierro, Sumit Bam Shrestha, published 2026-01-15, revised version v2)",
+        "arXiv abstract: introduces a multi-dimensional roofline runtime model for Intel's Loihi 2 chip accounting for both compute and communication time from microbenchmarks, correlating with measured runtime at a Pearson coefficient of at least 0.97"
+      ],
+      "aliases": [
+        "timcheck-2026-loihi2runtime",
+        "timcheck2026loihi2runtime"
+      ],
+      "notes": "Holds a compute-and-communication roofline runtime model for Loihi 2, a hardware performance-modeling precedent for estimating block-wise SNN deployment latency.",
+      "purpose": "external"
+    },
+    {
+      "id": "you-2026-elsa",
+      "title": "ELSA: An ELastic SNN Inference Architecture for Efficient Neuromorphic Computing",
+      "authors": "K. You, C. Nie, L. J. Yan, Z. Wei, C. Zou, Z. Xu, Y. Feng, H. Jiang, Z. He",
+      "year": 2026,
+      "venue": "arXiv:2605.20802",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2605.20802",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv record for 2605.20802 (title ELSA: An ELastic SNN Inference Architecture for Efficient Neuromorphic Computing, authors Kang You, Chen Nie, Lee Jun Yan, Ziling Wei, Cheng Zou, Zekai Xu, Yu Feng, Honglan Jiang, Zhezhi He, published 2026-05-20)",
+        "arXiv abstract: proposes a spine and token-wise pipelined SNN accelerator dataflow contrasted with layer-by-layer and timestep-by-timestep execution schedules, reporting 3.4 times speedup and 13.6 times energy efficiency over a quantized-ANN accelerator on 4-bit ResNet-50"
+      ],
+      "aliases": [
+        "you-2026-elsa",
+        "you2026elsa"
+      ],
+      "notes": "Holds ELSA, which contrasts layer-by-layer and timestep-by-timestep SNN execution schedules against a fine-grained pipelined alternative, a direct comparison point for the thesis's block-wise SNN execution model.",
+      "purpose": "external"
+    },
+    {
+      "id": "koopman-2024-asyncsync",
+      "title": "Exploring the Limitations of Layer Synchronization in Spiking Neural Networks",
+      "authors": "R. Koopman, A. Yousefzadeh, M. Shahsavari, G. Tang, M. Sifalakis",
+      "year": 2024,
+      "venue": "arXiv:2408.05098",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2408.05098",
+      "source_type": "preprint",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "arXiv record for 2408.05098 (title Exploring the Limitations of Layer Synchronization in Spiking Neural Networks, authors Roel Koopman, Amirreza Yousefzadeh, Mahyar Shahsavari, Guangzhi Tang, Manolis Sifalakis, published 2024-08-09, revised version v2)",
+        "arXiv abstract: shows models trained with layer synchronization either perform poorly without it or fail to gain latency and energy benefits when synchronization is removed, and proposes training that accounts for an asynchronous execution schedule"
+      ],
+      "aliases": [
+        "koopman-2024-asyncsync",
+        "koopman2024asynchronous"
+      ],
+      "notes": "Holds evidence that layer-synchronization barriers in SNN execution limit the latency and energy gains of asynchronous inference, a direct motivation for the thesis's block-wise execution model that manages synchronization boundaries explicitly.",
+      "purpose": "external"
+    },
+    {
+      "id": "steennis-2025-bitdepth",
+      "title": "Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion",
+      "authors": "C. Steennis",
+      "year": 2025,
+      "venue": "MSc thesis, Master Computer Science, LIACS, Leiden University",
+      "doi": null,
+      "url": "https://theses.liacs.nl/3527",
+      "source_type": "secondary_material",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://theses.liacs.nl/3527 (LIACS Thesis Repository page read in full): title Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion, student Steennis, C. (Christian), Master Computer Science programme, academic year 2024-2025, supervisors Broekens, dr.ir. D.J. (Joost) and Chen, dr. Q. (Qinyu), thesis PDF linked at /pdf/2024-2025-SteennisCChristian.pdf",
+        "Page's own citation line, read in full: Steennis, C. (Christian), Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion, Thesis Master Computer Science, LIACS, Leiden University, 2025"
+      ],
+      "aliases": [
+        "steennis-2025-bitdepth",
+        "steennis2025bitdepth"
+      ],
+      "notes": "Holds an empirical analysis of the tradeoff between bit depth and timestep count in ANN-to-SNN conversion, a direct precedent for the thesis's own mixed bit-depth and timestep resolution search.",
+      "purpose": "external"
+    },
+    {
+      "id": "spikingjelly-2026-changelog",
+      "title": "SpikingJelly Changelog, 2.0.0.dev1 (2026-08-14)",
+      "authors": "SpikingJelly maintainers",
+      "year": 2026,
+      "venue": "GitHub repository, fangwei123456/spikingjelly, CHANGELOG.md",
+      "doi": null,
+      "url": "https://github.com/fangwei123456/spikingjelly/blob/master/CHANGELOG.md",
+      "source_type": "official_sdk_documentation",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://raw.githubusercontent.com/fangwei123456/spikingjelly/master/CHANGELOG.md (raw file read in full): section titled 2.0.0.dev1 - 2026-08-14, under Integer-Valued Spike Conversion, module spikingjelly.activation_based.layer, states 'Added SpikeCountToBinary and TemporalBinSum for multi-step I-LIF networks, enabling integer-valued training and binary-event evaluation around bias-free weight layers.'"
+      ],
+      "aliases": [
+        "spikingjelly-2026-changelog",
+        "spikingjelly2changelog"
+      ],
+      "notes": "Holds the SpikingJelly 2.0.0.dev1 changelog entry adding the SpikeCountToBinary and TemporalBinSum layers for multi-step integer-valued spiking network training, the SDK-level primitive the thesis's block-wise deployment code builds on.",
+      "purpose": "external"
+    },
+    {
+      "id": "you-2024-spikezip",
+      "title": "SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN",
+      "authors": "K. You, Z. Xu, C. Nie, Z. Deng, Q. Guo, X. Wang, Z. He",
+      "year": 2024,
+      "venue": "Proceedings of the 41st International Conference on Machine Learning, PMLR 235:57367-57383",
+      "doi": null,
+      "url": "https://proceedings.mlr.press/v235/you24b.html",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "PMLR proceedings page for v235/you24b (title SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN, authors Kang You, Zekai Xu, Chen Nie, Zhijie Deng, Qinghai Guo, Xiang Wang, Zhezhi He, Proceedings of the 41st International Conference on Machine Learning, volume 235, pages 57367-57383, dated 2024-07-08)",
+        "PMLR page abstract: introduces SpikeZIP-TF, an ANN-to-SNN conversion method making ANN and SNN exactly equivalent for Transformer-based networks, reaching 83.82 percent accuracy on ImageNet and 93.79 percent on SST-2"
+      ],
+      "aliases": [
+        "you-2024-spikezip",
+        "you2024spikezip"
+      ],
+      "notes": "Holds SpikeZIP-TF, an exact ANN-to-SNN equivalence conversion method for Transformer-based spiking networks, cited by the thesis as a precedent for exact-equivalence conversion outside the CNN setting.",
+      "purpose": "external"
+    },
+    {
+      "id": "li-2022-quantframework",
+      "title": "Quantization Framework for Fast Spiking Neural Networks",
+      "authors": "C. Li, L. Ma, S. Furber",
+      "year": 2022,
+      "venue": "Frontiers in Neuroscience 16, article 918793",
+      "doi": "10.3389/fnins.2022.918793",
+      "url": "https://doi.org/10.3389/fnins.2022.918793",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.3389/fnins.2022.918793 (title Quantization Framework for Fast Spiking Neural Networks, authors Chen Li, Lei Ma, Steve Furber, journal Frontiers in Neuroscience, volume 16, article 918793, published 2022-07-19)",
+        "Semantic Scholar record, abstract: establishes a direct link between the activation bit precision of an ANN and the timestep count its converted SNN needs to represent the same precision, proposing a quantization framework that reaches 70.18 percent top-1 accuracy on ImageNet within 8 timesteps"
+      ],
+      "aliases": [
+        "li-2022-quantframework",
+        "li2022quantizationframework"
+      ],
+      "notes": "Holds QFFS, which establishes a direct link between ANN activation bit precision and the SNN timestep count needed to represent it, a foundational precedent for the thesis's bit-depth-to-timestep resolution search.",
+      "purpose": "external"
+    },
+    {
+      "id": "datta-2022-ultralow",
+      "title": "Can Deep Neural Networks be Converted to Ultra Low-Latency Spiking Neural Networks?",
+      "authors": "G. Datta, P. A. Beerel",
+      "year": 2022,
+      "venue": "2022 Design, Automation & Test in Europe Conference & Exhibition (DATE), pp. 718-723",
+      "doi": "10.23919/DATE54114.2022.9774704",
+      "url": "https://doi.org/10.23919/DATE54114.2022.9774704",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.23919/DATE54114.2022.9774704 (title Can Deep Neural Networks be Converted to Ultra Low-Latency Spiking Neural Networks?, authors Gourav Datta, Peter A. Beerel, container 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE), pages 718-723, issued 2022-03-14)",
+        "Semantic Scholar record, abstract: proposes a training algorithm correcting the mismatched pre-activation distribution assumption of prior ANN-SNN conversion, achieving 64.19 percent top-1 accuracy on CIFAR-100 with only 2 timesteps and about 159 times lower compute energy than an iso-architecture ANN"
+      ],
+      "aliases": [
+        "datta-2022-ultralow",
+        "datta2022ultralow"
+      ],
+      "notes": "Holds a training method correcting the pre-activation distribution mismatch in ANN-to-SNN conversion to reach ultra-low latency at 2 timesteps, cited by the thesis among low-timestep conversion baselines it compares against.",
+      "purpose": "external"
+    },
+    {
+      "id": "pseudosnn-2026-heterolatency",
+      "title": "Pseudo-Spiking Neurons: A Noise-Based Training Framework for Heterogeneous-Latency Spiking Neural Networks",
+      "authors": "Y. Zhang, Y. Sun, H. Li, Y. Deng, W. Yao",
+      "year": 2026,
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence 40(34):28555-28563",
+      "doi": "10.1609/aaai.v40i34.40086",
+      "url": "https://doi.org/10.1609/aaai.v40i34.40086",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "Crossref record for 10.1609/aaai.v40i34.40086 (title, authors Yuxuan Zhang, Yuhang Sun, Hongjue Li, Yue Deng, Wen Yao, Proceedings of the AAAI Conference on Artificial Intelligence, volume 40, issue 34, pages 28555-28563, issued 2026-03-14)",
+        "AAAI open-access PDF (ojs.aaai.org article 40086, download 44047), read in full on 2026-09-18",
+        "Page 28555, Figure 1 caption: a uniform-latency SNN uses a fixed global timestep T for all layers; a hetero-latency SNN employs learnable, layer-specific timesteps T_l",
+        "Page 28555, Introduction: existing training treats T as a manually selected global hyperparameter; conversion methods often require a large fixed T to minimize approximation error from the source ANN; BPTT training cost scales with O(LT)",
+        "Page 28556, Related Work, Latency Optimization for SNNs: prior work designs a static heterogeneous latency with progressively shorter stage timesteps (Ding et al. 2024), a dynamic sample-wise latency, or trains on multiple timestep configurations for robustness; PseudoSNN learns a static heterogeneous latency configuration with no additional inference module",
+        "Page 28558, paragraph 'Rate-Coding as a Quantization Process' and Eq. (7): the time-averaged output of a soft-reset IF neuron is discrete in {0, 1/T, 2/T, ..., 1}, so the input-output relationship is a uniform quantization function with three cases (0 for non-positive input, round(input times T)/T for input in (0, 1), 1 for input at or above 1); the discrepancy from an ideal continuous activation such as ReLU gives two error sources, quantization error (the middle case) and clipping error (the final case); the quantization error is then approximated as additive noise (pseudo-quantization noise)",
+        "Page 28557, Figure 2 caption (c): the PseudoSN is inspired by the decomposition of rate-coded spike activations into a base ReLU function plus quantization and clipping error terms; (d) a hardware-aware objective penalizes energy and latency to guide the learnable timesteps",
+        "Page 28558, paragraph 'Temporal Reshaping for Heterogeneous Latency' and Eq. (13): at inference layer l runs over T_l steps; when T_l differs from T_{l-1} the layer's input is the temporal average of the previous layer's output broadcast across T_l steps"
+      ],
+      "aliases": [
+        "pseudosnn-2026-heterolatency",
+        "zhang2026pseudosnn"
+      ],
+      "notes": "Holds the rate-coding-as-uniform-quantization framing that opens the survey's error-source section, the uniform-latency versus hetero-latency contrast, and a direct-training route to a learned per-layer horizon joined by an average-and-broadcast boundary; the paper reports no neuromorphic execution.",
+      "purpose": "external"
     }
   ]
 }
