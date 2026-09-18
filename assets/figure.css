@@ -217,3 +217,27 @@
   .nstk-legend { padding-left: 0.9rem; }
   .nstk-rail-cell { font-size: 0.56rem; }
 }
+
+/* rows are siblings; a label never reads as a heading over the next row */
+.nstk-rowlabel { font-variant: all-small-caps; letter-spacing: .02em; font-weight: 600; color: #4a5560; }
+.nstk-subject { margin: .4rem 0 .6rem; padding: .5rem .7rem; border-left: 3px solid var(--pc, #8a94a0); background: #f6f7f9; font-size: .93rem; }
+.nstk-subject .nstk-read { margin-left: .4rem; }
+.nstk-sources, .nstk-papers { margin: .6rem 0; border: 1px solid #d5dbe2; border-radius: 8px; padding: .3rem .7rem; }
+.nstk-sources summary, .nstk-papers summary { cursor: pointer; font-weight: 700; color: var(--pc, #2b3440); }
+.nstk-sources ul, .nstk-papers ul { margin: .3rem 0 .2rem 1.1rem; padding: 0; }
+.nstk-sources li span { color: #6b7580; font-size: .85em; margin-left: .3rem; }
+.nstk-paper { cursor: pointer; padding: .25rem .3rem; border-radius: 6px; }
+.nstk-paper:hover, .nstk-paper:focus-visible { background: #eef2f6; outline: none; }
+.nstk-paper-on { background: #e9f4f2; }
+.nstk-pmeta { display: block; color: #4a5560; font-size: .88em; }
+.nstk-ptarget { color: #6b7580; font-size: .85em; margin-left: .4rem; }
+.nstk-ppin { float: right; font-size: .8em; color: var(--pc, #237985); }
+.nstk-dead-note { margin: .4rem 0; padding: .5rem .7rem; border: 1px solid #D63A2F; border-radius: 8px; background: #fff5f4; font-size: .93rem; }
+.nstk-tracing .nstk-chip.nstk-dead { border-color: #D63A2F; color: #D63A2F; font-weight: 700; }
+.nstk-pin.nstk-pin-on { background: #D63A2F; color: #fff; }
+
+/* Controls and states the panel markup above names but the earlier rules never styled */
+.nstk-count { margin-left: auto; font-size: .62rem; letter-spacing: .04em; text-transform: uppercase; color: #b9c0cb; }
+.nstk-crumb { cursor: pointer; border-bottom: 1px dotted currentColor; }
+.nstk-pinned { margin: .4rem 0 0; color: #445; }
+.nstk-step-chip.nstk-step-implied { border-style: dashed; color: #6b7580; background: transparent; }
