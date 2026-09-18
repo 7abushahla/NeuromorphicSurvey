@@ -743,7 +743,7 @@
         "perez-carrasco-2013",
         "perez2013mapping"
       ],
-      "notes": "The earliest frame-driven to event-driven mapping of a trained ConvNet cited in Section 8.1's opener; the abstract does not name the source activation or the neuron model, so the survey states only the mapping, the rate code the title names, and the DVS-fed event-driven simulation.",
+      "notes": "Cited in Section 8.1's opener, which follows the author's thesis chapter at the author's direction (2026-09-18): the first ANN-to-SNN conversion framework, mapping ANNs with sigmoid activations to SNNs of LIF neurons by scaling synaptic weights. The full text is closed access (DIGITAL.CSIC handle 10261/92905, no open copy found); the abstract supports the frame-driven to event-driven mapping, the DVS-fed event-driven ConvNet and the event-driven simulator, and the activation, neuron model and weight scaling rest on the author's chapter, not on a page read for this survey.",
       "purpose": "external"
     },
     {
