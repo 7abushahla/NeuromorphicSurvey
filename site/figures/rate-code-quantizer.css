@@ -1,5 +1,5 @@
-#figure-25 { text-align: center; }
-#figure-25 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-25 .f25-hot { cursor: help; }
-#figure-25 .f25-band { transition: opacity 0.15s; }
-#figure-25 .f25-hot:hover .f25-band { opacity: 0.10; }
+#figure-26 { text-align: center; }
+#figure-26 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-26 .f26-hot { cursor: help; }
+#figure-26 .f26-band { transition: opacity 0.15s; }
+#figure-26 .f26-hot:hover .f26-band { opacity: 0.10; }

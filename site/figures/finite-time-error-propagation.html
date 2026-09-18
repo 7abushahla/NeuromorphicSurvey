@@ -1,4 +1,4 @@
-<figure class="pfig l-body" id="figure-26">
+<figure class="pfig l-body" id="figure-27">
 <!-- Conceptual figure; no measured quantity is drawn. Every drawn phrase is read from Section 8.2 of site/sec-08.html or from Table 17 there.
      Entry points, from Table 17 (pipeline stage of entry) and the 8.7 paragraphs that define each term. Clipping at parameter mapping (the chosen scale).
      Discretization at the counting operation (grid spacing 1/T). Residual membrane potential at the reset stage at window cutoff. Unevenness at the reset stage, per unit,
@@ -7,101 +7,101 @@
      Readout inherits what the deepest layer has accumulated, and a count or rate readout adds one more instance of the discretization term (8.2.2 and 8.2.5).
      Band, from 8.6 (no source proves the four terms additive or governed by one growth law across architectures and reset rules), Table 17 (compounds with depth)
      and the 8.8 key point (compounded further by normalization, pooling, residual paths, and depth). -->
-<svg viewBox="0 0 1200 704" role="img" aria-labelledby="f26-title f26-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
-  <title id="f26-title">Where each finite-time conversion error enters a layered network and how the errors accumulate through it</title>
-  <desc id="f26-desc">A row of boxes read left to right, an input box holding the encoder, four layer boxes, each split into an activation half above and a neuron half below, and an output box holding the readout, joined by arrows. Red markers name where each finite-time error term enters. At the input, the encoding marker; under direct encoding every term downstream is deterministic, and under Poisson encoding every term is a random variable. On the activation half of every layer, clipping, which enters at parameter mapping through the chosen scale, and discretization, which enters at the counting operation through the grid spacing one over T. On the neuron half of every layer, residual membrane potential, which enters at the reset stage at window cutoff, and unevenness, its dispersion across the units of one layer. On every arrow between layers, timing, at least one step per layer. At the output, one more instance of discretization for a count or rate readout. A gray band under the row widens from the first layer to the output and is labeled accumulated error, inherited layer by layer, compounds with depth, not proven additive or governed by one growth law across architectures and reset rules, compounded further by normalization, pooling, residual paths, and depth. A key at the bottom repeats each marker with the pipeline stage it enters. Conceptual figure; no measured quantity is drawn.</desc>
-  <defs><marker id="f26-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
+<svg viewBox="0 0 1200 704" role="img" aria-labelledby="f27-title f27-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <title id="f27-title">Where each finite-time conversion error enters a layered network and how the errors accumulate through it</title>
+  <desc id="f27-desc">A row of boxes read left to right, an input box holding the encoder, four layer boxes, each split into an activation half above and a neuron half below, and an output box holding the readout, joined by arrows. Red markers name where each finite-time error term enters. At the input, the encoding marker; under direct encoding every term downstream is deterministic, and under Poisson encoding every term is a random variable. On the activation half of every layer, clipping, which enters at parameter mapping through the chosen scale, and discretization, which enters at the counting operation through the grid spacing one over T. On the neuron half of every layer, residual membrane potential, which enters at the reset stage at window cutoff, and unevenness, its dispersion across the units of one layer. On every arrow between layers, timing, at least one step per layer. At the output, one more instance of discretization for a count or rate readout. A gray band under the row widens from the first layer to the output and is labeled accumulated error, inherited layer by layer, compounds with depth, not proven additive or governed by one growth law across architectures and reset rules, compounded further by normalization, pooling, residual paths, and depth. A key at the bottom repeats each marker with the pipeline stage it enters. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs><marker id="f27-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
   <text x="600" y="34" fill="#2b3440" font-size="22" font-weight="700" text-anchor="middle">Where in the pipeline each finite-time error term enters</text>
   <text x="600" y="58" fill="#4A5560" font-size="15" text-anchor="middle">red markers are entry points; the gray band is what a layer inherits from the layers before it</text>
-  <g id="f26-input" class="f26-box">
+  <g id="f27-input" class="f27-box">
     <rect x="30" y="92" width="130" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M30,124 V98 A6,6 0 0 1 36,92 H154 A6,6 0 0 1 160,98 V124 Z" fill="#e9ecf0"/><line x1="30" y1="124" x2="160" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="95.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">input</text>
     <text x="42" y="152" fill="#2b3440" font-size="17" font-weight="700">encoder</text>
     <text x="42" y="172" fill="#4A5560" font-size="16">direct or</text>
     <text x="42" y="190" fill="#4A5560" font-size="16">Poisson</text>
-    <g id="f26-entry-encoding"><circle cx="47" cy="214" r="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/><text x="58" y="219" fill="#D63A2F" font-size="16">encoding</text></g>
+    <g id="f27-entry-encoding"><circle cx="47" cy="214" r="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/><text x="58" y="219" fill="#D63A2F" font-size="16">encoding</text></g>
     <text x="42" y="240" fill="#4A5560" font-size="16">at the source</text>
   </g>
-  <g id="f26-layer-1" class="f26-box">
+  <g id="f27-layer-1" class="f27-box">
     <rect x="208" y="92" width="160" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M208,124 V98 A6,6 0 0 1 214,92 H362 A6,6 0 0 1 368,98 V124 Z" fill="#e9ecf0"/><line x1="208" y1="124" x2="368" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="288.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">layer 1</text>
     <text x="220" y="152" fill="#2b3440" font-size="17" font-weight="700">activation</text>
     <text x="220" y="172" fill="#4A5560" font-size="16">scale λ<tspan dy="-6" font-size="10">l</tspan><tspan dy="6">, grid 1/T</tspan></text>
-    <g id="f26-entry-clip-1"><circle cx="225" cy="195" r="5" fill="#D63A2F"/><text x="236" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
-    <g id="f26-entry-disc-1"><circle cx="225" cy="217" r="5" fill="#D63A2F"/><text x="236" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-entry-clip-1"><circle cx="225" cy="195" r="5" fill="#D63A2F"/><text x="236" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
+    <g id="f27-entry-disc-1"><circle cx="225" cy="217" r="5" fill="#D63A2F"/><text x="236" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
     <line x1="208" y1="230" x2="368" y2="230" stroke="#b8c0c9" stroke-width="1.2" stroke-dasharray="4 3"/>
     <text x="220" y="258" fill="#2b3440" font-size="17" font-weight="700">neuron</text>
     <text x="220" y="278" fill="#4A5560" font-size="16">reset stage R<tspan dy="-6" font-size="10">l</tspan></text>
-    <g id="f26-entry-reset-1"><circle cx="225" cy="301" r="5" fill="#D63A2F"/><text x="236" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
-    <g id="f26-entry-unevenness-1"><circle cx="225" cy="323" r="5" fill="#D63A2F"/><text x="236" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
+    <g id="f27-entry-reset-1"><circle cx="225" cy="301" r="5" fill="#D63A2F"/><text x="236" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
+    <g id="f27-entry-unevenness-1"><circle cx="225" cy="323" r="5" fill="#D63A2F"/><text x="236" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
   </g>
-  <g id="f26-layer-2" class="f26-box">
+  <g id="f27-layer-2" class="f27-box">
     <rect x="416" y="92" width="160" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M416,124 V98 A6,6 0 0 1 422,92 H570 A6,6 0 0 1 576,98 V124 Z" fill="#e9ecf0"/><line x1="416" y1="124" x2="576" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="496.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">layer 2</text>
     <text x="428" y="152" fill="#2b3440" font-size="17" font-weight="700">activation</text>
     <text x="428" y="172" fill="#4A5560" font-size="16">scale λ<tspan dy="-6" font-size="10">l</tspan><tspan dy="6">, grid 1/T</tspan></text>
-    <g id="f26-entry-clip-2"><circle cx="433" cy="195" r="5" fill="#D63A2F"/><text x="444" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
-    <g id="f26-entry-disc-2"><circle cx="433" cy="217" r="5" fill="#D63A2F"/><text x="444" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-entry-clip-2"><circle cx="433" cy="195" r="5" fill="#D63A2F"/><text x="444" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
+    <g id="f27-entry-disc-2"><circle cx="433" cy="217" r="5" fill="#D63A2F"/><text x="444" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
     <line x1="416" y1="230" x2="576" y2="230" stroke="#b8c0c9" stroke-width="1.2" stroke-dasharray="4 3"/>
     <text x="428" y="258" fill="#2b3440" font-size="17" font-weight="700">neuron</text>
     <text x="428" y="278" fill="#4A5560" font-size="16">reset stage R<tspan dy="-6" font-size="10">l</tspan></text>
-    <g id="f26-entry-reset-2"><circle cx="433" cy="301" r="5" fill="#D63A2F"/><text x="444" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
-    <g id="f26-entry-unevenness-2"><circle cx="433" cy="323" r="5" fill="#D63A2F"/><text x="444" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
+    <g id="f27-entry-reset-2"><circle cx="433" cy="301" r="5" fill="#D63A2F"/><text x="444" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
+    <g id="f27-entry-unevenness-2"><circle cx="433" cy="323" r="5" fill="#D63A2F"/><text x="444" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
   </g>
-  <g id="f26-layer-3" class="f26-box">
+  <g id="f27-layer-3" class="f27-box">
     <rect x="624" y="92" width="160" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M624,124 V98 A6,6 0 0 1 630,92 H778 A6,6 0 0 1 784,98 V124 Z" fill="#e9ecf0"/><line x1="624" y1="124" x2="784" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="704.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">layer 3</text>
     <text x="636" y="152" fill="#2b3440" font-size="17" font-weight="700">activation</text>
     <text x="636" y="172" fill="#4A5560" font-size="16">scale λ<tspan dy="-6" font-size="10">l</tspan><tspan dy="6">, grid 1/T</tspan></text>
-    <g id="f26-entry-clip-3"><circle cx="641" cy="195" r="5" fill="#D63A2F"/><text x="652" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
-    <g id="f26-entry-disc-3"><circle cx="641" cy="217" r="5" fill="#D63A2F"/><text x="652" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-entry-clip-3"><circle cx="641" cy="195" r="5" fill="#D63A2F"/><text x="652" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
+    <g id="f27-entry-disc-3"><circle cx="641" cy="217" r="5" fill="#D63A2F"/><text x="652" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
     <line x1="624" y1="230" x2="784" y2="230" stroke="#b8c0c9" stroke-width="1.2" stroke-dasharray="4 3"/>
     <text x="636" y="258" fill="#2b3440" font-size="17" font-weight="700">neuron</text>
     <text x="636" y="278" fill="#4A5560" font-size="16">reset stage R<tspan dy="-6" font-size="10">l</tspan></text>
-    <g id="f26-entry-reset-3"><circle cx="641" cy="301" r="5" fill="#D63A2F"/><text x="652" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
-    <g id="f26-entry-unevenness-3"><circle cx="641" cy="323" r="5" fill="#D63A2F"/><text x="652" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
+    <g id="f27-entry-reset-3"><circle cx="641" cy="301" r="5" fill="#D63A2F"/><text x="652" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
+    <g id="f27-entry-unevenness-3"><circle cx="641" cy="323" r="5" fill="#D63A2F"/><text x="652" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
   </g>
-  <g id="f26-layer-4" class="f26-box">
+  <g id="f27-layer-4" class="f27-box">
     <rect x="832" y="92" width="160" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M832,124 V98 A6,6 0 0 1 838,92 H986 A6,6 0 0 1 992,98 V124 Z" fill="#e9ecf0"/><line x1="832" y1="124" x2="992" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="912.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">deepest layer</text>
     <text x="844" y="152" fill="#2b3440" font-size="17" font-weight="700">activation</text>
     <text x="844" y="172" fill="#4A5560" font-size="16">scale λ<tspan dy="-6" font-size="10">l</tspan><tspan dy="6">, grid 1/T</tspan></text>
-    <g id="f26-entry-clip-4"><circle cx="849" cy="195" r="5" fill="#D63A2F"/><text x="860" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
-    <g id="f26-entry-disc-4"><circle cx="849" cy="217" r="5" fill="#D63A2F"/><text x="860" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-entry-clip-4"><circle cx="849" cy="195" r="5" fill="#D63A2F"/><text x="860" y="200" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text></g>
+    <g id="f27-entry-disc-4"><circle cx="849" cy="217" r="5" fill="#D63A2F"/><text x="860" y="222" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
     <line x1="832" y1="230" x2="992" y2="230" stroke="#b8c0c9" stroke-width="1.2" stroke-dasharray="4 3"/>
     <text x="844" y="258" fill="#2b3440" font-size="17" font-weight="700">neuron</text>
     <text x="844" y="278" fill="#4A5560" font-size="16">reset stage R<tspan dy="-6" font-size="10">l</tspan></text>
-    <g id="f26-entry-reset-4"><circle cx="849" cy="301" r="5" fill="#D63A2F"/><text x="860" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
-    <g id="f26-entry-unevenness-4"><circle cx="849" cy="323" r="5" fill="#D63A2F"/><text x="860" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
+    <g id="f27-entry-reset-4"><circle cx="849" cy="301" r="5" fill="#D63A2F"/><text x="860" y="306" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text></g>
+    <g id="f27-entry-unevenness-4"><circle cx="849" cy="323" r="5" fill="#D63A2F"/><text x="860" y="328" fill="#D63A2F" font-size="16">unevenness</text></g>
   </g>
-  <g id="f26-output" class="f26-box">
+  <g id="f27-output" class="f27-box">
     <rect x="1040" y="92" width="130" height="244" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/><path d="M1040,124 V98 A6,6 0 0 1 1046,92 H1164 A6,6 0 0 1 1170,98 V124 Z" fill="#e9ecf0"/><line x1="1040" y1="124" x2="1170" y2="124" stroke="#8a94a0" stroke-width="1.2"/><text x="1105.0" y="114" fill="#2b3440" font-size="18" font-weight="700" text-anchor="middle">output</text>
     <text x="1048" y="152" fill="#2b3440" font-size="17" font-weight="700">readout</text>
     <text x="1048" y="172" fill="#4A5560" font-size="16">count, rate, or</text>
     <text x="1048" y="190" fill="#4A5560" font-size="16">membrane state</text>
-    <g id="f26-entry-readout"><circle cx="1053" cy="214" r="5" fill="#D63A2F"/><text x="1064" y="219" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-entry-readout"><circle cx="1053" cy="214" r="5" fill="#D63A2F"/><text x="1064" y="219" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text></g>
     <text x="1048" y="240" fill="#4A5560" font-size="16">count readout</text>
   </g>
-  <path id="f26-hop-0" class="f26-arrow" d="M162,230 L206,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f26-arrow)"/>
-  <path id="f26-hop-1" class="f26-arrow" d="M370,230 L414,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f26-arrow)"/>
-  <path id="f26-hop-2" class="f26-arrow" d="M578,230 L622,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f26-arrow)"/>
-  <path id="f26-hop-3" class="f26-arrow" d="M786,230 L830,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f26-arrow)"/>
-  <path id="f26-hop-4" class="f26-arrow" d="M994,230 L1038,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f26-arrow)"/>
-  <g id="f26-entry-time-1"><line x1="392" y1="221" x2="392" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="392" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
-  <g id="f26-entry-time-2"><line x1="600" y1="221" x2="600" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="600" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
-  <g id="f26-entry-time-3"><line x1="808" y1="221" x2="808" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="808" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
-  <g id="f26-band">
+  <path id="f27-hop-0" class="f27-arrow" d="M162,230 L206,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f27-arrow)"/>
+  <path id="f27-hop-1" class="f27-arrow" d="M370,230 L414,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f27-arrow)"/>
+  <path id="f27-hop-2" class="f27-arrow" d="M578,230 L622,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f27-arrow)"/>
+  <path id="f27-hop-3" class="f27-arrow" d="M786,230 L830,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f27-arrow)"/>
+  <path id="f27-hop-4" class="f27-arrow" d="M994,230 L1038,230" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f27-arrow)"/>
+  <g id="f27-entry-time-1"><line x1="392" y1="221" x2="392" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="392" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
+  <g id="f27-entry-time-2"><line x1="600" y1="221" x2="600" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="600" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
+  <g id="f27-entry-time-3"><line x1="808" y1="221" x2="808" y2="239" stroke="#D63A2F" stroke-width="2.5"/><text x="808" y="262" fill="#D63A2F" font-size="16" text-anchor="middle">ε<tspan dy="4" font-size="12">time</tspan></text></g>
+  <g id="f27-band">
     <polygon points="208,358 1170,358 1170,404 208,364" fill="#dfe3e8" stroke="#c5ccd4" stroke-width="1"/>
     <text x="689" y="428" fill="#2b3440" font-size="17" font-weight="700" text-anchor="middle">accumulated error, inherited layer by layer, compounds with depth</text>
     <text x="689" y="450" fill="#4A5560" font-size="14" text-anchor="middle">not proven additive or governed by one growth law across architectures and reset rules (Section 8.2.1)</text>
     <text x="689" y="470" fill="#4A5560" font-size="14" text-anchor="middle">compounded further by normalization, pooling, residual paths, and depth (Section 8.2.5)</text>
   </g>
-  <g id="f26-key">
+  <g id="f27-key">
     <line x1="30" y1="492" x2="1170" y2="492" stroke="#d5dbe2" stroke-width="1"/>
     <text x="30" y="512" fill="#8a94a0" font-size="14" letter-spacing="1.2">KEY</text>
-    <g id="f26-key-0"><circle cx="35" cy="531" r="5" fill="#D63A2F"/><text x="46" y="536" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text><text x="150" y="536" fill="#2b3440" font-size="16">clipping, enters at parameter mapping, fixed by the chosen scale; does not shrink with T</text></g>
-    <g id="f26-key-1"><circle cx="35" cy="555" r="5" fill="#D63A2F"/><text x="46" y="560" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text><text x="150" y="560" fill="#2b3440" font-size="16">discretization, enters at the counting operation, bounded by the grid spacing 1/T; shrinks as T grows</text></g>
-    <g id="f26-key-2"><circle cx="35" cy="579" r="5" fill="#D63A2F"/><text x="46" y="584" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text><text x="150" y="584" fill="#2b3440" font-size="16">residual membrane potential, enters at the reset stage R<tspan dy="-6" font-size="10">l</tspan><tspan dy="6"> at window cutoff; compounds with depth</tspan></text></g>
-    <g id="f26-key-3"><circle cx="35" cy="603" r="5" fill="#D63A2F"/><text x="46" y="608" fill="#D63A2F" font-size="16">unevenness</text><text x="150" y="608" fill="#2b3440" font-size="16">the dispersion of ε<tspan dy="4" font-size="12">reset</tspan><tspan dy="-4"> across the units of one layer, per unit; not reduced by a per-layer average correction</tspan></text></g>
-    <g id="f26-key-4"><circle cx="35" cy="627" r="5" fill="#D63A2F"/><text x="46" y="632" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">time</tspan></text><text x="150" y="632" fill="#2b3440" font-size="16">timing, enters at temporal execution across depth; at least one step per layer, independent of grid resolution</text></g>
-    <g id="f26-key-5"><circle cx="35" cy="651" r="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/><text x="46" y="656" fill="#D63A2F" font-size="16">encoding</text><text x="150" y="656" fill="#2b3440" font-size="16">at the source; direct encoding keeps every term deterministic, a Poisson encoder makes every term a random variable</text></g>
-    <g id="f26-key-6"><circle cx="35" cy="675" r="5" fill="#D63A2F"/><text x="46" y="680" fill="#D63A2F" font-size="16">readout</text><text x="150" y="680" fill="#2b3440" font-size="16">inherits what the deepest layer has accumulated; a count or rate readout adds one more instance of ε<tspan dy="4" font-size="12">disc</tspan></text></g>
+    <g id="f27-key-0"><circle cx="35" cy="531" r="5" fill="#D63A2F"/><text x="46" y="536" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">clip</tspan></text><text x="150" y="536" fill="#2b3440" font-size="16">clipping, enters at parameter mapping, fixed by the chosen scale; does not shrink with T</text></g>
+    <g id="f27-key-1"><circle cx="35" cy="555" r="5" fill="#D63A2F"/><text x="46" y="560" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">disc</tspan></text><text x="150" y="560" fill="#2b3440" font-size="16">discretization, enters at the counting operation, bounded by the grid spacing 1/T; shrinks as T grows</text></g>
+    <g id="f27-key-2"><circle cx="35" cy="579" r="5" fill="#D63A2F"/><text x="46" y="584" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">reset</tspan></text><text x="150" y="584" fill="#2b3440" font-size="16">residual membrane potential, enters at the reset stage R<tspan dy="-6" font-size="10">l</tspan><tspan dy="6"> at window cutoff; compounds with depth</tspan></text></g>
+    <g id="f27-key-3"><circle cx="35" cy="603" r="5" fill="#D63A2F"/><text x="46" y="608" fill="#D63A2F" font-size="16">unevenness</text><text x="150" y="608" fill="#2b3440" font-size="16">the dispersion of ε<tspan dy="4" font-size="12">reset</tspan><tspan dy="-4"> across the units of one layer, per unit; not reduced by a per-layer average correction</tspan></text></g>
+    <g id="f27-key-4"><circle cx="35" cy="627" r="5" fill="#D63A2F"/><text x="46" y="632" fill="#D63A2F" font-size="16">ε<tspan dy="4" font-size="12">time</tspan></text><text x="150" y="632" fill="#2b3440" font-size="16">timing, enters at temporal execution across depth; at least one step per layer, independent of grid resolution</text></g>
+    <g id="f27-key-5"><circle cx="35" cy="651" r="5" fill="#fff" stroke="#D63A2F" stroke-width="2"/><text x="46" y="656" fill="#D63A2F" font-size="16">encoding</text><text x="150" y="656" fill="#2b3440" font-size="16">at the source; direct encoding keeps every term deterministic, a Poisson encoder makes every term a random variable</text></g>
+    <g id="f27-key-6"><circle cx="35" cy="675" r="5" fill="#D63A2F"/><text x="46" y="680" fill="#D63A2F" font-size="16">readout</text><text x="150" y="680" fill="#2b3440" font-size="16">inherits what the deepest layer has accumulated; a count or rate readout adds one more instance of ε<tspan dy="4" font-size="12">disc</tspan></text></g>
   </g>
 </svg>
-<figcaption><b>Figure 26:</b> The finite-time error terms Section 8.2 names, drawn where each enters a layered converted network. Clipping enters at parameter mapping, where the activation scale of each layer is fixed, and discretization at the counting operation, so both sit on the activation half of every layer; residual membrane potential and its unevenness dispersion enter at the reset stage of every layer's neuron; timing enters on every hop between layers, at least one step per layer. The encoder decides at the input whether every term is deterministic or, under Poisson encoding, a random variable, and a count or rate readout applies one more instance of discretization at the output. The band widens because Section 8.2.5 states that each added layer contributes its own instance of all four mechanisms plus its own minimum propagation delay, and Section 8.2.1 states that no reviewed source proves the terms additive or governed by one growth law across architectures and reset rules. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 27:</b> The finite-time error terms Section 8.2 names, drawn where each enters a layered converted network. Clipping enters at parameter mapping, where the activation scale of each layer is fixed, and discretization at the counting operation, so both sit on the activation half of every layer; residual membrane potential and its unevenness dispersion enter at the reset stage of every layer's neuron; timing enters on every hop between layers, at least one step per layer. The encoder decides at the input whether every term is deterministic or, under Poisson encoding, a random variable, and a count or rate readout applies one more instance of discretization at the output. The band widens because Section 8.2.5 states that each added layer contributes its own instance of all four mechanisms plus its own minimum propagation delay, and Section 8.2.1 states that no reviewed source proves the terms additive or governed by one growth law across architectures and reset rules. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>

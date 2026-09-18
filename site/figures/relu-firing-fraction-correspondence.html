@@ -1,0 +1,201 @@
+<figure class="pfig l-body" id="figure-24">
+<!-- Derived figure; every drawn value is computed from the staged update. Provenance of every drawn phrase and symbol. Section 8.1 opening paragraph of site/sec-08.html (Cao et al. 2015): for nonnegative activations an IF neuron's spike count over a time window approximates the ANN activation. Section 8.1.2 (relu-rate-correspondence, eq:if-recurrence, eq:telescoped, eq:summed-current, eq:rate-identity): the recurrence u[t] = u[t-1] + q[t] + b - z[t] theta with reset-by-subtraction, the spike count N(T), the firing fraction rho(T) = N(T)/T, the identity rho(T) = (1/theta)(sum_j w_j rho_j(T) + b) - epsilon(T) with epsilon(T) = (u[T] - u[0])/(T theta), exact at every finite T; epsilon(T) = O(1/T) in the interior regime; at the two edges the identity holds exactly, rho(T) = 0 for a drive that stays negative (8.1.2; a drive of exactly zero never crosses either, from u[0] = 0, which is why the panel says non-positive) and rho(T) = 1 for a drive that would require firing on every step. Section 8.1.3: direct current injection, a constant drive held fixed for the whole horizon. Section 8.1.4: the per-layer scale lambda, the threshold set to it, theta = lambda. Section 8.1.7: each hidden layer carries a residual on the order of 1/T in the interior regime, exact at the two clipped edges. Section 3.2 and 3.5: the pre-reset candidate u-tilde[t], the post-reset state u[t], the spike z[t] in {0, 1}, the neuron fires when u-tilde[t] is at or above theta, reset-by-subtraction u[t] = u-tilde[t] - z[t] theta, no leak, u[0] = 0. Drawing conventions: panel boxes, header band, arrow markers, ReLU line and colors from Figure 26 (rate-code-quantizer.html); membrane trace with hollow circles at the pre-reset candidates and drops of theta from Figure 14 (reset-rule-comparison.html). Example drawn: theta = 1, no bias, u[0] = 0, constant drive 0.6 theta. Panel B over T = 8, pre-reset 0.60 1.20 0.80 1.40 1.00 0.60 1.20 0.80, spikes 0 1 0 1 1 0 1 0, post-reset 0.60 0.20 0.80 0.40 0 0.60 0.20 0.80, N(8) = 4, rho(8) = 0.5, u[8] = 0.8 theta, epsilon(8) = 0.1. Panel C for T = 1 to 20, N(T) = floor(0.6 T) = 0 1 1 2 3 3 4 4 5 6 6 7 7 8 9 9 10 10 11 12, rho(T) = N(T)/T, epsilon(T) = u[T]/T, rho(T) + epsilon(T) = 0.6 at every T, rho(T) at or above 0.6 - 1/T for every T from 2, residual zero at T = 5, 10, 15, 20. -->
+<svg viewBox="0 0 1200 500" role="img" aria-labelledby="f24-title f24-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f24-title">The ReLU-to-firing-fraction correspondence for one unit, from the trained network's ReLU activation through its integrate-and-fire twin over T steps to the exact identity whose residual shrinks as the horizon grows</title>
+  <desc id="f24-desc">Three panels read left to right and joined by arrows. ANN unit, a schematic with three inputs a1, a2, a3 weighted by w1, w2, w3 and a bias b entering a summation, then a ReLU block, then the output a equals ReLU of the weighted sum plus b; a small plot of output against input shows the ReLU line, zero for a non-positive input and slope one above, lighter above the scale λ, with one pre-activation marked at 0.6 λ and its output a equals 0.6 λ on the line. Its IF twin over T steps, the same schematic with spike-train inputs z1, z2, z3, the drive q of t equals the weighted sum of the presynaptic spikes, and a block reading IF, reset-by-subtraction, θ = λ; the membrane trace is computed for a constant drive of 0.6 θ over T = 8 steps, with pre-reset candidates 0.6, 1.2, 0.8, 1.4, 1.0, 0.6, 1.2, 0.8 in units of θ, spikes at t = 2, 4, 5 and 7 shown as red marks in a raster of eight slots, a drop of θ after each, post-reset states 0.6, 0.2, 0.8, 0.4, 0, 0.6, 0.2, 0.8, and the text N(8) = 4 spikes in T = 8 steps, ρ(8) = N(8)/T = 0.5, and u[8] = 0.8 θ, so ε(8) = u[8]/(8 θ) = 0.1, with the residual charge marked at the end of the trace. The identity holds at every T; the residual shrinks, with the identity written as ρ(T) = (1/θ)(Σj wj ρj(T) + b) − ε(T) and ε(T) = (u[T] − u[0])/(T θ), and beneath it the firing fraction plotted against the horizon T from 1 to 20, values 0, 0.500, 0.333, 0.500, 0.600, 0.500, 0.571, 0.500, 0.556, 0.600, 0.545, 0.583, 0.538, 0.571, 0.600, 0.563, 0.588, 0.556, 0.579, 0.600, as blue dots joined by a thin line; a green line at 0.6 labeled the ReLU value over θ, a dashed gray curve 0.6 minus 1/T labeled 1/T envelope on or below every point, the T = 8 point ringed with its gap to the green line bracketed and labeled ε(8) = 0.1, and two flat gray lines at 1 and 0 for a drive at or above θ on every step and a non-positive drive, where the fraction is exact at every T. A bottom line reads that the identity is exact at every finite horizon and only the residual shrinks, on the order of 1/T inside the interior regime and not at all at the two edges. Derived figure; every drawn value is computed from the update.</desc>
+  <defs>
+    <marker id="f24-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <marker id="f24-arrow-small" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+  </defs>
+  <g id="f24-panel-ann" class="f24-hot">
+    <title>The trained network's ReLU unit. Three inputs enter with their weights and the bias, the sum passes through the ReLU, and the output is the activation. The small plot marks one pre-activation at 0.6 λ on the input axis, in the scale λ that parameter mapping fixes, and its output on the line, so the activation drawn is 0.6 λ.</title>
+    <rect x="13" y="24" width="330" height="440" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <path d="M13,56 V30 A6,6 0 0 1 19,24 H337 A6,6 0 0 1 343,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="13" y1="56" x2="343" y2="56" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="178.0" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">ANN unit</text>
+    <text x="62" y="85" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">a</tspan><tspan class="sub" dy="3.5">1</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <line x1="68" y1="80" x2="150" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="62" y="121" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">a</tspan><tspan class="sub" dy="3.5">2</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <line x1="68" y1="116" x2="150" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="62" y="157" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">a</tspan><tspan class="sub" dy="3.5">3</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <line x1="68" y1="152" x2="150" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="105" y="101.2439024390244" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">1</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <text x="105" y="121.0" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">2</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <text x="105" y="140.7560975609756" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">3</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <line x1="150" y1="168" x2="150" y2="132" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <text x="158" y="166" fill="#2b3440" font-size="15"><tspan class="sym">b</tspan></text>
+    <circle cx="150" cy="116" r="15" fill="#fff" stroke="#2b3440" stroke-width="1.8"/>
+    <text x="150" y="122" fill="#2b3440" font-size="17" text-anchor="middle">Σ</text>
+    <line x1="165" y1="116" x2="192" y2="116" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <rect x="192" y="101" width="60" height="30" rx="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="222" y="121" fill="#2b3440" font-size="14" text-anchor="middle">ReLU</text>
+    <line x1="252" y1="116" x2="288" y2="116" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <text x="294" y="121" fill="#2b3440" font-size="15"><tspan class="sym">a</tspan></text>
+    <text x="178.0" y="196" fill="#2b3440" font-size="15" text-anchor="middle"><tspan class="sym">a</tspan> = ReLU(Σ<tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> <tspan class="sym">w</tspan><tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> <tspan class="sym">a</tspan><tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> + <tspan class="sym">b</tspan>)</text>
+    <line x1="62" y1="410" x2="338" y2="410" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)"/>
+    <line x1="100" y1="410" x2="100" y2="240" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)"/>
+    <text x="100" y="234" fill="#6b7580" font-size="14" text-anchor="middle">output</text>
+    <text x="336" y="428" fill="#6b7580" font-size="14" text-anchor="end">input</text>
+    <line x1="220" y1="406" x2="220" y2="414" stroke="#2b3440" stroke-width="1.6"/>
+    <line x1="96" y1="290" x2="104" y2="290" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="100" y="428" fill="#2b3440" font-size="14" text-anchor="middle">0</text>
+    <text x="220" y="428" fill="#2b3440" font-size="14" text-anchor="middle">λ</text>
+    <text x="92" y="295" fill="#2b3440" font-size="14" text-anchor="end">λ</text>
+    <path d="M62,410 L100,410 L220,290" fill="none" stroke="#6AA168" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M220,290 L268,242" fill="none" stroke="#b9d9b7" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="220" y1="410" x2="220" y2="290" stroke="#8a94a0" stroke-width="1.2" stroke-dasharray="3 4"/>
+    <line x1="100" y1="290" x2="220" y2="290" stroke="#8a94a0" stroke-width="1.2" stroke-dasharray="3 4"/>
+    <line x1="172.0" y1="410" x2="172.0" y2="338.0" stroke="#2b3440" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <line x1="100" y1="338.0" x2="172.0" y2="338.0" stroke="#2b3440" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="172.0" cy="338.0" r="5" fill="#fff" stroke="#2a7f62" stroke-width="2.2"/>
+    <text x="172.0" y="428" fill="#2b3440" font-size="14" text-anchor="middle">0.6 λ</text>
+    <text x="92" y="343.0" fill="#2b3440" font-size="14" text-anchor="end"><tspan class="sym">a</tspan> = 0.6 λ</text>
+    <text x="108" y="272" fill="#2a7f62" font-size="15">ReLU</text>
+    <rect class="f24-band" x="13" y="24" width="330" height="440" rx="6" fill="#6AA168" opacity="0"/>
+    <rect x="13" y="24" width="330" height="440" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-panel-if" class="f24-hot">
+    <title>The same unit mapped to an integrate-and-fire neuron with reset-by-subtraction and threshold θ = λ. The inputs are now spike trains and the drive is their weighted sum. The trace is computed for a constant drive of 0.6 θ at every step over T = 8 steps, the direct-injection case. The membrane rises to each pre-reset candidate, drops by θ wherever it reaches the threshold (at t = 5 it meets θ exactly) and carries the remainder forward. It crosses four times, so N(8) = 4 and ρ(8) = 0.5, and 0.8 θ of charge remains on the membrane at the end, which is the residual ε(8) = 0.1.</title>
+    <rect x="365" y="24" width="390" height="440" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <path d="M365,56 V30 A6,6 0 0 1 371,24 H749 A6,6 0 0 1 755,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="365" y1="56" x2="755" y2="56" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="560.0" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">Its IF twin over <tspan class="sym">T</tspan> steps</text>
+    <text x="408" y="85" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">z</tspan><tspan class="sub" dy="3.5">1</tspan><tspan dy="-3.5">&#8203;</tspan>[<tspan class="sym">t</tspan>]</text>
+    <line x1="414" y1="80" x2="470" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="408" y="121" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">z</tspan><tspan class="sub" dy="3.5">2</tspan><tspan dy="-3.5">&#8203;</tspan>[<tspan class="sym">t</tspan>]</text>
+    <line x1="414" y1="116" x2="470" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="408" y="157" fill="#2b3440" font-size="15" text-anchor="end"><tspan class="sym">z</tspan><tspan class="sub" dy="3.5">3</tspan><tspan dy="-3.5">&#8203;</tspan>[<tspan class="sym">t</tspan>]</text>
+    <line x1="414" y1="152" x2="470" y2="116" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="438" y="100.42857142857143" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">1</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <text x="438" y="121.0" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">2</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <text x="438" y="141.57142857142858" fill="#2b3440" font-size="14" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round"><tspan class="sym">w</tspan><tspan class="sub" dy="3.5">3</tspan><tspan dy="-3.5">&#8203;</tspan></text>
+    <line x1="470" y1="168" x2="470" y2="131" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <text x="478" y="166" fill="#2b3440" font-size="15"><tspan class="sym">b</tspan></text>
+    <circle cx="470" cy="116" r="14" fill="#fff" stroke="#2b3440" stroke-width="1.8"/>
+    <text x="470" y="122" fill="#2b3440" font-size="17" text-anchor="middle">Σ</text>
+    <line x1="484" y1="116" x2="506" y2="116" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <rect x="506" y="96" width="170" height="40" rx="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="591" y="112" fill="#2b3440" font-size="14" text-anchor="middle">IF, reset-by-subtraction</text>
+    <text x="591" y="130" fill="#2b3440" font-size="14" text-anchor="middle">θ = λ</text>
+    <line x1="676" y1="116" x2="702" y2="116" stroke="#2b3440" stroke-width="1.6" marker-end="url(#f24-arrow-small)"/>
+    <text x="707" y="121" fill="#2b3440" font-size="15"><tspan class="sym">z</tspan>[<tspan class="sym">t</tspan>]</text>
+    <text x="591" y="160" fill="#2b3440" font-size="15" text-anchor="middle">drive <tspan class="sym">q</tspan>[<tspan class="sym">t</tspan>] = Σ<tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> <tspan class="sym">w</tspan><tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> <tspan class="sym">z</tspan><tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan>[<tspan class="sym">t</tspan>]</text>
+    <text x="560.0" y="184" fill="#6b7580" font-size="14" text-anchor="middle">drawn for a constant drive of 0.6 θ,</text>
+    <text x="560.0" y="201" fill="#6b7580" font-size="14" text-anchor="middle">the direct-injection case of Section 8.1.3</text>
+    <line x1="412" y1="336" x2="745" y2="336" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)"/>
+    <line x1="412" y1="336" x2="412" y2="224" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)"/>
+    <line x1="412" y1="272.0" x2="688" y2="272.0" stroke="#2b3440" stroke-width="1.8" stroke-dasharray="8 6"/>
+    <text x="406" y="277.0" fill="#2b3440" font-size="14" text-anchor="end">θ</text>
+    <text x="406" y="238" fill="#2b3440" font-size="14" text-anchor="end"><tspan class="sym">u</tspan>[<tspan class="sym">t</tspan>]</text>
+    <text x="745" y="352" fill="#6b7580" font-size="14" text-anchor="end">step <tspan class="sym">t</tspan></text>
+    <path d="M412,336 L446,297.6 L480,259.2 L480,323.2 L514,284.8 L548,246.4 L548,310.4 L582,272 L582,336 L616,297.6 L650,259.2 L650,323.2 L684,284.8" fill="none" stroke="#6B8CBE" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="446" cy="297.6" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="480" cy="259.2" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="514" cy="284.8" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="548" cy="246.4" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="582" cy="272" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="616" cy="297.6" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="650" cy="259.2" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <circle cx="684" cy="284.8" r="4" fill="#fff" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="446" y="352" fill="#2b3440" font-size="14" text-anchor="middle">1</text>
+    <text x="480" y="352" fill="#2b3440" font-size="14" text-anchor="middle">2</text>
+    <text x="514" y="352" fill="#2b3440" font-size="14" text-anchor="middle">3</text>
+    <text x="548" y="352" fill="#2b3440" font-size="14" text-anchor="middle">4</text>
+    <text x="582" y="352" fill="#2b3440" font-size="14" text-anchor="middle">5</text>
+    <text x="616" y="352" fill="#2b3440" font-size="14" text-anchor="middle">6</text>
+    <text x="650" y="352" fill="#2b3440" font-size="14" text-anchor="middle">7</text>
+    <text x="684" y="352" fill="#2b3440" font-size="14" text-anchor="middle">8</text>
+    <rect x="692" y="284.8" width="12" height="51.2" fill="#6B8CBE" fill-opacity="0.25" stroke="#6B8CBE" stroke-width="1.6"/>
+    <text x="709" y="314" fill="#6B8CBE" font-size="14">0.8 θ</text>
+    <text x="406" y="376" fill="#2b3440" font-size="14" text-anchor="end"><tspan class="sym">z</tspan>[<tspan class="sym">t</tspan>]</text>
+    <rect x="429.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="463.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="497.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="531.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="565.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="599.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="633.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <rect x="667.0" y="359" width="34" height="24" fill="#fff" stroke="#8a94a0" stroke-width="1.2"/>
+    <line x1="480" y1="362" x2="480" y2="380" stroke="#D63A2F" stroke-width="4"/>
+    <line x1="548" y1="362" x2="548" y2="380" stroke="#D63A2F" stroke-width="4"/>
+    <line x1="582" y1="362" x2="582" y2="380" stroke="#D63A2F" stroke-width="4"/>
+    <line x1="650" y1="362" x2="650" y2="380" stroke="#D63A2F" stroke-width="4"/>
+    <text x="383" y="411" fill="#2b3440" font-size="15"><tspan class="sym">N</tspan>(8) = 4 spikes in <tspan class="sym">T</tspan> = 8 steps</text>
+    <text x="737" y="411" fill="#2b3440" font-size="15" text-anchor="end">ρ(8) = <tspan class="sym">N</tspan>(8)/<tspan class="sym">T</tspan> = 0.5</text>
+    <text x="560.0" y="434" fill="#2b3440" font-size="15" text-anchor="middle"><tspan class="sym">u</tspan>[8] = 0.8 θ, so ε(8) = <tspan class="sym">u</tspan>[8]/(8 θ) = 0.1</text>
+    <rect class="f24-band" x="365" y="24" width="390" height="440" rx="6" fill="#6B8CBE" opacity="0"/>
+    <rect x="365" y="24" width="390" height="440" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <g id="f24-panel-identity" class="f24-hot">
+    <title>The identity ρ(T) = (1/θ)(Σj wj ρj(T) + b) − ε(T) holds at every finite horizon. The firing fraction is plotted against T from 1 to 20 for the same unit; it approaches 0.6, the ReLU value over θ, from below, inside a 1/T envelope, and touches it at T = 5, 10, 15 and 20, where the residual is zero. The ringed point at T = 8 is the middle panel's value, 0.5, and the bracket is its residual, 0.1. A unit whose drive stays non-positive sits on 0 exactly, and one whose drive reaches θ at every step sits on 1 exactly, at every T.</title>
+    <rect x="777" y="24" width="410" height="440" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
+    <path d="M777,56 V30 A6,6 0 0 1 783,24 H1181 A6,6 0 0 1 1187,30 V56 Z" fill="#e9ecf0"/>
+    <line x1="777" y1="56" x2="1187" y2="56" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="982.0" y="45" fill="#2b3440" font-size="16" text-anchor="middle" font-weight="700">The identity holds at every <tspan class="sym">T</tspan>; the residual shrinks</text>
+    <text x="982.0" y="79" fill="#2b3440" font-size="15" text-anchor="middle">ρ(<tspan class="sym">T</tspan>) = (1/θ)(Σ<tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> <tspan class="sym">w</tspan><tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan> ρ<tspan class="sub" dy="3.5">j</tspan><tspan dy="-3.5">&#8203;</tspan>(<tspan class="sym">T</tspan>) + <tspan class="sym">b</tspan>) − ε(<tspan class="sym">T</tspan>)</text>
+    <text x="982.0" y="99" fill="#2b3440" font-size="15" text-anchor="middle">ε(<tspan class="sym">T</tspan>) = (<tspan class="sym">u</tspan>[<tspan class="sym">T</tspan>] − <tspan class="sym">u</tspan>[0])/(<tspan class="sym">T</tspan> θ)</text>
+    <line x1="832" y1="408" x2="1176" y2="408" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)" data-axis="numeric" data-unit="timesteps"/>
+    <line x1="832" y1="408" x2="832" y2="134" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f24-arrow)" data-axis="numeric" data-unit="dimensionless, firing fraction"/>
+    <text x="832" y="126" fill="#6b7580" font-size="14" text-anchor="middle">ρ(<tspan class="sym">T</tspan>)</text>
+    <line x1="828" y1="158.0" x2="836" y2="158.0" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="824" y="163.0" fill="#2b3440" font-size="14" text-anchor="end">1</text>
+    <line x1="828" y1="258.0" x2="836" y2="258.0" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="824" y="263.0" fill="#2a7f62" font-size="14" text-anchor="end">0.6</text>
+    <line x1="828" y1="408.0" x2="836" y2="408.0" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="824" y="413.0" fill="#2b3440" font-size="14" text-anchor="end">0</text>
+    <line x1="848" y1="404" x2="848" y2="412" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="848" y="426" fill="#2b3440" font-size="14" text-anchor="middle">1</text>
+    <line x1="912" y1="404" x2="912" y2="412" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="912" y="426" fill="#2b3440" font-size="14" text-anchor="middle">5</text>
+    <line x1="992" y1="404" x2="992" y2="412" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="992" y="426" fill="#2b3440" font-size="14" text-anchor="middle">10</text>
+    <line x1="1072" y1="404" x2="1072" y2="412" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="1072" y="426" fill="#2b3440" font-size="14" text-anchor="middle">15</text>
+    <line x1="1152" y1="404" x2="1152" y2="412" stroke="#2b3440" stroke-width="1.6"/>
+    <text x="1152" y="426" fill="#2b3440" font-size="14" text-anchor="middle">20</text>
+    <text x="1000" y="446" fill="#6b7580" font-size="14" text-anchor="middle">horizon <tspan class="sym">T</tspan></text>
+    <line x1="848" y1="158.0" x2="1152" y2="158.0" stroke="#6b7580" stroke-width="2.2"/>
+    <text x="852" y="177.0" fill="#6b7580" font-size="14">drive ≥ θ at every step, ρ(<tspan class="sym">T</tspan>) = 1 exactly</text>
+    <line x1="848" y1="408.0" x2="1152" y2="408.0" stroke="#6b7580" stroke-width="2.2"/>
+    <text x="1152" y="400.0" fill="#6b7580" font-size="14" text-anchor="end">drive ≤ 0 at every step, ρ(<tspan class="sym">T</tspan>) = 0 exactly</text>
+    <line x1="848" y1="258.0" x2="1152" y2="258.0" stroke="#6AA168" stroke-width="2.6"/>
+    <text x="1152" y="245.0" fill="#2a7f62" font-size="14" text-anchor="end">0.6, the ReLU value over θ</text>
+    <path d="M864,383 L872,358 L880,341.3 L888,329.4 L896,320.5 L904,313.6 L912,308 L920,303.5 L928,299.7 L936,296.5 L944,293.7 L952,291.3 L960,289.2 L968,287.4 L976,285.8 L984,284.3 L992,283 L1000,281.8 L1008,280.7 L1016,279.7 L1024,278.8 L1032,278 L1040,277.2 L1048,276.5 L1056,275.9 L1064,275.2 L1072,274.7 L1080,274.1 L1088,273.6 L1096,273.2 L1104,272.7 L1112,272.3 L1120,271.9 L1128,271.5 L1136,271.2 L1144,270.8 L1152,270.5" fill="none" stroke="#8a94a0" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <line x1="912" y1="348" x2="912" y2="312.0" stroke="#8a94a0" stroke-width="1.2"/>
+    <text x="900" y="361" fill="#6b7580" font-size="14">1/<tspan class="sym">T</tspan> envelope</text>
+    <path d="M956,258 h8 M960,258 V283" fill="none" stroke="#D63A2F" stroke-width="2"/>
+    <circle cx="960" cy="283" r="7.5" fill="none" stroke="#D63A2F" stroke-width="1.8"/>
+    <text x="952" y="247.0" fill="#D63A2F" font-size="14" text-anchor="end">ε(8) = 0.1</text>
+    <path d="M848,408 L864,283 L880,324.7 L896,283 L912,258 L928,283 L944,265.1 L960,283 L976,269.1 L992,258 L1008,271.6 L1024,262.2 L1040,273.4 L1056,265.1 L1072,258 L1088,267.4 L1104,260.9 L1120,269.1 L1136,263.3 L1152,258" fill="none" stroke="#6B8CBE" stroke-width="1.4"/>
+    <circle cx="848" cy="408" r="3.5" fill="#6B8CBE"/>
+    <circle cx="864" cy="283" r="3.5" fill="#6B8CBE"/>
+    <circle cx="880" cy="324.7" r="3.5" fill="#6B8CBE"/>
+    <circle cx="896" cy="283" r="3.5" fill="#6B8CBE"/>
+    <circle cx="912" cy="258" r="3.5" fill="#6B8CBE"/>
+    <circle cx="928" cy="283" r="3.5" fill="#6B8CBE"/>
+    <circle cx="944" cy="265.1" r="3.5" fill="#6B8CBE"/>
+    <circle cx="960" cy="283" r="3.5" fill="#6B8CBE"/>
+    <circle cx="976" cy="269.1" r="3.5" fill="#6B8CBE"/>
+    <circle cx="992" cy="258" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1008" cy="271.6" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1024" cy="262.2" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1040" cy="273.4" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1056" cy="265.1" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1072" cy="258" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1088" cy="267.4" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1104" cy="260.9" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1120" cy="269.1" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1136" cy="263.3" r="3.5" fill="#6B8CBE"/>
+    <circle cx="1152" cy="258" r="3.5" fill="#6B8CBE"/>
+    <rect class="f24-band" x="777" y="24" width="410" height="440" rx="6" fill="#6B8CBE" opacity="0"/>
+    <rect x="777" y="24" width="410" height="440" fill="#000" opacity="0" pointer-events="all"/>
+  </g>
+  <path id="f24-arrow-1" d="M344,116 L364,116" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-2" d="M756,116 L776,116" fill="none" stroke="#2b3440" stroke-width="2" marker-end="url(#f24-arrow)"/>
+  <g id="f24-strip">
+    <text x="13" y="488" fill="#6b7580" font-size="14">Exact at every finite horizon; only the residual shrinks, on the order of 1/<tspan class="sym">T</tspan> in the interior regime, while at the two edges the fraction sits on 0 or 1 whatever the residual does.</text>
+  </g>
+</svg>
+<div class="fig-hint">Hover a panel for what it draws.</div>
+<figcaption><b>Figure 24:</b> The correspondence Section 8.1.2 derives, drawn for one unit with the layer and unit indices dropped. Left, the trained network's ReLU unit, its affine pre-activation and its output, marked at a pre-activation of \(0.6\,\lambda\) in the scale parameter mapping fixes (Section 8.1.4). Middle, the same unit mapped to an integrate-and-fire neuron with reset-by-subtraction and threshold \(\theta=\lambda\), computed from the staged update of Section 3.2 under a constant drive of \(0.6\,\theta\), the direct-injection case of Section 8.1.3, for \(T=8\) steps; the membrane crosses threshold four times, so \(N(8)=4\) and the firing fraction is \(\rho(8)=0.5\), and the charge still on the membrane at the end, \(0.8\,\theta\), is the residual \(\epsilon(8)=0.1\) that closes the identity, \(0.5=0.6-0.1\). Right, the identity itself, with the firing fraction plotted against the horizon for \(T=1\) to \(20\); it climbs toward \(0.6\) inside a \(1/T\) envelope and touches it whenever the residual is zero, while a unit whose drive stays non-positive, or reaches the threshold on every step, sits on \(0\) or \(1\) exactly at every \(T\). The identity holds at every finite horizon; only the residual shrinks. Figure 26 reads the same map at one fixed \(T\) across the input axis, as a quantizer. Derived figure; every drawn value is computed from the update.</figcaption>
+</figure>

@@ -139,41 +139,51 @@
 #figure-23 .f23-band { transition: opacity 0.15s; }
 #figure-23 .f23-hot:hover .f23-band { opacity: 0.10; }
 
-/* ---- classical-conversion-pipeline (Figure 24) ---- */
+/* ---- relu-firing-fraction-correspondence (Figure 24) ---- */
 #figure-24 { text-align: center; }
 #figure-24 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-24 .sym { font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: 1.08em; }
+#figure-24 .sub { font-size: 0.85em; }
+#figure-24 .f24-hot { cursor: help; }
+#figure-24 .f24-band { transition: opacity 0.15s; }
+#figure-24 .f24-hot:hover .f24-band { opacity: 0.10; }
+#figure-24 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
 
-/* ---- rate-code-quantizer (Figure 25) ---- */
+/* ---- classical-conversion-pipeline (Figure 25) ---- */
 #figure-25 { text-align: center; }
 #figure-25 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-25 .f25-hot { cursor: help; }
-#figure-25 .f25-band { transition: opacity 0.15s; }
-#figure-25 .f25-hot:hover .f25-band { opacity: 0.10; }
 
-/* ---- finite-time-error-propagation (Figure 26) ---- */
+/* ---- rate-code-quantizer (Figure 26) ---- */
 #figure-26 { text-align: center; }
 #figure-26 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-26 .f26-hot { cursor: help; }
+#figure-26 .f26-band { transition: opacity 0.15s; }
+#figure-26 .f26-hot:hover .f26-band { opacity: 0.10; }
 
-/* ---- intervention-levers (Figure 27) ---- */
+/* ---- finite-time-error-propagation (Figure 27) ---- */
 #figure-27 { text-align: center; }
 #figure-27 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-27 .f27-hot { cursor: help; }
-#figure-27 .f27-band { transition: opacity 0.15s; }
-#figure-27 .f27-hot:hover .f27-band { opacity: 0.10; }
 
-/* ---- uniform-hetero-latency (Figure 28) ---- */
+/* ---- intervention-levers (Figure 28) ---- */
 #figure-28 { text-align: center; }
 #figure-28 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 #figure-28 .f28-hot { cursor: help; }
 #figure-28 .f28-band { transition: opacity 0.15s; }
 #figure-28 .f28-hot:hover .f28-band { opacity: 0.10; }
 
-/* ---- deployable-snn-contract (Figure 29) ---- */
+/* ---- uniform-hetero-latency (Figure 29) ---- */
+#figure-29 { text-align: center; }
 #figure-29 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-29 .f29-hot { cursor: help; }
+#figure-29 .f29-band { transition: opacity 0.15s; }
+#figure-29 .f29-hot:hover .f29-band { opacity: 0.10; }
 
-/* ---- software-boundary (Figure 30) ---- */
+/* ---- deployable-snn-contract (Figure 30) ---- */
 #figure-30 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 
-/* ---- measurement-boundary (Figure 32) ---- */
-/* Figure 23, deployment measurement boundaries. Scoped to #figure-32. */
-#figure-32 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+/* ---- software-boundary (Figure 31) ---- */
+#figure-31 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+
+/* ---- measurement-boundary (Figure 33) ---- */
+/* Figure 23, deployment measurement boundaries. Scoped to #figure-33. */
+#figure-33 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
