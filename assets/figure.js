@@ -318,11 +318,12 @@ function render() {
   all('.nstk-rowlabel').forEach(l => l.classList.remove('nstk-on'));
   all('.nstk-layer').forEach(l => l.classList.remove('nstk-bridge'));
 
-  // Show a documented example on first load, so the figure explains a route
-  // before the reader interacts with it. The clear control still reflects only
-  // user-entered constraints.
+  // Nothing is drawn until the reader asks a question. With no chip chosen and
+  // no text in the box the grid is bare, the panel is empty, and the figure
+  // resets to that state on every reload.
   const constrained = sel.size > 0 || !!($('#nstk-q').value || '').trim();
-  const tracing = !!route;
+  const tracing = constrained && !!route;
+  if (!constrained) active = null;
   fig.classList.toggle('nstk-tracing', tracing);
   $('#nstk-clear').hidden = !constrained;
   all('.nstk-quick').forEach(b => b.classList.toggle('nstk-active', sel.has(keyFor(b.dataset.q))));
@@ -351,7 +352,7 @@ function render() {
   // Highlighting route chips changes their font weight and can reflow rows.
   // Measure the settled layout before drawing the SVG path.
   requestAnimationFrame(() => drawPath(active));
-  panel(rs, tracing);
+  panel(rs, tracing, constrained);
 }
 
 function keyFor(text) {
@@ -424,8 +425,9 @@ function tkChip(route) {
   const css = route.tk.toLowerCase().replace(/ /g, '-');
   return `<span class="tk tk-${css}" title="target kind">${esc(route.tk)}</span>`;
 }
-function panel(rs, tracing) {
+function panel(rs, tracing, constrained) {
   const p = $('#nstk-panel');
+  if (!constrained) { p.innerHTML = ''; return; }
   if (!tracing) {
     p.innerHTML = `<div class="nstk-guide">No documented route carries that combination. Clear a constraint to widen the question.</div>`;
     return;
@@ -508,6 +510,7 @@ function wire() {
   window.addEventListener('resize', () => drawPath(active && $('#nstk-fig').classList.contains('nstk-tracing') ? active : null));
 }
 
+$('#nstk-q').value = '';
 build(); wire(); render();
 window.addEventListener('load', () => drawPath(active));
 fetch('data/evidence-stack.json')
