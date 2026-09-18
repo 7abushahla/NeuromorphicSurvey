@@ -236,11 +236,14 @@ then NxTF compilation) [3][8]:
 - **CIFAR-10**: an off-the-shelf MobileNet converted and run on Loihi. Reported: **8.52%
   error rate** (lowest reported at the time for neuromorphic hardware), 102 mJ energy,
   340 ms delay, 34,926 µJ·s EDP; compared to 8.07% / 157 mJ / 3 ms (CPU) and 8.07% / 1035
-  mJ / 18 ms (GPU) for the same ANN [3][8]. The Quartz paper's comparison table cites this
-  same result at **400 timesteps** and notes the network spanned **1,753 neuromorphic
-  cores across 14 Loihi chips**, using on average only 3% of neurons per core because
-  Loihi 1 lacked convolutional weight-sharing without heavy low-level engineering effort
-  at the time [17].
+  mJ / 18 ms (GPU) for the same ANN [3][8]. NxTF's own Sec. 3.2.3 states this MobileNet
+  "fits on 861 cores when compiled by NxTF" across "the 7 chips required by MobileNet"
+  [3][8]. The Quartz paper's comparison table cites the same NxTF result at **400
+  timesteps**, but its **1,753 neuromorphic cores across 14 Loihi chips** figure
+  describes Quartz's *own* CIFAR-10 network, not the NxTF MobileNet: "our SNN ends up
+  being distributed across 1753 neuromorphic cores and 14 chips" [17], using on average
+  only 3% of neurons per core because Loihi 1 lacked convolutional weight-sharing without
+  heavy low-level engineering effort at the time [17].
 - **N-MNIST** (event-based) and **DVS Gestures** (event-based): both a directly
   SLAYER-trained SNN and, for comparison in some cases, converted models were run and
   benchmarked; N-MNIST converted: 522 neurons, 597K params, 1.57% error, 0.29 mJ, 6.46 ms
@@ -415,11 +418,11 @@ mechanism is being wound down alongside Lava itself; **NOT FOUND**.
 | # | Work | Chip | Network | Conversion type | Dataset | T (timesteps) | Measured | Evidence class |
 |---|---|---|---|---|---|---|---|---|
 | 1 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | 4-layer CNN | Rate-coded ANN→SNN conversion (SNN Toolbox) | MNIST | ~100 [17] | Error, energy (0.66 mJ), delay (6.65 ms), EDP | **E1** |
-| 2 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | off-the-shelf MobileNet | Rate-coded ANN→SNN conversion | CIFAR-10 | ~400 [17] | Error (8.52%), energy (102 mJ), delay (340 ms), EDP; 1,753 cores / 14 chips [17] | **E1** |
+| 2 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | off-the-shelf MobileNet | Rate-coded ANN→SNN conversion | CIFAR-10 | ~400 [17] | Error (8.52%), energy (102 mJ), delay (340 ms), EDP; 861 cores / 7 chips [3][8] (the 1,753-core/14-chip figure in [17] is Quartz's own CIFAR-10 network, not this MobileNet) | **E1** |
 | 3 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | SLAYER-trained conv. SNN | Directly trained (not converted) | N-MNIST | — | Error, energy, delay, EDP | E1 (not a conversion result) |
 | 4 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | SLAYER-trained conv. SNN | Directly trained | DVS Gestures | — | Error, energy, delay, EDP | E1 (not a conversion result) |
 | 5 | Rueckauer et al., NxTF [3][8] | **Loihi 1** (physical) | 28-layer MobileNet, 4M params | Compiler resource benchmark | (128×128 input) | — | Resource utilization (80% across 16 chips) | E1 for utilization only, not accuracy/energy |
-| 6 | Sheik, Quartz [17] | **Loihi 1** (physical) | MNIST/CIFAR-10 nets | Temporal (TTFS) ANN→SNN conversion (own method) | MNIST, CIFAR-10 | 24 (MNIST), 27 range (CIFAR-10) | Error, spikes, timesteps, energy/EDP (measured on Loihi cores) | **E1** |
+| 6 | Lenz, Orchard, Sheik, Quartz [17] | **Loihi 1** (physical) | MNIST/CIFAR-10 nets | Temporal (TTFS) ANN→SNN conversion (own method) | MNIST, CIFAR-10 | 24 (MNIST), 27 range (CIFAR-10) | Error, spikes, timesteps, energy/EDP (measured on Loihi cores) | **E1** |
 | 7 | Boeshertz et al. [16] | **Loihi (1)** (physical) | lpRNN / ΣΔ-neuron RNN | Converted RNN→SNN mapping (own method), 3-bit weights | Speech/audio benchmarks | — | Classification accuracy, SOTA on-chip speech classification | **E1/E2** (accuracy-focused; energy not detailed in excerpt) |
 | 8 | Shrestha et al., "Efficient Video and Audio Processing with Loihi 2" [10] | **Loihi 2** (physical) | PilotNet SDNN, audio denoising/spectral nets | Directly trained (SLAYER/bootstrap), **not** ANN-converted rate coding | Driving video (PilotNet), audio | — | Energy, latency, EDP vs. Jetson Orin Nano / i9 CPU | **E1** (not a rate-coded conversion) |
 | 9 | Brehove, Tumpa, Kyubwa, Menon, Narayanan, "Sigma-Delta Neural Network Conversion on Loihi 2" [15] | **Loihi 2** (physical, 16-chip VPX board) | Converted ANN → Sigma-Delta Neural Network (YOLOv3-style detector) | ANN→SDNN conversion (own method; NOT rate-coded IF) | Video/RGB frames | 16 (fall-through mode) | Energy-delay product vs. Jetson Xavier | **E1** (conversion, but non-rate-coded scheme) |
@@ -530,7 +533,7 @@ https://arxiv.org/html/2505.06417v2
 Neuromorphic Hardware with Adaptive Spiking Neurons," arXiv:2407.13534, 2024.
 https://doi.org/10.48550/arxiv.2407.13534
 
-[17] S. Sheik, "Ultra-low-power Image Classification on Neuromorphic Hardware" (Quartz),
+[17] G. Lenz, G. Orchard, S. Sheik, "Ultra-low-power Image Classification on Neuromorphic Hardware" (Quartz),
 alphaXiv / arXiv:2309.16795. https://www.alphaxiv.org/abs/2309.16795
 
 [18] "Three Factor Learning with Lava" tutorial,

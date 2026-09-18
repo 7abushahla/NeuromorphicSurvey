@@ -268,13 +268,13 @@ Table 6.3 records what each converter or compiler consumes, emits, and drops.
 |---|---|---|---|
 | SNN Toolbox | Keras/TensorFlow, PyTorch, Lasagne, Caffe models [Rueckauer17-SNNTB] | INIsim (Keras software sim, recommended path), pyNN (NEST/Brian/NEURON), Brian2, MegaSim, SpiNNaker (via SpyNNaker), Loihi (via NxTF) [SNNToolbox-Docs] | Nothing on the reset axis: **reset-by-subtraction is the default and the paper's own recommended mechanism** [Rueckauer17-SNNTB]. Dormant since March 2021 (last release) / August 2022 (last patch commit); its Loihi and SpiNNaker backends depend on external SDKs that have themselves moved on [SNNToolbox-GitHub] |
 | NIR | Nine simulators, five hardware platforms on the write side (hxtorch/jaxsnn, Nengo, Norse, Rockpool, Sinabs, snnTorch, Spyx) [Pedersen24-NIR] | A graph of 17 typed primitives, including Integrate-and-Fire and LIF [NIR-Primitives] | **Reset by subtraction.** The formal primitive spec defines only reset to a fixed target value `v_reset` for I&F and LIF; no subtract-reset primitive exists in the published spec [NIR-Primitives]. The paper's own discussion states plainly the format "excludes... adaptive threshold mechanisms, gating, resonate-and-fire, and multicompartmental neuron models," and hardware backends are permitted to simply ignore unsupported nodes rather than approximate them [Pedersen24-NIR][NIR-Porting] |
-| NxTF | Keras-derived model, specifically via an SNN-Toolbox bridge [Rueckauer21-NxTF] | Compiled register-level NxCore configuration for physical Loihi 1 [Rueckauer21-NxTF] | No PyTorch bridge exists; host repository (`intel-nrc-ecosystem/models`) carries a discontinuation notice [A18-Research] |
+| NxTF | Keras-derived model, specifically via an SNN-Toolbox bridge [Rueckauer21-NxTF] | Compiled register-level NxCore configuration for physical Loihi 1 [Rueckauer21-NxTF] | No bridge from a PyTorch SNN framework exists (SNN Toolbox's own PyTorch input path reaches NxTF through ONNX, and the NxTF repository's SLAYER tutorials load PyTorch-trained weights by hand); host repository (`intel-nrc-ecosystem/models`) carries a discontinuation notice [A18-Research] |
 | NetX / the Lava compiler | Platform-independent HDF5 network description from SLAYER/bootstrap training [LavaDL-NetX-Docs] | A runnable Lava Process graph, CPU-simulated or physical Loihi 2 for INRC members [LavaDL-NetX-Docs] | Soft reset: the reference process model hard-resets to zero, and no documented subtract-reset process exists for NetX [LavaDocs-Overview]. The whole stack is archived as of 13 May 2026 [LavaGH-Archive] |
 | DynapCNN mapper (`DynapcnnNetwork`) | A Sinabs spiking model, IF-based, from `from_model()` [Sinabs-Basics] | 8-bit weight / 16-bit membrane quantized `DynapcnnLayer` objects, placed onto physical Speck cores [Sinabs-Basics] | Nothing on the reset axis (subtract-reset preserved by default); drops per-neuron threshold individuality (collapsed to one value per layer) and rewrites `Linear`/`AvgPool2d` architecturally [Sinabs-Basics] |
 | sPyNNaker | PyNN-described network (populations, projections, neuron/synapse models) [Rhodes18-sPyNNaker] | A machine graph mapped to SpiNNaker cores, routed and loaded via SpiNNTools [Rowley19-SpiNNTools] | Reset semantics are inherited from whatever C model the user compiles; nothing is imposed or dropped by the framework itself |
 | NengoLoihi | A Nengo model (NEF-built or NengoDL-converted) [NengoLoihi-Docs] | Compiled Loihi processes, physical hardware backend or an emulator [NengoLoihi-Docs] | Uses `LoihiLIF`/`LoihiSpikingRectifiedLinear` classes to model Loihi's own quantization during training; not built around the reset-by-subtraction rate-coding correspondence this thesis assumes |
 | CNN2SNN | A QuantizeML-quantized Keras/ONNX model [BrainChip-CNN2SNNDocs] | An Akida-runtime `.fbz` model, BN and activation-quantization folded into static per-neuron thresholds [BrainChip-CNN2SNNDocs] | Drops the multi-timestep rate-coding correspondence entirely; the output is a single-pass quantized network, not a temporal accumulator [CNN2SNN-Source] |
-| SpikingJelly `lava_exchange` | SpikingJelly IF/LIF modules only [SJ-LavaExchangeDocs] | Lava DL HDF5, loadable by Lava, runnable on Loihi or CPU-simulated Loihi [SJ-LavaExchangeDocs] | **Hard-codes rejection of any other reset value**: `if sj_ms_neuron.v_reset != 0.: raise ValueError('lava only supports for v_reset == 0!')`, at five separate call sites; also rejects `decay_input=True` and any bias on exported Conv2d/Linear layers [SJ-LavaExchangeSource] |
+| SpikingJelly `lava_exchange` | SpikingJelly IF/LIF modules only [SJ-LavaExchangeDocs] | Lava DL HDF5, loadable by Lava, runnable on Loihi or CPU-simulated Loihi [SJ-LavaExchangeDocs] | **Hard-codes rejection of any other reset value**: `if sj_ms_neuron.v_reset != 0.: raise ValueError('lava only supports for v_reset == 0!')`, at four call sites, plus an assertion in `CubaLIFNode.__init__` with a different message; also rejects `decay_input=True` and any bias on exported Conv2d/Linear layers [SJ-LavaExchangeSource] |
 | SpikingJelly `nir_exchange` | SpikingJelly `BaseNode` modules | A NIR graph | `to_nir.py`'s `_hard_reset()` helper raises `NotImplementedError("NIR does not distinguish soft reset.")` whenever `module.v_reset is None`, i.e. whenever the neuron uses soft reset [SJ-NIRExchangeSource] |
 
 **The central finding of this section: reset by subtraction is the single most
@@ -351,8 +351,11 @@ chain, evidence class, and stated limits.
 
 **1. SNN Toolbox to NxTF to Loihi 1.** Rate-coded, weight-normalized, reset-by-subtraction
 IF conversion, compiled by NxTF, measured on physical Loihi 1: MNIST 0.79% error, 0.66
-mJ, 6.65 ms; CIFAR-10 (MobileNet-derived) 8.52% error, 102 mJ, 340 ms across 1,753 cores
-on 14 chips [Rueckauer21-NxTF]. Reset by subtraction survives the whole chain, via the
+mJ, 6.65 ms; CIFAR-10 (MobileNet-derived) 8.52% error, 102 mJ, 340 ms on 861 cores
+across 7 chips [Rueckauer21-NxTF]. (The 1,753-core, 14-chip figure sometimes attached to
+this result belongs to the Quartz paper's own, separate CIFAR-10 network, not the NxTF
+MobileNet: Lenz, Orchard, and Sheik, "Ultra-low-power Image Classification on
+Neuromorphic Hardware," arXiv:2309.16795, Sec. 4.2.) Reset by subtraction survives the whole chain, via the
 two-compartment compiler trick [Rueckauer21-NxTF]. **Evidence class: E1.** Neither
 component is maintained: SNN Toolbox's last substantive release was March 2021, last
 bugfix patch August 2022 [SNNToolbox-GitHub]; NxSDK/NxTF is Loihi-1-era and Intel's own
@@ -388,7 +391,8 @@ a CIFAR-scale vision accelerator.
 
 **5. SpikingJelly to `lava_exchange` to Lava to Loihi 2.** Documented, but **does not
 preserve reset by subtraction**: `lava_exchange.py` raises `ValueError` for any
-`v_reset != 0.`, at five call sites [SJ-LavaExchangeSource]. The operator dispatch
+`v_reset != 0.`, at four call sites, plus an assertion in `CubaLIFNode.__init__` with a
+different message [SJ-LavaExchangeSource]. The operator dispatch
 supports only `nn.Linear`, `nn.Conv2d`, `nn.AvgPool2d`, and `nn.Flatten`; a VGG's
 `nn.MaxPool2d` or a ResNet's residual add would each raise `NotImplementedError`
 [SJ-LavaExchangeSource]. The one worked example in SpikingJelly's own documentation
@@ -421,12 +425,16 @@ soft-reset SpikingJelly model through this path to physical silicon was found.
 
 ### Verdicts
 
-**SpikingJelly into NxTF into Loihi 1 is blocked.** NxTF is Keras-native with no
-PyTorch bridge; the only bridge that exists was purpose-built for SNN Toolbox, not for
+**SpikingJelly into NxTF into Loihi 1 is blocked.** NxTF is Keras-native; no bridge from
+a PyTorch SNN framework such as SpikingJelly exists. The only automated bridge into NxTF,
+`nxsdk_modules_ncl/snntoolbox/nx_backend.py`, was purpose-built for SNN Toolbox, not for
 SpikingJelly, and its host repository, `intel-nrc-ecosystem/models`, carries a blanket
-discontinuation notice from Intel [A18-Research]. A PyTorch-to-Keras or
-PyTorch-to-ONNX-to-Keras workaround is not a documented, working path anywhere in the
-sources retrieved; it would be original engineering, not a supported feature.
+discontinuation notice from Intel [A18-Research]. A PyTorch-to-Keras workaround does
+exist and is documented, just not for SpikingJelly: SNN Toolbox's own
+`pytorch_input_lib.py` ingests PyTorch ANNs by exporting them to ONNX and reloading them
+through the Keras-model parser, and the NxTF repository's SLAYER tutorials load
+PyTorch-trained weight arrays by hand from `.npy` files. Neither path accepts a
+SpikingJelly-converted network; it would be original engineering to connect one.
 
 **SpikingJelly into Lava into Loihi 2 is blocked.** It is blocked at reset semantics,
 by SpikingJelly's own hard-coded `v_reset == 0` assertion, and separately by an

@@ -21,15 +21,20 @@ at any `BatchNorm2d` layer not already fused away before export [jelly-lava-sour
 also asserts no bias term on exported `Conv2d`/`Linear` layers and rejects any LIF neuron with
 `decay_input=True` [jelly-lava-source].
 
-Sinabs, SynSense's PyTorch library for the Speck/DYNAP-CNN line, has no built-in BatchNorm
-folding. Its `DynapcnnLayer` template is fixed to a `conv → spike → pool` sequence, and the
-`discretize` module's public functions (`discretize_conv`, `discretize_conv_spike`,
-`discretize_spk`) operate only on `(Conv2d, IAF)` pairs; there is no `discretize_bn` or `fold_bn`
-counterpart [sinabs-discretize-api]. Sinabs's own hardware-targeted tutorials avoid the problem
-by construction, building bias-free convolutional layers followed directly by IF layers with no
-BatchNorm in the architecture at all, which places the burden of BN removal on the user before the
-model reaches `from_model()` [sinabs-nmnist-tutorial]. A `Conv2d` bias, where present, is
-repurposed on-chip as the per-timestep leak current rather than an ordinary additive bias, a
+Sinabs, SynSense's PyTorch library for the Speck/DYNAP-CNN line, does fold BatchNorm
+automatically, just not inside the `discretize` module. Speck itself has no BatchNorm
+operator, so `DynapcnnNetwork`'s graph extractor calls `handle_batchnorm_nodes`, which
+merges `BatchNorm2d`/`BatchNorm1d` layers into the preceding `Conv2d`/`Linear` layer via
+`merge_bn` (`sinabs.backend.dynapcnn.utils`), automatically and before the model reaches
+the chip [sinabs-discretize-api]. The `discretize` module's own public functions
+(`discretize_conv`, `discretize_conv_spike`, `discretize_spk`) operate only on
+`(Conv2d, IAF)` pairs and carry no `discretize_bn` or `fold_bn` counterpart, because
+BatchNorm folding already happened earlier, in the graph extractor, not in discretization
+[sinabs-discretize-api]. Sinabs's own hardware-targeted tutorials still avoid the
+question by construction, building bias-free convolutional layers followed directly by
+IF layers with no BatchNorm in the architecture at all [sinabs-nmnist-tutorial]. A
+`Conv2d` bias, where present, is repurposed on-chip as the per-timestep leak current
+rather than an ordinary additive bias, a
 further departure from what a standard trained CNN expects [sinabs-nmnist-tutorial].
 
 BrainChip's Akida, evaluated here only as a constraint-list illustration and not as a deployment
@@ -78,8 +83,8 @@ snnTorch's neuron classes internally implement subtract-reset but historically e
 `v_reset = 0` to NIR, silently discarding the distinction, a bug tracked in two separate pull
 requests against the reference exporter [snntorch-pr-388] [snntorch-pr-426]. SpikingJelly's own
 exporters go further and refuse the case outright: `lava_exchange.py` raises `ValueError('lava
-only supports for v_reset == 0!')` at five separate call sites, and asserts the same for its
-`CubaLIFNode` path; its `nir_exchange/to_nir.py` raises `NotImplementedError("NIR does not
+only supports for v_reset == 0!')` at four separate call sites, and asserts the same (with a
+different message) for its `CubaLIFNode` path; its `nir_exchange/to_nir.py` raises `NotImplementedError("NIR does not
 distinguish soft reset.")` whenever `v_reset is None` [jelly-lava-source] [jelly-nir-source]. A
 network converted by SpikingJelly's own `ann2snn` module, which itself defaults to soft reset,
 cannot be handed to either of SpikingJelly's own export modules without either re-parameterizing

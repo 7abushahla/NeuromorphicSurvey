@@ -1124,7 +1124,7 @@
       "summary": "The founding threshold-balancing/weight-normalization ANN-to-SNN conversion methodology (Cao 2015, Diehl 2015, Rueckauer 2017, Sengupta 2019, and five further core algorithm papers). None of the nine core algorithm-proposing papers report any physical hardware execution; hardware validation of the methodology exists only in separate, later systems papers that adopt the conversion pipeline as an input rather than introducing it.",
       "attributes": {
         "parent_learning_path": "ann-to-snn-conversion",
-        "reaches_physical_silicon": "0 of 9 core algorithm-proposing papers audited (Cao 2015, Diehl 2015, Rueckauer 2017, Sengupta 2019, Han/Srinivasan/Roy 2020 RMP-SNN, Han/Roy 2020 TSC, Deng/Gu 2021, Li et al. 2021, Ho/Chang 2021) report any run on physical neuromorphic silicon; all 9 are E5, and several report SynOps-based or per-operation analytical energy/complexity estimates that are frequently miscited downstream as hardware results. Physical E1 results for this methodology exist only in downstream, separately authored systems papers that adopt the SNN Toolbox pipeline as an input: SNN Toolbox to NxTF on physical Loihi 1 (CIFAR-10 MobileNet, 8.52% error, 1,753 cores across 14 chips) and SNN Toolbox to sPyNNaker on physical SpiNNaker 1 (MNIST LeNet, 98.20%)."
+        "reaches_physical_silicon": "0 of 9 core algorithm-proposing papers audited (Cao 2015, Diehl 2015, Rueckauer 2017, Sengupta 2019, Han/Srinivasan/Roy 2020 RMP-SNN, Han/Roy 2020 TSC, Deng/Gu 2021, Li et al. 2021, Ho/Chang 2021) report any run on physical neuromorphic silicon; all 9 are E5, and several report SynOps-based or per-operation analytical energy/complexity estimates that are frequently miscited downstream as hardware results. Physical E1 results for this methodology exist only in downstream, separately authored systems papers that adopt the SNN Toolbox pipeline as an input: SNN Toolbox to NxTF on physical Loihi 1 (CIFAR-10 MobileNet, 8.52% error, 861 cores across 7 chips) and SNN Toolbox to sPyNNaker on physical SpiNNaker 1 (MNIST LeNet, 98.20%)."
       },
       "source_ids": [
         "cao-2015",
@@ -1932,7 +1932,7 @@
       "type": "method",
       "name": "FeNN Vector-ISA SNN Program",
       "layer": "Method",
-      "summary": "FeNN's custom RISC-V vector instruction set extension (a CV32E40X scalar core plus a custom vector co-processor), whose compiled program steps LIF neuron and synapse state updates across timesteps; FeNN-DMA extends the same instruction set with DMA-based synaptic-weight streaming for larger networks.",
+      "summary": "FeNN's custom RISC-V vector instruction set extension (a CV32E40X scalar core plus a custom vector co-processor), whose program, RISC-V assembly emitted by a host-side C++ JIT assembler, steps adaptive LIF (ALIF) neuron and synapse state updates across timesteps; FeNN-DMA extends the same instruction set with DMA-based synaptic-weight streaming for larger networks.",
       "attributes": {},
       "source_ids": [
         "fenn-dma-riscv",
@@ -2442,14 +2442,15 @@
       "type": "code",
       "name": "Graded spikes",
       "layer": "Representation",
-      "summary": "A spike event whose payload carries a multi-bit (typically signed integer) magnitude rather than a bare 0/1, letting one event transmit a quantized activation delta directly instead of a count of binary spikes accumulated over T timesteps. Native to Loihi 2 via 16-24 bit signed payloads and dedicated sigma-delta microcode; the hardware feature underlying graded/sigma-delta ANN-to-SNN conversion.",
+      "summary": "A spike event whose payload carries a multi-bit (typically signed integer) magnitude rather than a bare 0/1, letting one event transmit a quantized activation delta directly instead of a count of binary spikes accumulated over T timesteps. Native to Loihi 2 via signed integer payloads (up to 24 bits per Shrestha et al. 2023, a 32-bit field per Intel's Loihi 2 brief, up to 16 bits per Brehove et al.) and dedicated sigma-delta microcode; the hardware feature underlying graded/sigma-delta ANN-to-SNN conversion.",
       "attributes": {
-        "platforms": "Confirmed native only on Loihi 2 (up to 24 bits of signed integer magnitude, dedicated microcode; demonstrated in a fielded ANN-to-SDNN YOLO-KP object detector at 112 FPS, 5.0 ms latency, 20 mJ/frame). Loihi 1 lacks native graded spikes and can only approximate the mechanism via a two-compartment aLIF/sigma-delta neuron workaround at 2x compartment cost. SpiNNaker 2 supports large (128-bit) packet payloads and has demonstrated carrying signed floating-point values for backward-pass error gradients (EventProp), but this was not documented for a forward-pass sigma-delta activation encoding in the reviewed sources. No native graded-spike or sigma-delta support was found for SpiNNaker 1, DYNAP-CNN/Speck, BrainScaleS-2, TrueNorth, or FPGA designs in general (graded-spike support on FPGA is an achievable design choice, not an off-the-shelf feature)."
+        "platforms": "Confirmed native only on Loihi 2 (signed integer payloads of up to 24 bits per Shrestha et al. 2023, a 32-bit field per Intel's Loihi 2 brief, and up to 16 bits per Brehove et al.; dedicated microcode; an ANN-to-SDNN YOLO-KP object detector benchmarked by Brehove et al., arXiv v2, at 175.6 FPS, 3.20 ms latency and 11.73 mJ/frame on a 16-chip VPX board, and fielded on infrared video at 112 FPS, 5.0 ms latency, 20 mJ/frame). Loihi 1 lacks native graded spikes and can only approximate the mechanism via a two-compartment aLIF/sigma-delta neuron workaround at 2x compartment cost. SpiNNaker 2 supports large (128-bit) packet payloads and has demonstrated carrying signed floating-point values for backward-pass error gradients (EventProp), but this was not documented for a forward-pass sigma-delta activation encoding in the reviewed sources. No native graded-spike or sigma-delta support was found for SpiNNaker 1, DYNAP-CNN/Speck, BrainScaleS-2, TrueNorth, or FPGA designs in general (graded-spike support on FPGA is an achievable design choice, not an off-the-shelf feature)."
       },
       "source_ids": [
         "boeshertz2024-rnn-mapping",
         "brehove",
         "eventprop-spinnaker2-backprop",
+        "loihi2",
         "sdnn"
       ],
       "source_refs": [
@@ -2478,6 +2479,12 @@
           ]
         },
         {
+          "source_id": "loihi2",
+          "locators": [
+            "Structured metadata from evidence-stack.json, sources.json"
+          ]
+        },
+        {
           "source_id": "sdnn",
           "locators": [
             "Structured metadata from evidence-stack.json, sources.json"
@@ -2497,6 +2504,11 @@
         },
         {
           "source_id": "eventprop-spinnaker2-backprop",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "loihi2",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         },
@@ -2797,7 +2809,7 @@
       "summary": "MNIST/CIFAR/ImageNet-scale classification of static images; historically the primary evaluation target of both classical and low-latency (QCFS-lineage) ANN-to-SNN conversion, and the task this thesis's own QCFS/QCFS+/QCFS++ tracks build on.",
       "attributes": {
         "input_format": "Static RGB/grayscale image datasets (MNIST, CIFAR-10/100, ImageNet). Classical conversion papers compare Poisson-rate spike trains against direct/analog constant-current first-layer input; the QCFS lineage and its 16 audited descendants uniformly use direct/analog input rather than Poisson coding.",
-        "physical_silicon_deployment": "Narrow but real for classical conversion: MNIST (0.66-0.79 mJ, 6.5-6.65 ms) and MobileNet-on-CIFAR-10 (8.52% error, 102 mJ, 340 ms, 1,753 cores/14 chips) via SNN Toolbox conversion + NxTF on physical Loihi 1; a rate-coded MNIST classifier on physical DynapCNN (98.79% accuracy, Bernoulli raster). By contrast, zero of 16 audited QCFS-lineage low-latency conversion papers (2022-2025, including QCFS itself) report any run on physical neuromorphic silicon; all are E5 GPU/PyTorch simulation, several with SynOps-based 'theoretical energy' tables that are frequently miscited as hardware results. Commercial (borderline-spiking) Akida reports 41 ms/215 mW/9 mJ per image classification.",
+        "physical_silicon_deployment": "Narrow but real for classical conversion: MNIST (0.66-0.79 mJ, 6.5-6.65 ms) and MobileNet-on-CIFAR-10 (8.52% error, 102 mJ, 340 ms, 861 cores/7 chips) via SNN Toolbox conversion + NxTF on physical Loihi 1; a rate-coded MNIST classifier on physical DynapCNN (98.79% accuracy, Bernoulli raster). By contrast, zero of 16 audited QCFS-lineage low-latency conversion papers (2022-2025, including QCFS itself) report any run on physical neuromorphic silicon; all are E5 GPU/PyTorch simulation, several with SynOps-based 'theoretical energy' tables that are frequently miscited as hardware results. Commercial (borderline-spiking) Akida reports 41 ms/215 mW/9 mJ per image classification.",
         "platforms": "Intel Loihi 1 (NxTF/SNN Toolbox conversion pipeline), SynSense DynapCNN (rate-coded raster via Sinabs), BrainChip Akida (commercial, delta/multi-bit event semantics rather than binary IF spikes)."
       },
       "source_ids": [
@@ -3420,7 +3432,7 @@
       "layer": "Runtime",
       "summary": "The Magma-layer execution runtime within Lava that actually runs a compiled ProcessModel on physical Loihi 2 hardware (the Loihi2HwCfg backend), reached from NetX-compiled network descriptions produced by SLAYER/Bootstrap training or by SpikingJelly's lava_exchange export when it succeeds. The Loihi-targeting Magma components are proprietary and gated to INRC members; the same ProcessModel abstraction can alternatively execute in a CPU/software simulation backend with no hardware involved. Archived by Intel as of 2026-05-13 with no further maintenance or patches accepted.",
       "attributes": {
-        "pipeline_position": "NetX (compile) -> Lava ProcessModels (this node, run) -> Loihi 2 hardware, or a CPU/software ProcessModel backend for simulation. Physical Loihi 2 runs through this runtime are documented with full profiling (loihi2_profiler: throughput, power, execution, memory, activity) for Lava-DL SLAYER-trained networks (PilotNet SDNN/LIF regression, mlGeNN/EventProp keyword spotting)."
+        "pipeline_position": "NetX (compile) -> Lava ProcessModels (this node, run) -> Loihi 2 hardware, or a CPU/software ProcessModel backend for simulation. Physical Loihi 2 runs through this runtime are documented with full profiling (loihi2_profiler: throughput, power, execution, memory, activity) for Lava-DL-trained networks (PilotNet SDNN regression, and the PilotNet LIF vendor tutorial) and for an EventProp keyword-spotting network trained with mlGeNN, not SLAYER, and exported through NetX."
       },
       "source_ids": [
         "lava-dl-netx-docs",
@@ -4657,7 +4669,7 @@
       "type": "exchange",
       "name": "Neuromorphic Intermediate Representation (NIR)",
       "layer": "Export & compile",
-      "summary": "A unified graph IR (Nature Communications 2024) defining 17 computational primitives at the paper level (Input, Affine, Conv, LI, I&F, LIF, CuBa-LIF, etc.), read/written by 9 simulators and reaching 5 hardware platforms (BrainScaleS-2, Loihi 2, Speck, SpiNNaker2, Xylo). Verified directly against the reference implementation's neuron primitive source (nir/ir/neuron.py): NIR defines six neuron-adjacent primitives (CubaLI, CubaLIF, I, IF, LI, LIF); all three spiking primitives (IF, LIF, CubaLIF) specify reset identically as reset-to-a-fixed-value (v <- v_reset if spike else v, v_reset defaulting to 0). No NIR primitive specifies reset by subtraction -- this is a limitation of the specification itself, not of any one exporter. Hardware backends are explicitly permitted to simply ignore unsupported nodes rather than approximate them.",
+      "summary": "A unified graph IR (Nature Communications 2024) whose documentation defines seventeen primitives (the paper lists eleven computational and three higher-order primitives), read/written by 9 simulators and reaching 5 hardware platforms (BrainScaleS-2, Loihi 2, Speck, SpiNNaker2, Xylo). Verified directly against the reference implementation's neuron primitive source (nir/ir/neuron.py): six of the seventeen are neuron models (CubaLI, CubaLIF, I, IF, LI, LIF); all three spiking primitives (IF, LIF, CubaLIF) specify reset identically as reset-to-a-fixed-value (v <- v_reset if spike else v, v_reset defaulting to 0). No NIR field distinguishes reset by subtraction from reset to a value; which one a backend applies is left to the backend, so an exporter that refuses subtractive-reset neurons does so by its own policy. Hardware backends are explicitly permitted to simply ignore unsupported nodes rather than approximate them.",
       "attributes": {},
       "source_ids": [
         "neuroir-docs",
@@ -4970,7 +4982,7 @@
       "type": "runtime",
       "name": "NxSDK",
       "layer": "Runtime",
-      "summary": "Intel's Loihi 1 software development kit and register-level NxCore driver API; supported three high-level front ends (third-party Nengo, Intel's own NxNet, and NxTF) all compiling down through NxCore. Loihi-1-era; superseded by Lava for Loihi 2 per INRC's own 2022 migration guidance (\"Older NxSDK models should be easily re-implemented in Lava\").",
+      "summary": "Intel's Loihi 1 software development kit and register-level NxCore driver API; supported three high-level front ends (third-party Nengo, Intel's own NxNet, and NxTF) all compiling down through NxCore. Loihi-1-era; superseded by Lava for Loihi 2 per INRC's own 2022 migration guidance, which directs members to Lava for Loihi 2.",
       "attributes": {},
       "source_ids": [
         "intel-inrc-confluence",
@@ -6649,7 +6661,7 @@
       "type": "learning-path",
       "name": "Spike-time gradient methods (SLAYER / EXODUS / EventProp)",
       "layer": "Learning paths",
-      "summary": "Exact or near-exact gradient methods defined directly on spike timing rather than a surrogate derivative substituted into ordinary BPTT. The one direct-training lineage with a consistently exercised, vendor-maintained silicon path: SLAYER/Lava-DL to Loihi, and EventProp/mlGeNN to Loihi 2.",
+      "summary": "Gradient methods that assign error through spike timing rather than plain surrogate-derivative BPTT on a fixed grid. Within this lineage SLAYER is itself a surrogate-gradient method (a stochastic spike-escape-rate derivative shapes its backward pass), while EventProp is the exact one, differentiating analytically through the spike event. The one direct-training lineage with a consistently exercised, vendor-maintained silicon path, SLAYER/Lava-DL to Loihi, and EventProp/mlGeNN to Loihi 2.",
       "attributes": {
         "reaches_physical_silicon": "Yes, routinely, via first-party vendor toolchains. SLAYER-trained CNN deployed via NxTF/NxSDK to physical Loihi 1 (DVS Gesture: latency and energy measured via a built-in performance probe). Lava-DL (SLAYER to NetX) PilotNet SDNN/LIF regression on physical Loihi 2: throughput 16.87-408.91 fps, full power/execution/memory/activity profiling. EventProp (exact-gradient BPTT) via mlGeNN to NetX to physical single-chip Loihi 2 with learned synaptic delays, on Spiking Heidelberg/Speech-Commands keyword spotting: 1.46-1.54 ms latency, 0.21-0.46 mJ energy, 18x faster and 250x less energy than an NVIDIA Jetson Orin Nano at batch=1. EXODUS itself (the training-speed algorithm underlying this lineage) has not been run on hardware in its own paper; deployment is exercised only downstream, via Sinabs to DynapCNN/Speck users."
       },
@@ -7668,9 +7680,9 @@
     {
       "id": "ttfs-mcu-firmware",
       "type": "runtime",
-      "name": "TTFS-Converted-Network MCU Firmware",
+      "name": "TTFS-Converted-Network MCU Deployment",
       "layer": "Runtime",
-      "summary": "The compiled embedded-firmware form of a CNN-to-SNN, time-to-first-spike-converted digital network, running as an ordinary program on the Cortex-M4's own instruction set. The retrieved text names no CMSIS-NN or SNN Toolbox stage for this specific pipeline, so this node is named from the paper's own description, 'custom CNN-to-SNN (TTFS) conversion pipeline,' rather than from either named library.",
+      "summary": "The deployed form of a CNN-to-SNN, time-to-first-spike-converted digital network on the ARM Cortex-M4 MCU. The paper says only that the converted SNN is deployed on the MCU and describes the digital SNN as either software-simulated or hardware-accelerated; it never uses the words firmware or compiled. CMSIS-NN is named in the paper only as a comparator framework and SNN Toolbox is not mentioned, so this node is named from the paper's own description, 'custom CNN-to-SNN (TTFS) conversion pipeline,' rather than from either named library.",
       "attributes": {},
       "source_ids": [
         "anglo-mixed-snn-mcu"
@@ -13133,7 +13145,7 @@
         "FeNN's custom vector instruction encoding of LIF neuron and synapse updates"
       ],
       "legacy_breaks": [],
-      "mechanism": "FeNN's custom RISC-V vector instruction set, implemented as SystemVerilog RTL, defines a program that steps LIF neuron and synapse state updates across timesteps; this RTL design is synthesized into a bitstream by AMD/Xilinx Vivado 2023.2.",
+      "mechanism": "FeNN's custom RISC-V vector instruction set, implemented as SystemVerilog RTL, is synthesized into a bitstream by AMD/Xilinx Vivado 2023.2; the SNN program that steps adaptive LIF (ALIF) neuron and synapse state updates across timesteps is RISC-V assembly emitted by a host-side C++ JIT assembler on the Kria's Cortex-A53 and loaded into the core's memory, not something Vivado compiles.",
       "notes": "This edge is the framework-to-toolchain RTL-synthesis stage; the measured runs are reported on the toolchain-to-hardware edge below.",
       "capability_class": "native",
       "route_state": "physical",
@@ -13525,8 +13537,8 @@
       "legacy_breaks": [
         "accumulate-only binary-spike efficiency of the rest of the SNN literature"
       ],
-      "mechanism": "Loihi 2 microcode supports up to 24-bit signed integer graded-spike payloads, used directly by sigma-delta ANN-to-SDNN conversion.",
-      "notes": "Demonstrated in a fielded YOLO-KP detector: 112 FPS, 5.0 ms latency, 20 mJ/frame.",
+      "mechanism": "Loihi 2 graded-spike payloads carry a signed integer magnitude, used directly by sigma-delta ANN-to-SDNN conversion; the stated width depends on the source (up to 24 bits in Shrestha et al. 2023, a 32-bit payload field in Intel's Loihi 2 brief, up to 16-bit signed payloads in Brehove et al.).",
+      "notes": "Brehove et al. (arXiv v2 of 2505.06417, the manuscript this record read) benchmark a YOLO-KP detector on a 16-chip Loihi 2 VPX board at 175.6 FPS, 3.20 ms latency and 11.73 mJ per frame (Table 3), and separately report a fielded infrared-video deployment at 112 FPS, 5.0 ms latency and 20 mJ per frame.",
       "capability_class": null,
       "route_state": null,
       "reports_deployment_evidence": null,
@@ -13537,6 +13549,7 @@
       "toolchain_version": null,
       "source_ids": [
         "brehove",
+        "loihi2",
         "sdnn"
       ],
       "source_refs": [
@@ -13553,6 +13566,12 @@
           ]
         },
         {
+          "source_id": "loihi2",
+          "locators": [
+            "Structured metadata from evidence-stack.json, sources.json"
+          ]
+        },
+        {
           "source_id": "sdnn",
           "locators": [
             "Structured metadata from evidence-stack.json, sources.json"
@@ -13564,6 +13583,11 @@
           "source_id": "brehove",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        },
+        {
+          "source_id": "loihi2",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         },
         {
           "source_id": "sdnn",
@@ -16245,7 +16269,7 @@
       "legacy_breaks": [
         "the network's timestep count is fixed into the generated kernel at compile time, rather than remaining a runtime parameter"
       ],
-      "mechanism": "mlGeNN's converted-CNN model description (percentile-normalized IF conversion of a trained VGG-16 or ResNet-20/34) compiles down through GeNN's code generator into simulation code specialized for the model and, at build time, into CUDA C++.",
+      "mechanism": "mlGeNN's converted-CNN model description (a data-norm IF conversion of a trained VGG-16 or ResNet-20/34, normalizing by the maximum activation or maximum incoming weight of each layer after Diehl et al.) compiles down through GeNN's code generator into simulation code specialized for the model and, at build time, into CUDA C++.",
       "notes": "This edge is the framework-to-runtime code-generation stage; the measured benchmark is reported on the runtime-to-hardware edge below.",
       "capability_class": "transformed",
       "route_state": "physical",
@@ -17451,18 +17475,18 @@
       "typed_input": null,
       "typed_output": null,
       "preserved": [
-        "hard-reset (v_reset != None) neuron export, faithfully represented since NIR's spiking primitives only encode fixed-value reset"
+        "hard-reset (v_reset != None) neuron export, represented by NIR's fixed-value v_reset field"
       ],
       "transformed": [],
       "rejected": [],
       "legacy_preserves": [
-        "hard-reset (v_reset != None) neuron export, faithfully represented since NIR's spiking primitives only encode fixed-value reset"
+        "hard-reset (v_reset != None) neuron export, represented by NIR's fixed-value v_reset field"
       ],
       "legacy_breaks": [
-        "BREAKS reset-by-subtraction entirely, and correctly so given the target format: NIR's own primitive specification (six primitives -- CubaLI, CubaLIF, I, IF, LI, LIF, verified directly against nir/ir/neuron.py) defines reset identically for all three spiking primitives as reset-to-a-fixed-value; no NIR primitive specifies reset by subtraction. SpikingJelly's exporter raises NotImplementedError('NIR does not distinguish soft reset.') whenever v_reset is None -- this is correct behavior given that NIR cannot represent that semantics at all, not an implementation bug in SpikingJelly's exporter"
+        "BREAKS reset-by-subtraction by exporter policy. NIR's documentation defines seventeen primitives, six of them neuron models (CubaLI, CubaLIF, I, IF, LI, LIF, verified directly against nir/ir/neuron.py), and its three spiking primitives document reset identically as reset-to-a-fixed-value; no NIR field distinguishes reset by subtraction from reset to a value, and which one a backend applies is left to the backend (the NIR paper's own appendix names subtractive reset as a valid discretization). SpikingJelly's exporter raises NotImplementedError('NIR does not distinguish soft reset.') whenever v_reset is None, a deliberate, conservative refusal; snnTorch and Sinabs export the same neurons with v_reset = 0 and leave the discretization to the importer"
       ],
-      "mechanism": "to_nir.py's _hard_reset() helper converts a SpikingJelly neuron's reset configuration into NIR's IF/LIF/CubaLIF primitive, which specifies only a fixed-value reset (v <- v_reset if spike else v, v_reset defaulting to 0).",
-      "notes": "NIR 1.0.8 encodes fixed v_reset. The field was introduced in May 2025, so the 2024 NIR paper cannot establish the current field-level reset contract.",
+      "mechanism": "to_nir.py's _hard_reset() helper converts a SpikingJelly neuron's reset configuration into NIR's IF/LIF/CubaLIF primitive, which carries only a fixed-value reset field (v <- v_reset if spike else v, v_reset defaulting to 0) and no field that distinguishes reset by subtraction from reset to a value.",
+      "notes": "NIR 1.0.8 encodes fixed v_reset. The field was introduced in May 2025 (first released in v1.0.6), so the 2024 NIR paper cannot establish the current field-level reset contract.",
       "capability_class": "unsupported",
       "route_state": "blocked",
       "reports_deployment_evidence": null,
@@ -25030,20 +25054,20 @@
       "typed_input": null,
       "typed_output": null,
       "preserved": [
-        "reset-by-subtraction default",
+        "reset by subtraction as an optional mode (default hard), since the Intel bridge's reset_mode falls back to 'hard' and the soft mode doubles the compartments per neuron",
         "percentile-based weight/threshold normalization"
       ],
       "transformed": [],
       "rejected": [],
       "legacy_preserves": [
-        "reset-by-subtraction default",
+        "reset by subtraction as an optional mode (default hard), since the Intel bridge's reset_mode falls back to 'hard' and the soft mode doubles the compartments per neuron",
         "percentile-based weight/threshold normalization"
       ],
       "legacy_breaks": [
-        "framework boundary: NxTF is Keras-native; no generic PyTorch bridge exists, so SpikingJelly/PyTorch models cannot reuse this interface"
+        "framework boundary: NxTF is Keras-native; no bridge from a PyTorch SNN framework exists (SNN Toolbox itself ingests PyTorch ANNs through ONNX), so SpikingJelly models cannot reuse this interface"
       ],
       "mechanism": "SNN-TB's Keras/PyTorch/Caffe/Lasagne-ingested, percentile-normalized, reset-by-subtraction IF conversion is bridged via a dedicated nxsdk_modules_ncl/dnn/.../snntoolbox interface into NxTF's Keras-derived DNN compiler.",
-      "notes": "Produced the clearest published rate-coded conversion result on physical neuromorphic silicon: CIFAR-10 8.52% error on Loihi 1 (413k neurons, 3M params, 1,753 cores/14 chips).",
+      "notes": "Produced the clearest published rate-coded conversion result on physical neuromorphic silicon, CIFAR-10 8.52% error on Loihi 1 (413k neurons, 3M params, 861 cores across 7 chips). The paper does not state which reset mode the 8.52% run used.",
       "capability_class": null,
       "route_state": null,
       "reports_deployment_evidence": null,
@@ -25637,12 +25661,12 @@
       "typed_input": null,
       "typed_output": null,
       "preserved": [
-        "reset-by-subtraction default, percentile weight/threshold normalization"
+        "percentile weight/threshold normalization; the PyNN IF_curr_exp cell hands the backend v_reset = 0, a hard reset to zero, not subtractive reset (SNN-TB's reset-by-subtraction setting is consumed only by its INI simulator)"
       ],
       "transformed": [],
       "rejected": [],
       "legacy_preserves": [
-        "reset-by-subtraction default, percentile weight/threshold normalization"
+        "percentile weight/threshold normalization; the PyNN IF_curr_exp cell hands the backend v_reset = 0, a hard reset to zero, not subtractive reset (SNN-TB's reset-by-subtraction setting is consumed only by its INI simulator)"
       ],
       "legacy_breaks": [
         "no SNN-TB-authored paper independently confirms classification results measured via this specific backend module on physical SpiNNaker silicon; the clearest physical result (Patino-Saucedo et al. 2019/2020, 98.20% MNIST on a SpiNNaker-103 machine) does credit SNN-TB conversion methodology but the exact code path used is not confirmed to be this module in every source"
@@ -29013,7 +29037,7 @@
       "to_node": {
         "id": "ttfs-mcu-firmware",
         "type": "runtime",
-        "name": "TTFS-Converted-Network MCU Firmware",
+        "name": "TTFS-Converted-Network MCU Deployment",
         "layer": "Runtime"
       },
       "typed_input": null,
@@ -29029,7 +29053,7 @@
       "legacy_breaks": [
         "CNN activations become single first-spike-time values; no multi-timestep rate code survives the conversion"
       ],
-      "mechanism": "The paper's own custom CNN-to-SNN time-to-first-spike conversion pipeline maps a trained CNN to a converted digital SNN and compiles it to run on the Cortex-M4 MCU as an embedded firmware program.",
+      "mechanism": "The paper's own custom CNN-to-SNN conversion pipeline, using time-to-first-spike among other encodings it does not name, maps a trained CNN to a converted digital SNN that is deployed on the Cortex-M4 MCU; the paper does not state whether the digital SNN ran as a software simulation on the MCU or as a hardware-accelerated program.",
       "notes": "Named from the paper's own toolchain description, since neither CMSIS-NN nor SNN Toolbox is stated as the converter for this specific chain.",
       "capability_class": "transformed",
       "route_state": "physical",
@@ -29070,7 +29094,7 @@
       "from_node": {
         "id": "ttfs-mcu-firmware",
         "type": "runtime",
-        "name": "TTFS-Converted-Network MCU Firmware",
+        "name": "TTFS-Converted-Network MCU Deployment",
         "layer": "Runtime"
       },
       "to_node": {
@@ -29092,7 +29116,7 @@
       "legacy_breaks": [
         "no membrane potential persists between inferences; each call is a single feedforward pass measured as one firmware program run"
       ],
-      "mechanism": "The compiled digital SNN executes as an ordinary firmware program on a physical ARM Cortex-M4 MCU, with energy and latency measured by an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
+      "mechanism": "The converted digital SNN is deployed on a physical ARM Cortex-M4 MCU, with energy and latency measured by an external power analyzer under the MLPerf Tiny windowed-measurement protocol; the paper does not state the task of the measured run, the neuron model, or the timestep count.",
       "notes": "E1 establishes a converted network's physical run on a Cortex-M4 MCU; the analog Innatera SNP and 8-bit CNN comparators measured in the same paper are not part of this route. reports_deployment_evidence is False here (rather than the brief's default True for a route's last edge) because no official ARM/vendor or SDK documentation source for this Cortex-M4 toolchain exists in data/source-registry.json; the only available source is the peer-reviewed paper itself. The E1 evidence class and physical route_state above are unaffected; only this specific structural flag is withheld pending an official source, per check-consistency.py's validate_hardware_routes.",
       "capability_class": "native",
       "route_state": "physical",

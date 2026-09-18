@@ -17,9 +17,11 @@ rate-coded conversion pipeline, and ran it on physical Loihi 1 hardware. On MNIS
 converted network reached 0.79% error at 100 timesteps, using 14 neurocores, measuring
 0.66 mJ energy, 6.65 ms delay, and 4.38 µJ·s energy-delay product (EDP)
 [rueckauer-2021-nxtf], [lenz-2023-quartz]. On CIFAR-10, an off-the-shelf MobileNet
-converted the same way reached 8.52% error at roughly 400 timesteps, spanning 1,753
-neuromorphic cores across 14 Loihi chips, at 102 mJ, 340 ms, and 34,926 µJ·s EDP
-[rueckauer-2021-nxtf], [lenz-2023-quartz]. The same paper also ran SLAYER-trained
+converted the same way reached 8.52% error at roughly 400 timesteps, on 861
+neuromorphic cores across 7 Loihi chips, at 102 mJ, 340 ms, and 34,926 µJ·s EDP
+[rueckauer-2021-nxtf]. (The 1,753-core, 14-chip figure that the Quartz paper's
+comparison table cites alongside this result describes Quartz's own, separate CIFAR-10
+network, not the NxTF MobileNet [lenz-2023-quartz].) The same paper also ran SLAYER-trained
 (directly trained, not converted) convolutional SNNs on N-MNIST and DVS Gestures on the
 same physical chip [rueckauer-2021-nxtf]. These are the only classic rate-coded,
 IF-neuron ANN-to-SNN conversions of a CNN found running on physical Loihi silicon

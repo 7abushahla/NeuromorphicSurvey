@@ -12599,7 +12599,7 @@
       "origin_id": "fenn-vector-program-to-riscv-toolchain",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "FeNN's custom RISC-V vector instruction set, implemented as SystemVerilog RTL, defines a program that steps LIF neuron and synapse state updates across timesteps; this RTL design is synthesized into a bitstream by AMD/Xilinx Vivado 2023.2.",
+      "label": "FeNN's custom RISC-V vector instruction set, implemented as SystemVerilog RTL, is synthesized into a bitstream by AMD/Xilinx Vivado 2023.2; the SNN program that steps adaptive LIF (ALIF) neuron and synapse state updates across timesteps is RISC-V assembly emitted by a host-side C++ JIT assembler on the Kria's Cortex-A53 and loaded into the core's memory, not something Vivado compiles.",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -12847,7 +12847,7 @@
       "origin_id": "graded-spikes-to-loihi2",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "Loihi 2 microcode supports up to 24-bit signed integer graded-spike payloads, used directly by sigma-delta ANN-to-SDNN conversion.",
+      "label": "Loihi 2 graded-spike payloads carry a signed integer magnitude, used directly by sigma-delta ANN-to-SDNN conversion; the stated width depends on the source (up to 24 bits in Shrestha et al. 2023, a 32-bit payload field in Intel's Loihi 2 brief, up to 16-bit signed payloads in Brehove et al.).",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -12855,6 +12855,7 @@
       "evidence_class": "E1",
       "source_ids": [
         "brehove",
+        "loihi2",
         "sdnn"
       ],
       "source_refs": [
@@ -12871,6 +12872,12 @@
           ]
         },
         {
+          "source_id": "loihi2",
+          "locators": [
+            "Structured metadata from evidence-stack.json, sources.json"
+          ]
+        },
+        {
           "source_id": "sdnn",
           "locators": [
             "Structured metadata from evidence-stack.json, sources.json"
@@ -12882,6 +12889,11 @@
           "source_id": "brehove",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        },
+        {
+          "source_id": "loihi2",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         },
         {
           "source_id": "sdnn",
@@ -13973,7 +13985,7 @@
       "origin_id": "mlgenn-to-genn-cuda",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "mlGeNN's converted-CNN model description (percentile-normalized IF conversion of a trained VGG-16 or ResNet-20/34) compiles down through GeNN's code generator into simulation code specialized for the model and, at build time, into CUDA C++.",
+      "label": "mlGeNN's converted-CNN model description (a data-norm IF conversion of a trained VGG-16 or ResNet-20/34, normalizing by the maximum activation or maximum incoming weight of each layer after Diehl et al.) compiles down through GeNN's code generator into simulation code specialized for the model and, at build time, into CUDA C++.",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -14443,7 +14455,7 @@
       "origin_id": "nir-exchange-to-nir",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "to_nir.py's _hard_reset() helper converts a SpikingJelly neuron's reset configuration into NIR's IF/LIF/CubaLIF primitive, which specifies only a fixed-value reset (v <- v_reset if spike else v, v_reset defaulting to 0).",
+      "label": "to_nir.py's _hard_reset() helper converts a SpikingJelly neuron's reset configuration into NIR's IF/LIF/CubaLIF primitive, which carries only a fixed-value reset field (v <- v_reset if spike else v, v_reset defaulting to 0) and no field that distinguishes reset by subtraction from reset to a value.",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -17252,7 +17264,7 @@
       "origin_id": "ttfs-conversion-to-mcu-firmware",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "The paper's own custom CNN-to-SNN time-to-first-spike conversion pipeline maps a trained CNN to a converted digital SNN and compiles it to run on the Cortex-M4 MCU as an embedded firmware program.",
+      "label": "The paper's own custom CNN-to-SNN conversion pipeline, using time-to-first-spike among other encodings it does not name, maps a trained CNN to a converted digital SNN that is deployed on the Cortex-M4 MCU; the paper does not state whether the digital SNN ran as a software simulation on the MCU or as a hardware-accelerated program.",
       "metric": null,
       "boundary": null,
       "workload": [],
@@ -17290,7 +17302,7 @@
       "origin_id": "ttfs-firmware-to-cortex-m",
       "classification": "conceptual",
       "classification_basis": "route and semantic-transition record",
-      "label": "The compiled digital SNN executes as an ordinary firmware program on a physical ARM Cortex-M4 MCU, with energy and latency measured by an external power analyzer under the MLPerf Tiny windowed-measurement protocol.",
+      "label": "The converted digital SNN is deployed on a physical ARM Cortex-M4 MCU, with energy and latency measured by an external power analyzer under the MLPerf Tiny windowed-measurement protocol; the paper does not state the task of the measured run, the neuron model, or the timestep count.",
       "metric": null,
       "boundary": "Energy per inference, inference latency, and top-1 accuracy of the converted digital SNN running on the Cortex-M4, measured with an external power analyzer under the MLPerf Tiny windowed-measurement protocol: 48 microjoules per inference, about 5-6 ms (6.1 ms) per inference, and 87.9% accuracy, versus 60 microjoules / about 5-6 ms / 89.5% for an 8-bit CNN on the same MCU and 24 microjoules / about 0.8 ms / 88.2% for the same network on the Innatera SNP analog chip measured in the same paper.",
       "workload": [],
