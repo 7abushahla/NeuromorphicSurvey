@@ -10,7 +10,7 @@
 
 <p>A reader who already has a specific chip in hand and wants to know what it can execute should start from <a href="#deployable-snn-contract">Section 9, The Deployable SNN Contract,</a> read the execution family that chip belongs to in <a href="#where-an-snn-runs">Section 5, Where an SNN Runs,</a> and check the platform's row in <a href="#platform-contract-comparison">Section 9.5, Platforms Compared Through the Contract,</a> before consulting <a href="#complete-deployment-routes">Section 11, Complete Deployment Routes,</a> for whether a named route from a training framework to that chip has actually been traced. <a href="#route-choice-guide">Section 15.2, Route Choice Guide,</a> turns this reading path into a short list of questions.</p>
 
-<p>A reader auditing a specific deployment claim should apply the five evidence classes of <a href="#evidence-guide">Section 1.3, How Claims Are Graded,</a> to that claim rather than to the paper as a whole, check the claim against the six boundaries of <a href="#measurement-boundaries">Section 12.2, Measurement Boundaries,</a> and the checklist of <a href="#measurement-checklist">Section 12.6, Measurement Checklist,</a> and consult <a href="#population-counts">Section 13.6, Population Counts,</a> and the findings after it for whether a similar claim in this survey's own audited corpus required a qualification the claim under review omits. A reader designing a new low-latency conversion method should read the error subsections of Section 8 to identify which named mechanism the new method targets, its intervention subsections to check whether an existing intervention already targets the same mechanism, and <a href="#failed-contract-edges">Section 14.1, Failed and Unverified Contract Edges,</a> before committing to a target platform.</p>
+<p>A reader auditing a specific deployment claim should apply the five evidence classes of <a href="#evidence-guide">Section 5.1, How Claims Are Graded,</a> to that claim rather than to the paper as a whole, check the claim against the six boundaries of <a href="#measurement-boundaries">Section 12.2, Measurement Boundaries,</a> and the checklist of <a href="#measurement-checklist">Section 12.6, Measurement Checklist,</a> and consult <a href="#population-counts">Section 13.6, Population Counts,</a> and the findings after it for whether a similar claim in this survey's own audited corpus required a qualification the claim under review omits. A reader designing a new low-latency conversion method should read the error subsections of Section 8 to identify which named mechanism the new method targets, its intervention subsections to check whether an existing intervention already targets the same mechanism, and <a href="#failed-contract-edges">Section 14.1, Failed and Unverified Contract Edges,</a> before committing to a target platform.</p>
 
 <h3 id="route-choice-guide">15.2 Route Choice Guide</h3>
 
@@ -20,7 +20,7 @@
 
 <h3 id="minimum-reporting-checklist">15.3 Minimum Reporting Checklist</h3>
 
-<p>A deployment claim this survey would classify without qualification states each of the following. The first eleven items are the contract fields Table 21 fixes; the last three are the boundary, baseline, and evidence-class fields Section 12 and Section 1.3 fix separately from the contract itself.</p>
+<p>A deployment claim this survey would classify without qualification states each of the following. The first eleven items are the contract fields Table 21 fixes; the last three are the boundary, baseline, and evidence-class fields Section 12 and Section 5.1 fix separately from the contract itself.</p>
 
 <ul>
 <li>The network graph and which operators it uses, and whether the target's mapper accepted, transformed, split, or rejected any of them.</li>
@@ -36,7 +36,7 @@
 <li>Required host-side operations, stated explicitly rather than left implicit in a system diagram.</li>
 <li>The measurement boundary from Section 12.2, chip-only, board-level, host-inclusive, sensor-to-decision, modeled, or physical.</li>
 <li>The baseline's workload, precision, and boundary, stated rather than implied by table proximity, and the batch size or an explicit single-sample statement.</li>
-<li>The evidence class from Section 1.3, E1 through E5, assigned to the specific claim being reported rather than to the paper as a whole.</li>
+<li>The evidence class from Section 5.1, E1 through E5, assigned to the specific claim being reported rather than to the paper as a whole.</li>
 </ul>
 
 <h3 id="specialist-referrals">15.4 Specialist Referrals</h3>

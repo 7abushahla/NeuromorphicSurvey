@@ -388,7 +388,7 @@ def build():
     )
     caption = (
         "<figcaption><b>Figure 1:</b> The order of this survey. The silicon is met before any "
-        "network is fitted to it, so the chips named beside every graded claim are defined by the "
+        "network is fitted to it, so the chip and the grade beside every claim are defined by the "
         "time the first claim appears, and the three hues of the target buckets are met here in "
         "the same order the claims use them. The two learning branches are drawn the same width "
         "and end at one contract, which is also where the platforms met earlier are compared "
