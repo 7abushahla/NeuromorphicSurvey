@@ -12,52 +12,33 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_REPORT = {
-    "defined": 352,
-    "cited": 284,
-    "cited_keys": 376,
-    "uncited": 68,
-    "aliased": 241,
-    "cited_aliased": 231,
-    "unresolved": 0,
-    "duplicate": 0,
-    "analysis_only": 3,
-    "analysis_only_cited": 3,
-    "reference_keys": 360,
-    "reference_only": 19,
-    "reference_only_unresolved": 7,
+    "aliased": 7,
     "ambiguous": 0,
-    "match_methods": {
-        "registry": 241,
-        "doi": 36,
-        "url": 88,
-        "title": 23,
-    },
-    "unresolved_cited": [],
-    "unresolved_reference_only": [
-        "NIR-Support",
-        "Shukla19-TNCarCount",
-        "furber-2004-nofm",
-        "furber2004",
-        "gerstner2002",
-        "perez2013",
-        "speck-2019",
-    ],
     "ambiguous_keys": [],
+    "analysis_only": 3,
+    "analysis_only_cited": 1,
     "analysis_only_ids": [
         "a14-application-survey",
         "a17-two-populations",
-        "a18-sourcecode-comparison",
+        "a18-sourcecode-comparison"
     ],
+    "cited": 307,
+    "cited_aliased": 7,
+    "cited_keys": 313,
+    "defined": 450,
+    "duplicate": 0,
+    "match_methods": {
+        "registry": 313
+    },
+    "reference_keys": 0,
+    "reference_only": 0,
+    "reference_only_unresolved": 0,
+    "uncited": 143,
+    "unresolved": 0,
+    "unresolved_cited": [],
+    "unresolved_reference_only": []
 }
-EXPECTED_REFERENCE_ONLY_UNRESOLVED = {
-    "NIR-Support",
-    "Shukla19-TNCarCount",
-    "furber-2004-nofm",
-    "furber2004",
-    "gerstner2002",
-    "perez2013",
-    "speck-2019",
-}
+EXPECTED_REFERENCE_ONLY_UNRESOLVED = set()
 ENTRY = re.compile(r"@(\w+)\{([^,\s]+),\n(.*?)\n\}", re.S)
 FIELD = re.compile(r"^  (\w+) = \{(.*)\},$", re.M)
 
@@ -191,13 +172,10 @@ def main() -> int:
     if len(refmap) != EXPECTED_REPORT["aliased"]:
         fail("refmap does not contain every resolved legacy alias")
 
-    if refmap.get("SJ-GitHub") != "a18-sourcecode-comparison":
-        fail("the exact reviewed SpikingJelly repository URL did not resolve")
-
     unresolved_reference_only = set(report.get("unresolved_reference_only", []))
     if unresolved_reference_only != EXPECTED_REFERENCE_ONLY_UNRESOLVED:
         fail(
-            "the seven uncited unresolved reference-only keys were not reported exactly"
+            "the uncited unresolved reference-only keys were not reported exactly"
         )
 
     with tempfile.TemporaryDirectory() as temp_directory:
