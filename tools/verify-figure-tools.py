@@ -460,6 +460,11 @@ class FigureToolTests(unittest.TestCase):
         )
         shutil.copy2(SOURCE_ROOT / "data/target-kinds.json", self.root / "data/target-kinds.json")
         self.write_json("data/site-manifest.json", architecture_site_manifest())
+        # The builder links each drawn box to its section's <h2 id>, read from the fragment.
+        for number, identifier, title in ARCHITECTURE_SECTIONS:
+            (self.root / f"site/sec-{number:02d}.html").write_text(
+                f'<h2 id="{identifier.split("-", 2)[-1]}">{number} {title}</h2>\n'
+            )
         record = figure_record(1, identifier="survey-architecture")
         record["fragment"] = "site/figures/survey-architecture.html"
         record["css"] = "site/figures/survey-architecture.css"
