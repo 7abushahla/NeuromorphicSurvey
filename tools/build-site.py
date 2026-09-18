@@ -175,6 +175,19 @@ def main():
     #    interactive figure fragment contributes its own line at its position.
     parts = [(f, text) for f, text in parts]
     doc = '\n'.join(text for _, text in parts)
+
+    # The route map reads its data from an inline JSON block, so the figure works from a
+    # local file and on GitHub Pages alike and never fetches. The block is the generated
+    # view of data/figure-guide.json (tools/build-figure-guide.py).
+    view_path = ROOT / 'data/generated/figure-guide-view.json'
+    if not view_path.exists():
+        sys.exit('data/generated/figure-guide-view.json is missing; run tools/build-figure-guide.py first')
+    view_json = view_path.read_text().replace('</', '<\\/')
+    marker = '<figure class="pfig stack-fig'
+    if doc.count(marker) != 1:
+        sys.exit('the interactive route map figure was not found exactly once')
+    doc = doc.replace(marker, f'<script type="application/json" id="nstk-data">{view_json}</script>\n{marker}', 1)
+
     doc = insert_toc(doc, parts)
     (ROOT / 'index.html').write_text(doc)
 
