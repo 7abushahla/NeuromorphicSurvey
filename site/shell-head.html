@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- _layouts/distill.html -->
-<html>
+<html lang="en">
 
 <script>
   let thunk = () => {
@@ -31,13 +31,12 @@
               title.split(" ").slice(0, 3).join("")
       ).replace(" ", "").replace(/[\p{P}$+<=>^`|~]/gu, '').toLowerCase().trim();
       let bibtexTemplate = `
-@inproceedings{${bibtexTitleShorthand},
+@misc{${bibtexTitleShorthand},
   author = {${authorsBibtex}},
   title = {${title}},
   abstract = {${description}},
-  booktitle = {TMLR Beyond PDF},
   year = {2026},
-  note = {${window.location.href}},
+  howpublished = {Online survey},
   url  = {${window.location.href}}
 }
   `.trim();
@@ -52,7 +51,7 @@
         else academicLFI = academicLFI[0];
       }
       let academicTemplate = `
-${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
+${academicLFI}, "${title}", 2026. ${window.location.href}
 `.trim();
       document.getElementById("bibtex-academic-attribution").innerText = academicTemplate;
     }
@@ -71,10 +70,10 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon | TMLR Beyond PDF</title>
+    <title>From Neural Networks to Neuromorphic Execution: A Deployment-Centered Survey of ANN-to-SNN Conversion, Software Stacks, and Silicon</title>
     <meta name="author" content="  " />
     <meta name="description" content="Spiking neural networks promise inference at a fraction of the energy cost of conventional accelerators, and ANN-to-SNN conversion is the most accessible route to a trained spiking model. A line of work anchored by quantization-clip-floor-shift conversion has driven the timestep count needed to match ANN accuracy from the hundreds into the single digits. Whether those gains reach silicon is a separate question, and it is the question this survey answers. A trained network that reaches a chip passes through a sequence of handoffs, each governed by a different toolchain, reset rule, spike payload, and time model, and each able to break the activation-to-spike-count correspondence the algorithm paper established. This survey records those handoffs. It presents the preliminaries a reader needs, namely neuron models, neural codes, and the execution contracts that hardware imposes, then reviews the primary training paths, advanced conversion techniques, and the alternative codes that abandon rate entirely. It then maps the deployment stack itself, covering neuromorphic platforms, training and simulation frameworks, export and interchange formats, compilers, and runtimes, and traces every documented route from a trained model to a named chip. Deployment claims are classified on a five-level evidence scale separating measured silicon from software simulation. Applying that scale to the literature exposes a division of labor that no prior survey states. Algorithm papers advance accuracy at low timestep counts and do not deploy, while deployment papers reach silicon and do not adopt the new algorithms. Every confirmed case of a new conversion method reaching measured silicon abandons rate coding. The survey closes with the open challenges that division creates, from reset-semantics mismatch and operator coverage to toolchain decay and incomparable efficiency reporting." />
-    <meta name="keywords" content="spiking-neural-networks, neuromorphic-computing, ANN-to-SNN-conversion, Loihi, SpiNNaker, Speck, Akida, event-based-vision, deployment, TMLR" />
+    <meta name="keywords" content="spiking-neural-networks, neuromorphic-computing, ANN-to-SNN-conversion, Loihi, SpiNNaker, Speck, Akida, event-based-vision, deployment" />
 
     <!-- Bootstrap & MDB -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
@@ -693,6 +692,28 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
         box-shadow: 0 0 0 6px #fdf3e0; transition: background 0.25s, box-shadow 0.25s; }
 
       d-article d-contents { grid-row: auto / span 26; }
+
+      /* A wider reading column than the distill default (the eight text columns
+         grow from 50 to 56 px and from 60 to 70 px), and justified body text. */
+      @media (min-width: 1000px) {
+        body d-title, body d-byline, body d-abstract, body d-article, body d-appendix,
+        body d-footnote-list, body d-citation-list {
+          grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 56px 56px 56px 56px 56px 56px 56px 56px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+        }
+      }
+      @media (min-width: 1180px) {
+        body d-title, body d-byline, body d-abstract, body d-article, body d-appendix,
+        body d-footnote-list, body d-citation-list {
+          grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 70px 70px 70px 70px 70px 70px 70px 70px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+        }
+      }
+      d-article p, d-article li, d-title p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+      d-article figcaption, d-article .caveat, d-article .keypoint, d-article d-contents, d-article table { text-align: left; hyphens: manual; }
+      /* The contents column fills the margin it is given instead of a fixed 300 px,
+         so on a 1280 px window it no longer runs into the screen edge. */
+      @media (min-width: 1000px) {
+        d-article d-contents { width: 100%; padding-left: 1.1em; padding-right: 1.4em; box-sizing: border-box; }
+      }
     </style>
   </head>
 
@@ -732,40 +753,8 @@ ${academicLFI}, "${title}", TMLR Beyond PDF, 2026.
     }</script>
   </d-front-matter>
 
-  <body class="fixed-top-nav">
+  <body>
 
-    <!-- Header --><header>
-  <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand title font-weight-lighter" href="https://tmlr-beyond-pdf.org">TMLR Beyond PDF</a>
-      <!-- Navbar Toggle -->
-      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar top-bar"></span>
-        <span class="icon-bar middle-bar"></span>
-        <span class="icon-bar bottom-bar"></span>
-      </button>
-
-      <div class="collapse navbar-collapse text-right" id="navbarNav">
-        <ul class="navbar-nav ml-auto flex-nowrap">
-          <li class="nav-item ">
-            <a class="nav-link" href="https://tmlr-beyond-pdf.org/about">About</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="https://tmlr-beyond-pdf.org/accepted/index.html">Accepted Papers</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="https://tmlr-beyond-pdf.org/under_review/index.html">Under Review</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="https://tmlr-beyond-pdf.org/submission-instructions">Submission Instructions</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
 
 
     <!-- Content -->
