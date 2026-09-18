@@ -6588,18 +6588,24 @@
       "doi": "10.1109/tpami.2013.71",
       "url": "https://doi.org/10.1109/tpami.2013.71",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.1109/TPAMI.2013.71 (title, authors, journal, volume 35, issue 11, pages 2706-2719, year 2013)",
-        "Semantic Scholar record, abstract: a methodology for mapping from a properly trained neural network in a conventional frame-driven representation to an event-driven representation, illustrated on event-driven ConvNets fed with DVS recordings and simulated with a dedicated event-driven simulator whose module characteristics come from individually manufactured hardware modules"
+        "Semantic Scholar record, abstract: a methodology for mapping from a properly trained neural network in a conventional frame-driven representation to an event-driven representation, illustrated on event-driven ConvNets fed with DVS recordings and simulated with a dedicated event-driven simulator whose module characteristics come from individually manufactured hardware modules",
+        "Full text (IEEE Xplore PDF supplied by the author), read 2026-09-18",
+        "Section 3.1, page 2709, Eq. 2: \"After this, the neuron state goes through a sigmoidal function h(·), which we may define as y_j = h(x_j) = A_j tanh(S_j x_j)\" (footnote 2 credits LeCun for A = 1.7159 and S = 2/3)",
+        "Section 3.2, pages 2709 to 2710, Figs. 5 and 6: the event-driven neuron state \"evolves continuously with time\", altered by \"1) synaptic connections, 2) leak, and 3) a 'reset and refractory' (R&R) element\"; \"Every time the state x'_j reaches one of the thresholds ±x_th_j, the R&R element will reset the state to its resting level x_rest while also guaranteeing a minimum separation between consecutive spikes T_R_j, called the 'refractory time'\"; \"its state x'_j is subject to a continuous leak that will drive its value toward x_rest\" (the paper describes the neuron this way and does not use the name leaky integrate-and-fire)",
+        "Section 3.4, page 2711, Eq. 13 and the sentence after it: the mapping w_ij ↔ (w'_ij / x_th_j)(p_i / p_j); \"Note that the kernel weights w'_ij used for the event-driven realization are simply scaled versions of those trained in the frame-based version w_ij\"",
+        "Section 3.3, page 2710: \"We call this 'low-rate rate coding,' and the maximum number of spikes a neuron will transmit during its characteristic time constant will be kept relatively low\"",
+        "The paper makes no priority claim; its introduction credits Delbrück et al. (2006) with the first event-driven vision sensor (page 2706)"
       ],
       "aliases": [
         "foundations-sources.json:perez-carrasco-2013",
         "perez2013mapping"
       ],
-      "notes": "Cited in Section 8.1's opener, which follows the author's thesis chapter at the author's direction (2026-09-18): the first ANN-to-SNN conversion framework, mapping ANNs with sigmoid activations to SNNs of LIF neurons by scaling synaptic weights. The full text is closed access (DIGITAL.CSIC handle 10261/92905, no open copy found); the abstract supports the frame-driven to event-driven mapping, the DVS-fed event-driven ConvNet and the event-driven simulator, and the activation, neuron model and weight scaling rest on the author's chapter, not on a page read for this survey. Canonicalized from structured inputs: foundations-sources.json.",
+      "notes": "Cited in Section 8.1's opener, which follows the author's thesis chapter at the author's direction (2026-09-18). Full text read 2026-09-18: the frame-driven neuron uses a sigmoidal (tanh) nonlinearity (Eq. 2), the event-driven neuron integrates weighted spikes with a leak, a threshold, a reset to rest and a refractory time (Section 3.2, the survey's LIF), and the event-driven weights are scaled versions of the trained frame-based weights (Eq. 13), so the opener's description is page-supported. 'First ANN-to-SNN conversion framework' is the literature's characterization carried from the author's chapter, not a claim the paper makes. Canonicalized from structured inputs: foundations-sources.json.",
       "purpose": "external"
     },
     {
