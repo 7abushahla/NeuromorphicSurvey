@@ -30,7 +30,7 @@ The manifest `data/figure-manifest.json` is authoritative for semantic id, displ
 | 11 | neuron-through-time | 3 | implemented | derived (LIF, forward Euler, inputs in fragment) |
 | 12 | neuron-model-comparison | 3 | implemented | derived (staged update, mini-traces computed) |
 | 13 | neuron-model-traces | 3 | implemented | derived (the earlier drawing of the same family, one panel per model with its state, its update and a membrane trace computed from that update; keeps its own symbols, mapped in the caption; restored 2026-09-18 beside neuron-model-comparison) |
-| 14 | reset-rule-comparison | 3 | implemented | derived (five-step window) |
+| 14 | reset-rule-comparison | 3 | implemented | derived (five-step window, the first five steps of the input reset-rule-traces carries to eight, one spike against two; redrawn 2026-09-18) |
 | 15 | reset-rule-traces | 3 | implemented | derived (eight-step window, the charge reset-to-zero discards shaded, the two spike counts against the mean input; restored 2026-09-18 beside reset-rule-comparison) |
 | 16 | encoder-snn-decoder | 4 Temporal Semantics, Neural Codes, and Decoding | implemented | conceptual |
 | 17 | input-encoding-modes | 4 | implemented | conceptual |
