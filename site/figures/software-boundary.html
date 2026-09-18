@@ -1,8 +1,8 @@
 <figure class="pfig l-body" id="figure-23">
-<!-- Conceptual figure; no measured quantity is drawn. The chain of five stages is Section 10's opening sentence (a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime). The three named cases are read from Table 25 (Section 10.4, read as a whole in Section 10.6), rows SpikingJelly rate-coding recipe to SpikingJelly lava_exchange, NIR 1.0.8 to Sinabs 3.1.3, and NxTF logical soft-reset neuron to Loihi 1 compartment graph, cells Preserved, Transformed, Rejected, Capability, and Route state; the only d-cite keys those three rows carry are a18-sourcecode-comparison and spj-lava (first row, Rejected cell); the other two rows carry the evidence markers E2 and E1 and no key. The fourth outcome, documented only, is Table 2's E3 class, a documented but unexercised deployment route. The gloss under the NIR case is Section 10.3's phrase, a schema that has no field for reset by subtraction. -->
+<!-- Conceptual figure; no measured quantity is drawn. The chain of five stages is Section 10's opening sentence (a training or simulation framework, serialization or export, an intermediate representation where one is used, compiler lowering and mapping, a runtime). The three named cases are read from Table 25 (Section 10.4, read as a whole in Section 10.6), rows SpikingJelly rate-coding recipe to SpikingJelly lava_exchange, NIR 1.0.8 to Sinabs 3.1.3, and NxTF logical soft-reset neuron to Loihi 1 compartment graph, cells Preserved, Transformed, Rejected, Capability, and Route state; the only d-cite keys those three rows carry are a18-sourcecode-comparison and spj-lava (first row, Rejected cell); the other two rows carry the evidence markers E2 and E1 and no key. The fourth outcome, unexercised, is Table 2's E3 class, a documented but unexercised deployment route. The gloss under the NIR case is Section 10.3's phrase, a schema that has no field for reset by subtraction. -->
 <svg viewBox="0 0 1000 626" role="img" aria-labelledby="f23-title f23-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
-  <title id="f23-title">The four boundaries between a framework and a device, and at each what is preserved, transformed, rejected, or only documented, with one audited case at three of them</title>
-  <desc id="f23-desc">Five boxes run left to right, Framework, Serialization or IR, Compiler or mapper, Runtime, and Device, joined by arrows. A vertical dashed line marks each of the four boundaries between neighboring boxes. Under every boundary four outlined pills read preserved, transformed, rejected, and documented only, the four things that can happen to a contract field when it crosses that boundary. Three callouts hang from the first three boundaries and each copies one row of Table 25. At the framework boundary, SpikingJelly rate-coding recipe to SpikingJelly lava_exchange preserves nothing and transforms nothing, rejects subtractive reset and nonzero fixed reset with an explicit error at five call sites, and is unsupported with route state blocked, so the rejected pill is filled. At the intermediate representation boundary, NIR 1.0.8 to Sinabs 3.1.3, read from the intermediate representation back into a framework, turns a fixed reset into a subtractive reset because the importer does not pass the node&#8217;s reset value, a schema with no field for reset by subtraction, and is transformed with route state physical, so the transformed pill is filled. At the mapper boundary, NxTF logical soft-reset neuron to Loihi 1 compartment graph preserves the logical subtractive-reset behavior within fixed-point limits by turning one logical neuron into two hardware compartments, an emulated capability with route state physical, so both the preserved and the transformed pills are filled. The fourth boundary, runtime to device, carries no callout. Conceptual figure; no measured quantity is drawn.</desc>
+  <title id="f23-title">The four boundaries between a framework and a device, and at each what is preserved, transformed, rejected, or unexercised, with one audited case at three of them</title>
+  <desc id="f23-desc">Five boxes run left to right, Framework, Serialization or IR, Compiler or mapper, Runtime, and Device, joined by arrows. A vertical dashed line marks each of the four boundaries between neighboring boxes. Under every boundary four outlined pills read preserved, transformed, rejected, and unexercised, the four things that can happen to a contract field when it crosses that boundary. Three callouts hang from the first three boundaries and each copies one row of Table 25. At the framework boundary, SpikingJelly rate-coding recipe to SpikingJelly lava_exchange preserves nothing and transforms nothing, rejects subtractive reset and nonzero fixed reset with an explicit error at five call sites, and is unsupported with route state blocked, so the rejected pill is filled. At the intermediate representation boundary, NIR 1.0.8 to Sinabs 3.1.3, read from the intermediate representation back into a framework, turns a fixed reset into a subtractive reset because the importer does not pass the node&#8217;s reset value, a schema with no field for reset by subtraction, and is transformed with route state physical, so the transformed pill is filled. At the mapper boundary, NxTF logical soft-reset neuron to Loihi 1 compartment graph preserves the logical subtractive-reset behavior within fixed-point limits by turning one logical neuron into two hardware compartments, an emulated capability with route state physical, so both the preserved and the transformed pills are filled. The fourth boundary, runtime to device, carries no callout. Conceptual figure; no measured quantity is drawn.</desc>
   <defs><marker id="f23-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
   <line id="f23-boundary-1" class="f23-boundary" x1="191" y1="14" x2="191" y2="246" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
   <line id="f23-boundary-2" class="f23-boundary" x1="397" y1="14" x2="397" y2="438" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="6 4"/>
@@ -45,7 +45,7 @@
     <rect x="121" y="176" width="140" height="22" rx="11" fill="#fbe4e1" stroke="#D63A2F" stroke-width="2.2"/>
     <text x="191" y="191.5" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">rejected</text>
     <rect x="121" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
-    <text x="191" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">documented only</text>
+    <text x="191" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
   <g id="f23-outcomes-2" class="f23-outcomes">
     <rect x="327" y="122" width="140" height="22" rx="11" fill="#fff" stroke="#2a7f62" stroke-width="1.4"/>
@@ -55,7 +55,7 @@
     <rect x="327" y="176" width="140" height="22" rx="11" fill="#fff" stroke="#D63A2F" stroke-width="1.4"/>
     <text x="397" y="191.5" text-anchor="middle" fill="#2b3440" font-size="14">rejected</text>
     <rect x="327" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
-    <text x="397" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">documented only</text>
+    <text x="397" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
   <g id="f23-outcomes-3" class="f23-outcomes">
     <rect x="533" y="122" width="140" height="22" rx="11" fill="#d8efd3" stroke="#2a7f62" stroke-width="2.2"/>
@@ -65,7 +65,7 @@
     <rect x="533" y="176" width="140" height="22" rx="11" fill="#fff" stroke="#D63A2F" stroke-width="1.4"/>
     <text x="603" y="191.5" text-anchor="middle" fill="#2b3440" font-size="14">rejected</text>
     <rect x="533" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
-    <text x="603" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">documented only</text>
+    <text x="603" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
   <g id="f23-outcomes-4" class="f23-outcomes">
     <rect x="739" y="122" width="140" height="22" rx="11" fill="#fff" stroke="#2a7f62" stroke-width="1.4"/>
@@ -75,7 +75,7 @@
     <rect x="739" y="176" width="140" height="22" rx="11" fill="#fff" stroke="#D63A2F" stroke-width="1.4"/>
     <text x="809" y="191.5" text-anchor="middle" fill="#2b3440" font-size="14">rejected</text>
     <rect x="739" y="203" width="140" height="22" rx="11" fill="#fff" stroke="#8a94a0" stroke-width="1.4"/>
-    <text x="809" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">documented only</text>
+    <text x="809" y="218.5" text-anchor="middle" fill="#2b3440" font-size="14">unexercised</text>
   </g>
   <g id="f23-case-a" class="f23-case">
     <rect x="46" y="246" width="290" height="176" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
