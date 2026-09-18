@@ -31,11 +31,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         }
       ],
@@ -508,9 +510,17 @@
         {
           "source_id": "apex",
           "locators": [
+            "Conclusion: \"Across AlexNet, VGG16, and ResNet18 on CIFAR-10, APEX achieves on average 40% energy reduction over LoAS for best accuracy configurations.\"",
+            "Section II-B: \"Stage 1 — Excitatory accumulation (Ln−1 timesteps)... A spike counter s records the cumulative spike count... Stage 2 — Inhibitory correction (max(Ln−1,Ln)−1 timesteps)... Stage 3 — Output spike generation (Ln timesteps). The membrane potential is reset to the scaled spike count s obtained after Stage 2. Standard IF firing is applied for Ln timesteps to generate the final output spike train\"",
+            "Section IV-A: \"We evaluate APEX using AlexNet, VGG16, and ResNet18 on CIFAR-10, across timestep configurations T∈{4,8,16}\"",
+            "Section IV-B, Hardware Configuration: \"APEX is implemented in RTL and synthesized using Synopsys Design Compiler at 400 MHz on 40 nm CMOS technology.\"",
+            "Section IV-C-1: \"APEX incurs a power overhead of 1.3%–5.4% and an area overhead of 2.1%–2.7% relative to LoAS, confirming that ANN-equivalent inference accuracy is achieved at minimal hardware cost.\"",
+            "Section IV-C-3: \"LoAS consumes 181.76 mJ per inference, since it requires four times more timesteps, compared to 69.23 mJ for APEX—a 61.9% reduction in energy consumption.\"",
+            "https://arxiv.org/abs/2608.19046 (abstract page), read 2026-09-18",
             "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
             "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
-            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\"",
+            "https://arxiv.org/html/2608.19046 (full text HTML through the reference list), read 2026-09-18"
           ]
         },
         {
@@ -521,12 +531,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -534,7 +548,7 @@
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "partial_text",
+          "retrieval_status": "full_text",
           "verification_status": "verified"
         },
         {
@@ -722,7 +736,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -751,8 +770,8 @@
         },
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "richter",
@@ -1275,11 +1294,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         },
         {
@@ -1444,7 +1465,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -1462,8 +1488,8 @@
         },
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "sdnn",
@@ -1489,9 +1515,13 @@
         {
           "source_id": "datta2025-snn-meets-ann",
           "locators": [
+            "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
             "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23",
             "Appendix A.10, pp. 22-23",
-            "Table 12, p. 23"
+            "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+            "Section 6.2: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+            "Table 12, p. 23",
+            "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF), read 2026-09-18, Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\""
           ]
         }
       ],
@@ -2151,7 +2181,8 @@
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         },
         {
@@ -2164,8 +2195,8 @@
       "source_statuses": [
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "rueckauer",
@@ -2839,7 +2870,8 @@
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         },
         {
@@ -2868,8 +2900,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "riverpub-mnist-dynapcnn",
@@ -3661,7 +3693,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -3694,8 +3731,8 @@
         },
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "loihi2",
@@ -3936,11 +3973,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         },
         {
@@ -3952,9 +3991,13 @@
         {
           "source_id": "datta2025-snn-meets-ann",
           "locators": [
+            "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
             "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23",
             "Appendix A.10, pp. 22-23",
-            "Table 12, p. 23"
+            "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+            "Section 6.2: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+            "Table 12, p. 23",
+            "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF), read 2026-09-18, Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\""
           ]
         },
         {
@@ -3965,19 +4008,24 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         },
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         }
       ],
@@ -4004,8 +4052,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ]
     },
@@ -4032,11 +4080,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         }
       ],
@@ -4598,8 +4648,16 @@
         {
           "source_id": "neuroflex",
           "locators": [
+            "Abstract: \"Our cost-guided scheduling algorithm improves throughput by 16-19% over random mapping and lowers EDP by 57-67% versus a strong ANN-only baseline across VGG-16, ResNet-34, GoogLeNet, and BERT models.\"",
+            "Section 3.2, Theorem 1: \"For any column c operating with integer threshold θn and quantization step Ln, the SNN realization Mc is mathematically equivalent to its ANN realization Nc\"",
+            "Section 3.2: \"For an 8-level quantization (L=8), lossless conversion between an integer-valued ANN activation and its SNN spike representation requires (3L−1)=23 timesteps\"",
+            "Section 3.3: \"Spike Generation: converts INT8 (L=8) activation value into a deterministic spike train with (3L−1) timesteps, preserving the same quantized magnitude.\"",
+            "Section 3.4, Algorithm 1: \"quantization step L, spike window (timesteps) T=L ... s ← SpikeGen(A[m,k],L) ... // spatial unrolling over t\"",
+            "https://arxiv.org/abs/2511.05215 (abstract page), read 2026-09-18",
             "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
-            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
+            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\"",
+            "https://arxiv.org/html/2511.05215 (full text HTML through Section 4.3), read 2026-09-18",
+            "https://arxiv.org/html/2511.05215 (full text HTML), read 2026-09-18, Section VI-D, Implementation and Modeling: \"We implement key components of NeuroFlex and all baselines in RTL and synthesize with Synopsys Design Compiler at 560 MHz in a 40 nm technology node.\""
           ]
         },
         {
@@ -4610,12 +4668,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -4623,7 +4685,7 @@
       "source_statuses": [
         {
           "source_id": "neuroflex",
-          "retrieval_status": "partial_text",
+          "retrieval_status": "full_text",
           "verification_status": "verified"
         },
         {
@@ -4865,7 +4927,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -4884,8 +4951,8 @@
       "source_statuses": [
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "satcsp-loihi-date2020",
@@ -5230,7 +5297,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -5255,8 +5327,8 @@
       "source_statuses": [
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "parpart2023-lca-loihi2",
@@ -5290,9 +5362,17 @@
         {
           "source_id": "apex",
           "locators": [
+            "Conclusion: \"Across AlexNet, VGG16, and ResNet18 on CIFAR-10, APEX achieves on average 40% energy reduction over LoAS for best accuracy configurations.\"",
+            "Section II-B: \"Stage 1 — Excitatory accumulation (Ln−1 timesteps)... A spike counter s records the cumulative spike count... Stage 2 — Inhibitory correction (max(Ln−1,Ln)−1 timesteps)... Stage 3 — Output spike generation (Ln timesteps). The membrane potential is reset to the scaled spike count s obtained after Stage 2. Standard IF firing is applied for Ln timesteps to generate the final output spike train\"",
+            "Section IV-A: \"We evaluate APEX using AlexNet, VGG16, and ResNet18 on CIFAR-10, across timestep configurations T∈{4,8,16}\"",
+            "Section IV-B, Hardware Configuration: \"APEX is implemented in RTL and synthesized using Synopsys Design Compiler at 400 MHz on 40 nm CMOS technology.\"",
+            "Section IV-C-1: \"APEX incurs a power overhead of 1.3%–5.4% and an area overhead of 2.1%–2.7% relative to LoAS, confirming that ANN-equivalent inference accuracy is achieved at minimal hardware cost.\"",
+            "Section IV-C-3: \"LoAS consumes 181.76 mJ per inference, since it requires four times more timesteps, compared to 69.23 mJ for APEX—a 61.9% reduction in energy consumption.\"",
+            "https://arxiv.org/abs/2608.19046 (abstract page), read 2026-09-18",
             "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
             "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
-            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\"",
+            "https://arxiv.org/html/2608.19046 (full text HTML through the reference list), read 2026-09-18"
           ]
         },
         {
@@ -5303,12 +5383,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -5316,7 +5400,7 @@
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "partial_text",
+          "retrieval_status": "full_text",
           "verification_status": "verified"
         },
         {
@@ -5349,12 +5433,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -5540,12 +5628,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         },
@@ -5559,10 +5651,12 @@
             "OpenReview public revision attachment p4ZjfNpLYo, Section 7.7, Figure 4, PDF pp. 21-23",
             "OpenReview public revision attachment p4ZjfNpLYo, Section 7.8, PDF p. 24",
             "OpenReview public revision attachment p4ZjfNpLYo, Sections 4.2-4.3, Eqs. 11-13, PDF pp. 5-8",
+            "OpenReview public revision attachment p4ZjfNpLYo, Theorem 1 (recorded in research/raw/a11-mixed-timestep-audit.md from the full-text read of 2026-09-16): the timesteps T of an SNN with soft-reset IF neurons are equivalent to the quantization level 2^n of a matched-precision quantized ANN activation",
             "OpenReview public revision attachment p4ZjfNpLYo, contribution summary and Table 1, PDF pp. 2 and 5",
             "OpenReview public revision attachment rXoJz4T7cw, complete-text search",
             "QAC public revision p4ZjfNpLYo, Section 7.7, PDF pp. 21-23",
             "QAC public revision p4ZjfNpLYo, Sections 4.2-4.3, PDF pp. 5-8",
+            "https://openreview.net/forum?id=D4sQzdMvcG (abstract page), read 2026-09-18: \"we propose a Quantization-Aware Conversion (QAC) algorithm that reveals a profound theoretical insight: the power of the quantization bit-width in ANN activations is equivalent to the timesteps in SNNs with soft reset\"",
             "https://openreview.net/notes/edits/attachment?id=p4ZjfNpLYo&name=pdf",
             "https://openreview.net/notes/edits/attachment?id=rXoJz4T7cw&name=pdf"
           ]
@@ -5570,7 +5664,8 @@
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         }
       ],
@@ -5592,8 +5687,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         }
       ]
     },
@@ -7125,7 +7220,8 @@
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         },
         {
@@ -7143,8 +7239,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "rueckauer",
@@ -7181,7 +7277,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -7225,8 +7326,8 @@
         },
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "neuroscale2025-natcomm",
@@ -7905,11 +8006,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         }
       ],
@@ -7975,11 +8078,13 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         }
       ],
@@ -10102,15 +10207,20 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
       "input_shape": "legacy",
@@ -12089,9 +12199,13 @@
         {
           "source_id": "datta2025-snn-meets-ann",
           "locators": [
+            "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
             "Appendix A.10, Deployment of Proposed SNN on Loihi, pp. 22-23",
             "Appendix A.10, pp. 22-23",
-            "Table 12, p. 23"
+            "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+            "Section 6.2: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+            "Table 12, p. 23",
+            "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF), read 2026-09-18, Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\""
           ]
         }
       ],
@@ -16129,17 +16243,20 @@
             "Adaptive Fission, Table 1, p. 8",
             "Appendix C, Hardware Compatibility, pp. 23-24",
             "Appendix E.1, Hardware Resources, p. 24",
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
             "Section 3.2, Population Coding, pp. 3-4",
             "Section 4, Adaptive Fission, pp. 4-7",
             "Section 6.1, Implementations, pp. 7-8",
             "Sections 3.2 and 4, population-code distinction reviewed in Audit C",
-            "Table 1 and Section 6.2, pp. 8-9"
+            "Table 1 and Section 6.2, pp. 8-9",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
           ]
         },
         {
           "source_id": "qcfs",
           "locators": [
-            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+            "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\"",
+            "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18"
           ]
         },
         {
@@ -16157,8 +16274,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "srp",
@@ -19002,7 +19119,12 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         },
         {
@@ -19019,8 +19141,8 @@
       "source_statuses": [
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "nxtf",
@@ -20420,9 +20542,17 @@
         {
           "source_id": "apex",
           "locators": [
+            "Conclusion: \"Across AlexNet, VGG16, and ResNet18 on CIFAR-10, APEX achieves on average 40% energy reduction over LoAS for best accuracy configurations.\"",
+            "Section II-B: \"Stage 1 — Excitatory accumulation (Ln−1 timesteps)... A spike counter s records the cumulative spike count... Stage 2 — Inhibitory correction (max(Ln−1,Ln)−1 timesteps)... Stage 3 — Output spike generation (Ln timesteps). The membrane potential is reset to the scaled spike count s obtained after Stage 2. Standard IF firing is applied for Ln timesteps to generate the final output spike train\"",
+            "Section IV-A: \"We evaluate APEX using AlexNet, VGG16, and ResNet18 on CIFAR-10, across timestep configurations T∈{4,8,16}\"",
+            "Section IV-B, Hardware Configuration: \"APEX is implemented in RTL and synthesized using Synopsys Design Compiler at 400 MHz on 40 nm CMOS technology.\"",
+            "Section IV-C-1: \"APEX incurs a power overhead of 1.3%–5.4% and an area overhead of 2.1%–2.7% relative to LoAS, confirming that ANN-equivalent inference accuracy is achieved at minimal hardware cost.\"",
+            "Section IV-C-3: \"LoAS consumes 181.76 mJ per inference, since it requires four times more timesteps, compared to 69.23 mJ for APEX—a 61.9% reduction in energy consumption.\"",
+            "https://arxiv.org/abs/2608.19046 (abstract page), read 2026-09-18",
             "https://arxiv.org/abs/2608.19046: \"40% energy reduction for best accuracy configurations\"",
             "https://arxiv.org/abs/2608.19046: \"Up to 3% higher accuracy than the standard IF neuron\"",
-            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\""
+            "https://arxiv.org/abs/2608.19046: \"integrates the PASC-IF neuron into the LoAS hardware framework\"",
+            "https://arxiv.org/html/2608.19046 (full text HTML through the reference list), read 2026-09-18"
           ]
         },
         {
@@ -20433,12 +20563,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -20446,7 +20580,7 @@
       "source_statuses": [
         {
           "source_id": "apex",
-          "retrieval_status": "partial_text",
+          "retrieval_status": "full_text",
           "verification_status": "verified"
         },
         {
@@ -20505,8 +20639,16 @@
         {
           "source_id": "neuroflex",
           "locators": [
+            "Abstract: \"Our cost-guided scheduling algorithm improves throughput by 16-19% over random mapping and lowers EDP by 57-67% versus a strong ANN-only baseline across VGG-16, ResNet-34, GoogLeNet, and BERT models.\"",
+            "Section 3.2, Theorem 1: \"For any column c operating with integer threshold θn and quantization step Ln, the SNN realization Mc is mathematically equivalent to its ANN realization Nc\"",
+            "Section 3.2: \"For an 8-level quantization (L=8), lossless conversion between an integer-valued ANN activation and its SNN spike representation requires (3L−1)=23 timesteps\"",
+            "Section 3.3: \"Spike Generation: converts INT8 (L=8) activation value into a deterministic spike train with (3L−1) timesteps, preserving the same quantized magnitude.\"",
+            "Section 3.4, Algorithm 1: \"quantization step L, spike window (timesteps) T=L ... s ← SpikeGen(A[m,k],L) ... // spatial unrolling over t\"",
+            "https://arxiv.org/abs/2511.05215 (abstract page), read 2026-09-18",
             "https://arxiv.org/abs/2511.05215: \"co-executes artificial and spiking neural networks to minimize energy-delay product on sparse edge workloads\"",
-            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\""
+            "https://arxiv.org/abs/2511.05215: \"fine-grained and integer-exact hybridization outperforms single-mode designs\"",
+            "https://arxiv.org/html/2511.05215 (full text HTML through Section 4.3), read 2026-09-18",
+            "https://arxiv.org/html/2511.05215 (full text HTML), read 2026-09-18, Section VI-D, Implementation and Modeling: \"We implement key components of NeuroFlex and all baselines in RTL and synthesize with Synopsys Design Compiler at 560 MHz in a 40 nm technology node.\""
           ]
         },
         {
@@ -20517,12 +20659,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -20530,7 +20676,7 @@
       "source_statuses": [
         {
           "source_id": "neuroflex",
-          "retrieval_status": "partial_text",
+          "retrieval_status": "full_text",
           "verification_status": "verified"
         },
         {
@@ -20593,12 +20739,16 @@
             "PASCAL TMLR paper, Appendix A.10, PDF pp. 23-24",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, get_Teff.py, lines 45-79",
             "PASCAL repository commit a4e3afbdaf271f5a6e077c0f799c8bea9843e3d6, models/layer.py, lines 59-149",
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
             "TMLR paper, Algorithm 1, PDF p. 5",
             "TMLR paper, Appendix A.10, Tables 14-16, PDF pp. 23-24",
             "TMLR paper, Eqs. 9-12 and 16, PDF pp. 8 and 12",
             "TMLR paper, Table 4 and Eq. 16, PDF pp. 11-12",
             "TMLR paper, Table 5 and Eq. 16, PDF p. 12",
             "TMLR paper, Tables 4 and 5, PDF pp. 11-12",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)",
             "https://github.com/BrainSeek-Lab/PASCAL"
           ]
         }
@@ -28437,15 +28587,20 @@
         {
           "source_id": "loihi1",
           "locators": [
-            "Structured metadata from evidence-stack.json, sources.json"
+            "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+            "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+            "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+            "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\"",
+            "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+            "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18"
           ]
         }
       ],
       "source_statuses": [
         {
           "source_id": "loihi1",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
       "input_shape": "legacy",

@@ -1,17 +1,17 @@
-<figure class="pfig l-body" id="figure-13">
+<figure class="pfig l-body" id="figure-14">
   <div style="max-width: 720px; margin: 0 auto;">
-    <svg viewBox="0 0 1200 910" role="img" aria-labelledby="f13title f13desc">
-      <title id="f13title">Reset-to-zero and reset-by-subtraction on one finite input sequence</title>
-      <desc id="f13desc">Derived example. The same five-step input sequence is evaluated by two discrete integrate-and-fire neurons with threshold one and no leak. Reset-to-zero discards the residual charge above threshold after a spike, whereas reset-by-subtraction retains it in the state. The resulting spike sequences differ, 10101 against 11010. A final panel separates this model semantic from whether a hardware platform supports it natively, by transformation, or by emulation.</desc>
+    <svg viewBox="0 0 1200 910" role="img" aria-labelledby="f14title f14desc">
+      <title id="f14title">Reset-to-zero and reset-by-subtraction on one finite input sequence</title>
+      <desc id="f14desc">Derived example. The same five-step input sequence is evaluated by two discrete integrate-and-fire neurons with threshold one and no leak. Reset-to-zero discards the residual charge above threshold after a spike, whereas reset-by-subtraction retains it in the state. The resulting spike sequences differ, 10101 against 11010. A final panel separates this model semantic from whether a hardware platform supports it natively, by transformation, or by emulation.</desc>
       <defs>
-        <marker id="f13a" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
-        <marker id="f13ared" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
+        <marker id="f14a" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker>
+        <marker id="f14ared" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D63A2F"/></marker>
       </defs>
 
       <text x="600" y="42" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:29px;font-weight:700" fill="#000">Reset semantics change state and spike timing</text>
       <text x="600" y="70" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#555">One finite discrete-time example, computed under the same input, threshold, and no-leak assumptions.</text>
 
-      <g class="f13-help">
+      <g class="f14-help">
         <title>Both panels use exactly this five-step input. The pre-reset candidate is the previous post-reset state plus the current input, so any difference comes only from the reset rule.</title>
         <rect x="46" y="101" width="1108" height="158" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <path d="M46,142 V111 A10,10 0 0 1 56,101 H1144 A10,10 0 0 1 1154,111 V142 Z" fill="#FFDDA6"/>
@@ -19,8 +19,8 @@
         <text x="70" y="130" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700" fill="#000">Shared finite-horizon input</text>
         <text x="1128" y="130" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:17px" fill="#555">five discrete steps, <tspan style="font-family:'Times New Roman',Times,serif;font-style:italic">T</tspan> = 5</text>
 
-        <line x1="166" y1="230" x2="627" y2="230" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
-        <line x1="166" y1="230" x2="166" y2="166" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
+        <line x1="166" y1="230" x2="627" y2="230" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
+        <line x1="166" y1="230" x2="166" y2="166" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
         <line x1="166" y1="185" x2="606" y2="185" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
         <text x="614" y="190" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">θ = 1</text>
         <text x="72" y="196" style="font-family:Arial,Helvetica,sans-serif;font-size:18px" fill="#000"><tspan style="font-family:'Times New Roman',Times,serif;font-size:23px;font-style:italic">q</tspan>[<tspan style="font-family:'Times New Roman',Times,serif;font-size:23px;font-style:italic">t</tspan>]</text>
@@ -35,10 +35,10 @@
         <rect x="684" y="164" width="428" height="72" rx="8" fill="#CFE2F3" stroke="#6B8CBE" stroke-width="2.2"/>
         <text x="898" y="191" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700" fill="#000">First compute the pre-reset state</text>
         <text x="898" y="219" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-size:24px;font-style:italic" fill="#000">&#361;[t] = u[t&#8722;1] + q[t]</text>
-        <rect class="f13-band" x="46" y="101" width="1108" height="158" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="101" width="1108" height="158" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f14-band" x="46" y="101" width="1108" height="158" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="101" width="1108" height="158" fill="#000" opacity="0" pointer-events="all"/>
       </g>
 
-      <g class="f13-help">
+      <g class="f14-help">
         <title>Reset-to-zero sets the post-spike state to zero. The residual charge, the amount by which the pre-reset candidate exceeds the threshold, is discarded.</title>
         <rect x="46" y="291" width="530" height="391" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <path d="M46,332 V301 A10,10 0 0 1 56,291 H566 A10,10 0 0 1 576,301 V332 Z" fill="#CFE2F3"/><line x1="46" y1="332" x2="576" y2="332" stroke="#000" stroke-width="2.2"/>
@@ -46,8 +46,8 @@
         <rect x="79" y="353" width="464" height="45" rx="6" fill="#CDEBCD" stroke="#000" stroke-width="1.8"/>
         <text x="311" y="383" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-size:23px;font-style:italic" fill="#000">u[t] = 0 when z[t] = 1, else &#361;[t]</text>
 
-        <line x1="115" y1="527" x2="513" y2="527" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
-        <line x1="115" y1="527" x2="115" y2="443" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
+        <line x1="115" y1="527" x2="513" y2="527" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
+        <line x1="115" y1="527" x2="115" y2="443" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
         <line x1="115" y1="471" x2="510" y2="471" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
         <text x="108" y="466" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">θ</text>
         <text x="80" y="450" style="font-family:'Times New Roman',Times,serif;font-size:20px;font-style:italic" fill="#000">u</text>
@@ -59,10 +59,10 @@
 
         <g stroke="#000" stroke-width="1.3"><rect x="79" y="555" width="464" height="114" fill="#fff"/><line x1="140" y1="555" x2="140" y2="669"/><line x1="220" y1="555" x2="220" y2="669"/><line x1="301" y1="555" x2="301" y2="669"/><line x1="382" y1="555" x2="382" y2="669"/><line x1="462" y1="555" x2="462" y2="669"/><line x1="79" y1="583" x2="543" y2="583"/><line x1="79" y1="612" x2="543" y2="612"/><line x1="79" y1="641" x2="543" y2="641"/></g>
         <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000"><text x="109" y="575" text-anchor="middle">t</text><text x="180" y="575" text-anchor="middle">1</text><text x="260" y="575" text-anchor="middle">2</text><text x="341" y="575" text-anchor="middle">3</text><text x="422" y="575" text-anchor="middle">4</text><text x="502" y="575" text-anchor="middle">5</text><text x="109" y="603" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">&#361;[t]</text><text x="180" y="603" text-anchor="middle">1.40</text><text x="260" y="603" text-anchor="middle">0.70</text><text x="341" y="603" text-anchor="middle">1.05</text><text x="422" y="603" text-anchor="middle">0.80</text><text x="502" y="603" text-anchor="middle">1.05</text><text x="109" y="632" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">z[t]</text><text x="180" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="260" y="632" text-anchor="middle">0</text><text x="341" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="422" y="632" text-anchor="middle">0</text><text x="502" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="109" y="661" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">u[t]</text><text x="180" y="661" text-anchor="middle">0</text><text x="260" y="661" text-anchor="middle">0.70</text><text x="341" y="661" text-anchor="middle">0</text><text x="422" y="661" text-anchor="middle">0.80</text><text x="502" y="661" text-anchor="middle">0</text></g>
-        <rect class="f13-band" x="46" y="291" width="530" height="391" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="291" width="530" height="391" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f14-band" x="46" y="291" width="530" height="391" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="291" width="530" height="391" fill="#000" opacity="0" pointer-events="all"/>
       </g>
 
-      <g class="f13-help">
+      <g class="f14-help">
         <title>Reset-by-subtraction retains the residual charge after a spike by subtracting one threshold. The preserved residual changes the state entering later steps and here changes both the spike times and the count.</title>
         <rect x="624" y="291" width="530" height="391" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <path d="M624,332 V301 A10,10 0 0 1 634,291 H1144 A10,10 0 0 1 1154,301 V332 Z" fill="#F9D4EA"/><line x1="624" y1="332" x2="1154" y2="332" stroke="#000" stroke-width="2.2"/>
@@ -70,8 +70,8 @@
         <rect x="657" y="353" width="464" height="45" rx="6" fill="#F9D4EA" stroke="#000" stroke-width="1.8"/>
         <text x="889" y="383" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-size:23px;font-style:italic" fill="#000">u[t] = &#361;[t] &#8722; z[t] θ</text>
 
-        <line x1="693" y1="527" x2="1091" y2="527" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
-        <line x1="693" y1="527" x2="693" y2="443" stroke="#000" stroke-width="2.2" marker-end="url(#f13a)"/>
+        <line x1="693" y1="527" x2="1091" y2="527" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
+        <line x1="693" y1="527" x2="693" y2="443" stroke="#000" stroke-width="2.2" marker-end="url(#f14a)"/>
         <line x1="693" y1="471" x2="1088" y2="471" stroke="#000" stroke-width="2.2" stroke-dasharray="10 8"/>
         <text x="686" y="466" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000">θ</text>
         <text x="658" y="450" style="font-family:'Times New Roman',Times,serif;font-size:20px;font-style:italic" fill="#000">u</text>
@@ -83,10 +83,10 @@
 
         <g stroke="#000" stroke-width="1.3"><rect x="657" y="555" width="464" height="114" fill="#fff"/><line x1="718" y1="555" x2="718" y2="669"/><line x1="798" y1="555" x2="798" y2="669"/><line x1="879" y1="555" x2="879" y2="669"/><line x1="960" y1="555" x2="960" y2="669"/><line x1="1040" y1="555" x2="1040" y2="669"/><line x1="657" y1="583" x2="1121" y2="583"/><line x1="657" y1="612" x2="1121" y2="612"/><line x1="657" y1="641" x2="1121" y2="641"/></g>
         <g style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#000"><text x="687" y="575" text-anchor="middle">t</text><text x="758" y="575" text-anchor="middle">1</text><text x="838" y="575" text-anchor="middle">2</text><text x="919" y="575" text-anchor="middle">3</text><text x="1000" y="575" text-anchor="middle">4</text><text x="1080" y="575" text-anchor="middle">5</text><text x="687" y="603" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">&#361;[t]</text><text x="758" y="603" text-anchor="middle">1.40</text><text x="838" y="603" text-anchor="middle">1.10</text><text x="919" y="603" text-anchor="middle">0.45</text><text x="1000" y="603" text-anchor="middle">1.25</text><text x="1080" y="603" text-anchor="middle">0.50</text><text x="687" y="632" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">z[t]</text><text x="758" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="838" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="919" y="632" text-anchor="middle">0</text><text x="1000" y="632" text-anchor="middle" fill="#D63A2F" font-weight="700">1</text><text x="1080" y="632" text-anchor="middle">0</text><text x="687" y="661" text-anchor="middle" style="font-family:'Times New Roman',Times,serif;font-style:italic">u[t]</text><text x="758" y="661" text-anchor="middle">0.40</text><text x="838" y="661" text-anchor="middle">0.10</text><text x="919" y="661" text-anchor="middle">0.45</text><text x="1000" y="661" text-anchor="middle">0.25</text><text x="1080" y="661" text-anchor="middle">0.50</text></g>
-        <rect class="f13-band" x="624" y="291" width="530" height="391" rx="10" fill="#D63A2F" opacity="0"/><rect x="624" y="291" width="530" height="391" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f14-band" x="624" y="291" width="530" height="391" rx="10" fill="#D63A2F" opacity="0"/><rect x="624" y="291" width="530" height="391" fill="#000" opacity="0" pointer-events="all"/>
       </g>
 
-      <g class="f13-help">
+      <g class="f14-help">
         <title>Reset rule is a mathematical semantic. Hardware support is a separate question. A target may implement that semantic natively, preserve it through an explicit transformation, or emulate it with additional operations.</title>
         <rect x="46" y="718" width="1108" height="146" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>
         <path d="M46,759 V728 A10,10 0 0 1 56,718 H1144 A10,10 0 0 1 1154,728 V759 Z" fill="#d5dbe2"/><line x1="46" y1="759" x2="1154" y2="759" stroke="#000" stroke-width="2.2"/>
@@ -95,10 +95,10 @@
         <rect x="760" y="777" width="110" height="51" rx="6" fill="#CDEBCD" stroke="#000" stroke-width="1.8"/><rect x="890" y="777" width="120" height="51" rx="6" fill="#CFE2F3" stroke="#000" stroke-width="1.8"/><rect x="1030" y="777" width="100" height="51" rx="6" fill="#F9D4EA" stroke="#000" stroke-width="1.8"/>
         <text x="815" y="800" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Native</text><text x="815" y="817" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">direct rule</text><text x="950" y="800" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Transformed</text><text x="950" y="817" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">mapped rule</text><text x="1080" y="800" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700" fill="#000">Emulated</text><text x="1080" y="817" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px" fill="#555">extra work</text>
         <text x="70" y="844" style="font-family:Arial,Helvetica,sans-serif;font-size:16px" fill="#555">This illustrates semantics, not a performance ranking. A deployment claim must state its reset path.</text>
-        <rect class="f13-band" x="46" y="718" width="1108" height="146" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="718" width="1108" height="146" fill="#000" opacity="0" pointer-events="all"/>
+        <rect class="f14-band" x="46" y="718" width="1108" height="146" rx="10" fill="#D63A2F" opacity="0"/><rect x="46" y="718" width="1108" height="146" fill="#000" opacity="0" pointer-events="all"/>
       </g>
     </svg>
   </div>
   <div class="fig-hint">Hover a panel for the semantic distinction it carries.</div>
-  <figcaption><b>Figure 13:</b> What happens to the residual charge \(r[t]=\tilde{u}[t]-\theta\) under the two reset rules, derived by computing the staged update of Section 3.2 with \(\theta=1\), no leak, and no bias on one five-step input. Reset-to-zero discards the residual, so after the first spike the state restarts from zero and the neuron fires at steps 1, 3, and 5. Reset-by-subtraction keeps the residual inside \(u[t]\), where the membrane stage integrates it again at the next step, so the neuron fires at steps 1, 2, and 4 with a different state trajectory throughout. Every table value is computed, and the conclusions are confined to this window. Whether a target implements either rule natively, through a transformation, or by emulation is a separate question from the rule itself.</figcaption>
+  <figcaption><b>Figure 14:</b> What happens to the residual charge \(r[t]=\tilde{u}[t]-\theta\) under the two reset rules, derived by computing the staged update of Section 3.2 with \(\theta=1\), no leak, and no bias on one five-step input. Reset-to-zero discards the residual, so after the first spike the state restarts from zero and the neuron fires at steps 1, 3, and 5. Reset-by-subtraction keeps the residual inside \(u[t]\), where the membrane stage integrates it again at the next step, so the neuron fires at steps 1, 2, and 4 with a different state trajectory throughout. Every table value is computed, and the conclusions are confined to this window. Whether a target implements either rule natively, through a transformation, or by emulation is a separate question from the rule itself.</figcaption>
 </figure>

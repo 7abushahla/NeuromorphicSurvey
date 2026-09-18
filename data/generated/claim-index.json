@@ -59,6 +59,52 @@
       }
     },
     {
+      "id": "claim-adaptive-fission-per-neuron-split",
+      "claim_type": "method",
+      "statement": "Adaptive Fission is a post-training encoding that selectively splits high-sensitivity neurons into groups with varying scales and weights, allocating precision and thresholds per neuron rather than per layer.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "adaptive-fission"
+      ],
+      "locators": [
+        "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
+        "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
+      ],
+      "source_refs": [
+        {
+          "source_id": "adaptive-fission",
+          "locators": [
+            "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
+            "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1 (NeurIPS 2025 PDF), read 2026-09-18, Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\""
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "adaptive-fission",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "Algorithmic description; the paper's hardware results are recorded under its other claims.",
+      "conflicts_with": [],
+      "scope": "Adaptive Fission granularity of its post-training correction",
+      "caveats": {
+        "scope": "Adaptive Fission granularity of its post-training correction",
+        "measurement_boundary": "Algorithmic description; the paper's hardware results are recorded under its other claims.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
+        "requires_qualified_reading": true
+      }
+    },
+    {
       "id": "claim-adaptive-fission-uses-population-code",
       "claim_type": "method",
       "statement": "Adaptive Fission replaces additional temporal integration with a group of binary neurons carrying unequal fixed weights. Its proposed contribution is a population code layered on existing converted or directly trained SNNs, not unchanged rate coding.",
@@ -733,6 +779,56 @@
       }
     },
     {
+      "id": "claim-datta2025-qcfs-activation-modified-if",
+      "claim_type": "method",
+      "statement": "Datta et al. train the source ANN with the quantization-clip-floor-shift (QCFS) activation unchanged, modify the standard IF neuron with postponed resets, and shift the bias of each BN layer, targeting the unevenness error of spike arrival times rather than QCFS's uniform grid.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "datta2025-snn-meets-ann"
+      ],
+      "locators": [
+        "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
+        "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+        "Section 6.2: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+        "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF), read 2026-09-18, Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\""
+      ],
+      "source_refs": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "locators": [
+            "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
+            "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+            "Section 6.2: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+            "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF), read 2026-09-18, Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\""
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "datta2025-snn-meets-ann",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "Software model; the Loihi route claim is recorded separately.",
+      "conflicts_with": [],
+      "scope": "Datta et al. 2025 conversion mechanism relative to QCFS",
+      "caveats": {
+        "scope": "Datta et al. 2025 conversion mechanism relative to QCFS",
+        "measurement_boundary": "Software model; the Loihi route claim is recorded separately.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
+        "requires_qualified_reading": true
+      }
+    },
+    {
       "id": "claim-early-exit-is-input-adaptive-global-horizon",
       "claim_type": "taxonomy",
       "statement": "SEENN and Dynamic Confidence vary a terminal inference horizon per input sample by stopping whole-network inference at runtime. This control variable differs from QAC, PASCAL, and MT-SNN, which assign static timestep counts to layers within one inference.",
@@ -818,6 +914,56 @@
       "caveats": {
         "scope": "Difference between per-input early exit and static per-layer horizon allocation",
         "measurement_boundary": "Taxonomic distinction. SEENN measures GPU throughput on an NVIDIA Tesla V100 and estimates operation energy. Dynamic Confidence reports GPU simulation and spike-count proxies and explicitly states that real neuromorphic power savings are unknown.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
+        "requires_qualified_reading": true
+      }
+    },
+    {
+      "id": "claim-mt-snn-theorem-and-average-alignment",
+      "claim_type": "method",
+      "statement": "MT-SNN's Theorem 1 states that lossless conversion requires the SNN timestep T_l and the ANN activation quantization level 2^{n_l} to satisfy T_SNN ≈ 2^{n_ANN}; its average temporal alignment averages a layer's output over its T_l steps and replicates the average along time to the next layer's T_{l+1}; every measured timing in the withdrawn manuscript is GPU wall-clock (4× NVIDIA RTX 4090).",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "mt-snn-withdrawn-iclr"
+      ],
+      "locators": [
+        "Section 4.3, Eqs. 19-20: \"we propose the average temporal alignment method, which consists two steps. First, we average S l over the temporal dimension T l to obtain a time-step-independent feature tensor S¯l ... Second, we replicate S¯l along the temporal dimension to match the required length T l+1\"",
+        "Section 5.2, Ablation Study on Temporal Alignment: \"Beyond average, other temporal alignment schemes exist, such as naive upsampling or downsampling adopted in prior dynamic time-step work\"",
+        "Section 5.4, Computational Overhead of Temporal Alignment: \"Experiments are run on 4× NVIDIA RTX 4090 GPUs (24 GB each) with a fixed global inference batch size of 64. We report the total wall-clock inference time (Inf. Time), the time spent on temporal alignment (Align. Time)...\"",
+        "https://openreview.net/pdf?id=4dwAZRr9L5 (full text), read 2026-09-18, Section 4.1, Theorem 1: \"the time-step T l of the SNN and the activation quantization level 2 n l of the ANN should satisfy the relationship: TSNN ≈ 2 n ANN\""
+      ],
+      "source_refs": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "locators": [
+            "Section 4.3, Eqs. 19-20: \"we propose the average temporal alignment method, which consists two steps. First, we average S l over the temporal dimension T l to obtain a time-step-independent feature tensor S¯l ... Second, we replicate S¯l along the temporal dimension to match the required length T l+1\"",
+            "Section 5.2, Ablation Study on Temporal Alignment: \"Beyond average, other temporal alignment schemes exist, such as naive upsampling or downsampling adopted in prior dynamic time-step work\"",
+            "Section 5.4, Computational Overhead of Temporal Alignment: \"Experiments are run on 4× NVIDIA RTX 4090 GPUs (24 GB each) with a fixed global inference batch size of 64. We report the total wall-clock inference time (Inf. Time), the time spent on temporal alignment (Align. Time)...\"",
+            "https://openreview.net/pdf?id=4dwAZRr9L5 (full text), read 2026-09-18, Section 4.1, Theorem 1: \"the time-step T l of the SNN and the activation quantization level 2 n l of the ANN should satisfy the relationship: TSNN ≈ 2 n ANN\""
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "mt-snn-withdrawn-iclr",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "GPU wall-clock inference and alignment time only; Appendix E discusses hardware deployment qualitatively without measured numbers.",
+      "conflicts_with": [],
+      "scope": "MT-SNN theorem, temporal alignment, and measurement boundary",
+      "caveats": {
+        "scope": "MT-SNN theorem, temporal alignment, and measurement boundary",
+        "measurement_boundary": "GPU wall-clock inference and alignment time only; Appendix E discusses hardware deployment qualitatively without measured numbers.",
         "conflicts_with": []
       },
       "interpretation_flags": {
@@ -1180,8 +1326,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "quartz",
@@ -1217,6 +1363,54 @@
         "has_evidence_class": false,
         "has_measurement_boundary": false,
         "has_conflict": true,
+        "requires_qualified_reading": true
+      }
+    },
+    {
+      "id": "claim-pascal-adaptive-layerwise-sensitivity-metric",
+      "claim_type": "method",
+      "statement": "PASCAL's Adaptive Layerwise (AL) QCFS activation assigns each layer its own quantization step from a statistical layer-sensitivity metric M = A × (g² + 1) × K, combining Van Der Eijk's Agreement, skewness, and kurtosis of that layer's activation histogram; a higher M indicates a greater feasible reduction in quantization step for that layer.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "pascal"
+      ],
+      "locators": [
+        "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+        "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
+        "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\""
+      ],
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+            "Sections 3.4.1 to 3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\"",
+            "https://arxiv.org/pdf/2505.01730 (TMLR 2025 camera-ready PDF), read 2026-09-18, Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\""
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "pascal",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "A statistic of the trained ANN activation histogram, then retraining; no hardware execution is involved.",
+      "conflicts_with": [],
+      "scope": "PASCAL Adaptive Layerwise quantization-step assignment",
+      "caveats": {
+        "scope": "PASCAL Adaptive Layerwise quantization-step assignment",
+        "measurement_boundary": "A statistic of the trained ANN activation histogram, then retraining; no hardware execution is involved.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
         "requires_qualified_reading": true
       }
     },
@@ -1267,6 +1461,50 @@
         "has_evidence_class": false,
         "has_measurement_boundary": true,
         "has_conflict": true,
+        "requires_qualified_reading": true
+      }
+    },
+    {
+      "id": "claim-pascal-pasc-name-not-pasc-if",
+      "claim_type": "method",
+      "statement": "PASCAL names its spike-accumulation mechanism PASC (Precise ANN-SNN Conversion) and its neuron the IF layer; the string PASC-IF does not occur in PASCAL's own text (APEX's abstract, recorded on the apex record, is where the name PASC-IF appears).",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "pascal"
+      ],
+      "locators": [
+        "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)"
+      ],
+      "source_refs": [
+        {
+          "source_id": "pascal",
+          "locators": [
+            "https://arxiv.org/pdf/2505.01730 and https://arxiv.org/html/2505.01730, read 2026-09-18, complete-text search: the string \"PASC-IF\" does not occur; the paper writes \"PASC\", \"the PASC algorithm\", and \"IF layer\" (Sections 3.2 and 3.3, Table 1)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "pascal",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "A statement about terminology in the three papers, not about execution.",
+      "conflicts_with": [],
+      "scope": "Naming of the PASCAL neuron across PASCAL, APEX, and NeuroFlex",
+      "caveats": {
+        "scope": "Naming of the PASCAL neuron across PASCAL, APEX, and NeuroFlex",
+        "measurement_boundary": "A statement about terminology in the three papers, not about execution.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
         "requires_qualified_reading": true
       }
     },
@@ -1612,6 +1850,52 @@
       }
     },
     {
+      "id": "claim-qac-bitwidth-timestep-equivalence",
+      "claim_type": "method",
+      "statement": "QAC states that the power of the quantization bit-width in ANN activations is equivalent to the timesteps in SNNs with soft reset, the equivalence its Theorem 1 formalizes with 2^n quantization levels.",
+      "evidence_class": null,
+      "reports_deployment_evidence": false,
+      "source_ids": [
+        "qac"
+      ],
+      "locators": [
+        "OpenReview public revision attachment p4ZjfNpLYo, Theorem 1 (recorded in research/raw/a11-mixed-timestep-audit.md from the full-text read of 2026-09-16): the timesteps T of an SNN with soft-reset IF neurons are equivalent to the quantization level 2^n of a matched-precision quantized ANN activation",
+        "https://openreview.net/forum?id=D4sQzdMvcG (abstract page), read 2026-09-18: \"we propose a Quantization-Aware Conversion (QAC) algorithm that reveals a profound theoretical insight: the power of the quantization bit-width in ANN activations is equivalent to the timesteps in SNNs with soft reset\""
+      ],
+      "source_refs": [
+        {
+          "source_id": "qac",
+          "locators": [
+            "OpenReview public revision attachment p4ZjfNpLYo, Theorem 1 (recorded in research/raw/a11-mixed-timestep-audit.md from the full-text read of 2026-09-16): the timesteps T of an SNN with soft-reset IF neurons are equivalent to the quantization level 2^n of a matched-precision quantized ANN activation",
+            "https://openreview.net/forum?id=D4sQzdMvcG (abstract page), read 2026-09-18: \"we propose a Quantization-Aware Conversion (QAC) algorithm that reveals a profound theoretical insight: the power of the quantization bit-width in ANN activations is equivalent to the timesteps in SNNs with soft reset\""
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "qac",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "measurement_boundary": "A theorem about the software model; not a hardware statement.",
+      "conflicts_with": [],
+      "scope": "QAC theoretical equivalence of activation bit-width and timestep count",
+      "caveats": {
+        "scope": "QAC theoretical equivalence of activation bit-width and timestep count",
+        "measurement_boundary": "A theorem about the software model; not a hardware statement.",
+        "conflicts_with": []
+      },
+      "interpretation_flags": {
+        "reports_deployment_evidence": false,
+        "has_evidence_class": false,
+        "has_measurement_boundary": true,
+        "has_conflict": false,
+        "requires_qualified_reading": true
+      }
+    },
+    {
       "id": "claim-qac-documented-hardware-path-is-not-e3",
       "claim_type": "evidence_boundary",
       "statement": "QAC gives a conceptual loop modification for ANN-style accelerators and a qualitative pipeline discussion for multicore neuromorphic systems, but it does not document an executable toolchain or target-specific mapping path. These passages should not be promoted to E3 deployment evidence under the survey's documented-path definition.",
@@ -1845,8 +2129,8 @@
         },
         {
           "source_id": "qcfs",
-          "retrieval_status": "metadata_only",
-          "verification_status": "provisional"
+          "retrieval_status": "partial_text",
+          "verification_status": "verified"
         },
         {
           "source_id": "srp",

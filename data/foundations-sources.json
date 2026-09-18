@@ -686,11 +686,15 @@
       "doi": "10.1126/science.1254642",
       "url": "https://doi.org/10.1126/science.1254642",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
-      "retrieved_on": "2026-09-17",
+      "retrieved_on": "2026-09-18",
       "locators": [
-        "entire article (abstract read; body not read)"
+        "entire article (abstract read; body not read)",
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1126/science.1254642?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+        "http://www.cs.unc.edu/~montek/teaching/Comp740-Fall16/EmergingTech/Neuromorphic/Science-Merolla.pdf (PDF containing the paper's abstract/summary page (course-hosted copy)), read 2026-09-18",
+        "Abstract (Science, 2014): \"we built a 5.4-billion-transistor chip with 4096 neurosynaptic cores interconnected via an intrachip network that integrates 1 million programmable spiking neurons and 256 million configurable synapses.\"",
+        "Abstract (Science, 2014): \"With 400-pixel-by-240-pixel video input at 30 frames per second, the chip consumes 63 milliwatts.\""
       ],
       "aliases": [
         "merolla2014-truenorth"
@@ -840,12 +844,18 @@
       "doi": null,
       "url": "https://proceedings.mlr.press/v235/oh24b.html",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "PMLR volume-235 proceedings listing page (title, authors Hyunseok Oh and Youngki Lee, pages 38562-38598)",
-        "PMLR abstract page citation metadata for oh24b.html (publication date 2024-07-08, ISSN 2640-3498, first/last page 38562/38598, OpenReview id kfpe7Dg23G); no DOI is assigned by PMLR"
+        "PMLR abstract page citation metadata for oh24b.html (publication date 2024-07-08, ISSN 2640-3498, first/last page 38562/38598, OpenReview id kfpe7Dg23G); no DOI is assigned by PMLR",
+        "https://export.arxiv.org/api/query?search_query=ti:%22sign+gradient+descent%22 (arXiv API search (located arXiv:2407.01645)), read 2026-09-18",
+        "https://arxiv.org/html/2407.01645 (full text HTML), read 2026-09-18",
+        "Abstract: \"We prove that a discrete dynamical system of simple integrate-and-fire models approximates the subgradient method over unconstrained optimization problems.\"",
+        "Section 1, Introduction: \"We first prove that a discrete dynamical system of simple integrate-and-fire models is equivalent to a subgradient method over an unconstrained optimization problem with its solution as a spike-coded nonlinear function value.\"",
+        "Section 1, Introduction: \"we present a novel signGD-based neuronal dynamics that can (i) approximate diverse nonlinearities beyond ReLU ... Specifically, we choose the sign gradient descent algorithm (signGD) ... as the optimizer form of our neuron, replacing the subgradient method.\"",
+        "Section 2, Related Works: \"Studies in SNN-aware nonlinearities substitute ReLU of an ANN architecture with piecewise-continuous functions, e.g., QCFS (Bu et al., 2022), StepReLU (Wang et al., 2023a), SlipReLU (Jiang et al., 2023).\""
       ],
       "aliases": [
         "oh-2024-signgradient",
@@ -908,11 +918,16 @@
       "doi": "10.3389/fnins.2013.00272",
       "url": "https://doi.org/10.3389/fnins.2013.00272",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "Crossref record for 10.3389/fnins.2013.00272 (title, five authors, journal Frontiers in Neuroscience, volume 7, published/issued 2014, article number 272 taken from the DOI suffix; the record carries no separate published-print date)"
+        "Crossref record for 10.3389/fnins.2013.00272 (title, five authors, journal Frontiers in Neuroscience, volume 7, published/issued 2014, article number 272 taken from the DOI suffix; the record carries no separate published-print date)",
+        "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2013.00272/full (full text HTML (Abstract, Introduction, Section 2.1-2.1.2)), read 2026-09-18",
+        "Abstract: \"we present an event-driven variation of CD to train a RBM constructed with Integrate & Fire (I&F) neurons, that is constrained by the limitations of existing and near future neuromorphic hardware platforms.\"",
+        "Abstract: \"the recurrent activity of the network replaces the discrete steps of the CD algorithm, while Spike Time Dependent Plasticity (STDP) carries out the weight updates in an online, asynchronous fashion.\"",
+        "Section 1, Introduction: \"we train the neural RBMs using an online adaptation of CD. We exploit the recurrent structure of the network to mimic the discrete \"construction\" and \"reconstruction\" steps of CD in a spike-driven fashion, and Spike Time Dependent Plasticity (STDP) to carry out the weight updates.\"",
+        "Abstract: \"The spiking neural network was able to learn a generative model capable of recognition performances with accuracies up to 91.9%, which is close to the performance obtained using standard CD and Gibbs sampling, 93.6%.\""
       ],
       "aliases": [
         "neftci-2014-contrastive",
@@ -974,11 +989,14 @@
       "doi": "10.1109/tnnls.2023.3300514",
       "url": "https://doi.org/10.1109/tnnls.2023.3300514",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "partial_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "Crossref record for 10.1109/tnnls.2023.3300514 (title, authors Zhang, Shi, Wu, Zhou and Yu, journal IEEE TNNLS, volume 35, issue 12, pages 17177-17188, final print issue dated 2024-12; the DOI was created 2023-08-15 when the article first appeared as IEEE Early Access, which is the year the thesis bibliography entry uses)"
+        "Crossref record for 10.1109/tnnls.2023.3300514 (title, authors Zhang, Shi, Wu, Zhou and Yu, journal IEEE TNNLS, volume 35, issue 12, pages 17177-17188, final print issue dated 2024-12; the DOI was created 2023-08-15 when the article first appeared as IEEE Early Access, which is the year the thesis bibliography entry uses)",
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/tnnls.2023.3300514?fields=title,abstract,authors,year,venue,externalIds (API abstract), read 2026-09-18",
+        "Abstract: \"this article proposes a self-driven adaptive threshold plasticity (SATP) mechanism, wherein neurons autonomously adjust the firing thresholds based on their individual state information using unsupervised learning rules, of which the adjustment is triggered by their own firing events.\"",
+        "Abstract: \"SATP is based on the principle of maximizing the information contained in the output spike rate distribution of each neuron.\""
       ],
       "aliases": [
         "zhang-2024-adaptivethreshold",
@@ -996,12 +1014,17 @@
       "doi": "10.1088/2634-4386/ade183",
       "url": "https://doi.org/10.1088/2634-4386/ade183",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.1088/2634-4386/ade183 (title, six authors, journal Neuromorphic Computing and Engineering, volume 5, issue 2, article 024018, published 2025-06-01)",
-        "Crossref abstract: spiking neural networks lag behind ANNs mainly because of the difficulty of translating ANN activation values into time-domain spikes, owing to quantization and unevenness errors in mapping continuous activations"
+        "Crossref abstract: spiking neural networks lag behind ANNs mainly because of the difficulty of translating ANN activation values into time-domain spikes, owing to quantization and unevenness errors in mapping continuous activations",
+        "https://doi.org/10.1088/2634-4386/ade183 (full text (IOP open access article page)), read 2026-09-18",
+        "Abstract: \"NeuBridge addresses the errors by employing a decode–encode neuron and adaptive temporal coding, effectively bridging the performance gap between ANNs and SNNs.\"",
+        "Section 1, Introduction: \"we bridge the gap between quantized activations and spiking neurons by adopting the adaptive temporal coding of spikes. We construct an equivalent lossless mapping between the temporal-coded SNN and quantized ANN, embed time coding-related parameters in the quantization-aware training of ANN, and realize a low-latency ANN-SNN conversion method based on adaptive temporal coding.\"",
+        "Section 1, contributions: \"The encoding and decoding processes are separated to eliminate the sequential errors caused by the unevenness of spike sequences, thus achieving fast and accurate ANN-SNN conversion.\"",
+        "Abstract: \"we improve SNN performance with as few as 2 time steps.\""
       ],
       "aliases": [
         "yang-2025-neubridge",
@@ -1019,11 +1042,18 @@
       "doi": "10.1109/aicas.2019.8771624",
       "url": "https://doi.org/10.1109/aicas.2019.8771624",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "Crossref record for 10.1109/aicas.2019.8771624 (title, eight authors, conference 2019 IEEE AICAS, pages 81-85, published 2019-03)"
+        "Crossref record for 10.1109/aicas.2019.8771624 (title, eight authors, conference 2019 IEEE AICAS, pages 81-85, published 2019-03)",
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/AICAS.2019.8771624?fields=title,abstract,authors,year,venue,externalIds (API abstract), read 2026-09-18",
+        "https://idus.us.es/bitstreams/9fd7c418-7f51-4b94-ac41-d64df1071ef2/download (full text PDF (open access repository copy)), read 2026-09-18",
+        "Section II, prose before Eq. 3: \"Note that the membrane potential does not always increase but because of negative weights may as well decrease. To efficiently handle this fact, we introduced negative spikes.\"",
+        "Section II, Algorithm 1: \"if Diff ≥ 1 then Fire a positive spike ... if Diff ≤ −1 then Fire a negative spike\"",
+        "Section II: \"Each neuron has a fixed and pre-determined threshold which is equivalent to the quantization level of the ANN activation function.\"",
+        "Abstract: \"we used asynchronous spikes to communicate the quantized output activations of the neurons.\"",
+        "Section II: \"Having spikes with a sign bit is inspired by the Dynamic Vision Sensor (DVS) [18] and can be efficiently implemented in neuromorphic platforms [19] without considerable overhead.\""
       ],
       "aliases": [
         "yousefzadeh-2019-sigmadelta",
@@ -1041,11 +1071,15 @@
       "doi": "10.1109/cvprw50498.2020.00348",
       "url": "https://doi.org/10.1109/cvprw50498.2020.00348",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "Crossref record for 10.1109/cvprw50498.2020.00348 (title, six authors led by Haibao Yu, conference 2020 CVPRW, pages 2909-2918, published 2020-06)"
+        "Crossref record for 10.1109/cvprw50498.2020.00348 (title, six authors led by Haibao Yu, conference 2020 CVPRW, pages 2909-2918, published 2020-06)",
+        "https://openaccess.thecvf.com/content_CVPRW_2020/html/w40/Yu_Low-Bit_Quantization_Needs_Good_Distribution_CVPRW_2020_paper.html (abstract page (CVF open access html)), read 2026-09-18",
+        "Abstract: \"Naturally, the distribution of both weights and activations in deep neural network are Gaussian-like.\"",
+        "Abstract: \"uniform-like distributed weights and activations have been proved to be more friendly to quantization while preserving accuracy.\"",
+        "Abstract: \"the ResNet-50 model with 2-bit weights and 4-bit activations obtained by our framework achieves less than 1% accuracy drop on ImageNet classification task\""
       ],
       "aliases": [
         "yu-2020-lowbit",
@@ -1063,12 +1097,18 @@
       "doi": "10.24963/ijcai.2023/342",
       "url": "https://doi.org/10.24963/ijcai.2023/342",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.24963/ijcai.2023/342 (title, five authors led by Bingsen Wang, conference IJCAI-23, pages 3067-3075, published 2023-08)",
-        "Crossref abstract: SNNs are regarded as a third generation of neural networks for their low energy consumption, robustness, and speed, but training is difficult because spike signals are non-differentiable, which motivates ANN-SNN conversion as an alternative"
+        "Crossref abstract: SNNs are regarded as a third generation of neural networks for their low energy consumption, robustness, and speed, but training is difficult because spike signals are non-differentiable, which motivates ANN-SNN conversion as an alternative",
+        "https://www.ijcai.org/proceedings/2023/0342.pdf (PDF full text), read 2026-09-18",
+        "Abstract: \"we reanalyze the relationship between Integrate-and-Fire (IF) neuron model and ReLU activation function, propose a StepReLU activation function more suitable for SNNs under membrane potential encoding, and use it to train ANNs.\"",
+        "Section 3.1, Eq. (4): \"StepReLU(x, γ) = ReLU(x) + γ = x + γ, if x > 0; 0, if x ≤ 0\"",
+        "Section 3.2: \"we can use the StepReLU activation function in the training of ANNs, in which we will not introduce additional conversion errors as long as we make reasonable adjustments to the bias term. ... This is the only source of ANN-SNN conversion error in our proposed method.\"",
+        "Section 3.1: \"here γ l is a spike parameter that we can set, which is caused by different excitation thresholds of neurons in different layers.\"",
+        "Section 3.1, Eq. (6): \"v l i(t) = m l i(t), if m l i(t) ≤ θ l; 0, if m l i(t) > θ l\""
       ],
       "aliases": [
         "wang-2023-annsnn",
@@ -1109,12 +1149,19 @@
       "doi": "10.48550/arXiv.2501.14484",
       "url": "https://arxiv.org/abs/2501.14484",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv API record for 2501.14484 (title rendered with LaTeX dollar signs as $SpikePack$, authors Shen, Li, Li, Zhao and Zeng, published 2025-01-24, current version v2)",
-        "arXiv abstract: identifies substantial information loss during spike transmission tied to temporal dependencies in the Leaky Integrate-and-Fire neuron, and notes existing SNN architectures underutilize GPUs owing to single-bit spike storage"
+        "arXiv abstract: identifies substantial information loss during spike transmission tied to temporal dependencies in the Leaky Integrate-and-Fire neuron, and notes existing SNN architectures underutilize GPUs owing to single-bit spike storage",
+        "https://export.arxiv.org/api/query?search_query=ti:%22SpikePack%22 (arXiv API search (located arXiv:2501.14484)), read 2026-09-18",
+        "https://arxiv.org/html/2501.14484v2 (full text HTML), read 2026-09-18",
+        "Abstract: \"We identify substantial information loss during spike transmission, linked to temporal dependencies in traditional Leaky Integrate-and-Fire (LIF) neurons—a key factor potentially limiting SNN performance.\"",
+        "Abstract: \"SpikePack achieves constant O(1) time and space complexity, enabling efficient parallel processing on GPUs and also supporting serial inference on existing SNN hardware accelerators.\"",
+        "Section 1, Introduction: \"we propose SpikePack, a novel neuron model designed to reduce information loss during the transition from pre-synaptic to post-synaptic spikes, minimizing degradation associated with temporal dependencies in traditional neuron models.\"",
+        "Section 1, Introduction: \"By achieving O(1) time and space complexity, SpikePack preserves essential neural dynamics, enabling efficient, biologically relevant behavior.\"",
+        "Section 2, Related Work: \"SpikePack inherently supports time-parallel processing, achieving O(1) complexity with respect to time steps, thus improving training efficiency and enabling high inference efficiency across diverse hardware.\""
       ],
       "aliases": [
         "shen-2025-spikepack",
@@ -1132,12 +1179,18 @@
       "doi": "10.48550/arXiv.2505.09659",
       "url": "https://arxiv.org/abs/2505.09659",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv API record for 2505.09659 (title, authors Chen, Song and Sun, published 2025-05-14)",
-        "arXiv abstract: spiking LLMs are proposed as an energy-efficient alternative to conventional LLMs, and existing ANN-to-SNN conversion methods for them struggle with extreme activation ranges"
+        "arXiv abstract: spiking LLMs are proposed as an energy-efficient alternative to conventional LLMs, and existing ANN-to-SNN conversion methods for them struggle with extreme activation ranges",
+        "https://arxiv.org/abs/2505.09659 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2505.09659 (full text HTML), read 2026-09-18",
+        "Abstract: \"we propose a loss-less ANN-SNN conversion for fully spike-driven LLMs, termed LAS.\"",
+        "Section 1: \"LAS introduces two novel neurons to convert the activation outlier and nonlinear operation of ANN-based LLMs.\"",
+        "Section 1, contributions: \"We propose the Outlier-Aware Threshold Neuron to handle extreme activations via dual sub-neurons, and the Hierarchically Gated Neuron to approximate nonlinear functions through hierarchical decomposition approximation.\"",
+        "Section 1: \"on the large OPT-66B model LAS surpasses the performance of vanilla model by 2% in WSC task.\""
       ],
       "aliases": [
         "chen-2025-losslessllm",
@@ -1178,11 +1231,15 @@
       "doi": "10.1109/iscas45731.2020.9180918",
       "url": "https://doi.org/10.1109/iscas45731.2020.9180918",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "partial_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "Crossref record for 10.1109/iscas45731.2020.9180918 (title, five authors led by Chenglong Zou, conference 2020 ISCAS, pages 1-5, published 2020-10)"
+        "Crossref record for 10.1109/iscas45731.2020.9180918 (title, five authors led by Chenglong Zou, conference 2020 ISCAS, pages 1-5, published 2020-10)",
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/ISCAS45731.2020.9180918?fields=title,abstract,authors,year,venue,externalIds (API abstract), read 2026-09-18",
+        "Abstract: \"we propose a quantized training algorithm for ANNs to minimize spike approximation error, and provide two (temporally or spatially) rate-based conversion methods for SNNs, both of which can be easily mapped to specific neuromorphic platforms.\"",
+        "Abstract: \"this novel method can be generalized to various network architectures and adapted to dynamic quantization demand.\"",
+        "Abstract: \"Experimental results on MNIST and CIFAR-10 dataset demonstrate that the proposed deep spiking neural networks yield the state-of-the-art classification accuracy and need much less operations compared with their ANN counterparts.\""
       ],
       "aliases": [
         "zou-2020-medianquant",
@@ -1200,11 +1257,18 @@
       "doi": "10.48550/arXiv.2508.14520",
       "url": "https://arxiv.org/abs/2508.14520",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "arXiv API record for 2508.14520 (title reads Nearly Lossless, not Lossless as in the thesis bibliography row; seven authors led by Hangming Zhang, published 2025-08-20, current version v2)"
+        "arXiv API record for 2508.14520 (title reads Nearly Lossless, not Lossless as in the thesis bibliography row; seven authors led by Hangming Zhang, published 2025-08-20, current version v2)",
+        "https://arxiv.org/abs/2508.14520 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2508.14520 (full text HTML), read 2026-09-18",
+        "Section: Polarity Multi-Spike Mapping: \"First, we introduce a Polarity Quantized Activation (PQA) function that preserves the information of Batch Normalization (BN) layers during discretization.\"",
+        "Section: Lossless Quantized Activation Function Based on Information Entropy: \"since the outputs of BN layers contain negative values, traditional quantization functions often employ a truncation strategy that discards negative values, thereby preventing the transmission of negative information\"",
+        "Section: Polarity Multi-Spike Mapping: \"PMSM ... consists of three core components. First, we introduce a Polarity Quantized Activation (PQA) function ... Second, we design an Augmented Integrate-and-Fire (AIF) neuron model capable of emitting multiple polarity spikes within a single timestep\"",
+        "Section: Conversion Error Analysis: \"the error can be eliminated under the following three conditions: the PQA function and the spiking neuron threshold satisfy ϑ = L • ϑ l SNN; the clipping bounds satisfy C neg = αL and C pos = βL\"",
+        "Conclusion: \"AIF neurons emit multiple spikes with polarity by leveraging both positive and negative thresholds, allowing SNNs to approximate quantized activations at the first timestep, thus reducing inference latency while maintaining accuracy.\""
       ],
       "aliases": [
         "zhang-2025-polarityspike",
@@ -1222,12 +1286,17 @@
       "doi": "10.3389/fnins.2023.1141701",
       "url": "https://doi.org/10.3389/fnins.2023.1141701",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.3389/fnins.2023.1141701 (title, eight authors led by Haoran Gao, journal Frontiers in Neuroscience, volume 17, article-number 1141701, published 2023-03-08)",
-        "Crossref abstract: many ANN-to-SNN techniques impose lengthy post-conversion steps such as threshold balancing and weight renormalization to compensate for the behavioral gap between artificial and spiking neurons"
+        "Crossref abstract: many ANN-to-SNN techniques impose lengthy post-conversion steps such as threshold balancing and weight renormalization to compensate for the behavioral gap between artificial and spiking neurons",
+        "https://doi.org/10.3389/fnins.2023.1141701 (full text (Frontiers open access article page)), read 2026-09-18",
+        "Abstract: \"we propose a calcium-gated bipolar leaky integrate and fire (Ca-LIF) spiking neuron model to better approximate the functions of the ReLU neurons widely adopted in ANNs.\"",
+        "Section: The proposed Ca-LIF spiking neuron model: \"The Ca-LIF neuron holds symmetric thresholds V th > 0 and -V th < 0. Once its V m upcrosses V th, or down-crosses -V th with the gating condition y S (t-1) > 0 satisfied, the neuron fires a positive or negative spike, respectively, where y S in the Ca-LIF neuron represents signed output of the spike count. i.e., the positive output spike count minus the [negative] spike count.\"",
+        "Section: The proposed Ca-LIF spiking neuron model: \"y s resembles the calcium ion concentration (Ca+) in a biological neuron (Brader et al., 2007).\"",
+        "Introduction: \"this study proposes a simple and effective deep ANN-to-SNN framework without any post-conversion tuning, and the converted SNN can achieve a high recognition accuracy in a relatively shorter temporal window (i.e., 128 down to 8 time steps).\""
       ],
       "aliases": [
         "gao-2023-calciumgated",
@@ -1245,13 +1314,19 @@
       "doi": null,
       "url": "https://proceedings.neurips.cc/paper_files/paper/2020/hash/3948ead63a9f2944218de038d8934305-Abstract.html",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "NeurIPS 2020 proceedings listing page (title, author order moran shkolnik, Brian Chmiel, Ron Banner, Gil Shomron, Yury Nahshan, Alex Bronstein, Uri Weiser; the thesis bibliography key names the second author, Chmiel, rather than the first, Shkolnik)",
         "arXiv API record for 2002.07686 (same title and author list, submitted 2020-02-18)",
-        "arXiv abstract: quantization-aware training makes a trained model highly dependent on its target bit-width and quantization scheme, and robust quantization is proposed as an alternative with improved tolerance across data types and quantization policies"
+        "arXiv abstract: quantization-aware training makes a trained model highly dependent on its target bit-width and quantization scheme, and robust quantization is proposed as an alternative with improved tolerance across data types and quantization policies",
+        "https://arxiv.org/abs/2002.07686 (abstract page), read 2026-09-18",
+        "https://arxiv.org/pdf/2002.07686 (full text PDF (Introduction, Sections 1-3)), read 2026-09-18",
+        "Section 1, Introduction, contribution (i): \"we first prove that compared to the typical case of normally-distributed weights, uniformly distributed weight tensors have improved tolerance to quantization with a higher signal-to-noise ratio (SNR) and lower sensitivity to specific quantizer implementation\"",
+        "Section 1, Introduction, contribution (ii): \"we introduce KURE — a method designed to uniformize the distribution of weights and improve their quantization robustness.\"",
+        "Introduction: \"we introduce KURE — a KUrtosis REgularization term, which is added to the model loss function. By imposing specific kurtosis values, KURE is capable of manipulating the model tensor distributions to adopt superior quantization noise tolerance qualities.\"",
+        "Section 3, Model and problem formulation: \"we quantify the quantization sensitivity Γ(X, ε) as the increase in MSE(X, ∆) following a small changes in the optimal quantization step ∆(X)\""
       ],
       "aliases": [
         "chmiel-2020-robustquant",
@@ -1269,12 +1344,16 @@
       "doi": "10.48550/arXiv.2508.15008",
       "url": "https://arxiv.org/abs/2508.15008",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv API record for 2508.15008 (title, authors Abushahla, Varam, Panopio and AlHajri, published 2025-08-20, current version v4)",
-        "arXiv abstract: deploying quantized neural networks on resource-constrained microcontrollers requires balancing model performance, computational complexity, and memory constraints, which TinyML addresses by jointly advancing algorithms, hardware, and software"
+        "arXiv abstract: deploying quantized neural networks on resource-constrained microcontrollers requires balancing model performance, computational complexity, and memory constraints, which TinyML addresses by jointly advancing algorithms, hardware, and software",
+        "https://arxiv.org/abs/2508.15008 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2508.15008 (full text HTML through Section IV-C), read 2026-09-18",
+        "Section IV-C, \"Mixed Precision Quantization\": \"the Hessian-Aware Quantization (HAWQ) [66] framework exemplifies this direction by computing second-order Hessian traces to extract the largest eigenvalues of each layer's weight matrix, showing then that the layers with larger top Hessian eigenvalues are more sensitive. Accordingly, more sensitive layers are assigned higher precision\"",
+        "Section IV-C: \"Even in standard mixed precision quantization, where each layer in an L-layer DNN is assigned one of S candidate bit-widths, the search space scales exponentially as O(S^L)\""
       ],
       "aliases": [
         "abushahla-2025-mcusurvey",
@@ -1519,13 +1598,20 @@
       "doi": "10.1016/j.neunet.2025.108350",
       "url": "https://doi.org/10.1016/j.neunet.2025.108350",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.1016/j.neunet.2025.108350 (title, authors Xingting Yao, Qinghao Hu, Fei Zhou, Tielong Liu, Gang Li, Peisong Wang, Jian Cheng, container Neural Networks, volume 196, article 108350, issued 2026-04)",
         "arXiv record for 2506.23717 (same title and authors, first submitted 2025-06-30 through current version v4; the journal issue date of 2026 postdates the 2025 preprint date the thesis bibliography row used)",
-        "Semantic Scholar record, abstract: proposes an adaptive bit allocation strategy that parametrizes and learns per-layer temporal length and weight and spike bit widths through gradients for direct-trained spiking neural networks"
+        "Semantic Scholar record, abstract: proposes an adaptive bit allocation strategy that parametrizes and learns per-layer temporal length and weight and spike bit widths through gradients for direct-trained spiking neural networks",
+        "https://doi.org/10.1016/j.neunet.2025.108350 (abstract/reference-list renderer), read 2026-09-18",
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.neunet.2025.108350?fields=title,abstract,authors,year,venue,externalIds (API abstract, resolved arXiv cross-ID 2506.23717), read 2026-09-18",
+        "https://arxiv.org/abs/2506.23717 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2506.23717 (full text HTML through Table 1), read 2026-09-18",
+        "Section 4.1, Eq. 10-12: \"we propose to parametrize the three pivotal elements layer-wise, making them learnable and can be optimized through back-propagation\"",
+        "Section 4.2: \"the previous layer yields a spike train with T=2, while the post layer has four temporal bits, i.e., T=4. Two time-steps of data remain unfilled. To solve these issues, we exploit the temporal flexibility, directly squeezing the spike train through an averaging operation\"",
+        "Section 3.3: \"To measure the computational consumption of fully ideal neuromorphic hardware, Shen et al. also propose the NS-ACE metric to ignore the computation cost of non-spike data\""
       ],
       "aliases": [
         "yao-2026-adaptivebit",
@@ -1543,12 +1629,16 @@
       "doi": "10.1145/3531437.3539708",
       "url": "https://doi.org/10.1145/3531437.3539708",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "partial_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.1145/3531437.3539708 (title Layerwise Disaggregated Evaluation of Spiking Neural Networks, authors Abinand Nallathambi, Sanchari Sen, Anand Raghunathan, Nitin Chandrachoodan, container Proceedings of the ACM/IEEE International Symposium on Low Power Electronics and Design, pages 1-6, issued 2022-08)",
-        "Semantic Scholar record, abstract: proposes LD-SNN, which independently optimizes the number of timesteps for each layer of a spiking neural network, reporting 1.67 to 3.84 times fewer synaptic updates and 1.25 to 3.45 times faster inference across four hardware platforms"
+        "Semantic Scholar record, abstract: proposes LD-SNN, which independently optimizes the number of timesteps for each layer of a spiking neural network, reporting 1.67 to 3.84 times fewer synaptic updates and 1.25 to 3.45 times faster inference across four hardware platforms",
+        "https://doi.org/10.1145/3531437.3539708 (abstract/metadata page), read 2026-09-18",
+        "Abstract: \"we propose layerwise disaggregated SNNs (LD-SNNs), wherein the number of timesteps is independently optimized for each layer of the network... These improvements translate to 1.25-3.45x faster inference on four different hardware platforms including two server-class platforms, a desktop platform and an edge SoC.\"",
+        "Abstract: \"we propose layerwise disaggregated SNNs (LD-SNNs)\"",
+        "Abstract: \"Across four benchmark networks, LD-SNNs achieve 1.67-3.84x reduction in synaptic updates and 1.2-2.56x reduction in neurons evaluated.\""
       ],
       "aliases": [
         "nallathambi-2022-layerdisagg",
@@ -1566,12 +1656,18 @@
       "doi": null,
       "url": "https://arxiv.org/abs/2604.18610",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "partial_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv record for 2604.18610 (title SpikeMLLM: Spike-based Multimodal Large Language Models via Modality-Specific Temporal Scales and Temporal Compression, authors Han Xu, Zhiyong Qin, Di Shang, Jiahong Zhang, Xuerui Qiu, Bo Lei, Tiejun Huang, Bo Xu, Guoqi Li, published 2026-04-13)",
-        "arXiv abstract: compresses per-modality timesteps from T=L-1 to T=log2(L)-1 using Modality-Specific Temporal Scales guided by Modality Evolution Discrepancy and a Temporally Compressed LIF neuron, reporting near-lossless accuracy at a three-quarter timestep reduction"
+        "arXiv abstract: compresses per-modality timesteps from T=L-1 to T=log2(L)-1 using Modality-Specific Temporal Scales guided by Modality Evolution Discrepancy and a Temporally Compressed LIF neuron, reporting near-lossless accuracy at a three-quarter timestep reduction",
+        "https://export.arxiv.org/api/query?search_query=ti:%22SpikeMLLM%22 (arXiv API metadata (id 2604.18610)), read 2026-09-18",
+        "https://arxiv.org/abs/2604.18610 (abstract page / summary), read 2026-09-18",
+        "Abstract: \"Temporally Compressed LIF (TC-LIF) for timestep compression from T=L-1 to T=log2(L)-1.\"",
+        "Abstract: \"Modality-Specific Temporal Scales (MSTS) guided by Modality Evolution Discrepancy (MED)\"",
+        "Abstract: \"develop a dedicated RTL accelerator tailored to the spike-driven datapath, observing 9.06x higher throughput and 25.8x better power efficiency relative to an FP16 GPU baseline.\"",
+        "Abstract: \"average gaps of only 0.72% and 1.19% relative to the FP16 baseline on InternVL2-8B and Qwen2VL-72B.\""
       ],
       "aliases": [
         "xu-2026-spikemllm",
@@ -1635,12 +1731,15 @@
       "doi": "10.1609/aaai.v40i24.39039",
       "url": "https://doi.org/10.1609/aaai.v40i24.39039",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "partial_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.1609/aaai.v40i24.39039 (title InfoQ: Mixed-Precision Quantization via Global Information Flow, authors Mehmet Emre Akbulut, Hazem Hesham Yousef Shalby, Fabrizio Pittorino, Manuel Roveri, container Proceedings of the AAAI Conference on Artificial Intelligence, volume 40, issue 24, pages 19598-19606, issued 2026-03-14)",
-        "Semantic Scholar record, abstract: assigns per-layer mixed-precision bit widths from a global information-flow criterion rather than an expensive combinatorial search"
+        "Semantic Scholar record, abstract: assigns per-layer mixed-precision bit widths from a global information-flow criterion rather than an expensive combinatorial search",
+        "https://ojs.aaai.org/index.php/AAAI/article/view/39039 (publisher abstract page), read 2026-09-18",
+        "Abstract: \"The resulting scores are used to formulate bit-width allocation as an integer linear programming problem, which is solved efficiently to minimize total sensitivity under a given budget (e.g., model size or BitOps).\"",
+        "Abstract: \"InfoQ assesses layer importance by performing a single forward pass to measure the change in mutual information in the remaining part of the network, thus creating a global sensitivity score.\""
       ],
       "aliases": [
         "akbulut-2026-infoq",
@@ -1727,12 +1826,15 @@
       "doi": null,
       "url": "https://arxiv.org/abs/2601.10035",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv record for 2601.10035 (title A Compute and Communication Runtime Model for Loihi 2, authors Jonathan Timcheck, Alessandro Pierro, Sumit Bam Shrestha, published 2026-01-15, revised version v2)",
-        "arXiv abstract: introduces a multi-dimensional roofline runtime model for Intel's Loihi 2 chip accounting for both compute and communication time from microbenchmarks, correlating with measured runtime at a Pearson coefficient of at least 0.97"
+        "arXiv abstract: introduces a multi-dimensional roofline runtime model for Intel's Loihi 2 chip accounting for both compute and communication time from microbenchmarks, correlating with measured runtime at a Pearson coefficient of at least 0.97",
+        "https://arxiv.org/abs/2601.10035 (full text through the reference list), read 2026-09-18",
+        "Section IV, Max-affine runtime model, Eq. 1: \"T = max(N_DO T_DO, N_SO T_SO, N_SMR T_SMR, N_LL/B, T_BS)\"",
+        "Section II-1: \"The NoC also supports a synchronization operation, known as barrier synchronization, to synchronize algorithmic timesteps across NeuroCores: for many neuromorphic algorithms ... execution proceeds in a sequence of algorithmic timesteps, and it is critical that NeuroCores are synchronized to this degree.\""
       ],
       "aliases": [
         "timcheck-2026-loihi2runtime",
@@ -1750,12 +1852,16 @@
       "doi": null,
       "url": "https://arxiv.org/abs/2605.20802",
       "source_type": "preprint",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "arXiv record for 2605.20802 (title ELSA: An ELastic SNN Inference Architecture for Efficient Neuromorphic Computing, authors Kang You, Chen Nie, Lee Jun Yan, Ziling Wei, Cheng Zou, Zekai Xu, Yu Feng, Honglan Jiang, Zhezhi He, published 2026-05-20)",
-        "arXiv abstract: proposes a spine and token-wise pipelined SNN accelerator dataflow contrasted with layer-by-layer and timestep-by-timestep execution schedules, reporting 3.4 times speedup and 13.6 times energy efficiency over a quantized-ANN accelerator on 4-bit ResNet-50"
+        "arXiv abstract: proposes a spine and token-wise pipelined SNN accelerator dataflow contrasted with layer-by-layer and timestep-by-timestep execution schedules, reporting 3.4 times speedup and 13.6 times energy efficiency over a quantized-ANN accelerator on 4-bit ResNet-50",
+        "https://arxiv.org/abs/2605.20802 (full text (Abstract through Section VII-C, two fetches)), read 2026-09-18",
+        "Section I / Section III-A: \"Their execution can be broadly categorized as layer-by-layer (LBL) and time-step-by-time-step (TBT), distinguished by how they traverse the three intrinsic dimensions of SNNs: time-steps, layers, and spines/tokens within each layer.\"",
+        "Section III-A: \"LBL-based accelerators [...] must complete all T time-steps for all N spines/tokens within a layer (i.e., T×N computations) before proceeding to the next layer... reducing the latency to the first response from O(L×N) to O(L)\"",
+        "Section VII-A1, Implementation: \"We implement the RTL of modules in ELSA and synthesize them with Synopsys Design Compiler using commercial 28nm technology... we build a cycle-level simulator with each component parameterized from the synthesized results\""
       ],
       "aliases": [
         "you-2026-elsa",
@@ -1801,7 +1907,12 @@
       "retrieved_on": "2026-09-18",
       "locators": [
         "https://theses.liacs.nl/3527 (LIACS Thesis Repository page read in full): title Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion, student Steennis, C. (Christian), Master Computer Science programme, academic year 2024-2025, supervisors Broekens, dr.ir. D.J. (Joost) and Chen, dr. Q. (Qinyu), thesis PDF linked at /pdf/2024-2025-SteennisCChristian.pdf",
-        "Page's own citation line, read in full: Steennis, C. (Christian), Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion, Thesis Master Computer Science, LIACS, Leiden University, 2025"
+        "Page's own citation line, read in full: Steennis, C. (Christian), Analysis of the Relation Between Bitdepth and Timesteps in ANN to SNN Conversion, Thesis Master Computer Science, LIACS, Leiden University, 2025",
+        "https://theses.liacs.nl/pdf/2024-2025-SteennisCChristian.pdf (full text PDF, Abstract through Section 4 opening), read 2026-09-18",
+        "https://theses.liacs.nl/3527 (thesis metadata page), read 2026-09-18",
+        "Abstract: \"Resulting in an empirical study showing the known bound T = 2 b − 1 is a huge overestimation and determining an empirical relation between bit depth and time steps.\"",
+        "Section 3, Research Question: \"Theory gives us an upper bound on the latency for deep neural networks, Latency = 2 b − 1 × L\"",
+        "Abstract: \"It is found that the relation follows a general logistic curve where the function parameters depend on the complexity of the data and models\""
       ],
       "aliases": [
         "steennis-2025-bitdepth",
@@ -1823,7 +1934,11 @@
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
-        "https://raw.githubusercontent.com/fangwei123456/spikingjelly/master/CHANGELOG.md (raw file read in full): section titled 2.0.0.dev1 - 2026-08-14, under Integer-Valued Spike Conversion, module spikingjelly.activation_based.layer, states 'Added SpikeCountToBinary and TemporalBinSum for multi-step I-LIF networks, enabling integer-valued training and binary-event evaluation around bias-free weight layers.'"
+        "https://raw.githubusercontent.com/fangwei123456/spikingjelly/master/CHANGELOG.md (raw file read in full): section titled 2.0.0.dev1 - 2026-08-14, under Integer-Valued Spike Conversion, module spikingjelly.activation_based.layer, states 'Added SpikeCountToBinary and TemporalBinSum for multi-step I-LIF networks, enabling integer-valued training and binary-event evaluation around bias-free weight layers.'",
+        "https://github.com/fangwei123456/spikingjelly/releases (releases page (no releases listed there)), read 2026-09-18",
+        "https://spikingjelly.readthedocs.io/zh-cn/latest/changelog.html (changelog page, Version 2.0.0.dev1 entries), read 2026-09-18",
+        "Changelog, Version 2.0.0.dev1: \"Added multi-step Triton training and inference for `ILIFNode`. It reuses `LIFNode` dynamics and configures integer firing through `MultiLevelSpikeCount`.\"",
+        "Changelog, Version 2.0.0.dev1: \"Added `SpikeCountToBinary` and `TemporalBinSum` for multi-step I-LIF networks, enabling integer-valued training and binary-event evaluation around bias-free weight layers.\""
       ],
       "aliases": [
         "spikingjelly-2026-changelog",
@@ -1887,12 +2002,18 @@
       "doi": "10.23919/DATE54114.2022.9774704",
       "url": "https://doi.org/10.23919/DATE54114.2022.9774704",
       "source_type": "peer_reviewed",
-      "retrieval_status": "metadata_only",
+      "retrieval_status": "full_text",
       "verification_status": "verified",
       "retrieved_on": "2026-09-18",
       "locators": [
         "Crossref record for 10.23919/DATE54114.2022.9774704 (title Can Deep Neural Networks be Converted to Ultra Low-Latency Spiking Neural Networks?, authors Gourav Datta, Peter A. Beerel, container 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE), pages 718-723, issued 2022-03-14)",
-        "Semantic Scholar record, abstract: proposes a training algorithm correcting the mismatched pre-activation distribution assumption of prior ANN-SNN conversion, achieving 64.19 percent top-1 accuracy on CIFAR-100 with only 2 timesteps and about 159 times lower compute energy than an iso-architecture ANN"
+        "Semantic Scholar record, abstract: proposes a training algorithm correcting the mismatched pre-activation distribution assumption of prior ANN-SNN conversion, achieving 64.19 percent top-1 accuracy on CIFAR-100 with only 2 timesteps and about 159 times lower compute energy than an iso-architecture ANN",
+        "https://arxiv.org/abs/2112.12133 (abstract page), read 2026-09-18",
+        "https://arxiv.org/pdf/2112.12133 (full text PDF), read 2026-09-18",
+        "Abstract: \"we determine that SOTA conversion strategies cannot yield ultra low latency because they incorrectly assume that the DNN and SNN pre-activation values are uniformly distributed.\"",
+        "Abstract: \"We propose a new training algorithm that accurately captures these distributions, minimizing the error between the DNN and converted SNN.\"",
+        "Abstract: \"We obtain top-1 accuracy of 64.19% with only 2 time steps on the CIFAR-100 dataset with ~159.2x lower compute energy compared to an iso-architecture standard DNN.\"",
+        "Abstract: \"our models perform inference 2.5-8x faster (i.e., with fewer time steps).\""
       ],
       "aliases": [
         "datta-2022-ultralow",
@@ -1928,6 +2049,465 @@
         "zhang2026pseudosnn"
       ],
       "notes": "Holds the rate-coding-as-uniform-quantization framing that opens the survey's error-source section, the uniform-latency versus hetero-latency contrast, and a direct-training route to a learned per-layer horizon joined by an average-and-broadcast boundary; the paper reports no neuromorphic execution.",
+      "purpose": "external"
+    },
+    {
+      "id": "qac-page-read",
+      "title": "QAC: Quantization-Aware Conversion for Mixed-Timestep Spiking Neural Networks",
+      "authors": "Guo, M., Li, Q., Li, Y., Cheng, J., Chen, L.",
+      "year": 2025,
+      "venue": "Submitted to ICLR 2025 (OpenReview, no confirmed acceptance)",
+      "doi": null,
+      "url": "https://openreview.net/forum?id=D4sQzdMvcG",
+      "source_type": "preprint",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://openreview.net/forum?id=D4sQzdMvcG (abstract page (OpenReview forum listing, ICLR 2025 submission)), read 2026-09-18",
+        "Abstract: \"we propose a Quantization-Aware Conversion (QAC) algorithm that reveals a profound theoretical insight: the power of the quantization bit-width in ANN activations is equivalent to the timesteps in SNNs with soft reset\""
+      ],
+      "aliases": [
+        "qac-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record qac; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "mt-snn-withdrawn-iclr-page-read",
+      "title": "Mixed-Timestep Spiking Neural Networks with Temporal Alignment for Ultra-Low Latency Conversion",
+      "authors": "Anonymous ICLR 2026 submission; later method lineage by M. Guo et al.",
+      "year": 2026,
+      "venue": "Withdrawn ICLR 2026 submission",
+      "doi": null,
+      "url": "https://openreview.net/forum?id=4dwAZRr9L5",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://openreview.net/forum?id=4dwAZRr9L5 (abstract page), read 2026-09-18",
+        "https://openreview.net/pdf?id=4dwAZRr9L5 (full text (retrieved via alternate text-extraction fetch after the direct browser view was CAPTCHA-gated)), read 2026-09-18",
+        "Section 4.3, Eq. 19-20: \"we propose the average temporal alignment method, which consists two steps. First, we average S l over the temporal dimension T l to obtain a time-step-independent feature tensor S¯l ... Second, we replicate S¯l along the temporal dimension to match the required length T l+1\"",
+        "Section 4.1, Theorem 1: \"Theorem 1. To achieve lossless conversion between a pre-trained ANN and an SNN (i.e., a l = ϕ l), under the premise of eliminating residual membrane potential errors, the time-step T l of the SNN and the activation quantization level 2 n l of the ANN should satisfy the relationship: TSNN ≈ 2 n ANN\"",
+        "Section 5.4, Computational Overhead of Temporal Alignment: \"Experiments are run on 4× NVIDIA RTX 4090 GPUs (24 GB each) with a fixed global inference batch size of 64. We report the total wall-clock inference time (Inf. Time), the time spent on temporal alignment (Align. Time)...\"",
+        "Abstract: \"On ImageNet-1K, our MT-SNNs achieve 73.63% top-1 accuracy with only 4.88 time-steps, advancing the state of the art.\"",
+        "Section 5.2, Ablation Study on Temporal Alignment: \"Beyond average, other temporal alignment schemes exist, such as naive upsampling or downsampling adopted in prior dynamic time-step work\""
+      ],
+      "aliases": [
+        "mt-snn-withdrawn-iclr-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record mt-snn-withdrawn-iclr; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "pascal-page-read",
+      "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
+      "authors": "Pranav Ramesh, Gopalakrishnan Srinivasan",
+      "year": 2025,
+      "venue": "TMLR",
+      "doi": "10.48550/arxiv.2505.01730",
+      "url": "https://arxiv.org/abs/2505.01730",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/2505.01730 (abstract page), read 2026-09-18",
+        "https://arxiv.org/pdf/2505.01730 (full text PDF (TMLR 2025 camera-ready, v2)), read 2026-09-18",
+        "https://arxiv.org/html/2505.01730 (partial HTML (introduction/notation table only; superseded by the PDF read)), read 2026-09-18",
+        "Section 3.4.4, Eq. 6: \"M = A × (g2 + 1) × K\"",
+        "Section 3.4: \"we describe the proposed Adaptive Layerwise QCFS activation methodology (referred to as AL) to determine the optimal quantization step for every layer\"",
+        "Section 3.2, Algorithm 1: \"For the first Ln−1 timesteps, we perform the IF operation ... using the spike train obtained from the preceding layer. We use a spike counter to record the number of spikes produced at this stage... It is only at this stage that we introduce inhibitory spikes... For the final stage, we reset the membrane potential to the spike count obtained after stages 1 and 2. We then perform the IF operation for Ln timesteps to generate the final spike train.\"",
+        "Section 4.3, Eq. 16: \"Tef f = 1 |Ltot| · Σ_l r l E · T l\"",
+        "Table 4: \"ResNet-18 CIFAR-10 ... Layerwise L [4,4,4,1,4,4,4,1,4,1,1,1,1,1,1,1,4] ... Teff 3.14 ... Accuracy 95.34\"",
+        "Section 3.4.1-3.4.3: \"The proposed metric is a combination of three individual statistical measures... Van Der Eijk's Agreement... Skewness... Kurtosis\""
+      ],
+      "aliases": [
+        "pascal-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record pascal; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "neuroflex-page-read",
+      "title": "NeuroFlex: Column-Exact ANN-SNN Co-Execution Accelerator with Cost-Guided Scheduling",
+      "authors": "Varun Manjunath, Pranav Ramesh, Gopalakrishnan Srinivasan",
+      "year": 2025,
+      "venue": "arXiv:2511.05215",
+      "doi": "10.48550/arxiv.2511.05215",
+      "url": "https://arxiv.org/abs/2511.05215",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/2511.05215 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2511.05215 (full text HTML through Section 4.3), read 2026-09-18",
+        "Section 3.2: \"For an 8-level quantization (L=8), lossless conversion between an integer-valued ANN activation and its SNN spike representation requires (3L−1)=23 timesteps\"",
+        "Section 3.3: \"Spike Generation: converts INT8 (L=8) activation value into a deterministic spike train with (3L−1) timesteps, preserving the same quantized magnitude.\"",
+        "Section 3.4, Algorithm 1: \"quantization step L, spike window (timesteps) T=L ... s ← SpikeGen(A[m,k],L) ... // spatial unrolling over t\"",
+        "Abstract: \"Our cost-guided scheduling algorithm improves throughput by 16-19% over random mapping and lowers EDP by 57-67% versus a strong ANN-only baseline across VGG-16, ResNet-34, GoogLeNet, and BERT models.\"",
+        "Section 3.2, Theorem 1: \"For any column c operating with integer threshold θn and quantization step Ln, the SNN realization Mc is mathematically equivalent to its ANN realization Nc\"",
+        "https://arxiv.org/html/2511.05215 (full text HTML), read 2026-09-18, Section VI-D, Implementation and Modeling: \"We implement key components of NeuroFlex and all baselines in RTL and synthesize with Synopsys Design Compiler at 560 MHz in a 40 nm technology node.\""
+      ],
+      "aliases": [
+        "neuroflex-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record neuroflex; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "apex-page-read",
+      "title": "APEX: A Dual-Sparsity Accelerator for Precise and Efficient SNN Inference",
+      "authors": "Devgokul Bawa Venkatesh, Sreeram Radhakrishnan, Rajshekhar Rakshit, Gopalakrishnan Srinivasan",
+      "year": 2026,
+      "venue": "arXiv:2608.19046",
+      "doi": "10.48550/arxiv.2608.19046",
+      "url": "https://arxiv.org/abs/2608.19046",
+      "source_type": "preprint",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/2608.19046 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2608.19046 (full text HTML through the reference list), read 2026-09-18",
+        "Section II-B: \"Stage 1 — Excitatory accumulation (Ln−1 timesteps)... A spike counter s records the cumulative spike count... Stage 2 — Inhibitory correction (max(Ln−1,Ln)−1 timesteps)... Stage 3 — Output spike generation (Ln timesteps). The membrane potential is reset to the scaled spike count s obtained after Stage 2. Standard IF firing is applied for Ln timesteps to generate the final output spike train\"",
+        "Section IV-A: \"We evaluate APEX using AlexNet, VGG16, and ResNet18 on CIFAR-10, across timestep configurations T∈{4,8,16}\"",
+        "Section IV-C-3: \"LoAS consumes 181.76 mJ per inference, since it requires four times more timesteps, compared to 69.23 mJ for APEX—a 61.9% reduction in energy consumption.\"",
+        "Section IV-C-1: \"APEX incurs a power overhead of 1.3%–5.4% and an area overhead of 2.1%–2.7% relative to LoAS, confirming that ANN-equivalent inference accuracy is achieved at minimal hardware cost.\"",
+        "Conclusion: \"Across AlexNet, VGG16, and ResNet18 on CIFAR-10, APEX achieves on average 40% energy reduction over LoAS for best accuracy configurations.\"",
+        "Section IV-B, Hardware Configuration: \"APEX is implemented in RTL and synthesized using Synopsys Design Compiler at 400 MHz on 40 nm CMOS technology.\""
+      ],
+      "aliases": [
+        "apex-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record apex; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "ssnn-page-read",
+      "title": "Shrinking Your TimeStep: Towards Low-Latency Neuromorphic Object Recognition with Spiking Neural Networks",
+      "authors": "Yongqi Ding, Lin Zuo, Mengmeng Jing, Pei He, Yongjun Xiao",
+      "year": 2024,
+      "venue": "AAAI",
+      "doi": "10.1609/aaai.v38i10.29066",
+      "url": "https://doi.org/10.1609/aaai.v38i10.29066",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/html/2401.01912 (full text through Table 2 / start of discussion), read 2026-09-18",
+        "https://arxiv.org/abs/2401.01912 (abstract page), read 2026-09-18",
+        "Method, Timestep Shrinkage: \"we divide it into n stages. The timestep required for each stage keeps shrinking as the network layers get deeper, that is, T1 > T2 > ... > Tn.\"",
+        "Method, Temporal Transformer, Eq. 7-9: \"Calculate the sum of O1 over T1 timesteps as the total information and assign it to T2 timesteps based on d to obtain I2 ∈ R T2×C×H×W: I2,t = O total 1 ⊙ dt\"",
+        "Abstract / Introduction: \"we propose the Shrinking SNN (SSNN) to achieve low-latency neuromorphic object recognition without reducing performance\"",
+        "Abstract: \"With only 5 average timesteps and without any data augmentation, SSNN is able to achieve an accuracy of 73.63% on CIFAR10-DVS.\""
+      ],
+      "aliases": [
+        "ssnn-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record ssnn; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "spiking-yolo-page-read",
+      "title": "Spiking-YOLO: Spiking Neural Network for Energy-Efficient Object Detection",
+      "authors": "S. Kim, S. Park, B. Na, and S. Yoon",
+      "year": 2020,
+      "venue": "AAAI",
+      "doi": "10.48550/arxiv.1903.06530",
+      "url": "https://arxiv.org/abs/1903.06530",
+      "source_type": "preprint",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/1903.06530 (abstract page), read 2026-09-18",
+        "Abstract: \"Through our in-depth analysis, we introduce two novel methods: channel-wise normalization and signed neuron with imbalanced threshold, both of which provide fast and accurate information transmission for deep SNNs.\"",
+        "Abstract: \"we present a first spiked-based object detection model, called Spiking-YOLO.\"",
+        "Abstract: \"Spiking-YOLO on a neuromorphic chip consumes approximately 280 times less energy than Tiny YOLO and converges 2.3 to 4 times faster than previous SNN conversion methods.\""
+      ],
+      "aliases": [
+        "spiking-yolo-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record spiking-yolo; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "ijcai2025negspike-page-read",
+      "title": "A Fast and Accurate ANN-SNN Conversion Algorithm with Negative Spikes",
+      "authors": "Wang, X. and Zhu, D. and Li, J.",
+      "year": 2025,
+      "venue": "IJCAI",
+      "doi": null,
+      "url": "https://ijcai.org/proceedings/2025/0719.pdf",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://ijcai.org/proceedings/2025/0719.pdf (PDF full text), read 2026-09-18",
+        "Section 3.2, Neuron Model with Negative Spikes: \"we propose a new neuron model with two outputs. The positive output generate spikes p l j(t) as before ... The negative output generate negative spikes n l j(t) when the temporary membrane is lower than the negative threshold N l th\"",
+        "Section 3.1: \"s l j(t) = 1, if v l i,temp(t) > V l th; 0, otherwise. [the baseline IF neuron, nonnegative ON/OFF spikes]\"",
+        "Section 2, Related Works: \"A widely used neuron model that supports negative spikes is the signed neuron with imbalanced threshold (IBT) [Kim et al., 2020].\"",
+        "Abstract: \"For ANN models with other activation functions, such as the Leaky ReLU function, the converted SNN models either suffer from serious accuracy degradation or require a long time step.\""
+      ],
+      "aliases": [
+        "ijcai2025negspike-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record ijcai2025negspike; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "diff-page-read",
+      "title": "Differential Coding for Training-Free ANN-to-SNN Conversion",
+      "authors": "Z. Huang, W. Fang, T. Bu, P. Xue, Z. Hao, W. Liu, Y. Tang, Z. Yu, T. Huang",
+      "year": 2025,
+      "venue": "ICML",
+      "doi": "10.48550/arxiv.2503.00301",
+      "url": "https://arxiv.org/abs/2503.00301",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/2503.00301 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2503.00301 (full text HTML), read 2026-09-18",
+        "Section 4, Method: \"In this section, we propose differential coding with graded units and spiking neurons (DCGS), a training-free theory for converting ANNs to SNNs.\"",
+        "Abstract: \"a novel coding scheme that reduces spike counts and energy consumption by transmitting changes in rate information rather than rates directly\"",
+        "Section 4.1, Definition 4.1: \"Define e^l[t] as the encoded output value at time-step t, the encoded activation value r^l[t] as the average of e^l[t] from time 1 to time-step t. ... e^l[t] = r^l[t-1] + x^l[t]\"",
+        "Section 2.1 Related Works: \"(Oh & Lee, 2024) introduced a sign gradient descent based neuron that can approximate various nonlinear activation functions.\""
+      ],
+      "aliases": [
+        "diff-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record diff; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "snn-calibration-page-read",
+      "title": "A Free Lunch From ANN: Towards Efficient, Accurate Spiking Neural Networks Calibration",
+      "authors": "Li, Y., Deng, S., Dong, X., Gong, R., Gu, S.",
+      "year": 2021,
+      "venue": "ICML",
+      "doi": "10.48550/arxiv.2106.06984",
+      "url": "https://arxiv.org/abs/2106.06984",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://arxiv.org/abs/2106.06984 (abstract page), read 2026-09-18",
+        "https://arxiv.org/html/2106.06984 (full text HTML), read 2026-09-18",
+        "Section 4.3, Layer-wise Calibration: \"We propose layer-wise calibration algorithm to adjust the network parameters including weights, bias, and initial potential to diminish the conversion error.\"",
+        "Section 1, Introduction: \"In this work, we aim to obtain an SNN in extremely low latency (less than 256 time steps) and in extremely low cost.\"",
+        "Section 5, Experiments: \"we conduct experiments on CIFAR ... and ImageNet ... datasets with extremely low simulation length (say T ≤ 256).\"",
+        "Section 5.1, Implementation Details: \"We do not convert input images to binary spikes because generating binary spikes requires time and degrades the accuracy.\"",
+        "Section 3, Preliminaries: \"As for the input to the first layer ... we do not employ any spiking mechanism. We use the first layer to direct encode the static image to temporal dynamic spikes, this can prevent the undesired information loss of the Poission encoding.\"",
+        "Section 5.5, Efficiency and Sparsity: \"To quantitaively compute the energy saving, we use the energy-estimation euqation in Rathi & Roy (2020). For addition, we measure it by 0.9J per operation; for multiplication, we measure it by 4.6J per operation. On the event-driven neuromorphic hardware, a non-firing neuron will not cost any energy. Based on this rule, our calibrated spiking VGG-16 only costs 69.36% energy of ANN's consumption.\"",
+        "References: \"Rathi, N. and Roy, K. Diet-snn: Direct input encoding with leakage and threshold optimization in deep spiking neural networks. arXiv preprint arXiv:2008.03658, 2020.\"",
+        "Section 4.5, Converting BN layers: \"There is no corresponding module in SNN for Batch Normalization (BN) layers. Rueckauer et al. (2017) propose to absorb the BN parameters to the weight and bias.\"",
+        "Section 5.4, Complexity Study: \"calibrating the bias of ResNet-34 on ImageNet only requires 0.3653MB memory. However, calibrating the weights and potential requires 83.25MB and 18.76MB, respectively.\""
+      ],
+      "aliases": [
+        "snn-calibration-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record snn-calibration; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "datta2025-snn-meets-ann-page-read",
+      "title": "When SNN Meets ANN: Error-Free ANN-to-SNN Conversion for Extreme Edge Efficiency",
+      "authors": "G. Datta, Z. Liu, J. Diffenderfer, B. Kailkhura, P. A. Beerel",
+      "year": 2025,
+      "venue": "Transactions on Machine Learning Research",
+      "doi": null,
+      "url": "https://openreview.net/forum?id=WOwQKguWT0",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://openreview.net/pdf?id=WOwQKguWT0 (full text PDF (Abstract through Section 6.5)), read 2026-09-18",
+        "Section 3.1, Preliminaries: \"Inspired by (Bu et al., 2022b), we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\"",
+        "Section 6.2, Comparison with SOTA: \"our conversion approach leverages standard ANN training with QCFS activation and requires changing only one parameter of each BN layer, that is not repeated across time steps, before the SNN inference process.\"",
+        "Section 1, Introduction: \"the uneven distribution of the time of arrival of the spikes causes errors, thereby degrading the SNN accuracy. We first uncover that this unevenness error is responsible for the accuracy drop in the converted SNNs in low timesteps.\"",
+        "Abstract: \"Our framework modifies the standard integrate-and-fire (IF) neuron model used in SNNs with no change in computational complexity and shifts the bias term of each batch normalization (BN) layer in the trained ANN.\"",
+        "Section 1, Introduction: \"Note that while we use a modified integrate-and-fire mechanism (postponed resets) inspired by quantized ANN processing, the model operates with binary spikes and retains all the practical attributes of SNNs\"",
+        "Section 3.1, Preliminaries: \"we use quantization-clip-floor-shift (QCFS) as the activation function f act(·)\"",
+        "Abstract: \"75.12% with only 4 time steps on the ImageNet dataset\""
+      ],
+      "aliases": [
+        "datta2025-snn-meets-ann-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record datta2025-snn-meets-ann; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "adaptive-fission-page-read",
+      "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+      "authors": "Jiang, Y., Chen, F., Li, Y., Liu, Y., Gao, H., Zhang, T., Fang, Y.",
+      "year": 2025,
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "doi": "10.52202/085713-5157",
+      "url": "https://doi.org/10.52202/085713-5157",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://doi.org/10.52202/085713-5157 (redirected to proceedings.com metadata page only (no abstract)), read 2026-09-18",
+        "https://openreview.net/pdf/f0de187353f5fcaa58274819ecc1b0429e2bf883.pdf (full text PDF (Abstract, Sections 1-2, via OpenReview id 2zZzdAMyYi, NeurIPS 2025)), read 2026-09-18",
+        "Abstract: \"we propose Adaptive Fission, a post-training encoding technique that selectively splits high-sensitivity neurons into groups with varying scales and weights. This enables neuron-specific, on-demand precision and threshold allocation while introducing minimal spatial overhead.\"",
+        "Section 1, Introduction: \"we propose Adaptive Fission, a flexible, generalized population-coding strategy that selectively splits high-sensitivity neurons into dynamically sized groups and allocates precision and thresholds on demand.\"",
+        "Section 1, Introduction: \"This targeted reallocation achieves capacity comparable to fixed-length population encoding with only 20% additional neurons.\"",
+        "Abstract: \"Experiments on neuromorphic hardware demonstrate up to 80% reductions in latency and power consumption without degrading accuracy.\""
+      ],
+      "aliases": [
+        "adaptive-fission-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record adaptive-fission; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "loihi1-page-read",
+      "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning",
+      "authors": "M. Davies et al.",
+      "year": 2018,
+      "venue": "IEEE Micro",
+      "doi": "10.1109/mm.2018.112130359",
+      "url": "https://doi.org/10.1109/mm.2018.112130359",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "full_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/mm.2018.112130359?fields=title,abstract,authors,year,venue,externalIds (API record; abstract field elided by publisher), read 2026-09-18",
+        "https://redwood.berkeley.edu/wp-content/uploads/2021/08/Davies2018.pdf (full text PDF (author's own hosted copy of the IEEE Micro paper, through Design Implementation section)), read 2026-09-18",
+        "Architecture, Chip Overview: \"Loihi features a manycore mesh comprising 128 neuromorphic cores, three embedded x86 processor cores, and off-chip communication interfaces that hierarchically extend the mesh in four planar directions to other chips.\"",
+        "Architecture, Chip Overview: \"Each neuromorphic core implements 1,024 primitive spiking neural units (compartments) grouped into sets of trees constituting neurons.\"",
+        "Network Connectivity Architecture, resource constraints: \"The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\"",
+        "Network Connectivity Architecture, resource constraints: \"The total synaptic fan-in state mapped to any core must not exceed 128 KB (Nsyn x 64b, subject to compression and list alignment considerations).\""
+      ],
+      "aliases": [
+        "loihi1-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record loihi1; merged by DOI and title. Quotes recorded on 2026-09-18 to support the sentences Section 8 states about this work.",
+      "purpose": "external"
+    },
+    {
+      "id": "rathi-2020-dietsnn",
+      "title": "DIET-SNN: Direct Input Encoding With Leakage and Threshold Optimization in Deep Spiking Neural Networks",
+      "authors": "N. Rathi, K. Roy",
+      "year": 2020,
+      "venue": "arXiv preprint arXiv:2008.03658",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2008.03658",
+      "source_type": "preprint",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://export.arxiv.org/api/query?id_list=2008.03658 (arXiv API record and abstract), read 2026-09-18: title DIET-SNN: Direct Input Encoding With Leakage and Threshold Optimization in Deep Spiking Neural Networks, authors Nitin Rathi and Kaushik Roy, submitted 2020-08-09",
+        "Abstract: \"We propose DIET-SNN, a low-latency deep spiking network that is trained with gradient descent to optimize the membrane leak and the firing threshold along with other network parameters (weights).\"",
+        "Abstract: \"We achieve top-1 accuracy of 69% with 5 timesteps (inference latency) on the ImageNet dataset with 12x less compute energy than an equivalent standard ANN.\"",
+        "Credited by Li, Deng, Dong, Gong, and Gu (arXiv 2106.06984, Section 5.5, Efficiency and Sparsity) as the source of the per-operation energy constants: \"we use the energy-estimation euqation in Rathi & Roy (2020). For addition, we measure it by 0.9J per operation; for multiplication, we measure it by 4.6J per operation.\""
+      ],
+      "aliases": [
+        "rathi-2020-dietsnn",
+        "rathi2020dietsnn"
+      ],
+      "notes": "Registered because Section 8.4.2 names Rathi and Roy as the source of the per-operation energy constants that the SNN calibration paper of Li et al. uses; cited for that attribution only.",
+      "purpose": "external"
+    },
+    {
+      "id": "qcfs-page-read",
+      "title": "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks",
+      "authors": "T. Bu, W. Fang, J. Ding, P. Dai, Z. Yu, T. Huang",
+      "year": 2022,
+      "venue": "International Conference on Learning Representations (ICLR); arXiv 2303.04347",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2303.04347",
+      "source_type": "peer_reviewed",
+      "retrieval_status": "partial_text",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "locators": [
+        "https://export.arxiv.org/api/query?id_list=2303.04347 (arXiv API abstract), read 2026-09-18",
+        "Abstract: \"Then we propose the quantization clip-floor-shift activation function to replace the ReLU activation function in source ANNs, which can better approximate the activation function of SNNs.\""
+      ],
+      "aliases": [
+        "qcfs-page-read"
+      ],
+      "notes": "Page-anchored companion of the registry record qcfs (merged by title); records the paper's own name for its activation function, quantization clip-floor-shift, which the survey expands at the acronym's first use.",
+      "purpose": "external"
+    },
+    {
+      "id": "fitzhugh1961-impulses",
+      "title": "Impulses and Physiological States in Theoretical Models of Nerve Membrane",
+      "authors": "R. FitzHugh",
+      "year": 1961,
+      "venue": "Biophysical Journal, vol. 1, no. 6, pp. 445-466",
+      "doi": "10.1016/s0006-3495(61)86902-6",
+      "url": "https://doi.org/10.1016/s0006-3495(61)86902-6",
+      "source_type": "peer_reviewed",
+      "locators": [
+        "Crossref record for 10.1016/s0006-3495(61)86902-6, read 2026-09-18 (title, author Richard FitzHugh, Biophysical Journal volume 1 issue 6 pages 445-466, issued 1961-07)"
+      ],
+      "aliases": [
+        "fitzhugh1961-impulses",
+        "fitzhugh1961"
+      ],
+      "notes": "The FitzHugh half of the FitzHugh-Nagumo reduced neuron model that Section 3.2 lists among the reduced models between Lapicque and Hodgkin-Huxley; cited for the model's existence and date only.",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "purpose": "external"
+    },
+    {
+      "id": "nagumo1962-active-pulse",
+      "title": "An Active Pulse Transmission Line Simulating Nerve Axon",
+      "authors": "J. Nagumo, S. Arimoto, S. Yoshizawa",
+      "year": 1962,
+      "venue": "Proceedings of the IRE, vol. 50, no. 10, pp. 2061-2070",
+      "doi": "10.1109/jrproc.1962.288235",
+      "url": "https://doi.org/10.1109/jrproc.1962.288235",
+      "source_type": "peer_reviewed",
+      "locators": [
+        "Crossref record for 10.1109/jrproc.1962.288235, read 2026-09-18 (title, authors J. Nagumo, S. Arimoto, S. Yoshizawa, Proceedings of the IRE volume 50 issue 10 pages 2061-2070, issued 1962-10)"
+      ],
+      "aliases": [
+        "nagumo1962-active-pulse",
+        "nagumo1962"
+      ],
+      "notes": "The Nagumo half of the FitzHugh-Nagumo reduced neuron model; cited beside FitzHugh 1961 in Section 3.2 for the model's existence and date only.",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
+      "purpose": "external"
+    },
+    {
+      "id": "wunderlich2021-eventprop",
+      "title": "Event-based backpropagation can compute exact gradients for spiking neural networks",
+      "authors": "T. C. Wunderlich, C. Pehle",
+      "year": 2021,
+      "venue": "Scientific Reports, vol. 11, no. 1",
+      "doi": "10.1038/s41598-021-91786-z",
+      "url": "https://doi.org/10.1038/s41598-021-91786-z",
+      "source_type": "peer_reviewed",
+      "locators": [
+        "Crossref record for 10.1038/s41598-021-91786-z, read 2026-09-18 (title, authors Timo C. Wunderlich and Christian Pehle, Scientific Reports volume 11 issue 1, issued 2021-06-18)"
+      ],
+      "aliases": [
+        "wunderlich2021-eventprop",
+        "eventprop-method"
+      ],
+      "notes": "The EventProp method paper, cited at the method's first mention in Section 7.2 (exact spike-time gradients); the Loihi 2 and SpiNNaker2 deployments of EventProp keep their own records.",
+      "retrieval_status": "metadata_only",
+      "verification_status": "verified",
+      "retrieved_on": "2026-09-18",
       "purpose": "external"
     }
   ]

@@ -78,84 +78,102 @@
 #figure-12 .f12-band { transition: opacity 0.15s; }
 #figure-12 .f12-help:hover .f12-band { opacity: 0.09; }
 
-/* ---- reset-rule-comparison (Figure 13) ---- */
-#figure-13 .f13-help { cursor: help; }
-#figure-13 .f13-band { transition: opacity 0.15s; }
-#figure-13 .f13-help:hover .f13-band { opacity: 0.08; }
+/* ---- neuron-model-traces (Figure 13) ---- */
+#figure-13 { text-align: center; }
+#figure-13 svg { width: 100%; height: auto; }
+#figure-13 .f13-pan { cursor: help; }
+#figure-13 .f13-pan:hover .f13-hl { opacity: 0.07; }
+#figure-13 .f13-hl { transition: opacity 0.15s; }
+#figure-13 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
 
-/* ---- encoder-snn-decoder (Figure 14) ---- */
-#figure-14 { text-align: center; }
-#figure-14 svg { width: 100%; height: auto; }
-#figure-14 .f14-hot { cursor: help; }
+/* ---- reset-rule-comparison (Figure 14) ---- */
+#figure-14 .f14-help { cursor: help; }
 #figure-14 .f14-band { transition: opacity 0.15s; }
-#figure-14 .f14-hot:hover .f14-band { opacity: 0.10; }
-#figure-14 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
+#figure-14 .f14-help:hover .f14-band { opacity: 0.08; }
 
-/* ---- input-encoding-modes (Figure 15) ---- */
-#figure-15 .f15-help { cursor: help; }
+/* ---- reset-rule-traces (Figure 15) ---- */
+#figure-15 .f15-hot { cursor: help; }
 #figure-15 .f15-band { transition: opacity 0.15s; }
-#figure-15 .f15-help:hover .f15-band { opacity: 0.10; }
+#figure-15 .f15-hot:hover .f15-band { opacity: 0.14; }
 
-/* ---- neural-code-comparison (Figure 16) ---- */
-#figure-16 .f16-row { cursor: help; }
+/* ---- encoder-snn-decoder (Figure 16) ---- */
+#figure-16 { text-align: center; }
+#figure-16 svg { width: 100%; height: auto; }
+#figure-16 .f16-hot { cursor: help; }
 #figure-16 .f16-band { transition: opacity 0.15s; }
-#figure-16 .f16-row:hover .f16-band { opacity: 0.08; }
+#figure-16 .f16-hot:hover .f16-band { opacity: 0.10; }
+#figure-16 .fig-hint { font-size: 0.68rem; color: #8a94a0; margin-top: 0.55rem; text-align: center; }
 
-/* ---- hardware-time-model-comparison (Figure 17) ---- */
-#figure-17 .f17-hot { cursor: help; }
+/* ---- input-encoding-modes (Figure 17) ---- */
+#figure-17 .f17-help { cursor: help; }
 #figure-17 .f17-band { transition: opacity 0.15s; }
-#figure-17 .f17-hot:hover .f17-band { opacity: 0.10; }
+#figure-17 .f17-help:hover .f17-band { opacity: 0.10; }
 
-/* ---- processor-architectures (Figure 18) ---- */
-#figure-18 { text-align: center; }
-#figure-18 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+/* ---- neural-code-comparison (Figure 18) ---- */
+#figure-18 .f18-row { cursor: help; }
+#figure-18 .f18-band { transition: opacity 0.15s; }
+#figure-18 .f18-row:hover .f18-band { opacity: 0.08; }
 
-/* ---- akida-soc (Figure 19) ---- */
-#figure-19 { text-align: center; }
-#figure-19 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+/* ---- hardware-time-model-comparison (Figure 19) ---- */
+#figure-19 .f19-hot { cursor: help; }
+#figure-19 .f19-band { transition: opacity 0.15s; }
+#figure-19 .f19-hot:hover .f19-band { opacity: 0.10; }
 
-/* ---- execution-map (Figure 20) ---- */
-#figure-20 { text-align: center; }
-#figure-20 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+/* ---- hardware-time-model-traces (Figure 20) ---- */
 #figure-20 .f20-hot { cursor: help; }
 #figure-20 .f20-band { transition: opacity 0.15s; }
 #figure-20 .f20-hot:hover .f20-band { opacity: 0.10; }
 
-/* ---- classical-conversion-pipeline (Figure 21) ---- */
+/* ---- processor-architectures (Figure 21) ---- */
 #figure-21 { text-align: center; }
 #figure-21 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 
-/* ---- rate-code-quantizer (Figure 22) ---- */
+/* ---- akida-soc (Figure 22) ---- */
 #figure-22 { text-align: center; }
 #figure-22 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-22 .f22-hot { cursor: help; }
-#figure-22 .f22-band { transition: opacity 0.15s; }
-#figure-22 .f22-hot:hover .f22-band { opacity: 0.10; }
 
-/* ---- finite-time-error-propagation (Figure 23) ---- */
+/* ---- execution-map (Figure 23) ---- */
 #figure-23 { text-align: center; }
 #figure-23 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-23 .f23-hot { cursor: help; }
+#figure-23 .f23-band { transition: opacity 0.15s; }
+#figure-23 .f23-hot:hover .f23-band { opacity: 0.10; }
 
-/* ---- intervention-levers (Figure 24) ---- */
+/* ---- classical-conversion-pipeline (Figure 24) ---- */
 #figure-24 { text-align: center; }
 #figure-24 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
-#figure-24 .f24-hot { cursor: help; }
-#figure-24 .f24-band { transition: opacity 0.15s; }
-#figure-24 .f24-hot:hover .f24-band { opacity: 0.10; }
 
-/* ---- uniform-hetero-latency (Figure 25) ---- */
+/* ---- rate-code-quantizer (Figure 25) ---- */
 #figure-25 { text-align: center; }
 #figure-25 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 #figure-25 .f25-hot { cursor: help; }
 #figure-25 .f25-band { transition: opacity 0.15s; }
 #figure-25 .f25-hot:hover .f25-band { opacity: 0.10; }
 
-/* ---- deployable-snn-contract (Figure 26) ---- */
+/* ---- finite-time-error-propagation (Figure 26) ---- */
+#figure-26 { text-align: center; }
 #figure-26 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
 
-/* ---- software-boundary (Figure 27) ---- */
+/* ---- intervention-levers (Figure 27) ---- */
+#figure-27 { text-align: center; }
 #figure-27 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-27 .f27-hot { cursor: help; }
+#figure-27 .f27-band { transition: opacity 0.15s; }
+#figure-27 .f27-hot:hover .f27-band { opacity: 0.10; }
 
-/* ---- measurement-boundary (Figure 29) ---- */
-/* Figure 23, deployment measurement boundaries. Scoped to #figure-29. */
+/* ---- uniform-hetero-latency (Figure 28) ---- */
+#figure-28 { text-align: center; }
+#figure-28 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+#figure-28 .f28-hot { cursor: help; }
+#figure-28 .f28-band { transition: opacity 0.15s; }
+#figure-28 .f28-hot:hover .f28-band { opacity: 0.10; }
+
+/* ---- deployable-snn-contract (Figure 29) ---- */
 #figure-29 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+
+/* ---- software-boundary (Figure 30) ---- */
+#figure-30 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }
+
+/* ---- measurement-boundary (Figure 32) ---- */
+/* Figure 23, deployment measurement boundaries. Scoped to #figure-32. */
+#figure-32 svg { display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto; }

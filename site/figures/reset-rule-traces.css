@@ -1,0 +1,3 @@
+#figure-15 .f15-hot { cursor: help; }
+#figure-15 .f15-band { transition: opacity 0.15s; }
+#figure-15 .f15-hot:hover .f15-band { opacity: 0.14; }

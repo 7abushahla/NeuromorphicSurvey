@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_REPORT = {
-    "aliased": 7,
+    "aliased": 0,
     "ambiguous": 0,
     "ambiguous_keys": [],
     "analysis_only": 3,
@@ -22,18 +22,18 @@ EXPECTED_REPORT = {
         "a17-two-populations",
         "a18-sourcecode-comparison"
     ],
-    "cited": 307,
-    "cited_aliased": 7,
-    "cited_keys": 313,
-    "defined": 450,
+    "cited": 312,
+    "cited_aliased": 0,
+    "cited_keys": 312,
+    "defined": 454,
     "duplicate": 0,
     "match_methods": {
-        "registry": 313
+        "registry": 312
     },
     "reference_keys": 0,
     "reference_only": 0,
     "reference_only_unresolved": 0,
-    "uncited": 143,
+    "uncited": 142,
     "unresolved": 0,
     "unresolved_cited": [],
     "unresolved_reference_only": []

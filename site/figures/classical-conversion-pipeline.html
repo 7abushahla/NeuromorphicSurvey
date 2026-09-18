@@ -1,68 +1,68 @@
-<figure class="pfig l-body" id="figure-21">
+<figure class="pfig l-body" id="figure-24">
 <!-- Conceptual figure; no measured quantity is drawn. Stage names and actions from Table 16 (Section 8.1.6) and the walkthrough prose of Section 8.1.6; the trained network from Section 8.1.1 and the walkthrough; each green line is one of the five assumptions enumerated in Section 8.1.1, with the ordinal the page gives it; each blue line is a field number and name from Table 22 (Section 9.2); the bracket phrases are the opening paragraph of Section 8 and the Acts on column of Table 16. Parameter mapping is paired with Field 4 for the threshold θ = λ it sets (8.3); that field's reset half is fixed by Section 3.5 and run at temporal execution. Normalization is paired with Third for the fold; Fourth names the pooling and residual rewrites and is not drawn. -->
-<svg viewBox="0 0 1200 522" role="img" aria-labelledby="f21-title f21-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="20">
-  <title id="f21-title">The classical ANN-to-SNN conversion pipeline, the trained network and its five stages left to right, each with the assumption it relies on and the contract field it fixes</title>
-  <desc id="f21-desc">A row of six boxes read left to right and joined by arrows, the trained network and the five stages of the pipeline. Trained ANN, a conventional ReLU network trained with backpropagation. Normalization, which folds batch normalization, replaces max pooling, and rescales residual branches. Parameter mapping, which estimates a calibration constant for every layer and sets thresholds and rescaled weights with biases unchanged. Encoding, which injects the input tensor as a constant per-pixel current for the whole horizon. Temporal execution, which runs T steps of the staged update with reset-by-subtraction. Readout, which accumulates the final layer's membrane potential without resetting it and divides by T. A bracket under normalization and parameter mapping reads from the trained network to the mapped network, and a bracket under encoding, temporal execution, and readout reads for a finite horizon T. A green band lists the Section 8.1.1 assumption each box relies on, feedforward with zero delay for the trained ANN and for readout, fixed running statistics for normalization, bounded per-layer activations for parameter mapping, and bounded synaptic drive for encoding and temporal execution. A blue band lists the Table 22 contract field each box fixes, field 9 connectivity for the trained ANN, field 1 network graph and supported operators for normalization, field 4 threshold and reset semantics for parameter mapping, field 6 input encoder for encoding, field 8 time model and termination condition for temporal execution, and field 6 output decoder for readout. Conceptual figure; no measured quantity is drawn.</desc>
-  <defs><marker id="f21-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
-  <g id="f21-stage-trained" class="f21-box">
+<svg viewBox="0 0 1200 522" role="img" aria-labelledby="f24-title f24-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="20">
+  <title id="f24-title">The classical ANN-to-SNN conversion pipeline, the trained network and its five stages left to right, each with the assumption it relies on and the contract field it fixes</title>
+  <desc id="f24-desc">A row of six boxes read left to right and joined by arrows, the trained network and the five stages of the pipeline. Trained ANN, a conventional ReLU network trained with backpropagation. Normalization, which folds batch normalization, replaces max pooling, and rescales residual branches. Parameter mapping, which estimates a calibration constant for every layer and sets thresholds and rescaled weights with biases unchanged. Encoding, which injects the input tensor as a constant per-pixel current for the whole horizon. Temporal execution, which runs T steps of the staged update with reset-by-subtraction. Readout, which accumulates the final layer's membrane potential without resetting it and divides by T. A bracket under normalization and parameter mapping reads from the trained network to the mapped network, and a bracket under encoding, temporal execution, and readout reads for a finite horizon T. A green band lists the Section 8.1.1 assumption each box relies on, feedforward with zero delay for the trained ANN and for readout, fixed running statistics for normalization, bounded per-layer activations for parameter mapping, and bounded synaptic drive for encoding and temporal execution. A blue band lists the Table 22 contract field each box fixes, field 9 connectivity for the trained ANN, field 1 network graph and supported operators for normalization, field 4 threshold and reset semantics for parameter mapping, field 6 input encoder for encoding, field 8 time model and termination condition for temporal execution, and field 6 output decoder for readout. Conceptual figure; no measured quantity is drawn.</desc>
+  <defs><marker id="f24-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker></defs>
+  <g id="f24-stage-trained" class="f24-box">
     <rect x="26" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="110" y="66" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Trained ANN</text>
     <text x="110" y="102" text-anchor="middle" fill="#4a5560" font-size="16">a conventional<tspan x="110" dy="19">ReLU network</tspan><tspan x="110" dy="19">trained with</tspan><tspan x="110" dy="19">backpropagation</tspan></text>
   </g>
-  <g id="f21-stage-norm" class="f21-box">
+  <g id="f24-stage-norm" class="f24-box">
     <rect x="222" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="306" y="66" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Normalization</text>
     <text x="306" y="102" text-anchor="middle" fill="#4a5560" font-size="16">fold batch<tspan x="306" dy="19">normalization,</tspan><tspan x="306" dy="19">replace max</tspan><tspan x="306" dy="19">pooling, rescale</tspan><tspan x="306" dy="19">residual branches</tspan></text>
   </g>
-  <g id="f21-stage-map" class="f21-box">
+  <g id="f24-stage-map" class="f24-box">
     <rect x="418" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="502" y="58" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Parameter<tspan x="502" dy="24">mapping</tspan></text>
     <text x="502" y="106" text-anchor="middle" fill="#4a5560" font-size="16">estimate λ for<tspan x="502" dy="19">every layer, set</tspan><tspan x="502" dy="19">thresholds and</tspan><tspan x="502" dy="19">rescaled weights,</tspan><tspan x="502" dy="19">biases unchanged</tspan></text>
   </g>
-  <g id="f21-stage-encode" class="f21-box">
+  <g id="f24-stage-encode" class="f24-box">
     <rect x="614" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="698" y="66" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Encoding</text>
     <text x="698" y="102" text-anchor="middle" fill="#4a5560" font-size="16">inject the input<tspan x="698" dy="19">tensor as a constant</tspan><tspan x="698" dy="19">per-pixel current for</tspan><tspan x="698" dy="19">the whole horizon</tspan></text>
   </g>
-  <g id="f21-stage-exec" class="f21-box">
+  <g id="f24-stage-exec" class="f24-box">
     <rect x="810" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="894" y="58" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Temporal<tspan x="894" dy="24">execution</tspan></text>
     <text x="894" y="106" text-anchor="middle" fill="#4a5560" font-size="16">run <tspan font-style="italic">T</tspan> steps of the<tspan x="894" dy="19">staged update with</tspan><tspan x="894" dy="19">reset-by-subtraction</tspan></text>
   </g>
-  <g id="f21-stage-readout" class="f21-box">
+  <g id="f24-stage-readout" class="f24-box">
     <rect x="1006" y="24" width="168" height="173" rx="6" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.8"/>
     <text x="1090" y="66" text-anchor="middle" fill="#2b3440" font-size="20" font-weight="700">Readout</text>
     <text x="1090" y="102" text-anchor="middle" fill="#4a5560" font-size="16">accumulate<tspan x="1090" dy="19">the final layer's</tspan><tspan x="1090" dy="19">membrane potential</tspan><tspan x="1090" dy="19">without resetting</tspan><tspan x="1090" dy="19">it, divide by <tspan font-style="italic">T</tspan></tspan></text>
   </g>
-  <path id="f21-arrow-1" class="f21-arrow" d="M195,110 L221,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f21-arrow)"/>
-  <path id="f21-arrow-2" class="f21-arrow" d="M391,110 L417,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f21-arrow)"/>
-  <path id="f21-arrow-3" class="f21-arrow" d="M587,110 L613,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f21-arrow)"/>
-  <path id="f21-arrow-4" class="f21-arrow" d="M783,110 L809,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f21-arrow)"/>
-  <path id="f21-arrow-5" class="f21-arrow" d="M979,110 L1005,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f21-arrow)"/>
-  <path id="f21-bracket-mapped" d="M222,205 L222,211 L586,211 L586,205" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
-  <text id="f21-bracket-mapped-label" x="404" y="233" text-anchor="middle" fill="#2b3440" font-size="16">from the trained network to the mapped network</text>
-  <path id="f21-bracket-horizon" d="M614,205 L614,211 L1174,211 L1174,205" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
-  <text id="f21-bracket-horizon-label" x="894" y="233" text-anchor="middle" fill="#2b3440" font-size="16">for a finite horizon <tspan font-style="italic">T</tspan></text>
-  <g id="f21-band-relies" class="f21-band">
+  <path id="f24-arrow-1" class="f24-arrow" d="M195,110 L221,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-2" class="f24-arrow" d="M391,110 L417,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-3" class="f24-arrow" d="M587,110 L613,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-4" class="f24-arrow" d="M783,110 L809,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-arrow-5" class="f24-arrow" d="M979,110 L1005,110" fill="none" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" marker-end="url(#f24-arrow)"/>
+  <path id="f24-bracket-mapped" d="M222,205 L222,211 L586,211 L586,205" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
+  <text id="f24-bracket-mapped-label" x="404" y="233" text-anchor="middle" fill="#2b3440" font-size="16">from the trained network to the mapped network</text>
+  <path id="f24-bracket-horizon" d="M614,205 L614,211 L1174,211 L1174,205" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
+  <text id="f24-bracket-horizon-label" x="894" y="233" text-anchor="middle" fill="#2b3440" font-size="16">for a finite horizon <tspan font-style="italic">T</tspan></text>
+  <g id="f24-band-relies" class="f24-band">
     <rect x="14" y="251" width="1172" height="149" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="5 4"/>
     <text x="28" y="268" fill="#2a7f62" font-size="16"><tspan letter-spacing="1.2" font-weight="700">RELIES ON</tspan><tspan dx="8">the assumption stated in Section 8.1.1</tspan></text>
   </g>
-  <g id="f21-band-fixes" class="f21-band">
+  <g id="f24-band-fixes" class="f24-band">
     <rect x="14" y="414" width="1172" height="92" rx="10" fill="none" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="5 4"/>
     <text x="28" y="431" fill="#155F8F" font-size="16"><tspan letter-spacing="1.2" font-weight="700">FIXES</tspan><tspan dx="8">the field of the deployable contract, Table 22 in Section 9.2</tspan></text>
   </g>
-  <text id="f21-relies-trained" x="110" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Second</tspan><tspan x="110" dy="19">every connection is</tspan><tspan x="110" dy="19">feedforward with zero</tspan><tspan x="110" dy="19">delay between layers</tspan></text>
-  <text id="f21-relies-norm" x="306" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Third</tspan><tspan x="306" dy="19">batch normalization</tspan><tspan x="306" dy="19">uses fixed</tspan><tspan x="306" dy="19">running statistics</tspan></text>
-  <text id="f21-relies-map" x="502" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">First</tspan><tspan x="502" dy="19">every target</tspan><tspan x="502" dy="19">activation is</tspan><tspan x="502" dy="19">bounded by a finite</tspan><tspan x="502" dy="19">per-layer value on</tspan><tspan x="502" dy="19">the calibration data</tspan></text>
-  <text id="f21-relies-encode" x="698" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Fifth</tspan><tspan x="698" dy="19">the per-step synaptic</tspan><tspan x="698" dy="19">drive into every</tspan><tspan x="698" dy="19">unit is bounded</tspan></text>
-  <text id="f21-relies-exec" x="894" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Fifth</tspan><tspan x="894" dy="19">bounded drive,</tspan><tspan x="894" dy="19">so the membrane</tspan><tspan x="894" dy="19">potential stays</tspan><tspan x="894" dy="19">within a fixed range</tspan><tspan x="894" dy="19">independent of <tspan font-style="italic">T</tspan></tspan></text>
-  <text id="f21-relies-readout" x="1090" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Second</tspan><tspan x="1090" dy="19">feedforward, so</tspan><tspan x="1090" dy="19">no further layer</tspan><tspan x="1090" dy="19">consumes the</tspan><tspan x="1090" dy="19">final layer's output</tspan></text>
-  <text id="f21-fixes-trained" x="110" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 9</tspan><tspan x="110" dy="19">Connectivity, fan-in,</tspan><tspan x="110" dy="19">fan-out, and routing</tspan></text>
-  <text id="f21-fixes-norm" x="306" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 1</tspan><tspan x="306" dy="19">Network graph and</tspan><tspan x="306" dy="19">supported operators</tspan></text>
-  <text id="f21-fixes-map" x="502" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 4</tspan><tspan x="502" dy="19">Threshold and</tspan><tspan x="502" dy="19">reset semantics</tspan></text>
-  <text id="f21-fixes-encode" x="698" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 6</tspan><tspan x="698" dy="19">Input encoder</tspan></text>
-  <text id="f21-fixes-exec" x="894" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 8</tspan><tspan x="894" dy="19">Time model and</tspan><tspan x="894" dy="19">termination condition</tspan></text>
-  <text id="f21-fixes-readout" x="1090" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 6</tspan><tspan x="1090" dy="19">Output decoder</tspan></text>
+  <text id="f24-relies-trained" x="110" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Second</tspan><tspan x="110" dy="19">every connection is</tspan><tspan x="110" dy="19">feedforward with zero</tspan><tspan x="110" dy="19">delay between layers</tspan></text>
+  <text id="f24-relies-norm" x="306" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Third</tspan><tspan x="306" dy="19">batch normalization</tspan><tspan x="306" dy="19">uses fixed</tspan><tspan x="306" dy="19">running statistics</tspan></text>
+  <text id="f24-relies-map" x="502" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">First</tspan><tspan x="502" dy="19">every target</tspan><tspan x="502" dy="19">activation is</tspan><tspan x="502" dy="19">bounded by a finite</tspan><tspan x="502" dy="19">per-layer value on</tspan><tspan x="502" dy="19">the calibration data</tspan></text>
+  <text id="f24-relies-encode" x="698" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Fifth</tspan><tspan x="698" dy="19">the per-step synaptic</tspan><tspan x="698" dy="19">drive into every</tspan><tspan x="698" dy="19">unit is bounded</tspan></text>
+  <text id="f24-relies-exec" x="894" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Fifth</tspan><tspan x="894" dy="19">bounded drive,</tspan><tspan x="894" dy="19">so the membrane</tspan><tspan x="894" dy="19">potential stays</tspan><tspan x="894" dy="19">within a fixed range</tspan><tspan x="894" dy="19">independent of <tspan font-style="italic">T</tspan></tspan></text>
+  <text id="f24-relies-readout" x="1090" y="291" text-anchor="middle" fill="#2a7f62" font-size="16"><tspan font-weight="700">Second</tspan><tspan x="1090" dy="19">feedforward, so</tspan><tspan x="1090" dy="19">no further layer</tspan><tspan x="1090" dy="19">consumes the</tspan><tspan x="1090" dy="19">final layer's output</tspan></text>
+  <text id="f24-fixes-trained" x="110" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 9</tspan><tspan x="110" dy="19">Connectivity, fan-in,</tspan><tspan x="110" dy="19">fan-out, and routing</tspan></text>
+  <text id="f24-fixes-norm" x="306" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 1</tspan><tspan x="306" dy="19">Network graph and</tspan><tspan x="306" dy="19">supported operators</tspan></text>
+  <text id="f24-fixes-map" x="502" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 4</tspan><tspan x="502" dy="19">Threshold and</tspan><tspan x="502" dy="19">reset semantics</tspan></text>
+  <text id="f24-fixes-encode" x="698" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 6</tspan><tspan x="698" dy="19">Input encoder</tspan></text>
+  <text id="f24-fixes-exec" x="894" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 8</tspan><tspan x="894" dy="19">Time model and</tspan><tspan x="894" dy="19">termination condition</tspan></text>
+  <text id="f24-fixes-readout" x="1090" y="454" text-anchor="middle" fill="#155F8F" font-size="16"><tspan font-weight="700">Field 6</tspan><tspan x="1090" dy="19">Output decoder</tspan></text>
 </svg>
-<figcaption><b>Figure 21:</b> The classical conversion pipeline of Section 8.1.6, the trained network it starts from and its five stages, in execution order. Each box rests on one assumption stated in Section 8.1.1 and fixes one field of the deployable contract of Section 9.2, so a converted network's contract is written by the pipeline, not chosen after it. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 24:</b> The classical conversion pipeline of Section 8.1.6, the trained network it starts from and its five stages, in execution order. Each box rests on one assumption stated in Section 8.1.1 and fixes one field of the deployable contract of Section 9.2, so a converted network's contract is written by the pipeline, not chosen after it. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>

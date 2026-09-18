@@ -1,65 +1,65 @@
-<figure class="pfig l-body" id="figure-20">
+<figure class="pfig l-body" id="figure-23">
 <!-- Conceptual figure; no measured quantity is drawn.
      The grid is Table 11 of Section 5, drawn in the memory-and-circuit vocabulary of the architecture figure
-     (Figure 18), a hatched fill for memory and a plain rounded box for a processor, a processing element or a
+     (Figure 21), a hatched fill for memory and a plain rounded box for a processor, a processing element or a
      neuron circuit, after deng-2025-edgesnn's architecture comparison.
      Rows are the first question of Section 5.2, where the weight sits relative to the arithmetic, the axis of
-     Figure 18 turned on end. The axis name from vonneumann1945-edvac (the memory, the control and the arithmetic
+     Figure 21 turned on end. The axis name from vonneumann1945-edvac (the memory, the control and the arithmetic
      organ) and backus1978-von-neumann-style (the word-at-a-time style and the bottleneck), as in that figure's
      provenance. Columns are the second question, a static function evaluated once per input against a system whose
      state persists across time.
      Cell contents are Table 11's own entries and its subsection pointers, upper left Section 5.3, upper right
      Sections 5.3 and 5.4, lower left Section 5.5, lower right Section 5.6.
-     The mini icons quote Figure 18's panels, (a) and (b) upper left, (a) with a stepped loop upper right, one
+     The mini icons quote Figure 21's panels, (a) and (b) upper left, (a) with a stepped loop upper right, one
      near-memory cell lower left, an array of near-memory cells lower right. Bucket hues from data/target-kinds.json,
      conventional blue for the three conventional cells, the neuromorphic warm tint for the lower right cell.
      The two dashed arrows carry Section 5's two statements about the crossings, the state over T that the event NPU
      does not carry, and the simulator as the second crossing Figure 4 draws.
      The third question, how time passes, is deliberately not drawn; it sorts the lower right cell's families and
      belongs to the time-model table of Section 5.6. No count, no vendor claim and no measured quantity is drawn. -->
-<svg viewBox="0 0 1200 580" role="img" aria-labelledby="f20-title f20-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
-  <title id="f20-title">A two by two map of deployment targets, where the weight sits relative to the arithmetic down the side, and whether the silicon evaluates a static function or carries state across time along the top</title>
-  <desc id="f20-desc">A two by two grid of rounded panels with a header beside each row and above each column. A thin vertical arrow at the far left points down from the upper row to the lower row. The upper row is headed von Neumann, memory apart, with a small note naming panels (a) and (b) of the architecture figure; the lower row is headed non-von Neumann, memory beside the neuron, with a note naming its panel (c). The left column is headed static function, one pass; the right column is headed state over T. The upper left cell, in the conventional bucket's blue tint, draws two mini icons, panel (a) as a hatched memory box above a processor frame holding two plain boxes, and panel (b) as a hatched memory box feeding a frame that holds a hatched buffer beside an array of six processing elements; it reads an ANN on CPU, GPU, MCU, the dense NPU, and points to Section 5.3. The upper right cell, in the same blue tint, repeats panel (a) and adds a loop arrow from the processor frame back into the memory; it reads an SNN as a program, a chip's simulator, and points to Sections 5.3 and 5.4. The lower left cell, in the same blue tint, draws one near-memory cell, a plain processing element with a hatched sliver beside it, with a single straight arrow entering and leaving it; it reads the event NPU and points to Section 5.5. The lower right cell, in the neuromorphic bucket's warm tint, draws a two by three array of the same near-memory cells; it reads physical neuromorphic families and points to Section 5.6. A dashed arrow runs from the lower left cell to the lower right cell, labeled adds state over T, and a second dashed arrow runs from the lower right cell up to the upper right cell, labeled a simulator. A key under the grid marks hatched as memory and plain as a processor or a circuit. Conceptual figure; no measured quantity is drawn.</desc>
+<svg viewBox="0 0 1200 580" role="img" aria-labelledby="f23-title f23-desc" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="16">
+  <title id="f23-title">A two by two map of deployment targets, where the weight sits relative to the arithmetic down the side, and whether the silicon evaluates a static function or carries state across time along the top</title>
+  <desc id="f23-desc">A two by two grid of rounded panels with a header beside each row and above each column. A thin vertical arrow at the far left points down from the upper row to the lower row. The upper row is headed von Neumann, memory apart, with a small note naming panels (a) and (b) of the architecture figure; the lower row is headed non-von Neumann, memory beside the neuron, with a note naming its panel (c). The left column is headed static function, one pass; the right column is headed state over T. The upper left cell, in the conventional bucket's blue tint, draws two mini icons, panel (a) as a hatched memory box above a processor frame holding two plain boxes, and panel (b) as a hatched memory box feeding a frame that holds a hatched buffer beside an array of six processing elements; it reads an ANN on CPU, GPU, MCU, the dense NPU, and points to Section 5.3. The upper right cell, in the same blue tint, repeats panel (a) and adds a loop arrow from the processor frame back into the memory; it reads an SNN as a program, a chip's simulator, and points to Sections 5.3 and 5.4. The lower left cell, in the same blue tint, draws one near-memory cell, a plain processing element with a hatched sliver beside it, with a single straight arrow entering and leaving it; it reads the event NPU and points to Section 5.5. The lower right cell, in the neuromorphic bucket's warm tint, draws a two by three array of the same near-memory cells; it reads physical neuromorphic families and points to Section 5.6. A dashed arrow runs from the lower left cell to the lower right cell, labeled adds state over T, and a second dashed arrow runs from the lower right cell up to the upper right cell, labeled a simulator. A key under the grid marks hatched as memory and plain as a processor or a circuit. Conceptual figure; no measured quantity is drawn.</desc>
   <defs>
-    <marker id="f20-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
-    <marker id="f20-arrow-sm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
-    <pattern id="f20-mem" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect x="0" y="0" width="7" height="7" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#c5cbd3" stroke-width="1.6"/></pattern>
+    <marker id="f23-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <marker id="f23-arrow-sm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b3440"/></marker>
+    <pattern id="f23-mem" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect x="0" y="0" width="7" height="7" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#c5cbd3" stroke-width="1.6"/></pattern>
   </defs>
 
   <!-- column headers, what the silicon computes -->
-  <g id="f20-colheads" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">
+  <g id="f23-colheads" text-anchor="middle" fill="#2b3440" font-size="18" font-weight="700">
     <text x="465" y="38">Static function, one pass</text>
     <text x="975" y="38">State over <tspan font-style="italic">T</tspan></text>
   </g>
 
   <!-- the first question, one thin arrow down the side, the row headers carry the words -->
-  <line id="f20-vaxis" x1="30" y1="80" x2="30" y2="520" stroke="#2b3440" stroke-width="2" marker-end="url(#f20-arrow)"/>
-  <g id="f20-rowhead-top" text-anchor="middle">
+  <line id="f23-vaxis" x1="30" y1="80" x2="30" y2="520" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
+  <g id="f23-rowhead-top" text-anchor="middle">
     <text x="150" y="134" fill="#2b3440" font-size="17" font-weight="700">Von Neumann,<tspan x="150" dy="21">memory apart</tspan></text>
-    <text x="150" y="180" fill="#4a5560" font-size="14">Figure 18, panels (a) and (b)</text>
+    <text x="150" y="180" fill="#4a5560" font-size="14">Figure 21, panels (a) and (b)</text>
   </g>
-  <g id="f20-rowhead-bottom" text-anchor="middle">
+  <g id="f23-rowhead-bottom" text-anchor="middle">
     <text x="150" y="398" fill="#2b3440" font-size="17" font-weight="700">Non-von Neumann,<tspan x="150" dy="21">memory beside</tspan><tspan x="150" dy="21">the neuron</tspan></text>
-    <text x="150" y="463" fill="#4a5560" font-size="14">Figure 18, panel (c)</text>
+    <text x="150" y="463" fill="#4a5560" font-size="14">Figure 21, panel (c)</text>
   </g>
 
   <!-- upper left, memory apart, a static function evaluated once -->
-  <g id="f20-cell-tl" class="f20-hot">
+  <g id="f23-cell-tl" class="f23-hot">
     <title>A processor or a dense accelerator fetches every weight across a memory boundary and evaluates the network once per input, so nothing it held from the previous input reaches the answer.</title>
     <rect x="265" y="58" width="400" height="210" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
-    <g id="f20-tl-icon-a">
-      <rect x="337" y="82" width="96" height="20" rx="4" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.5"/>
-      <line x1="385" y1="106" x2="385" y2="124" stroke="#2b3440" stroke-width="1.8" marker-start="url(#f20-arrow-sm)" marker-end="url(#f20-arrow-sm)"/>
+    <g id="f23-tl-icon-a">
+      <rect x="337" y="82" width="96" height="20" rx="4" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <line x1="385" y1="106" x2="385" y2="124" stroke="#2b3440" stroke-width="1.8" marker-start="url(#f23-arrow-sm)" marker-end="url(#f23-arrow-sm)"/>
       <rect x="337" y="128" width="96" height="42" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1.5"/>
       <rect x="344" y="135" width="40" height="28" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
       <rect x="386" y="135" width="40" height="28" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
       <text x="385" y="190" text-anchor="middle" fill="#4a5560" font-size="14">(a)</text>
     </g>
-    <g id="f20-tl-icon-b">
-      <rect x="487" y="82" width="96" height="20" rx="4" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.5"/>
-      <line x1="535" y1="106" x2="535" y2="124" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f20-arrow-sm)"/>
+    <g id="f23-tl-icon-b">
+      <rect x="487" y="82" width="96" height="20" rx="4" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <line x1="535" y1="106" x2="535" y2="124" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f23-arrow-sm)"/>
       <rect x="477" y="128" width="116" height="42" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1.5"/>
-      <rect x="483" y="134" width="26" height="30" rx="3" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.2"/>
+      <rect x="483" y="134" width="26" height="30" rx="3" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.2"/>
       <rect x="515" y="134" width="22" height="13" rx="2" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
       <rect x="541" y="134" width="22" height="13" rx="2" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
       <rect x="567" y="134" width="22" height="13" rx="2" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
@@ -70,77 +70,77 @@
     </g>
     <text x="465" y="220" text-anchor="middle" fill="#2b3440" font-size="16">ANN on CPU, GPU, MCU; the dense NPU</text>
     <text x="465" y="246" text-anchor="middle" fill="#4a5560" font-size="14">Section 5.3</text>
-    <rect class="f20-band" x="265" y="58" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
+    <rect class="f23-band" x="265" y="58" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
     <rect x="265" y="58" width="400" height="210" fill="#000" opacity="0" pointer-events="all"/>
   </g>
 
   <!-- upper right, memory apart, state stepped on the host clock -->
-  <g id="f20-cell-tr" class="f20-hot">
+  <g id="f23-cell-tr" class="f23-hot">
     <title>A spiking network stepped as a program, and a chip&#8217;s own simulator, both keep the membrane as a word in memory and advance it on the host clock.</title>
     <rect x="775" y="58" width="400" height="210" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
-    <g id="f20-tr-icon">
-      <rect x="917" y="82" width="96" height="20" rx="4" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.5"/>
-      <line x1="965" y1="106" x2="965" y2="124" stroke="#2b3440" stroke-width="1.8" marker-start="url(#f20-arrow-sm)" marker-end="url(#f20-arrow-sm)"/>
+    <g id="f23-tr-icon">
+      <rect x="917" y="82" width="96" height="20" rx="4" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <line x1="965" y1="106" x2="965" y2="124" stroke="#2b3440" stroke-width="1.8" marker-start="url(#f23-arrow-sm)" marker-end="url(#f23-arrow-sm)"/>
       <rect x="917" y="128" width="96" height="42" rx="4" fill="#ffffff" stroke="#8a94a0" stroke-width="1.5"/>
       <rect x="924" y="135" width="40" height="28" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
       <rect x="966" y="135" width="40" height="28" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.2"/>
-      <path id="f20-tr-loop" d="M1015,156 C1052,156 1052,94 1021,94" fill="none" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f20-arrow-sm)"/>
+      <path id="f23-tr-loop" d="M1015,156 C1052,156 1052,94 1021,94" fill="none" stroke="#2b3440" stroke-width="1.8" marker-end="url(#f23-arrow-sm)"/>
       <text x="965" y="190" text-anchor="middle" fill="#4a5560" font-size="14">(a)</text>
     </g>
     <text x="975" y="220" text-anchor="middle" fill="#2b3440" font-size="16">SNN as a program; a chip&#8217;s simulator</text>
     <text x="975" y="246" text-anchor="middle" fill="#4a5560" font-size="14">Sections 5.3 and 5.4</text>
-    <rect class="f20-band" x="775" y="58" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
+    <rect class="f23-band" x="775" y="58" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
     <rect x="775" y="58" width="400" height="210" fill="#000" opacity="0" pointer-events="all"/>
   </g>
 
   <!-- lower left, memory beside the neuron, still one pass -->
-  <g id="f20-cell-bl" class="f20-hot">
+  <g id="f23-cell-bl" class="f23-hot">
     <title>The event NPU keeps its weights beside the neuron circuits, yet the network it runs passes through once, so no membrane is integrated across a simulation horizon.</title>
     <rect x="265" y="322" width="400" height="210" rx="10" fill="#E4F0F9" stroke="#1F77B4" stroke-width="1.8"/>
-    <g id="f20-bl-icon">
-      <line x1="363" y1="396" x2="404" y2="396" stroke="#2b3440" stroke-width="2" marker-end="url(#f20-arrow)"/>
+    <g id="f23-bl-icon">
+      <line x1="363" y1="396" x2="404" y2="396" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
       <rect x="410" y="366" width="70" height="60" rx="5" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
       <text x="445" y="402" text-anchor="middle" fill="#2b3440" font-size="15" font-weight="700">PE</text>
-      <rect x="484" y="366" width="22" height="60" rx="3" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.5"/>
-      <line x1="512" y1="396" x2="566" y2="396" stroke="#2b3440" stroke-width="2" marker-end="url(#f20-arrow)"/>
+      <rect x="484" y="366" width="22" height="60" rx="3" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+      <line x1="512" y1="396" x2="566" y2="396" stroke="#2b3440" stroke-width="2" marker-end="url(#f23-arrow)"/>
     </g>
     <text x="465" y="472" text-anchor="middle" fill="#2b3440" font-size="16">the event NPU</text>
     <text x="465" y="498" text-anchor="middle" fill="#4a5560" font-size="14">Section 5.5</text>
-    <rect class="f20-band" x="265" y="322" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
+    <rect class="f23-band" x="265" y="322" width="400" height="210" rx="10" fill="#1F77B4" opacity="0"/>
     <rect x="265" y="322" width="400" height="210" fill="#000" opacity="0" pointer-events="all"/>
   </g>
 
   <!-- lower right, memory beside the neuron, state in the circuit -->
-  <g id="f20-cell-br" class="f20-hot">
+  <g id="f23-cell-br" class="f23-hot">
     <title>In fabricated neuromorphic silicon the membrane is circuit state beside the synapses that drive it, so the state persists without ever being written back to a memory the cores share.</title>
     <rect x="775" y="322" width="400" height="210" rx="10" fill="#FBEBDA" stroke="#D9760C" stroke-width="1.8"/>
-    <g id="f20-br-array">
-      <rect x="870" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="890" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="914" y="358" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
-      <rect x="946" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="966" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="990" y="358" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
-      <rect x="1022" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="1042" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="1066" y="358" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
-      <rect x="870" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="890" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="914" y="404" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
-      <rect x="946" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="966" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="990" y="404" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
-      <rect x="1022" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="1042" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="1066" y="404" width="14" height="34" rx="2" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+    <g id="f23-br-array">
+      <rect x="870" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="890" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="914" y="358" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+      <rect x="946" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="966" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="990" y="358" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+      <rect x="1022" y="358" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="1042" y="380" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="1066" y="358" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+      <rect x="870" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="890" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="914" y="404" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+      <rect x="946" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="966" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="990" y="404" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
+      <rect x="1022" y="404" width="40" height="34" rx="4" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.3"/><text x="1042" y="426" text-anchor="middle" fill="#2b3440" font-size="14" font-weight="700">PE</text><rect x="1066" y="404" width="14" height="34" rx="2" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.3"/>
     </g>
     <text x="975" y="472" text-anchor="middle" fill="#2b3440" font-size="16">physical neuromorphic families</text>
     <text x="975" y="498" text-anchor="middle" fill="#4a5560" font-size="14">Section 5.6</text>
-    <rect class="f20-band" x="775" y="322" width="400" height="210" rx="10" fill="#D9760C" opacity="0"/>
+    <rect class="f23-band" x="775" y="322" width="400" height="210" rx="10" fill="#D9760C" opacity="0"/>
     <rect x="775" y="322" width="400" height="210" fill="#000" opacity="0" pointer-events="all"/>
   </g>
 
   <!-- the two crossings -->
-  <line id="f20-cross-right" x1="669" y1="446" x2="771" y2="446" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f20-arrow)"/>
-  <text id="f20-cross-right-label" x="720" y="404" text-anchor="middle" fill="#4a5560" font-size="14">adds state<tspan x="720" dy="18">over <tspan font-style="italic">T</tspan></tspan></text>
-  <line id="f20-cross-up" x1="900" y1="318" x2="900" y2="272" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f20-arrow)"/>
-  <text id="f20-cross-up-label" x="918" y="300" fill="#4a5560" font-size="14">a simulator</text>
+  <line id="f23-cross-right" x1="669" y1="446" x2="771" y2="446" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f23-arrow)"/>
+  <text id="f23-cross-right-label" x="720" y="404" text-anchor="middle" fill="#4a5560" font-size="14">adds state<tspan x="720" dy="18">over <tspan font-style="italic">T</tspan></tspan></text>
+  <line id="f23-cross-up" x1="900" y1="318" x2="900" y2="272" stroke="#2b3440" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#f23-arrow)"/>
+  <text id="f23-cross-up-label" x="918" y="300" fill="#4a5560" font-size="14">a simulator</text>
 
   <!-- key -->
-  <g id="f20-key">
-    <rect x="455" y="556" width="24" height="15" rx="3" fill="url(#f20-mem)" stroke="#8a94a0" stroke-width="1.5"/>
+  <g id="f23-key">
+    <rect x="455" y="556" width="24" height="15" rx="3" fill="url(#f23-mem)" stroke="#8a94a0" stroke-width="1.5"/>
     <text x="487" y="568" fill="#4a5560" font-size="14">memory</text>
     <rect x="571" y="556" width="24" height="15" rx="3" fill="#f6f7f9" stroke="#8a94a0" stroke-width="1.5"/>
     <text x="603" y="568" fill="#4a5560" font-size="14">a processor or a circuit</text>
   </g>
 </svg>
-<figcaption><b>Figure 20:</b> The two questions Table 11 crosses, drawn in the vocabulary of Figure 18. Down the side sits where the weight sits relative to the arithmetic that uses it, von Neumann above<d-cite key="vonneumann1945-edvac"></d-cite><d-cite key="backus1978-von-neumann-style"></d-cite> and non-von Neumann below; across the top sits what the silicon computes, a static function once per input or state carried across <i>T</i>. The event NPU has left von Neumann without carrying state over <i>T</i>, one cell short of neuromorphic silicon, and a simulator is its mirror image, a machine whose memory sits apart stepping the equations of one whose memory does not. The third question, how time passes, sorts the families inside the lower right cell and is left to the table in Section 5.6. Conceptual figure; no measured quantity is drawn.</figcaption>
+<figcaption><b>Figure 23:</b> The two questions Table 11 crosses, drawn in the vocabulary of Figure 21. Down the side sits where the weight sits relative to the arithmetic that uses it, von Neumann above<d-cite key="vonneumann1945-edvac"></d-cite><d-cite key="backus1978-von-neumann-style"></d-cite> and non-von Neumann below; across the top sits what the silicon computes, a static function once per input or state carried across <i>T</i>. The event NPU has left von Neumann without carrying state over <i>T</i>, one cell short of neuromorphic silicon, and a simulator is its mirror image, a machine whose memory sits apart stepping the equations of one whose memory does not. The third question, how time passes, sorts the families inside the lower right cell and is left to the table in Section 5.6. Conceptual figure; no measured quantity is drawn.</figcaption>
 </figure>

@@ -1,9 +1,1 @@
-{
-  "brainscales-pehle2022": "bss",
-  "cao2015": "cao-2015",
-  "jiang-2023-sliprelu": "slip-relu",
-  "meszaros-2025-loihi2-delays": "eventprop-delays",
-  "nxtf2021": "nxtf",
-  "shrestha2023": "sdnn",
-  "spinnaker-neuron-lab": "spinnaker-neuron-lab-manual"
-}
+{}
