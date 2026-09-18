@@ -38,7 +38,7 @@ test('a task ranks and never restricts', () => {
 });
 test('an unreachable combination is dead with a subject', () => {
   let Q = E.applyQuery(E.blank(), 'speck');
-  Q = E.applyQuery(Q, 'loihi-2');            // same slot: replaces, still alive
+  Q = E.applyQuery(Q, 'loihi-2');            // same slot, so it replaces and stays alive
   assert.equal(Q.sel.hw, 'loihi-2'); assert.equal(Q.dead, null);
   Q = E.applyQuery(E.blank(), 'quantizeml');
   Q = E.applyQuery(Q, 'speck');
