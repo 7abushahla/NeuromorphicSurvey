@@ -9708,14 +9708,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "tk": "neuromorphic",
    "color": "#5A6E3D",
    "ev": "E1",
-   "story": "PyNN's native SpiNNaker backend runs a rate-coded spiking Deep Belief Network reaching 95 percent MNIST accuracy in 2015, and a fully closed-loop DVS-to-servo goalkeeper robot reaching 85 percent ball-interception accuracy at 6.5 milliseconds response latency, disconnected from any PC.",
-   "note": "Stromatias et al.'s own toolchain field, SpiNNaker software stack, predates SNN Toolbox's public release and names no conversion framework, so it is read here as PyNN via sPyNNaker, the standard and essentially only way SpiNNaker is programmed. The goalkeeper's own field, SpiNNaker native toolchain, is the same claim in different words.",
+   "story": "A fully closed-loop DVS-to-servo goalkeeper robot reaches 85 percent ball-interception accuracy at 6.5 milliseconds response latency on physical SpiNNaker, disconnected from any PC.",
+   "note": "Cheng and Nikolic's own field, SpiNNaker native toolchain, is read as PyNN via sPyNNaker, the standard and essentially only way SpiNNaker is programmed, an authorized placement per this task's own record list. stromatias-2015 was detached on controller review, its own toolchain field, SpiNNaker software stack, names no framework and reading it as PyNN was an unstated inference, not something the record itself says; it is left as an unplaced gap for Task 7.",
    "steps": {
     "task": null,
     "sensor": null,
     "input": null,
     "learning": null,
-    "code": "rate-coding",
+    "code": null,
     "payload": null,
     "neuron": null,
     "reset": null,
@@ -9727,18 +9727,10 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    },
    "can": {
     "sensor": [
-     "event-camera",
-     "frame-camera"
+     "event-camera"
     ],
     "input": [
-     "native-events",
-     "static-frames"
-    ],
-    "code": [
-     "rate-coding"
-    ],
-    "neuron": [
-     "lif-neuron"
+     "native-events"
     ],
     "contract": [
      "sync-tick"
@@ -9752,17 +9744,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
     "spinnaker-1"
    ],
    "papers": [
-    {
-     "id": "stromatias-2015",
-     "via": {
-      "task": "image-classification-static",
-      "sensor": "frame-camera",
-      "input": "static-frames",
-      "code": "rate-coding",
-      "neuron": "lif-neuron",
-      "hw": "spinnaker-1"
-     }
-    },
     {
      "id": "spinnaker-goalkeeper",
      "via": {
@@ -15276,17 +15257,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "url": "https://arxiv.org/abs/2004.01656",
    "evidence": "E1",
    "target_hardware": "BrainScaleS, Spikey, SpiNNaker",
-   "target_kind": "neuromorphic"
-  },
-  "stromatias-2015": {
-   "id": "stromatias-2015",
-   "title": "Scalable Energy-Efficient, Low-Latency Implementations of (Trained) Spiking Deep Belief Networks on SpiNNaker",
-   "authors": "Stromatias, E., Neil, D., Galluppi, F., Pfeiffer, M., Liu, S.-C., Furber, S.",
-   "year": 2015,
-   "venue": "IJCNN",
-   "url": "https://doi.org/10.1109/IJCNN.2015.7280625",
-   "evidence": "E1",
-   "target_hardware": "SpiNNaker (single chip; power-scaling estimates extrapolated to 48-chip board)",
    "target_kind": "neuromorphic"
   },
   "spinnaker-goalkeeper": {
