@@ -515,6 +515,19 @@ ${academicLFI}, "${title}", 2026. ${window.location.href}
       .cite-card .cc-entry { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
       .cite-card .cc-entry:last-child { border-bottom: none; }
       .cite-card .cc-num { color: #2698BA; font-weight: 700; margin-right: 5px; }
+
+      /* An equation reference's own hover card, the same idea as a citation's:
+         hovering \eqref{...} shows the numbered equation it points to. See
+         assets/equation-hover.js. */
+      .eq-hover-card {
+        display: none; position: fixed; z-index: 600; opacity: 0;
+        background: var(--global-bg-color, #fff); color: var(--global-text-color, #223);
+        border: 1px solid var(--global-divider-color, rgba(0,0,0,0.12));
+        border-radius: 6px; box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+        padding: 8px 14px; max-width: min(90vw, 560px); overflow-x: auto;
+        transition: opacity .12s;
+      }
+      .eq-hover-card mjx-container { margin: 0 !important; }
       /* ---- Study rows in Tables 3-5 lead to their reference ---- */
       /* Table 3 lists several boards per study; the device column needs just enough
          room that a name such as "STM32H747XI (M7)," stays on one line. */
@@ -563,7 +576,7 @@ ${academicLFI}, "${title}", 2026. ${window.location.href}
       /* ---- Print: the manuscript, exactly ---- */
       @media print {
         header, d-contents, .supplement, #bibtex-container, #toTop, .no-print,
-        .fig-hint, .tbl-toolbar, #f6-reset, #f4-dot, .viz-tip, .cite-card, .stk-toolbar, .stk-story, .stk-overlay { display: none !important; }
+        .fig-hint, .tbl-toolbar, #f6-reset, #f4-dot, .viz-tip, .cite-card, .eq-hover-card, .stk-toolbar, .stk-story, .stk-overlay { display: none !important; }
         .f4-active, .f8-on { filter: none !important; }
         .f4-fwd, .f4-bwd { opacity: 1 !important; }
         .ptable-wrap.t-studies tbody tr:hover { background: transparent; }
@@ -16392,6 +16405,7 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
     <!-- Interactive supplements (progressive enhancement; the static page is complete without them) -->
 
   <script src="assets/tables.js?v=20260916c"></script>
+  <script src="assets/equation-hover.js?v=20260919b"></script>
   <script type="module" src="assets/figure.js?v=20260919a"></script>
 
   </body>
