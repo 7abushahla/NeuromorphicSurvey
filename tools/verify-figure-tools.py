@@ -647,7 +647,7 @@ class FigureMapCheckerTests(unittest.TestCase):
         self.assertIn(fragment, result.stdout + result.stderr)
 
     def test_fixture_passes(self):
-        result = self.run_checker()
+        result = self.run_checker("--allow-unplaced-papers")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("check-figure-map:", result.stdout)
 
@@ -681,7 +681,7 @@ class FigureMapCheckerTests(unittest.TestCase):
         self.assert_fails_with("rule 3: toolchain 'fw-a-chip-a' names 'rt-a' under slot dev but it sits in slot run")
 
     def test_rule_3_list_valued_step_accepted_when_all_members_are_in_can(self):
-        result = self.run_checker()
+        result = self.run_checker("--allow-unplaced-papers")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_rule_3_list_valued_step_member_must_be_in_can(self):
@@ -690,7 +690,7 @@ class FigureMapCheckerTests(unittest.TestCase):
 
     def test_rule_3_after_chip_valid_passes(self):
         self.guide["toolchains"]["multi-dev-chip-a"]["after"] = ["fw-a"]
-        result = self.run_checker()
+        result = self.run_checker("--allow-unplaced-papers")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_rule_3_after_chip_must_exist(self):
@@ -735,9 +735,9 @@ class FigureMapCheckerTests(unittest.TestCase):
         self.guide["toolchains"]["fw-a-chip-a"]["papers"][0]["via"]["dev"] = "rt-a"
         self.assert_fails_with("rule 5: toolchain 'fw-a-chip-a' paper 'paper-a' via dev 'rt-a' is not in can.dev or implies")
 
-    def test_rule_5b_every_deploying_record_is_placed_only_when_required(self):
-        self.assertEqual(self.run_checker().returncode, 0)
-        self.assert_fails_with("rule 5b: E2 record 'paper-b' appears under no toolchain", "--require-all-papers")
+    def test_rule_5b_every_deploying_record_is_placed_unless_allowed(self):
+        self.assert_fails_with("rule 5b: E2 record 'paper-b' appears under no toolchain")
+        self.assertEqual(self.run_checker("--allow-unplaced-papers").returncode, 0)
 
     def test_rule_6_application_prefer_and_via(self):
         self.guide["applications"]["task-a"]["prefer"].append("nope")

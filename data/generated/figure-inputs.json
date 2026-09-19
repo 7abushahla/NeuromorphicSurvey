@@ -17172,6 +17172,43 @@
       "capability_class": null
     },
     {
+      "id": "route:snntorch-c-runtime-to-portenta-h7",
+      "origin_type": "route",
+      "origin_id": "snntorch-c-runtime-to-portenta-h7",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "The compiled C runtime executes directly as firmware on the Portenta H7's STM32H747 Cortex-M7 core, with on-board timer measurement of end-to-end inference latency.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:snntorch-to-nir",
       "origin_type": "route",
       "origin_id": "snntorch-to-nir",
@@ -17218,6 +17255,43 @@
       "eligible_for_substantive_use": false,
       "route_state": null,
       "capability_class": null
+    },
+    {
+      "id": "route:snntorch-to-snntorch-c-runtime",
+      "origin_type": "route",
+      "origin_id": "snntorch-to-snntorch-c-runtime",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "An snnTorch-trained LIF network with surrogate-gradient backpropagation-through-time is exported and re-implemented as a lightweight, statically-allocated C runtime, with spike-driven pruning of inactive neurons and filters.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:spikingjelly-pytorch-cuda",
@@ -17647,6 +17721,43 @@
       "capability_class": null
     },
     {
+      "id": "route:stedgeai-to-stm32n6-npu",
+      "origin_type": "route",
+      "origin_id": "stedgeai-to-stm32n6-npu",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "STEdgeAI's compiled output runs on the STM32N657X0's integrated ST Neural-ART NPU, with on-board power measurement via an STLINK-V3PWR probe.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:sync-tick-to-loihi1",
       "origin_type": "route",
       "origin_id": "sync-tick-to-loihi1",
@@ -18012,6 +18123,80 @@
       "eligible_for_substantive_use": true,
       "route_state": null,
       "capability_class": null
+    },
+    {
+      "id": "route:tensorflow-edgetpu-to-coral-edge-tpu",
+      "origin_type": "route",
+      "origin_id": "tensorflow-edgetpu-to-coral-edge-tpu",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "A TensorFlow-trained tracking and path-prediction network runs directly on the Coral Edge TPU Dev Board's 8-bit fixed-point execution path, benchmarked live against the same networks on an Intel Compute Stick.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "coral-edge-tpu-tracking"
+      ],
+      "source_refs": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "locators": [
+            "Section II Demo Setup",
+            "Section III Conclusion",
+            "Table I Performance Comparison"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
+      "id": "route:tensorflow-lite-to-stedgeai",
+      "origin_type": "route",
+      "origin_id": "tensorflow-lite-to-stedgeai",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "STEdgeAI quantizes and compiles the TensorFlow-Lite-trained LIF network for the STM32N657X0's integrated Neural-ART NPU and Cortex-M55 CPU execution paths.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:tracking-motion-to-frames-from-events",

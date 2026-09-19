@@ -398,6 +398,10 @@
       {
        "id": "slayer",
        "label": "SLAYER"
+      },
+      {
+       "id": "tensorflow-lite",
+       "label": "TensorFlow Lite"
       }
      ]
     },
@@ -478,6 +482,10 @@
       {
        "id": "fpga-synthesis-flow",
        "label": "FPGA HLS or RTL synthesis"
+      },
+      {
+       "id": "stedgeai",
+       "label": "STEdgeAI"
       }
      ]
     },
@@ -528,6 +536,14 @@
       {
        "id": "fenn-vivado-toolchain",
        "label": "FeNN soft core (Vivado)"
+      },
+      {
+       "id": "snntorch-c-runtime",
+       "label": "snnTorch C runtime"
+      },
+      {
+       "id": "tensorflow-edgetpu",
+       "label": "TensorFlow (Edge TPU)"
       }
      ]
     }
@@ -566,6 +582,18 @@
       {
        "id": "akida",
        "label": "Akida (event NPU)"
+      },
+      {
+       "id": "portenta-h7",
+       "label": "Arduino Portenta H7 (MCU)"
+      },
+      {
+       "id": "stm32n6-npu",
+       "label": "STM32N6 Neural-ART (NPU)"
+      },
+      {
+       "id": "coral-edge-tpu",
+       "label": "Coral Edge TPU (NPU)"
       }
      ],
      "bucket": "conventional"
@@ -2206,8 +2234,8 @@
    "tk": "neuromorphic",
    "color": "#5A6E3D",
    "ev": "E1",
-   "story": "A fully closed-loop DVS-to-servo goalkeeper robot reaches 85 percent ball-interception accuracy at 6.5 milliseconds response latency on physical SpiNNaker, disconnected from any PC.",
-   "note": "Cheng and Nikolic's own field, SpiNNaker native toolchain, is read as PyNN via sPyNNaker, the standard and essentially only way SpiNNaker is programmed, an authorized placement per this task's own record list. stromatias-2015 was detached on controller review, its own toolchain field, SpiNNaker software stack, names no framework and reading it as PyNN was an unstated inference, not something the record itself says; it is left as an unplaced gap for Task 7.",
+   "story": "A fully closed-loop DVS-to-servo goalkeeper robot reaches 85 percent ball-interception accuracy at 6.5 milliseconds response latency on physical SpiNNaker, disconnected from any PC, and an earlier spiking deep belief network reaches 95 percent MNIST accuracy at under 0.3 watts on a single physical SpiNNaker 1 chip.",
+   "note": "Cheng and Nikolic's own field, SpiNNaker native toolchain, is read as PyNN via sPyNNaker, the standard and essentially only way SpiNNaker is programmed, an authorized placement per Task 6's own record list. Stromatias et al. is placed on this same toolchain on different grounds. Its own toolchain field, SpiNNaker software stack, names no framework, and reading it as PyNN was an unstated inference that a controller review caught and reverted. Independent evidence for the compile stage survives that reversion. The route index's own spynnaker-to-spinnaker1 edge cites this paper by its own sources field, quoting the same 95.01 percent MNIST accuracy, 0.3 watt, and roughly 20 millisecond figures the paper reports, and site section 11.2 narrates it in prose alongside the sPyNNaker and SpiNNTools route description as an earlier, independent conversion. So the paper is placed by naming the compile and run chips, sPyNNaker and the SpiNNaker runtime, that this independent edge evidence supports, not by asserting a PyNN dev claim the record itself never makes.",
    "steps": {
     "task": null,
     "sensor": null,
@@ -2225,7 +2253,8 @@
    },
    "can": {
     "sensor": [
-     "event-camera"
+     "event-camera",
+     "no-physical-sensor"
     ],
     "input": [
      "native-events"
@@ -2235,6 +2264,18 @@
     ],
     "dev": [
      "pynn"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "neuron": [
+     "lif-neuron"
+    ],
+    "compile": [
+     "spynnaker"
+    ],
+    "run": [
+     "spinnaker-runtime"
     ]
    },
    "implies": [],
@@ -2248,6 +2289,18 @@
       "task": "robotics-closed-loop-control",
       "sensor": "event-camera",
       "input": "native-events",
+      "hw": "spinnaker-1"
+     }
+    },
+    {
+     "id": "stromatias-2015",
+     "via": {
+      "task": "image-classification-static",
+      "sensor": "no-physical-sensor",
+      "code": "rate-coding",
+      "neuron": "lif-neuron",
+      "compile": "spynnaker",
+      "run": "spinnaker-runtime",
       "hw": "spinnaker-1"
      }
     }
@@ -3061,6 +3114,247 @@
      }
     }
    ]
+  },
+  "snntorch-portenta-h7": {
+   "name": "snnTorch to a C runtime on an Arduino Portenta H7",
+   "rank": 38,
+   "tk": "MCU",
+   "color": "#4A6E8C",
+   "ev": "E1",
+   "story": "An snnTorch-trained LIF network with spike-driven pruning is exported to a statically-allocated C runtime and measured on a physical Arduino Portenta H7, reaching a 7.4 to 7.5 times speedup over the snnTorch Python baseline on ST-MNIST.",
+   "note": "Direct surrogate-gradient training, not an ANN-to-SNN conversion. N-MNIST supplies address-event input from a DVS event camera; ST-MNIST supplies tactile spike events, carried on the sensor and input capability lines rather than the drawn default, which follows the primary N-MNIST case. The paper also benchmarks the same C runtime on a desktop CPU, not drawn here since the Portenta H7 is the physical MCU target.",
+   "steps": {
+    "task": null,
+    "sensor": "event-camera",
+    "input": "native-events",
+    "learning": "direct-training-surrogate-gradient",
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": "snntorch",
+    "export": null,
+    "compile": null,
+    "run": "snntorch-c-runtime"
+   },
+   "can": {
+    "sensor": [
+     "event-camera",
+     "tactile-sensor"
+    ],
+    "input": [
+     "native-events"
+    ],
+    "learning": [
+     "direct-training-surrogate-gradient"
+    ],
+    "neuron": [
+     "lif-neuron"
+    ],
+    "dev": [
+     "snntorch"
+    ],
+    "run": [
+     "snntorch-c-runtime"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "portenta-h7"
+   ],
+   "papers": [
+    {
+     "id": "snntorch-portenta-h7",
+     "via": {
+      "task": "image-classification-static",
+      "sensor": "event-camera",
+      "input": "native-events",
+      "learning": "direct-training-surrogate-gradient",
+      "neuron": "lif-neuron",
+      "hw": "portenta-h7"
+     }
+    }
+   ]
+  },
+  "memory-decoupled-cortex-m": {
+   "name": "Memory-decoupled event-driven SNN on a Cortex-M MCU",
+   "rank": 39,
+   "tk": "MCU",
+   "color": "#7A4E2B",
+   "ev": "E1",
+   "story": "A double-depth rolling array decouples SNN timestep unrolling from memory footprint on an STM32H7 Cortex-M7 MCU, cutting peak dynamic SRAM overhead by about 74 percent and reaching 197.69 milliseconds and 76.98 millijoules per inference on a physical board for a recurrent MNIST SNN.",
+   "note": "The record's own toolchain field is not found, a custom hardware-software co-optimization framework whose training toolchain is not stated in the retrieved abstract, so dev, export, compile, and run are all left unnamed rather than inferred. The target chip is the map's existing generic Cortex-M MCU node, already deliberately generic since its first paper's own exact part is unnamed; this STM32H7 Cortex-M7 record sits in the same family and gives that chip its second route. Only the abstract and metadata page were retrieved, IEEE Xplore full text is paywalled, so no task, sensor, or code chip is drawn beyond what the abstract itself states.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "neuron": [
+     "lif-neuron"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "cortex-m-mcu"
+   ],
+   "papers": [
+    {
+     "id": "memory-decoupled-mcu",
+     "via": {
+      "neuron": "lif-neuron",
+      "hw": "cortex-m-mcu"
+     }
+    }
+   ]
+  },
+  "tensorflow-lite-stedgeai-stm32n6": {
+   "name": "TensorFlow Lite to STEdgeAI to an STM32N6 NPU",
+   "rank": 40,
+   "tk": "NPU",
+   "color": "#2B7A8C",
+   "ev": "E1",
+   "story": "A TensorFlow-Lite-trained LIF network, quantized by STMicroelectronics' STEdgeAI toolchain, runs on the STM32N657X0's integrated Neural-ART NPU 7.6 times faster and at under a quarter the energy per sample of the same board's Cortex-M55 CPU path.",
+   "note": "Both the NPU and the comparator Cortex-M55 CPU execution path are measured on the same physical board in the same degree project; only the NPU path is drawn here as the toolchain's own named target. Dataset, task, and timestep count are not found in the retrieved text, so no task or code chip is drawn.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": "tensorflow-lite",
+    "export": null,
+    "compile": "stedgeai",
+    "run": null
+   },
+   "can": {
+    "neuron": [
+     "lif-neuron"
+    ],
+    "dev": [
+     "tensorflow-lite"
+    ],
+    "compile": [
+     "stedgeai"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "stm32n6-npu"
+   ],
+   "papers": [
+    {
+     "id": "onoszko-stm32n6-npu",
+     "via": {
+      "neuron": "lif-neuron",
+      "hw": "stm32n6-npu"
+     }
+    }
+   ]
+  },
+  "tensorflow-coral-edgetpu": {
+   "name": "TensorFlow to a Coral Edge TPU",
+   "rank": 41,
+   "tk": "NPU",
+   "color": "#8C7A2B",
+   "ev": "E1",
+   "story": "A DAVIS240C event camera feeds a TensorFlow-trained tracking and path-prediction network on the physical Google Coral Edge TPU dev board, reaching 4 milliseconds latency and 1.72 watts against 27 milliseconds and 5.48 watts for the same network on an Intel Compute Stick measured in the same paper.",
+   "note": "The record's own toolchain field names only TensorFlow deploying directly to the Coral Edge TPU Dev Board's 8-bit fixed-point path, with no separate compiler stage stated, so TensorFlow is carried on the run step rather than split into dev and compile stages it does not name, the same pattern this map already uses for a framework's own runtime executing directly on a target (PyTorch's CUDA backend, GeNN's generated CUDA). The record's own neuron and reset fields are not found, and its title's spike-based wording refers to the DAVIS240C sensor's address-event input rather than to a stated spiking neuron model, so its standing as a spiking deployment is qualified rather than asserted outright; no code or neuron chip is drawn.",
+   "steps": {
+    "task": null,
+    "sensor": "event-camera",
+    "input": "native-events",
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": "tensorflow-edgetpu"
+   },
+   "can": {
+    "sensor": [
+     "event-camera"
+    ],
+    "input": [
+     "native-events"
+    ],
+    "run": [
+     "tensorflow-edgetpu"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "coral-edge-tpu"
+   ],
+   "papers": [
+    {
+     "id": "coral-edge-tpu-tracking",
+     "via": {
+      "task": "tracking-motion",
+      "sensor": "event-camera",
+      "input": "native-events",
+      "run": "tensorflow-edgetpu",
+      "hw": "coral-edge-tpu"
+     }
+    }
+   ]
+  },
+  "northpole-npu": {
+   "name": "Custom digital NPU compiler to NorthPole",
+   "rank": 42,
+   "tk": "NPU",
+   "color": "#5F2B8C",
+   "ev": "E1",
+   "story": "IBM NorthPole, a purely digital, low-precision spatial-dataflow inference accelerator with no spiking or event-driven neuron model, runs YOLOv4 object detection and ResNet-50 image classification on physical fabricated 12 nanometer silicon, measured against GPU and CPU baselines.",
+   "note": "The record's own toolchain field is generic, a custom digital NPU compiler naming no reusable framework, so dev, export, compile, and run are all left unnamed rather than inferred. NorthPole is a boundary case for this survey, non-spiking with no neuron, reset, or encoding fields that apply; it carries the NPU chip on the strength of a shared TrueNorth lineage rather than as a spiking deployment, per site section 5.3. The same paper also measures ResNet-50 image classification on the same physical chip; only the object-detection task is drawn, since this map's object-detection application otherwise carries no physical route at all.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {},
+   "implies": [],
+   "targets": [
+    "northpole"
+   ],
+   "papers": [
+    {
+     "id": "northpole",
+     "via": {
+      "task": "object-detection",
+      "hw": "northpole"
+     }
+    }
+   ]
   }
  },
  "applications": {
@@ -3080,9 +3374,11 @@
    "note": "Image classification is the most physically confirmed task on this map. SNN Toolbox's threshold-balancing conversion reaches 98.20 percent MNIST accuracy on physical SpiNNaker 1, Sinabs's direct BPTT training reaches 98.50 percent on N-MNIST on physical Speck1, Quartz's time-to-first-spike conversion is measured for static power, dynamic power, latency, energy, and energy-delay product on physical Loihi 1, and mlGeNN's rate-based and few-spike conversion of VGG-16 and ResNet-20 runs as GeNN-generated CUDA on a physical GPU."
   },
   "object-detection": {
-   "prefer": [],
+   "prefer": [
+    "northpole-npu"
+   ],
    "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. Object-detection conversions such as Spiking-YOLO's channel-wise normalization and signed neuron with an imbalanced threshold report GPU simulation accuracy only, at evidence class E5, not a measurement on any of this map's carried targets."
+   "note": "One surveyed object-detection deployment now carries physical evidence on this task, though it is a boundary case. IBM NorthPole, a non-spiking low-precision digital NPU with no membrane-potential dynamics, runs YOLOv4 object detection on physical fabricated silicon; the survey carries it as a conventional NPU target on the strength of a shared TrueNorth lineage rather than as a spiking deployment. Spiking-YOLO's own conversion still reports GPU simulation accuracy only, at evidence class E5, not a measurement on any of this map's carried targets."
   },
   "gesture-recognition": {
    "prefer": [
@@ -3100,9 +3396,14 @@
    "note": "The surveyed gesture-recognition deployments span a converted DVS-camera network measured on physical Loihi 1 at 89.64 percent accuracy and 11.43 milliseconds of per-frame latency with events pre-accumulated into frames before conversion, a directly trained dynamic SNN on physical Speck reaching real-time power as low as 0.70 milliwatts, a live DVS128 stream feeding an Eedn-trained network on physical TrueNorth with no host-side frame accumulation at 96.5 percent accuracy and 105 milliseconds latency, a SLAYER-trained network deployed via NxTF on physical Loihi 1, and a SpikingJelly-trained network converted via hs_api to physical CRI FPGA-based neuromorphic hardware."
   },
   "tracking-motion": {
-   "prefer": [],
-   "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's route index carries tracking and motion only as an E5 edge into frames reconstructed from events, not a measured deployment on any of this map's carried targets."
+   "prefer": [
+    "tensorflow-coral-edgetpu"
+   ],
+   "via": {
+    "sensor": "event-camera",
+    "input": "native-events"
+   },
+   "note": "One surveyed tracking deployment now carries physical evidence on this task. A DAVIS240C event camera feeds a TensorFlow-trained tracking and path-prediction network on the physical Google Coral Edge TPU dev board at 4 milliseconds latency and 1.72 watts, though the record's own neuron and reset fields are unstated, so its standing as a spiking deployment is qualified rather than asserted outright."
   },
   "keyword-spotting-audio": {
    "prefer": [
@@ -3119,7 +3420,7 @@
   "biosignal-decoding": {
    "prefer": [],
    "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's audited electromyography and electroencephalography deployments on physical Loihi and Loihi 2 are not among this map's fifteen carried routes."
+   "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's audited electromyography and electroencephalography deployments on physical Loihi and Loihi 2 are not among this map's carried routes."
   },
   "olfaction": {
    "prefer": [
@@ -3297,7 +3598,7 @@
    "read": "#routes-conventional-targets"
   },
   "imu-analog-sensor": {
-   "why": "No carried toolchain's sensor field or route-index edge names an IMU or other analog sensor; the audited robotics and SLAM records reach Loihi through hand-designed microcode or custom training pipelines outside this map's fifteen named routes.",
+   "why": "No carried toolchain's sensor field or route-index edge names an IMU or other analog sensor; the audited robotics and SLAM records reach Loihi through hand-designed microcode or custom training pipelines outside this map's named routes.",
    "read": "#local-learning"
   },
   "hand-designed-hybrid-finetuning": {
@@ -3305,7 +3606,7 @@
    "read": "#direct-conversion-hybrid"
   },
   "hybrid-finetuning": {
-   "why": "No carried toolchain attaches a hybrid ANN-plus-SNN deployment; NengoLoihi's hybrid model reaching physical Loihi 1 is not one of this map's fifteen carried routes.",
+   "why": "No carried toolchain attaches a hybrid ANN-plus-SNN deployment; NengoLoihi's hybrid model reaching physical Loihi 1 is not one of this map's carried routes.",
    "read": "#direct-conversion-hybrid"
   },
   "phase-coding": {
@@ -3317,7 +3618,7 @@
    "read": "#code-families"
   },
   "direct-input-encoding": {
-   "why": "No carried toolchain's code field uses direct constant-current input as its neural code; the robotics policies that use it feed continuous sensor state directly through pipelines outside this map's fifteen named software routes.",
+   "why": "No carried toolchain's code field uses direct constant-current input as its neural code; the robotics policies that use it feed continuous sensor state directly through pipelines outside this map's named software routes.",
    "read": "#code-families"
   },
   "signed-spikes": {
@@ -3325,7 +3626,7 @@
    "read": "#neuron-interventions"
   },
   "pasc-if": {
-   "why": "No carried toolchain attaches a PASC-IF record; PASCAL and APEX synthesize the PASC-IF neuron in RTL simulation rather than on any of this map's fifteen named hardware targets.",
+   "why": "No carried toolchain attaches a PASC-IF record; PASCAL and APEX synthesize the PASC-IF neuron in RTL simulation rather than on any of this map's named hardware targets.",
    "read": "#temporal-allocation"
   },
   "norse": {
@@ -3333,7 +3634,7 @@
    "read": "#routes-conventional-targets"
   },
   "nengo": {
-   "why": "No carried toolchain's dev field names Nengo; NengoLoihi's hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's fifteen carried routes.",
+   "why": "No carried toolchain's dev field names Nengo; NengoLoihi's hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's carried routes.",
    "read": "#direct-conversion-hybrid"
   },
   "brian2": {
@@ -3345,11 +3646,11 @@
    "read": "#where-an-snn-runs"
   },
   "backend-graph": {
-   "why": "backend-graph is a generic intermediate node in the route index that several toolchains pass through internally, but none of this map's fifteen carried toolchains names it as its own drawn export stage.",
+   "why": "backend-graph is a generic intermediate node in the route index that several toolchains pass through internally, but none of this map's carried toolchains names it as its own drawn export stage.",
    "read": "#definition-representation-execution"
   },
   "nengo-loihi": {
-   "why": "No carried toolchain's compile field names NengoLoihi; its hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's fifteen carried routes.",
+   "why": "No carried toolchain's compile field names NengoLoihi; its hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's carried routes.",
    "read": "#direct-conversion-hybrid"
   },
   "ann2snn": {
@@ -3357,12 +3658,8 @@
    "read": "#classical-ann-to-snn-conversion"
   },
   "host-io": {
-   "why": "Host encoding and readout is a universal, implicit stage this survey's contract names for every audited platform, but none of this map's fifteen carried toolchains draws it as its own explicit run step.",
+   "why": "Host encoding and readout is a universal, implicit stage this survey's contract names for every audited platform, but none of this map's carried toolchains draws it as its own explicit run step.",
    "read": "#contract-fields"
-  },
-  "northpole": {
-   "why": "No carried toolchain targets NorthPole; this survey's audited deployment reaches it through a custom digital NPU compiler outside this map's fifteen named software routes.",
-   "read": "#routes-conventional-targets"
   },
   "lava-loihi-sim": {
    "why": "No carried toolchain targets the Lava Loihi simulator; the Loihi routes this map carries target physical Loihi 1 or Loihi 2 silicon, not the simulator.",
@@ -3377,7 +3674,7 @@
    "read": "#approximate-transformed-routes"
   },
   "hxtorch-sim": {
-   "why": "No carried toolchain targets hxtorch simulation; the audited hxtorch route targets physical BrainScaleS-2 silicon in its non-spiking hagen mode, and is not one of this map's fifteen carried routes.",
+   "why": "No carried toolchain targets hxtorch simulation; the audited hxtorch route targets physical BrainScaleS-2 silicon in its non-spiking hagen mode, and is not one of this map's carried routes.",
    "read": "#physical-routes"
   },
   "fpga-truenorth-emulation": {
@@ -3393,7 +3690,7 @@
    "read": "#temporal-allocation"
   },
   "lynxi-ka200": {
-   "why": "No carried toolchain targets Lynxi KA200; the audited SpikingJelly-to-Lynxi edge is evidenced at E3, and Adaptive Fission's own physical measurement targets the Lynxi HP201 successor chip, neither of which is one of this map's fifteen carried routes.",
+   "why": "No carried toolchain targets Lynxi KA200; the audited SpikingJelly-to-Lynxi edge is evidenced at E3, and Adaptive Fission's own physical measurement targets the Lynxi HP201 successor chip, neither of which is one of this map's carried routes.",
    "read": "#code-families"
   },
   "dynapcnn": {
@@ -3584,6 +3881,14 @@
    "layer": "Learning paths",
    "target_kind": null,
    "summary": "Conversion and post-training encoding methods that reach physical neuromorphic silicon by aligning the representation or neuron contract with platform execution. Located cases include Quartz TTFS on Loihi 1, Brehove sigma-delta graded payloads on Loihi 2, Adaptive Fission population coding on HP201, and complex Few-Spikes temporal coding on SpiNNaker2."
+  },
+  "coral-edge-tpu": {
+   "id": "coral-edge-tpu",
+   "name": "Google Coral Edge TPU",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "NPU",
+   "summary": "Google Coral Edge TPU Dev Board, an 8-bit fixed-point NPU, running a TensorFlow-trained event-based tracking and path-prediction network fed by a DAVIS240C DVS camera, benchmarked live against the same networks on an Intel Compute Stick."
   },
   "corelet": {
    "id": "corelet",
@@ -4161,6 +4466,14 @@
    "target_kind": null,
    "summary": "A value is represented jointly by the activity pattern across a population of neurons (tuning curves, ensemble firing-rate vectors, or which neurons fire) rather than by one neuron's rate or timing; an orthogonal (spatial-multiplexing) axis that can co-occur with rate or temporal codes rather than a fourth encoding primitive."
   },
+  "portenta-h7": {
+   "id": "portenta-h7",
+   "name": "Arduino Portenta H7",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "MCU",
+   "summary": "Arduino Portenta H7 board (STM32H747: Cortex-M7 at 480 MHz plus Cortex-M4, 512 KB SRAM) running a compiled, statically-allocated C runtime exported from an snnTorch-trained spiking network."
+  },
   "pynn": {
    "id": "pynn",
    "name": "PyNN",
@@ -4345,6 +4658,14 @@
    "target_kind": null,
    "summary": "PyTorch-native SNN training library (Eshraghian et al., Proc. IEEE 2023); snn.Leaky defaults to reset_mechanism='subtract' (soft reset); no official first-party deployment path to physical silicon was located, though third-party NIR export exists."
   },
+  "snntorch-c-runtime": {
+   "id": "snntorch-c-runtime",
+   "name": "snnTorch C runtime",
+   "type": "runtime",
+   "layer": "Runtime",
+   "target_kind": null,
+   "summary": "A lightweight, statically-allocated C runtime that re-implements an snnTorch-trained LIF network with spike-driven pruning of inactive neurons and filters, exported from the trained PyTorch model and compiled directly for the target MCU."
+  },
   "speck": {
    "id": "speck",
    "name": "SynSense Speck",
@@ -4409,6 +4730,22 @@
    "target_kind": null,
    "summary": "Conventional dense RGB/grayscale image input (MNIST/CIFAR/ImageNet-scale datasets), the default representation of both the classical/QCFS-lineage ANN-to-SNN conversion literature and any converted-CNN deployment (Akida, Loihi via SNN Toolbox/NxTF)."
   },
+  "stedgeai": {
+   "id": "stedgeai",
+   "name": "STEdgeAI",
+   "type": "compiler",
+   "layer": "Export & compile",
+   "target_kind": null,
+   "summary": "STMicroelectronics' STEdgeAI toolchain, which quantizes and maps a TensorFlow Lite model onto the STM32N657X0's integrated ST Neural-ART NPU or its Cortex-M55 CPU."
+  },
+  "stm32n6-npu": {
+   "id": "stm32n6-npu",
+   "name": "STM32N6 Neural-ART NPU",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "NPU",
+   "summary": "The ST Neural-ART NPU integrated on the STM32N657X0 microcontroller (NUCLEO-N657X0-Q board), benchmarked against the same chip's own Cortex-M55 CPU execution path for a TensorFlow-Lite-trained, STEdgeAI-quantized LIF spiking network."
+  },
   "sync-tick": {
    "id": "sync-tick",
    "name": "Synchronous global tick",
@@ -4432,6 +4769,22 @@
    "layer": "Applications",
    "target_kind": null,
    "summary": "A touch/e-skin sensor whose output is converted into DVS-like or spike-domain events before reaching a spiking chip: a GelSight optical-tactile front end generating marker-motion events (GelNeuro), or a fiber-Bragg-grating (FBG) e-skin generating touch events (DYNAP-SE tactile localization)."
+  },
+  "tensorflow-edgetpu": {
+   "id": "tensorflow-edgetpu",
+   "name": "TensorFlow (Edge TPU)",
+   "type": "runtime",
+   "layer": "Runtime",
+   "target_kind": null,
+   "summary": "A TensorFlow-trained network executed directly on the Coral Edge TPU Dev Board's 8-bit fixed-point path, with no separate compiler stage named in the record."
+  },
+  "tensorflow-lite": {
+   "id": "tensorflow-lite",
+   "name": "TensorFlow Lite",
+   "type": "framework",
+   "layer": "Develop & simulate",
+   "target_kind": null,
+   "summary": "TensorFlow Lite, used to build and train a Leaky Integrate-and-Fire spiking network before STEdgeAI quantization for the STM32N657X0's NPU and CPU execution paths."
   },
   "tianjic": {
    "id": "tianjic",
@@ -7026,6 +7379,22 @@
    ]
   },
   {
+   "id": "snntorch-c-runtime-to-portenta-h7",
+   "from": "snntorch-c-runtime",
+   "to": "portenta-h7",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "snntorch-portenta-h7",
+     "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
+     "year": 2025,
+     "url": "https://arxiv.org/abs/2511.12136",
+     "type": "preprint"
+    }
+   ]
+  },
+  {
    "id": "snntorch-to-nir",
    "from": "snntorch",
    "to": "nir",
@@ -7045,6 +7414,22 @@
      "year": 2026,
      "url": "https://github.com/jeshraghian/snntorch/pull/388",
      "type": "official repository"
+    }
+   ]
+  },
+  {
+   "id": "snntorch-to-snntorch-c-runtime",
+   "from": "snntorch",
+   "to": "snntorch-c-runtime",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "snntorch-portenta-h7",
+     "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
+     "year": 2025,
+     "url": "https://arxiv.org/abs/2511.12136",
+     "type": "preprint"
     }
    ]
   },
@@ -7249,6 +7634,22 @@
    ]
   },
   {
+   "id": "stedgeai-to-stm32n6-npu",
+   "from": "stedgeai",
+   "to": "stm32n6-npu",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "onoszko-stm32n6-npu",
+     "title": "Implementing Spiking Neural Networks on NPU-Equipped Microcontroller: Analysis of NPU Acceleration for Embedded AI Systems",
+     "year": 2025,
+     "url": "https://diva-portal.org/smash/get/diva2:2005915/FULLTEXT01.pdf",
+     "type": "secondary material"
+    }
+   ]
+  },
+  {
    "id": "sync-tick-to-loihi1",
    "from": "sync-tick",
    "to": "loihi-1",
@@ -7394,6 +7795,38 @@
      "year": 2026,
      "url": "https://arxiv.org/abs/2607.05241",
      "type": "preprint"
+    }
+   ]
+  },
+  {
+   "id": "tensorflow-edgetpu-to-coral-edge-tpu",
+   "from": "tensorflow-edgetpu",
+   "to": "coral-edge-tpu",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "coral-edge-tpu-tracking",
+     "title": "High-Speed, Real-Time, Spike-Based Object Tracking and Path Prediction on Google Edge TPU",
+     "year": 2020,
+     "url": "https://par.nsf.gov/servlets/purl/10212648",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "tensorflow-lite-to-stedgeai",
+   "from": "tensorflow-lite",
+   "to": "stedgeai",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "onoszko-stm32n6-npu",
+     "title": "Implementing Spiking Neural Networks on NPU-Equipped Microcontroller: Analysis of NPU Acceleration for Embedded AI Systems",
+     "year": 2025,
+     "url": "https://diva-portal.org/smash/get/diva2:2005915/FULLTEXT01.pdf",
+     "type": "secondary material"
     }
    ]
   },
@@ -7768,6 +8201,17 @@
    "target_hardware": "SpiNNaker (physical)",
    "target_kind": "neuromorphic"
   },
+  "stromatias-2015": {
+   "id": "stromatias-2015",
+   "title": "Scalable Energy-Efficient, Low-Latency Implementations of (Trained) Spiking Deep Belief Networks on SpiNNaker",
+   "authors": "Stromatias, E., Neil, D., Galluppi, F., Pfeiffer, M., Liu, S.-C., Furber, S.",
+   "year": 2015,
+   "venue": "IJCNN",
+   "url": "https://doi.org/10.1109/IJCNN.2015.7280625",
+   "evidence": "E1",
+   "target_hardware": "SpiNNaker (single chip; power-scaling estimates extrapolated to 48-chip board)",
+   "target_kind": "neuromorphic"
+  },
   "hiaer-spike-cri": {
    "id": "hiaer-spike-cri",
    "title": "DVS128 Gesture Inference on HiAER-Spike Hardware",
@@ -7954,6 +8398,61 @@
    "evidence": "E1",
    "target_hardware": "Intel Loihi 1 board (ncl-ext-ghrd-01)",
    "target_kind": "neuromorphic"
+  },
+  "snntorch-portenta-h7": {
+   "id": "snntorch-portenta-h7",
+   "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
+   "authors": "Jurzec, K.C., Szydlo, T., Wielgosz, M.",
+   "year": 2025,
+   "venue": "arXiv:2511.12136",
+   "url": "https://arxiv.org/abs/2511.12136",
+   "evidence": "E1",
+   "target_hardware": "Arduino Portenta H7 (STM32H747: Cortex-M7 @ 480 MHz + Cortex-M4, 512 KB SRAM); comparator: desktop Intel Core i3-10100F CPU",
+   "target_kind": "MCU"
+  },
+  "memory-decoupled-mcu": {
+   "id": "memory-decoupled-mcu",
+   "title": "Memory-Decoupled Event-Driven SNN Deployment on Edge Microcontrollers",
+   "authors": "Yang, C. (杨灿阳), Li, J.X.",
+   "year": 2026,
+   "venue": "IEEE ICSP 2026 (International Conference on Signal Processing)",
+   "url": "https://doi.org/10.1109/icsp69961.2026.11540798",
+   "evidence": "E1",
+   "target_hardware": "STM32H7 ARM Cortex-M7 MCU",
+   "target_kind": "MCU"
+  },
+  "onoszko-stm32n6-npu": {
+   "id": "onoszko-stm32n6-npu",
+   "title": "Implementing Spiking Neural Networks on NPU-Equipped Microcontroller: Analysis of NPU Acceleration for Embedded AI Systems",
+   "authors": "Onoszko, B., Törnqvist, N.",
+   "year": 2025,
+   "venue": "KTH Royal Institute of Technology, Degree Project in Technology (first cycle, 15 credits)",
+   "url": "https://www.diva-portal.org/smash/get/diva2:2005915/FULLTEXT01.pdf",
+   "evidence": "E1",
+   "target_hardware": "STM32N657X0 MCU: ST Neural-ART NPU and Cortex-M55 CPU (same chip, two execution paths)",
+   "target_kind": "NPU"
+  },
+  "coral-edge-tpu-tracking": {
+   "id": "coral-edge-tpu-tracking",
+   "title": "High-Speed, Real-Time, Spike-Based Object Tracking and Path Prediction on Google Edge TPU",
+   "authors": "Sengupta, J., Kubendran, R., Neftci, E., Andreou, A.",
+   "year": 2020,
+   "venue": "IEEE International Conference on Artificial Intelligence Circuits and Systems (AICAS)",
+   "url": "https://par.nsf.gov/servlets/purl/10212648",
+   "evidence": "E1",
+   "target_hardware": "Google Coral Edge TPU Dev Board (8-bit fixed-point NPU); comparator: Intel Compute Stick (64-bit floating-point), measured in the same paper",
+   "target_kind": "NPU"
+  },
+  "northpole": {
+   "id": "northpole",
+   "title": "Neural inference at the frontier of energy, space, and time",
+   "authors": "Modha, D.S. et al.",
+   "year": 2023,
+   "venue": "Science",
+   "url": "https://doi.org/10.1126/science.adh1174",
+   "evidence": "E1",
+   "target_hardware": "IBM NorthPole (12nm, physical PCIe card)",
+   "target_kind": "NPU"
   }
  }
 }

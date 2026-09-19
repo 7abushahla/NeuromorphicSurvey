@@ -14,7 +14,7 @@ are data/evidence-papers.json. Rules, numbered as in the design spec of 2026-09-
      software chip to each target, are edges; the step into breakAt is not exercised on
      silicon; seam names a pin;
   5. papers are E1 or E2 records with the toolchain's target kind; via chips are
-     carriable; 5b (with --require-all-papers) every E1/E2 record is placed;
+     carriable; 5b (unless --allow-unplaced-papers) every E1/E2 record is placed;
   6. applications key task chips, prefer toolchains, via existing chips;
   7. every non-task chip is reachable or listed under unreached, never both;
   8. every read anchor is an id in site/*.html;
@@ -32,7 +32,7 @@ index = json.loads((ROOT / 'data/generated/route-index.json').read_text())
 papers = json.loads((ROOT / 'data/evidence-papers.json').read_text())['papers']
 kinds = json.loads((ROOT / 'data/target-kinds.json').read_text())
 css = (ROOT / 'assets/figure.css').read_text()
-require_all = '--require-all-papers' in sys.argv
+require_all = '--allow-unplaced-papers' not in sys.argv
 
 node_type = {n['id']: n.get('type') for n in index['nodes']}
 node_kind = {n['id']: (n.get('attributes') or {}).get('target_kind') for n in index['nodes']}

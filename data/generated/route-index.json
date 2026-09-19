@@ -1361,6 +1361,38 @@
       ]
     },
     {
+      "id": "coral-edge-tpu",
+      "type": "hardware",
+      "name": "Google Coral Edge TPU",
+      "layer": "Hardware",
+      "summary": "Google Coral Edge TPU Dev Board, an 8-bit fixed-point NPU, running a TensorFlow-trained event-based tracking and path-prediction network fed by a DAVIS240C DVS camera, benchmarked live against the same networks on an Intel Compute Stick.",
+      "attributes": {
+        "target_kind": "NPU",
+        "toolchain": "TensorFlow, deployed directly to the Coral Edge TPU Dev Board's 8-bit fixed-point execution path; the record names no separate compiler stage.",
+        "availability": "Commercially available Google Coral Edge TPU Dev Board."
+      },
+      "source_ids": [
+        "coral-edge-tpu-tracking"
+      ],
+      "source_refs": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "locators": [
+            "Section II Demo Setup",
+            "Section III Conclusion",
+            "Table I Performance Comparison"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "corelet",
       "type": "compiler",
       "name": "Corelet compiler",
@@ -1411,7 +1443,8 @@
         "availability": "Commercially available general-purpose hardware; no neuromorphic-specific access restriction."
       },
       "source_ids": [
-        "anglo-mixed-snn-mcu"
+        "anglo-mixed-snn-mcu",
+        "memory-decoupled-mcu"
       ],
       "source_refs": [
         {
@@ -1422,6 +1455,12 @@
             "Section 6.3 Hardware Platforms (Digital MCU Baseline; Neuromorphic Deployment: Innatera SNP)",
             "Section 7 Results and Table 1 (energy, latency, accuracy per platform)"
           ]
+        },
+        {
+          "source_id": "memory-decoupled-mcu",
+          "locators": [
+            "Abstract"
+          ]
         }
       ],
       "source_statuses": [
@@ -1429,6 +1468,11 @@
           "source_id": "anglo-mixed-snn-mcu",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        },
+        {
+          "source_id": "memory-decoupled-mcu",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ]
     },
@@ -5740,6 +5784,39 @@
       ]
     },
     {
+      "id": "portenta-h7",
+      "type": "hardware",
+      "name": "Arduino Portenta H7",
+      "layer": "Hardware",
+      "summary": "Arduino Portenta H7 board (STM32H747: Cortex-M7 at 480 MHz plus Cortex-M4, 512 KB SRAM) running a compiled, statically-allocated C runtime exported from an snnTorch-trained spiking network.",
+      "attributes": {
+        "target_kind": "MCU",
+        "time_model": "Single-core, interrupt-free firmware execution; latency is the compiled runtime's own instruction count on the Cortex-M7 core's clock.",
+        "toolchain": "snnTorch (PyTorch) surrogate-gradient training exported to a custom, statically-allocated C runtime, compiled for the Portenta H7's STM32H747.",
+        "availability": "Commercially available general-purpose hardware; no neuromorphic-specific access restriction."
+      },
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "pynn",
       "type": "framework",
       "name": "PyNN",
@@ -6948,6 +7025,34 @@
       ]
     },
     {
+      "id": "snntorch-c-runtime",
+      "type": "runtime",
+      "name": "snnTorch C runtime",
+      "layer": "Runtime",
+      "summary": "A lightweight, statically-allocated C runtime that re-implements an snnTorch-trained LIF network with spike-driven pruning of inactive neurons and filters, exported from the trained PyTorch model and compiled directly for the target MCU.",
+      "attributes": {},
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "speck",
       "type": "hardware",
       "name": "SynSense Speck",
@@ -7560,6 +7665,66 @@
       ]
     },
     {
+      "id": "stedgeai",
+      "type": "compiler",
+      "name": "STEdgeAI",
+      "layer": "Export & compile",
+      "summary": "STMicroelectronics' STEdgeAI toolchain, which quantizes and maps a TensorFlow Lite model onto the STM32N657X0's integrated ST Neural-ART NPU or its Cortex-M55 CPU.",
+      "attributes": {},
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "stm32n6-npu",
+      "type": "hardware",
+      "name": "STM32N6 Neural-ART NPU",
+      "layer": "Hardware",
+      "summary": "The ST Neural-ART NPU integrated on the STM32N657X0 microcontroller (NUCLEO-N657X0-Q board), benchmarked against the same chip's own Cortex-M55 CPU execution path for a TensorFlow-Lite-trained, STEdgeAI-quantized LIF spiking network.",
+      "attributes": {
+        "target_kind": "NPU",
+        "toolchain": "TensorFlow Lite training and quantization, compiled by STMicroelectronics' STEdgeAI toolchain for the STM32N657X0's integrated Neural-ART NPU.",
+        "availability": "Commercially available STMicroelectronics NUCLEO-N657X0-Q development board."
+      },
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
       "id": "sync-tick",
       "type": "neuron",
       "name": "Synchronous global tick",
@@ -7777,6 +7942,62 @@
       "source_statuses": [
         {
           "source_id": "temporal-flexibility",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "tensorflow-edgetpu",
+      "type": "runtime",
+      "name": "TensorFlow (Edge TPU)",
+      "layer": "Runtime",
+      "summary": "A TensorFlow-trained network executed directly on the Coral Edge TPU Dev Board's 8-bit fixed-point path, with no separate compiler stage named in the record.",
+      "attributes": {},
+      "source_ids": [
+        "coral-edge-tpu-tracking"
+      ],
+      "source_refs": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "locators": [
+            "Section II Demo Setup",
+            "Section III Conclusion",
+            "Table I Performance Comparison"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "tensorflow-lite",
+      "type": "framework",
+      "name": "TensorFlow Lite",
+      "layer": "Develop & simulate",
+      "summary": "TensorFlow Lite, used to build and train a Leaky Integrate-and-Fire spiking network before STEdgeAI quantization for the STM32N657X0's NPU and CPU execution paths.",
+      "attributes": {},
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
           "retrieval_status": "full_text",
           "verification_status": "verified"
         }
@@ -27343,6 +27564,66 @@
       ]
     },
     {
+      "id": "snntorch-c-runtime-to-portenta-h7",
+      "from": "snntorch-c-runtime",
+      "to": "portenta-h7",
+      "from_node": {
+        "id": "snntorch-c-runtime",
+        "type": "runtime",
+        "name": "snnTorch C runtime",
+        "layer": "Runtime"
+      },
+      "to_node": {
+        "id": "portenta-h7",
+        "type": "hardware",
+        "name": "Arduino Portenta H7",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "exported LIF network behavior"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "exported LIF network behavior"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "The compiled C runtime executes directly as firmware on the Portenta H7's STM32H747 Cortex-M7 core, with on-board timer measurement of end-to-end inference latency.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "snntorch-to-nir",
       "from": "snntorch",
       "to": "nir",
@@ -27410,6 +27691,66 @@
           "source_id": "snntorch-pr388",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "snntorch-to-snntorch-c-runtime",
+      "from": "snntorch",
+      "to": "snntorch-c-runtime",
+      "from_node": {
+        "id": "snntorch",
+        "type": "framework",
+        "name": "snnTorch",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "snntorch-c-runtime",
+        "type": "runtime",
+        "name": "snnTorch C runtime",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "trained LIF layer structure and weights"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "trained LIF layer structure and weights"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "An snnTorch-trained LIF network with surrogate-gradient backpropagation-through-time is exported and re-implemented as a lightweight, statically-allocated C runtime, with spike-driven pruning of inactive neurons and filters.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "snntorch-portenta-h7"
+      ],
+      "source_refs": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "locators": [
+            "Abstract",
+            "Section III-B Deployment Platforms and Evaluation Protocol",
+            "Section IV Results (Table I, Figure 6)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "snntorch-portenta-h7",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
       "input_shape": "legacy",
@@ -29634,6 +29975,66 @@
       ]
     },
     {
+      "id": "stedgeai-to-stm32n6-npu",
+      "from": "stedgeai",
+      "to": "stm32n6-npu",
+      "from_node": {
+        "id": "stedgeai",
+        "type": "compiler",
+        "name": "STEdgeAI",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "stm32n6-npu",
+        "type": "hardware",
+        "name": "STM32N6 Neural-ART NPU",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "quantized network behavior"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "quantized network behavior"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "STEdgeAI's compiled output runs on the STM32N657X0's integrated ST Neural-ART NPU, with on-board power measurement via an STLINK-V3PWR probe.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "sync-tick-to-loihi1",
       "from": "sync-tick",
       "to": "loihi-1",
@@ -30208,6 +30609,126 @@
       "source_statuses": [
         {
           "source_id": "temporal-flexibility",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "tensorflow-edgetpu-to-coral-edge-tpu",
+      "from": "tensorflow-edgetpu",
+      "to": "coral-edge-tpu",
+      "from_node": {
+        "id": "tensorflow-edgetpu",
+        "type": "runtime",
+        "name": "TensorFlow (Edge TPU)",
+        "layer": "Runtime"
+      },
+      "to_node": {
+        "id": "coral-edge-tpu",
+        "type": "hardware",
+        "name": "Google Coral Edge TPU",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "trained network structure"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "trained network structure"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "A TensorFlow-trained tracking and path-prediction network runs directly on the Coral Edge TPU Dev Board's 8-bit fixed-point execution path, benchmarked live against the same networks on an Intel Compute Stick.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "coral-edge-tpu-tracking"
+      ],
+      "source_refs": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "locators": [
+            "Section II Demo Setup",
+            "Section III Conclusion",
+            "Table I Performance Comparison"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "coral-edge-tpu-tracking",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "tensorflow-lite-to-stedgeai",
+      "from": "tensorflow-lite",
+      "to": "stedgeai",
+      "from_node": {
+        "id": "tensorflow-lite",
+        "type": "framework",
+        "name": "TensorFlow Lite",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "stedgeai",
+        "type": "compiler",
+        "name": "STEdgeAI",
+        "layer": "Export & compile"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "trained LIF layer structure"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "trained LIF layer structure"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "STEdgeAI quantizes and compiles the TensorFlow-Lite-trained LIF network for the STM32N657X0's integrated Neural-ART NPU and Cortex-M55 CPU execution paths.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "onoszko-stm32n6-npu"
+      ],
+      "source_refs": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
+          "locators": [
+            "Abstract",
+            "Chapter 1 Introduction",
+            "Chapter 5 Results and Analysis (5.2.1 NPU, 5.2.2 CPU, Tables 5.1-5.4)"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "onoszko-stm32n6-npu",
           "retrieval_status": "full_text",
           "verification_status": "verified"
         }
