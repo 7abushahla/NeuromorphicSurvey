@@ -10749,6 +10749,41 @@
       "capability_class": null
     },
     {
+      "id": "route:analog-time-to-dynap-se",
+      "origin_type": "route",
+      "origin_id": "analog-time-to-dynap-se",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "DYNAP-SE's fully analog, asynchronous circuits carry continuous physical time, not applicable in the discrete-timestep sense, per the tactile-localization record's own timesteps field.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "dynap-se-tactile"
+      ],
+      "source_refs": [
+        {
+          "source_id": "dynap-se-tactile",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "dynap-se-tactile",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:analog-time-to-dynapse2",
       "origin_type": "route",
       "origin_id": "analog-time-to-dynapse2",
@@ -12515,6 +12550,53 @@
       "capability_class": null
     },
     {
+      "id": "route:corelet-to-truenorth",
+      "origin_type": "route",
+      "origin_id": "corelet-to-truenorth",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "The corelet compiler's output loads onto TrueNorth's NS1e and NS16e boards, evaluated once per 1 kHz global tick.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "truenorth",
+        "truenorth-dvs-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:datta-error-free-conversion-to-lava-dl",
       "origin_type": "route",
       "origin_id": "datta-error-free-conversion-to-lava-dl",
@@ -12691,6 +12773,41 @@
       "eligible_for_substantive_use": false,
       "route_state": null,
       "capability_class": null
+    },
+    {
+      "id": "route:eedn-to-corelet",
+      "origin_type": "route",
+      "origin_id": "eedn-to-corelet",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "Eedn's constrained backprop training produces binary-neuron, trinary-synapse weights that the corelet compiler maps onto TrueNorth's crossbar cores.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "truenorth"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:event-camera-to-frames-from-events",
@@ -12928,6 +13045,88 @@
       ],
       "verification_status": "verified",
       "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
+      "id": "route:fpga-synthesis-flow-to-fpga",
+      "origin_type": "route",
+      "origin_id": "fpga-synthesis-flow-to-fpga",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "FireFly v2's custom HDL for Xilinx UltraScale DSP48E2 blocks and Spiker+'s snnTorch-trainable, BPTT or offline-trained neuron library both pass through the general Xilinx HLS, RTL, or Vivado synthesis flow this fpga node's own toolchain attribute names, to physical Zynq UltraScale-plus and general Xilinx boards.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "firefly",
+        "spikerplus"
+      ],
+      "source_refs": [
+        {
+          "source_id": "firefly",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        },
+        {
+          "source_id": "spikerplus",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "firefly",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "spikerplus",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
+      "id": "route:fpga-synthesis-flow-to-syncnn",
+      "origin_type": "route",
+      "origin_id": "fpga-synthesis-flow-to-syncnn",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "SyncNN's synchronous reformulation of rate-encoded IF-neuron inference is built with the Vitis HLS and SDSoC hardware-mode flow, deployed across three physical Xilinx ARM-FPGA SoC boards.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "syncnn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "syncnn",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "syncnn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
       "route_state": "physical",
       "capability_class": "native"
     },
@@ -13358,6 +13557,41 @@
       "eligible_for_substantive_use": true,
       "route_state": null,
       "capability_class": null
+    },
+    {
+      "id": "route:hs-api-to-fpga",
+      "origin_type": "route",
+      "origin_id": "hs-api-to-fpga",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "The CRI-format network runs on the CRI FPGA-based neuromorphic hardware at UCSD, with accuracy, clock cycles, and HBM accesses recorded per sample on physical hardware.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:hxtorch-snn-to-brainscales2",
@@ -14222,6 +14456,43 @@
       "capability_class": null
     },
     {
+      "id": "route:low-latency-conversion-to-spinnaker2",
+      "origin_type": "route",
+      "origin_id": "low-latency-conversion-to-spinnaker2",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "A complex-valued extension of Few-Spikes conversion maps an unfolded multidimensional harmonic-retrieval network onto physical single-chip SpiNNaker 2, a low-latency-conversion route by the record's own family field.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Figure 4, p. 5",
+            "Section IV, pp. 4-5",
+            "Sections III-A and III-B, pp. 3-4"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:microphone-to-keyword-spotting",
       "origin_type": "route",
       "origin_id": "microphone-to-keyword-spotting",
@@ -14321,6 +14592,41 @@
       "eligible_for_substantive_use": true,
       "route_state": "physical",
       "capability_class": "transformed"
+    },
+    {
+      "id": "route:mlgenn-to-netx",
+      "origin_type": "route",
+      "origin_id": "mlgenn-to-netx",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "mlGeNN's EventProp-trained network with learned synaptic delays exports through Lava-DL NetX's platform-independent HDF5 description for execution as a Lava Process graph, distinct from mlGeNN's separate GeNN-generated CUDA leg to a GPU.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "eventprop-delays"
+      ],
+      "source_refs": [
+        {
+          "source_id": "eventprop-delays",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "eventprop-delays",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:multi-compartment-to-loihi1",
@@ -15485,6 +15791,41 @@
       "capability_class": null
     },
     {
+      "id": "route:pynn-to-brainscales1",
+      "origin_type": "route",
+      "origin_id": "pynn-to-brainscales1",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "PyNN's brainscales backend (pynn.brainscales) runs converted, hardware-in-the-loop-retrained networks on physical BrainScaleS-1 wafer-scale silicon via the EBRAINS platform.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "kelber-2020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "kelber-2020",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "kelber-2020",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:pynn-to-brainscales2",
       "origin_type": "route",
       "origin_id": "pynn-to-brainscales2",
@@ -16616,6 +16957,41 @@
       "capability_class": null
     },
     {
+      "id": "route:slayer-to-nxtf",
+      "origin_type": "route",
+      "origin_id": "slayer-to-nxtf",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "A SLAYER-trained CUBA/IF network compiles through NxTF for deployment via NxSDK on a physical Loihi 1 board, with execution-time and energy probes built into the deployment script.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "slayer-nxtf-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:snn-toolbox-to-brian2",
       "origin_type": "route",
       "origin_id": "snn-toolbox-to-brian2",
@@ -16892,6 +17268,41 @@
       "capability_class": "native"
     },
     {
+      "id": "route:spikingjelly-to-hs-api",
+      "origin_type": "route",
+      "origin_id": "spikingjelly-to-hs-api",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "A SpikingJelly-trained DVS128 Gesture network is converted by hs_api into the CRI hardware format.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "verification_status": "provisional",
+      "eligible_for_substantive_use": false,
+      "route_state": "physical",
+      "capability_class": "native"
+    },
+    {
       "id": "route:spikingjelly-to-lava-exchange",
       "origin_type": "route",
       "origin_id": "spikingjelly-to-lava-exchange",
@@ -17065,6 +17476,57 @@
       "eligible_for_substantive_use": false,
       "route_state": null,
       "capability_class": null
+    },
+    {
+      "id": "route:spinnaker-runtime-to-spinnaker2",
+      "origin_type": "route",
+      "origin_id": "spinnaker-runtime-to-spinnaker2",
+      "classification": "conceptual",
+      "classification_basis": "route and semantic-transition record",
+      "label": "The py-spinnaker2 experiment runner, the SpiNNaker-2 analogue of the SpiNNaker runtime, partitions and executes a network on physical single-chip or 48-chip SpiNNaker 2 systems.",
+      "metric": null,
+      "boundary": null,
+      "workload": [],
+      "platform": null,
+      "evidence_class": "E1",
+      "source_ids": [
+        "andrei2024-deep-unrolling-spinnaker2",
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Figure 4, p. 5",
+            "Section IV, pp. 4-5",
+            "Sections III-A and III-B, pp. 3-4"
+          ]
+        },
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "locators": [
+            "Sections III-A and III-C, pp. 3-4",
+            "Sections IV-C and IV-D, pp. 5-7",
+            "Table III, p. 7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "verification_status": "verified",
+      "eligible_for_substantive_use": true,
+      "route_state": "physical",
+      "capability_class": "native"
     },
     {
       "id": "route:spynnaker-to-spinnaker-runtime",

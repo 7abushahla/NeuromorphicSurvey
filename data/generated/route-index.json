@@ -1361,6 +1361,44 @@
       ]
     },
     {
+      "id": "corelet",
+      "type": "compiler",
+      "name": "Corelet compiler",
+      "layer": "Export & compile",
+      "summary": "Compiles an Eedn-trained network into the corelet programming abstraction that maps onto TrueNorth's NS1e and NS16e boards.",
+      "attributes": {},
+      "source_ids": [
+        "truenorth",
+        "truenorth-dvs-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
       "id": "cortex-m-mcu",
       "type": "hardware",
       "name": "ARM Cortex-M MCU",
@@ -1648,6 +1686,46 @@
       ]
     },
     {
+      "id": "dynap-se",
+      "type": "hardware",
+      "name": "DYNAP-SE",
+      "layer": "Hardware",
+      "summary": "Mixed-signal analog neuromorphic chip driving a bioinspired somatosensory circuit for FBG e-skin tactile localization, distinct from the newer DYNAP-SE2.",
+      "attributes": {
+        "time_model": "Fully analog, continuous time; not applicable in the discrete-timestep sense.",
+        "neuron_models": "4096 DYNAP-SE adaptive-exponential analog neurons.",
+        "reset_semantics": "not found",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "unknown",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom DYNAP-SE configuration for the tactile-localization circuit.",
+        "availability": "unknown",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "source_ids": [
+        "dynap-se-tactile"
+      ],
+      "source_refs": [
+        {
+          "source_id": "dynap-se-tactile",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "dynap-se-tactile",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
       "id": "dynap-se2",
       "type": "hardware",
       "name": "DYNAP-SE2",
@@ -1796,6 +1874,32 @@
         },
         {
           "source_id": "synsense-speck-datasheet",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "eedn",
+      "type": "framework",
+      "name": "Eedn",
+      "layer": "Develop & simulate",
+      "summary": "Constrained backprop training that configures CNNs directly under TrueNorth's hardware constraints (binary neurons, trinary synapses), not classical ANN-to-SNN conversion.",
+      "attributes": {},
+      "source_ids": [
+        "truenorth"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -2118,6 +2222,56 @@
       "source_statuses": [
         {
           "source_id": "li2023-firefly",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "spikerplus",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "syncnn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "fpga-synthesis-flow",
+      "type": "compiler",
+      "name": "FPGA HLS or RTL synthesis",
+      "layer": "Export & compile",
+      "summary": "The Xilinx Vitis HLS, SDSoC, or Vivado synthesis flow that turns a spiking accelerator design into a bitstream for a general Xilinx FPGA target, per the fpga node's own toolchain attribute and SyncNN's own toolchain field.",
+      "attributes": {},
+      "source_ids": [
+        "firefly",
+        "spikerplus",
+        "syncnn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "firefly",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        },
+        {
+          "source_id": "spikerplus",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        },
+        {
+          "source_id": "syncnn",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "firefly",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         },
@@ -2689,6 +2843,32 @@
         },
         {
           "source_id": "rowley2019-spinntools",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "hs-api",
+      "type": "compiler",
+      "name": "hs_api",
+      "layer": "Export & compile",
+      "summary": "Converts a SpikingJelly-trained network into the CRI hardware format for HiAER-Spike deployment.",
+      "attributes": {},
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -5235,6 +5415,46 @@
       ]
     },
     {
+      "id": "odin",
+      "type": "hardware",
+      "name": "ODIN",
+      "layer": "Hardware",
+      "summary": "UCLouvain single-core, online-learning (SDSP) digital spiking neuromorphic ASIC embedding rank-order-coded on-chip learning, measured on 9 fabricated 28 nm chips.",
+      "attributes": {
+        "time_model": "Fully event-driven digital design.",
+        "neuron_models": "LIF or custom Izhikevich-like, 256 neurons, 64k synapses.",
+        "reset_semantics": "not found (SDSP-driven, not the standard IF hard or subtractive framing)",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "Rank-order-coded stochastic spike-driven plasticity (SDSP).",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, open source (ChFrenkel/ODIN).",
+        "availability": "Academic research chip (28 nm FDSOI, 9 fabricated chips tested), not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "source_ids": [
+        "odin"
+      ],
+      "source_refs": [
+        {
+          "source_id": "odin",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "odin",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
       "id": "olfaction",
       "type": "application",
       "name": "Olfaction (odor classification)",
@@ -5886,6 +6106,46 @@
         },
         {
           "source_id": "rueckauer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "reckon",
+      "type": "hardware",
+      "name": "ReckOn",
+      "layer": "Hardware",
+      "summary": "Task-agnostic spiking recurrent neural network processor with a feed-forward e-prop and BPTT approximation, enabling on-chip supervised learning over second-long timescales, measured on 5 fabricated 28 nm chips.",
+      "attributes": {
+        "time_model": "not applicable (continuous processing)",
+        "neuron_models": "LIF.",
+        "reset_semantics": "not found",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "Feed-forward-eligibility-trace e-prop and BPTT approximation, end to end on chip.",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, open source (ChFrenkel/ReckOn).",
+        "availability": "Academic research chip (28 nm FDSOI, 5 fabricated chips), not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "source_ids": [
+        "reckon"
+      ],
+      "source_refs": [
+        {
+          "source_id": "reckon",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "reckon",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -6568,6 +6828,44 @@
         },
         {
           "source_id": "trinityslam2024",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
+      "id": "slayer",
+      "type": "framework",
+      "name": "SLAYER",
+      "layer": "Develop & simulate",
+      "summary": "Standalone spike-layer error-reassignment backprop-through-time training library, the predecessor of Lava-DL's own slayer module, used here on its own to train a network later deployed via NxTF.",
+      "attributes": {},
+      "source_ids": [
+        "slayer",
+        "slayer-nxtf-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slayer",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        },
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slayer",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "slayer-nxtf-gesture",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -7820,6 +8118,46 @@
       ]
     },
     {
+      "id": "ubrain",
+      "type": "hardware",
+      "name": "uBrain",
+      "layer": "Hardware",
+      "summary": "Fully digital, clockless, event-driven SNN IC designed for ANN-to-SNN-conversion-friendly always-on edge inference, using inter-spike-interval readout and a ReLU-to-accumulator-wraparound neuron mapping, measured on a fabricated 40 nm prototype.",
+      "attributes": {
+        "time_model": "not applicable (ISI-based, event rate 100 Hz to 655 kHz)",
+        "neuron_models": "ReLU-to-accumulator-wraparound, ANN-to-SNN-conversion-friendly, ISI readout.",
+        "reset_semantics": "Wraparound reset (accumulator overflow), not classic subtractive reset.",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "unknown",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, 40 nm CMOS.",
+        "availability": "Fabricated 40 nm prototype, not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "source_ids": [
+        "ubrain"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ubrain",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "ubrain",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ]
+    },
+    {
       "id": "xylo",
       "type": "hardware",
       "name": "SynSense Xylo",
@@ -8291,6 +8629,66 @@
       "source_statuses": [
         {
           "source_id": "bss",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "analog-time-to-dynap-se",
+      "from": "analog-time",
+      "to": "dynap-se",
+      "from_node": {
+        "id": "analog-time",
+        "type": "neuron",
+        "name": "Analog continuous time",
+        "layer": "Computation"
+      },
+      "to_node": {
+        "id": "dynap-se",
+        "type": "hardware",
+        "name": "DYNAP-SE",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "continuous-time physical dynamics"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "continuous-time physical dynamics"
+      ],
+      "legacy_breaks": [
+        "exact digital-timestep correspondence"
+      ],
+      "mechanism": "DYNAP-SE's fully analog, asynchronous circuits carry continuous physical time, not applicable in the discrete-timestep sense, per the tactile-localization record's own timesteps field.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "dynap-se-tactile"
+      ],
+      "source_refs": [
+        {
+          "source_id": "dynap-se-tactile",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "dynap-se-tactile",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
         }
@@ -12166,6 +12564,76 @@
       "platform_capabilities": []
     },
     {
+      "id": "corelet-to-truenorth",
+      "from": "corelet",
+      "to": "truenorth",
+      "from_node": {
+        "id": "corelet",
+        "type": "compiler",
+        "name": "Corelet compiler",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "truenorth",
+        "type": "hardware",
+        "name": "IBM TrueNorth",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "one-classification-per-tick execution model"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "one-classification-per-tick execution model"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "The corelet compiler's output loads onto TrueNorth's NS1e and NS16e boards, evaluated once per 1 kHz global tick.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "truenorth",
+        "truenorth-dvs-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "truenorth-dvs-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "datta-error-free-conversion-to-lava-dl",
       "from": "datta-error-free-conversion",
       "to": "lava-dl",
@@ -12969,6 +13437,64 @@
       ]
     },
     {
+      "id": "eedn-to-corelet",
+      "from": "eedn",
+      "to": "corelet",
+      "from_node": {
+        "id": "eedn",
+        "type": "framework",
+        "name": "Eedn",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "corelet",
+        "type": "compiler",
+        "name": "Corelet compiler",
+        "layer": "Export & compile"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "trinary weights constructed via a pair of neuron copies over a 4-entry axon-type lookup table"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "trinary weights constructed via a pair of neuron copies over a 4-entry axon-type lookup table"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "Eedn's constrained backprop training produces binary-neuron, trinary-synapse weights that the corelet compiler maps onto TrueNorth's crossbar cores.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "truenorth"
+      ],
+      "source_refs": [
+        {
+          "source_id": "truenorth",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json, sources.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "truenorth",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "event-camera-to-frames-from-events",
       "from": "event-camera",
       "to": "frames-from-events",
@@ -13313,6 +13839,134 @@
           "source_id": "fenn-riscv",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "fpga-synthesis-flow-to-fpga",
+      "from": "fpga-synthesis-flow",
+      "to": "fpga",
+      "from_node": {
+        "id": "fpga-synthesis-flow",
+        "type": "compiler",
+        "name": "FPGA HLS or RTL synthesis",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "fpga",
+        "type": "hardware",
+        "name": "FPGA SNN accelerators (general)",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "design-dependent neuron model and reset configuration"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "design-dependent neuron model and reset configuration"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "FireFly v2's custom HDL for Xilinx UltraScale DSP48E2 blocks and Spiker+'s snnTorch-trainable, BPTT or offline-trained neuron library both pass through the general Xilinx HLS, RTL, or Vivado synthesis flow this fpga node's own toolchain attribute names, to physical Zynq UltraScale-plus and general Xilinx boards.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "firefly",
+        "spikerplus"
+      ],
+      "source_refs": [
+        {
+          "source_id": "firefly",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        },
+        {
+          "source_id": "spikerplus",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "firefly",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        },
+        {
+          "source_id": "spikerplus",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "fpga-synthesis-flow-to-syncnn",
+      "from": "fpga-synthesis-flow",
+      "to": "syncnn",
+      "from_node": {
+        "id": "fpga-synthesis-flow",
+        "type": "compiler",
+        "name": "FPGA HLS or RTL synthesis",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "syncnn",
+        "type": "hardware",
+        "name": "SyncNN",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "mathematical equivalence to standard rate-coded IF plus reset-by-subtraction execution"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "mathematical equivalence to standard rate-coded IF plus reset-by-subtraction execution"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "SyncNN's synchronous reformulation of rate-encoded IF-neuron inference is built with the Vitis HLS and SDSoC hardware-mode flow, deployed across three physical Xilinx ARM-FPGA SoC boards.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "syncnn"
+      ],
+      "source_refs": [
+        {
+          "source_id": "syncnn",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "syncnn",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ],
       "input_shape": "legacy",
@@ -13973,6 +14627,64 @@
           "source_id": "loihi2-llm-hostio",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "hs-api-to-fpga",
+      "from": "hs-api",
+      "to": "fpga",
+      "from_node": {
+        "id": "hs-api",
+        "type": "compiler",
+        "name": "hs_api",
+        "layer": "Export & compile"
+      },
+      "to_node": {
+        "id": "fpga",
+        "type": "hardware",
+        "name": "FPGA SNN accelerators (general)",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "10 frames plus 6 drain steps of the converted network's execution schedule"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "10 frames plus 6 drain steps of the converted network's execution schedule"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "The CRI-format network runs on the CRI FPGA-based neuromorphic hardware at UCSD, with accuracy, clock cycles, and HBM accesses recorded per sample on physical hardware.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ],
       "input_shape": "legacy",
@@ -16299,6 +17011,66 @@
       "platform_capabilities": []
     },
     {
+      "id": "low-latency-conversion-to-spinnaker2",
+      "from": "low-latency-conversion",
+      "to": "spinnaker-2",
+      "from_node": {
+        "id": "low-latency-conversion",
+        "type": "learning-path",
+        "name": "Low-latency conversion",
+        "layer": "Learning paths"
+      },
+      "to_node": {
+        "id": "spinnaker-2",
+        "type": "hardware",
+        "name": "SpiNNaker 2",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "serialized temporal Few-Spikes code rather than a firing-rate window"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "serialized temporal Few-Spikes code rather than a firing-rate window"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "A complex-valued extension of Few-Spikes conversion maps an unfolded multidimensional harmonic-retrieval network onto physical single-chip SpiNNaker 2, a low-latency-conversion route by the record's own family field.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Figure 4, p. 5",
+            "Section IV, pp. 4-5",
+            "Sections III-A and III-B, pp. 3-4"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "microphone-to-keyword-spotting",
       "from": "microphone",
       "to": "keyword-spotting-audio",
@@ -16442,6 +17214,64 @@
           "source_id": "genn-docs",
           "retrieval_status": "full_text",
           "verification_status": "verified"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "mlgenn-to-netx",
+      "from": "mlgenn",
+      "to": "netx",
+      "from_node": {
+        "id": "mlgenn",
+        "type": "framework",
+        "name": "mlGeNN",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "netx",
+        "type": "runtime",
+        "name": "Lava-DL NetX",
+        "layer": "Runtime"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "EventProp-trained LIF-with-exponential-synapse layer graph and learned delays"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "EventProp-trained LIF-with-exponential-synapse layer graph and learned delays"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "mlGeNN's EventProp-trained network with learned synaptic delays exports through Lava-DL NetX's platform-independent HDF5 description for execution as a Lava Process graph, distinct from mlGeNN's separate GeNN-generated CUDA leg to a GPU.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "eventprop-delays"
+      ],
+      "source_refs": [
+        {
+          "source_id": "eventprop-delays",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "eventprop-delays",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
         }
       ],
       "input_shape": "legacy",
@@ -20776,6 +21606,66 @@
       "platform_capabilities": []
     },
     {
+      "id": "pynn-to-brainscales1",
+      "from": "pynn",
+      "to": "brainscales-1",
+      "from_node": {
+        "id": "pynn",
+        "type": "framework",
+        "name": "PyNN",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "brainscales-1",
+        "type": "hardware",
+        "name": "BrainScaleS-1",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "simulator-independent PyNN network description"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "simulator-independent PyNN network description"
+      ],
+      "legacy_breaks": [
+        "neuron reset semantics and time model, inherited from the analog backend, not from PyNN"
+      ],
+      "mechanism": "PyNN's brainscales backend (pynn.brainscales) runs converted, hardware-in-the-loop-retrained networks on physical BrainScaleS-1 wafer-scale silicon via the EBRAINS platform.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "kelber-2020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "kelber-2020",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "kelber-2020",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "pynn-to-brainscales2",
       "from": "pynn",
       "to": "brainscales-2",
@@ -25068,6 +25958,64 @@
       "platform_capabilities": []
     },
     {
+      "id": "slayer-to-nxtf",
+      "from": "slayer",
+      "to": "nxtf",
+      "from_node": {
+        "id": "slayer",
+        "type": "framework",
+        "name": "SLAYER",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "nxtf",
+        "type": "compiler",
+        "name": "NxTF",
+        "layer": "Export & compile"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "SLAYER-trained CUBA/IF layer graph and weights"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "SLAYER-trained CUBA/IF layer graph and weights"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "A SLAYER-trained CUBA/IF network compiles through NxTF for deployment via NxSDK on a physical Loihi 1 board, with execution-time and energy probes built into the deployment script.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "slayer-nxtf-gesture"
+      ],
+      "source_refs": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "locators": [
+            "Structured metadata from evidence-papers.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "slayer-nxtf-gesture",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "snn-toolbox-to-brian2",
       "from": "snn-toolbox",
       "to": "brian2",
@@ -26541,6 +27489,64 @@
       "platform_capabilities": []
     },
     {
+      "id": "spikingjelly-to-hs-api",
+      "from": "spikingjelly",
+      "to": "hs-api",
+      "from_node": {
+        "id": "spikingjelly",
+        "type": "framework",
+        "name": "SpikingJelly",
+        "layer": "Develop & simulate"
+      },
+      "to_node": {
+        "id": "hs-api",
+        "type": "compiler",
+        "name": "hs_api",
+        "layer": "Export & compile"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "trained network's layer graph and weights"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "trained network's layer graph and weights"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "A SpikingJelly-trained DVS128 Gesture network is converted by hs_api into the CRI hardware format.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "hiaer-spike-cri"
+      ],
+      "source_refs": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "locators": [
+            "Structured metadata from evidence-papers.json, evidence-stack.json"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "hiaer-spike-cri",
+          "retrieval_status": "metadata_only",
+          "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
       "id": "spikingjelly-to-lava-exchange",
       "from": "spikingjelly",
       "to": "lava-exchange",
@@ -27862,6 +28868,80 @@
           "source_id": "spinnaker-chip",
           "retrieval_status": "metadata_only",
           "verification_status": "provisional"
+        }
+      ],
+      "input_shape": "legacy",
+      "platform_capabilities": []
+    },
+    {
+      "id": "spinnaker-runtime-to-spinnaker2",
+      "from": "spinnaker-runtime",
+      "to": "spinnaker-2",
+      "from_node": {
+        "id": "spinnaker-runtime",
+        "type": "runtime",
+        "name": "SpiNNaker runtime",
+        "layer": "Runtime"
+      },
+      "to_node": {
+        "id": "spinnaker-2",
+        "type": "hardware",
+        "name": "SpiNNaker 2",
+        "layer": "Hardware"
+      },
+      "typed_input": null,
+      "typed_output": null,
+      "preserved": [
+        "per-core execution and readback pipeline analogous to SpiNNaker 1's SpiN1API and SpiNNTools flow"
+      ],
+      "transformed": [],
+      "rejected": [],
+      "legacy_preserves": [
+        "per-core execution and readback pipeline analogous to SpiNNaker 1's SpiN1API and SpiNNTools flow"
+      ],
+      "legacy_breaks": [],
+      "mechanism": "The py-spinnaker2 experiment runner, the SpiNNaker-2 analogue of the SpiNNaker runtime, partitions and executes a network on physical single-chip or 48-chip SpiNNaker 2 systems.",
+      "notes": null,
+      "capability_class": "native",
+      "route_state": "physical",
+      "reports_deployment_evidence": null,
+      "evidence": "E1",
+      "evidence_class": "E1",
+      "measurement_boundary": null,
+      "platform_generation": null,
+      "toolchain_version": null,
+      "source_ids": [
+        "andrei2024-deep-unrolling-spinnaker2",
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "source_refs": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "locators": [
+            "Figure 4, p. 5",
+            "Section IV, pp. 4-5",
+            "Sections III-A and III-B, pp. 3-4"
+          ]
+        },
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "locators": [
+            "Sections III-A and III-C, pp. 3-4",
+            "Sections IV-C and IV-D, pp. 5-7",
+            "Table III, p. 7"
+          ]
+        }
+      ],
+      "source_statuses": [
+        {
+          "source_id": "andrei2024-deep-unrolling-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
+        },
+        {
+          "source_id": "arfa2025-spiking-q-spinnaker2",
+          "retrieval_status": "full_text",
+          "verification_status": "verified"
         }
       ],
       "input_shape": "legacy",

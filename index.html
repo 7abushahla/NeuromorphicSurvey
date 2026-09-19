@@ -7892,6 +7892,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
       {
        "id": "quartz",
        "label": "Quartz"
+      },
+      {
+       "id": "eedn",
+       "label": "Eedn"
+      },
+      {
+       "id": "slayer",
+       "label": "SLAYER"
       }
      ]
     },
@@ -7960,6 +7968,18 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
       {
        "id": "fenn-vector-program",
        "label": "FeNN vector program"
+      },
+      {
+       "id": "corelet",
+       "label": "Corelet compiler"
+      },
+      {
+       "id": "hs-api",
+       "label": "hs_api"
+      },
+      {
+       "id": "fpga-synthesis-flow",
+       "label": "FPGA HLS or RTL synthesis"
       }
      ]
     },
@@ -8122,6 +8142,10 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
       {
        "id": "xylo",
        "label": "Xylo"
+      },
+      {
+       "id": "lynxi-hp201",
+       "label": "Lynxi HP201"
       }
      ],
      "bucket": "neuromorphic"
@@ -8157,6 +8181,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
       {
        "id": "morphic",
        "label": "MorphIC"
+      },
+      {
+       "id": "dynap-se",
+       "label": "DYNAP-SE"
+      },
+      {
+       "id": "odin",
+       "label": "ODIN"
+      },
+      {
+       "id": "reckon",
+       "label": "ReckOn"
+      },
+      {
+       "id": "ubrain",
+       "label": "uBrain"
       }
      ],
      "bucket": "neuromorphic"
@@ -8552,7 +8592,8 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "via": {
       "learning": "direct-training-surrogate-gradient",
       "neuron": "if-neuron",
-      "hw": "speck"
+      "hw": "speck",
+      "task": "gesture-recognition"
      }
     },
     {
@@ -9367,6 +9408,1180 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      }
     }
    ]
+  },
+  "adaptive-fission-lynxi": {
+   "name": "Adaptive Fission to Lynxi HP201",
+   "rank": 16,
+   "tk": "neuromorphic",
+   "color": "#7A9A3C",
+   "ev": "E1",
+   "story": "Adaptive Fission's post-training population expansion is measured for on-chip memory, seconds per evaluation epoch, and system watt-hours per epoch at batch size 32 on a physical Lynxi HP201 accelerator.",
+   "note": "Population coding is a post-training population expansion that replaces additional temporal integration with groups of binary sub-neurons carrying unequal fixed weights, applied on top of existing conversion methods including QCFS and SRP. The Lynxi HP201 is the commercial successor to Tianjic. Board sensors include peripherals, memory, and I/O, and the paper does not report per-sample latency or energy; closed interfaces prevent core-only measurement. Table 1 also contains unmodified no-Fission QCFS and SRP baseline rows.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": "population-coding",
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "code": [
+     "population-coding"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "lynxi-hp201"
+   ],
+   "papers": [
+    {
+     "id": "adaptive-fission",
+     "via": {
+      "code": "population-coding",
+      "hw": "lynxi-hp201"
+     }
+    }
+   ]
+  },
+  "py-spinnaker2-spinnaker2": {
+   "name": "py-spinnaker2 to SpiNNaker 2",
+   "rank": 17,
+   "tk": "neuromorphic",
+   "color": "#B08D57",
+   "ev": "E1",
+   "story": "A complex-valued Few-Spikes conversion and a hardware-aware fine-tuned spiking Q-network are both measured on physical single-chip SpiNNaker 2 boards against embedded-GPU baselines.",
+   "note": "Neither record's own toolchain field names py-spinnaker2 directly, one says custom mapping to SpiNNaker2, the other custom SpiNNaker2 deployment, but the SpiNNaker runtime node's own summary independently names py-spinnaker2's experiment runner as the SpiNNaker-2 analogue of the SpiNNaker-1 execution pipeline, so the run step is grounded there rather than in either individual record. The Few-Spikes route serializes a temporal code rather than a firing rate; the Q-network route uses ordinary rate coding with subtractive reset.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": "sync-tick",
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": "spinnaker-runtime"
+   },
+   "can": {
+    "learning": [
+     "low-latency-conversion",
+     "direct-training-surrogate-gradient"
+    ],
+    "reset": [
+     "reset-by-subtraction",
+     "reset-to-zero"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "contract": [
+     "sync-tick"
+    ],
+    "sensor": [
+     "no-physical-sensor"
+    ],
+    "run": [
+     "spinnaker-runtime"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "spinnaker-2"
+   ],
+   "papers": [
+    {
+     "id": "andrei2024-deep-unrolling-spinnaker2",
+     "via": {
+      "learning": "low-latency-conversion",
+      "contract": "sync-tick",
+      "hw": "spinnaker-2"
+     }
+    },
+    {
+     "id": "arfa2025-spiking-q-spinnaker2",
+     "via": {
+      "learning": "direct-training-surrogate-gradient",
+      "code": "rate-coding",
+      "reset": "reset-by-subtraction",
+      "sensor": "no-physical-sensor",
+      "contract": "sync-tick",
+      "hw": "spinnaker-2"
+     }
+    }
+   ]
+  },
+  "dynap-se-tactile-chain": {
+   "name": "Custom configuration to DYNAP-SE",
+   "rank": 18,
+   "tk": "neuromorphic",
+   "color": "#4E7A8C",
+   "ev": "E1",
+   "story": "An FBG-based e-skin drives an SNN mimicking early somatosensory processing on the physical DYNAP-SE mixed-signal analog chip, reaching a tactile localization error only 8 percent worse than software.",
+   "note": "The record names no reusable software framework, only a custom DYNAP-SE configuration, so the route reaches the chip directly. Median inference power is 185 microwatts and resting power is 8.7 microwatts, explicitly contrasted against an estimated milliwatt-class ARM implementation of the same dynamics.",
+   "steps": {
+    "task": null,
+    "sensor": "tactile-sensor",
+    "input": "native-events",
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": "analog-time",
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "sensor": [
+     "tactile-sensor"
+    ],
+    "input": [
+     "native-events"
+    ],
+    "contract": [
+     "analog-time"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "dynap-se"
+   ],
+   "papers": [
+    {
+     "id": "dynap-se-tactile",
+     "via": {
+      "sensor": "tactile-sensor",
+      "input": "native-events",
+      "contract": "analog-time",
+      "hw": "dynap-se"
+     }
+    }
+   ]
+  },
+  "eedn-corelet-truenorth": {
+   "name": "Corelet and EEDN to TrueNorth",
+   "rank": 19,
+   "tk": "neuromorphic",
+   "color": "#9E5B8C",
+   "ev": "E1",
+   "story": "Eedn trains CNNs directly under TrueNorth's binary-neuron, trinary-synapse hardware constraints, and a live DVS128 camera stream feeds an Eedn-trained spiking CNN on physical TrueNorth silicon with no host-side frame accumulation.",
+   "note": "Eedn is constrained backprop training, not classical ANN-to-SNN conversion, mapping natively onto the chip's 23-parameter augmented IF neuron. The gesture-recognition deployment reaches 96.5 percent accuracy at 105 milliseconds gesture-onset latency and under 200 milliwatts, measured on a physical chip with a live camera feed. TrueNorth's global 1 kHz tick evaluates the whole network once per classification.",
+   "steps": {
+    "task": null,
+    "sensor": "event-camera",
+    "input": "native-events",
+    "learning": null,
+    "code": "population-coding",
+    "payload": "binary-spikes",
+    "neuron": "if-neuron",
+    "reset": null,
+    "contract": "sync-tick",
+    "dev": "eedn",
+    "export": null,
+    "compile": "corelet",
+    "run": null
+   },
+   "can": {
+    "sensor": [
+     "event-camera"
+    ],
+    "input": [
+     "native-events"
+    ],
+    "code": [
+     "population-coding"
+    ],
+    "payload": [
+     "binary-spikes"
+    ],
+    "neuron": [
+     "if-neuron"
+    ],
+    "contract": [
+     "sync-tick"
+    ],
+    "dev": [
+     "eedn"
+    ],
+    "compile": [
+     "corelet"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "truenorth"
+   ],
+   "papers": [
+    {
+     "id": "eedn",
+     "via": {
+      "code": "population-coding",
+      "neuron": "if-neuron",
+      "payload": "binary-spikes",
+      "contract": "sync-tick",
+      "hw": "truenorth"
+     }
+    },
+    {
+     "id": "truenorth-dvs-gesture",
+     "via": {
+      "task": "gesture-recognition",
+      "sensor": "event-camera",
+      "input": "native-events",
+      "neuron": "if-neuron",
+      "payload": "binary-spikes",
+      "contract": "sync-tick",
+      "hw": "truenorth"
+     }
+    }
+   ]
+  },
+  "pynn-brainscales1": {
+   "name": "PyNN to BrainScaleS-1",
+   "rank": 20,
+   "tk": "neuromorphic",
+   "color": "#3C7A6A",
+   "ev": "E1",
+   "story": "Deep spiking networks converted from pretrained ANNs are benchmarked for accuracy and energy per inference across BrainScaleS, Spikey, and SpiNNaker, with hardware-in-the-loop retraining for the analog systems.",
+   "note": "This map places the record only on BrainScaleS-1 among its three benchmarked platforms. SpiNNaker and Spikey energy figures are measured directly with real power meters; the BrainScaleS energy figure specifically is estimated from prior published per-synaptic-event data, not measured in this study, per the paper's own flag. PyNN's brainscales backend is the standard way this hardware is programmed.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "hardware-in-the-loop-training",
+    "code": "rate-coding",
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": "analog-time",
+    "dev": "pynn",
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "hardware-in-the-loop-training"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "contract": [
+     "analog-time"
+    ],
+    "dev": [
+     "pynn"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "brainscales-1"
+   ],
+   "papers": [
+    {
+     "id": "kelber-2020",
+     "via": {
+      "learning": "hardware-in-the-loop-training",
+      "code": "rate-coding",
+      "hw": "brainscales-1"
+     }
+    }
+   ]
+  },
+  "pynn-spinnaker": {
+   "name": "PyNN to SpiNNaker",
+   "rank": 21,
+   "tk": "neuromorphic",
+   "color": "#5A6E3D",
+   "ev": "E1",
+   "story": "PyNN's native SpiNNaker backend runs a rate-coded spiking Deep Belief Network reaching 95 percent MNIST accuracy in 2015, and a fully closed-loop DVS-to-servo goalkeeper robot reaching 85 percent ball-interception accuracy at 6.5 milliseconds response latency, disconnected from any PC.",
+   "note": "Stromatias et al.'s own toolchain field, SpiNNaker software stack, predates SNN Toolbox's public release and names no conversion framework, so it is read here as PyNN via sPyNNaker, the standard and essentially only way SpiNNaker is programmed. The goalkeeper's own field, SpiNNaker native toolchain, is the same claim in different words.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": "rate-coding",
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": "sync-tick",
+    "dev": "pynn",
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "sensor": [
+     "event-camera",
+     "frame-camera"
+    ],
+    "input": [
+     "native-events",
+     "static-frames"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "neuron": [
+     "lif-neuron"
+    ],
+    "contract": [
+     "sync-tick"
+    ],
+    "dev": [
+     "pynn"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "spinnaker-1"
+   ],
+   "papers": [
+    {
+     "id": "stromatias-2015",
+     "via": {
+      "task": "image-classification-static",
+      "sensor": "frame-camera",
+      "input": "static-frames",
+      "code": "rate-coding",
+      "neuron": "lif-neuron",
+      "hw": "spinnaker-1"
+     }
+    },
+    {
+     "id": "spinnaker-goalkeeper",
+     "via": {
+      "task": "robotics-closed-loop-control",
+      "sensor": "event-camera",
+      "input": "native-events",
+      "hw": "spinnaker-1"
+     }
+    }
+   ]
+  },
+  "spikingjelly-cri-fpga": {
+   "name": "SpikingJelly to CRI on FPGA",
+   "rank": 22,
+   "tk": "FPGA",
+   "color": "#8C5A2B",
+   "ev": "E1",
+   "story": "A SpikingJelly-trained DVS128 Gesture network, converted via hs_api to the CRI format, runs on physical CRI FPGA-based neuromorphic hardware with accuracy, clock cycles, and HBM accesses recorded per sample.",
+   "note": "One of only a small handful of SpikingJelly-trained networks found to reach any physical chip, independent of the Lava or Loihi path. The network runs for 10 frames plus 6 drain steps per sample.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": "spikingjelly",
+    "export": null,
+    "compile": "hs-api",
+    "run": null
+   },
+   "can": {
+    "dev": [
+     "spikingjelly"
+    ],
+    "compile": [
+     "hs-api"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "fpga"
+   ],
+   "papers": [
+    {
+     "id": "hiaer-spike-cri",
+     "via": {
+      "task": "gesture-recognition",
+      "hw": "fpga"
+     }
+    }
+   ]
+  },
+  "morphic-hdl": {
+   "name": "Custom HDL to MorphIC",
+   "rank": 23,
+   "tk": "neuromorphic",
+   "color": "#6B4226",
+   "ev": "E1",
+   "story": "MorphIC directly measures rate coding against rank-order coding energy cost for the same MNIST task on the same fabricated 65 nm chip.",
+   "note": "The record names no reusable software framework beyond custom HDL synthesized in UMC 65 nm LP CMOS, so the route reaches the chip directly. Rate coding costs roughly 10 times more energy per classification than rank-order coding for near-equivalent accuracy on real fabricated silicon (205 microjoules versus 21.8 microjoules).",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "neuron": [
+     "lif-neuron"
+    ],
+    "sensor": [
+     "frame-camera"
+    ],
+    "input": [
+     "static-frames"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "morphic"
+   ],
+   "papers": [
+    {
+     "id": "morphic",
+     "via": {
+      "hw": "morphic",
+      "neuron": "lif-neuron",
+      "task": "image-classification-static",
+      "sensor": "frame-camera",
+      "input": "static-frames"
+     }
+    }
+   ]
+  },
+  "odin-hdl": {
+   "name": "Custom HDL to ODIN",
+   "rank": 24,
+   "tk": "neuromorphic",
+   "color": "#B36A1E",
+   "ev": "E1",
+   "story": "ODIN embeds rank-order-coded stochastic spike-driven on-chip learning, measured at 12.7 picojoules per synaptic operation and 84.5 percent MNIST accuracy on 9 fabricated 28 nm chips.",
+   "note": "The record names no reusable software framework beyond custom, open-source HDL, so the route reaches the chip directly. Energy per inference is 15 nanojoules, measured on fabricated silicon.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": "rank-order-coding",
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "code": [
+     "rank-order-coding"
+    ],
+    "sensor": [
+     "frame-camera"
+    ],
+    "input": [
+     "static-frames"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "odin"
+   ],
+   "papers": [
+    {
+     "id": "odin",
+     "via": {
+      "hw": "odin",
+      "code": "rank-order-coding",
+      "task": "image-classification-static",
+      "sensor": "frame-camera",
+      "input": "static-frames"
+     }
+    }
+   ]
+  },
+  "reckon-hdl": {
+   "name": "Custom HDL to ReckOn",
+   "rank": 25,
+   "tk": "neuromorphic",
+   "color": "#1E6E5C",
+   "ev": "E1",
+   "story": "ReckOn demonstrates end-to-end on-chip supervised learning over second-long timescales on 5 fabricated 28 nm chips, reaching 87.3 to 96.4 percent accuracy across three benchmarks.",
+   "note": "The record names no reusable software framework beyond custom, open-source HDL, so the route reaches the chip directly. Peak efficiency is 5.3 picojoules per synaptic operation, measured on fabricated silicon.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "neuron": [
+     "lif-neuron"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "reckon"
+   ],
+   "papers": [
+    {
+     "id": "reckon",
+     "via": {
+      "hw": "reckon",
+      "neuron": "lif-neuron"
+     }
+    }
+   ]
+  },
+  "ubrain-hdl": {
+   "name": "Custom HDL to uBrain",
+   "rank": 26,
+   "tk": "neuromorphic",
+   "color": "#5C4A8C",
+   "ev": "E1",
+   "story": "uBrain, designed explicitly to ease ANN-to-SNN conversion for always-on edge inference, reaches 93.4 percent MNIST accuracy and 70 microwatts on a fabricated 40 nm prototype.",
+   "note": "The record names no reusable software framework beyond custom HDL in 40 nm CMOS, so the route reaches the chip directly. Energy per classification is 308 to 340 nanojoules, measured on the fabricated chip.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {},
+   "implies": [],
+   "targets": [
+    "ubrain"
+   ],
+   "papers": [
+    {
+     "id": "ubrain",
+     "via": {
+      "hw": "ubrain"
+     }
+    }
+   ]
+  },
+  "tianjic-native": {
+   "name": "Tianjic native toolchain",
+   "rank": 27,
+   "tk": "neuromorphic",
+   "color": "#2B6B8C",
+   "ev": "E1",
+   "story": "Tianjic's shared axon, synapse, dendrite, soma, and router building blocks run both ANN and SNN modes on the same silicon, demonstrated driving an unmanned bicycle through simultaneous real-time perception and control.",
+   "note": "The record's own toolchain field is only a first-generation automatic model-mapping and compiling toolchain from Tsinghua, unnamed beyond that; it is not the same as BIDL, the commercial descendant toolchain the chip node's own summary separately names for Lynxi's later products, so no dev chip is asserted here. Throughput is 1.6 to 100 times and power efficiency is 12 to 10,000 times better than GPU baselines, measured hardware-in-the-loop, not in simulation.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": "sync-tick",
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "contract": [
+     "sync-tick"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "tianjic"
+   ],
+   "papers": [
+    {
+     "id": "tianjic",
+     "via": {
+      "contract": "sync-tick",
+      "hw": "tianjic"
+     }
+    }
+   ]
+  },
+  "syncnn-vitis": {
+   "name": "Vitis HLS or SDSoC to SyncNN",
+   "rank": 28,
+   "tk": "FPGA",
+   "color": "#8C2B4E",
+   "ev": "E1",
+   "story": "SyncNN's synchronous reformulation of rate-encoded IF-neuron inference, proven mathematically equivalent to standard multi-timestep execution, reaches 99.6 percent MNIST accuracy at 13,086 frames per second across three physical Xilinx ARM-FPGA SoC boards.",
+   "note": "Built with the Vitis HLS and SDSoC hardware-mode flow. Reset is explicit, native reset by subtraction, Vm[o] minus Vth, and input is Poisson rate encoding, the closest FPGA match in this survey to QCFS-style IF-with-reset-by-subtraction-with-rate-coding assumptions.",
+   "steps": {
+    "task": null,
+    "sensor": "frame-camera",
+    "input": "static-frames",
+    "learning": null,
+    "code": "rate-coding",
+    "payload": null,
+    "neuron": "if-neuron",
+    "reset": "reset-by-subtraction",
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": "fpga-synthesis-flow",
+    "run": null
+   },
+   "can": {
+    "sensor": [
+     "frame-camera"
+    ],
+    "input": [
+     "static-frames"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "neuron": [
+     "if-neuron"
+    ],
+    "reset": [
+     "reset-by-subtraction"
+    ],
+    "compile": [
+     "fpga-synthesis-flow"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "syncnn"
+   ],
+   "papers": [
+    {
+     "id": "syncnn",
+     "via": {
+      "task": "image-classification-static",
+      "sensor": "frame-camera",
+      "input": "static-frames",
+      "code": "rate-coding",
+      "neuron": "if-neuron",
+      "reset": "reset-by-subtraction",
+      "hw": "syncnn"
+     }
+    }
+   ]
+  },
+  "cerebron-snntoolbox": {
+   "name": "SNN Toolbox to Cerebron",
+   "rank": 29,
+   "tk": "FPGA",
+   "color": "#2B8C6E",
+   "ev": "E1",
+   "story": "Cerebron's reconfigurable FPGA compute engine, explicitly built around the SNN Toolbox conversion methodology, reaches 99.40 percent MNIST accuracy at 0.026 milliseconds and 0.04 millijoules per image on a physical Xilinx XC7Z100 implementation.",
+   "note": "Reset mode is inherited from SNN Toolbox's own convention, implying reset-by-subtraction, not independently restated in Cerebron's own text. A thinner MobileNet on CIFAR-10 reaches 91.90 percent at 10.63 milliseconds and 14.88 millijoules per image on the same physical implementation.",
+   "steps": {
+    "task": null,
+    "sensor": "frame-camera",
+    "input": "static-frames",
+    "learning": null,
+    "code": "rate-coding",
+    "payload": null,
+    "neuron": "if-neuron",
+    "reset": "reset-by-subtraction",
+    "contract": null,
+    "dev": "snn-toolbox",
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "sensor": [
+     "frame-camera"
+    ],
+    "input": [
+     "static-frames"
+    ],
+    "code": [
+     "rate-coding"
+    ],
+    "neuron": [
+     "if-neuron"
+    ],
+    "reset": [
+     "reset-by-subtraction"
+    ],
+    "dev": [
+     "snn-toolbox"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "cerebron"
+   ],
+   "papers": [
+    {
+     "id": "cerebron",
+     "via": {
+      "sensor": "frame-camera",
+      "input": "static-frames",
+      "code": "rate-coding",
+      "neuron": "if-neuron",
+      "reset": "reset-by-subtraction",
+      "hw": "cerebron"
+     }
+    }
+   ]
+  },
+  "fpga-hls-general": {
+   "name": "FPGA HLS or RTL synthesis to FPGA accelerators",
+   "rank": 30,
+   "tk": "FPGA",
+   "color": "#6E8C2B",
+   "ev": "E1",
+   "story": "FireFly v2 maps generalized multiplex-accumulate LIF dynamics onto DSP48E2 hard blocks at up to 600 MHz, and Spiker plus offers a library of six configurable neuron models with user-selectable hard or subtractive reset, both measured on physical Xilinx FPGA boards.",
+   "note": "FireFly v2's own toolchain field is custom HDL for Xilinx UltraScale DSP48E2, naming no training framework. Spiker plus's own toolchain field is BPTT-trainable via snnTorch or offline-trained, so snnTorch is asserted only for that record's own via, not as the toolchain's default line. Spiker plus is the first accelerator surveyed with reset by subtraction as an explicit, user-selectable configuration, matching QCFS-style IF-with-reset-by-subtraction.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": "fpga-synthesis-flow",
+    "run": null
+   },
+   "can": {
+    "neuron": [
+     "lif-neuron"
+    ],
+    "reset": [
+     "reset-by-subtraction",
+     "reset-to-zero"
+    ],
+    "compile": [
+     "fpga-synthesis-flow"
+    ],
+    "dev": [
+     "snntorch"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "fpga"
+   ],
+   "papers": [
+    {
+     "id": "firefly",
+     "via": {
+      "neuron": "lif-neuron",
+      "hw": "fpga"
+     }
+    },
+    {
+     "id": "spikerplus",
+     "via": {
+      "dev": "snntorch",
+      "hw": "fpga"
+     }
+    }
+   ]
+  },
+  "hxtorch-brainscales2": {
+   "name": "hxtorch to BrainScaleS-2",
+   "rank": 31,
+   "tk": "neuromorphic",
+   "color": "#8C6E2B",
+   "ev": "E1",
+   "story": "hxtorch's non-spiking hagen mode executes matmul and convolution primitives directly on physical BrainScaleS-2 silicon as analog vector-matrix multiplication, already traced in Section 11 with no separate E1 paper record of its own.",
+   "note": "This toolchain exists so the chip answers a click even without an attached paper. BrainScaleS-2's native AdEx circuit performs a hard reset, clamped to the reset potential for a refractory period on spike; no source describes a native or multi-compartment-workaround reset-by-subtraction mode. Physical analog circuit time runs at roughly 1000 times biological acceleration.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": null,
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": "reset-to-zero",
+    "contract": "analog-time",
+    "dev": "hxtorch",
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "reset": [
+     "reset-to-zero"
+    ],
+    "contract": [
+     "analog-time"
+    ],
+    "dev": [
+     "hxtorch"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "brainscales-2"
+   ],
+   "papers": []
+  },
+  "hand-designed-loihi1": {
+   "name": "Hand-designed microcode to Loihi 1",
+   "rank": 32,
+   "tk": "neuromorphic",
+   "color": "#8C2B2B",
+   "ev": "E1",
+   "story": "A one-shot local-plasticity olfactory-bulb-model circuit and a hand-designed head-direction SLAM circuit both reach physical Loihi silicon as hand-designed microcode rather than through any training framework.",
+   "note": "Neither record names a framework at all, so dev, export, and compile are null and the route reaches Loihi 1 directly. The olfaction circuit reaches 2.75 milliseconds and 0.43 millijoules per sniff; a 2023 replication study found the underlying dataset suffers from sensor drift and a non-randomized protocol, and that a simple hash-table baseline matches or beats it under proper train and test splitting, which undercuts the algorithmic claim without invalidating the hardware measurement. The SLAM circuit reaches 100 times less dynamic power than GMapping on CPU at comparable localization accuracy.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "local-learning-plasticity",
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "local-learning-plasticity"
+    ],
+    "sensor": [
+     "chemical-sensor-array"
+    ],
+    "input": [
+     "time-series"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-1"
+   ],
+   "papers": [
+    {
+     "id": "imam-cleland-olfaction",
+     "via": {
+      "task": "olfaction",
+      "sensor": "chemical-sensor-array",
+      "input": "time-series",
+      "learning": "local-learning-plasticity",
+      "hw": "loihi-1"
+     }
+    },
+    {
+     "id": "tang-slam-loihi",
+     "via": {
+      "task": "slam",
+      "learning": "local-learning-plasticity",
+      "hw": "loihi-1"
+     }
+    }
+   ]
+  },
+  "stbp-loihi-sddpg": {
+   "name": "Custom STBP to Loihi",
+   "rank": 33,
+   "tk": "neuromorphic",
+   "color": "#2B8C2B",
+   "ev": "E1",
+   "story": "A spiking actor network co-trained end to end with a deep critic via a custom STBP extension is deployed on Loihi for real-world TurtleBot2 mapless navigation, using 75 times less energy per inference than DDPG on a Jetson TX2.",
+   "note": "The record names only a custom STBP extension, no reusable named tool, so dev is null and the direct-training-surrogate-gradient learning chip carries the claim instead. Measured on a physical 2-chip Kapoho Bay board.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "direct-training-surrogate-gradient",
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "direct-training-surrogate-gradient"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-1"
+   ],
+   "papers": [
+    {
+     "id": "sddpg",
+     "via": {
+      "task": "robotics-closed-loop-control",
+      "learning": "direct-training-surrogate-gradient",
+      "hw": "loihi-1"
+     }
+    }
+   ]
+  },
+  "pytorch-nxsdk-lava-loihi": {
+   "name": "PyTorch to NxSDK or Lava",
+   "rank": 34,
+   "tk": "neuromorphic",
+   "color": "#2B4E8C",
+   "ev": "E1",
+   "story": "An SNN policy trained via spiking reinforcement learning in PyTorch simulation is ported to both physical Loihi 1 and physical Loihi 2 for an industrial peg-in-hole insertion task with a KUKA arm.",
+   "note": "One toolchain with two targets, not two separate toolchains, because this is one experiment reported once, with the Loihi 1 leg runs through NxSDK, the Loihi 2 leg through Lava. PyTorch itself is a generic training library, not a named SNN-specific tool, so dev is left null here, the same treatment given the custom STBP extension in sddpg. Dynamic energy on Loihi 2 is 53 plus or minus 17 microjoules per inference versus about 3800 microjoules on CPU and roughly 100s of microjoules on GPU.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "direct-training-surrogate-gradient",
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "direct-training-surrogate-gradient"
+    ],
+    "run": [
+     "nxsdk",
+     "lava-runtime"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-1",
+    "loihi-2"
+   ],
+   "papers": [
+    {
+     "id": "force-control",
+     "via": {
+      "task": "robotics-closed-loop-control",
+      "learning": "direct-training-surrogate-gradient",
+      "run": "nxsdk",
+      "hw": "loihi-1"
+     }
+    },
+    {
+     "id": "force-control",
+     "via": {
+      "task": "robotics-closed-loop-control",
+      "learning": "direct-training-surrogate-gradient",
+      "run": "lava-runtime",
+      "hw": "loihi-2"
+     }
+    }
+   ]
+  },
+  "modified-microcode-loihi2": {
+   "name": "Modified microcode to Loihi 2",
+   "rank": 35,
+   "tk": "neuromorphic",
+   "color": "#8C4E2B",
+   "ev": "E1",
+   "story": "An ANN converted to a Sigma-Delta Neural Network using Loihi 2's native graded spikes, 16-bit signed-integer payload activation deltas, is measured for latency, throughput, power, energy per frame, and energy-delay product on an in-house 16-chip Intel Loihi 2 VPX development board.",
+   "note": "The record names only nxkernel 0.3.0 with modified Loihi 2 microcode, a custom, non-reusable tool, so dev, export, and compile are null. Host-side input-delta generation and output accumulation or decoding remain outside the neurocores, and the Jetson comparison uses whole-SoC power and is not boundary-identical.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "low-latency-conversion",
+    "code": "sigma-delta",
+    "payload": "graded-spikes",
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": null,
+    "export": null,
+    "compile": null,
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "low-latency-conversion"
+    ],
+    "code": [
+     "sigma-delta"
+    ],
+    "payload": [
+     "graded-spikes"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-2"
+   ],
+   "papers": [
+    {
+     "id": "brehove-2026",
+     "via": {
+      "learning": "low-latency-conversion",
+      "code": "sigma-delta",
+      "payload": "graded-spikes",
+      "hw": "loihi-2"
+     }
+    }
+   ]
+  },
+  "mlgenn-eventprop-netx-loihi2": {
+   "name": "mlGeNN EventProp to NetX",
+   "rank": 36,
+   "tk": "neuromorphic",
+   "color": "#4E2B8C",
+   "ev": "E1",
+   "story": "mlGeNN's EventProp exact-gradient training with learned synaptic delays, deployed via NetX to a physical single-chip Loihi 2, reaches 1.46 to 1.54 millisecond latency and 0.21 to 0.46 millijoule energy for keyword spotting, 18 times faster and 250 times less energy than a Jetson Orin Nano at batch 1.",
+   "note": "Distinct from mlGeNN's own separate GPU-only leg (mlgenn-to-genn-cuda) and from the lava-dl-based slayer-loihi2 toolchain, since this record's own dev tool is mlGeNN, not lava-dl. The learning chip is spike-time-gradient-methods, not the generic surrogate-gradient chip, because this survey's own text identifies EventProp specifically as an exact spike-time gradient method structurally distinct from surrogate-gradient BPTT.",
+   "steps": {
+    "task": null,
+    "sensor": "no-physical-sensor",
+    "input": null,
+    "learning": "spike-time-gradient-methods",
+    "code": null,
+    "payload": null,
+    "neuron": "lif-neuron",
+    "reset": null,
+    "contract": null,
+    "dev": "mlgenn",
+    "export": null,
+    "compile": "netx",
+    "run": null
+   },
+   "can": {
+    "learning": [
+     "spike-time-gradient-methods"
+    ],
+    "sensor": [
+     "no-physical-sensor"
+    ],
+    "neuron": [
+     "lif-neuron"
+    ],
+    "dev": [
+     "mlgenn"
+    ],
+    "compile": [
+     "netx"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-2"
+   ],
+   "papers": [
+    {
+     "id": "eventprop-delays",
+     "via": {
+      "task": "keyword-spotting-audio",
+      "sensor": "no-physical-sensor",
+      "learning": "spike-time-gradient-methods",
+      "neuron": "lif-neuron",
+      "hw": "loihi-2"
+     }
+    }
+   ]
+  },
+  "slayer-nxtf-loihi1": {
+   "name": "SLAYER to NxTF",
+   "rank": 37,
+   "tk": "neuromorphic",
+   "color": "#2B8C8C",
+   "ev": "E1",
+   "story": "A SLAYER-trained CNN deployed via NxTF and NxSDK on a physical Loihi board measures latency and energy for DVS Gesture with performance probes built into the deployment script.",
+   "note": "NxTF successfully compiles this SLAYER-trained network for physical Loihi 1 execution, in contrast to the SpikingJelly-to-NxTF route this map documents as broken at the same compiler stage. SLAYER here is the standalone training library, predating and distinct from its later home inside Lava-DL, so dev is slayer, not lava-dl.",
+   "steps": {
+    "task": null,
+    "sensor": null,
+    "input": null,
+    "learning": "direct-training-surrogate-gradient",
+    "code": null,
+    "payload": null,
+    "neuron": null,
+    "reset": null,
+    "contract": null,
+    "dev": "slayer",
+    "export": null,
+    "compile": "nxtf",
+    "run": "nxsdk"
+   },
+   "can": {
+    "learning": [
+     "direct-training-surrogate-gradient"
+    ],
+    "dev": [
+     "slayer"
+    ],
+    "compile": [
+     "nxtf"
+    ],
+    "run": [
+     "nxsdk"
+    ]
+   },
+   "implies": [],
+   "targets": [
+    "loihi-1"
+   ],
+   "papers": [
+    {
+     "id": "slayer-nxtf-gesture",
+     "via": {
+      "task": "gesture-recognition",
+      "learning": "direct-training-surrogate-gradient",
+      "hw": "loihi-1"
+     }
+    }
+   ]
   }
  },
  "applications": {
@@ -9392,14 +10607,18 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
   },
   "gesture-recognition": {
    "prefer": [
-    "snntoolbox-loihi1"
+    "snntoolbox-loihi1",
+    "sinabs-speck",
+    "eedn-corelet-truenorth",
+    "slayer-nxtf-loihi1",
+    "spikingjelly-cri-fpga"
    ],
    "via": {
     "sensor": "event-camera",
     "input": "frames-from-events",
     "code": "rate-coding"
    },
-   "note": "The surveyed gesture-recognition deployment converts a DVS-camera network with SNN Toolbox and measures it on physical Loihi 1 at 89.64 percent accuracy and 11.43 milliseconds of per-frame latency, with events pre-accumulated into frames before conversion rather than processed natively."
+   "note": "The surveyed gesture-recognition deployments span a converted DVS-camera network measured on physical Loihi 1 at 89.64 percent accuracy and 11.43 milliseconds of per-frame latency with events pre-accumulated into frames before conversion, a directly trained dynamic SNN on physical Speck reaching real-time power as low as 0.70 milliwatts, a live DVS128 stream feeding an Eedn-trained network on physical TrueNorth with no host-side frame accumulation at 96.5 percent accuracy and 105 milliseconds latency, a SLAYER-trained network deployed via NxTF on physical Loihi 1, and a SpikingJelly-trained network converted via hs_api to physical CRI FPGA-based neuromorphic hardware."
   },
   "tracking-motion": {
    "prefer": [],
@@ -9424,19 +10643,34 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "note": "No surveyed run with physical evidence on this task is on the map yet. This survey's audited electromyography and electroencephalography deployments on physical Loihi and Loihi 2 are not among this map's fifteen carried routes."
   },
   "olfaction": {
-   "prefer": [],
-   "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. Imam and Cleland's one-shot olfactory-bulb-model circuit reaches physical Loihi silicon through hand-designed microcode, a software route this map does not carry."
+   "prefer": [
+    "hand-designed-loihi1"
+   ],
+   "via": {
+    "sensor": "chemical-sensor-array",
+    "learning": "local-learning-plasticity"
+   },
+   "note": "Imam and Cleland's one-shot olfactory-bulb-model circuit reaches physical Loihi silicon at 2.75 milliseconds and 0.43 millijoules per sniff through hand-designed microcode. A 2023 replication study found the underlying dataset suffers from sensor drift and a non-randomized protocol, and that a simple hash-table baseline matches or beats the network's accuracy under proper train and test splitting; the hardware measurement itself stands, but the algorithmic claim is substantially undercut."
   },
   "robotics-closed-loop-control": {
-   "prefer": [],
-   "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. The audited mapless-navigation and industrial force-control policies reach physical Loihi 1 and Loihi 2 through custom STBP and bare PyTorch training pipelines, not through any of this map's fifteen carried software routes."
+   "prefer": [
+    "pytorch-nxsdk-lava-loihi",
+    "stbp-loihi-sddpg",
+    "pynn-spinnaker"
+   ],
+   "via": {
+    "learning": "direct-training-surrogate-gradient"
+   },
+   "note": "Three surveyed robotics deployments now carry physical evidence on this map, a PyTorch-trained spiking policy ported to both Loihi 1 via NxSDK and Loihi 2 via Lava for an industrial peg-in-hole insertion task, a custom-STBP-trained spiking actor network on Loihi for real-world TurtleBot2 mapless navigation at 75 times less energy per inference than DDPG on a Jetson TX2, and a DVS-to-SpiNNaker-to-servo goalkeeper robot, fully closed-loop and disconnected from any PC, intercepting balls up to 1 meter per second at 85 percent accuracy."
   },
   "slam": {
-   "prefer": [],
-   "via": {},
-   "note": "No surveyed run with physical evidence on this task is on the map yet. Tang et al.'s head-direction SLAM circuit reaches physical Loihi silicon through hand-designed microcode, a software route this map does not carry."
+   "prefer": [
+    "hand-designed-loihi1"
+   ],
+   "via": {
+    "learning": "local-learning-plasticity"
+   },
+   "note": "Tang et al.'s hand-designed, biologically constrained head-direction circuit reaches physical Loihi silicon at 100 times less dynamic power than GMapping on CPU, at comparable localization accuracy, through hand-designed microcode rather than any training framework."
   },
   "optimization-constraint-satisfaction": {
    "prefer": [],
@@ -9591,10 +10825,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "why": "No attached record draws this chip as its learning value; Tang et al.'s mapless-navigation policy, attached to Quartz to Loihi 1 under surrogate-gradient training, also applies a hand-designed, Loihi-specific eight-bit weight-rescaling correction step that this map does not separately draw.",
    "read": "#direct-conversion-hybrid"
   },
-  "hardware-in-the-loop-training": {
-   "why": "No carried toolchain reaches BrainScaleS-1 or BrainScaleS-2, the only audited hardware-in-the-loop deployments, so the mechanism has no route on this map.",
-   "read": "#online-learning"
-  },
   "hybrid-finetuning": {
    "why": "No carried toolchain attaches a hybrid ANN-plus-SNN deployment; NengoLoihi's hybrid model reaching physical Loihi 1 is not one of this map's fifteen carried routes.",
    "read": "#direct-conversion-hybrid"
@@ -9605,10 +10835,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
   },
   "burst-coding": {
    "why": "No carried toolchain's code field or attached record uses burst coding; Speck documents a multi-spike-per-step mode, but the deployment cited alongside it used a plain single-spike neuron instead.",
-   "read": "#code-families"
-  },
-  "population-coding": {
-   "why": "No carried toolchain attaches a population-coding record; Adaptive Fission's population-coding transformation is measured on a Lynxi HP201 accelerator, a target this map does not carry.",
    "read": "#code-families"
   },
   "direct-input-encoding": {
@@ -9623,21 +10849,9 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "why": "No carried toolchain attaches a PASC-IF record; PASCAL and APEX synthesize the PASC-IF neuron in RTL simulation rather than on any of this map's fifteen named hardware targets.",
    "read": "#temporal-allocation"
   },
-  "analog-time": {
-   "why": "No carried toolchain targets BrainScaleS-1, BrainScaleS-2, DYNAP-SE2, or Innatera Pulsar, the only audited analog or mixed-signal execution family, so continuous analog time has no route on this map.",
-   "read": "#analog-mixed-signal"
-  },
-  "snntorch": {
-   "why": "No carried toolchain's dev field names snnTorch; it appears in the audited evidence only as a comparator framework benchmarked against SpikingJelly's training speed, not as a route this map draws.",
-   "read": "#routes-conventional-targets"
-  },
   "norse": {
    "why": "No carried toolchain's dev field names Norse; it appears in the audited evidence only as a comparator framework benchmarked against SpikingJelly's training speed, not as a route this map draws.",
    "read": "#routes-conventional-targets"
-  },
-  "hxtorch": {
-   "why": "No carried toolchain's dev field names hxtorch; its physical route targets BrainScaleS-2's non-spiking hagen mode, and hxtorch.snn's hardware-in-the-loop route is separately evidenced, neither of which is one of this map's fifteen carried routes.",
-   "read": "#analog-mixed-signal"
   },
   "nengo": {
    "why": "No carried toolchain's dev field names Nengo; NengoLoihi's hybrid ANN-plus-SNN deployment to physical Loihi 1 is not one of this map's fifteen carried routes.",
@@ -9699,18 +10913,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "why": "No carried toolchain targets NeuroFlex; NeuroFlex synthesizes its column-level PASC-IF scheduler in RTL simulation rather than reaching a target this map carries.",
    "read": "#temporal-allocation"
   },
-  "spinnaker-2": {
-   "why": "No carried toolchain targets SpiNNaker 2; SNN Toolbox to SpiNNaker 1 on this map targets the first-generation chip, and the audited SpiNNaker 2 routes, hardware-aware Q-learning and deep unrolling, use software stacks this map does not carry.",
-   "read": "#hardware-aware-learning"
-  },
-  "truenorth": {
-   "why": "No carried toolchain targets TrueNorth; the audited Eedn plus Corelet route is not one of this map's fifteen carried routes.",
-   "read": "#routes-conventional-targets"
-  },
-  "tianjic": {
-   "why": "No carried toolchain targets Tianjic; the audited deployment uses Tianjic's own native toolchain, a software stack this map does not carry.",
-   "read": "#routes-conventional-targets"
-  },
   "lynxi-ka200": {
    "why": "No carried toolchain targets Lynxi KA200; the audited SpikingJelly-to-Lynxi edge is evidenced at E3, and Adaptive Fission's own physical measurement targets the Lynxi HP201 successor chip, neither of which is one of this map's fifteen carried routes.",
    "read": "#code-families"
@@ -9719,14 +10921,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "why": "No carried toolchain targets DYNAP-CNN as its own endpoint; Sinabs to Speck on this map compiles through the DynapCNN mapper but targets the Speck chip itself.",
    "read": "#physical-routes"
   },
-  "brainscales-1": {
-   "why": "No carried toolchain targets BrainScaleS-1; its audited hardware-in-the-loop MNIST result is not one of this map's fifteen carried routes.",
-   "read": "#online-learning"
-  },
-  "brainscales-2": {
-   "why": "No carried toolchain targets BrainScaleS-2; the audited hxtorch and hxtorch.snn routes are not among this map's fifteen carried routes.",
-   "read": "#analog-mixed-signal"
-  },
   "dynap-se2": {
    "why": "No carried toolchain targets DYNAP-SE2; this survey's audited evidence locates no rate-coded ANN-to-SNN conversion pipeline for it.",
    "read": "#analog-mixed-signal"
@@ -9734,34 +10928,6 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
   "innatera-pulsar": {
    "why": "No carried toolchain targets Innatera Pulsar; every quantitative figure this survey located for it is vendor-sourced without an independent peer-reviewed benchmark.",
    "read": "#analog-mixed-signal"
-  },
-  "morphic": {
-   "why": "No carried toolchain targets MorphIC; its measured rate-versus-rank-order-coding comparison is not one of this map's fifteen carried routes.",
-   "read": "#code-families"
-  },
-  "fpga": {
-   "why": "No carried toolchain targets a generic FPGA design as its own endpoint; the audited FPGA deployments either target a named chip elsewhere on this map or are not one of its fifteen carried routes.",
-   "read": "#routes-conventional-targets"
-  },
-  "syncnn": {
-   "why": "No carried toolchain targets SyncNN; its Vitis HLS route to Xilinx ARM-FPGA boards is not one of this map's fifteen carried routes.",
-   "read": "#routes-conventional-targets"
-  },
-  "cerebron": {
-   "why": "No carried toolchain targets Cerebron; SNN Toolbox reaches it through custom RTL rather than through the NxTF or sPyNNaker compile stages this map carries for SNN Toolbox.",
-   "read": "#routes-conventional-targets"
-  },
-  "chemical-sensor-array": {
-   "why": "No carried toolchain reaches a chemical sensor array; the olfaction record this survey audits, Imam and Cleland's hand-designed olfactory-bulb circuit, runs on Loihi through hand-designed microcode, a software route this map does not carry as one of its fifteen toolchains.",
-   "read": "#local-learning"
-  },
-  "spike-time-gradient-methods": {
-   "why": "No carried toolchain attaches an exact spike-time-gradient record; EventProp's own deployment runs through mlGeNN and NetX to Loihi 2, a software stack this map does not carry as one of its fifteen toolchains.",
-   "read": "#online-learning"
-  },
-  "local-learning-plasticity": {
-   "why": "No carried toolchain attaches a local-learning record; the audited local-learning deployments, olfaction, sparse coding, constraint satisfaction, and the robotics head-pose and SLAM circuits, all reach hardware through hand-designed microcode or custom training pipelines this map does not carry as one of its fifteen toolchains.",
-   "read": "#local-learning"
   }
  },
  "generated_by": "tools/build-figure-guide.py",
@@ -9940,6 +11106,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "target_kind": null,
    "summary": "Conversion and post-training encoding methods that reach physical neuromorphic silicon by aligning the representation or neuron contract with platform execution. Located cases include Quartz TTFS on Loihi 1, Brehove sigma-delta graded payloads on Loihi 2, Adaptive Fission population coding on HP201, and complex Few-Spikes temporal coding on SpiNNaker2."
   },
+  "corelet": {
+   "id": "corelet",
+   "name": "Corelet compiler",
+   "type": "compiler",
+   "layer": "Export & compile",
+   "target_kind": null,
+   "summary": "Compiles an Eedn-trained network into the corelet programming abstraction that maps onto TrueNorth's NS1e and NS16e boards."
+  },
   "cortex-m-mcu": {
    "id": "cortex-m-mcu",
    "name": "ARM Cortex-M MCU",
@@ -9980,6 +11154,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "target_kind": null,
    "summary": "Train an SNN end-to-end via backpropagation-through-time with a surrogate (smooth) derivative substituted for the non-differentiable spike function. The dominant paradigm behind SpikingJelly's SEW-ResNet/Spikformer/Spike-driven-Transformer image-classification lineage and STBP-derived robotics-control policies."
   },
+  "dynap-se": {
+   "id": "dynap-se",
+   "name": "DYNAP-SE",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "neuromorphic",
+   "summary": "Mixed-signal analog neuromorphic chip driving a bioinspired somatosensory circuit for FBG e-skin tactile localization, distinct from the newer DYNAP-SE2."
+  },
   "dynap-se2": {
    "id": "dynap-se2",
    "name": "DYNAP-SE2",
@@ -10003,6 +11185,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "layer": "Export & compile",
    "target_kind": null,
    "summary": "Sinabs's DynapcnnNetwork(discretize=True) restructures a sequential Sinabs SNN into DynapcnnLayer objects (conv->spike->pool), discretizes weights to 8-bit and membrane/thresholds to 16-bit, auto-converts nn.Linear to 1x1 Conv2d and nn.AvgPool2d to SumPool2d, and places layers onto physical cores via chip_layers_ordering=\"auto\" (raises an error if no valid placement fits per-core memory)."
+  },
+  "eedn": {
+   "id": "eedn",
+   "name": "Eedn",
+   "type": "framework",
+   "layer": "Develop & simulate",
+   "target_kind": null,
+   "summary": "Constrained backprop training that configures CNNs directly under TrueNorth's hardware constraints (binary neurons, trinary synapses), not classical ANN-to-SNN conversion."
   },
   "event-camera": {
    "id": "event-camera",
@@ -10035,6 +11225,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "layer": "Hardware",
    "target_kind": "FPGA",
    "summary": "General-purpose FPGA family used across the survey for custom SNN accelerator implementations (SyncNN, Spiker/Spiker+, FireFly/v2, Cerebron, and others). Faithfulness to IF+reset-by-subtraction+rate-coding varies per design; several (Spiker+, SyncNN) offer reset-by-subtraction as an explicit, user-selectable configuration, while others (FireFly) do not document reset polarity at all."
+  },
+  "fpga-synthesis-flow": {
+   "id": "fpga-synthesis-flow",
+   "name": "FPGA HLS or RTL synthesis",
+   "type": "compiler",
+   "layer": "Export & compile",
+   "target_kind": null,
+   "summary": "The Xilinx Vitis HLS, SDSoC, or Vivado synthesis flow that turns a spiking accelerator design into a bitstream for a general Xilinx FPGA target, per the fpga node's own toolchain attribute and SyncNN's own toolchain field."
   },
   "fpga-truenorth-emulation": {
    "id": "fpga-truenorth-emulation",
@@ -10115,6 +11313,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "layer": "Runtime",
    "target_kind": null,
    "summary": "The host-side (non-spiking-core) encoding and readout step every reviewed digital platform still depends on: converting an input into the chip's native event/packet format before injection, and converting output spikes/counters back into a readable result after execution finishes."
+  },
+  "hs-api": {
+   "id": "hs-api",
+   "name": "hs_api",
+   "type": "compiler",
+   "layer": "Export & compile",
+   "target_kind": null,
+   "summary": "Converts a SpikingJelly-trained network into the CRI hardware format for HiAER-Spike deployment."
   },
   "hxtorch": {
    "id": "hxtorch",
@@ -10259,6 +11465,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "layer": "Learning paths",
    "target_kind": null,
    "summary": "Recent low-timestep ANN-to-SNN conversion methods based on spike counts or firing rates. In the audited corpus, none of the proposing papers measures its own new rate-coded method on named physical neuromorphic silicon."
+  },
+  "lynxi-hp201": {
+   "id": "lynxi-hp201",
+   "name": "Lynxi HP201",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "neuromorphic",
+   "summary": "A physical Lynxi accelerator used for Adaptive Fission and no-Fission QCFS and SRP baseline measurements. It is kept distinct from the KA200 platform."
   },
   "lynxi-ka200": {
    "id": "lynxi-ka200",
@@ -10420,6 +11634,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "target_kind": null,
    "summary": "Automotive and drone/robotics object detection built on event cameras or RGB video, overwhelmingly executed on conventional CNN accelerators (FPGA Vitis-AI DPU, GPU). No peer-reviewed report found of an object detector measured on physical rate-coded/IF spiking silicon; the one E1 spiking exception uses a non-rate-coded graded-spike (sigma-delta) conversion scheme on Loihi 2."
   },
+  "odin": {
+   "id": "odin",
+   "name": "ODIN",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "neuromorphic",
+   "summary": "UCLouvain single-core, online-learning (SDSP) digital spiking neuromorphic ASIC embedding rank-order-coded on-chip learning, measured on 9 fabricated 28 nm chips."
+  },
   "olfaction": {
    "id": "olfaction",
    "name": "Olfaction (odor classification)",
@@ -10516,6 +11738,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "target_kind": null,
    "summary": "The number of spikes over T timesteps represents a scalar value; under reset-by-subtraction and a fixed threshold, achievable spike counts {0,...,T} form an inherently uniform T-level quantizer, directly linking rate coding to uniform quantization-aware training."
   },
+  "reckon": {
+   "id": "reckon",
+   "name": "ReckOn",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "neuromorphic",
+   "summary": "Task-agnostic spiking recurrent neural network processor with a feed-forward e-prop and BPTT approximation, enabling on-chip supervised learning over second-long timescales, measured on 5 fabricated 28 nm chips."
+  },
   "reset-by-subtraction": {
    "id": "reset-by-subtraction",
    "name": "Reset by subtraction (soft reset)",
@@ -10611,6 +11841,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "layer": "Applications",
    "target_kind": null,
    "summary": "SLAM/VIO is almost entirely a GPU/embedded-CPU/FPGA workload in the recent event-camera literature, with a single narrow hand-designed exception (unidimensional head-direction SLAM) reaching physical Loihi."
+  },
+  "slayer": {
+   "id": "slayer",
+   "name": "SLAYER",
+   "type": "framework",
+   "layer": "Develop & simulate",
+   "target_kind": null,
+   "summary": "Standalone spike-layer error-reassignment backprop-through-time training library, the predecessor of Lava-DL's own slayer module, used here on its own to train a network later deployed via NxTF."
   },
   "snn-toolbox": {
    "id": "snn-toolbox",
@@ -10772,6 +12010,14 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "target_kind": null,
    "summary": "The deployed form of a CNN-to-SNN, time-to-first-spike-converted digital network on the ARM Cortex-M4 MCU. The paper says only that the converted SNN is deployed on the MCU and describes the digital SNN as either software-simulated or hardware-accelerated; it never uses the words firmware or compiled. CMSIS-NN is named in the paper only as a comparator framework and SNN Toolbox is not mentioned, so this node is named from the paper's own description, 'custom CNN-to-SNN (TTFS) conversion pipeline,' rather than from either named library."
   },
+  "ubrain": {
+   "id": "ubrain",
+   "name": "uBrain",
+   "type": "hardware",
+   "layer": "Hardware",
+   "target_kind": "neuromorphic",
+   "summary": "Fully digital, clockless, event-driven SNN IC designed for ANN-to-SNN-conversion-friendly always-on edge inference, using inter-spike-interval readout and a ReLU-to-accumulator-wraparound neuron mapping, measured on a fabricated 40 nm prototype."
+  },
   "xylo": {
    "id": "xylo",
    "name": "SynSense Xylo",
@@ -10849,6 +12095,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "title": "The BrainScaleS-2 accelerated neuromorphic system with hybrid plasticity",
      "year": 2022,
      "url": "https://doi.org/10.3389/fnins.2022.795876",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "analog-time-to-dynap-se",
+   "from": "analog-time",
+   "to": "dynap-se",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "dynap-se-tactile",
+     "title": "Bioinspired spiking architecture enables energy constrained touch encoding",
+     "year": 2026,
+     "url": "https://doi.org/10.1038/s41467-026-68858-7",
      "type": "peer-reviewed"
     }
    ]
@@ -11308,6 +12570,29 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    ]
   },
   {
+   "id": "corelet-to-truenorth",
+   "from": "corelet",
+   "to": "truenorth",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "truenorth",
+     "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
+     "year": 2016,
+     "url": "https://doi.org/10.1073/pnas.1604850113",
+     "type": "peer-reviewed"
+    },
+    {
+     "id": "truenorth-dvs-gesture",
+     "title": "A Low Power, Fully Event-Based Gesture Recognition System",
+     "year": 2017,
+     "url": "https://doi.org/10.1109/cvpr.2017.781",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
    "id": "direct-training-rate-coded-to-spinnaker2",
    "from": "direct-training-surrogate-gradient",
    "to": "spinnaker-2",
@@ -11366,6 +12651,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "year": 2025,
      "url": "https://synsense.ai/wp-content/uploads/2025/12/Speck-Dev-Kit-Manual-2025.12-V2.pdf",
      "type": "official documentation"
+    }
+   ]
+  },
+  {
+   "id": "eedn-to-corelet",
+   "from": "eedn",
+   "to": "corelet",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "truenorth",
+     "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
+     "year": 2016,
+     "url": "https://doi.org/10.1073/pnas.1604850113",
+     "type": "peer-reviewed"
     }
    ]
   },
@@ -11435,6 +12736,45 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "year": 2025,
      "url": "https://arxiv.org/abs/2506.11760",
      "type": "preprint"
+    }
+   ]
+  },
+  {
+   "id": "fpga-synthesis-flow-to-fpga",
+   "from": "fpga-synthesis-flow",
+   "to": "fpga",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "firefly",
+     "title": "FireFly v2: Advancing Hardware Support for High-Performance Spiking Neural Network With a Spatiotemporal FPGA Accelerator",
+     "year": 2024,
+     "url": "https://doi.org/10.1109/tcad.2024.3380550",
+     "type": "peer-reviewed"
+    },
+    {
+     "id": "spikerplus",
+     "title": "Spiker+: A Framework for the Generation of Efficient Spiking Neural Networks FPGA Accelerators for Inference at the Edge",
+     "year": 2024,
+     "url": "https://doi.org/10.1109/tetc.2024.3511676",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "fpga-synthesis-flow-to-syncnn",
+   "from": "fpga-synthesis-flow",
+   "to": "syncnn",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "syncnn",
+     "title": "SyncNN: Evaluating and Accelerating Spiking Neural Networks on FPGAs",
+     "year": 2022,
+     "url": "https://doi.org/10.1145/3514253",
+     "type": "peer-reviewed"
     }
    ]
   },
@@ -11614,6 +12954,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "year": 2025,
      "url": "https://arxiv.org/abs/2503.18002",
      "type": "preprint"
+    }
+   ]
+  },
+  {
+   "id": "hs-api-to-fpga",
+   "from": "hs-api",
+   "to": "fpga",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "hiaer-spike-cri",
+     "title": "DVS128 Gesture Inference on HiAER-Spike Hardware",
+     "year": 2026,
+     "url": "https://isn.ucsd.edu/hiaer-spike/auto_examples/plot_dvs_gesture_inference.html",
+     "type": "official documentation"
     }
    ]
   },
@@ -11972,6 +13328,52 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    ]
   },
   {
+   "id": "low-latency-conversion-baselines-to-lynxi-hp201",
+   "from": "low-latency-conversion",
+   "to": "lynxi-hp201",
+   "route_state": null,
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "adaptive-fission",
+     "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+     "year": 2025,
+     "url": "https://doi.org/10.52202/085713-5157",
+     "type": "peer-reviewed"
+    },
+    {
+     "id": "qcfs",
+     "title": "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks",
+     "year": 2022,
+     "url": "https://arxiv.org/abs/2303.04347",
+     "type": "peer-reviewed"
+    },
+    {
+     "id": "srp",
+     "title": "Reducing ANN-SNN Conversion Error through Residual Membrane Potential",
+     "year": 2023,
+     "url": "https://arxiv.org/abs/2302.02091",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "low-latency-conversion-to-spinnaker2",
+   "from": "low-latency-conversion",
+   "to": "spinnaker-2",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "andrei2024-deep-unrolling-spinnaker2",
+     "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+     "year": 2024,
+     "url": "https://doi.org/10.1109/ieeeconf60004.2024.10942794",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
    "id": "microphone-to-keyword-spotting",
    "from": "microphone",
    "to": "keyword-spotting-audio",
@@ -12014,6 +13416,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "year": null,
      "url": "https://genn-team.github.io/",
      "type": "official documentation"
+    }
+   ]
+  },
+  {
+   "id": "mlgenn-to-netx",
+   "from": "mlgenn",
+   "to": "netx",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "eventprop-delays",
+     "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
+     "year": 2025,
+     "url": "https://arxiv.org/abs/2510.13757",
+     "type": "preprint"
     }
    ]
   },
@@ -12486,6 +13904,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "year": 2025,
      "url": "https://arxiv.org/abs/2505.01730",
      "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "pynn-to-brainscales1",
+   "from": "pynn",
+   "to": "brainscales-1",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "kelber-2020",
+     "title": "Benchmarking Deep Spiking Neural Networks on Neuromorphic Hardware",
+     "year": 2020,
+     "url": "https://arxiv.org/abs/2004.01656",
+     "type": "preprint"
     }
    ]
   },
@@ -13012,6 +14446,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    ]
   },
   {
+   "id": "slayer-to-nxtf",
+   "from": "slayer",
+   "to": "nxtf",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "slayer-nxtf-gesture",
+     "title": "SLAYER-trained CNN on Loihi 1 via NxTF (d_slayer_nxtf_gestures.py)",
+     "year": 2020,
+     "url": "https://github.com/intel-nrc-ecosystem/models",
+     "type": "official repository"
+    }
+   ]
+  },
+  {
    "id": "snn-toolbox-to-brian2",
    "from": "snn-toolbox",
    "to": "brian2",
@@ -13143,6 +14593,22 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    ]
   },
   {
+   "id": "spikingjelly-to-hs-api",
+   "from": "spikingjelly",
+   "to": "hs-api",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "hiaer-spike-cri",
+     "title": "DVS128 Gesture Inference on HiAER-Spike Hardware",
+     "year": 2026,
+     "url": "https://isn.ucsd.edu/hiaer-spike/auto_examples/plot_dvs_gesture_inference.html",
+     "type": "official documentation"
+    }
+   ]
+  },
+  {
    "id": "spikingjelly-to-lava-exchange",
    "from": "spikingjelly",
    "to": "lava-exchange",
@@ -13216,6 +14682,29 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
      "title": "SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Network Simulation",
      "year": 2013,
      "url": "https://doi.org/10.1109/jssc.2013.2259038",
+     "type": "peer-reviewed"
+    }
+   ]
+  },
+  {
+   "id": "spinnaker-runtime-to-spinnaker2",
+   "from": "spinnaker-runtime",
+   "to": "spinnaker-2",
+   "route_state": "physical",
+   "evidence_class": "E1",
+   "sources": [
+    {
+     "id": "andrei2024-deep-unrolling-spinnaker2",
+     "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+     "year": 2024,
+     "url": "https://doi.org/10.1109/ieeeconf60004.2024.10942794",
+     "type": "peer-reviewed"
+    },
+    {
+     "id": "arfa2025-spiking-q-spinnaker2",
+     "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+     "year": 2025,
+     "url": "https://doi.org/10.1109/icons69015.2025.00021",
      "type": "peer-reviewed"
     }
    ]
@@ -13711,6 +15200,292 @@ threshold set to the same scale <a href="#parameter-mapping">Section 8.1.4</a> c
    "evidence": "E1",
    "target_hardware": "FeNN-DMA: RISC-V system-on-chip (softcore + vector co-processor) on AMD/Xilinx Kria KV260 FPGA boards (single-core 175 MHz, dual-core 143 MHz)",
    "target_kind": "RISC-V"
+  },
+  "adaptive-fission": {
+   "id": "adaptive-fission",
+   "title": "Adaptive Fission",
+   "authors": "Jiang, Y. et al.",
+   "year": 2025,
+   "venue": "NeurIPS",
+   "url": "not found",
+   "evidence": "E1",
+   "target_hardware": "Lynxi HP201 (commercial successor to Tianjic)",
+   "target_kind": "neuromorphic"
+  },
+  "andrei2024-deep-unrolling-spinnaker2": {
+   "id": "andrei2024-deep-unrolling-spinnaker2",
+   "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
+   "authors": "V. C. Andrei, A. P. Drăguţoiu, G. Béna, M. Akl, Y. Li, M. Lohrmann, U. J. Mönich, H. Boche",
+   "year": 2024,
+   "venue": "Asilomar Conference on Signals, Systems, and Computers",
+   "url": "https://doi.org/10.1109/IEEECONF60004.2024.10942794",
+   "evidence": "E1",
+   "target_hardware": "physical single-chip SpiNNaker2 board",
+   "target_kind": "neuromorphic"
+  },
+  "arfa2025-spiking-q-spinnaker2": {
+   "id": "arfa2025-spiking-q-spinnaker2",
+   "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
+   "authors": "S. Arfa, B. Vogginger, C. Mayr",
+   "year": 2025,
+   "venue": "International Conference on Neuromorphic Systems",
+   "url": "https://doi.org/10.1109/ICONS69015.2025.00021",
+   "evidence": "E1",
+   "target_hardware": "physical SpiNNaker2 board",
+   "target_kind": "neuromorphic"
+  },
+  "dynap-se-tactile": {
+   "id": "dynap-se-tactile",
+   "title": "Bioinspired spiking architecture enables energy constrained touch encoding",
+   "authors": "Ortone, A. et al.",
+   "year": 2026,
+   "venue": "Nature Communications",
+   "url": "https://doi.org/10.1038/s41467-026-68858-7",
+   "evidence": "E1",
+   "target_hardware": "DYNAP-SE (physical, mixed-signal)",
+   "target_kind": "neuromorphic"
+  },
+  "eedn": {
+   "id": "eedn",
+   "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
+   "authors": "Esser, S.K., Merolla, P.A., Arthur, J.V., Cassidy, A.S., Appuswamy, R., Andreopoulos, A., Berg, D.J., McKinstry, J.L., Melano, T., Barch, D.R., Di Nolfo, C., Datta, P., Amir, A., Taba, B., Flickner, M.D., Modha, D.S.",
+   "year": 2016,
+   "venue": "PNAS 113(41):11441-11446",
+   "url": "https://doi.org/10.1073/pnas.1604850113",
+   "evidence": "E1",
+   "target_hardware": "IBM TrueNorth (NS1e/NS16e boards)",
+   "target_kind": "neuromorphic"
+  },
+  "truenorth-dvs-gesture": {
+   "id": "truenorth-dvs-gesture",
+   "title": "A Low Power, Fully Event-Based Gesture Recognition System",
+   "authors": "Amir, A. et al.",
+   "year": 2017,
+   "venue": "CVPR",
+   "url": "https://doi.org/10.1109/cvpr.2017.781",
+   "evidence": "E1",
+   "target_hardware": "IBM TrueNorth (physical)",
+   "target_kind": "neuromorphic"
+  },
+  "kelber-2020": {
+   "id": "kelber-2020",
+   "title": "Benchmarking Deep Spiking Neural Networks on Neuromorphic Hardware",
+   "authors": "Kelber, F., Wunderlich, T., Zoglauer, G., Stradmann, Y., Vogginger, B., Hoeppner, S., et al.",
+   "year": 2020,
+   "venue": "arXiv:2004.01656",
+   "url": "https://arxiv.org/abs/2004.01656",
+   "evidence": "E1",
+   "target_hardware": "BrainScaleS, Spikey, SpiNNaker",
+   "target_kind": "neuromorphic"
+  },
+  "stromatias-2015": {
+   "id": "stromatias-2015",
+   "title": "Scalable Energy-Efficient, Low-Latency Implementations of (Trained) Spiking Deep Belief Networks on SpiNNaker",
+   "authors": "Stromatias, E., Neil, D., Galluppi, F., Pfeiffer, M., Liu, S.-C., Furber, S.",
+   "year": 2015,
+   "venue": "IJCNN",
+   "url": "https://doi.org/10.1109/IJCNN.2015.7280625",
+   "evidence": "E1",
+   "target_hardware": "SpiNNaker (single chip; power-scaling estimates extrapolated to 48-chip board)",
+   "target_kind": "neuromorphic"
+  },
+  "spinnaker-goalkeeper": {
+   "id": "spinnaker-goalkeeper",
+   "title": "System integration of neuromorphic DVS+SpiNNaker+servomotor robot (goalkeeper)",
+   "authors": "Cheng, R., Nikolic, K.",
+   "year": 2020,
+   "venue": "TechRxiv",
+   "url": "https://doi.org/10.36227/techrxiv.11854254",
+   "evidence": "E1",
+   "target_hardware": "SpiNNaker (physical)",
+   "target_kind": "neuromorphic"
+  },
+  "hiaer-spike-cri": {
+   "id": "hiaer-spike-cri",
+   "title": "DVS128 Gesture Inference on HiAER-Spike Hardware",
+   "authors": "UCSD ISN (HiAER-Spike/CRI project)",
+   "year": 2024,
+   "venue": "hardware documentation",
+   "url": "https://isn.ucsd.edu/hiaer-spike/auto_examples/plot_dvs_gesture_inference.html",
+   "evidence": "E1",
+   "target_hardware": "CRI FPGA-based neuromorphic hardware (UCSD HiAER-Spike)",
+   "target_kind": "FPGA"
+  },
+  "morphic": {
+   "id": "morphic",
+   "title": "MorphIC: A 65-nm 738k-Synapse/mm2 Quad-Core Binary-Weight Digital Neuromorphic Processor with Stochastic Spike-Driven Online Learning",
+   "authors": "Frenkel, C., Legat, J.-D., Bol, D.",
+   "year": 2019,
+   "venue": "ISCAS / journal (arXiv:1904.08513)",
+   "url": "https://arxiv.org/abs/1904.08513",
+   "evidence": "E1",
+   "target_hardware": "MorphIC ASIC (65nm, fabricated)",
+   "target_kind": "neuromorphic"
+  },
+  "odin": {
+   "id": "odin",
+   "title": "A 0.086-mm2 12.7-pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital Spiking Neuromorphic Processor in 28-nm CMOS",
+   "authors": "Frenkel, C., Lefebvre, M., Legat, J.-D., Bol, D.",
+   "year": 2019,
+   "venue": "IEEE TBioCAS",
+   "url": "https://arxiv.org/abs/1804.07858",
+   "evidence": "E1",
+   "target_hardware": "ODIN ASIC (28nm FDSOI, 9 fabricated chips tested)",
+   "target_kind": "neuromorphic"
+  },
+  "reckon": {
+   "id": "reckon",
+   "title": "ReckOn: A 28-nm Sub-mm2 Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales",
+   "authors": "Frenkel, C., Indiveri, G.",
+   "year": 2022,
+   "venue": "ISSCC (arXiv:2208.09759)",
+   "url": "https://arxiv.org/abs/2208.09759",
+   "evidence": "E1",
+   "target_hardware": "ReckOn ASIC (28nm FDSOI, 5 fabricated chips)",
+   "target_kind": "neuromorphic"
+  },
+  "ubrain": {
+   "id": "ubrain",
+   "title": "uBrain: An Event-Driven and Fully Synthesizable Architecture for Spiking Neural Networks",
+   "authors": "not fully specified in audit excerpt",
+   "year": 2021,
+   "venue": "Frontiers in Neuroscience",
+   "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.664208/full",
+   "evidence": "E1",
+   "target_hardware": "mu-Brain ASIC (fabricated 40nm prototype)",
+   "target_kind": "neuromorphic"
+  },
+  "tianjic": {
+   "id": "tianjic",
+   "title": "Towards artificial general intelligence with hybrid Tianjic chip architecture",
+   "authors": "Pei, J., Deng, L., Song, S., Zhao, M., et al.",
+   "year": 2019,
+   "venue": "Nature 572:106-111",
+   "url": "https://www.nature.com/articles/s41586-019-1424-8",
+   "evidence": "E1",
+   "target_hardware": "Tianjic chip (physical, single chip)",
+   "target_kind": "neuromorphic"
+  },
+  "syncnn": {
+   "id": "syncnn",
+   "title": "SyncNN: Evaluating and Accelerating Spiking Neural Networks on FPGAs",
+   "authors": "Panchapakesan, A., Fang, Z., Li, J.",
+   "year": 2022,
+   "venue": "FPL 2021 / ACM TRETS 2022",
+   "url": "https://doi.org/10.1145/3514253",
+   "evidence": "E1",
+   "target_hardware": "Xilinx ARM-FPGA SoC boards (ZCU102, ZCU104, ZED)",
+   "target_kind": "FPGA"
+  },
+  "cerebron": {
+   "id": "cerebron",
+   "title": "Cerebron: A Reconfigurable Architecture for Spatiotemporal Sparse Spiking Neural Networks",
+   "authors": "Chen, Q., Gao, C., Fu, Y.",
+   "year": 2022,
+   "venue": "IEEE TVLSI",
+   "url": "https://doi.org/10.1109/tvlsi.2022.3196839",
+   "evidence": "E1",
+   "target_hardware": "Xilinx XC7Z100 FPGA (200MHz, physical implementation)",
+   "target_kind": "FPGA"
+  },
+  "firefly": {
+   "id": "firefly",
+   "title": "FireFly v2: Advancing Hardware Support for High-Performance Spiking Neural Network With a Spatiotemporal FPGA Accelerator",
+   "authors": "Li, J., Shen, J., Zhao, R., Zhang, X., Zeng, Y.",
+   "year": 2024,
+   "venue": "IEEE TCAD",
+   "url": "https://doi.org/10.1109/tcad.2024.3380550",
+   "evidence": "E1",
+   "target_hardware": "Zynq UltraScale+ edge FPGA boards (xczu3eg/xczu5ev/xczu7ev, KV260, ZCU104)",
+   "target_kind": "FPGA"
+  },
+  "spikerplus": {
+   "id": "spikerplus",
+   "title": "Spiker+: A Framework for the Generation of Efficient Spiking Neural Networks FPGA Accelerators for Inference at the Edge",
+   "authors": "Carpegna, A., Savino, A., Di Carlo, S.",
+   "year": 2024,
+   "venue": "IEEE TETC",
+   "url": "https://doi.org/10.1109/tetc.2024.3511676",
+   "evidence": "E1",
+   "target_hardware": "Xilinx FPGA (physical synthesis + deployment)",
+   "target_kind": "FPGA"
+  },
+  "imam-cleland-olfaction": {
+   "id": "imam-cleland-olfaction",
+   "title": "Rapid online learning and robust recall in a neuromorphic olfactory circuit",
+   "authors": "Imam, N., Cleland, T.A.",
+   "year": 2020,
+   "venue": "Nature Machine Intelligence",
+   "url": "not found",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi (72-core network)",
+   "target_kind": "neuromorphic"
+  },
+  "tang-slam-loihi": {
+   "id": "tang-slam-loihi",
+   "title": "Spiking Neural Network on Neuromorphic Hardware for Energy-Efficient Unidimensional SLAM",
+   "authors": "Tang, G., Shah, A., Michmizos, K.P.",
+   "year": 2019,
+   "venue": "arXiv:1903.02504",
+   "url": "https://arxiv.org/abs/1903.02504",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi (Nahuku 8-chip board), 82 cores",
+   "target_kind": "neuromorphic"
+  },
+  "sddpg": {
+   "id": "sddpg",
+   "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
+   "authors": "not fully specified in audit excerpt (Michmizos group)",
+   "year": 2020,
+   "venue": "arXiv:2003.01157",
+   "url": "https://arxiv.org/abs/2003.01157",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi (Kapoho Bay, 2 chips)",
+   "target_kind": "neuromorphic"
+  },
+  "force-control": {
+   "id": "force-control",
+   "title": "Neuromorphic force-control in an industrial task: validating energy and latency benefits",
+   "authors": "not fully specified in audit excerpt",
+   "year": 2024,
+   "venue": "arXiv:2403.08928",
+   "url": "https://arxiv.org/abs/2403.08928",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi 1 (Kapoho Bay) and Loihi 2 (Oheo Gulch, remote)",
+   "target_kind": "neuromorphic"
+  },
+  "brehove-2026": {
+   "id": "brehove-2026",
+   "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
+   "authors": "Brehove, M., Tumpa, S.A., Kyubwa, E., Menon, N., Narayanan, V.",
+   "year": 2026,
+   "venue": "ICONS",
+   "url": "https://arxiv.org/abs/2505.06417",
+   "evidence": "E1",
+   "target_hardware": "in-house 16-chip Intel Loihi 2 VPX development board",
+   "target_kind": "neuromorphic"
+  },
+  "eventprop-delays": {
+   "id": "eventprop-delays",
+   "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
+   "authors": "Meszaros, A., Knight, J., Timcheck, J., Nowotny, T.",
+   "year": 2025,
+   "venue": "arXiv:2510.13757",
+   "url": "https://arxiv.org/abs/2510.13757",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi 2 (single-chip, Oheo Gulch)",
+   "target_kind": "neuromorphic"
+  },
+  "slayer-nxtf-gesture": {
+   "id": "slayer-nxtf-gesture",
+   "title": "SLAYER-trained CNN on Loihi 1 via NxTF (Intel nxsdk_modules_ncl DVS Gesture tutorial)",
+   "authors": "Intel intel-nrc-ecosystem/models (d_slayer_nxtf_gestures.py)",
+   "year": 2020,
+   "venue": "repository documentation / tutorial",
+   "url": "https://github.com/intel-nrc-ecosystem/models",
+   "evidence": "E1",
+   "target_hardware": "Intel Loihi 1 board (ncl-ext-ghrd-01)",
+   "target_kind": "neuromorphic"
   }
  }
 }

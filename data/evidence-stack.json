@@ -2418,6 +2418,165 @@
         "fenn-riscv",
         "fenn-dma-riscv"
       ]
+    },
+    {
+      "id": "dynap-se",
+      "type": "hardware",
+      "name": "DYNAP-SE",
+      "layer": "Hardware",
+      "summary": "Mixed-signal analog neuromorphic chip driving a bioinspired somatosensory circuit for FBG e-skin tactile localization, distinct from the newer DYNAP-SE2.",
+      "attributes": {
+        "time_model": "Fully analog, continuous time; not applicable in the discrete-timestep sense.",
+        "neuron_models": "4096 DYNAP-SE adaptive-exponential analog neurons.",
+        "reset_semantics": "not found",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "unknown",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom DYNAP-SE configuration for the tactile-localization circuit.",
+        "availability": "unknown",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "sources": [
+        "dynap-se-tactile"
+      ]
+    },
+    {
+      "id": "odin",
+      "type": "hardware",
+      "name": "ODIN",
+      "layer": "Hardware",
+      "summary": "UCLouvain single-core, online-learning (SDSP) digital spiking neuromorphic ASIC embedding rank-order-coded on-chip learning, measured on 9 fabricated 28 nm chips.",
+      "attributes": {
+        "time_model": "Fully event-driven digital design.",
+        "neuron_models": "LIF or custom Izhikevich-like, 256 neurons, 64k synapses.",
+        "reset_semantics": "not found (SDSP-driven, not the standard IF hard or subtractive framing)",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "Rank-order-coded stochastic spike-driven plasticity (SDSP).",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, open source (ChFrenkel/ODIN).",
+        "availability": "Academic research chip (28 nm FDSOI, 9 fabricated chips tested), not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "sources": [
+        "odin"
+      ]
+    },
+    {
+      "id": "reckon",
+      "type": "hardware",
+      "name": "ReckOn",
+      "layer": "Hardware",
+      "summary": "Task-agnostic spiking recurrent neural network processor with a feed-forward e-prop and BPTT approximation, enabling on-chip supervised learning over second-long timescales, measured on 5 fabricated 28 nm chips.",
+      "attributes": {
+        "time_model": "not applicable (continuous processing)",
+        "neuron_models": "LIF.",
+        "reset_semantics": "not found",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "Feed-forward-eligibility-trace e-prop and BPTT approximation, end to end on chip.",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, open source (ChFrenkel/ReckOn).",
+        "availability": "Academic research chip (28 nm FDSOI, 5 fabricated chips), not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "sources": [
+        "reckon"
+      ]
+    },
+    {
+      "id": "ubrain",
+      "type": "hardware",
+      "name": "uBrain",
+      "layer": "Hardware",
+      "summary": "Fully digital, clockless, event-driven SNN IC designed for ANN-to-SNN-conversion-friendly always-on edge inference, using inter-spike-interval readout and a ReLU-to-accumulator-wraparound neuron mapping, measured on a fabricated 40 nm prototype.",
+      "attributes": {
+        "time_model": "not applicable (ISI-based, event rate 100 Hz to 655 kHz)",
+        "neuron_models": "ReLU-to-accumulator-wraparound, ANN-to-SNN-conversion-friendly, ISI readout.",
+        "reset_semantics": "Wraparound reset (accumulator overflow), not classic subtractive reset.",
+        "payload": "unknown",
+        "weight_precision": "unknown",
+        "state_precision": "unknown",
+        "on_chip_learning": "unknown",
+        "operator_coverage": "unknown",
+        "host_interface": "unknown",
+        "toolchain": "Custom HDL, 40 nm CMOS.",
+        "availability": "Fabricated 40 nm prototype, not commercially sold.",
+        "price": "unknown",
+        "target_kind": "neuromorphic"
+      },
+      "sources": [
+        "ubrain"
+      ]
+    },
+    {
+      "id": "eedn",
+      "type": "framework",
+      "name": "Eedn",
+      "layer": "Develop & simulate",
+      "summary": "Constrained backprop training that configures CNNs directly under TrueNorth's hardware constraints (binary neurons, trinary synapses), not classical ANN-to-SNN conversion.",
+      "attributes": {},
+      "sources": [
+        "eedn"
+      ]
+    },
+    {
+      "id": "corelet",
+      "type": "compiler",
+      "name": "Corelet compiler",
+      "layer": "Export & compile",
+      "summary": "Compiles an Eedn-trained network into the corelet programming abstraction that maps onto TrueNorth's NS1e and NS16e boards.",
+      "attributes": {},
+      "sources": [
+        "eedn",
+        "truenorth-dvs-gesture"
+      ]
+    },
+    {
+      "id": "hs-api",
+      "type": "compiler",
+      "name": "hs_api",
+      "layer": "Export & compile",
+      "summary": "Converts a SpikingJelly-trained network into the CRI hardware format for HiAER-Spike deployment.",
+      "attributes": {},
+      "sources": [
+        "hiaer-spike-cri"
+      ]
+    },
+    {
+      "id": "slayer",
+      "type": "framework",
+      "name": "SLAYER",
+      "layer": "Develop & simulate",
+      "summary": "Standalone spike-layer error-reassignment backprop-through-time training library, the predecessor of Lava-DL's own slayer module, used here on its own to train a network later deployed via NxTF.",
+      "attributes": {},
+      "sources": [
+        "slayer",
+        "slayer-nxtf-gesture"
+      ]
+    },
+    {
+      "id": "fpga-synthesis-flow",
+      "type": "compiler",
+      "name": "FPGA HLS or RTL synthesis",
+      "layer": "Export & compile",
+      "summary": "The Xilinx Vitis HLS, SDSoC, or Vivado synthesis flow that turns a spiking accelerator design into a bitstream for a general Xilinx FPGA target, per the fpga node's own toolchain attribute and SyncNN's own toolchain field.",
+      "attributes": {},
+      "sources": [
+        "syncnn",
+        "firefly",
+        "spikerplus"
+      ]
     }
   ],
   "edges": [
@@ -5508,6 +5667,205 @@
       "measurement_boundary": "FeNN: classification latency and energy of a recurrent SNN spoken-digit classifier on the physical single-core FeNN soft processor, reported as significantly faster than a similar model on Loihi and twice as fast as the same model on an embedded GPU while using half the energy. FeNN-DMA: simulation time and effective throughput of a balanced random network (up to 16,000 neurons, 90% sparsity, 1000 1 ms timesteps) on the physical single-core FeNN-DMA SoC, read from on-chip performance counters, plus classification accuracy on Spiking Heidelberg Digits, N-MNIST, and Braille; separately, post-implementation EDA figures (175 MHz single-core / 143 MHz dual-core, 0.53 W, 54,984 LUTs / 47,759 FFs) are Vivado synthesis estimates, not physical power-probe readings.",
       "reports_deployment_evidence": false,
       "notes": "E1 establishes a physical run on the single-core FeNN and FeNN-DMA soft processors; the post-implementation frequency, power, and resource figures are synthesis-tool estimates, not board-measured readings, and are reported here as such rather than as a physical power measurement. reports_deployment_evidence is False here (rather than the brief's default True for a route's last edge) because no official AMD/Xilinx or RISC-V vendor documentation source for this toolchain exists in data/source-registry.json; the only available sources are the preprint and peer-reviewed papers themselves. The E1 evidence class and physical route_state above are unaffected; only this specific structural flag is withheld pending an official source, per check-consistency.py's validate_hardware_routes."
+    },
+    {
+      "id": "spinnaker-runtime-to-spinnaker2",
+      "from": "spinnaker-runtime",
+      "to": "spinnaker-2",
+      "mechanism": "The py-spinnaker2 experiment runner, the SpiNNaker-2 analogue of the SpiNNaker runtime, partitions and executes a network on physical single-chip or 48-chip SpiNNaker 2 systems.",
+      "preserves": [
+        "per-core execution and readback pipeline analogous to SpiNNaker 1's SpiN1API and SpiNNTools flow"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2",
+        "arfa2025-spiking-q-spinnaker2"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "low-latency-conversion-to-spinnaker2",
+      "from": "low-latency-conversion",
+      "to": "spinnaker-2",
+      "mechanism": "A complex-valued extension of Few-Spikes conversion maps an unfolded multidimensional harmonic-retrieval network onto physical single-chip SpiNNaker 2, a low-latency-conversion route by the record's own family field.",
+      "preserves": [
+        "serialized temporal Few-Spikes code rather than a firing-rate window"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "andrei2024-deep-unrolling-spinnaker2"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "analog-time-to-dynap-se",
+      "from": "analog-time",
+      "to": "dynap-se",
+      "mechanism": "DYNAP-SE's fully analog, asynchronous circuits carry continuous physical time, not applicable in the discrete-timestep sense, per the tactile-localization record's own timesteps field.",
+      "preserves": [
+        "continuous-time physical dynamics"
+      ],
+      "breaks": [
+        "exact digital-timestep correspondence"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "dynap-se-tactile"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "pynn-to-brainscales1",
+      "from": "pynn",
+      "to": "brainscales-1",
+      "mechanism": "PyNN's brainscales backend (pynn.brainscales) runs converted, hardware-in-the-loop-retrained networks on physical BrainScaleS-1 wafer-scale silicon via the EBRAINS platform.",
+      "preserves": [
+        "simulator-independent PyNN network description"
+      ],
+      "breaks": [
+        "neuron reset semantics and time model, inherited from the analog backend, not from PyNN"
+      ],
+      "evidence": "E1",
+      "sources": [
+        "kelber-2020"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "eedn-to-corelet",
+      "from": "eedn",
+      "to": "corelet",
+      "mechanism": "Eedn's constrained backprop training produces binary-neuron, trinary-synapse weights that the corelet compiler maps onto TrueNorth's crossbar cores.",
+      "preserves": [
+        "trinary weights constructed via a pair of neuron copies over a 4-entry axon-type lookup table"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "eedn"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "corelet-to-truenorth",
+      "from": "corelet",
+      "to": "truenorth",
+      "mechanism": "The corelet compiler's output loads onto TrueNorth's NS1e and NS16e boards, evaluated once per 1 kHz global tick.",
+      "preserves": [
+        "one-classification-per-tick execution model"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "eedn",
+        "truenorth-dvs-gesture"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "spikingjelly-to-hs-api",
+      "from": "spikingjelly",
+      "to": "hs-api",
+      "mechanism": "A SpikingJelly-trained DVS128 Gesture network is converted by hs_api into the CRI hardware format.",
+      "preserves": [
+        "trained network's layer graph and weights"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "hiaer-spike-cri"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "hs-api-to-fpga",
+      "from": "hs-api",
+      "to": "fpga",
+      "mechanism": "The CRI-format network runs on the CRI FPGA-based neuromorphic hardware at UCSD, with accuracy, clock cycles, and HBM accesses recorded per sample on physical hardware.",
+      "preserves": [
+        "10 frames plus 6 drain steps of the converted network's execution schedule"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "hiaer-spike-cri"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "slayer-to-nxtf",
+      "from": "slayer",
+      "to": "nxtf",
+      "mechanism": "A SLAYER-trained CUBA/IF network compiles through NxTF for deployment via NxSDK on a physical Loihi 1 board, with execution-time and energy probes built into the deployment script.",
+      "preserves": [
+        "SLAYER-trained CUBA/IF layer graph and weights"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "slayer-nxtf-gesture"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "fpga-synthesis-flow-to-syncnn",
+      "from": "fpga-synthesis-flow",
+      "to": "syncnn",
+      "mechanism": "SyncNN's synchronous reformulation of rate-encoded IF-neuron inference is built with the Vitis HLS and SDSoC hardware-mode flow, deployed across three physical Xilinx ARM-FPGA SoC boards.",
+      "preserves": [
+        "mathematical equivalence to standard rate-coded IF plus reset-by-subtraction execution"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "syncnn"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "fpga-synthesis-flow-to-fpga",
+      "from": "fpga-synthesis-flow",
+      "to": "fpga",
+      "mechanism": "FireFly v2's custom HDL for Xilinx UltraScale DSP48E2 blocks and Spiker+'s snnTorch-trainable, BPTT or offline-trained neuron library both pass through the general Xilinx HLS, RTL, or Vivado synthesis flow this fpga node's own toolchain attribute names, to physical Zynq UltraScale-plus and general Xilinx boards.",
+      "preserves": [
+        "design-dependent neuron model and reset configuration"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "firefly",
+        "spikerplus"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
+    },
+    {
+      "id": "mlgenn-to-netx",
+      "from": "mlgenn",
+      "to": "netx",
+      "mechanism": "mlGeNN's EventProp-trained network with learned synaptic delays exports through Lava-DL NetX's platform-independent HDF5 description for execution as a Lava Process graph, distinct from mlGeNN's separate GeNN-generated CUDA leg to a GPU.",
+      "preserves": [
+        "EventProp-trained LIF-with-exponential-synapse layer graph and learned delays"
+      ],
+      "breaks": [],
+      "evidence": "E1",
+      "sources": [
+        "eventprop-delays"
+      ],
+      "capability_class": "native",
+      "route_state": "physical"
     }
   ],
   "sources": [
