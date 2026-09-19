@@ -56,9 +56,14 @@ def build_view(guide, index, papers, registry):
         if e['from'] in chips and e['to'] in chips:
             srcs = []
             for sid in e.get('source_ids') or []:
-                r = resolve_source(sid, by)
-                if r is None:
+                raw = by.get(sid)
+                if raw is None:
                     raise SystemExit(f"figure-guide: edge {e['id']} names unregistered source {sid!r}")
+                # Peer-reviewed papers and preprints are surveyed evidence, not documentation;
+                # a route surfaces them only through its own curated `papers` list, never here.
+                if raw.get('source_type') in {'peer_reviewed', 'preprint'}:
+                    continue
+                r = resolve_source(sid, by)
                 if r['url'] and r['id'] not in {s['id'] for s in srcs}:
                     srcs.append(r)
             edges.append({'id': e['id'], 'from': e['from'], 'to': e['to'], 'route_state': e.get('route_state'),
@@ -102,12 +107,13 @@ class SelfTests(unittest.TestCase):
         return {'nodes': [{'id': 'fw', 'name': 'FW', 'type': 'framework', 'layer': 'Develop & simulate', 'summary': 's'},
                           {'id': 'chip', 'name': 'Chip', 'type': 'hardware', 'layer': 'Hardware', 'attributes': {'target_kind': 'neuromorphic'}, 'summary': 'c'},
                           {'id': 'other', 'name': 'O', 'type': 'runtime', 'layer': 'Runtime'}],
-                'routes': [{'id': 'fw-chip', 'from': 'fw', 'to': 'chip', 'route_state': 'physical', 'evidence_class': 'E1', 'source_ids': ['alias-doc', 'nourl']},
+                'routes': [{'id': 'fw-chip', 'from': 'fw', 'to': 'chip', 'route_state': 'physical', 'evidence_class': 'E1', 'source_ids': ['alias-doc', 'nourl', 'peer-doc']},
                            {'id': 'fw-other', 'from': 'fw', 'to': 'other', 'source_ids': []}]}
 
     def registry(self):
         return {'sources': [{'id': 'doc', 'title': 'Doc', 'year': 2024, 'url': 'https://x/doc', 'source_type': 'official_sdk_documentation', 'aliases': ['targets-sources.json:alias-doc']},
                             {'id': 'nourl', 'title': 'No URL', 'year': 2020, 'url': None, 'doi': None, 'source_type': 'peer_reviewed', 'aliases': []},
+                            {'id': 'peer-doc', 'title': 'Peer Doc', 'year': 2023, 'url': 'https://x/peer-doc', 'source_type': 'peer_reviewed', 'aliases': []},
                             {'id': 'p1', 'title': 'P1', 'year': 2025, 'url': None, 'doi': '10.1/p1', 'source_type': 'preprint', 'aliases': []}]}
 
     def papers(self):
@@ -122,6 +128,10 @@ class SelfTests(unittest.TestCase):
         v = build_view(self.guide(), self.index(), self.papers(), self.registry())
         self.assertEqual([e['id'] for e in v['edges']], ['fw-chip'])
         self.assertEqual(v['edges'][0]['sources'], [{'id': 'doc', 'title': 'Doc', 'year': 2024, 'url': 'https://x/doc', 'type': 'official documentation'}])
+
+    def test_edge_sources_exclude_peer_reviewed_and_preprint_entries(self):
+        v = build_view(self.guide(), self.index(), self.papers(), self.registry())
+        self.assertEqual({s['id'] for s in v['edges'][0]['sources']}, {'doc'})
 
     def test_paper_url_falls_back_to_registry_doi(self):
         v = build_view(self.guide(), self.index(), self.papers(), self.registry())

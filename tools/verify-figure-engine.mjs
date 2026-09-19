@@ -60,11 +60,23 @@ test('a broken toolchain stops at breakAt', () => {
   assert.equal(E.cutOf(tid), line.length - 1);
 });
 test('routeSources resolves every edge source on the line', () => {
-  const Q = E.applyQuery(E.blank(), 'cortex-m-mcu');
+  const Q = E.applyQuery(E.blank(), 'loihi-1');
   const tid = E.picked(Q);
   const srcs = E.routeSources(tid, Q);
-  assert.ok(srcs.length >= 1, 'the Cortex-M4 route lists its sources');
+  assert.ok(srcs.length >= 1, 'the Loihi 1 route lists its sources');
   assert.ok(srcs.every(s => s.url && s.title));
+});
+test('routeSources never surfaces a surveyed paper as documentation', () => {
+  // Every source here is a vendor doc, spec, or repository; a peer-reviewed
+  // paper or preprint belongs only under a route's own `papers` list.
+  for (const tid of Object.keys(view.toolchains)) {
+    const srcs = E.routeSources(tid, E.blank());
+    for (const s of srcs) assert.ok(!['peer-reviewed', 'preprint'].includes(s.type), `${tid}: ${s.id} (${s.type})`);
+  }
+  // The Cortex-M4 route's only supporting citation is its own surveyed paper,
+  // so with that paper excluded from documentation it now lists no sources at all.
+  const Q = E.applyQuery(E.blank(), 'cortex-m-mcu');
+  assert.equal(E.routeSources(E.picked(Q), Q).length, 0);
 });
 test('routePapers lists only papers whose via agrees with the selection', () => {
   const tid = Object.keys(view.toolchains).find(t => (view.toolchains[t].papers || []).length);

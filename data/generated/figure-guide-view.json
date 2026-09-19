@@ -4884,13 +4884,6 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "akida-benchmarks2025",
-     "title": "Enabling Efficient Processing of Spiking Neural Networks with On-Chip Learning on Commodity Neuromorphic Processors for Edge AI Systems",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2504.00957",
-     "type": "preprint"
-    },
-    {
      "id": "brainchip-cnn2snn-docs",
      "title": "CNN2SNN / QuantizeML user guide",
      "year": 2026,
@@ -4905,15 +4898,7 @@
    "to": "brainscales-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "schemmel2010-wafer",
-     "title": "A wafer-scale neuromorphic hardware system for large-scale neural modeling",
-     "year": 2010,
-     "url": "https://doi.org/10.1109/iscas.2010.5536970",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "analog-time-to-brainscales2",
@@ -4921,15 +4906,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "bss",
-     "title": "The BrainScaleS-2 accelerated neuromorphic system with hybrid plasticity",
-     "year": 2022,
-     "url": "https://doi.org/10.3389/fnins.2022.795876",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "analog-time-to-dynap-se",
@@ -4937,15 +4914,7 @@
    "to": "dynap-se",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "dynap-se-tactile",
-     "title": "Bioinspired spiking architecture enables energy constrained touch encoding",
-     "year": 2026,
-     "url": "https://doi.org/10.1038/s41467-026-68858-7",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "analog-time-to-dynapse2",
@@ -4953,15 +4922,7 @@
    "to": "dynap-se2",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "richter2024-dynapse2",
-     "title": "DYNAP-SE2: a scalable multi-core dynamic neuromorphic asynchronous spiking neural network processor",
-     "year": 2024,
-     "url": "https://doi.org/10.1088/2634-4386/ad1cd7",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "async-events-to-dynapcnn",
@@ -4969,15 +4930,7 @@
    "to": "dynapcnn",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "async-events-to-dynapse2",
@@ -4985,15 +4938,7 @@
    "to": "dynap-se2",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "richter2024-dynapse2",
-     "title": "DYNAP-SE2: a scalable multi-core dynamic neuromorphic asynchronous spiking neural network processor",
-     "year": 2024,
-     "url": "https://doi.org/10.1088/2634-4386/ad1cd7",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "async-events-to-speck",
@@ -5001,15 +4946,7 @@
    "to": "speck",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "backend-graph-to-cnn2snn",
@@ -5049,15 +4986,7 @@
    "to": "nxtf",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "backend-graph-to-spynnaker",
@@ -5065,15 +4994,7 @@
    "to": "spynnaker",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "rowley2019-spinntools",
-     "title": "SpiNNTools: The Execution Engine for the SpiNNaker Platform",
-     "year": 2019,
-     "url": "https://doi.org/10.3389/fnins.2019.00231",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "backend-graph-to-xylo-mapper",
@@ -5104,20 +5025,6 @@
      "year": 2025,
      "url": "https://github.com/LynxiTech/BIDL",
      "type": "official repository"
-    },
-    {
-     "id": "bidl-pmc-paper",
-     "title": "BIDL: a brain-inspired deep learning framework for spatiotemporal processing",
-     "year": 2023,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10410154",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "tianjic",
-     "title": "Towards artificial general intelligence with hybrid Tianjic chip architecture",
-     "year": 2019,
-     "url": "https://nature.com/articles/s41586-019-1424-8",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -5127,15 +5034,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "loihi1",
-     "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning",
-     "year": 2018,
-     "url": "https://doi.org/10.1109/mm.2018.112130359",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "binary-spikes-to-speck",
@@ -5143,15 +5042,7 @@
    "to": "speck",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "binary-spikes-to-spinnaker1",
@@ -5159,15 +5050,7 @@
    "to": "spinnaker-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "spinnaker-chip",
-     "title": "SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Network Simulation",
-     "year": 2013,
-     "url": "https://doi.org/10.1109/jssc.2013.2259038",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "binary-spikes-to-spinnaker2",
@@ -5175,15 +5058,7 @@
    "to": "spinnaker-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "gonzalez2024-spinnaker2",
-     "title": "SpiNNaker2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning",
-     "year": 2024,
-     "url": "https://ar5iv.labs.arxiv.org/html/2401.04491",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "binary-spikes-to-truenorth",
@@ -5191,22 +5066,7 @@
    "to": "truenorth",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "akopyan2015-truenorth",
-     "title": "TrueNorth: Design and Tool Flow of a 65mW 1 Million Neuron Programmable Neurosynaptic Chip",
-     "year": 2015,
-     "url": "https://research.ibm.com/publications/truenorth-design-and-tool-flow-of-a-65-mw-1-million-neuron-programmable-neurosynaptic-chip",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "liu2026-neuralencoding",
-     "title": "Neural Encoding Strategies for Neuromorphic Computing",
-     "year": 2026,
-     "url": "https://doi.org/10.3390/electronics15061221",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "biosignal-to-direct-training",
@@ -5214,29 +5074,7 @@
    "to": "direct-training-surrogate-gradient",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "bezugam2023-emg-loihi",
-     "title": "Neuromorphic Recurrent Spiking Neural Networks for EMG Gesture Classification on Loihi",
-     "year": 2023,
-     "url": "https://doi.org/10.1109/iscas46773.2023.10181510",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "eeg-seizure-loihi2",
-     "title": "Predicting EEG seizures using graded spiking neural networks on Loihi 2",
-     "year": 2025,
-     "url": "https://beta.iopscience.iop.org/article/10.1088/1741-2552/adb455",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "vitale2022-emg-loihi",
-     "title": "Neuromorphic Edge Computing for Biomedical Applications: EMG Gesture Classification",
-     "year": 2022,
-     "url": "https://doi.org/10.1109/jsen.2022.3194678",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "chemical-sensor-array-to-olfaction",
@@ -5244,15 +5082,7 @@
    "to": "olfaction",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "imam-cleland-olfaction",
-     "title": "Rapid online learning and robust recall in a neuromorphic olfactory circuit",
-     "year": 2020,
-     "url": "https://doi.org/10.1038/s42256-020-0159-4",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "classical-conversion-to-snn-toolbox",
@@ -5261,13 +5091,6 @@
    "route_state": null,
    "evidence_class": "E1",
    "sources": [
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    },
     {
      "id": "rueckauer",
      "title": "Conversion of Continuous-Valued Deep Networks to Efficient Event-Driven Networks for Image Classification",
@@ -5290,20 +5113,6 @@
      "year": 2026,
      "url": "https://doc.brainchipinc.com/user_guide/cnn2snn.html",
      "type": "official documentation"
-    },
-    {
-     "id": "lunghi2025-akida-space",
-     "title": "Energy efficiency analysis of Spiking Neural Networks for space applications",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2505.11418",
-     "type": "preprint"
-    },
-    {
-     "id": "ziegler2024-akida-robotics",
-     "title": "Detection of Fast-Moving Objects with Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.10677",
-     "type": "preprint"
     }
    ]
   },
@@ -5320,20 +5129,6 @@
      "year": 2026,
      "url": "https://doc.brainchipinc.com/user_guide/cnn2snn.html",
      "type": "official documentation"
-    },
-    {
-     "id": "lunghi2025-akida-space",
-     "title": "Energy efficiency analysis of Spiking Neural Networks for space applications",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2505.11418",
-     "type": "preprint"
-    },
-    {
-     "id": "ziegler2024-akida-robotics",
-     "title": "Detection of Fast-Moving Objects with Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.10677",
-     "type": "preprint"
     }
    ]
   },
@@ -5343,15 +5138,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "quartz",
-     "title": "Ultra-low-power Image Classification on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.48550/arxiv.2309.16795",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "codesigned-to-loihi2",
@@ -5359,15 +5146,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "brehove",
-     "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
-     "year": 2026,
-     "url": "https://doi.org/10.1145/3822454.3822490",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "codesigned-to-sigmadelta",
@@ -5375,15 +5154,7 @@
    "to": "sigma-delta",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "brehove",
-     "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
-     "year": 2026,
-     "url": "https://doi.org/10.1145/3822454.3822490",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "codesigned-to-ttfs",
@@ -5391,15 +5162,7 @@
    "to": "ttfs",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "quartz",
-     "title": "Ultra-low-power Image Classification on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.48550/arxiv.2309.16795",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "corelet-to-truenorth",
@@ -5407,22 +5170,7 @@
    "to": "truenorth",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "truenorth",
-     "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
-     "year": 2016,
-     "url": "https://doi.org/10.1073/pnas.1604850113",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "truenorth-dvs-gesture",
-     "title": "A Low Power, Fully Event-Based Gesture Recognition System",
-     "year": 2017,
-     "url": "https://doi.org/10.1109/cvpr.2017.781",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "direct-training-rate-coded-to-spinnaker2",
@@ -5430,15 +5178,7 @@
    "to": "spinnaker-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "arfa2025-spiking-q-spinnaker2",
-     "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
-     "year": 2025,
-     "url": "https://doi.org/10.1109/icons69015.2025.00021",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "direct-training-to-direct-input-encoding",
@@ -5446,22 +5186,7 @@
    "to": "direct-input-encoding",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "force-control",
-     "title": "Neuromorphic force-control in an industrial task: validating energy and latency benefits",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.08928",
-     "type": "preprint"
-    },
-    {
-     "id": "sddpg",
-     "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2003.01157",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "dynapcnn-mapper-to-samna",
@@ -5492,15 +5217,7 @@
    "to": "corelet",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "truenorth",
-     "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
-     "year": 2016,
-     "url": "https://doi.org/10.1073/pnas.1604850113",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "event-camera-to-frames-from-events",
@@ -5508,22 +5225,7 @@
    "to": "frames-from-events",
    "route_state": null,
    "evidence_class": "E5",
-   "sources": [
-    {
-     "id": "eventvision2023-survey",
-     "title": "Deep Learning for Event-based Vision: A Comprehensive Survey and Benchmarks",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2302.08890",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "v2v2025-neurips",
-     "title": "V2V: Scaling Event-Based Vision through Efficient Video-to-Voxel Simulation",
-     "year": 2025,
-     "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b14cf0a01f7a8b9cd3e365e40f910272-Paper-Conference.pdf",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "event-camera-to-native-events",
@@ -5531,22 +5233,7 @@
    "to": "native-events",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "speck-dynamic-snn",
-     "title": "Spike-based dynamic computing with asynchronous sensing-computing neuromorphic chip",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-47811-6",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "truenorth-dvs-gesture",
-     "title": "A Low Power, Fully Event-Based Gesture Recognition System",
-     "year": 2017,
-     "url": "https://doi.org/10.1109/cvpr.2017.781",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "fenn-vector-program-to-riscv-toolchain",
@@ -5554,22 +5241,7 @@
    "to": "fenn-vivado-toolchain",
    "route_state": "physical",
    "evidence_class": null,
-   "sources": [
-    {
-     "id": "fenn-dma-riscv",
-     "title": "FeNN-DMA: A RISC-V system-on-chip for spiking neural network acceleration",
-     "year": 2026,
-     "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ae688e",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "fenn-riscv",
-     "title": "FeNN: A RISC-V vector processor for Spiking Neural Network acceleration",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2506.11760",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "fpga-synthesis-flow-to-fpga",
@@ -5577,22 +5249,7 @@
    "to": "fpga",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "firefly",
-     "title": "FireFly v2: Advancing Hardware Support for High-Performance Spiking Neural Network With a Spatiotemporal FPGA Accelerator",
-     "year": 2024,
-     "url": "https://doi.org/10.1109/tcad.2024.3380550",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "spikerplus",
-     "title": "Spiker+: A Framework for the Generation of Efficient Spiking Neural Networks FPGA Accelerators for Inference at the Edge",
-     "year": 2024,
-     "url": "https://doi.org/10.1109/tetc.2024.3511676",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "fpga-synthesis-flow-to-syncnn",
@@ -5600,15 +5257,7 @@
    "to": "syncnn",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "syncnn",
-     "title": "SyncNN: Evaluating and Accelerating Spiking Neural Networks on FPGAs",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3514253",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "frame-camera-to-static-frames",
@@ -5634,13 +5283,6 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "Turner22-mlGeNN",
-     "title": "mlGeNN: accelerating SNN inference using GPU-enabled neural networks",
-     "year": 2022,
-     "url": "https://doi.org/10.1088/2634-4386/ac5ac5",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "genn-docs",
      "title": "GeNN (GPU-enhanced Neuronal Networks)",
      "year": null,
@@ -5655,15 +5297,7 @@
    "to": "direct-training-surrogate-gradient",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "gesture-to-spike-time-gradient",
@@ -5671,15 +5305,7 @@
    "to": "spike-time-gradient-methods",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "graded-spikes-to-loihi2",
@@ -5689,25 +5315,11 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "brehove",
-     "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
-     "year": 2026,
-     "url": "https://doi.org/10.1145/3822454.3822490",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "loihi2",
      "title": "Taking Neuromorphic Computing to the Next Level with Loihi 2",
      "year": 2021,
      "url": "https://intel.com/content/dam/www/central-libraries/us/en/documents/neuromorphic-computing-loihi-2-brief.pdf",
      "type": "official documentation"
-    },
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
     }
    ]
   },
@@ -5717,15 +5329,7 @@
    "to": "brainscales-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "schmitt2017-hitl",
-     "title": "Neuromorphic Hardware In The Loop: Training a Deep Spiking Network on the BrainScaleS Wafer-Scale System",
-     "year": 2017,
-     "url": "https://ar5iv.labs.arxiv.org/html/1703.01909",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "hitl-training-to-brainscales2",
@@ -5733,29 +5337,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "cramer2022-surrogate",
-     "title": "Surrogate gradients for analog neuromorphic computing",
-     "year": 2022,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8794842",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "stradmann2021-mobile",
-     "title": "Demonstrating Analog Inference on the Mobile System",
-     "year": 2021,
-     "url": "https://ar5iv.labs.arxiv.org/html/2103.15960",
-     "type": "preprint"
-    },
-    {
-     "id": "weis2020-annmode",
-     "title": "Inference with Artificial Neural Networks on Analog Neuromorphic Hardware",
-     "year": 2020,
-     "url": "http://arxiv.org/abs/2006.13177",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "host-io-to-brainscales2",
@@ -5763,15 +5345,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "bss",
-     "title": "The BrainScaleS-2 accelerated neuromorphic system with hybrid plasticity",
-     "year": 2022,
-     "url": "https://doi.org/10.3389/fnins.2022.795876",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "host-io-to-loihi2",
@@ -5779,15 +5353,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "loihi2-llm-hostio",
-     "title": "Neuromorphic Principles for Efficient Large Language Models on Intel's Loihi 2",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2503.18002",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "hs-api-to-fpga",
@@ -5811,22 +5377,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E2",
-   "sources": [
-    {
-     "id": "bss",
-     "title": "The BrainScaleS-2 accelerated neuromorphic system with hybrid plasticity",
-     "year": 2022,
-     "url": "https://doi.org/10.3389/fnins.2022.795876",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "spilger2022-hxtorchsnn",
-     "title": "hxtorch.snn: Machine-learning-inspired Spiking Neural Network Modeling on BrainScaleS-2",
-     "year": 2022,
-     "url": "https://arxiv.org/abs/2212.12210",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "hxtorch-to-brainscales2",
@@ -5834,29 +5385,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "spilger2020-hxtorch",
-     "title": "hxtorch: PyTorch for BrainScaleS-2 - Perceptrons on Analog Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2006.13138",
-     "type": "preprint"
-    },
-    {
-     "id": "stradmann2021-mobile",
-     "title": "Demonstrating Analog Inference on the Mobile System",
-     "year": 2021,
-     "url": "https://ar5iv.labs.arxiv.org/html/2103.15960",
-     "type": "preprint"
-    },
-    {
-     "id": "weis2020-annmode",
-     "title": "Inference with Artificial Neural Networks on Analog Neuromorphic Hardware",
-     "year": 2020,
-     "url": "http://arxiv.org/abs/2006.13177",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "hxtorch-to-nir",
@@ -5864,22 +5393,7 @@
    "to": "nir",
    "route_state": null,
    "evidence_class": "E2",
-   "sources": [
-    {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "spilger2020-hxtorch",
-     "title": "hxtorch: PyTorch for BrainScaleS-2 - Perceptrons on Analog Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2006.13138",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "hybrid-finetuning-to-loihi1",
@@ -5887,15 +5401,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "hybridsnn-nengoloihi-nsf",
-     "title": "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic Hardware (hybrid ANN/SNN via SLAYER+Lava, evaluated on Loihi 1 via NengoLoihi)",
-     "year": 2024,
-     "url": "https://par.nsf.gov/servlets/purl/10586400",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "if-neuron-to-reset-by-subtraction",
@@ -5935,36 +5441,7 @@
    "to": "hardware-in-the-loop-training",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "cramer2022-surrogate",
-     "title": "Surrogate gradients for analog neuromorphic computing",
-     "year": 2022,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8794842",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "schmitt2017-hitl",
-     "title": "Neuromorphic Hardware In The Loop: Training a Deep Spiking Network on the BrainScaleS Wafer-Scale System",
-     "year": 2017,
-     "url": "https://ar5iv.labs.arxiv.org/html/1703.01909",
-     "type": "preprint"
-    },
-    {
-     "id": "stradmann2021-mobile",
-     "title": "Demonstrating Analog Inference on the Mobile System",
-     "year": 2021,
-     "url": "https://ar5iv.labs.arxiv.org/html/2103.15960",
-     "type": "preprint"
-    },
-    {
-     "id": "weis2020-annmode",
-     "title": "Inference with Artificial Neural Networks on Analog Neuromorphic Hardware",
-     "year": 2020,
-     "url": "http://arxiv.org/abs/2006.13177",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "imu-sensor-to-biosignal",
@@ -5972,22 +5449,7 @@
    "to": "biosignal-decoding",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "bezugam2023-emg-loihi",
-     "title": "Neuromorphic Recurrent Spiking Neural Networks for EMG Gesture Classification on Loihi",
-     "year": 2023,
-     "url": "https://doi.org/10.1109/iscas46773.2023.10181510",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "vitale2022-emg-loihi",
-     "title": "Neuromorphic Edge Computing for Biomedical Applications: EMG Gesture Classification",
-     "year": 2022,
-     "url": "https://doi.org/10.1109/jsen.2022.3194678",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "imu-sensor-to-robotics",
@@ -5995,22 +5457,7 @@
    "to": "robotics-closed-loop-control",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "force-control",
-     "title": "Neuromorphic force-control in an industrial task: validating energy and latency benefits",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.08928",
-     "type": "preprint"
-    },
-    {
-     "id": "sddpg",
-     "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2003.01157",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "keyword-spotting-to-direct-training",
@@ -6018,15 +5465,7 @@
    "to": "direct-training-surrogate-gradient",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "xylo-kws",
-     "title": "Micro-power spoken keyword spotting on Xylo Audio 2",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2406.15112",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "keyword-spotting-to-spike-time-gradient",
@@ -6034,15 +5473,7 @@
    "to": "spike-time-gradient-methods",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "eventprop-delays",
-     "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2510.13757",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "lava-dl-to-netx",
@@ -6057,13 +5488,6 @@
      "year": 2025,
      "url": "https://github.com/lava-nc/lava-dl/blob/main/src/lava/lib/dl/netx/README.md",
      "type": "official repository"
-    },
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
     }
    ]
   },
@@ -6096,15 +5520,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "lava-to-lava-dl",
@@ -6137,13 +5553,6 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "davies-2021-loihi",
-     "title": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook",
-     "year": 2021,
-     "url": "https://doi.org/10.1109/jproc.2021.3067593",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "lava-github-archived",
      "title": "lava-nc/lava GitHub repository (archived)",
      "year": 2026,
@@ -6165,29 +5574,7 @@
    "to": "lynxi-hp201",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "adaptive-fission",
-     "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
-     "year": 2025,
-     "url": "https://doi.org/10.52202/085713-5157",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "qcfs",
-     "title": "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks",
-     "year": 2022,
-     "url": "https://arxiv.org/abs/2303.04347",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "srp",
-     "title": "Reducing ANN-SNN Conversion Error through Residual Membrane Potential",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2302.02091",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "low-latency-conversion-to-spinnaker2",
@@ -6195,15 +5582,7 @@
    "to": "spinnaker-2",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "andrei2024-deep-unrolling-spinnaker2",
-     "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.1109/ieeeconf60004.2024.10942794",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "microphone-to-keyword-spotting",
@@ -6218,13 +5597,6 @@
      "year": 2026,
      "url": "https://rockpool.ai/devices/xylo-overview.html",
      "type": "official documentation"
-    },
-    {
-     "id": "xylo-kws",
-     "title": "Micro-power spoken keyword spotting on Xylo Audio 2",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2406.15112",
-     "type": "preprint"
     }
    ]
   },
@@ -6235,13 +5607,6 @@
    "route_state": "physical",
    "evidence_class": null,
    "sources": [
-    {
-     "id": "Turner22-mlGeNN",
-     "title": "mlGeNN: accelerating SNN inference using GPU-enabled neural networks",
-     "year": 2022,
-     "url": "https://doi.org/10.1088/2634-4386/ac5ac5",
-     "type": "peer-reviewed"
-    },
     {
      "id": "genn-docs",
      "title": "GeNN (GPU-enhanced Neuronal Networks)",
@@ -6257,15 +5622,7 @@
    "to": "netx",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "eventprop-delays",
-     "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2510.13757",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "multi-compartment-to-loihi1",
@@ -6273,22 +5630,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "boeshertz2024-rnn-mapping",
-     "title": "Accurate Mapping of RNNs on Neuromorphic Hardware with Adaptive Spiking Neurons",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2407.13534",
-     "type": "preprint"
-    },
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "multi-compartment-to-loihi2",
@@ -6296,15 +5638,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "boeshertz2024-rnn-mapping",
-     "title": "Accurate Mapping of RNNs on Neuromorphic Hardware with Adaptive Spiking Neurons",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2407.13534",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "nengo-loihi-to-loihi1",
@@ -6319,20 +5653,6 @@
      "year": 2019,
      "url": "https://prnewswire.com/news-releases/applied-brain-research-inc-shows-nengo-spiking-real-time-ai-deep-learning-networks-on-intel-loihi-use-38x-less-energy-than-on-nvidia-quadro-k4000-gpu-300761243.html",
      "type": "marketing material"
-    },
-    {
-     "id": "dewolf2020-nengo-hw",
-     "title": "Nengo and Low-Power AI Hardware for Robust, Embedded Neurorobotics",
-     "year": 2020,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7581863",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "dewolf2023-nengoloihi-arm",
-     "title": "Neuromorphic control of a simulated 7-DOF arm using Loihi",
-     "year": 2023,
-     "url": "https://doi.org/10.1088/2634-4386/acb286",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6342,15 +5662,7 @@
    "to": "nengo-loihi",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "dewolf2020-nengo-hw",
-     "title": "Nengo and Low-Power AI Hardware for Robust, Embedded Neurorobotics",
-     "year": 2020,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7581863",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "nest-kernel-to-cpu",
@@ -6372,13 +5684,6 @@
      "year": 2018,
      "url": "https://pop-coe.eu/sites/default/files/pop_files/pop-ar-nest5g.pdf",
      "type": "secondary material"
-    },
-    {
-     "id": "vanalbada2018-spinnaker-nest",
-     "title": "Performance Comparison of the Digital Neuromorphic Hardware SpiNNaker and the Neural Network Simulation Software NEST for a Full-Scale Cortical Microcircuit Model",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00291",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6395,13 +5700,6 @@
      "year": null,
      "url": "https://nest-simulator.readthedocs.io/en/stable",
      "type": "official documentation"
-    },
-    {
-     "id": "vanalbada2018-spinnaker-nest",
-     "title": "Performance Comparison of the Digital Neuromorphic Hardware SpiNNaker and the Neural Network Simulation Software NEST for a Full-Scale Cortical Microcircuit Model",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00291",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6418,13 +5716,6 @@
      "year": 2025,
      "url": "https://github.com/lava-nc/lava-dl/blob/main/src/lava/lib/dl/netx/README.md",
      "type": "official repository"
-    },
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
     }
    ]
   },
@@ -6435,13 +5726,6 @@
    "route_state": null,
    "evidence_class": "E3",
    "sources": [
-    {
-     "id": "davies-2021-loihi",
-     "title": "Advancing Neuromorphic Computing With Loihi: A Survey of Results and Outlook",
-     "year": 2021,
-     "url": "https://doi.org/10.1109/jproc.2021.3067593",
-     "type": "peer-reviewed"
-    },
     {
      "id": "lava-dl-netx-docs",
      "title": "Lava-DL NetX documentation / README",
@@ -6480,13 +5764,6 @@
      "type": "official repository"
     },
     {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "spikingjelly-source-tonir",
      "title": "spikingjelly/activation_based/nir_exchange/to_nir.py (source)",
      "year": 2026,
@@ -6522,13 +5799,6 @@
      "year": 2026,
      "url": "https://neuroir.org/docs",
      "type": "official documentation"
-    },
-    {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6539,13 +5809,6 @@
    "route_state": null,
    "evidence_class": "E3",
    "sources": [
-    {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
     {
      "id": "spinnaker2-nir-import-docs",
      "title": "NIR SpiNNaker2 import docs",
@@ -6561,22 +5824,7 @@
    "to": "optimization-constraint-satisfaction",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "satcsp-loihi-date2020",
-     "title": "Solving Constraint Satisfaction Problems Using the Loihi Spiking Neuromorphic Processor",
-     "year": 2020,
-     "url": "https://doi.org/10.23919/date48585.2020.9116227",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "tang2017-lca-sparsecoding",
-     "title": "Sparse Coding by Spiking Neural Networks: Convergence Theory and Computational Results",
-     "year": 2017,
-     "url": "https://arxiv.org/abs/1705.05475",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "norse-to-nir",
@@ -6607,22 +5855,7 @@
    "to": "loihi-1",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "loihi1",
-     "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning",
-     "year": 2018,
-     "url": "https://doi.org/10.1109/mm.2018.112130359",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "nxtf-to-nxsdk",
@@ -6637,13 +5870,6 @@
      "year": 2026,
      "url": "https://intel-ncl.atlassian.net/wiki/spaces/INRC/pages/1810432001",
      "type": "official documentation"
-    },
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6653,15 +5879,7 @@
    "to": "local-learning-plasticity",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "imam-cleland-olfaction",
-     "title": "Rapid online learning and robust recall in a neuromorphic olfactory circuit",
-     "year": 2020,
-     "url": "https://doi.org/10.1038/s42256-020-0159-4",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "optimization-to-local-learning",
@@ -6669,29 +5887,7 @@
    "to": "local-learning-plasticity",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "parpart2023-lca-loihi2",
-     "title": "Implementing and Benchmarking the Locally Competitive Algorithm on the Loihi 2 Neuromorphic Processor",
-     "year": 2023,
-     "url": "https://doi.org/10.1145/3589737.3605973",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "satcsp-loihi-date2020",
-     "title": "Solving Constraint Satisfaction Problems Using the Loihi Spiking Neuromorphic Processor",
-     "year": 2020,
-     "url": "https://doi.org/10.23919/date48585.2020.9116227",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "tang2017-lca-sparsecoding",
-     "title": "Sparse Coding by Spiking Neural Networks: Convergence Theory and Computational Results",
-     "year": 2017,
-     "url": "https://arxiv.org/abs/1705.05475",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pasc-if-to-apex",
@@ -6699,22 +5895,7 @@
    "to": "apex",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "apex",
-     "title": "APEX: A Dual-Sparsity Accelerator for Precise and Efficient SNN Inference",
-     "year": 2026,
-     "url": "https://arxiv.org/abs/2608.19046",
-     "type": "preprint"
-    },
-    {
-     "id": "pascal",
-     "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2505.01730",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pasc-if-to-neuroflex",
@@ -6722,22 +5903,7 @@
    "to": "neuroflex",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "neuroflex",
-     "title": "NeuroFlex: Column-Exact ANN-SNN Co-Execution Accelerator with Cost-Guided Scheduling",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2511.05215",
-     "type": "preprint"
-    },
-    {
-     "id": "pascal",
-     "title": "PASCAL: Precise and Efficient ANN-SNN Conversion using Spike Accumulation and Adaptive Layerwise Activation",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2505.01730",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pynn-to-brainscales1",
@@ -6745,15 +5911,7 @@
    "to": "brainscales-1",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "kelber-2020",
-     "title": "Benchmarking Deep Spiking Neural Networks on Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2004.01656",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pynn-to-brainscales2",
@@ -6761,22 +5919,7 @@
    "to": "brainscales-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "bss",
-     "title": "The BrainScaleS-2 accelerated neuromorphic system with hybrid plasticity",
-     "year": 2022,
-     "url": "https://doi.org/10.3389/fnins.2022.795876",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "dewolf2020-nengo-hw",
-     "title": "Nengo and Low-Power AI Hardware for Robust, Embedded Neurorobotics",
-     "year": 2020,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7581863",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pynn-to-nest",
@@ -6791,13 +5934,6 @@
      "year": 2020,
      "url": "https://snntoolbox.readthedocs.io/en/latest/guide/intro.html",
      "type": "official documentation"
-    },
-    {
-     "id": "vanalbada2018-spinnaker-nest",
-     "title": "Performance Comparison of the Digital Neuromorphic Hardware SpiNNaker and the Neural Network Simulation Software NEST for a Full-Scale Cortical Microcircuit Model",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00291",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -6807,22 +5943,7 @@
    "to": "spinnaker-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "dewolf2020-nengo-hw",
-     "title": "Nengo and Low-Power AI Hardware for Robust, Embedded Neurorobotics",
-     "year": 2020,
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7581863",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "rhodes2018-spynnaker",
-     "title": "sPyNNaker: A Software Package for Running PyNN Simulations on SpiNNaker",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00816",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "pytorch-cuda-to-gpu",
@@ -6876,15 +5997,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "quartz",
-     "title": "Ultra-low-power Image Classification on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.48550/arxiv.2309.16795",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "quartz-to-nxsdk",
@@ -6892,15 +6005,7 @@
    "to": "nxsdk",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "quartz",
-     "title": "Ultra-low-power Image Classification on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.48550/arxiv.2309.16795",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "rate-coding-to-spinnaker2",
@@ -6908,15 +6013,7 @@
    "to": "spinnaker-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "arfa2025-spiking-q-spinnaker2",
-     "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
-     "year": 2025,
-     "url": "https://doi.org/10.1109/icons69015.2025.00021",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "riscv-toolchain-to-riscv",
@@ -6924,22 +6021,7 @@
    "to": "riscv-accelerator",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "fenn-dma-riscv",
-     "title": "FeNN-DMA: A RISC-V system-on-chip for spiking neural network acceleration",
-     "year": 2026,
-     "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ae688e",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "fenn-riscv",
-     "title": "FeNN: A RISC-V vector processor for Spiking Neural Network acceleration",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2506.11760",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "robotics-to-direct-training",
@@ -6947,22 +6029,7 @@
    "to": "direct-training-surrogate-gradient",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "force-control",
-     "title": "Neuromorphic force-control in an industrial task: validating energy and latency benefits",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.08928",
-     "type": "preprint"
-    },
-    {
-     "id": "sddpg",
-     "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2003.01157",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "robotics-to-hand-designed-hybrid",
@@ -6970,15 +6037,7 @@
    "to": "hand-designed-hybrid-finetuning",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "sddpg",
-     "title": "Reinforcement co-Learning of Deep and Spiking Neural Networks for Energy-Efficient Mapless Navigation with Neuromorphic Hardware",
-     "year": 2020,
-     "url": "https://arxiv.org/abs/2003.01157",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "robotics-to-local-learning",
@@ -6986,36 +6045,7 @@
    "to": "local-learning-plasticity",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "dynapse-icub-pcontroller",
-     "title": "Closed-loop spiking control on a neuromorphic processor implemented on the iCub",
-     "year": 2020,
-     "url": "https://ar5iv.labs.arxiv.org/html/2009.09081",
-     "type": "preprint"
-    },
-    {
-     "id": "kreiser2020-icub-headpose",
-     "title": "An On-chip Spiking Neural Network for Estimation of the Head Pose of the iCub Robot",
-     "year": 2020,
-     "url": "https://doi.org/10.3389/fnins.2020.00551",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "neuropod-hexapod-spinnaker",
-     "title": "NeuroPod: real-time neuromorphic spiking central pattern generator for robotics",
-     "year": 2019,
-     "url": "https://export.arxiv.org/pdf/1904.11243",
-     "type": "preprint"
-    },
-    {
-     "id": "spinnaker-goalkeeper",
-     "title": "System integration of neuromorphic SNN, DVS camera, SpiNNaker and servo motor for a goalkeeper robot",
-     "year": 2020,
-     "url": "https://doi.org/10.36227/techrxiv.11854254",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "rockpool-to-nir",
@@ -7024,13 +6054,6 @@
    "route_state": null,
    "evidence_class": "E2",
    "sources": [
-    {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
     {
      "id": "rockpool-xylo-docs",
      "title": "Overview of the Xylo family",
@@ -7064,13 +6087,6 @@
    "evidence_class": "E2",
    "sources": [
     {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    },
-    {
      "id": "sinabs-docs",
      "title": "Sinabs documentation",
      "year": 2026,
@@ -7087,25 +6103,11 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "richter",
-     "title": "Speck: A Smart event-based Vision Sensor with a low latency 327K Neuron Convolutional Neural Network Processing Pipeline",
-     "year": 2023,
-     "url": "https://arxiv.org/abs/2304.06793",
-     "type": "preprint"
-    },
-    {
      "id": "sinabs-docs",
      "title": "Sinabs documentation",
      "year": 2026,
      "url": "https://sinabs.readthedocs.io/",
      "type": "official documentation"
-    },
-    {
-     "id": "speck-dynamic-snn",
-     "title": "Spike-based dynamic computing with asynchronous sensing-computing neuromorphic chip",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-47811-6",
-     "type": "peer-reviewed"
     }
    ]
   },
@@ -7138,22 +6140,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "brehove",
-     "title": "Sigma-Delta Neural Network Conversion on Loihi 2",
-     "year": 2026,
-     "url": "https://doi.org/10.1145/3822454.3822490",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "silicon-cochlea-to-keyword-spotting",
@@ -7161,22 +6148,7 @@
    "to": "keyword-spotting-audio",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "eventprop-delays",
-     "title": "A Complete Pipeline for deploying Spiking Neural Networks with Synaptic Delays on Loihi 2",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2510.13757",
-     "type": "preprint"
-    },
-    {
-     "id": "reckon",
-     "title": "ReckOn: A 28-nm Sub-mm2 Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales",
-     "year": 2022,
-     "url": "https://arxiv.org/abs/2208.09759",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sinabs-to-dynapcnn-mapper",
@@ -7216,13 +6188,6 @@
      "type": "official repository"
     },
     {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "sinabs-nir",
      "title": "Deploying NIR models to Speck",
      "year": 2025,
@@ -7244,22 +6209,7 @@
    "to": "akida",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "lunghi2025-akida-space",
-     "title": "Energy efficiency analysis of Spiking Neural Networks for space applications",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2505.11418",
-     "type": "preprint"
-    },
-    {
-     "id": "ziegler2024-akida-robotics",
-     "title": "Detection of Fast-Moving Objects with Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://arxiv.org/abs/2403.10677",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "slam-to-local-learning",
@@ -7267,15 +6217,7 @@
    "to": "local-learning-plasticity",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "tang-slam-loihi",
-     "title": "Spiking Neural Network on Neuromorphic Hardware for Energy-Efficient Unidimensional SLAM",
-     "year": 2019,
-     "url": "https://arxiv.org/abs/1903.02504",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "slayer-to-nxtf",
@@ -7317,13 +6259,6 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "cerebron",
-     "title": "Cerebron: A Reconfigurable Architecture for Spatiotemporal Sparse Spiking Neural Networks",
-     "year": 2022,
-     "url": "https://doi.org/10.1109/tvlsi.2022.3196839",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "toolbox",
      "title": "SNN Toolbox documentation",
      "year": 2020,
@@ -7339,13 +6274,6 @@
    "route_state": null,
    "evidence_class": "E1",
    "sources": [
-    {
-     "id": "nxtf",
-     "title": "NxTF: An API and Compiler for Deep Spiking Neural Networks on Intel Loihi",
-     "year": 2022,
-     "url": "https://doi.org/10.1145/3501770",
-     "type": "peer-reviewed"
-    },
     {
      "id": "toolbox",
      "title": "SNN Toolbox documentation",
@@ -7363,13 +6291,6 @@
    "evidence_class": "E1",
    "sources": [
     {
-     "id": "patino-saucedo-2020",
-     "title": "Event-driven implementation of deep spiking convolutional neural networks for supervised classification using the SpiNNaker neuromorphic platform",
-     "year": 2020,
-     "url": "https://doi.org/10.1016/j.neunet.2019.09.008",
-     "type": "peer-reviewed"
-    },
-    {
      "id": "toolbox",
      "title": "SNN Toolbox documentation",
      "year": 2020,
@@ -7384,15 +6305,7 @@
    "to": "portenta-h7",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "snntorch-portenta-h7",
-     "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2511.12136",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "snntorch-to-nir",
@@ -7401,13 +6314,6 @@
    "route_state": null,
    "evidence_class": "E3",
    "sources": [
-    {
-     "id": "pedersen-2024-nir",
-     "title": "Neuromorphic intermediate representation: a unified instruction set for interoperable brain-inspired computing",
-     "year": 2024,
-     "url": "https://doi.org/10.1038/s41467-024-52259-9",
-     "type": "peer-reviewed"
-    },
     {
      "id": "snntorch-pr388",
      "title": "nir: add missing v_reset parameter on export (PR #388)",
@@ -7423,15 +6329,7 @@
    "to": "snntorch-c-runtime",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "snntorch-portenta-h7",
-     "title": "Compression and Inference of Spiking Neural Networks on Resource-Constrained Hardware",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2511.12136",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "spikingjelly-pytorch-cuda",
@@ -7533,22 +6431,7 @@
    "to": "spinnaker-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "rowley2019-spinntools",
-     "title": "SpiNNTools: The Execution Engine for the SpiNNaker Platform",
-     "year": 2019,
-     "url": "https://doi.org/10.3389/fnins.2019.00231",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "spinnaker-chip",
-     "title": "SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Network Simulation",
-     "year": 2013,
-     "url": "https://doi.org/10.1109/jssc.2013.2259038",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "spinnaker-runtime-to-spinnaker2",
@@ -7556,22 +6439,7 @@
    "to": "spinnaker-2",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "andrei2024-deep-unrolling-spinnaker2",
-     "title": "Deep-Unrolling Multidimensional Harmonic Retrieval Algorithms on Neuromorphic Hardware",
-     "year": 2024,
-     "url": "https://doi.org/10.1109/ieeeconf60004.2024.10942794",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "arfa2025-spiking-q-spinnaker2",
-     "title": "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform",
-     "year": 2025,
-     "url": "https://doi.org/10.1109/icons69015.2025.00021",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "spynnaker-to-spinnaker-runtime",
@@ -7579,22 +6447,7 @@
    "to": "spinnaker-runtime",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "rhodes2018-spynnaker",
-     "title": "sPyNNaker: A Software Package for Running PyNN Simulations on SpiNNaker",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00816",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "rowley2019-spinntools",
-     "title": "SpiNNTools: The Execution Engine for the SpiNNaker Platform",
-     "year": 2019,
-     "url": "https://doi.org/10.3389/fnins.2019.00231",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "spynnaker-to-spinnaker1",
@@ -7602,36 +6455,7 @@
    "to": "spinnaker-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "patino-saucedo-2020",
-     "title": "Event-driven implementation of deep spiking convolutional neural networks for supervised classification using the SpiNNaker neuromorphic platform",
-     "year": 2020,
-     "url": "https://doi.org/10.1016/j.neunet.2019.09.008",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "rhodes2018-spynnaker",
-     "title": "sPyNNaker: A Software Package for Running PyNN Simulations on SpiNNaker",
-     "year": 2018,
-     "url": "https://doi.org/10.3389/fnins.2018.00816",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "rowley2019-spinntools",
-     "title": "SpiNNTools: The Execution Engine for the SpiNNaker Platform",
-     "year": 2019,
-     "url": "https://doi.org/10.3389/fnins.2019.00231",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "stromatias2015-dbn-spinnaker",
-     "title": "Scalable Energy-Efficient, Low-Latency Implementations of Spiking Deep Belief Networks on SpiNNaker",
-     "year": 2015,
-     "url": "https://pure.manchester.ac.uk/ws/files/32800773/FULL_TEXT.PDF",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "stedgeai-to-stm32n6-npu",
@@ -7655,15 +6479,7 @@
    "to": "loihi-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "loihi1",
-     "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning",
-     "year": 2018,
-     "url": "https://doi.org/10.1109/mm.2018.112130359",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-loihi2",
@@ -7671,22 +6487,7 @@
    "to": "loihi-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "loihi2-llm-hostio",
-     "title": "Neuromorphic Principles for Efficient Large Language Models on Intel's Loihi 2",
-     "year": 2025,
-     "url": "https://arxiv.org/abs/2503.18002",
-     "type": "preprint"
-    },
-    {
-     "id": "sdnn",
-     "title": "Efficient Video and Audio Processing with Loihi 2",
-     "year": 2023,
-     "url": "https://doi.org/10.48550/arxiv.2310.03251",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-spinnaker1",
@@ -7694,22 +6495,7 @@
    "to": "spinnaker-1",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "furber2012-spinnaker",
-     "title": "Overview of the SpiNNaker System Architecture",
-     "year": 2012,
-     "url": "https://doi.org/10.1109/tc.2012.142",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "spinnaker-chip",
-     "title": "SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Network Simulation",
-     "year": 2013,
-     "url": "https://doi.org/10.1109/jssc.2013.2259038",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-spinnaker2",
@@ -7717,15 +6503,7 @@
    "to": "spinnaker-2",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "gonzalez2024-spinnaker2",
-     "title": "SpiNNaker2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning",
-     "year": 2024,
-     "url": "https://ar5iv.labs.arxiv.org/html/2401.04491",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-tianjic",
@@ -7733,15 +6511,7 @@
    "to": "tianjic",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "neuroscale2025-natcomm",
-     "title": "A deterministic neuromorphic architecture with scalable time synchronization",
-     "year": 2025,
-     "url": "https://doi.org/10.1038/s41467-025-65268-z",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-truenorth",
@@ -7749,15 +6519,7 @@
    "to": "truenorth",
    "route_state": null,
    "evidence_class": "E4",
-   "sources": [
-    {
-     "id": "neuroscale2025-natcomm",
-     "title": "A deterministic neuromorphic architecture with scalable time synchronization",
-     "year": 2025,
-     "url": "https://doi.org/10.1038/s41467-025-65268-z",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "sync-tick-to-xylo",
@@ -7781,22 +6543,7 @@
    "to": "native-events",
    "route_state": null,
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "dynap-se-tactile",
-     "title": "Bioinspired spiking architecture enables energy constrained touch encoding",
-     "year": 2026,
-     "url": "https://doi.org/10.1038/s41467-026-68858-7",
-     "type": "peer-reviewed"
-    },
-    {
-     "id": "gelneuro",
-     "title": "GelNeuro: A Sensing-Computing Integrated Neuromorphic Tactile System for Texture Recognition",
-     "year": 2026,
-     "url": "https://arxiv.org/abs/2607.05241",
-     "type": "preprint"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "tensorflow-edgetpu-to-coral-edge-tpu",
@@ -7804,15 +6551,7 @@
    "to": "coral-edge-tpu",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "coral-edge-tpu-tracking",
-     "title": "High-Speed, Real-Time, Spike-Based Object Tracking and Path Prediction on Google Edge TPU",
-     "year": 2020,
-     "url": "https://par.nsf.gov/servlets/purl/10212648",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "tensorflow-lite-to-stedgeai",
@@ -7836,15 +6575,7 @@
    "to": "frames-from-events",
    "route_state": null,
    "evidence_class": "E5",
-   "sources": [
-    {
-     "id": "ibm2023-neuromorphic-opticalflow",
-     "title": "Neuromorphic Optical Flow and Real-time Implementation with Event Cameras",
-     "year": 2023,
-     "url": "https://research.ibm.com/publications/neuromorphic-optical-flow-and-real-time-implementation-with-event-cameras",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "ttfs-conversion-to-mcu-firmware",
@@ -7852,15 +6583,7 @@
    "to": "ttfs-mcu-firmware",
    "route_state": "physical",
    "evidence_class": null,
-   "sources": [
-    {
-     "id": "anglo-mixed-snn-mcu",
-     "title": "Event Driven Spiking Neural Network Using Analog Mixed Signals",
-     "year": 2026,
-     "url": "https://doi.org/10.1007/978-3-032-22911-3_9",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "ttfs-firmware-to-cortex-m",
@@ -7868,15 +6591,7 @@
    "to": "cortex-m-mcu",
    "route_state": "physical",
    "evidence_class": "E1",
-   "sources": [
-    {
-     "id": "anglo-mixed-snn-mcu",
-     "title": "Event Driven Spiking Neural Network Using Analog Mixed Signals",
-     "year": 2026,
-     "url": "https://doi.org/10.1007/978-3-032-22911-3_9",
-     "type": "peer-reviewed"
-    }
-   ]
+   "sources": []
   },
   {
    "id": "xylo-mapper-to-samna",
